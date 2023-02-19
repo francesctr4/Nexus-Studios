@@ -11726,7 +11726,7 @@ body {
 
 .epocas-section {
   padding: 10rem 0;
-   background: linear-gradient(to top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 75%, #000 100%), url("../assets/img/bg-signup.jpg");
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 75%, #000 100%), url("../assets/img/bg-signup.jpg");
 }
 .epocas-section .featured-text {
   padding: 2rem;
