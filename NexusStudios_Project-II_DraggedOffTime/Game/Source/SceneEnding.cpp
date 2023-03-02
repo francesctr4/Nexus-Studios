@@ -42,7 +42,7 @@ bool SceneEnding::Start()
 // Called each loop iteration
 bool SceneEnding::PreUpdate()
 {
-	
+	OPTICK_EVENT();
 
 	return true;
 }
@@ -50,7 +50,7 @@ bool SceneEnding::PreUpdate()
 // Called each loop iteration
 bool SceneEnding::Update(float dt)
 {
-
+	OPTICK_EVENT();
 
 	return true;
 }
@@ -58,6 +58,8 @@ bool SceneEnding::Update(float dt)
 // Called each loop iteration
 bool SceneEnding::PostUpdate()
 {
+	OPTICK_EVENT();
+
 	bool ret = true;
 
 	return ret;

@@ -144,14 +144,14 @@ bool EntityManager::Update(float dt)
 
 bool EntityManager::LoadState(pugi::xml_node& data)
 {
-	
+	OPTICK_EVENT();
 
 	return true;
 }
 
 bool EntityManager::SaveState(pugi::xml_node& data)
 {
-	
+	OPTICK_EVENT();
 
 	return true;
 }
