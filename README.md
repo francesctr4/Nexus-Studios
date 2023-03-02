@@ -1,6 +1,6 @@
-# Windbearer by Canine Duo
+# Dragged Off Time by Nexus Studios
 
-### Repository Link: [Canine Duo](https://github.com/francesctr4/Canine-Duo)
+### Repository Link: [Nexus Studios]()
 
 ### Current release version: Gold
 
