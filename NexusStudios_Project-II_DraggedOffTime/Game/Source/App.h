@@ -21,13 +21,13 @@ class FadeToBlack;
 class Fonts;
 class SceneLogo;
 class SceneTitle;
-class Scene;
 class SceneEnding;
 class EntityManager;
 class Map;
 class Physics;
 class PathFinding;
 class GuiManager;
+class SceneManager;
 
 class App
 {
@@ -98,13 +98,13 @@ public:
 	Fonts* fonts;
 	SceneLogo* sceneLogo;
 	SceneTitle* sceneTitle;
-	Scene* scene;
 	SceneEnding* sceneEnding;
 	EntityManager* entityManager;
 	Map* map;
 	Physics* physics;
 	PathFinding* pathfinding;
 	GuiManager* guiManager;
+	SceneManager* sceneManager;
 
 	uint frames;
 	float dt;

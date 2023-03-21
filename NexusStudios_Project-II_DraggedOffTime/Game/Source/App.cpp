@@ -8,13 +8,13 @@
 #include "Fonts.h"
 #include "SceneLogo.h"
 #include "SceneTitle.h"
-#include "Scene.h"
 #include "SceneEnding.h"
 #include "EntityManager.h"
 #include "Map.h"
 #include "Physics.h"
 #include "PathFinding.h"
 #include "GuiManager.h"
+#include "SceneManager.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -40,11 +40,11 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	pathfinding = new PathFinding(true);
 	sceneLogo = new SceneLogo(true);
 	sceneTitle = new SceneTitle(false);
-	scene = new Scene(false);
 	sceneEnding = new SceneEnding(false);
 	entityManager = new EntityManager(true);
 	map = new Map(true);
 	guiManager = new GuiManager(true);
+	sceneManager = new SceneManager(true);
 
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -56,13 +56,13 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(pathfinding);
 	AddModule(sceneLogo);
 	AddModule(sceneTitle);
-	AddModule(scene);
 	AddModule(sceneEnding);
 	AddModule(entityManager);
 	AddModule(map);
 	AddModule(fadeToBlack);
 	AddModule(fonts);
 	AddModule(guiManager);
+	AddModule(sceneManager);
 
 	// Render last to swap buffer
 	AddModule(render);

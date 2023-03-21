@@ -15,32 +15,32 @@
 
 struct SDL_Texture;
 
-class Scene : public Module
+class Scene
 {
 public:
 
-	Scene(bool startEnabled);
+	Scene() {}
 
 	// Destructor
-	virtual ~Scene();
+	virtual ~Scene() {}
 
 	// Called before render is available
-	bool Awake(pugi::xml_node& config);
+	bool Awake(pugi::xml_node& config) {}
 
 	// Called before the first frame
-	bool Start();
+	bool Start() {}
 
 	// Called before all Updates
-	bool PreUpdate();
+	bool PreUpdate(){}
 
 	// Called each loop iteration
-	bool Update(float dt);
+	bool Update(float dt) {}
 
 	// Called before all Updates
-	bool PostUpdate();
+	bool PostUpdate() {}
 
 	// Called before quitting
-	bool CleanUp();
+	bool CleanUp(){}
 
 public:
 

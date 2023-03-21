@@ -4,7 +4,7 @@
 #include "Audio.h"
 #include "Render.h"
 #include "Window.h"
-#include "Scene.h"
+#include "SceneManager.h"
 #include "EntityManager.h"
 #include "Map.h"
 #include "Physics.h"
@@ -12,23 +12,27 @@
 #include "Fonts.h"
 #include "Pathfinding.h"
 #include "SceneTitle.h"
+#include "Scene.h"
 
 #include "Defs.h"
 #include "Log.h"
 
 #include "SDL_mixer/include/SDL_mixer.h"
 
-Scene::Scene(bool startEnabled) : Module(startEnabled)
+#define FADEOUT_TRANSITION_SPEED	2.0f
+#define FADEIN_TRANSITION_SPEED		2.0f
+
+SceneManager::SceneManager(bool startEnabled) : Module(startEnabled)
 {
 	name.Create("scene");
 }
 
 // Destructor
-Scene::~Scene()
+SceneManager::~SceneManager()
 {}
 
 // Called before render is available
-bool Scene::Awake(pugi::xml_node& config)
+bool SceneManager::Awake(pugi::xml_node& config)
 {
 	LOG("Loading Scene");
 	bool ret = true;
@@ -39,24 +43,16 @@ bool Scene::Awake(pugi::xml_node& config)
 }
 
 // Called before the first frame
-bool Scene::Start()
+bool SceneManager::Start()
 {
-	
-	
+
+
 
 	return true;
 }
 
 // Called each loop iteration
-bool Scene::PreUpdate()
-{
-	OPTICK_EVENT();
-
-	return true;
-}
-
-// Called each loop iteration
-bool Scene::Update(float dt)
+bool SceneManager::PreUpdate()
 {
 	OPTICK_EVENT();
 
@@ -64,7 +60,15 @@ bool Scene::Update(float dt)
 }
 
 // Called each loop iteration
-bool Scene::PostUpdate()
+bool SceneManager::Update(float dt)
+{
+	OPTICK_EVENT();
+
+	return true;
+}
+
+// Called each loop iteration
+bool SceneManager::PostUpdate()
 {
 	OPTICK_EVENT();
 
@@ -74,9 +78,23 @@ bool Scene::PostUpdate()
 }
 
 // Called before quitting
-bool Scene::CleanUp()
+bool SceneManager::CleanUp()
 {
 	LOG("Freeing scene");
+
+	return true;
+}
+
+bool SceneManager::LoadState(pugi::xml_node& load)
+{
+	
+
+	return true;
+}
+
+bool SceneManager::SaveState(pugi::xml_node& save)
+{
+	
 
 	return true;
 }

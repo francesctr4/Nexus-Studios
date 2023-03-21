@@ -3,7 +3,6 @@
   <ItemGroup>
     <ClCompile Include="Source\Window.cpp" />
     <ClCompile Include="Source\Textures.cpp" />
-    <ClCompile Include="Source\Scene.cpp" />
     <ClCompile Include="Source\Render.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\Input.cpp" />
@@ -33,6 +32,7 @@
     <ClCompile Include="Source\GuiButton.cpp" />
     <ClCompile Include="Source\GuiSlider.cpp" />
     <ClCompile Include="Source\GuiCheckBox.cpp" />
+    <ClCompile Include="Source\SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Window.h" />
@@ -96,6 +96,7 @@
     <ClInclude Include="Source\GuiButton.h" />
     <ClInclude Include="Source\GuiSlider.h" />
     <ClInclude Include="Source\GuiCheckBox.h" />
+    <ClInclude Include="Source\SceneManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
