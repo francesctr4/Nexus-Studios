@@ -9,38 +9,23 @@
 #include "Map.h"
 #include "Physics.h"
 #include "FadeToBlack.h"
-#include "Fonts.h"
-#include "Scene.h"
 
 #include "Defs.h"
 #include "Log.h"
 
-#include "SDL/include/SDL.h"
-#include "SDL_mixer/include/SDL_mixer.h"
-
-SceneTitle::SceneTitle(bool startEnabled) : Module(startEnabled)
+SceneTitle::SceneTitle()
 {
-	name.Create("sceneTitle");
+	name.Create("sceneEnding");
 }
 
 // Destructor
 SceneTitle::~SceneTitle()
 {}
 
-// Called before render is available
-bool SceneTitle::Awake(pugi::xml_node& config)
-{
-	LOG("Loading SceneTitle");
-	bool ret = true;
-
-
-	return ret;
-}
-
 // Called before the first frame
 bool SceneTitle::Start()
 {
-	
+
 	return true;
 }
 
@@ -57,6 +42,14 @@ bool SceneTitle::Update(float dt)
 {
 	OPTICK_EVENT();
 
+	if (app->input->GetKey(SDL_SCANCODE_G) == KEY_DOWN) {
+
+		TransitionToScene(SceneType::GAMEPLAY);
+
+	}
+	SDL_Rect rect = { 0,0, 1024, 768 };
+	app->render->DrawRectangle(rect, 0, 255, 0, 255);
+
 	return true;
 }
 
@@ -67,13 +60,21 @@ bool SceneTitle::PostUpdate()
 
 	bool ret = true;
 
-	return ret;
+	
+
+	return true;
 }
 
 // Called before quitting
 bool SceneTitle::CleanUp()
 {
 	LOG("Freeing scene");
+
+	return true;
+}
+
+bool SceneTitle::OnGuiMouseClickEvent(GuiControl* control)
+{
 
 	return true;
 }

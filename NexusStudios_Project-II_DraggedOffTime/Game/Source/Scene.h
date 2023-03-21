@@ -1,55 +1,68 @@
-#ifndef __SCENE_H__
-#define __SCENE_H__
+#pragma once
 
-#include "Module.h"
-#include "Player.h"
-#include "Item.h"
-#include "Enemy.h"
-#include "Animation.h"
-#include "List.h"
-#include "GuiManager.h"
-#include "GuiButton.h"
-#include "GuiSlider.h"
-#include "GuiCheckBox.h"
-#include <vector>
+#include "Log.h"
+#include "PugiXml/src/pugixml.hpp"
 
+class GuiControl;
 struct SDL_Texture;
+
+enum class SceneType
+{
+	TITLE,
+	GAMEPLAY
+};
 
 class Scene
 {
 public:
 
-	Scene() {}
+	// Constructor
+	Scene() : active(false), transitionRequired(false) {}
 
 	// Destructor
 	virtual ~Scene() {}
 
-	// Called before render is available
-	bool Awake(pugi::xml_node& config) {}
-
 	// Called before the first frame
-	bool Start() {}
+	virtual bool Start() { return true; }
 
 	// Called before all Updates
-	bool PreUpdate(){}
+	virtual bool PreUpdate() { return true; }
 
 	// Called each loop iteration
-	bool Update(float dt) {}
+	virtual bool Update(float dt) { return true; }
 
-	// Called before all Updates
-	bool PostUpdate() {}
+	// Called after all Updates
+	virtual bool PostUpdate() { return true; }
 
 	// Called before quitting
-	bool CleanUp(){}
+	virtual bool CleanUp(){ return true; }
+
+	virtual bool LoadState(pugi::xml_node&) { return true; }
+
+	virtual bool SaveState(pugi::xml_node&) const { return true; }
+
+	void TransitionToScene(SceneType scene) 
+	{
+		LOG("Changing Scene");
+
+		transitionRequired = true;
+		nextScene = scene;
+	}
+
+	// Define multiple Gui Event methods
+	virtual bool OnGuiMouseClickEvent(GuiControl* control)
+	{
+		return true;
+	}
 
 public:
 
+	SString name;
+	bool active;
 
+	bool transitionRequired;
+	SceneType nextScene;
 
-private:
-
-
+	bool showColliders;
 
 };
-
-#endif // __SCENE_H__

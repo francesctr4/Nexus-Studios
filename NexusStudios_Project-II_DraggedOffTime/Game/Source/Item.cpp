@@ -8,7 +8,6 @@
 #include "Log.h"
 #include "Point.h"
 #include "Physics.h"
-#include "SceneTitle.h"
 
 Item::Item() : Entity(EntityType::ITEM)
 {

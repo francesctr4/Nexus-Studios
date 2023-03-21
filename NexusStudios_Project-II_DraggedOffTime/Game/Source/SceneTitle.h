@@ -3,24 +3,18 @@
 #include "Module.h"
 #include "Player.h"
 #include "Item.h"
-#include "GuiManager.h"
-#include "GuiButton.h"
-#include "GuiSlider.h"
-#include "GuiCheckBox.h"
+#include "Scene.h"
 
 struct SDL_Texture;
 
-class SceneTitle : public Module
+class SceneTitle : public Scene
 {
 public:
 
-	SceneTitle(bool startEnabled);
+	SceneTitle();
 
 	// Destructor
 	virtual ~SceneTitle();
-
-	// Called before render is available
-	bool Awake(pugi::xml_node& config);
 
 	// Called before the first frame
 	bool Start();
@@ -31,18 +25,16 @@ public:
 	// Called each loop iteration
 	bool Update(float dt);
 
-	// Called before all Updates
+	// Called after all Updates
 	bool PostUpdate();
 
 	// Called before quitting
 	bool CleanUp();
 
-public:
-
-
+	bool OnGuiMouseClickEvent(GuiControl* control);
 
 private:
 
-	
+
 
 };

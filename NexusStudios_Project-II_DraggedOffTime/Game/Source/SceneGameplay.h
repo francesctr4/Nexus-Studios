@@ -3,20 +3,18 @@
 #include "Module.h"
 #include "Player.h"
 #include "Item.h"
+#include "Scene.h"
 
 struct SDL_Texture;
 
-class SceneLogo : public Module
+class SceneGameplay : public Scene
 {
 public:
 
-	SceneLogo(bool startEnabled);
+	SceneGameplay();
 
 	// Destructor
-	virtual ~SceneLogo();
-
-	// Called before render is available
-	bool Awake(pugi::xml_node& config);
+	virtual ~SceneGameplay();
 
 	// Called before the first frame
 	bool Start();
@@ -27,15 +25,13 @@ public:
 	// Called each loop iteration
 	bool Update(float dt);
 
-	// Called before all Updates
+	// Called after all Updates
 	bool PostUpdate();
 
 	// Called before quitting
 	bool CleanUp();
 
-public:
-
-
+	bool OnGuiMouseClickEvent(GuiControl* control);
 
 private:
 

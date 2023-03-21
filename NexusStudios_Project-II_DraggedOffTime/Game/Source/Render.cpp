@@ -3,7 +3,6 @@
 #include "Render.h"
 #include "Scene.h"
 #include "Physics.h"
-#include "SceneTitle.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -52,7 +51,7 @@ bool Render::Awake(pugi::xml_node& config)
 		camera.w = app->win->screenSurface->w;
 		camera.h = app->win->screenSurface->h;
 		camera.x = 0;
-		camera.y = -192;
+		camera.y = 0;
 
 	}
 

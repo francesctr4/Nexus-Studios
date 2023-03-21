@@ -5,13 +5,14 @@
 #include "Render.h"
 #include "Window.h"
 #include "SceneManager.h"
+#include "SceneTitle.h"
 #include "EntityManager.h"
+#include "SceneGameplay.h"
 #include "Map.h"
 #include "Physics.h"
 #include "FadeToBlack.h"
 #include "Fonts.h"
 #include "Pathfinding.h"
-#include "SceneTitle.h"
 #include "Scene.h"
 
 #include "Defs.h"
@@ -38,15 +39,16 @@ bool SceneManager::Awake(pugi::xml_node& config)
 	bool ret = true;
 
 
-
 	return ret;
 }
 
 // Called before the first frame
 bool SceneManager::Start()
 {
+	current = new SceneGameplay();
+	current->Start();
 
-
+	next = nullptr;
 
 	return true;
 }
@@ -56,6 +58,8 @@ bool SceneManager::PreUpdate()
 {
 	OPTICK_EVENT();
 
+	current->PreUpdate();
+
 	return true;
 }
 
@@ -63,6 +67,73 @@ bool SceneManager::PreUpdate()
 bool SceneManager::Update(float dt)
 {
 	OPTICK_EVENT();
+
+	LOG("Updating Current Scene");
+	bool ret = true;
+
+	if (!onTransition)
+	{
+		ret = current->Update(dt);
+	}
+	else
+	{
+		if (!fadeOutCompleted)
+		{
+			transitionAlpha += (FADEOUT_TRANSITION_SPEED * dt);
+
+			// NOTE: Due to float internal representation, condition jumps on 1.0f instead of 1.05f
+			// For that reason we compare against 1.01f, to avoid last frame loading stop
+			if (transitionAlpha > 1.01f)
+			{
+				transitionAlpha = 1.0f;
+
+				current->CleanUp();	// Unload current screen
+				next->Start();	// Load next screen
+
+				RELEASE(current);	// Free current pointer
+				current = next;		// Assign next pointer
+				next = nullptr;
+
+				// Activate fade out effect to next loaded screen
+				fadeOutCompleted = true;
+			}
+		}
+		else  // Transition fade out logic
+		{
+			transitionAlpha -= (FADEIN_TRANSITION_SPEED * dt);
+
+			if (transitionAlpha < -0.01f)
+			{
+				transitionAlpha = 0.0f;
+				fadeOutCompleted = false;
+				onTransition = false;
+			}
+		}
+	}
+
+	// Draw current scene
+	current->PostUpdate();
+
+	// Draw full screen rectangle in front of everything
+	if (onTransition)
+	{
+		app->render->DrawRectangle({ 0, 0, 1280, 720 }, 0, 0, 0, (unsigned char)(255.0f * transitionAlpha));
+	}
+
+	if (current->transitionRequired)
+	{
+		onTransition = true;
+		fadeOutCompleted = false;
+		transitionAlpha = 0.0f;
+
+		switch (current->nextScene)
+		{
+		case SceneType::TITLE: next = new SceneTitle(); break;
+		case SceneType::GAMEPLAY: next = new SceneGameplay(); break;
+		default: break;
+		}
+		current->transitionRequired = false;
+	}
 
 	return true;
 }
@@ -74,6 +145,8 @@ bool SceneManager::PostUpdate()
 
 	bool ret = true;
 
+	current->PostUpdate();
+
 	return ret;
 }
 
@@ -81,6 +154,8 @@ bool SceneManager::PostUpdate()
 bool SceneManager::CleanUp()
 {
 	LOG("Freeing scene");
+
+	current->CleanUp();
 
 	return true;
 }

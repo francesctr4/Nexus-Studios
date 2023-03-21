@@ -6,9 +6,6 @@
 #include "Audio.h"
 #include "FadeToBlack.h"
 #include "Fonts.h"
-#include "SceneLogo.h"
-#include "SceneTitle.h"
-#include "SceneEnding.h"
 #include "EntityManager.h"
 #include "Map.h"
 #include "Physics.h"
@@ -38,9 +35,6 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	fonts = new Fonts(true);
 	physics = new Physics(true);
 	pathfinding = new PathFinding(true);
-	sceneLogo = new SceneLogo(true);
-	sceneTitle = new SceneTitle(false);
-	sceneEnding = new SceneEnding(false);
 	entityManager = new EntityManager(true);
 	map = new Map(true);
 	guiManager = new GuiManager(true);
@@ -54,9 +48,6 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(audio);
 	AddModule(physics);
 	AddModule(pathfinding);
-	AddModule(sceneLogo);
-	AddModule(sceneTitle);
-	AddModule(sceneEnding);
 	AddModule(entityManager);
 	AddModule(map);
 	AddModule(fadeToBlack);
@@ -198,6 +189,7 @@ void App::PrepareUpdate()
 {
 	OPTICK_EVENT();
 	frameTime.Start();
+
 }
 
 // ---------------------------------------------

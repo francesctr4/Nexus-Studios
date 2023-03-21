@@ -4,7 +4,7 @@
 #include "Audio.h"
 #include "Render.h"
 #include "Window.h"
-#include "SceneEnding.h"
+#include "SceneGameplay.h"
 #include "EntityManager.h"
 #include "Map.h"
 #include "Physics.h"
@@ -13,42 +13,24 @@
 #include "Defs.h"
 #include "Log.h"
 
-SceneEnding::SceneEnding(bool startEnabled) : Module(startEnabled)
+SceneGameplay::SceneGameplay()
 {
 	name.Create("sceneEnding");
 }
 
 // Destructor
-SceneEnding::~SceneEnding()
+SceneGameplay::~SceneGameplay()
 {}
 
-// Called before render is available
-bool SceneEnding::Awake(pugi::xml_node& config)
-{
-	LOG("Loading SceneLogo");
-	bool ret = true;
-
-
-	return ret;
-}
-
 // Called before the first frame
-bool SceneEnding::Start()
+bool SceneGameplay::Start()
 {
 
 	return true;
 }
 
 // Called each loop iteration
-bool SceneEnding::PreUpdate()
-{
-	OPTICK_EVENT();
-
-	return true;
-}
-
-// Called each loop iteration
-bool SceneEnding::Update(float dt)
+bool SceneGameplay::PreUpdate()
 {
 	OPTICK_EVENT();
 
@@ -56,19 +38,44 @@ bool SceneEnding::Update(float dt)
 }
 
 // Called each loop iteration
-bool SceneEnding::PostUpdate()
+bool SceneGameplay::Update(float dt)
+{
+	OPTICK_EVENT();
+
+	if (app->input->GetKey(SDL_SCANCODE_G) == KEY_DOWN) {
+
+		TransitionToScene(SceneType::TITLE);
+
+	}
+
+	SDL_Rect rect = { 0,0, 1024, 768 };
+	app->render->DrawRectangle(rect, 255, 255, 255, 150);
+
+	return true;
+}
+
+// Called each loop iteration
+bool SceneGameplay::PostUpdate()
 {
 	OPTICK_EVENT();
 
 	bool ret = true;
 
-	return ret;
+	
+
+	return true;
 }
 
 // Called before quitting
-bool SceneEnding::CleanUp()
+bool SceneGameplay::CleanUp()
 {
 	LOG("Freeing scene");
+
+	return true;
+}
+
+bool SceneGameplay::OnGuiMouseClickEvent(GuiControl* control)
+{
 
 	return true;
 }
