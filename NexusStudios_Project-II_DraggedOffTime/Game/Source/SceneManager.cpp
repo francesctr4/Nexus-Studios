@@ -24,6 +24,13 @@
 SceneManager::SceneManager(bool startEnabled) : Module(startEnabled)
 {
 	name.Create("scene");
+
+	current = new SceneLogo();
+	next = nullptr;
+
+	onTransition = false;
+	fadeOutCompleted = false;
+	transitionAlpha = 0;
 }
 
 // Destructor
@@ -35,9 +42,6 @@ bool SceneManager::Awake(pugi::xml_node& config)
 {
 	LOG("Loading Scene");
 	bool ret = true;
-
-	current = new SceneLogo();
-	next = nullptr;
 
 	return ret;
 }
@@ -65,6 +69,8 @@ bool SceneManager::Update(float dt)
 {
 	OPTICK_EVENT();
 
+	dt = dt / 1000;
+
 	LOG("Updating Current Scene");
 	bool ret = true;
 
@@ -87,8 +93,8 @@ bool SceneManager::Update(float dt)
 				current->CleanUp();	// Unload current screen
 				next->Start();	// Load next screen
 
-				RELEASE(current);	// Free current pointer
-				current = next;		// Assign next pointer
+				delete current;	// Free current pointer
+				current = next;	// Assign next pointer
 				next = nullptr;
 
 				// Activate fade out effect to next loaded screen
@@ -109,12 +115,12 @@ bool SceneManager::Update(float dt)
 	}
 
 	// Draw current scene
-	current->PostUpdate();
+	current->Update(dt);
 
 	// Draw full screen rectangle in front of everything
 	if (onTransition)
 	{
-		app->render->DrawRectangle({ 0, 0, 1280, 720 }, 0, 0, 0, (unsigned char)(255.0f * transitionAlpha));
+		app->render->DrawRectangle({ 0, 0, 1024, 768 }, 0, 0, 0, (unsigned char)(255.0f * transitionAlpha));
 	}
 
 	if (current->transitionRequired)
@@ -153,7 +159,7 @@ bool SceneManager::Update(float dt)
 
 	}
 
-	return true;
+	return ret;
 }
 
 // Called each loop iteration
