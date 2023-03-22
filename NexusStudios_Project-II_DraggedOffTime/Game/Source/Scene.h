@@ -8,8 +8,11 @@ struct SDL_Texture;
 
 enum class SceneType
 {
+	NONE,
+	LOGO,
 	TITLE,
-	GAMEPLAY
+	GAMEPLAY,
+	BATTLE
 };
 
 class Scene
@@ -17,29 +20,38 @@ class Scene
 public:
 
 	// Constructor
-	Scene() : active(false), transitionRequired(false) {}
+	Scene() 
+	{
+		active = false;
+		transitionRequired = false;
+		nextScene = SceneType::NONE;
+		showColliders = false;
+	} 
 
 	// Destructor
 	virtual ~Scene() {}
 
 	// Called before the first frame
-	virtual bool Start() { return true; }
+	virtual bool Start() = 0;
 
 	// Called before all Updates
-	virtual bool PreUpdate() { return true; }
+	virtual bool PreUpdate() = 0;
 
 	// Called each loop iteration
-	virtual bool Update(float dt) { return true; }
+	virtual bool Update(float dt) = 0;
 
 	// Called after all Updates
-	virtual bool PostUpdate() { return true; }
+	virtual bool PostUpdate() = 0;
 
 	// Called before quitting
-	virtual bool CleanUp(){ return true; }
+	virtual bool CleanUp() = 0;
 
-	virtual bool LoadState(pugi::xml_node&) { return true; }
+	// Define multiple Gui Event methods
+	virtual bool OnGuiMouseClickEvent(GuiControl* control) = 0;
 
-	virtual bool SaveState(pugi::xml_node&) const { return true; }
+	bool LoadState(pugi::xml_node&) {}
+
+	bool SaveState(pugi::xml_node&) const {}
 
 	void TransitionToScene(SceneType scene) 
 	{
@@ -47,12 +59,6 @@ public:
 
 		transitionRequired = true;
 		nextScene = scene;
-	}
-
-	// Define multiple Gui Event methods
-	virtual bool OnGuiMouseClickEvent(GuiControl* control)
-	{
-		return true;
 	}
 
 public:

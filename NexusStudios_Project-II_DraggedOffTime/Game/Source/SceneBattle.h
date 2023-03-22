@@ -4,14 +4,14 @@
 
 struct SDL_Texture;
 
-class SceneGameplay : public Scene
+class SceneBattle : public Scene
 {
 public:
 
-	SceneGameplay();
-
+	SceneBattle();
+	
 	// Destructor
-	virtual ~SceneGameplay();
+	virtual ~SceneBattle();
 
 	// Called before the first frame
 	bool Start();
@@ -32,6 +32,6 @@ public:
 
 private:
 
-	
+
 
 };

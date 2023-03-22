@@ -82,6 +82,12 @@
     <ClCompile Include="Source\SceneTitle.cpp">
       <Filter>Game Loop\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="Source\SceneLogo.cpp">
+      <Filter>Game Loop\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SceneBattle.cpp">
+      <Filter>Game Loop\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -199,6 +205,12 @@
       <Filter>Game Loop</Filter>
     </ClInclude>
     <ClInclude Include="Source\SceneTitle.h">
+      <Filter>Game Loop\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneLogo.h">
+      <Filter>Game Loop\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneBattle.h">
       <Filter>Game Loop\Scenes</Filter>
     </ClInclude>
   </ItemGroup>

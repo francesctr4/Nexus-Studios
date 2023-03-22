@@ -8,26 +8,26 @@
 #include "Render.h"
 #include "Window.h"
 
-#include "SceneTitle.h"
+#include "SceneBattle.h"
 
-SceneTitle::SceneTitle()
+SceneBattle::SceneBattle()
 {
 	name.Create("sceneEnding");
 }
 
 // Destructor
-SceneTitle::~SceneTitle()
+SceneBattle::~SceneBattle()
 {}
 
 // Called before the first frame
-bool SceneTitle::Start()
+bool SceneBattle::Start()
 {
 
 	return true;
 }
 
 // Called each loop iteration
-bool SceneTitle::PreUpdate()
+bool SceneBattle::PreUpdate()
 {
 	OPTICK_EVENT();
 
@@ -35,43 +35,43 @@ bool SceneTitle::PreUpdate()
 }
 
 // Called each loop iteration
-bool SceneTitle::Update(float dt)
+bool SceneBattle::Update(float dt)
 {
 	OPTICK_EVENT();
 
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 
-		TransitionToScene(SceneType::GAMEPLAY);
+		TransitionToScene(SceneType::LOGO);
 
 	}
 
 	SDL_Rect rect = { 0,0, 1024, 768 };
-	app->render->DrawRectangle(rect, 0, 255, 0, 255);
+	app->render->DrawRectangle(rect, 0, 0, 255, 150);
 
 	return true;
 }
 
 // Called each loop iteration
-bool SceneTitle::PostUpdate()
+bool SceneBattle::PostUpdate()
 {
 	OPTICK_EVENT();
 
 	bool ret = true;
 
-	
+
 
 	return true;
 }
 
 // Called before quitting
-bool SceneTitle::CleanUp()
+bool SceneBattle::CleanUp()
 {
 	LOG("Freeing scene");
 
 	return true;
 }
 
-bool SceneTitle::OnGuiMouseClickEvent(GuiControl* control)
+bool SceneBattle::OnGuiMouseClickEvent(GuiControl* control)
 {
 
 	return true;

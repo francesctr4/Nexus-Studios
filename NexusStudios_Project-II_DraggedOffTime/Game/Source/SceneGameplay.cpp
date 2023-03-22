@@ -1,17 +1,14 @@
 #include "App.h"
+#include "Defs.h"
+#include "Log.h"
+
 #include "Input.h"
 #include "Textures.h"
 #include "Audio.h"
 #include "Render.h"
 #include "Window.h"
-#include "SceneGameplay.h"
-#include "EntityManager.h"
-#include "Map.h"
-#include "Physics.h"
-#include "FadeToBlack.h"
 
-#include "Defs.h"
-#include "Log.h"
+#include "SceneGameplay.h"
 
 SceneGameplay::SceneGameplay()
 {
@@ -42,9 +39,9 @@ bool SceneGameplay::Update(float dt)
 {
 	OPTICK_EVENT();
 
-	if (app->input->GetKey(SDL_SCANCODE_G) == KEY_DOWN) {
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 
-		TransitionToScene(SceneType::TITLE);
+		TransitionToScene(SceneType::BATTLE);
 
 	}
 

@@ -1,8 +1,5 @@
 #pragma once
 
-#include "Module.h"
-#include "Player.h"
-#include "Item.h"
 #include "Scene.h"
 
 struct SDL_Texture;

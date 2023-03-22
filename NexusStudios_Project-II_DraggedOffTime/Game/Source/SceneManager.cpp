@@ -1,24 +1,22 @@
 #include "App.h"
+#include "Defs.h"
+#include "Log.h"
+
+#include "SDL_mixer/include/SDL_mixer.h"
+
 #include "Input.h"
 #include "Textures.h"
 #include "Audio.h"
 #include "Render.h"
 #include "Window.h"
-#include "SceneManager.h"
-#include "SceneTitle.h"
-#include "EntityManager.h"
-#include "SceneGameplay.h"
-#include "Map.h"
-#include "Physics.h"
-#include "FadeToBlack.h"
-#include "Fonts.h"
-#include "Pathfinding.h"
+
 #include "Scene.h"
+#include "SceneManager.h"
 
-#include "Defs.h"
-#include "Log.h"
-
-#include "SDL_mixer/include/SDL_mixer.h"
+#include "SceneLogo.h"
+#include "SceneTitle.h"
+#include "SceneGameplay.h"
+#include "SceneBattle.h"
 
 #define FADEOUT_TRANSITION_SPEED	2.0f
 #define FADEIN_TRANSITION_SPEED		2.0f
@@ -38,6 +36,8 @@ bool SceneManager::Awake(pugi::xml_node& config)
 	LOG("Loading Scene");
 	bool ret = true;
 
+	current = new SceneLogo();
+	next = nullptr;
 
 	return ret;
 }
@@ -45,10 +45,7 @@ bool SceneManager::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool SceneManager::Start()
 {
-	current = new SceneGameplay();
 	current->Start();
-
-	next = nullptr;
 
 	return true;
 }
@@ -128,11 +125,32 @@ bool SceneManager::Update(float dt)
 
 		switch (current->nextScene)
 		{
-		case SceneType::TITLE: next = new SceneTitle(); break;
-		case SceneType::GAMEPLAY: next = new SceneGameplay(); break;
-		default: break;
+			case SceneType::NONE: 
+				next = nullptr; 
+				break;
+
+			case SceneType::LOGO: 
+				next = new SceneLogo(); 
+				break;
+
+			case SceneType::TITLE: 
+				next = new SceneTitle(); 
+				break;
+
+			case SceneType::GAMEPLAY: 
+				next = new SceneGameplay(); 
+				break;
+
+			case SceneType::BATTLE: 
+				next = new SceneBattle(); 
+				break;
+
+			default: 
+				break;
 		}
+
 		current->transitionRequired = false;
+
 	}
 
 	return true;

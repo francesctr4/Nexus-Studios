@@ -39,7 +39,6 @@ public:
 private:
 
 	Scene* current;
-	Scene* menu;
 	Scene* next;
 
 	bool onTransition;
