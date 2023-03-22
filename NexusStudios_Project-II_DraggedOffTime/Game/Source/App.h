@@ -17,12 +17,12 @@ class Input;
 class Render;
 class Textures;
 class Audio;
-class FadeToBlack;
-class Fonts;
-class EntityManager;
+
 class Map;
 class Physics;
 class PathFinding;
+
+class EntityManager;
 class GuiManager;
 class SceneManager;
 
@@ -91,12 +91,12 @@ public:
 	Render* render;
 	Textures* tex;
 	Audio* audio;
-	FadeToBlack* fadeToBlack;
-	Fonts* fonts;
-	EntityManager* entityManager;
+
 	Map* map;
 	Physics* physics;
 	PathFinding* pathfinding;
+
+	EntityManager* entityManager;
 	GuiManager* guiManager;
 	SceneManager* sceneManager;
 

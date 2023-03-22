@@ -16,13 +16,7 @@
     <ClCompile Include="Source\App.cpp">
       <Filter>Game Loop</Filter>
     </ClCompile>
-    <ClCompile Include="Source\FadeToBlack.cpp">
-      <Filter>Game Loop\Modules</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Audio.cpp">
-      <Filter>Game Loop\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Fonts.cpp">
       <Filter>Game Loop\Modules</Filter>
     </ClCompile>
     <ClCompile Include="Source\GuiButton.cpp">
@@ -121,12 +115,6 @@
       <Filter>Game Loop</Filter>
     </ClInclude>
     <ClInclude Include="Source\Audio.h">
-      <Filter>Game Loop\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\FadeToBlack.h">
-      <Filter>Game Loop\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Fonts.h">
       <Filter>Game Loop\Modules</Filter>
     </ClInclude>
     <ClInclude Include="Source\GuiButton.h">

@@ -1,25 +1,25 @@
+#include <iostream>
+#include <sstream>
+
 #include "App.h"
+#include "Defs.h"
+#include "Log.h"
+
+#include "External/Optick/include/optick.h"
+
 #include "Window.h"
 #include "Input.h"
 #include "Render.h"
 #include "Textures.h"
 #include "Audio.h"
-#include "FadeToBlack.h"
-#include "Fonts.h"
-#include "EntityManager.h"
+
 #include "Map.h"
 #include "Physics.h"
 #include "PathFinding.h"
+
+#include "EntityManager.h"
 #include "GuiManager.h"
 #include "SceneManager.h"
-
-#include "Defs.h"
-#include "Log.h"
-
-#include <iostream>
-#include <sstream>
-
-#include "External/Optick/include/optick.h"
 
 // Constructor
 App::App(int argc, char* args[]) : argc(argc), args(args)
@@ -31,12 +31,12 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	render = new Render(true);
 	tex = new Textures(true);
 	audio = new Audio(true);
-	fadeToBlack = new FadeToBlack(true);
-	fonts = new Fonts(true);
+
+	map = new Map(true);
 	physics = new Physics(true);
 	pathfinding = new PathFinding(true);
+
 	entityManager = new EntityManager(true);
-	map = new Map(true);
 	guiManager = new GuiManager(true);
 	sceneManager = new SceneManager(true);
 
@@ -46,12 +46,12 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(win);
 	AddModule(tex);
 	AddModule(audio);
+
+	AddModule(map);
 	AddModule(physics);
 	AddModule(pathfinding);
+
 	AddModule(entityManager);
-	AddModule(map);
-	AddModule(fadeToBlack);
-	AddModule(fonts);
 	AddModule(guiManager);
 	AddModule(sceneManager);
 
