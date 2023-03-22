@@ -45,7 +45,7 @@ bool SceneTitle::Update(float dt)
 
 	}
 
-	SDL_Rect rect = { 0,0, 1024, 768 };
+	SDL_Rect rect = { 0,0, 1280, 720 };
 	app->render->DrawRectangle(rect, 0, 255, 0, 255);
 
 	return true;
