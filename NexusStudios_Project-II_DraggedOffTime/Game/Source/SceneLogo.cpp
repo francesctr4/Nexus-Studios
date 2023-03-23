@@ -7,6 +7,8 @@
 #include "Audio.h"
 #include "Render.h"
 #include "Window.h"
+#include "Map.h"
+#include "PathFinding.h"
 
 #include "SceneLogo.h"
 
@@ -22,6 +24,20 @@ SceneLogo::~SceneLogo()
 // Called before the first frame
 bool SceneLogo::Start()
 {
+	bool retLoad = app->map->Load();
+
+	if (retLoad) {
+		int w, h;
+		uchar* data = NULL;
+
+		bool retWalkMap = app->map->CreateWalkabilityMap(w, h, &data);
+		if (retWalkMap) app->pathfinding->SetMap(w, h, data);
+
+		RELEASE_ARRAY(data);
+
+	}
+
+
 
 	return true;
 }
@@ -38,15 +54,14 @@ bool SceneLogo::PreUpdate()
 bool SceneLogo::Update(float dt)
 {
 	OPTICK_EVENT();
-
+	
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 
 		TransitionToScene(SceneType::TITLE);
 
 	}
-
-	SDL_Rect rect = { 0,0, 1280, 720 };
-	app->render->DrawRectangle(rect, 255, 0, 0, 150);
+	app->map->Draw();
+	
 
 	return true;
 }
