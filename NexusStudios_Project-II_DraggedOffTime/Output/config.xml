@@ -29,7 +29,7 @@
 
   <map>
     <mapfolder path="Assets/Maps/"/>
-    <mapfile path="Assets/Maps/Lvl1.tmx"/>
+    <mapfile_1 path="Assets/Maps/Lvl1.tmx"/>
   </map>
   
 </config>

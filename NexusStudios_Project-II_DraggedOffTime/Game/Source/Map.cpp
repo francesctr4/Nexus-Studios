@@ -27,7 +27,19 @@ bool Map::Awake(pugi::xml_node& config)
     LOG("Loading Map Parser");
     bool ret = true;
 
-    mapFileName = config.child("mapfile").attribute("path").as_string();
+    mapFileName = config.child("mapfile_1").attribute("path").as_string();
+    mapFolder = config.child("mapfolder").attribute("path").as_string();
+    this->config = config;
+    return ret;
+}
+
+// Called before render is available
+bool Map::Init()
+{
+    LOG("Loading Map Parser");
+    bool ret = true;
+
+    mapFileName = config.child("mapfile_1").attribute("path").as_string();
     mapFolder = config.child("mapfolder").attribute("path").as_string();
 
     return ret;
@@ -226,6 +238,11 @@ bool Map::CleanUp()
 {
     LOG("Unloading map");
 
+   
+
+     mapFileName.Clear();
+
+    
     // Make sure you clean up any memory allocated from tilesets/map
 	ListItem<TileSet*>* item;
 	item = mapData.tilesets.start;
@@ -247,6 +264,7 @@ bool Map::CleanUp()
         RELEASE(layerItem->data);
         layerItem = layerItem->next;
     }
+    mapData.maplayers.Clear();
 
     return true;
 }

@@ -24,7 +24,10 @@ SceneLogo::~SceneLogo()
 // Called before the first frame
 bool SceneLogo::Start()
 {
+	app->map->Init();
 	bool retLoad = app->map->Load();
+
+	LOG("Amarillo Amarillo %s", app->map->mapFileName);
 
 	/*if (retLoad) {
 		int w, h;
@@ -58,7 +61,9 @@ bool SceneLogo::Update(float dt)
 		TransitionToScene(SceneType::TITLE);
 
 	}
-	app->map->Draw();
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) {
+		app->map->Draw();
+	}
 	
 	return true;
 }
@@ -77,6 +82,9 @@ bool SceneLogo::PostUpdate()
 bool SceneLogo::CleanUp()
 {
 	LOG("Freeing scene");
+	
+	app->map->CleanUp();
+
 
 	return true;
 }

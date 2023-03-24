@@ -7,6 +7,7 @@
 #include "Audio.h"
 #include "Render.h"
 #include "Window.h"
+#include "Map.h"
 
 #include "SceneBattle.h"
 
@@ -22,7 +23,7 @@ SceneBattle::~SceneBattle()
 // Called before the first frame
 bool SceneBattle::Start()
 {
-
+	bool retLoad = app->map->Load();
 	return true;
 }
 

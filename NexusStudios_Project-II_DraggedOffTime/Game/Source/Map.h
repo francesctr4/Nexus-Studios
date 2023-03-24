@@ -124,6 +124,8 @@ public:
     // Called before render is available
     bool Awake(pugi::xml_node& conf);
 
+	bool Init();
+
     // Called each loop iteration
     void Draw();
 
@@ -171,8 +173,9 @@ public:
 
 	// Declare a variable data of the struct MapData
 	MapData mapData;
+	pugi::xml_node config;
 
-private:
+public:
 
     SString mapFileName;
 	SString mapFolder;
