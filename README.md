@@ -6,11 +6,11 @@
 
 ## Team Members
 
-_**Design & QA:** Víctor Gil_
-* **GitHub:** [Ludo-pixel](https://github.com/Ludo-pixel)
-
 _**Code & UI:** Francesc Teruel_
 * **GitHub:** [francesctr4](https://github.com/francesctr4)
+
+_**Design & QA:** Víctor Gil_
+* **GitHub:** [Ludo-pixel](https://github.com/Ludo-pixel)
 
 _**QA & Code:** Mario García_
 * **GitHub:** [mariogs5](https://github.com/mariogs5)
