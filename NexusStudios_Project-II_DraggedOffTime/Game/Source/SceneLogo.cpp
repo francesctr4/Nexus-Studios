@@ -26,7 +26,7 @@ bool SceneLogo::Start()
 {
 	bool retLoad = app->map->Load();
 
-	if (retLoad) {
+	/*if (retLoad) {
 		int w, h;
 		uchar* data = NULL;
 
@@ -35,9 +35,7 @@ bool SceneLogo::Start()
 
 		RELEASE_ARRAY(data);
 
-	}
-
-
+	}*/
 
 	return true;
 }
@@ -62,7 +60,6 @@ bool SceneLogo::Update(float dt)
 	}
 	app->map->Draw();
 	
-
 	return true;
 }
 
@@ -72,8 +69,6 @@ bool SceneLogo::PostUpdate()
 	OPTICK_EVENT();
 
 	bool ret = true;
-
-
 
 	return true;
 }
