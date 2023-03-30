@@ -6,45 +6,34 @@
 
 ## Team Members
 
-### TEAM LEAD
-
-_**Francesc Teruel Rodríguez**_
+_**Code & UI:** Francesc Teruel_
 * **GitHub:** [francesctr4](https://github.com/francesctr4)
 
-### ART DEPARTMENT 
-
-_**Dani Mariages Méndez**_
-* **GitHub:** [DaniMariages](https://github.com/DaniMariages)
-
-_**Joel Maldonado Salvador**_
-* **GitHub:** [Neffyer](https://github.com/Neffyer)
-
-_**Jan Liria Pinedo**_
-* **GitHub:** [J4N3T3](https://github.com/J4N3T3)
-
-### DESIGN DEPARMENT
-
-_**Víctor Gil Espallargas**_
+_**Design & QA:** Víctor Gil_
 * **GitHub:** [Ludo-pixel](https://github.com/Ludo-pixel)
 
-_**Toni Romanos Ruíz**_
-* **GitHub:** [Toto-RR](https://github.com/Toto-RR)
-
-_**Joel Romero Botella**_
-* **GitHub:** [Joeltecke25](https://github.com/Joeltecke25)
-
-### CODE DEPARTMENT
-
-_**Francesc Teruel Rodríguez**_
-* **GitHub:** [francesctr4](https://github.com/francesctr4)
-
-_**Mario García Sutil**_
+_**QA & Code:** Mario García_
 * **GitHub:** [mariogs5](https://github.com/mariogs5)
 
-_**Eric Luque Romero**_
+_**Art & UI:** Joel Maldonado_
+* **GitHub:** [Neffyer](https://github.com/Neffyer)
+
+_**Art & Audio:** Jan Liria_
+* **GitHub:** [J4N3T3](https://github.com/J4N3T3)
+
+_**Art & UI:** Dani Mariages_
+* **GitHub:** [DaniMariages](https://github.com/DaniMariages)
+
+_**Management & Art:** Toni Romanos_
+* **GitHub:** [Toto-RR](https://github.com/Toto-RR)
+
+_**Art & Design:** Joel Romero_
+* **GitHub:** [Joeltecke25](https://github.com/Joeltecke25)
+
+_**Code:** Eric Luque_
 * **GitHub:** [ericlr1](https://github.com/ericlr1)
 
-_**Marcel Sunyer Caldu**_
+_**Code & Art:** Marcel Sunyer_
 * **GitHub:** [MarcelSunyer](https://github.com/MarcelSunyer)
 
 ## Game Description
