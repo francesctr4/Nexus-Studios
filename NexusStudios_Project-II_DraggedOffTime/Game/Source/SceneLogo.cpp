@@ -22,6 +22,23 @@ SceneLogo::~SceneLogo()
 // Called before the first frame
 bool SceneLogo::Start()
 {
+<<<<<<< Updated upstream
+=======
+	app->map->actualmap = 0;
+	bool retLoad = app->map->Load();
+	
+
+	/*if (retLoad) {
+		int w, h;
+		uchar* data = NULL;
+
+		bool retWalkMap = app->map->CreateWalkabilityMap(w, h, &data);
+		if (retWalkMap) app->pathfinding->SetMap(w, h, data);
+
+		RELEASE_ARRAY(data);
+
+	}*/
+>>>>>>> Stashed changes
 
 	return true;
 }

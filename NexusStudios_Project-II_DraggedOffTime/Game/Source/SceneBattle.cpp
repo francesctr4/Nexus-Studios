@@ -22,7 +22,11 @@ SceneBattle::~SceneBattle()
 // Called before the first frame
 bool SceneBattle::Start()
 {
+<<<<<<< Updated upstream
 
+=======
+	
+>>>>>>> Stashed changes
 	return true;
 }
 

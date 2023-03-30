@@ -29,7 +29,14 @@
 
   <map>
     <mapfolder path="Assets/Maps/"/>
+<<<<<<< Updated upstream
     <mapfile path="Assets/Maps/Lvl1.tmx"/>
+=======
+    <mapfile_1 path="Assets/Maps/Lvl1.tmx"/>
+	<mapfile_2 path="Assets/Maps/Lvl2.tmx"/>
+	<mapfile_3 path="Assets/Maps/Lvl2.tmx"/>
+	<mapfile_4 path="Assets/Maps/Lvl2.tmx"/>
+>>>>>>> Stashed changes
   </map>
   
 </config>
