@@ -23,7 +23,6 @@ SceneBattle::~SceneBattle()
 // Called before the first frame
 bool SceneBattle::Start()
 {
-	bool retLoad = app->map->Load();
 	return true;
 }
 

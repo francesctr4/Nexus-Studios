@@ -24,10 +24,9 @@ SceneLogo::~SceneLogo()
 // Called before the first frame
 bool SceneLogo::Start()
 {
-	app->map->Init();
+
 	bool retLoad = app->map->Load();
 
-	LOG("Amarillo Amarillo %s", app->map->mapFileName);
 
 	/*if (retLoad) {
 		int w, h;

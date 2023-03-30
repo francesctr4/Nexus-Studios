@@ -27,7 +27,10 @@ bool Map::Awake(pugi::xml_node& config)
     LOG("Loading Map Parser");
     bool ret = true;
 
-    mapFileName = config.child("mapfile_1").attribute("path").as_string();
+    mapFileName[0] = config.child("mapfile_1").attribute("path").as_string();
+    mapFileName[1] = config.child("mapfile_2").attribute("path").as_string();
+    mapFileName[2] = config.child("mapfile_3").attribute("path").as_string();
+    mapFileName[3] = config.child("mapfile_4").attribute("path").as_string();
     mapFolder = config.child("mapfolder").attribute("path").as_string();
     this->config = config;
     return ret;
@@ -39,7 +42,10 @@ bool Map::Init()
     LOG("Loading Map Parser");
     bool ret = true;
 
-    mapFileName = config.child("mapfile_1").attribute("path").as_string();
+    mapFileName[0] = config.child("mapfile_1").attribute("path").as_string();
+    mapFileName[1] = config.child("mapfile_2").attribute("path").as_string();
+    mapFileName[2] = config.child("mapfile_3").attribute("path").as_string();
+    mapFileName[3] = config.child("mapfile_4").attribute("path").as_string();
     mapFolder = config.child("mapfolder").attribute("path").as_string();
 
     return ret;
@@ -240,7 +246,7 @@ bool Map::CleanUp()
 
    
 
-     mapFileName.Clear();
+     mapFileName[actualmap].Clear();
 
     
     // Make sure you clean up any memory allocated from tilesets/map
@@ -269,18 +275,20 @@ bool Map::CleanUp()
     return true;
 }
 
-// Load new map
+// Load new mapa
 bool Map::Load()
 {
     OPTICK_EVENT();
     bool ret = true;
 
     pugi::xml_document mapFileXML;
-    pugi::xml_parse_result result = mapFileXML.load_file(mapFileName.GetString());
+   
+    //No encuentra ek mapa por segunda vez
+    pugi::xml_parse_result result = mapFileXML.load_file(mapFileName[actualmap].GetString());
 
     if(result == NULL)
     {
-        LOG("Could not load map xml file %s. pugi error: %s", mapFileName, result.description());
+        LOG("Could not load map xml file %s. pugi error: %s", mapFileName[actualmap], result.description());
         ret = false;
     }
 
@@ -311,7 +319,7 @@ bool Map::Load()
     {
         // LOG all the data loaded iterate all tilesets and LOG everything
        
-        LOG("Successfully parsed map XML file :%s", mapFileName.GetString());
+        LOG("Successfully parsed map XML file :%s", mapFileName[actualmap].GetString());
         LOG("width : %d height : %d",mapData.width,mapData.height);
         LOG("tile_width : %d tile_height : %d",mapData.tileWidth, mapData.tileHeight);
         
