@@ -9,6 +9,7 @@
 #include "Window.h"
 #include "Map.h"
 #include "PathFinding.h"
+#include "SceneManager.h"
 
 #include "SceneLogo.h"
 
@@ -24,9 +25,10 @@ SceneLogo::~SceneLogo()
 // Called before the first frame
 bool SceneLogo::Start()
 {
+	app->map->actualmap = 0;
 
 	bool retLoad = app->map->Load();
-
+	
 
 	/*if (retLoad) {
 		int w, h;
@@ -60,9 +62,9 @@ bool SceneLogo::Update(float dt)
 		TransitionToScene(SceneType::TITLE);
 
 	}
-	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) {
-		app->map->Draw();
-	}
+
+	app->map->Draw();
+	
 	
 	return true;
 }

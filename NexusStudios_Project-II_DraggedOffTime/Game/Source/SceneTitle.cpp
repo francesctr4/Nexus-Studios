@@ -7,6 +7,8 @@
 #include "Audio.h"
 #include "Render.h"
 #include "Window.h"
+#include "SceneManager.h"
+#include "Map.h"
 
 #include "SceneTitle.h"
 
@@ -22,6 +24,12 @@ SceneTitle::~SceneTitle()
 // Called before the first frame
 bool SceneTitle::Start()
 {
+	app->map->actualmap = 1;
+
+	
+	bool retLoad = app->map->Load();
+	app->map->Enable();
+	
 
 	return true;
 }
@@ -45,8 +53,7 @@ bool SceneTitle::Update(float dt)
 
 	}
 
-	SDL_Rect rect = { 0,0, 1280, 720 };
-	app->render->DrawRectangle(rect, 0, 255, 0, 255);
+	app->map->Draw();
 
 	return true;
 }
@@ -67,6 +74,8 @@ bool SceneTitle::PostUpdate()
 bool SceneTitle::CleanUp()
 {
 	LOG("Freeing scene");
+
+	app->map->Disable();
 
 	return true;
 }

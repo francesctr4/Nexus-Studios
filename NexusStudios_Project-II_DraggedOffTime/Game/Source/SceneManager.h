@@ -36,6 +36,8 @@ public:
 
 	bool SaveState(pugi::xml_node& save);
 
+	bool pantalla_cargada = false;
+	
 private:
 
 	Scene* current;

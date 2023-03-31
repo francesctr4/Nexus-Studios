@@ -3,6 +3,7 @@
 #include "Textures.h"
 #include "Map.h"
 #include "Physics.h"
+#include "SceneManager.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -246,7 +247,7 @@ bool Map::CleanUp()
 
    
 
-     mapFileName[actualmap].Clear();
+    mapFileName[0].Clear();
 
     
     // Make sure you clean up any memory allocated from tilesets/map
@@ -271,6 +272,7 @@ bool Map::CleanUp()
         layerItem = layerItem->next;
     }
     mapData.maplayers.Clear();
+    
 
     return true;
 }

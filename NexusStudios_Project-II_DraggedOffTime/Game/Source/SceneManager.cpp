@@ -9,6 +9,7 @@
 #include "Audio.h"
 #include "Render.h"
 #include "Window.h"
+#include "Map.h"
 
 #include "Scene.h"
 #include "SceneManager.h"
@@ -50,7 +51,7 @@ bool SceneManager::Awake(pugi::xml_node& config)
 bool SceneManager::Start()
 {
 	current->Start();
-
+	
 	return true;
 }
 
@@ -70,7 +71,7 @@ bool SceneManager::Update(float dt)
 	OPTICK_EVENT();
 
 	dt = dt / 1000;
-
+	app->map->Init();
 	LOG("Updating Current Scene");
 	bool ret = true;
 

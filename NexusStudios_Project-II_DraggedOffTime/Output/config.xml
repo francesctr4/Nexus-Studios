@@ -30,6 +30,7 @@
   <map>
     <mapfolder path="Assets/Maps/"/>
     <mapfile_1 path="Assets/Maps/Lvl2.tmx"/>
+	<mapfile_2 path="Assets/Maps/Lvl1.tmx"/>
   </map>
   
 </config>
