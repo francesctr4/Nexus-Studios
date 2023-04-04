@@ -20,6 +20,7 @@
 #include "EntityManager.h"
 #include "GuiManager.h"
 #include "SceneManager.h"
+#include "CombatManager.h"
 
 // Constructor
 App::App(int argc, char* args[]) : argc(argc), args(args)
@@ -39,6 +40,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	entityManager = new EntityManager(true);
 	guiManager = new GuiManager(true);
 	sceneManager = new SceneManager(true);
+	combatManager = new CombatManager(true);
 
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -54,6 +56,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(entityManager);
 	AddModule(guiManager);
 	AddModule(sceneManager);
+	AddModule(combatManager);
 
 	// Render last to swap buffer
 	AddModule(render);

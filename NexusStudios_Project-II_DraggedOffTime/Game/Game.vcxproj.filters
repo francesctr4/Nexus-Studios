@@ -82,6 +82,9 @@
     <ClCompile Include="Source\SceneBattle.cpp">
       <Filter>Game Loop\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="Source\CombatManager.cpp">
+      <Filter>Game Loop\Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -200,6 +203,9 @@
     </ClInclude>
     <ClInclude Include="Source\SceneBattle.h">
       <Filter>Game Loop\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CombatManager.h">
+      <Filter>Game Loop\Modules</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

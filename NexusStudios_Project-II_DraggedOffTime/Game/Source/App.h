@@ -25,6 +25,7 @@ class PathFinding;
 class EntityManager;
 class GuiManager;
 class SceneManager;
+class CombatManager;
 
 class App
 {
@@ -99,6 +100,7 @@ public:
 	EntityManager* entityManager;
 	GuiManager* guiManager;
 	SceneManager* sceneManager;
+	CombatManager* combatManager;
 
 	uint frames;
 	float dt;
