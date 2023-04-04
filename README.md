@@ -6,34 +6,45 @@
 
 ## Team Members
 
-_**Code & UI:** Francesc Teruel_
+### TEAM LEAD
+
+_**Francesc Teruel Rodríguez**_
 * **GitHub:** [francesctr4](https://github.com/francesctr4)
 
-_**Design & QA:** Víctor Gil_
-* **GitHub:** [Ludo-pixel](https://github.com/Ludo-pixel)
+### ART DEPARTMENT 
 
-_**QA & Code:** Mario García_
-* **GitHub:** [mariogs5](https://github.com/mariogs5)
-
-_**Art & UI:** Joel Maldonado_
-* **GitHub:** [Neffyer](https://github.com/Neffyer)
-
-_**Art & Audio:** Jan Liria_
-* **GitHub:** [J4N3T3](https://github.com/J4N3T3)
-
-_**Art & UI:** Dani Mariages_
+_**Dani Mariages Méndez**_
 * **GitHub:** [DaniMariages](https://github.com/DaniMariages)
 
-_**Management & Art:** Toni Romanos_
+_**Joel Maldonado Salvador**_
+* **GitHub:** [Neffyer](https://github.com/Neffyer)
+
+_**Jan Liria Pinedo**_
+* **GitHub:** [J4N3T3](https://github.com/J4N3T3)
+
+### DESIGN DEPARMENT
+
+_**Víctor Gil Espallargas**_
+* **GitHub:** [Ludo-pixel](https://github.com/Ludo-pixel)
+
+_**Toni Romanos Ruíz**_
 * **GitHub:** [Toto-RR](https://github.com/Toto-RR)
 
-_**Art & Design:** Joel Romero_
+_**Joel Romero Botella**_
 * **GitHub:** [Joeltecke25](https://github.com/Joeltecke25)
 
-_**Code:** Eric Luque_
+### CODE DEPARTMENT
+
+_**Francesc Teruel Rodríguez**_
+* **GitHub:** [francesctr4](https://github.com/francesctr4)
+
+_**Mario García Sutil**_
+* **GitHub:** [mariogs5](https://github.com/mariogs5)
+
+_**Eric Luque Romero**_
 * **GitHub:** [ericlr1](https://github.com/ericlr1)
 
-_**Code & Art:** Marcel Sunyer_
+_**Marcel Sunyer Caldu**_
 * **GitHub:** [MarcelSunyer](https://github.com/MarcelSunyer)
 
 ## Game Description
