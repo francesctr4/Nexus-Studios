@@ -37,10 +37,10 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	physics = new Physics(true);
 	pathfinding = new PathFinding(true);
 
-	entityManager = new EntityManager(true);
 	guiManager = new GuiManager(true);
 	sceneManager = new SceneManager(true);
 	combatManager = new CombatManager(true);
+	entityManager = new EntityManager(true);
 
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -53,10 +53,10 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(physics);
 	AddModule(pathfinding);
 
-	AddModule(entityManager);
 	AddModule(guiManager);
 	AddModule(sceneManager);
 	AddModule(combatManager);
+	AddModule(entityManager);
 
 	// Render last to swap buffer
 	AddModule(render);
