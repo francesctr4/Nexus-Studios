@@ -45,7 +45,7 @@ _**Eric Luque Romero**_
 * **GitHub:** [ericlr1](https://github.com/ericlr1)
 
 _**Marcel Sunyer Caldu**_
-* **GitHub:** [MarcelSunyer](https://github.com/MarcelSunyer)
+* **GitHub:** [MarcelSunyer](https://github.com/MarcelSunyer) / [LordSalsa](https://github.com/LordSalsa)
 
 ## Game Description
 
