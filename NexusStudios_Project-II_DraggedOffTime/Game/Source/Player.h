@@ -28,13 +28,14 @@ public:
 
 	void OnCollision(PhysBody* physA, PhysBody* physB);
 
-public:
-
-
-
 private:
 
+	// Declare player parameters
+	SDL_Texture* texture;
+	const char* texturePath;
 
+	// Add physics to the player 
+	PhysBody* pbody;
 
 };
 

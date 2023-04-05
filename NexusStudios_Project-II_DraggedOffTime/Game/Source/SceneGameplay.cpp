@@ -7,22 +7,33 @@
 #include "Audio.h"
 #include "Render.h"
 #include "Window.h"
+#include "EntityManager.h"
 
 #include "SceneGameplay.h"
 
 SceneGameplay::SceneGameplay()
 {
-	name.Create("sceneEnding");
+	name.Create("sceneGameplay");
+
 }
 
 // Destructor
 SceneGameplay::~SceneGameplay()
 {}
 
+bool SceneGameplay::Awake()
+{
+
+	player = (Player*)app->entityManager->CreateEntity(EntityType::PLAYER);
+	player->parameters = app->configNode.child("sceneGameplay").child("player");
+
+	return true;
+}
+
 // Called before the first frame
 bool SceneGameplay::Start()
 {
-
+	
 	return true;
 }
 
@@ -39,14 +50,14 @@ bool SceneGameplay::Update(float dt)
 {
 	OPTICK_EVENT();
 
-	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_A] == KEY_DOWN) {
 
 		TransitionToScene(SceneType::BATTLE);
 
 	}
 
-	SDL_Rect rect = { 0,0, 1280, 720 };
-	app->render->DrawRectangle(rect, 255, 255, 255, 150);
+	/*SDL_Rect rect = { 0,0, 1280, 720 };
+	app->render->DrawRectangle(rect, 255, 255, 255, 150);*/
 
 	return true;
 }

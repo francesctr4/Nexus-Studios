@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Scene.h"
+#include "Player.h"
 
 struct SDL_Texture;
 
@@ -12,6 +13,8 @@ public:
 
 	// Destructor
 	virtual ~SceneLogo();
+
+	bool Awake();
 
 	// Called before the first frame
 	bool Start();
@@ -29,11 +32,7 @@ public:
 	bool CleanUp();
 
 	bool OnGuiMouseClickEvent(GuiControl* control);
-
-	
 	
 private:
-
-
 
 };

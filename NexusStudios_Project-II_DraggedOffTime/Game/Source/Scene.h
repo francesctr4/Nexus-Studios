@@ -31,6 +31,8 @@ public:
 	// Destructor
 	virtual ~Scene() {}
 
+	virtual bool Awake() = 0;
+
 	// Called before the first frame
 	virtual bool Start() = 0;
 

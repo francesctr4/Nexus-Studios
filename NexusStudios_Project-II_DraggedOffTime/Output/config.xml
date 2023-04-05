@@ -22,10 +22,9 @@
     <fx volume="100"/>
   </audio>
 
-  <scene>
-	  
-	  
-  </scene>
+  <sceneGameplay>
+	<player x="0" y="0" texturepath="Assets/Textures/player1.png"/>
+  </sceneGameplay>
 
   <map>
     <mapfolder path="Assets/Maps/"/>

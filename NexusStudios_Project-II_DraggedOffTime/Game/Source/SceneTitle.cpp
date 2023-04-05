@@ -21,6 +21,12 @@ SceneTitle::SceneTitle()
 SceneTitle::~SceneTitle()
 {}
 
+bool SceneTitle::Awake()
+{
+
+	return true;
+}
+
 // Called before the first frame
 bool SceneTitle::Start()
 {

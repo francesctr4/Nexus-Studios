@@ -22,6 +22,12 @@ SceneLogo::SceneLogo()
 SceneLogo::~SceneLogo()
 {}
 
+bool SceneLogo::Awake()
+{
+
+	return true;
+}
+
 // Called before the first frame
 bool SceneLogo::Start()
 {

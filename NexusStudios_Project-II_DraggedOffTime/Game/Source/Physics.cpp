@@ -38,7 +38,7 @@ bool Physics::Start()
 	
 	world->SetContactListener(this);
 
-	debug = false;
+	debug = true;
 
 	return true;
 }

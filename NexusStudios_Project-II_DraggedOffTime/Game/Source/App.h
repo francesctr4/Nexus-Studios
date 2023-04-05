@@ -105,6 +105,12 @@ public:
 	uint frames;
 	float dt;
 
+	// xml_document to store the config file and
+	// xml_node(s) to read specific branches of the xml
+	pugi::xml_document configFile;
+	pugi::xml_node configNode;
+
+
 private:
 
 	int argc;
@@ -113,11 +119,6 @@ private:
 	SString organization;
 
 	List<Module*> modules;
-
-	// xml_document to store the config file and
-	// xml_node(s) to read specific branches of the xml
-	pugi::xml_document configFile;
-	pugi::xml_node configNode;
 
     bool saveGameRequested;
 	bool loadGameRequested;
