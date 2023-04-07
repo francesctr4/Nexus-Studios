@@ -245,17 +245,15 @@ bool Map::CleanUp()
 {
     LOG("Unloading map");
 
-   
+    mapFileName[actualmap].Clear();
 
-    mapFileName[0].Clear();
-
-    
     // Make sure you clean up any memory allocated from tilesets/map
 	ListItem<TileSet*>* item;
 	item = mapData.tilesets.start;
 
 	while (item != NULL)
 	{
+        app->tex->UnLoad(item->data->texture);
 		RELEASE(item->data);
 		item = item->next;
 	}
@@ -348,7 +346,10 @@ bool Map::Load()
         }
     }
 
-    if(mapFileXML) mapFileXML.reset();
+    if (mapFileXML)
+    {
+        mapFileXML.reset();
+    }
 
     mapLoaded = ret;
 
