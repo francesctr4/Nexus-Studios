@@ -23,7 +23,7 @@
   </audio>
 
   <sceneGameplay>
-	<player x="0" y="0" texturepath="Assets/Textures/player1.png"/>
+	<player x="100" y="100" texturepath="Assets/Textures/player1.png"/>
   </sceneGameplay>
 
   <map>

@@ -10,6 +10,7 @@
 #include "Map.h"
 #include "PathFinding.h"
 #include "SceneManager.h"
+#include "Player.h"
 
 #include "SceneLogo.h"
 
@@ -68,7 +69,7 @@ bool SceneLogo::Update(float dt)
 		TransitionToScene(SceneType::TITLE);
 
 	}
-
+	
 	app->map->Draw();
 	
 	
