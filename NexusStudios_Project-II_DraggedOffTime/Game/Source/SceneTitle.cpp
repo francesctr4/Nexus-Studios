@@ -81,7 +81,7 @@ bool SceneTitle::CleanUp()
 {
 	LOG("Freeing scene");
 
-	app->map->Disable();
+	app->map->CleanUp();
 
 	return true;
 }
