@@ -114,11 +114,13 @@ bool SceneBattle::Update(float dt)
 		case 1:
 			p_HP = app->combatManager->EnemyAttack(e_DMG, p_HP, p_DEF);
 			LOG("Atack");
+			//Blit red color in screen
 			app->render->DrawRectangle(rect, 255, 0, 0, 150);
 			break;
 		case 2:
 			app->combatManager->EnemyBlockAttack();
 			LOG("Defense");
+			//Blit green color in screen
 			app->render->DrawRectangle(rect, 0, 255, 0, 150);
 			
 			break;
@@ -154,8 +156,25 @@ bool SceneBattle::PostUpdate()
 	
 	LOG("Player HP: %d", p_HP);
 	LOG("Enemy HP: %d", e_HP);
-	
 
+	// Enemy HP
+	SDL_Rect rect_e = { 0, 40*2, e_HP * 2, 10 };
+	app->render->DrawRectangle(rect_e, 10, 255, 10, 255);
+	app->render->DrawText("Enemy HP:", 0, 30*2, 100, 20, { 255, 255, 255, 255 });
+
+	// Player HP
+	SDL_Rect rect_p = { 0, 40, p_HP * 2, 10 };
+	app->render->DrawRectangle(rect_p, 10, 255, 10, 255);
+	app->render->DrawText("Player HP:", 0, 30, 100, 20, { 255, 255, 255, 255 });
+
+	app->render->DrawText("1 - Standar Attack", 0, 100, 100, 20, { 255, 255, 255, 255 });
+	app->render->DrawText("2 - Quick Time Event Attack", 0, 115, 100, 20, { 255, 255, 255, 255 });
+	app->render->DrawText("3 - Defend (+DEF)", 0, 130, 100, 20, { 255, 255, 255, 255 });
+	app->render->DrawText("4 - Use Item", 0, 145, 100, 20, { 255, 255, 255, 255 });
+	app->render->DrawText("-------------------", 0, 160, 100, 20, { 255, 255, 255, 255 });
+	app->render->DrawText("5 - Enemy Attack", 0, 175, 100, 20, { 255, 255, 255, 255 });
+	app->render->DrawText("6 - Enemy Defense", 0, 190, 100, 20, { 255, 255, 255, 255 });
+	app->render->DrawText("TAB - Skip Turn", 0, 205, 100, 20, { 255, 255, 255, 255 });
 
 	return true;
 }
