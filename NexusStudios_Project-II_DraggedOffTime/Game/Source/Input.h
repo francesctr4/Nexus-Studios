@@ -10,7 +10,7 @@
 //#define LAST_KEYS_PRESSED_BUFFER 50
 
 #define SDL_MAX_SINT16 32767
-#define MAX_CONTROLLERS 1
+#define MAX_CONTROLLERS 2
 
 struct SDL_Rect;
 
