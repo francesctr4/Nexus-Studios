@@ -16,6 +16,7 @@
 SceneTitle::SceneTitle()
 {
 	name.Create("sceneEnding");
+	this->Awake();
 }
 
 // Destructor

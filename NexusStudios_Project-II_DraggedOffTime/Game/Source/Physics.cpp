@@ -328,7 +328,8 @@ bool Physics::CleanUp()
 	LOG("Destroying physics world");
 
 	// Delete the whole physics world!
-	delete world;
+
+	
 
 	return true;
 }

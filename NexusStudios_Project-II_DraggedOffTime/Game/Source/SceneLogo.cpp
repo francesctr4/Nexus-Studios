@@ -17,6 +17,7 @@
 SceneLogo::SceneLogo()
 {
 	name.Create("sceneEnding");
+	
 }
 
 // Destructor

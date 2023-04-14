@@ -15,7 +15,7 @@
 SceneGameplay::SceneGameplay()
 {
 	name.Create("sceneGameplay");
-
+	this->Awake();
 }
 
 // Destructor

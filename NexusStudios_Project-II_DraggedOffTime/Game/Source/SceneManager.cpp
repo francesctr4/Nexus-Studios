@@ -32,6 +32,7 @@ SceneManager::SceneManager(bool startEnabled) : Module(startEnabled)
 	onTransition = false;
 	fadeOutCompleted = false;
 	transitionAlpha = 0;
+	current->Awake();
 }
 
 // Destructor
@@ -43,7 +44,7 @@ bool SceneManager::Awake(pugi::xml_node& config)
 {
 	LOG("Loading Scene");
 	bool ret = true;
-
+	
 	return ret;
 }
 
