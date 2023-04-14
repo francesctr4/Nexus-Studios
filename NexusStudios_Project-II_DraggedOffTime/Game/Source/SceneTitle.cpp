@@ -8,22 +8,22 @@
 #include "Render.h"
 #include "Window.h"
 #include "Physics.h"
-#include "SceneManager.h"
+#include "FadeToBlack.h"
+#include "EntityManager.h"
 #include "Map.h"
 
 #include "SceneTitle.h"
 
-SceneTitle::SceneTitle()
+SceneTitle::SceneTitle(bool startEnabled) : Module(startEnabled)
 {
-	name.Create("sceneEnding");
-	this->Awake();
+	name.Create("sceneTitle");
 }
 
 // Destructor
 SceneTitle::~SceneTitle()
 {}
 
-bool SceneTitle::Awake()
+bool SceneTitle::Awake(pugi::xml_node& config)
 {
 
 	return true;
@@ -32,12 +32,8 @@ bool SceneTitle::Awake()
 // Called before the first frame
 bool SceneTitle::Start()
 {
-	app->map->actualmap = 1;
 
-	
-	bool retLoad = app->map->Load();
-	app->map->Enable();
-	
+	//app->map->actualmap = 1;
 
 	return true;
 }
@@ -46,6 +42,7 @@ bool SceneTitle::Start()
 bool SceneTitle::PreUpdate()
 {
 	OPTICK_EVENT();
+	app->entityManager->Disable();
 
 	return true;
 }
@@ -57,11 +54,14 @@ bool SceneTitle::Update(float dt)
 
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 
-		TransitionToScene(SceneType::GAMEPLAY);
-
+		//TransitionToScene(SceneType::GAMEPLAY);
+		app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
 	}
 
-	app->map->Draw();
+	SDL_Rect rect = { 0,0, 1280, 720 };
+	app->render->DrawRectangle(rect, 0, 0, 255, 150);
+
+	//app->map->Draw();
 
 	return true;
 }
@@ -83,7 +83,7 @@ bool SceneTitle::CleanUp()
 {
 	LOG("Freeing scene");
 
-	app->map->CleanUp();
+	//app->map->CleanUp();
 
 	return true;
 }

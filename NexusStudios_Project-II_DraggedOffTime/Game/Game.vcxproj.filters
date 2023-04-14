@@ -43,9 +43,6 @@
     <ClCompile Include="Source\SceneGameplay.cpp">
       <Filter>Game Loop\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Source\SceneManager.cpp">
-      <Filter>Game Loop\Scenes</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Map.cpp">
       <Filter>Game Loop\Modules</Filter>
     </ClCompile>
@@ -83,6 +80,9 @@
       <Filter>Game Loop\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Source\CombatManager.cpp">
+      <Filter>Game Loop\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FadeToBlack.cpp">
       <Filter>Game Loop\Modules</Filter>
     </ClCompile>
   </ItemGroup>
@@ -144,9 +144,6 @@
     <ClInclude Include="Source\SceneGameplay.h">
       <Filter>Game Loop\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Source\SceneManager.h">
-      <Filter>Game Loop\Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Map.h">
       <Filter>Game Loop\Modules</Filter>
     </ClInclude>
@@ -192,9 +189,6 @@
     <ClInclude Include="Source\Entity.h">
       <Filter>Game Loop</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Scene.h">
-      <Filter>Game Loop</Filter>
-    </ClInclude>
     <ClInclude Include="Source\SceneTitle.h">
       <Filter>Game Loop\Scenes</Filter>
     </ClInclude>
@@ -205,6 +199,9 @@
       <Filter>Game Loop\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Source\CombatManager.h">
+      <Filter>Game Loop\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FadeToBlack.h">
       <Filter>Game Loop\Modules</Filter>
     </ClInclude>
   </ItemGroup>

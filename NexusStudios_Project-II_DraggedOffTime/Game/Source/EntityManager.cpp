@@ -4,7 +4,6 @@
 #include "Enemy.h"
 #include "App.h"
 #include "Textures.h"
-#include "Scene.h"
 #include "Physics.h"
 #include "Input.h"
 

@@ -22,10 +22,15 @@ class Map;
 class Physics;
 class PathFinding;
 
+class SceneLogo;
+class SceneTitle;
+class SceneGameplay;
+class SceneBattle;
+
 class GuiManager;
-class SceneManager;
 class CombatManager;
 class EntityManager;
+class FadeToBlack;
 
 class App
 {
@@ -97,10 +102,15 @@ public:
 	Physics* physics;
 	PathFinding* pathfinding;
 
+	SceneLogo* sceneLogo;
+	SceneTitle* sceneTitle;
+	SceneGameplay* sceneGameplay;
+	SceneBattle* sceneBattle;
+
 	GuiManager* guiManager;
-	SceneManager* sceneManager;
 	CombatManager* combatManager;
 	EntityManager* entityManager;
+	FadeToBlack* fadeToBlack;
 
 	uint frames;
 	float dt;

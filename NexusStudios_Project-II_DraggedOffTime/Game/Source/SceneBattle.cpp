@@ -8,12 +8,14 @@
 #include "Render.h"
 #include "Window.h"
 #include "Map.h"
+#include "FadeToBlack.h"
 #include "CombatManager.h"
+#include "EntityManager.h"
 #include <ctime>
 
 #include "SceneBattle.h"
 
-SceneBattle::SceneBattle()
+SceneBattle::SceneBattle(bool startEnabled) : Module(startEnabled)
 {
 	name.Create("sceneEnding");
 }
@@ -22,7 +24,7 @@ SceneBattle::SceneBattle()
 SceneBattle::~SceneBattle()
 {}
 
-bool SceneBattle::Awake()
+bool SceneBattle::Awake(pugi::xml_node& config)
 {
 
 	return true;
@@ -39,6 +41,8 @@ bool SceneBattle::Start()
 bool SceneBattle::PreUpdate()
 {
 	OPTICK_EVENT();
+
+	app->entityManager->Disable();
 
 	return true;
 }
@@ -141,24 +145,13 @@ bool SceneBattle::Update(float dt)
 
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 
-		TransitionToScene(SceneType::LOGO);
-
+		//TransitionToScene(SceneType::LOGO);
+		app->fadeToBlack->Fade(this, (Module*)app->sceneLogo);
 	}
 
 	
 	//SDL_Rect rect = { 0,0, 1280, 720 };
 	//app->render->DrawRectangle(rect, 0, 0, 255, 150);
-	
-
-	return true;
-}
-
-// Called each loop iteration
-bool SceneBattle::PostUpdate()
-{
-	OPTICK_EVENT();
-
-	bool ret = true;
 	
 	LOG("Player HP: %d", p_HP);
 	LOG("Enemy HP: %d", e_HP);
@@ -169,7 +162,7 @@ bool SceneBattle::PostUpdate()
 	app->render->DrawRectangle(rect_e, 10, 255, 10, 255);
 	app->render->DrawText("Enemy HP:", 650, 30, 100, 20, { 255, 255, 255, 255 });
 	std::string e_HP_string = std::to_string(e_HP);
-	app->render->DrawText(e_HP_string, 650+125, 30, 25, 20, { 255, 255, 255, 255 });
+	app->render->DrawText(e_HP_string, 650 + 125, 30, 25, 20, { 255, 255, 255, 255 });
 
 	//Enemy sprite
 
@@ -180,7 +173,7 @@ bool SceneBattle::PostUpdate()
 	app->render->DrawRectangle(rect_p, 10, 255, 10, 255);
 	app->render->DrawText("Player HP:", 0, 30, 100, 20, { 255, 255, 255, 255 });
 	std::string p_HP_string = std::to_string(p_HP);
-	app->render->DrawText(p_HP_string, 0+125, 30, 25, 20, { 255, 255, 255, 255 });
+	app->render->DrawText(p_HP_string, 0 + 125, 30, 25, 20, { 255, 255, 255, 255 });
 
 	//Player sprite
 
@@ -194,6 +187,18 @@ bool SceneBattle::PostUpdate()
 	app->render->DrawText("5 - Enemy Attack", 0, 175, 100, 20, { 255, 255, 255, 255 });
 	app->render->DrawText("6 - Enemy Defense", 0, 190, 100, 20, { 255, 255, 255, 255 });
 	app->render->DrawText("TAB - Skip Turn", 0, 205, 100, 20, { 255, 255, 255, 255 });
+
+	return true;
+}
+
+// Called each loop iteration
+bool SceneBattle::PostUpdate()
+{
+	OPTICK_EVENT();
+
+	bool ret = true;
+	
+
 
 	return true;
 }

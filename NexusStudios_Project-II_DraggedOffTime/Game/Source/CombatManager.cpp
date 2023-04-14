@@ -3,14 +3,10 @@
 #include "Item.h"
 #include "App.h"
 #include "Textures.h"
-#include "Scene.h"
 #include "Input.h"
 
 #include "Defs.h"
 #include "Log.h"
-
-
-
 
 CombatManager::CombatManager(bool startEnabled) : Module(startEnabled)
 {

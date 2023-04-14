@@ -17,10 +17,15 @@
 #include "Physics.h"
 #include "PathFinding.h"
 
+#include "SceneLogo.h"
+#include "SceneTitle.h"
+#include "SceneGameplay.h"
+#include "SceneBattle.h"
+
 #include "EntityManager.h"
 #include "GuiManager.h"
-#include "SceneManager.h"
 #include "CombatManager.h"
+#include "FadeToBlack.h"
 
 // Constructor
 App::App(int argc, char* args[]) : argc(argc), args(args)
@@ -37,10 +42,15 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	physics = new Physics(true);
 	pathfinding = new PathFinding(true);
 
+	sceneLogo = new SceneLogo(true);
+	sceneTitle = new SceneTitle(false);
+	sceneGameplay = new SceneGameplay(false);
+	sceneBattle = new SceneBattle(false);
+
 	guiManager = new GuiManager(true);
-	sceneManager = new SceneManager(true);
 	combatManager = new CombatManager(true);
 	entityManager = new EntityManager(true);
+	fadeToBlack = new FadeToBlack(true);
 
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -53,10 +63,15 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(physics);
 	AddModule(pathfinding);
 
+	AddModule(sceneLogo);
+	AddModule(sceneTitle);
+	AddModule(sceneGameplay);
+	AddModule(sceneBattle);
+
 	AddModule(guiManager);
-	AddModule(sceneManager);
 	AddModule(combatManager);
 	AddModule(entityManager);
+	AddModule(fadeToBlack);
 
 	// Render last to swap buffer
 	AddModule(render);

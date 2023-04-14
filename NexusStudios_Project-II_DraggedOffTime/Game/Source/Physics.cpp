@@ -10,7 +10,6 @@
 #include "Input.h"
 #include "Player.h"
 #include "Window.h"
-#include "Scene.h"
 #include "Box2D/Box2D/Box2D.h"
 
 #ifdef _DEBUG

@@ -9,12 +9,13 @@
 #include "Window.h"
 #include "Map.h"
 #include "PathFinding.h"
-#include "SceneManager.h"
+#include "FadeToBlack.h"
+#include "EntityManager.h"
 #include "Player.h"
 
 #include "SceneLogo.h"
 
-SceneLogo::SceneLogo()
+SceneLogo::SceneLogo(bool startEnabled) : Module(startEnabled)
 {
 	name.Create("sceneEnding");
 	
@@ -24,7 +25,7 @@ SceneLogo::SceneLogo()
 SceneLogo::~SceneLogo()
 {}
 
-bool SceneLogo::Awake()
+bool SceneLogo::Awake(pugi::xml_node& config)
 {
 
 	return true;
@@ -33,9 +34,9 @@ bool SceneLogo::Awake()
 // Called before the first frame
 bool SceneLogo::Start()
 {
-	app->map->actualmap = 0;
+	//app->map->actualmap = 0;
 
-	bool retLoad = app->map->Load();
+	//bool retLoad = app->map->Load();
 	
 
 	/*if (retLoad) {
@@ -57,6 +58,8 @@ bool SceneLogo::PreUpdate()
 {
 	OPTICK_EVENT();
 
+	app->entityManager->Disable();
+
 	return true;
 }
 
@@ -67,13 +70,13 @@ bool SceneLogo::Update(float dt)
 	
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 
-		TransitionToScene(SceneType::TITLE);
+		//TransitionToScene(SceneType::TITLE);
+		app->fadeToBlack->Fade(this, (Module*)app->sceneTitle);
 
 	}
 	
-	app->map->Draw();
-	
-	
+	//app->map->Draw();
+
 	return true;
 }
 
@@ -92,8 +95,7 @@ bool SceneLogo::CleanUp()
 {
 	LOG("Freeing scene");
 	
-	app->map->CleanUp();
-
+	//app->map->CleanUp();
 
 	return true;
 }

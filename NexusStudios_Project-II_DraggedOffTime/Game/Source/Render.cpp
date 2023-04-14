@@ -1,7 +1,6 @@
 #include "App.h"
 #include "Window.h"
 #include "Render.h"
-#include "Scene.h"
 #include "Physics.h"
 
 #include "Defs.h"

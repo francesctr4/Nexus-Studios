@@ -4,7 +4,6 @@
 #include "Audio.h"
 #include "Input.h"
 #include "Render.h"
-#include "Scene.h"
 #include "Log.h"
 #include "Point.h"
 #include "Physics.h"
@@ -13,7 +12,6 @@
 Player::Player() : Entity(EntityType::PLAYER)
 {
 	name.Create("Player");
-	this->Awake();
 }
 
 Player::~Player() {
@@ -26,7 +24,6 @@ bool Player::Awake() {
 	position.x = parameters.attribute("x").as_int();
 	position.y = parameters.attribute("y").as_int();
 	texturePath = parameters.attribute("texturepath").as_string();
-	this->Start();
 
 	return true;
 }

@@ -1,19 +1,17 @@
 #pragma once
 
-#include "Scene.h"
-
 struct SDL_Texture;
 
-class SceneTitle : public Scene
+class SceneTitle : public Module
 {
 public:
 
-	SceneTitle();
+	SceneTitle(bool startEnabled);
 
 	// Destructor
 	virtual ~SceneTitle();
 
-	bool Awake();
+	bool Awake(pugi::xml_node& config);
 
 	// Called before the first frame
 	bool Start();

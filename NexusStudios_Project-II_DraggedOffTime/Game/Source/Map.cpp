@@ -3,7 +3,6 @@
 #include "Textures.h"
 #include "Map.h"
 #include "Physics.h"
-#include "SceneManager.h"
 
 #include "Defs.h"
 #include "Log.h"
