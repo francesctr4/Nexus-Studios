@@ -50,12 +50,12 @@ bool SceneBattle::Update(float dt)
 
 	//Manage Combat (Turn Handler)
 
-	if (p_HP == 0 || e_HP == 0)
-	{
-		//End combat
-		TransitionToScene(SceneType::LOGO);
+	//if (p_HP == 0 || e_HP == 0)
+	//{
+	//	//End combat
+	//	TransitionToScene(SceneType::LOGO);
 
-	}
+	//}
 
 	if (app->combatManager->playerTurn)
 	{
