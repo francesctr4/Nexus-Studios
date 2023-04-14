@@ -158,12 +158,14 @@ bool SceneBattle::PostUpdate()
 	LOG("Enemy HP: %d", e_HP);
 
 	// Enemy HP
-	SDL_Rect rect_e = { 0, 40*2, e_HP * 2, 10 };
+	double e_percentage_life = (e_HP * 100.0) / e_max_HP;
+	SDL_Rect rect_e = { 0, 40*2, 5 * e_percentage_life, 10 };
 	app->render->DrawRectangle(rect_e, 10, 255, 10, 255);
 	app->render->DrawText("Enemy HP:", 0, 30*2, 100, 20, { 255, 255, 255, 255 });
 
 	// Player HP
-	SDL_Rect rect_p = { 0, 40, p_HP * 2, 10 };
+	double p_percentage_life = (p_HP * 100.0) / p_max_HP;
+	SDL_Rect rect_p = { 0, 40, 5 * p_percentage_life, 10 };
 	app->render->DrawRectangle(rect_p, 10, 255, 10, 255);
 	app->render->DrawText("Player HP:", 0, 30, 100, 20, { 255, 255, 255, 255 });
 

@@ -36,11 +36,13 @@ private:
 	//Variables a cambiar por las del player y las del enemigo
 	//Player
 	int p_HP = 100;
+	int p_max_HP = 100;
 	int p_DEF = 10;
 	int p_DMG = 50;
 
 	//Enemy
 	int e_HP = 60;
+	int e_max_HP = 60;
 	int e_DEF = 10;
 	int e_DMG = 20;
 
