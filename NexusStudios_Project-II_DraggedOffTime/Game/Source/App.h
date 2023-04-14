@@ -22,10 +22,10 @@ class Map;
 class Physics;
 class PathFinding;
 
-class EntityManager;
 class GuiManager;
 class SceneManager;
 class CombatManager;
+class EntityManager;
 
 class App
 {
@@ -97,13 +97,19 @@ public:
 	Physics* physics;
 	PathFinding* pathfinding;
 
-	EntityManager* entityManager;
 	GuiManager* guiManager;
 	SceneManager* sceneManager;
 	CombatManager* combatManager;
+	EntityManager* entityManager;
 
 	uint frames;
 	float dt;
+
+	// xml_document to store the config file and
+	// xml_node(s) to read specific branches of the xml
+	pugi::xml_document configFile;
+	pugi::xml_node configNode;
+
 
 private:
 
@@ -113,11 +119,6 @@ private:
 	SString organization;
 
 	List<Module*> modules;
-
-	// xml_document to store the config file and
-	// xml_node(s) to read specific branches of the xml
-	pugi::xml_document configFile;
-	pugi::xml_node configNode;
 
     bool saveGameRequested;
 	bool loadGameRequested;

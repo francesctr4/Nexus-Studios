@@ -22,15 +22,15 @@
     <fx volume="100"/>
   </audio>
 
-  <scene>
-	  
-	  
-  </scene>
+  <sceneGameplay>
+	<player x="100" y="100" texturepath="Assets/Textures/player1.png"/>
+  </sceneGameplay>
 
   <map>
     <mapfolder path="Assets/Maps/"/>
     <mapfile_1 path="Assets/Maps/Lvl2.tmx"/>
 	<mapfile_2 path="Assets/Maps/Lvl1.tmx"/>
+	<mapfile_3 path="Assets/Maps/Lvl3.tmx"/>
   </map>
   
 </config>

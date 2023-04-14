@@ -13,6 +13,8 @@ public:
 	// Destructor
 	virtual ~SceneBattle();
 
+	bool Awake();
+
 	// Called before the first frame
 	bool Start();
 

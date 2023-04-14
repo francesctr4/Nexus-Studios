@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Scene.h"
+#include "Player.h"
 
 struct SDL_Texture;
 
@@ -12,6 +13,8 @@ public:
 
 	// Destructor
 	virtual ~SceneGameplay();
+
+	bool Awake();
 
 	// Called before the first frame
 	bool Start();
@@ -32,6 +35,6 @@ public:
 
 private:
 
-	
+	Player* player;
 
 };

@@ -250,7 +250,7 @@ bool Map::CleanUp()
     // Make sure you clean up any memory allocated from tilesets/map
 	ListItem<TileSet*>* item;
 	item = mapData.tilesets.start;
-
+    
 	while (item != NULL)
 	{
         app->tex->UnLoad(item->data->texture);
@@ -271,6 +271,15 @@ bool Map::CleanUp()
     }
     mapData.maplayers.Clear();
     
+    ListItem<MapLayer*>* objectItem; 
+    objectItem = mapData.objectlayers.start;
+    
+    while (objectItem != NULL)
+    {
+        RELEASE(objectItem->data);
+        objectItem = objectItem->next;
+    }
+    mapData.objectlayers.Clear();
 
     return true;
 }
@@ -570,12 +579,12 @@ bool Map::LoadAllObjectLayers(pugi::xml_node mapNode) {
     {
         //Load the layer
 
-        MapLayer* mapLayer = new MapLayer();
-        ret = LoadObjectLayer(objectLayerNode, mapLayer);
+        MapLayer* objectLayer = new MapLayer();
+        ret = LoadObjectLayer(objectLayerNode, objectLayer);
 
         //add the layer to the map
 
-        mapData.maplayers.Add(mapLayer);
+        mapData.objectlayers.Add(objectLayer);
 
     }
 

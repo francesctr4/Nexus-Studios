@@ -22,6 +22,12 @@ SceneBattle::SceneBattle()
 SceneBattle::~SceneBattle()
 {}
 
+bool SceneBattle::Awake()
+{
+
+	return true;
+}
+
 // Called before the first frame
 bool SceneBattle::Start()
 {

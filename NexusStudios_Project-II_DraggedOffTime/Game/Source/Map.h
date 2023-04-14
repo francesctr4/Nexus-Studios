@@ -110,6 +110,7 @@ struct MapData
 
 	// Add a list/array of layers to the map
 	List<MapLayer*> maplayers;
+	List<MapLayer*> objectlayers;
 };
 
 class Map : public Module

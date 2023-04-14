@@ -10,17 +10,25 @@
 #include "Map.h"
 #include "PathFinding.h"
 #include "SceneManager.h"
+#include "Player.h"
 
 #include "SceneLogo.h"
 
 SceneLogo::SceneLogo()
 {
 	name.Create("sceneEnding");
+	
 }
 
 // Destructor
 SceneLogo::~SceneLogo()
 {}
+
+bool SceneLogo::Awake()
+{
+
+	return true;
+}
 
 // Called before the first frame
 bool SceneLogo::Start()
@@ -62,7 +70,7 @@ bool SceneLogo::Update(float dt)
 		TransitionToScene(SceneType::TITLE);
 
 	}
-
+	
 	app->map->Draw();
 	
 	

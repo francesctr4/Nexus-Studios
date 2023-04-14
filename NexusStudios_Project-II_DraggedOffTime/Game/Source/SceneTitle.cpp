@@ -7,6 +7,7 @@
 #include "Audio.h"
 #include "Render.h"
 #include "Window.h"
+#include "Physics.h"
 #include "SceneManager.h"
 #include "Map.h"
 
@@ -15,11 +16,18 @@
 SceneTitle::SceneTitle()
 {
 	name.Create("sceneEnding");
+	this->Awake();
 }
 
 // Destructor
 SceneTitle::~SceneTitle()
 {}
+
+bool SceneTitle::Awake()
+{
+
+	return true;
+}
 
 // Called before the first frame
 bool SceneTitle::Start()
