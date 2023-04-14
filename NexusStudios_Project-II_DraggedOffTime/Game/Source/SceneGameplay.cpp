@@ -34,7 +34,7 @@ bool SceneGameplay::Awake()
 // Called before the first frame
 bool SceneGameplay::Start()
 {
-	app->map->actualmap = 2;
+	//5app->map->actualmap = 2;
 
 
 	bool retLoad = app->map->Load();
@@ -61,6 +61,7 @@ bool SceneGameplay::Update(float dt)
 		TransitionToScene(SceneType::BATTLE);
 
 	}
+
 	app->map->Draw();
 	/*SDL_Rect rect = { 0,0, 1280, 720 };
 	app->render->DrawRectangle(rect, 255, 255, 255, 150);*/

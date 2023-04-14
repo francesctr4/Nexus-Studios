@@ -71,6 +71,13 @@ bool SceneManager::Update(float dt)
 {
 	OPTICK_EVENT();
 
+	if (app->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN) {
+
+		if (app->physics->debug) app->physics->debug = false;
+		else app->physics->debug = true;
+
+	}
+
 	dt = dt / 1000;
 	app->map->Init();
 	LOG("Updating Current Scene");

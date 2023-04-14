@@ -39,7 +39,7 @@ bool Physics::Start()
 	
 	world->SetContactListener(this);
 
-	debug = true;
+	debug = false;
 
 	return true;
 }
@@ -241,7 +241,7 @@ bool Physics::PostUpdate()
 	
 	// Bonus code: this will iterate all objects in the world and draw the circles
 	// You need to provide your own macro to translate meters to pixels
-	if (app->input->GetKey(SDL_SCANCODE_5)==KEY_REPEAT)
+	if (debug)
 	{
 		for (b2Body* b = world->GetBodyList(); b; b = b->GetNext())
 		{

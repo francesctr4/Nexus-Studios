@@ -48,7 +48,7 @@ bool Player::Start() {
 		app->render->camera.y = position.y;
 	}
 	// Add physics to the player.
-	pbody = app->physics->CreateCircle(position.x + 16, position.y + 16, 16, bodyType::STATIC);
+	pbody = app->physics->CreateCircle(position.x + 16, position.y + 16, 16, bodyType::KINEMATIC);
 
 	// Assign player class (using "this") to the listener of the pbody. This makes the Physics module to call the OnCollision method.
 	pbody->listener = this;
@@ -65,14 +65,14 @@ bool Player::Update()
 	int speed = 5;
 	b2Vec2 vel = b2Vec2(0, -GRAVITY_Y);
 
-	//// TODO 2 - Split Screen: manage players movement according to active cameras, input keys and speed used.
-	//if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT || app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_y, 10000, 2) > 0) vel = b2Vec2(GRAVITY_X, -speed);
-	//if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT || app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_y, 10000, 2) < 0) vel = b2Vec2(GRAVITY_X, speed);
-	//if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT || app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_x, 10000, 2) < 0) vel = b2Vec2(-speed, -GRAVITY_Y);
-	//if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT || app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_x, 10000, 2) > 0) vel = b2Vec2(speed, -GRAVITY_Y);
+	// TODO 2 - Split Screen: manage players movement according to active cameras, input keys and speed used.
+	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT /* || app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_y, 10000, 2) > 0*/) vel = b2Vec2(GRAVITY_X, -speed);
+	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT /* || app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_y, 10000, 2) < 0*/) vel = b2Vec2(GRAVITY_X, speed);
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT /* || app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_x, 10000, 2) < 0*/) vel = b2Vec2(-speed, -GRAVITY_Y);
+	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT /* || app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_x, 10000, 2) > 0*/) vel = b2Vec2(speed, -GRAVITY_Y);
 
 	// Set the velocity of the pbody of the player.
-	//pbody->body->SetLinearVelocity(vel);
+	pbody->body->SetLinearVelocity(vel);
 
 	// Update player position in pixels.
 	position.x = METERS_TO_PIXELS(pbody->body->GetTransform().p.x) - 16;
