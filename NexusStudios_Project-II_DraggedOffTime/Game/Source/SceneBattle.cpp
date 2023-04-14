@@ -159,16 +159,27 @@ bool SceneBattle::PostUpdate()
 
 	// Enemy HP
 	double e_percentage_life = (e_HP * 100.0) / e_max_HP;
-	SDL_Rect rect_e = { 0, 40*2, 5 * e_percentage_life, 10 };
+	SDL_Rect rect_e = { 650, 40, 5 * e_percentage_life, 10 };
 	app->render->DrawRectangle(rect_e, 10, 255, 10, 255);
-	app->render->DrawText("Enemy HP:", 0, 30*2, 100, 20, { 255, 255, 255, 255 });
+	app->render->DrawText("Enemy HP:", 650, 30, 100, 20, { 255, 255, 255, 255 });
+	std::string e_HP_string = std::to_string(e_HP);
+	app->render->DrawText(e_HP_string, 650+125, 30, 25, 20, { 255, 255, 255, 255 });
+
+	//Enemy sprite
+
 
 	// Player HP
 	double p_percentage_life = (p_HP * 100.0) / p_max_HP;
 	SDL_Rect rect_p = { 0, 40, 5 * p_percentage_life, 10 };
 	app->render->DrawRectangle(rect_p, 10, 255, 10, 255);
 	app->render->DrawText("Player HP:", 0, 30, 100, 20, { 255, 255, 255, 255 });
+	std::string p_HP_string = std::to_string(p_HP);
+	app->render->DrawText(p_HP_string, 0+125, 30, 25, 20, { 255, 255, 255, 255 });
 
+	//Player sprite
+
+
+	// Combat UI - Controls
 	app->render->DrawText("1 - Standar Attack", 0, 100, 100, 20, { 255, 255, 255, 255 });
 	app->render->DrawText("2 - Quick Time Event Attack", 0, 115, 100, 20, { 255, 255, 255, 255 });
 	app->render->DrawText("3 - Defend (+DEF)", 0, 130, 100, 20, { 255, 255, 255, 255 });
