@@ -7,6 +7,7 @@
 #include "Defs.h"
 #include "Log.h"
 #include "Render.h"
+#include "Input.h"
 #include "Player.h"
 #include "Window.h"
 #include "Scene.h"
@@ -240,7 +241,7 @@ bool Physics::PostUpdate()
 	
 	// Bonus code: this will iterate all objects in the world and draw the circles
 	// You need to provide your own macro to translate meters to pixels
-	if (debug)
+	if (app->input->GetKey(SDL_SCANCODE_5)==KEY_REPEAT)
 	{
 		for (b2Body* b = world->GetBodyList(); b; b = b->GetNext())
 		{

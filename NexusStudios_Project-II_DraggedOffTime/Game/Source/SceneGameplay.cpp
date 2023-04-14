@@ -7,6 +7,7 @@
 #include "Audio.h"
 #include "Render.h"
 #include "Window.h"
+#include "Map.h"
 #include "EntityManager.h"
 
 #include "SceneGameplay.h"
@@ -33,6 +34,11 @@ bool SceneGameplay::Awake()
 // Called before the first frame
 bool SceneGameplay::Start()
 {
+	app->map->actualmap = 2;
+
+
+	bool retLoad = app->map->Load();
+	app->map->Enable();
 	
 	return true;
 }
@@ -55,7 +61,7 @@ bool SceneGameplay::Update(float dt)
 		TransitionToScene(SceneType::BATTLE);
 
 	}
-
+	app->map->Draw();
 	/*SDL_Rect rect = { 0,0, 1280, 720 };
 	app->render->DrawRectangle(rect, 255, 255, 255, 150);*/
 
@@ -78,7 +84,8 @@ bool SceneGameplay::PostUpdate()
 bool SceneGameplay::CleanUp()
 {
 	LOG("Freeing scene");
-
+	app->map->CleanUp();
+	app->physics->CleanUp();
 	return true;
 }
 

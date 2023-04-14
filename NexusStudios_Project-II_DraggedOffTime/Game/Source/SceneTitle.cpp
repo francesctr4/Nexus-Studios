@@ -7,6 +7,7 @@
 #include "Audio.h"
 #include "Render.h"
 #include "Window.h"
+#include "Physics.h"
 #include "SceneManager.h"
 #include "Map.h"
 
