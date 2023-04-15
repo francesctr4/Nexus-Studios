@@ -1,5 +1,10 @@
 #pragma once
 
+#include "GuiManager.h"
+#include "GuiButton.h"
+#include "GuiSlider.h"
+#include "GuiCheckBox.h"
+
 struct SDL_Texture;
 
 class SceneTitle : public Module
@@ -37,5 +42,41 @@ public:
 private:
 	
 	SDL_Texture* titleScreen;
+	SDL_Texture* draggedOffTime;
+
+	SDL_Texture* newGame;
+	GuiButton* NewGame;
+
+	SDL_Texture* continue_;
+	GuiButton* Continue_;
+	bool continueEnabled;
+
+	SDL_Texture* settings;
+	GuiButton* Settings;
+
+	bool showSettings;
+
+	SDL_Texture* credits;
+	GuiButton* Credits;
+
+	SDL_Texture* exit;
+	GuiButton* Exit;
+
+	SDL_Texture* back;
+	GuiButton* Back;
+
+	SDL_Texture* slider;
+	GuiSlider* SliderMusic;
+	GuiSlider* SliderFX;
+
+	SDL_Texture* checkBox;
+	GuiCheckBox* CheckBoxFullscreen;
+	GuiCheckBox* CheckBoxVsync;
+
+	bool showCredits;
+	GuiButton* BackCredits;
+
+	uint OpenPause;
+	uint ClosePause;
 
 };
