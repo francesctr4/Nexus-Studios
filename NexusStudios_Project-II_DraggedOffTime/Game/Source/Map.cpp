@@ -213,6 +213,7 @@ SDL_Rect TileSet::GetTileRect(int gid) const
     // Get relative Tile rectangle
     rect.w = tileWidth;
     rect.h = tileHeight;
+
     rect.x = margin + (tileWidth + spacing) * (relativeIndex % columns);
     rect.y = margin + (tileWidth + spacing) * (relativeIndex / columns);
 

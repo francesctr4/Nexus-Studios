@@ -33,8 +33,7 @@ bool SceneGameplay::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool SceneGameplay::Start()
 {
-	app->map->actualmap = 2;
-
+	app->map->actualmap = 1;
 
 	bool retLoad = app->map->Load();
 	//app->map->Enable();
