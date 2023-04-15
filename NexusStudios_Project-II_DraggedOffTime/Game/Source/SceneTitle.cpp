@@ -32,8 +32,11 @@ bool SceneTitle::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool SceneTitle::Start()
 {
-
 	//app->map->actualmap = 1;
+
+	titleScreen = app->tex->Load("Assets/Textures/SceneTitle.png");
+
+	enableMusic = true;
 
 	return true;
 }
@@ -44,6 +47,13 @@ bool SceneTitle::PreUpdate()
 	OPTICK_EVENT();
 	app->entityManager->Disable();
 
+	if (enableMusic) {
+
+		app->audio->PlayMusic("Assets/Audio/Music/SymphonyOfBorealWind.ogg", 0);
+		enableMusic = false;
+
+	}
+
 	return true;
 }
 
@@ -52,14 +62,14 @@ bool SceneTitle::Update(float dt)
 {
 	OPTICK_EVENT();
 
-	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
-
-		//TransitionToScene(SceneType::GAMEPLAY);
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_START] == KEY_DOWN) {
+		
+		enableMusic = true;
 		app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
+
 	}
 
-	SDL_Rect rect = { 0,0, 1280, 720 };
-	app->render->DrawRectangle(rect, 0, 0, 255, 150);
+	app->render->DrawTexture(titleScreen, 0, 0);
 
 	//app->map->Draw();
 
@@ -73,9 +83,10 @@ bool SceneTitle::PostUpdate()
 
 	bool ret = true;
 
-	
+	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_BACK] == KEY_DOWN)
+		ret = false;
 
-	return true;
+	return ret;
 }
 
 // Called before quitting
@@ -84,6 +95,8 @@ bool SceneTitle::CleanUp()
 	LOG("Freeing scene");
 
 	//app->map->CleanUp();
+
+	
 
 	return true;
 }

@@ -17,7 +17,7 @@
 
 SceneLogo::SceneLogo(bool startEnabled) : Module(startEnabled)
 {
-	name.Create("sceneEnding");
+	name.Create("sceneLogo");
 	
 }
 
@@ -37,18 +37,10 @@ bool SceneLogo::Start()
 	//app->map->actualmap = 0;
 
 	//bool retLoad = app->map->Load();
-	
 
-	/*if (retLoad) {
-		int w, h;
-		uchar* data = NULL;
+	nexusStudiosLogo = app->tex->Load("Assets/Textures/SceneLogo.png");
 
-		bool retWalkMap = app->map->CreateWalkabilityMap(w, h, &data);
-		if (retWalkMap) app->pathfinding->SetMap(w, h, data);
-
-		RELEASE_ARRAY(data);
-
-	}*/
+	enableMusic = true;
 
 	return true;
 }
@@ -60,6 +52,13 @@ bool SceneLogo::PreUpdate()
 
 	app->entityManager->Disable();
 
+	if (enableMusic) {
+
+		app->audio->PlayMusic("Assets/Audio/Music/NoMusic.ogg", 0);
+		enableMusic = false;
+
+	}
+
 	return true;
 }
 
@@ -68,14 +67,14 @@ bool SceneLogo::Update(float dt)
 {
 	OPTICK_EVENT();
 	
-	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_START] == KEY_DOWN) {
 
-		//TransitionToScene(SceneType::TITLE);
+		enableMusic = true;
 		app->fadeToBlack->Fade(this, (Module*)app->sceneTitle);
 
 	}
-	
-	//app->map->Draw();
+
+	app->render->DrawTexture(nexusStudiosLogo, 0, 0);
 
 	return true;
 }
@@ -87,7 +86,10 @@ bool SceneLogo::PostUpdate()
 
 	bool ret = true;
 
-	return true;
+	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_BACK] == KEY_DOWN)
+		ret = false;
+
+	return ret;
 }
 
 // Called before quitting

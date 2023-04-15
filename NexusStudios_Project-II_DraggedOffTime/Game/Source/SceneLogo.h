@@ -30,6 +30,12 @@ public:
 
 	bool OnGuiMouseClickEvent(GuiControl* control);
 	
+public:
+
+	bool enableMusic;
+
 private:
+
+	SDL_Texture* nexusStudiosLogo;
 
 };

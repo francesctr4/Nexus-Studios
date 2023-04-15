@@ -32,6 +32,10 @@ public:
 
 	bool OnGuiMouseClickEvent(GuiControl* control);
 
+public:
+
+	bool enableMusic;
+
 private:
 
 	Player* player;

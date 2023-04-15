@@ -38,6 +38,8 @@ bool SceneGameplay::Start()
 
 	/*bool retLoad = app->map->Load();
 	app->map->Enable();*/
+
+	enableMusic = true;
 	
 	return true;
 }
@@ -46,6 +48,13 @@ bool SceneGameplay::Start()
 bool SceneGameplay::PreUpdate()
 {
 	OPTICK_EVENT();
+
+	if (enableMusic) {
+
+		app->audio->PlayMusic("Assets/Audio/Music/Level1_Music.ogg", 0);
+		enableMusic = false;
+
+	}
 
 	return true;
 }
@@ -71,6 +80,7 @@ bool SceneGameplay::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 
 		//TransitionToScene(SceneType::BATTLE);
+		enableMusic = true;
 		app->fadeToBlack->Fade(this, (Module*)app->sceneBattle);
 
 	}
