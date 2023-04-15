@@ -33,11 +33,11 @@ bool SceneGameplay::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool SceneGameplay::Start()
 {
-	//5app->map->actualmap = 2;
+	app->map->actualmap = 2;
 
 
-	/*bool retLoad = app->map->Load();
-	app->map->Enable();*/
+	bool retLoad = app->map->Load();
+	//app->map->Enable();
 
 	enableMusic = true;
 	
@@ -85,9 +85,10 @@ bool SceneGameplay::Update(float dt)
 
 	}
 
-	//app->map->Draw();
 	SDL_Rect rect = { 0,0, 1280, 720 };
 	app->render->DrawRectangle(rect, 125, 255, 125);
+
+	app->map->Draw();
 
 	return true;
 }

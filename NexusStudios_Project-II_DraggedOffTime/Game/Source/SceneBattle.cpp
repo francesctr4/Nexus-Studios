@@ -34,6 +34,8 @@ bool SceneBattle::Awake(pugi::xml_node& config)
 bool SceneBattle::Start()
 {
 
+	enableMusic = true;
+
 	return true;
 }
 
@@ -43,6 +45,13 @@ bool SceneBattle::PreUpdate()
 	OPTICK_EVENT();
 
 	app->entityManager->Disable();
+
+	if (enableMusic) {
+
+		app->audio->PlayMusic("Assets/Audio/Music/BattleTheme.ogg", 0);
+		enableMusic = false;
+
+	}
 
 	return true;
 }
@@ -145,13 +154,23 @@ bool SceneBattle::Update(float dt)
 
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 
-		//TransitionToScene(SceneType::LOGO);
+		enableMusic = true;
 		app->fadeToBlack->Fade(this, (Module*)app->sceneLogo);
 	}
 
 	
 	//SDL_Rect rect = { 0,0, 1280, 720 };
 	//app->render->DrawRectangle(rect, 0, 0, 255, 150);
+
+	return true;
+}
+
+// Called each loop iteration
+bool SceneBattle::PostUpdate()
+{
+	OPTICK_EVENT();
+
+	bool ret = true;
 	
 	LOG("Player HP: %d", p_HP);
 	LOG("Enemy HP: %d", e_HP);
@@ -187,18 +206,6 @@ bool SceneBattle::Update(float dt)
 	app->render->DrawText("5 - Enemy Attack", 0, 175, 100, 20, { 255, 255, 255, 255 });
 	app->render->DrawText("6 - Enemy Defense", 0, 190, 100, 20, { 255, 255, 255, 255 });
 	app->render->DrawText("TAB - Skip Turn", 0, 205, 100, 20, { 255, 255, 255, 255 });
-
-	return true;
-}
-
-// Called each loop iteration
-bool SceneBattle::PostUpdate()
-{
-	OPTICK_EVENT();
-
-	bool ret = true;
-	
-
 
 	return true;
 }
