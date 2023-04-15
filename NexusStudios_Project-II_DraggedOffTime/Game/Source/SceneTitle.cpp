@@ -105,7 +105,7 @@ bool SceneTitle::PreUpdate()
 
 	if (enableMusic) {
 
-		app->audio->PlayMusic("Assets/Audio/Music/SymphonyOfBorealWind.ogg", 0);
+		app->audio->PlayMusic("Assets/Audio/Music/MenuTheme.ogg", 0);
 		enableMusic = false;
 
 	}
