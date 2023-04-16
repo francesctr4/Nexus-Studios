@@ -100,8 +100,6 @@ bool SceneGameplay::Update(float dt)
 
 	}
 
-	
-
 	app->map->Draw();
 
 	return true;
