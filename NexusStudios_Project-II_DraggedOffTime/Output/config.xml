@@ -37,7 +37,7 @@
 
   <map>
     <mapfolder path="Assets/Maps/"/>
-    <mapfile_1 path="Assets/Maps/Map_Final.tmx"/>
+    <mapfile_1 path="Assets/Maps/JovaniJV.tmx"/>
 	<mapfile_2 path="Assets/Maps/Lvl1.tmx"/>
 	<mapfile_3 path="Assets/Maps/Lvl2.tmx"/>
   </map>
