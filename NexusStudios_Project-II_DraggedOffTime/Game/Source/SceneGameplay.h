@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Player.h"
+#include "NPC.h"
+#include "Enemy.h"
 
 struct SDL_Texture;
 
@@ -39,5 +41,7 @@ public:
 private:
 
 	Player* player;
+
+	List<Enemy*> enemies;
 
 };

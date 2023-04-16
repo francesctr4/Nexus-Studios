@@ -19,7 +19,9 @@ enum class EnemyState
 
 enum class EnemyType
 {
-	
+	DAMAGE,
+	SUPPORT,
+	TANK
 
 };
 
@@ -45,12 +47,20 @@ public:
 
 	void Death();
 
-public:
-
-	
-
 private:
 
-	
+	EnemyType type;
+
+	int hp;
+	int atk;
+	int def;
+
+	SDL_Texture* texture;
+	const char* texturePath;
+
+	PhysBody* pbody;
+
+	Animation* currentAnimation;
+	Animation idle_right;
 
 };

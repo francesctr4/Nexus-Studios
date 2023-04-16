@@ -1,4 +1,4 @@
-#include "Enemy.h"
+#include "NPC.h"
 #include "App.h"
 #include "Textures.h"
 #include "Audio.h"
@@ -7,49 +7,16 @@
 #include "Log.h"
 #include "Point.h"
 #include "Physics.h"
-#include "PathFinding.h"
-#include "Map.h"
 
-#include <iostream>
-
-Enemy::Enemy() : Entity(EntityType::ENEMY)
+NPC::NPC() : Entity(EntityType::NPC)
 {
-	name.Create("Enemy");
-
+	name.Create("npc");
 }
 
-Enemy::~Enemy() {
+NPC::~NPC() {}
 
-}
+bool NPC::Awake() {
 
-bool Enemy::Awake() {
-
-	if (SString(parameters.attribute("type").as_string()) == SString("damage")) {
-
-		type = EnemyType::DAMAGE;
-		hp = 5;
-		atk = 10;
-		def = 5;
-
-	}
-
-	if (SString(parameters.attribute("type").as_string()) == SString("support")) {
-
-		type = EnemyType::SUPPORT;
-		hp = 10;
-		atk = 5;
-		def = 5;
-
-	}
-		
-	if (SString(parameters.attribute("type").as_string()) == SString("tank")) {
-
-		type = EnemyType::TANK;
-		hp = 5;
-		atk = 5;
-		def = 10;
-	}
-		
 	position.x = parameters.attribute("x").as_int();
 	position.y = parameters.attribute("y").as_int();
 	texturePath = parameters.attribute("texturepath").as_string();
@@ -65,7 +32,7 @@ bool Enemy::Awake() {
 	return true;
 }
 
-bool Enemy::Start() {
+bool NPC::Start() {
 
 	texture = app->tex->Load(texturePath);
 
@@ -81,9 +48,9 @@ bool Enemy::Start() {
 	return true;
 }
 
-bool Enemy::Update()
+bool NPC::Update()
 {
-	
+
 	b2Transform transform = pbody->body->GetTransform();
 	b2Vec2 pos = transform.p;
 
@@ -99,26 +66,13 @@ bool Enemy::Update()
 	return true;
 }
 
-bool Enemy::CleanUp()
+bool NPC::CleanUp()
 {
-
 	return true;
 }
 
-void Enemy::OnCollision(PhysBody* physA, PhysBody* physB) {
+void NPC::OnCollision(PhysBody* physA, PhysBody* physB) {
 
-	
 
-}
-
-void Enemy::OnCollisionEnd(PhysBody* physA, PhysBody* physB) {
-
-	
-
-}
-
-void Enemy::Death() {
-
-	
 
 }
