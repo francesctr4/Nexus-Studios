@@ -24,14 +24,59 @@ Enemy::~Enemy() {
 
 bool Enemy::Awake() {
 
-	
+	if (SString(parameters.attribute("type").as_string()) == SString("damage")) {
+
+		type = EnemyType::DAMAGE;
+		hp = 5;
+		atk = 10;
+		def = 5;
+
+	}
+
+	if (SString(parameters.attribute("type").as_string()) == SString("support")) {
+
+		type = EnemyType::SUPPORT;
+		hp = 10;
+		atk = 5;
+		def = 5;
+
+	}
+		
+	if (SString(parameters.attribute("type").as_string()) == SString("tank")) {
+
+		type = EnemyType::TANK;
+		hp = 5;
+		atk = 5;
+		def = 10;
+	}
+		
+	position.x = parameters.attribute("x").as_int();
+	position.y = parameters.attribute("y").as_int();
+	texturePath = parameters.attribute("texturepath").as_string();
+
+	for (int i = 0; i < 4; i++) {
+
+		idle_right.PushBack({ 32 * (0 + i), 32 * 0, 32, 32 });
+
+	}
+	idle_right.loop = true;
+	idle_right.speed = 0.06f;
 
 	return true;
 }
 
 bool Enemy::Start() {
 
+	texture = app->tex->Load(texturePath);
 
+	int width = 32;
+	int height = 32;
+
+	pbody = app->physics->CreateRectangle(position.x, position.y, width, height, bodyType::STATIC);
+
+	pbody->listener = this;
+
+	currentAnimation = &idle_right;
 
 	return true;
 }
@@ -39,7 +84,17 @@ bool Enemy::Start() {
 bool Enemy::Update()
 {
 	
+	b2Transform transform = pbody->body->GetTransform();
+	b2Vec2 pos = transform.p;
 
+	position.x = METERS_TO_PIXELS(pos.x) - 16;
+	position.y = METERS_TO_PIXELS(pos.y) - 18;
+
+	currentAnimation->Update();
+
+	SDL_Rect playerRect = currentAnimation->GetCurrentFrame();
+
+	app->render->DrawTexture(texture, position.x, position.y, &playerRect);
 
 	return true;
 }

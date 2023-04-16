@@ -34,6 +34,15 @@ bool SceneGameplay::Awake(pugi::xml_node& config)
 
 	}
 
+	for (pugi::xml_node enemyNode = config.child("enemy"); enemyNode; enemyNode = enemyNode.next_sibling("enemy"))
+	{
+		Enemy* enemy = (Enemy*)app->entityManager->CreateEntity(EntityType::ENEMY);
+		enemy->parameters = enemyNode;
+
+		enemies.Add(enemy);
+
+	}
+
 	return true;
 }
 

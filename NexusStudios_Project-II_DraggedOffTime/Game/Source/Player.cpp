@@ -40,18 +40,7 @@ bool Player::Start() {
 
 	//initilize textures.
 	texture = app->tex->Load(texturePath);
-	SDL_Rect prova;
-	prova.x = position.x;
-	prova.y = position.y;
-	prova.w = 30;
-	prova.h = 30;
-	app->render->DrawRectangle(prova, 255, 255, 255, 0);
 
-	if (app->input->GetKey(SDL_SCANCODE_0) == KEY_DOWN)
-	{
-		app->render->camera.x = position.x;
-		app->render->camera.y = position.y;
-	}
 	// Add physics to the player.
 	pbody = app->physics->CreateCircle(position.x + 16, position.y + 16, 16, bodyType::DYNAMIC);
 
