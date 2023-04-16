@@ -33,7 +33,7 @@ bool SceneBattle::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool SceneBattle::Start()
 {
-
+	
 	enableMusic = true;
 
 	return true;
@@ -62,7 +62,7 @@ bool SceneBattle::Update(float dt)
 	OPTICK_EVENT();
 
 	SDL_Rect rect = { 0,0, 1280, 720 };
-	app->render->DrawRectangle(rect, 0, 0, 255, 150);
+	app->render->DrawRectangle(rect, 70, 80, 220, 150);
 
 	//Random number generator
 	srand(time(NULL));
@@ -125,9 +125,9 @@ bool SceneBattle::Update(float dt)
 	}
 	else
 	{
-		LOG("-------------ENEMY TURN-------------");
+		//LOG("-------------ENEMY TURN-------------");
 		int random_num = (rand() % 2) + 1;
-		LOG("Numero aleatorio %d", random_num);
+		//LOG("Numero aleatorio %d", random_num);
 		switch (random_num)
 		{
 		case 1:
@@ -146,7 +146,7 @@ bool SceneBattle::Update(float dt)
 		default:
 			break;
 		}
-		LOG("-------------YOUR TURN-------------");
+		//LOG("-------------YOUR TURN-------------");
 		app->combatManager->playerTurn = !app->combatManager->playerTurn;
 	}
 
@@ -172,30 +172,32 @@ bool SceneBattle::PostUpdate()
 
 	bool ret = true;
 	
-	LOG("Player HP: %d", p_HP);
-	LOG("Enemy HP: %d", e_HP);
+	//LOG("Player HP: %d", p_HP);
+	//LOG("Enemy HP: %d", e_HP);
 
 	// Enemy HP
 	double e_percentage_life = (e_HP * 100.0) / e_max_HP;
 	SDL_Rect rect_e = { 650, 40, 5 * e_percentage_life, 10 };
-	app->render->DrawRectangle(rect_e, 10, 255, 10, 255);
+	app->render->DrawRectangle(rect_e, 70, 225, 20, 255);
 	app->render->DrawText("Enemy HP:", 650, 30, 100, 20, { 255, 255, 255, 255 });
 	std::string e_HP_string = std::to_string(e_HP);
 	app->render->DrawText(e_HP_string, 650 + 125, 30, 25, 20, { 255, 255, 255, 255 });
 
 	//Enemy sprite
-
+	SDL_Rect enemy_sprite_rect = { 980-32, 420, 32, 32 };
+	app->render->DrawRectangle(enemy_sprite_rect, 225, 30, 30, 255);
 
 	// Player HP
 	double p_percentage_life = (p_HP * 100.0) / p_max_HP;
 	SDL_Rect rect_p = { 0, 40, 5 * p_percentage_life, 10 };
-	app->render->DrawRectangle(rect_p, 10, 255, 10, 255);
+	app->render->DrawRectangle(rect_p, 70, 225, 20, 255);
 	app->render->DrawText("Player HP:", 0, 30, 100, 20, { 255, 255, 255, 255 });
 	std::string p_HP_string = std::to_string(p_HP);
 	app->render->DrawText(p_HP_string, 0 + 125, 30, 25, 20, { 255, 255, 255, 255 });
 
 	//Player sprite
-
+	SDL_Rect player_sprite_rect = { 300, 420, 32, 32 };
+	app->render->DrawRectangle(player_sprite_rect, 180, 125, 230, 255);
 
 	// Combat UI - Controls
 	app->render->DrawText("1 - Standar Attack", 0, 100, 100, 20, { 255, 255, 255, 255 });

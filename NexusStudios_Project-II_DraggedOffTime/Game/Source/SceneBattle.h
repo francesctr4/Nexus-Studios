@@ -36,6 +36,8 @@ public:
 
 private:
 
+	//Sprite player (TODO)
+
 	//Variables a cambiar por las del player y las del enemigo
 	//Player
 	int p_HP = 100;
