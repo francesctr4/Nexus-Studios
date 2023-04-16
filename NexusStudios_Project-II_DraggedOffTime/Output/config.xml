@@ -25,9 +25,9 @@
   <sceneGameplay>
 	<player x="200" y="200" texturepath="Assets/Textures/Player.png"/>
 	  
-	<npc x="400" y="400" texturepath="Assets/Textures/NPC1.png"/>
-	<npc x="600" y="400" texturepath="Assets/Textures/NPC2.png"/>
-	<npc x="800" y="400" texturepath="Assets/Textures/NPC3.png"/>
+	<npc type="rogue" x="400" y="400" texturepath="Assets/Textures/Rogue.png"/>
+	<npc type="wizard" x="600" y="400" texturepath="Assets/Textures/Wizard.png"/>
+	<npc type="orc" x="800" y="400" texturepath="Assets/Textures/Orc.png"/>
 
 	<enemy type = "damage" x="900" y="100" texturepath="Assets/Textures/Damage.png"/>
 	<enemy type = "support" x="1000" y="100" texturepath="Assets/Textures/Support.png"/>

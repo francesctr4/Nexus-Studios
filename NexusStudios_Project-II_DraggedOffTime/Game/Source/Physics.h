@@ -31,6 +31,7 @@ enum class ColliderType {
 	NPC,
 	PLATFORM,
 	SPIKES,
+	NPC_SENSOR,
 	ENEMY_SENSOR,
 	ENEMY,
 	UNKNOWN
