@@ -1,6 +1,7 @@
 #include "EntityManager.h"
 #include "Player.h"
 #include "Item.h"
+#include "NPC.h"
 #include "Enemy.h"
 #include "App.h"
 #include "Textures.h"
@@ -95,11 +96,16 @@ Entity* EntityManager::CreateEntity(EntityType type)
 		entity = new Item();
 		break;
 
-		case EntityType::ENEMY:
+	case EntityType::ENEMY:
 		entity = new Enemy();
 		break;
 
-	default: break;
+	case EntityType::NPC:
+		entity = new NPC();
+		break;
+
+	default: 
+		break;
 	}
 
 	// Created entities are added to the list

@@ -1,22 +1,18 @@
-#ifndef __PLAYER_H__
-#define __PLAYER_H__
+#pragma once
 
 #include "Entity.h"
 #include "Point.h"
 #include "Animation.h"
 #include "SDL/include/SDL.h"
-#include "Timer.h"
-#include "Physics.h"
 
 struct SDL_Texture;
 
-class Player : public Entity
+class NPC : public Entity
 {
 public:
 
-	Player();
-	
-	virtual ~Player();
+	NPC();
+	virtual ~NPC();
 
 	bool Awake();
 
@@ -30,16 +26,12 @@ public:
 
 private:
 
-	// Declare player parameters
 	SDL_Texture* texture;
 	const char* texturePath;
 
-	// Add physics to the player 
 	PhysBody* pbody;
 
 	Animation* currentAnimation;
 	Animation idle_right;
 
 };
-
-#endif // __PLAYER_H__

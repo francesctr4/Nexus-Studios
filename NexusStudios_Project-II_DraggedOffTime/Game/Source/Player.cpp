@@ -25,6 +25,14 @@ bool Player::Awake() {
 	position.y = parameters.attribute("y").as_int();
 	texturePath = parameters.attribute("texturepath").as_string();
 
+	for (int i = 0; i < 4; i++) {
+
+		idle_right.PushBack({ 32 * (0 + i), 32 * 0, 32, 32 });
+
+	}
+	idle_right.loop = true;
+	idle_right.speed = 0.06f;
+
 	return true;
 }
 
@@ -45,13 +53,15 @@ bool Player::Start() {
 		app->render->camera.y = position.y;
 	}
 	// Add physics to the player.
-	pbody = app->physics->CreateCircle(position.x + 16, position.y + 16, 16, bodyType::KINEMATIC);
+	pbody = app->physics->CreateCircle(position.x + 16, position.y + 16, 16, bodyType::DYNAMIC);
 
 	// Assign player class (using "this") to the listener of the pbody. This makes the Physics module to call the OnCollision method.
 	pbody->listener = this;
 
 	// Assign collider type.
 	pbody->ctype = ColliderType::PLAYER;
+
+	currentAnimation = &idle_right;
 
 	return true;
 }
@@ -81,7 +91,12 @@ bool Player::Update()
 	position.y = METERS_TO_PIXELS(pbody->body->GetTransform().p.y) - 16;
 
 	// Draw player texture.
-	app->render->DrawTexture(texture, position.x, position.y);
+
+	currentAnimation->Update();
+
+	SDL_Rect playerRect = currentAnimation->GetCurrentFrame();
+
+	app->render->DrawTexture(texture, position.x, position.y, &playerRect);
 
 	return true;
 }

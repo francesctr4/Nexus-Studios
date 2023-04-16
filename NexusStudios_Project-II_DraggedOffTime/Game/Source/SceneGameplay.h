@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Player.h"
+#include "NPC.h"
 
 struct SDL_Texture;
 

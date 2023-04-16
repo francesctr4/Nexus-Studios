@@ -27,6 +27,13 @@ bool SceneGameplay::Awake(pugi::xml_node& config)
 	player = (Player*)app->entityManager->CreateEntity(EntityType::PLAYER);
 	player->parameters = config.child("player");
 
+	for (pugi::xml_node npcNode = config.child("npc"); npcNode; npcNode = npcNode.next_sibling("npc"))
+	{
+		NPC* npc = (NPC*)app->entityManager->CreateEntity(EntityType::NPC);
+		npc->parameters = npcNode;
+
+	}
+
 	return true;
 }
 

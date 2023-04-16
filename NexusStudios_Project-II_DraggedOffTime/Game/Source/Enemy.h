@@ -19,7 +19,9 @@ enum class EnemyState
 
 enum class EnemyType
 {
-	
+	DAMAGE,
+	SUPPORT,
+	TANK
 
 };
 

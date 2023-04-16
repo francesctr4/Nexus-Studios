@@ -85,6 +85,9 @@
     <ClCompile Include="Source\FadeToBlack.cpp">
       <Filter>Game Loop\Modules</Filter>
     </ClCompile>
+    <ClCompile Include="Source\NPC.cpp">
+      <Filter>Game Loop\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -203,6 +206,9 @@
     </ClInclude>
     <ClInclude Include="Source\FadeToBlack.h">
       <Filter>Game Loop\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\NPC.h">
+      <Filter>Game Loop\Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

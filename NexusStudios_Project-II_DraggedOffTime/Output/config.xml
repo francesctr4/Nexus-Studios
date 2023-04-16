@@ -23,7 +23,10 @@
   </audio>
 
   <sceneGameplay>
-	<player x="200" y="200" texturepath="Assets/Textures/player1.png"/>
+	<player x="200" y="200" texturepath="Assets/Textures/Player.png"/>
+	<npc x="400" y="400" texturepath="Assets/Textures/NPC1.png"/>
+	<npc x="600" y="400" texturepath="Assets/Textures/NPC2.png"/>
+	<npc x="800" y="400" texturepath="Assets/Textures/NPC3.png"/>
   </sceneGameplay>
 
   <map>
