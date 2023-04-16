@@ -1,5 +1,10 @@
 #pragma once
 
+#include "GuiManager.h"
+#include "GuiButton.h"
+#include "GuiSlider.h"
+#include "GuiCheckBox.h"
+
 struct SDL_Texture;
 
 class SceneBattle : public Module
@@ -50,6 +55,17 @@ private:
 	int e_max_HP = 60;
 	int e_DEF = 10;
 	int e_DMG = 20;
+
+	//GUI
+	SDL_Texture* attackButton;
+	GuiButton* AttackButton;
+
+	SDL_Texture* defendButton;
+	GuiButton* DefendButton;
+
+	SDL_Texture* itemButton;
+	GuiButton* ItemButton;
+
 
 
 };

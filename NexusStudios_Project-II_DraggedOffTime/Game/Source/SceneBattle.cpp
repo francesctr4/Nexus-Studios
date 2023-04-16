@@ -11,6 +11,7 @@
 #include "FadeToBlack.h"
 #include "CombatManager.h"
 #include "EntityManager.h"
+#include "SceneTitle.h"
 #include <ctime>
 
 #include "SceneBattle.h"
@@ -35,6 +36,18 @@ bool SceneBattle::Start()
 {
 	
 	enableMusic = true;
+
+	/*attackButton = app->tex->Load("Assets/UI/Attack.png");
+	SDL_Rect attack_rect = { 100, 500, 250, 108 };
+	AttackButton = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 10, attackButton, "", attack_rect, this);
+
+	defendButton = app->tex->Load("Assets/UI/Defend.png");
+	SDL_Rect defend_rect = { 500, 500, 250, 108 };
+	DefendButton = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 11, defendButton, "", defend_rect, this);
+
+	itemButton = app->tex->Load("Assets/UI/Item.png");
+	SDL_Rect item_rect = { 900, 500, 250, 108 };
+	ItemButton = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 12, itemButton, "", item_rect, this);*/
 
 	return true;
 }
@@ -199,7 +212,7 @@ bool SceneBattle::PostUpdate()
 	SDL_Rect player_sprite_rect = { 300, 420, 32, 32 };
 	app->render->DrawRectangle(player_sprite_rect, 180, 125, 230, 255);
 
-	// Combat UI - Controls
+	// Combat UI - Controls (Debug)
 	app->render->DrawText("1 - Standar Attack", 0, 100, 100, 20, { 255, 255, 255, 255 });
 	app->render->DrawText("2 - Quick Time Event Attack", 0, 115, 100, 20, { 255, 255, 255, 255 });
 	app->render->DrawText("3 - Defend (+DEF)", 0, 130, 100, 20, { 255, 255, 255, 255 });
@@ -208,6 +221,11 @@ bool SceneBattle::PostUpdate()
 	app->render->DrawText("5 - Enemy Attack", 0, 175, 100, 20, { 255, 255, 255, 255 });
 	app->render->DrawText("6 - Enemy Defense", 0, 190, 100, 20, { 255, 255, 255, 255 });
 	app->render->DrawText("TAB - Skip Turn", 0, 205, 100, 20, { 255, 255, 255, 255 });
+
+	//GUI
+	/*AttackButton->Draw(app->render);
+	DefendButton->Draw(app->render);
+	ItemButton->Draw(app->render);*/
 
 	return true;
 }
