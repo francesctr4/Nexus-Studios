@@ -49,7 +49,7 @@ bool SceneGameplay::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool SceneGameplay::Start()
 {
-	app->map->actualmap = 1;
+	app->map->actualmap = 0;
 
 	bool retLoad = app->map->Load();
 	//app->map->Enable();
@@ -100,8 +100,7 @@ bool SceneGameplay::Update(float dt)
 
 	}
 
-	SDL_Rect rect = { 0,0, 1280, 720 };
-	app->render->DrawRectangle(rect, 125, 255, 125);
+	
 
 	app->map->Draw();
 

@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="50" height="25" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="1">
- <tileset firstgid="1" source="Tiles.tsx"/>
- <tileset firstgid="626" source="Props.tsx"/>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="50" height="25" tilewidth="16" tileheight="16" infinite="0" nextlayerid="2" nextobjectid="1">
+ <tileset firstgid="1" name="Tiles" tilewidth="16" tileheight="16" tilecount="625" columns="25">
+  <image source="Tiles.png" width="400" height="400"/>
+ </tileset>
+ <tileset firstgid="626" name="Props" tilewidth="16" tileheight="16" tilecount="625" columns="25">
+  <image source="Props.png" width="400" height="400"/>
+ </tileset>
  <layer id="1" name="Suelo" width="50" height="25">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+   <property name="Navigation" type="bool" value="false"/>
+  </properties>
   <data>
    <tile gid="31"/>
    <tile gid="31"/>
@@ -1257,6 +1265,10 @@
   </data>
  </layer>
  <layer id="3" name="Rejas" width="50" height="25">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+   <property name="Navigation" type="bool" value="false"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
@@ -2511,6 +2523,10 @@
   </data>
  </layer>
  <layer id="2" name="Pared" width="50" height="25">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+   <property name="Navigation" type="bool" value="false"/>
+  </properties>
   <data>
    <tile gid="311"/>
    <tile gid="311"/>
@@ -3765,6 +3781,10 @@
   </data>
  </layer>
  <layer id="4" name="Decoracion" width="50" height="25">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+   <property name="Navigation" type="bool" value="false"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
@@ -5019,6 +5039,10 @@
   </data>
  </layer>
  <layer id="5" name="Decoracion2" width="50" height="25">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+   <property name="Navigation" type="bool" value="false"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
