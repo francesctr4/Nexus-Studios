@@ -92,9 +92,8 @@ bool SceneGameplay::Update(float dt)
 
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_START] == KEY_DOWN) {
 
-		//TransitionToScene(SceneType::BATTLE);
 		enableMusic = true;
 		app->fadeToBlack->Fade(this, (Module*)app->sceneBattle);
 

@@ -52,6 +52,8 @@ bool Input::Awake(pugi::xml_node& config)
 
 			sdl_controllers[i] = SDL_GameControllerOpen(i);
 
+			activeControllers.Add((GameController*)sdl_controllers[i]);
+
 		}
 
 	}
