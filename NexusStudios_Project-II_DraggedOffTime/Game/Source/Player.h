@@ -28,7 +28,13 @@ public:
 
 	void OnCollision(PhysBody* physA, PhysBody* physB);
 
+public:
+
+	bool godMode;
+
 private:
+
+	int speed;
 
 	// Declare player parameters
 	SDL_Texture* texture;

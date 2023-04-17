@@ -85,12 +85,8 @@ bool SceneGameplay::Update(float dt)
 
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN) {
-
-		if (app->physics->debug) app->physics->debug = false;
-		else app->physics->debug = true;
-
-	}
+	if (app->sceneGameplay->player->godMode) app->physics->debug = true;
+	else app->physics->debug = false;
 
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_START] == KEY_DOWN) {
 

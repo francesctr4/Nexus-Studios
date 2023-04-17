@@ -52,16 +52,30 @@ bool Player::Start() {
 
 	currentAnimation = &idle_right;
 
+	godMode = false;
+
 	return true;
 }
 
 bool Player::Update()
 {
 	// Add physics to the player and update player position using physics.
-	int speed = 5;
+	
 	b2Vec2 vel = b2Vec2(0, -GRAVITY_Y);
 
-	// TODO 2 - Split Screen: manage players movement according to active cameras, input keys and speed used.
+	if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN) godMode = !godMode;
+
+	if (godMode) {
+
+		speed = 20;
+
+	}
+	else {
+
+		speed = 5;
+
+	}
+
 	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) vel = b2Vec2(GRAVITY_X, -speed);
 	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) vel = b2Vec2(GRAVITY_X, speed);
 	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) vel = b2Vec2(-speed, -GRAVITY_Y);
