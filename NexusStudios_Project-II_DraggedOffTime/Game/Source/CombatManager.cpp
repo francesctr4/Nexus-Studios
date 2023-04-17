@@ -4,6 +4,7 @@
 #include "App.h"
 #include "Textures.h"
 #include "Input.h"
+#include "SceneBattle.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -86,13 +87,23 @@ void CombatManager::BlockAttack() {
 	increasedDefense = 10; //10 is a placeholder
 };
 
-int CombatManager::UseItem(int e_HP) {
-	return e_HP + 25; //25 como valor provisional
+int CombatManager::UseItem(int p_HP) {
+	if (p_HP + 25 > app->sceneBattle->p_max_HP)
+	{
+		return app->sceneBattle->p_max_HP;
+	}
+	else
+	{
+		return p_HP + 25; //25 como valor provisional
+	}
+	
+	
+	
 };
 
 bool CombatManager::Run() {
 	int numeroAleatorio = rand() % 100;
-	if (numeroAleatorio >= 65) { //65% de probalidades de escapar
+	if (numeroAleatorio <= 65) { //65% de probalidades de escapar
 		return true;
 	}
 	else {

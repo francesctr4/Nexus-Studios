@@ -12,6 +12,7 @@
 #include "CombatManager.h"
 #include "EntityManager.h"
 #include "SceneTitle.h"
+#include "SceneGameplay.h"
 #include <ctime>
 
 #include "SceneBattle.h"
@@ -36,6 +37,12 @@ bool SceneBattle::Start()
 {
 	
 	enableMusic = true;
+
+	//Load textures
+	classID = app->tex->Load("Assets/UI/ClassID.png");
+	lifeFrame = app->tex->Load("Assets/UI/LifeFrame.png");
+	actionButtons = app->tex->Load("Assets/UI/ActionButtons.png");
+	healthBar = app->tex->Load("Assets/UI/HealthBar.png");
 
 	/*attackButton = app->tex->Load("Assets/UI/Attack.png");
 	SDL_Rect attack_rect = { 100, 500, 250, 108 };
@@ -91,88 +98,154 @@ bool SceneBattle::Update(float dt)
 
 	if (app->combatManager->playerTurn)
 	{
-		if (app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
-		{
-			e_HP = app->combatManager->StandarAttack(p_DMG, e_HP, e_DEF);
-			app->combatManager->playerTurn = !app->combatManager->playerTurn;
-		}
-			
+		//Standar actions
+		if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN)
+			app->sceneGameplay->player->godMode = !app->sceneGameplay->player->godMode;
 
-		if (app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
+		if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN)
 		{
-			e_HP = app->combatManager->StandarAttack(p_DMG, e_HP, e_DEF);
-			app->combatManager->playerTurn = !app->combatManager->playerTurn;
-			/*qte = true;
-			startTime = SDL_GetTicks();*/
-		}
-			
-
-		if (app->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
-		{
-			app->combatManager->BlockAttack();
-			app->combatManager->playerTurn = !app->combatManager->playerTurn;
-		}
-			
-
-		if (app->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
-		{
-			p_HP = app->combatManager->UseItem(p_HP);
-			app->combatManager->playerTurn = !app->combatManager->playerTurn;
-		}
-			
-		if (app->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
-		{
-			if (app->combatManager->Run())
+			if (action_selected != 0)
 			{
-				//Transition to Gameplay Screen
-				app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
+				action_selected--;
+
 			}
-			else
+			else if (action_selected == 0)
 			{
-				LOG("You failed to run away");
-				app->combatManager->playerTurn = !app->combatManager->playerTurn;
+				action_selected = 4;
+			}
+			
+		}
+
+		if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN)
+		{
+			
+			if (action_selected != 4)
+			{
+				action_selected++;
+			}
+			else if (action_selected == 4)
+			{
+				action_selected = 0;
 			}
 		}
 
-		if (app->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
+		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 		{
-			p_HP = app->combatManager->EnemyAttack(e_DMG, p_HP, p_DEF);
-			app->combatManager->playerTurn = !app->combatManager->playerTurn;
-		}
-			
-
-		if (app->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN)
-		{
-			app->combatManager->EnemyBlockAttack();
-			app->combatManager->playerTurn = !app->combatManager->playerTurn;
-		}
-			
-
-		if (app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
-			app->combatManager->playerTurn = !app->combatManager->playerTurn;
-
-		//Quick Time Event attack (Para la alpha)
-		/*if (qte)
-		{
-			if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN)
+			switch (action_selected)
 			{
-				endTime = SDL_GetTicks();
+			case 0: //Standar attack
+				e_HP = app->combatManager->StandarAttack(p_DMG, e_HP, e_DEF);
+				break;
+			case 1:	//Quick time event attack (TODO)
+				e_HP = app->combatManager->StandarAttack(p_DMG, e_HP, e_DEF);
+				break;
+			case 2: //Heal
+				p_HP = app->combatManager->UseItem(p_HP);
+				break;
+			case 3: //Habilidades (TODO)
+				e_HP = app->combatManager->StandarAttack(p_DMG, e_HP, e_DEF);
+				break;
+			case 4: //Run away
+				if (app->combatManager->Run())
+				{
+					//Transition to Gameplay Screen
+					app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
+				}
+				else
+				{
+					LOG("You failed to run away");
+				}
+				break;
 			}
+			app->combatManager->playerTurn = !app->combatManager->playerTurn;
+		}
 
-			if (endTime != 0 && endTime - startTime >= (objetiveTime - tolerance) && endTime - startTime <= (objetiveTime + tolerance))
+		//Debug controls
+		if (app->sceneGameplay->player->godMode)
+		{
+			if (app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 			{
-				LOG("Ataque acertado");
-				qte = false;
+				e_HP = app->combatManager->StandarAttack(p_DMG, e_HP, e_DEF);
 				app->combatManager->playerTurn = !app->combatManager->playerTurn;
 			}
 
-			if((!endTime - startTime >= (objetiveTime - tolerance) && endTime - startTime <= (objetiveTime + tolerance)))
+
+			if (app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
 			{
-				LOG("Ataque fallido");
-				qte = false;
+				e_HP = app->combatManager->StandarAttack(p_DMG, e_HP, e_DEF);
+				app->combatManager->playerTurn = !app->combatManager->playerTurn;
+				/*qte = true;
+				startTime = SDL_GetTicks();*/
+			}
+
+
+			if (app->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
+			{
+				app->combatManager->BlockAttack();
 				app->combatManager->playerTurn = !app->combatManager->playerTurn;
 			}
-		}*/
+
+
+			if (app->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
+			{
+				p_HP = app->combatManager->UseItem(p_HP);
+				app->combatManager->playerTurn = !app->combatManager->playerTurn;
+			}
+
+			if (app->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
+			{
+				if (app->combatManager->Run())
+				{
+					//Transition to Gameplay Screen
+					app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
+				}
+				else
+				{
+					LOG("You failed to run away");
+					app->combatManager->playerTurn = !app->combatManager->playerTurn;
+				}
+			}
+
+			if (app->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
+			{
+				p_HP = app->combatManager->EnemyAttack(e_DMG, p_HP, p_DEF);
+				app->combatManager->playerTurn = !app->combatManager->playerTurn;
+			}
+
+
+			if (app->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN)
+			{
+				app->combatManager->EnemyBlockAttack();
+				app->combatManager->playerTurn = !app->combatManager->playerTurn;
+			}
+
+
+			if (app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
+				app->combatManager->playerTurn = !app->combatManager->playerTurn;
+
+			//Quick Time Event attack (Para la alpha)
+			/*if (qte)
+			{
+				if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN)
+				{
+					endTime = SDL_GetTicks();
+				}
+
+				if (endTime != 0 && endTime - startTime >= (objetiveTime - tolerance) && endTime - startTime <= (objetiveTime + tolerance))
+				{
+					LOG("Ataque acertado");
+					qte = false;
+					app->combatManager->playerTurn = !app->combatManager->playerTurn;
+				}
+
+				if((!endTime - startTime >= (objetiveTime - tolerance) && endTime - startTime <= (objetiveTime + tolerance)))
+				{
+					LOG("Ataque fallido");
+					qte = false;
+					app->combatManager->playerTurn = !app->combatManager->playerTurn;
+				}
+			}*/
+		}
 	}
 	else
 	{
@@ -211,12 +284,12 @@ bool SceneBattle::Update(float dt)
 
 	//---
 
-	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_START] == KEY_DOWN) {
+	/*if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_START] == KEY_DOWN) {
 
 		enableMusic = true;
 		app->fadeToBlack->Fade(this, (Module*)app->sceneLogo);
 
-	}
+	}*/
 
 	
 	//SDL_Rect rect = { 0,0, 1280, 720 };
@@ -249,30 +322,48 @@ bool SceneBattle::PostUpdate()
 
 	// Player HP
 	double p_percentage_life = (p_HP * 100.0) / p_max_HP;
-	SDL_Rect rect_p = { 0, 40, 5 * p_percentage_life, 10 };
-	app->render->DrawRectangle(rect_p, 70, 225, 20, 255);
-	app->render->DrawText("Player HP:", 0, 30, 100, 20, { 255, 255, 255, 255 });
+	if (p_percentage_life < 50 && p_percentage_life >= 20)	//Yellow color
+	{
+		SDL_Rect rect_p = { 0, 20, 3 * p_percentage_life, 20 };
+		app->render->DrawTexture(healthBar, 80, 30, &rect_p);
+	}
+	if (p_percentage_life < 20) //Red color
+	{
+		SDL_Rect rect_p = { 0, 40, 3 * p_percentage_life, 20 };
+		app->render->DrawTexture(healthBar, 80, 30, &rect_p);
+	}
+	if (p_percentage_life >= 50) //Green color
+	{
+		SDL_Rect rect_p = { 0, 0, 3 * p_percentage_life, 20 };
+		app->render->DrawTexture(healthBar, 80, 30, &rect_p);
+	}
+	app->render->DrawText("Player HP:", 80, 10, 100, 20, { 255, 255, 255, 255 });
 	std::string p_HP_string = std::to_string(p_HP);
-	app->render->DrawText(p_HP_string, 0 + 125, 30, 25, 20, { 255, 255, 255, 255 });
+	app->render->DrawText(p_HP_string, 80 + 125, 10, 25, 20, { 255, 255, 255, 255 });
 
 	//Player sprite
 	SDL_Rect player_sprite_rect = { 300, 420, 32, 32 };
 	app->render->DrawRectangle(player_sprite_rect, 180, 125, 230, 255);
 
-	// Combat UI - Controls (Debug)
-	app->render->DrawText("1 - Standar Attack", 0, 100, 100, 20, { 255, 255, 255, 255 });
-	app->render->DrawText("2 - Quick Time Event Attack", 0, 115, 100, 20, { 255, 255, 255, 255 });
-	app->render->DrawText("3 - Defend (Block)", 0, 130, 100, 20, { 255, 255, 255, 255 });
-	app->render->DrawText("4 - Use Item", 0, 145, 100, 20, { 255, 255, 255, 255 });
-	app->render->DrawText("5 - Run away", 0, 160, 100, 20, { 255, 255, 255, 255 });
-	app->render->DrawText("6 - Enemy Attack", 0, 175, 100, 20, { 255, 255, 255, 255 });
-	app->render->DrawText("7 - Enemy Defense", 0, 190, 100, 20, { 255, 255, 255, 255 });
-	app->render->DrawText("TAB - Skip Turn", 0, 205, 100, 20, { 255, 255, 255, 255 });
+	if (app->sceneGameplay->player->godMode)
+	{
+		// Combat UI - Controls (Debug)
+		app->render->DrawText("1 - Standar Attack", 100, 100, 100, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("2 - Quick Time Event Attack", 100, 115, 100, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("3 - Defend (Block)", 100, 130, 100, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("4 - Use Item", 100, 145, 100, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("5 - Run away", 100, 160, 100, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("6 - Enemy Attack", 100, 175, 100, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("7 - Enemy Defense", 100, 190, 100, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("TAB - Skip Turn", 100, 205, 100, 20, { 255, 255, 255, 255 });
+	}
 
-	//GUI
-	/*AttackButton->Draw(app->render);
-	DefendButton->Draw(app->render);
-	ItemButton->Draw(app->render);*/
+	//Combat UI - Visual
+	app->render->DrawTexture(classID, 20, 20); 
+	app->render->DrawTexture(lifeFrame, 80, 30);
+	//Atcion selector
+	SDL_Rect actionSelector_rect = { action_selected * 70, 0, 70, 70};
+	app->render->DrawTexture(actionButtons, 235, 305, &actionSelector_rect);
 
 	return true;
 }

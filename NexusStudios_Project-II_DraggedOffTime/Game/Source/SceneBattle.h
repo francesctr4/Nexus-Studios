@@ -40,9 +40,6 @@ public:
 	bool enableMusic;
 	bool qte = false; //Quick Time Event 
 
-private:
-
-	//Sprite player (TODO)
 
 	//Variables a cambiar por las del player y las del enemigo
 	//Player
@@ -56,6 +53,24 @@ private:
 	int e_max_HP = 60;
 	int e_DEF = 10;
 	int e_DMG = 20;
+
+private:
+
+	//Sprite player (TODO)
+
+	
+
+	//Sprites UI
+	SDL_Texture* classID = nullptr;
+
+	SDL_Texture* actionButtons = nullptr;
+
+	SDL_Texture* lifeFrame = nullptr;
+
+	SDL_Texture* healthBar = nullptr;
+
+	int action_selected = 0; 
+
 
 	//GUI
 	SDL_Texture* attackButton;

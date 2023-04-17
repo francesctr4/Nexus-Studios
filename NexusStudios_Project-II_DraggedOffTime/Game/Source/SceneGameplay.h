@@ -38,7 +38,7 @@ public:
 
 	bool enableMusic;
 
-private:
+public:
 
 	Player* player;
 
