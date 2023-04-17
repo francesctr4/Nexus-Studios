@@ -38,6 +38,7 @@ public:
 public:
 
 	bool enableMusic;
+	bool qte = false; //Quick Time Event 
 
 private:
 
@@ -67,5 +68,9 @@ private:
 	GuiButton* ItemButton;
 
 
-
+	// Variables para el control del QTE
+	int startTime = 0;
+	int endTime = NULL;
+	int tolerance = 500; //Tolerancia en ms
+	int objetiveTime = 100; //Valor objetivo en ms
 };

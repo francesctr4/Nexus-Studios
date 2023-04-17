@@ -100,8 +100,10 @@ bool SceneBattle::Update(float dt)
 
 		if (app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
 		{
-			e_HP = app->combatManager->TimeEventAttack(p_DMG, e_HP, e_DEF);
+			e_HP = app->combatManager->StandarAttack(p_DMG, e_HP, e_DEF);
 			app->combatManager->playerTurn = !app->combatManager->playerTurn;
+			/*qte = true;
+			startTime = SDL_GetTicks();*/
 		}
 			
 
@@ -114,10 +116,23 @@ bool SceneBattle::Update(float dt)
 
 		if (app->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
 		{
-			app->combatManager->UseItem();
+			p_HP = app->combatManager->UseItem(p_HP);
 			app->combatManager->playerTurn = !app->combatManager->playerTurn;
 		}
 			
+		if (app->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
+		{
+			if (app->combatManager->Run())
+			{
+				//Transition to Gameplay Screen
+				app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
+			}
+			else
+			{
+				LOG("You failed to run away");
+				app->combatManager->playerTurn = !app->combatManager->playerTurn;
+			}
+		}
 
 		if (app->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
 		{
@@ -135,6 +150,29 @@ bool SceneBattle::Update(float dt)
 
 		if (app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
 			app->combatManager->playerTurn = !app->combatManager->playerTurn;
+
+		//Quick Time Event attack (Para la alpha)
+		/*if (qte)
+		{
+			if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN)
+			{
+				endTime = SDL_GetTicks();
+			}
+
+			if (endTime != 0 && endTime - startTime >= (objetiveTime - tolerance) && endTime - startTime <= (objetiveTime + tolerance))
+			{
+				LOG("Ataque acertado");
+				qte = false;
+				app->combatManager->playerTurn = !app->combatManager->playerTurn;
+			}
+
+			if((!endTime - startTime >= (objetiveTime - tolerance) && endTime - startTime <= (objetiveTime + tolerance)))
+			{
+				LOG("Ataque fallido");
+				qte = false;
+				app->combatManager->playerTurn = !app->combatManager->playerTurn;
+			}
+		}*/
 	}
 	else
 	{
@@ -223,11 +261,11 @@ bool SceneBattle::PostUpdate()
 	// Combat UI - Controls (Debug)
 	app->render->DrawText("1 - Standar Attack", 0, 100, 100, 20, { 255, 255, 255, 255 });
 	app->render->DrawText("2 - Quick Time Event Attack", 0, 115, 100, 20, { 255, 255, 255, 255 });
-	app->render->DrawText("3 - Defend (+DEF)", 0, 130, 100, 20, { 255, 255, 255, 255 });
+	app->render->DrawText("3 - Defend (Block)", 0, 130, 100, 20, { 255, 255, 255, 255 });
 	app->render->DrawText("4 - Use Item", 0, 145, 100, 20, { 255, 255, 255, 255 });
-	app->render->DrawText("-------------------", 0, 160, 100, 20, { 255, 255, 255, 255 });
-	app->render->DrawText("5 - Enemy Attack", 0, 175, 100, 20, { 255, 255, 255, 255 });
-	app->render->DrawText("6 - Enemy Defense", 0, 190, 100, 20, { 255, 255, 255, 255 });
+	app->render->DrawText("5 - Run away", 0, 160, 100, 20, { 255, 255, 255, 255 });
+	app->render->DrawText("6 - Enemy Attack", 0, 175, 100, 20, { 255, 255, 255, 255 });
+	app->render->DrawText("7 - Enemy Defense", 0, 190, 100, 20, { 255, 255, 255, 255 });
 	app->render->DrawText("TAB - Skip Turn", 0, 205, 100, 20, { 255, 255, 255, 255 });
 
 	//GUI

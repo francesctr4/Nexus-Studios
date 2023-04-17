@@ -75,6 +75,8 @@ int CombatManager::StandarAttack(int p_DMG, int e_HP, int e_DEF) {
 
 int CombatManager::TimeEventAttack(int p_DMG, int e_HP, int e_DEF) {
 	//De momento nada, se incluirá en la siguiente versión
+	
+
 	return 0;
 };
 
@@ -84,10 +86,19 @@ void CombatManager::BlockAttack() {
 	increasedDefense = 10; //10 is a placeholder
 };
 
-void CombatManager::UseItem() {
-
+int CombatManager::UseItem(int e_HP) {
+	return e_HP + 25; //25 como valor provisional
 };
 
+bool CombatManager::Run() {
+	int numeroAleatorio = rand() % 100;
+	if (numeroAleatorio >= 65) { //65% de probalidades de escapar
+		return true;
+	}
+	else {
+		return false;
+	}
+};
 
 //Enemy actions
 int CombatManager::EnemyAttack(int e_DMG, int p_HP, int p_DEF) {
@@ -115,3 +126,50 @@ void CombatManager::EnemyBlockAttack() {
 	enemy_increasedDefense = 10; //10 is a placeholder
 }
 
+
+//int CombatManager::QuickTimeEvent() {
+//	// Tiempo objetivo en milisegundos
+//	int objectiveTime = 500;
+//
+//	// Variables para el control del QTE
+//	bool qteStarted = false;
+//	bool completed = false;
+//	int startTime = 0;
+//	int endTime = 0;
+//
+//	// Bucle principal del QTE
+//	while (true) {
+//		// Comprobar si el usuario ha iniciado el QTE
+//		if (app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN) {
+//			qteStarted = true;
+//			startTime = SDL_GetTicks();
+//		}
+//
+//		// Salir del bucle si el QTE ha terminado
+//		if (completed || SDL_GetTicks() - startTime >= objectiveTime) {
+//			break;
+//		}
+//
+//		// Comprobar si el usuario ha completado el QTE
+//		if (qteStarted && app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN) {
+//			completed = true;
+//			endTime = SDL_GetTicks();
+//		}
+//
+//		// Dibujar el QTE
+//		SDL_SetRenderDrawColor(app->render->renderer, 0, 0, 255, 255);
+//		SDL_Rect rect = { 100, 100, 100, 100 };
+//		SDL_RenderFillRect(app->render->renderer, &rect);
+//		SDL_RenderPresent(app->render->renderer);
+//	}
+//
+//	// Devolver la cantidad de milisegundos que ha y de diferencia entre el tiempo objetivo y el input del jugador
+//	if (completed) {
+//		LOG("Resultado: %f", endTime - startTime);
+//		return endTime - startTime;		
+//	}
+//	else {
+//		LOG("Resultado: %f", objectiveTime);
+//		return objectiveTime;
+//	}
+//}
