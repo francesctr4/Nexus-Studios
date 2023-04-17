@@ -52,25 +52,51 @@ bool Player::Start() {
 
 	currentAnimation = &idle_right;
 
+	godMode = false;
+
+	showDialogue = false;
+
+	selectorIterator = 0;
+
+	dialogueUI_player = app->tex->Load("Assets/Textures/DialogueUI_Player.png");
+	selector = app->tex->Load("Assets/Textures/DialogueSelector.png");
+	text = app->tex->Load("Assets/Textures/Texto.png");
+
 	return true;
 }
 
 bool Player::Update()
 {
 	// Add physics to the player and update player position using physics.
-	int speed = 5;
+	
 	b2Vec2 vel = b2Vec2(0, -GRAVITY_Y);
 
-	// TODO 2 - Split Screen: manage players movement according to active cameras, input keys and speed used.
+	if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN) godMode = !godMode;
+
+	if (godMode) {
+
+		speed = 20;
+
+	}
+	else {
+
+		speed = 5;
+
+	}
+
 	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) vel = b2Vec2(GRAVITY_X, -speed);
 	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) vel = b2Vec2(GRAVITY_X, speed);
 	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) vel = b2Vec2(-speed, -GRAVITY_Y);
 	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) vel = b2Vec2(speed, -GRAVITY_Y);
 
-	/*if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_y, 10000, 2) < 0) vel = b2Vec2(GRAVITY_X, -speed);
-	if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_y, 10000, 2) > 0) vel = b2Vec2(GRAVITY_X, speed);
-	if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_x, 10000, 2) < 0) vel = b2Vec2(-speed, -GRAVITY_Y);
-	if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_x, 10000, 2) > 0) vel = b2Vec2(speed, -GRAVITY_Y);*/
+	if (app->input->activeControllers.Count()) {
+
+		if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_y, 10000, 2) < 0) vel = b2Vec2(GRAVITY_X, -speed);
+		if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_y, 10000, 2) > 0) vel = b2Vec2(GRAVITY_X, speed);
+		if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_x, 10000, 2) < 0) vel = b2Vec2(-speed, -GRAVITY_Y);
+		if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_x, 10000, 2) > 0) vel = b2Vec2(speed, -GRAVITY_Y);
+
+	}
 
 	// Set the velocity of the pbody of the player.
 	pbody->body->SetLinearVelocity(vel);
@@ -86,6 +112,30 @@ bool Player::Update()
 	SDL_Rect playerRect = currentAnimation->GetCurrentFrame();
 
 	app->render->DrawTexture(texture, position.x, position.y, &playerRect);
+
+	if (app->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN) {
+
+		showDialogue = !showDialogue;
+		selectorIterator = 0;
+
+	}
+
+	if (showDialogue) {
+
+		if (app->input->GetKey(SDL_SCANCODE_T) == KEY_DOWN) {
+
+			if (selectorIterator < 3) selectorIterator++;
+			else selectorIterator = 0;
+
+		}
+
+		app->render->DrawTexture(dialogueUI_player, 202, 389);
+
+		app->render->DrawTexture(selector, selectorPositions[selectorIterator].x, selectorPositions[selectorIterator].y);
+
+		app->render->DrawTexture(text, 261, 557);
+
+	}
 
 	return true;
 }

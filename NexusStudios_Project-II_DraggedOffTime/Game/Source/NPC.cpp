@@ -88,7 +88,7 @@ bool NPC::Update()
 
 		app->render->DrawTexture(dialogue, position.x + 8, position.y - 25);
 
-		if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN) dialogueActivated = true;
+		if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_X] == KEY_DOWN) dialogueActivated = true;
 
 	}
 

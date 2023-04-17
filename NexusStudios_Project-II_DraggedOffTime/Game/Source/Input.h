@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "SDL/include/SDL_gamecontroller.h"
+#include "List.h"
 #include <math.h>
 
 //#define NUM_KEYS 352
@@ -79,6 +80,9 @@ public:
 
 	SDL_GameController* sdl_controllers[MAX_CONTROLLERS];
 	GameController controllers[MAX_CONTROLLERS];
+
+	List<GameController*> activeControllers;
+
 	int num_controllers;
 
 	float reduce_val(bool controllerON, float v1, float min, float clamp_to) {
