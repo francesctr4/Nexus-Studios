@@ -138,29 +138,37 @@ bool SceneBattle::Update(float dt)
 	}
 	else
 	{
+		
 		//LOG("-------------ENEMY TURN-------------");
 		int random_num = (rand() % 2) + 1;
 		//LOG("Numero aleatorio %d", random_num);
 		switch (random_num)
 		{
 		case 1:
-			p_HP = app->combatManager->EnemyAttack(e_DMG, p_HP, p_DEF);
-			LOG("Atack");
-			//Blit red color in screen
-			app->render->DrawRectangle(rect, 255, 0, 0, 150);
+			if (e_HP > 0)
+			{
+				p_HP = app->combatManager->EnemyAttack(e_DMG, p_HP, p_DEF);
+				LOG("Atack");
+				//Blit red color in screen
+				app->render->DrawRectangle(rect, 255, 0, 0, 150);
+			}
 			break;
 		case 2:
-			app->combatManager->EnemyBlockAttack();
-			LOG("Defense");
-			//Blit green color in screen
-			app->render->DrawRectangle(rect, 0, 255, 0, 150);
-			
+			if (e_HP > 0)
+			{
+				app->combatManager->EnemyBlockAttack();
+				LOG("Defense");
+				//Blit green color in screen
+				app->render->DrawRectangle(rect, 0, 255, 0, 150);
+			}
 			break;
 		default:
 			break;
 		}
 		//LOG("-------------YOUR TURN-------------");
+		
 		app->combatManager->playerTurn = !app->combatManager->playerTurn;
+		
 	}
 
 	//---
