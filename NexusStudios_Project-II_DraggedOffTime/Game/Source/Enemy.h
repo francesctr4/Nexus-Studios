@@ -55,10 +55,13 @@ private:
 	int atk;
 	int def;
 
+	bool playerInteraction;
+
 	SDL_Texture* texture;
 	const char* texturePath;
 
 	PhysBody* pbody;
+	PhysBody* enemySensor;
 
 	Animation* currentAnimation;
 	Animation idle_right;

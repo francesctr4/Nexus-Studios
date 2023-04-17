@@ -9,6 +9,7 @@
 #include "Physics.h"
 #include "PathFinding.h"
 #include "Map.h"
+#include "FadeToBlack.h"
 
 #include <iostream>
 
@@ -74,9 +75,15 @@ bool Enemy::Start() {
 
 	pbody = app->physics->CreateRectangle(position.x, position.y, width, height, bodyType::STATIC);
 
-	pbody->listener = this;
+	enemySensor = app->physics->CreateCircleSensor(position.x, position.y, 40, bodyType::KINEMATIC, ColliderType::ENEMY_SENSOR);
+
+	//pbody->listener = this;
+
+	enemySensor->listener = this;
 
 	currentAnimation = &idle_right;
+
+	playerInteraction = false;
 
 	return true;
 }
@@ -96,6 +103,8 @@ bool Enemy::Update()
 
 	app->render->DrawTexture(texture, position.x, position.y, &playerRect);
 
+	if (playerInteraction) app->fadeToBlack->Fade((Module*)app->sceneGameplay, (Module*)app->sceneBattle);
+
 	return true;
 }
 
@@ -107,13 +116,31 @@ bool Enemy::CleanUp()
 
 void Enemy::OnCollision(PhysBody* physA, PhysBody* physB) {
 
-	
+	switch (physB->ctype)
+	{
+	case ColliderType::PLATFORM:
+		LOG("Collision PLATFORM");
+
+		break;
+	case ColliderType::UNKNOWN:
+		LOG("Collision UNKNOWN");
+
+		break;
+
+	case ColliderType::PLAYER:
+		LOG("Collision PLAYER");
+
+		playerInteraction = true;
+
+		break;
+
+	}
 
 }
 
 void Enemy::OnCollisionEnd(PhysBody* physA, PhysBody* physB) {
 
-	
+	playerInteraction = false;
 
 }
 
