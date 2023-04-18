@@ -65,16 +65,7 @@ bool Player::Update()
 
 	if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN) godMode = !godMode;
 
-	if (godMode) {
-
-		speed = 20;
-
-	}
-	else {
-
-		speed = 5;
-
-	}
+	speed = 5;
 
 	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) vel = b2Vec2(GRAVITY_X, -speed);
 	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) vel = b2Vec2(GRAVITY_X, speed);

@@ -6,7 +6,6 @@
  <tileset firstgid="626" name="Props" tilewidth="16" tileheight="16" tilecount="625" columns="25">
   <image source="Props.png" width="400" height="400"/>
  </tileset>
- <tileset firstgid="1251" source="Tiles.tsx"/>
  <layer id="1" name="Suelo" width="25" height="40">
   <properties>
    <property name="Draw" type="bool" value="true"/>

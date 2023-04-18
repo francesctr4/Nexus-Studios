@@ -245,7 +245,6 @@ bool Map::CleanUp()
 {
     LOG("Unloading map");
 
-    mapFileName[actualmap].Clear();
 
     // Make sure you clean up any memory allocated from tilesets/map
 	ListItem<TileSet*>* item;

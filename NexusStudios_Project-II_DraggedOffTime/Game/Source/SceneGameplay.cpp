@@ -77,21 +77,67 @@ bool SceneGameplay::PreUpdate()
 // Called each loop iteration
 bool SceneGameplay::Update(float dt)
 {
-	SDL_Color rojo;
-	rojo.r = 0;
-	rojo.g = 5;
-	rojo.b = 05;
+	
+
 	OPTICK_EVENT();
 	if (player->godMode == true)
 	{
-		app->render->DrawText("Aqui hay una tita", 10, 10, 300, 300, rojo);
-		if (app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
+		if (app->input->GetKey(SDL_SCANCODE_M) == KEY_DOWN)
+		{
+			map_selector = true;
+		}
+		if (map_selector == true && app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN && actually == 0)
 		{
 			app->map->CleanUp();
 			app->map->actualmap = 1;
 			bool retLoad = app->map->Load();
+			map_selector = false;
+			actually = 1;
+		}
+		if (map_selector == true && app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN && actually == 0)
+		{
+			app->map->CleanUp();
+			app->map->actualmap = 2;
+			bool retLoad = app->map->Load();
+			map_selector = false;
+			actually = 2;
+		}
+		if (map_selector == true && app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN && actually == 1)
+		{
+
+			app->map->CleanUp();
+			app->map->actualmap = 0;
+			bool retLoad = app->map->Load();
+			map_selector = false;
+			actually = 0;
+		}
+		if (map_selector == true && app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN && actually == 1)
+		{
+
+			app->map->CleanUp();
+			app->map->actualmap = 2;
+			bool retLoad = app->map->Load();
+			map_selector = false;
+			actually = 2;
+		}
+		if (map_selector == true && app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN && actually == 2)
+		{
+			app->map->CleanUp();
+			app->map->actualmap = 0;
+			bool retLoad = app->map->Load();
+			map_selector = false;
+			actually = 0;
+		}
+		if (map_selector == true && app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN && actually == 2)
+		{
+			app->map->CleanUp();
+			app->map->actualmap = 1;
+			bool retLoad = app->map->Load();
+			map_selector = false;
+			actually = 1;
 		}
 	}
+	
 	if (!app->entityManager->IsEnabled()) {
 
 		app->entityManager->Enable();
@@ -117,6 +163,27 @@ bool SceneGameplay::Update(float dt)
 bool SceneGameplay::PostUpdate()
 {
 	OPTICK_EVENT();
+	if (player->godMode == true)
+	{
+		app->render->DrawText("GODMODE", 100, 100, 150, 60, { 255, 255, 255, 255 });
+		app->render->DrawText("1. Maps", 150, 150, 90, 45, { 255, 255, 255, 255 });
+		
+		if (map_selector == true && actually == 0)
+		{
+			app->render->DrawText("1. Mapa Jovani", 260, 150, 140, 45, { 255, 255, 255, 255 });
+			app->render->DrawText("2. Mapa Cofre", 260, 180, 140, 45, { 255, 255, 255, 255 });
+		}
+		if (map_selector == true && actually == 1)
+		{
+			app->render->DrawText("1. Mapa Mazmorra", 260, 150, 160, 45, { 255, 255, 255, 255 });
+			app->render->DrawText("2. Mapa Cofre", 260, 180, 140, 45, { 255, 255, 255, 255 });
+		}
+		if (map_selector == true && actually == 2)
+		{
+			app->render->DrawText("1. Mapa Mazmorra", 260, 150, 160, 45, { 255, 255, 255, 255 });
+			app->render->DrawText("2. Mapa Jovani", 260, 180, 140, 45, { 255, 255, 255, 255 });
+		}
+	}
 
 	bool ret = true;
 
@@ -129,8 +196,8 @@ bool SceneGameplay::PostUpdate()
 bool SceneGameplay::CleanUp()
 {
 	LOG("Freeing scene");
-	/*app->map->CleanUp();
-	app->physics->CleanUp();*/
+	//app->map->CleanUp();
+	//app->physics->CleanUp();
 	return true;
 }
 

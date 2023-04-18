@@ -41,6 +41,8 @@ public:
 public:
 
 	Player* player;
+	bool map_selector = false;
+	int actually = 0;
 
 	List<Enemy*> enemies;
 
