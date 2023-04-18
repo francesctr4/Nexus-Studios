@@ -43,6 +43,9 @@ bool SceneBattle::Start()
 	lifeFrame = app->tex->Load("Assets/UI/LifeFrame.png");
 	actionButtons = app->tex->Load("Assets/UI/ActionButtons.png");
 	healthBar = app->tex->Load("Assets/UI/HealthBar.png");
+	selectionArrow = app->tex->Load("Assets/UI/SelectionArrow.png");
+
+	action_selected = 0;
 
 	/*attackButton = app->tex->Load("Assets/UI/Attack.png");
 	SDL_Rect attack_rect = { 100, 500, 250, 108 };
@@ -310,14 +313,27 @@ bool SceneBattle::PostUpdate()
 
 	// Enemy HP
 	double e_percentage_life = (e_HP * 100.0) / e_max_HP;
-	SDL_Rect rect_e = { 650, 40, 5 * e_percentage_life, 10 };
-	app->render->DrawRectangle(rect_e, 70, 225, 20, 255);
-	app->render->DrawText("Enemy HP:", 650, 30, 100, 20, { 255, 255, 255, 255 });
+	if (e_percentage_life < 50 && e_percentage_life >= 20)	//Yellow color
+	{
+		SDL_Rect rect_e = { 0, 20, 3 * e_percentage_life, 20 };
+		app->render->DrawTexture(healthBar, 800, 30, &rect_e);
+	}
+	if (e_percentage_life < 20) //Red color
+	{
+		SDL_Rect rect_p = { 0, 40, 3 * e_percentage_life, 20 };
+		app->render->DrawTexture(healthBar, 800, 30, &rect_p);
+	}
+	if (e_percentage_life >= 50) //Green color
+	{
+		SDL_Rect rect_p = { 0, 0, 3 * e_percentage_life, 20 };
+		app->render->DrawTexture(healthBar, 800, 30, &rect_p);
+	}
+	app->render->DrawText("Enemy HP:", 800, 10, 100, 20, { 255, 255, 255, 255 });
 	std::string e_HP_string = std::to_string(e_HP);
-	app->render->DrawText(e_HP_string, 650 + 125, 30, 25, 20, { 255, 255, 255, 255 });
+	app->render->DrawText(e_HP_string, 800 + 125, 10, 25, 20, { 255, 255, 255, 255 });
 
 	//Enemy sprite
-	SDL_Rect enemy_sprite_rect = { 980-32, 420, 32, 32 };
+	SDL_Rect enemy_sprite_rect = { 888, 225, 100, 115 };
 	app->render->DrawRectangle(enemy_sprite_rect, 225, 30, 30, 255);
 
 	// Player HP
@@ -341,8 +357,19 @@ bool SceneBattle::PostUpdate()
 	std::string p_HP_string = std::to_string(p_HP);
 	app->render->DrawText(p_HP_string, 80 + 125, 10, 25, 20, { 255, 255, 255, 255 });
 
+	//Player 2,3 y 4 HP (Provisional)
+	SDL_Rect rect_p2 = { 0, 0, 300, 20 }; //p2
+	app->render->DrawTexture(healthBar, 80, 85, &rect_p2);
+
+	SDL_Rect rect_p3 = { 0, 0, 300, 20 };	//p3
+	app->render->DrawTexture(healthBar, 80, 140, &rect_p3);
+
+	SDL_Rect rect_p4 = { 0, 0, 300, 20 };	//p4
+	app->render->DrawTexture(healthBar, 80, 195, &rect_p4);
+
+
 	//Player sprite
-	SDL_Rect player_sprite_rect = { 300, 420, 32, 32 };
+	SDL_Rect player_sprite_rect = { 200, 420, 140, 160 };
 	app->render->DrawRectangle(player_sprite_rect, 180, 125, 230, 255);
 
 	if (app->sceneGameplay->player->godMode)
@@ -359,9 +386,16 @@ bool SceneBattle::PostUpdate()
 	}
 
 	//Combat UI - Visual
-	app->render->DrawTexture(classID, 20, 20); 
-	app->render->DrawTexture(lifeFrame, 80, 30);
+	app->render->DrawTexture(classID, 20, 20);
+	app->render->DrawTexture(lifeFrame, 80, 30);	//Barra Player 1
+	app->render->DrawTexture(lifeFrame, 80, 85);	//Barra Player 2
+	app->render->DrawTexture(lifeFrame, 80, 140);	//Barra Player 3
+	app->render->DrawTexture(lifeFrame, 80, 195);	//Barra Player 4
+	app->render->DrawTexture(lifeFrame, 800, 30);	//Barra Enemy (Provisional)
+
 	//Atcion selector
+
+	app->render->DrawTexture(selectionArrow, 191, 316);
 	SDL_Rect actionSelector_rect = { action_selected * 70, 0, 70, 70};
 	app->render->DrawTexture(actionButtons, 235, 305, &actionSelector_rect);
 

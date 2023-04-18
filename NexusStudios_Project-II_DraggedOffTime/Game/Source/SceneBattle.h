@@ -69,6 +69,8 @@ private:
 
 	SDL_Texture* healthBar = nullptr;
 
+	SDL_Texture* selectionArrow = nullptr;
+
 	int action_selected = 0; 
 
 
