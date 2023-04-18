@@ -6,6 +6,13 @@
 #include "Physics.h"
 #include "SDL/include/SDL.h"
 
+enum class DialogueType {
+
+	PLAYER,
+	NPC
+
+};
+
 enum class NPC_Types {
 
 	ROGUE,
@@ -15,6 +22,13 @@ enum class NPC_Types {
 };
 
 struct SDL_Texture;
+
+struct Dialogue {
+
+	SDL_Texture* text;
+	DialogueType whoIsTalking;
+
+};
 
 class NPC : public Entity
 {
@@ -36,6 +50,10 @@ public:
 	void OnCollisionEnd(PhysBody* physA, PhysBody* physB);
 
 private:
+
+	int i;
+	const int firstDialogueDuration = 5;
+	Dialogue firstDialogue[5];
 
 	int iteradorDialogos;
 	SDL_Texture* dialogos[3];

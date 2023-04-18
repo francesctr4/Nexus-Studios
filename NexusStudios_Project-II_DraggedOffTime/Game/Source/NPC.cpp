@@ -87,6 +87,8 @@ bool NPC::Start() {
 
 	iteradorDialogos = 0;
 
+	i = 0;
+
 	return true;
 }
 
@@ -109,8 +111,11 @@ bool NPC::Update()
 
 		app->render->DrawTexture(dialogue, position.x + 8, position.y - 25);
 
-		if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_X] == KEY_DOWN) dialogueActivated = true;
+		if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_X] == KEY_DOWN) {
+			
+			dialogueActivated = true;
 
+		}
 	}
 
 	if (dialogueActivated) {
@@ -121,6 +126,9 @@ bool NPC::Update()
 			selectorIterator = 0;
 
 			if (togglePlayerTalking && iteradorDialogos < 2) iteradorDialogos++;
+
+			if (i < firstDialogueDuration) i++;
+			else dialogueActivated = false;
 
 		}
 
@@ -158,6 +166,12 @@ bool NPC::Update()
 
 		}
 			
+	}
+	else {
+
+		i = 0;
+		iteradorDialogos = 0;
+
 	}
 
 	return true;
