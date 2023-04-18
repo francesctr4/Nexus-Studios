@@ -43,6 +43,9 @@ private:
 	SDL_Texture* UIdialogue;
 
 	SDL_Texture* npcIcon;
+	SDL_Texture* npcIcon_Transparent;
+
+	bool togglePlayerTalking;
 
 	bool playerInteraction;
 	bool dialogueActivated;

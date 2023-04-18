@@ -32,11 +32,12 @@ public:
 
 	bool godMode;
 
+	SDL_Texture* dialogueUI_player;
+
 private:
 
 	bool showDialogue;
 
-	SDL_Texture* dialogueUI_player;
 	SDL_Texture* selector;
 	SDL_Texture* text;
 

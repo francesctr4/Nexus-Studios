@@ -7,6 +7,8 @@
 #include "Log.h"
 #include "Point.h"
 #include "Physics.h"
+#include "SceneGameplay.h"
+#include "Player.h"
 
 NPC::NPC() : Entity(EntityType::NPC)
 {
@@ -49,6 +51,10 @@ bool NPC::Start() {
 	if (type == NPC_Types::WIZARD) npcIcon = app->tex->Load("Assets/Textures/WizardIcon.png");
 	if (type == NPC_Types::ORC) npcIcon = app->tex->Load("Assets/Textures/OrcIcon.png");
 
+	if (type == NPC_Types::ROGUE) npcIcon_Transparent = app->tex->Load("Assets/Textures/RogueIcon_Transparent.png");
+	if (type == NPC_Types::WIZARD) npcIcon_Transparent = app->tex->Load("Assets/Textures/WizardIcon_Transparent.png");
+	if (type == NPC_Types::ORC) npcIcon_Transparent = app->tex->Load("Assets/Textures/OrcIcon_Transparent.png");
+
 	int width = 32;
 	int height = 32;
 
@@ -65,6 +71,8 @@ bool NPC::Start() {
 	playerInteraction = false;
 
 	dialogueActivated = false;
+
+	togglePlayerTalking = false;
 
 	return true;
 }
@@ -94,12 +102,27 @@ bool NPC::Update()
 
 	if (dialogueActivated) {
 
-		app->render->DrawTexture(UIdialogue, 202, 389);
+		if (app->input->GetKey(SDL_SCANCODE_Y) == KEY_DOWN) togglePlayerTalking = !togglePlayerTalking;
 
-		if (type == NPC_Types::ROGUE) app->render->DrawTexture(npcIcon, 876, 409);
-		if (type == NPC_Types::WIZARD) app->render->DrawTexture(npcIcon, 869, 407);
-		if (type == NPC_Types::ORC) app->render->DrawTexture(npcIcon, 863, 400);
+		if (!togglePlayerTalking) {
 
+			app->render->DrawTexture(UIdialogue, 202, 389);
+
+			if (type == NPC_Types::ROGUE) app->render->DrawTexture(npcIcon, 876, 409);
+			if (type == NPC_Types::WIZARD) app->render->DrawTexture(npcIcon, 869, 407);
+			if (type == NPC_Types::ORC) app->render->DrawTexture(npcIcon, 863, 400);
+
+		}
+		else {
+
+			app->render->DrawTexture(app->sceneGameplay->player->dialogueUI_player, 202, 389);
+
+			if (type == NPC_Types::ROGUE) app->render->DrawTexture(npcIcon_Transparent, 876, 409);
+			if (type == NPC_Types::WIZARD) app->render->DrawTexture(npcIcon_Transparent, 869, 407);
+			if (type == NPC_Types::ORC) app->render->DrawTexture(npcIcon_Transparent, 863, 400);
+
+		}
+			
 	}
 
 	return true;
