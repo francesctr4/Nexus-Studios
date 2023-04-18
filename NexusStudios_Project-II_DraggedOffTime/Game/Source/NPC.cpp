@@ -74,6 +74,13 @@ bool NPC::Start() {
 
 	togglePlayerTalking = false;
 
+	selectorIterator = 0;
+
+	dialogueUI_player = app->tex->Load("Assets/Textures/DialogueUI_Player.png");
+	selector = app->tex->Load("Assets/Textures/DialogueSelector.png");
+	text = app->tex->Load("Assets/Textures/Texto.png");
+	textoNPC = app->tex->Load("Assets/Textures/TextoNPC.png");
+
 	return true;
 }
 
@@ -102,7 +109,12 @@ bool NPC::Update()
 
 	if (dialogueActivated) {
 
-		if (app->input->GetKey(SDL_SCANCODE_Y) == KEY_DOWN) togglePlayerTalking = !togglePlayerTalking;
+		if (app->input->GetKey(SDL_SCANCODE_Y) == KEY_DOWN) {
+
+			togglePlayerTalking = !togglePlayerTalking;
+			selectorIterator = 0;
+
+		}
 
 		if (!togglePlayerTalking) {
 
@@ -112,14 +124,27 @@ bool NPC::Update()
 			if (type == NPC_Types::WIZARD) app->render->DrawTexture(npcIcon, 869, 407);
 			if (type == NPC_Types::ORC) app->render->DrawTexture(npcIcon, 863, 400);
 
+			app->render->DrawTexture(textoNPC, 266, 553);
+
 		}
 		else {
 
-			app->render->DrawTexture(app->sceneGameplay->player->dialogueUI_player, 202, 389);
+			if (app->input->GetKey(SDL_SCANCODE_T) == KEY_DOWN) {
+
+				if (selectorIterator < 3) selectorIterator++;
+				else selectorIterator = 0;
+
+			}
+
+			app->render->DrawTexture(dialogueUI_player, 202, 389);
 
 			if (type == NPC_Types::ROGUE) app->render->DrawTexture(npcIcon_Transparent, 876, 409);
 			if (type == NPC_Types::WIZARD) app->render->DrawTexture(npcIcon_Transparent, 869, 407);
 			if (type == NPC_Types::ORC) app->render->DrawTexture(npcIcon_Transparent, 863, 400);
+
+			app->render->DrawTexture(selector, selectorPositions[selectorIterator].x, selectorPositions[selectorIterator].y);
+
+			app->render->DrawTexture(text, 261, 557);
 
 		}
 			

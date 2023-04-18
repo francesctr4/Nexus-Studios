@@ -54,14 +54,6 @@ bool Player::Start() {
 
 	godMode = false;
 
-	showDialogue = false;
-
-	selectorIterator = 0;
-
-	dialogueUI_player = app->tex->Load("Assets/Textures/DialogueUI_Player.png");
-	selector = app->tex->Load("Assets/Textures/DialogueSelector.png");
-	text = app->tex->Load("Assets/Textures/Texto.png");
-
 	return true;
 }
 
@@ -112,30 +104,6 @@ bool Player::Update()
 	SDL_Rect playerRect = currentAnimation->GetCurrentFrame();
 
 	app->render->DrawTexture(texture, position.x, position.y, &playerRect);
-
-	if (app->input->GetKey(SDL_SCANCODE_R) == KEY_DOWN) {
-
-		showDialogue = !showDialogue;
-		selectorIterator = 0;
-
-	}
-
-	if (showDialogue) {
-
-		if (app->input->GetKey(SDL_SCANCODE_T) == KEY_DOWN) {
-
-			if (selectorIterator < 3) selectorIterator++;
-			else selectorIterator = 0;
-
-		}
-
-		app->render->DrawTexture(dialogueUI_player, 202, 389);
-
-		app->render->DrawTexture(selector, selectorPositions[selectorIterator].x, selectorPositions[selectorIterator].y);
-
-		app->render->DrawTexture(text, 261, 557);
-
-	}
 
 	return true;
 }

@@ -32,17 +32,7 @@ public:
 
 	bool godMode;
 
-	SDL_Texture* dialogueUI_player;
-
 private:
-
-	bool showDialogue;
-
-	SDL_Texture* selector;
-	SDL_Texture* text;
-
-	int selectorIterator;
-	b2Vec2 selectorPositions[4] = { b2Vec2(232, 539), b2Vec2(639,539), b2Vec2(232,603), b2Vec2(639,603) };
 
 	int speed;
 

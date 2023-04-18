@@ -3,6 +3,7 @@
 #include "Entity.h"
 #include "Point.h"
 #include "Animation.h"
+#include "Physics.h"
 #include "SDL/include/SDL.h"
 
 enum class NPC_Types {
@@ -41,6 +42,14 @@ private:
 	SDL_Texture* dialogue;
 
 	SDL_Texture* UIdialogue;
+	SDL_Texture* dialogueUI_player;
+
+	SDL_Texture* selector;
+	SDL_Texture* text;
+	SDL_Texture* textoNPC;
+
+	int selectorIterator;
+	b2Vec2 selectorPositions[4] = { b2Vec2(232, 539), b2Vec2(639,539), b2Vec2(232,603), b2Vec2(639,603) };
 
 	SDL_Texture* npcIcon;
 	SDL_Texture* npcIcon_Transparent;
