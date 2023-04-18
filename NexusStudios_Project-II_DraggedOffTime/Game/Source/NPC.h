@@ -37,6 +37,9 @@ public:
 
 private:
 
+	int iteradorDialogos;
+	SDL_Texture* dialogos[3];
+
 	NPC_Types type;
 
 	SDL_Texture* dialogue;

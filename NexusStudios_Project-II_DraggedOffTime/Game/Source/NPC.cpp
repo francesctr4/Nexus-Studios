@@ -81,6 +81,12 @@ bool NPC::Start() {
 	text = app->tex->Load("Assets/Textures/Texto.png");
 	textoNPC = app->tex->Load("Assets/Textures/TextoNPC.png");
 
+	dialogos[0] = textoNPC;
+	dialogos[1] = app->tex->Load("Assets/Textures/Dialogo2.png");
+	dialogos[2] = app->tex->Load("Assets/Textures/Dialogo3.png");
+
+	iteradorDialogos = 0;
+
 	return true;
 }
 
@@ -114,6 +120,8 @@ bool NPC::Update()
 			togglePlayerTalking = !togglePlayerTalking;
 			selectorIterator = 0;
 
+			if (togglePlayerTalking && iteradorDialogos < 2) iteradorDialogos++;
+
 		}
 
 		if (!togglePlayerTalking) {
@@ -124,7 +132,9 @@ bool NPC::Update()
 			if (type == NPC_Types::WIZARD) app->render->DrawTexture(npcIcon, 869, 407);
 			if (type == NPC_Types::ORC) app->render->DrawTexture(npcIcon, 863, 400);
 
-			app->render->DrawTexture(textoNPC, 266, 553);
+			//app->render->DrawTexture(textoNPC, 266, 553);
+
+			app->render->DrawTexture(dialogos[iteradorDialogos], 266, 553);
 
 		}
 		else {
