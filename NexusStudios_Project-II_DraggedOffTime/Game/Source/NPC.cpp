@@ -7,6 +7,8 @@
 #include "Log.h"
 #include "Point.h"
 #include "Physics.h"
+#include "SceneGameplay.h"
+#include "Player.h"
 
 NPC::NPC() : Entity(EntityType::NPC)
 {
@@ -49,6 +51,10 @@ bool NPC::Start() {
 	if (type == NPC_Types::WIZARD) npcIcon = app->tex->Load("Assets/Textures/WizardIcon.png");
 	if (type == NPC_Types::ORC) npcIcon = app->tex->Load("Assets/Textures/OrcIcon.png");
 
+	if (type == NPC_Types::ROGUE) npcIcon_Transparent = app->tex->Load("Assets/Textures/RogueIcon_Transparent.png");
+	if (type == NPC_Types::WIZARD) npcIcon_Transparent = app->tex->Load("Assets/Textures/WizardIcon_Transparent.png");
+	if (type == NPC_Types::ORC) npcIcon_Transparent = app->tex->Load("Assets/Textures/OrcIcon_Transparent.png");
+
 	int width = 32;
 	int height = 32;
 
@@ -65,6 +71,15 @@ bool NPC::Start() {
 	playerInteraction = false;
 
 	dialogueActivated = false;
+
+	togglePlayerTalking = false;
+
+	selectorIterator = 0;
+
+	dialogueUI_player = app->tex->Load("Assets/Textures/DialogueUI_Player.png");
+	selector = app->tex->Load("Assets/Textures/DialogueSelector.png");
+	text = app->tex->Load("Assets/Textures/Texto.png");
+	textoNPC = app->tex->Load("Assets/Textures/TextoNPC.png");
 
 	return true;
 }
@@ -94,12 +109,45 @@ bool NPC::Update()
 
 	if (dialogueActivated) {
 
-		app->render->DrawTexture(UIdialogue, 202, 389);
+		if (app->input->GetKey(SDL_SCANCODE_Y) == KEY_DOWN) {
 
-		if (type == NPC_Types::ROGUE) app->render->DrawTexture(npcIcon, 876, 409);
-		if (type == NPC_Types::WIZARD) app->render->DrawTexture(npcIcon, 869, 407);
-		if (type == NPC_Types::ORC) app->render->DrawTexture(npcIcon, 863, 400);
+			togglePlayerTalking = !togglePlayerTalking;
+			selectorIterator = 0;
 
+		}
+
+		if (!togglePlayerTalking) {
+
+			app->render->DrawTexture(UIdialogue, 202, 389);
+
+			if (type == NPC_Types::ROGUE) app->render->DrawTexture(npcIcon, 876, 409);
+			if (type == NPC_Types::WIZARD) app->render->DrawTexture(npcIcon, 869, 407);
+			if (type == NPC_Types::ORC) app->render->DrawTexture(npcIcon, 863, 400);
+
+			app->render->DrawTexture(textoNPC, 266, 553);
+
+		}
+		else {
+
+			if (app->input->GetKey(SDL_SCANCODE_T) == KEY_DOWN) {
+
+				if (selectorIterator < 3) selectorIterator++;
+				else selectorIterator = 0;
+
+			}
+
+			app->render->DrawTexture(dialogueUI_player, 202, 389);
+
+			if (type == NPC_Types::ROGUE) app->render->DrawTexture(npcIcon_Transparent, 876, 409);
+			if (type == NPC_Types::WIZARD) app->render->DrawTexture(npcIcon_Transparent, 869, 407);
+			if (type == NPC_Types::ORC) app->render->DrawTexture(npcIcon_Transparent, 863, 400);
+
+			app->render->DrawTexture(selector, selectorPositions[selectorIterator].x, selectorPositions[selectorIterator].y);
+
+			app->render->DrawTexture(text, 261, 557);
+
+		}
+			
 	}
 
 	return true;
