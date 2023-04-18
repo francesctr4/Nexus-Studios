@@ -6,12 +6,18 @@
 #include "Physics.h"
 #include "SDL/include/SDL.h"
 
+struct SDL_Texture;
+
+// Dialogue Types
+
 enum class DialogueType {
 
 	PLAYER,
 	NPC
 
 };
+
+// NPC Types
 
 enum class NPC_Types {
 
@@ -21,12 +27,22 @@ enum class NPC_Types {
 
 };
 
-struct SDL_Texture;
+// Struct Dialogue represents each piece of text
 
 struct Dialogue {
 
 	SDL_Texture* text;
 	DialogueType whoIsTalking;
+
+};
+
+// Struct Conversation represents a set of dialogues
+
+struct Conversation {
+
+	int id;
+	int size;
+	Dialogue* dialogues = new Dialogue[size];
 
 };
 
@@ -49,42 +65,64 @@ public:
 
 	void OnCollisionEnd(PhysBody* physA, PhysBody* physB);
 
+	// Function to create the dialogues related to a given conversation
+
+	void DialogueGenerator(Conversation conversation);
+
 private:
 
-	int i;
-	const int firstDialogueDuration = 5;
-	Dialogue firstDialogue[5];
+	// NPC Conversations
 
-	int iteradorDialogos;
-	SDL_Texture* dialogos[3];
+	int dialogueIterator;
 
-	NPC_Types type;
+	Conversation firstConversation;
+	Dialogue* firstDialogue;
 
-	SDL_Texture* dialogue;
+	Conversation secondConversation;
+	Dialogue* secondDialogue;
 
-	SDL_Texture* UIdialogue;
+	// Sample Text for Conversations
+
+	SDL_Texture* playerSampleText;
+	SDL_Texture* loremIpsum;
+
+	// Dialogue UI
+
+	SDL_Texture* dialogueUI_npc;
 	SDL_Texture* dialogueUI_player;
 
-	SDL_Texture* selector;
-	SDL_Texture* text;
-	SDL_Texture* textoNPC;
+	// Player Dialogue Selector
 
 	int selectorIterator;
 	b2Vec2 selectorPositions[4] = { b2Vec2(232, 539), b2Vec2(639,539), b2Vec2(232,603), b2Vec2(639,603) };
 
+	SDL_Texture* selector;
+
+	// NPC Dialogue Icon
+
 	SDL_Texture* npcIcon;
 	SDL_Texture* npcIcon_Transparent;
 
-	bool togglePlayerTalking;
+	// NPC Sensor Booleans and Texture
 
 	bool playerInteraction;
 	bool dialogueActivated;
 
+	SDL_Texture* interactButton;
+
+	// NPC Texture and Type
+
 	SDL_Texture* texture;
 	const char* texturePath;
 
+	NPC_Types type;
+
+	// NPC Physics
+
 	PhysBody* pbody;
 	PhysBody* npcSensor;
+
+	// NPC Animation
 
 	Animation* currentAnimation;
 	Animation idle_right;
