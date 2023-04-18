@@ -77,8 +77,21 @@ bool SceneGameplay::PreUpdate()
 // Called each loop iteration
 bool SceneGameplay::Update(float dt)
 {
+	SDL_Color rojo;
+	rojo.r = 0;
+	rojo.g = 5;
+	rojo.b = 05;
 	OPTICK_EVENT();
-
+	if (player->godMode == true)
+	{
+		app->render->DrawText("Aqui hay una tita", 10, 10, 300, 300, rojo);
+		if (app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
+		{
+			app->map->CleanUp();
+			app->map->actualmap = 1;
+			bool retLoad = app->map->Load();
+		}
+	}
 	if (!app->entityManager->IsEnabled()) {
 
 		app->entityManager->Enable();
