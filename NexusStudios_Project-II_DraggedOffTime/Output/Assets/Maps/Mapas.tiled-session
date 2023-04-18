@@ -1,0 +1,148 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "Tiles.tsx",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "1Tiles32.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 3
+        },
+        "2Tiles32.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "3Tiles.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 5.5
+        },
+        "4Tiles.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 5.5
+        },
+        "5Tiles.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 3
+        },
+        "6Tiles.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 2
+        },
+        "7Tiles.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 4
+        },
+        "8+Tiles.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1.5
+        },
+        "9Tiles.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 5.5
+        },
+        "D:/GRADO/2º CARRERA/PROYECTO/Mapa/Props.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/GRADO/2º CARRERA/PROYECTO/Mapa/Tiles.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/GRADO/2º CARRERA/PROYECTO/Mapa/jovaniroom.tmx": {
+            "scale": 1.303875,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 200.55603489598317,
+                "y": 200.55603489598317
+            }
+        },
+        "Idle-Sheet.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Map_Final.tmx": {
+            "scale": 1.5496875,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 400.4033071183706,
+                "y": 200.04033071183707
+            }
+        },
+        "Map_Final.tmx#Props": {
+            "scaleInDock": 1
+        },
+        "Map_Final.tmx#Tiles": {
+            "scaleInDock": 1
+        },
+        "Props.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 5.5
+        },
+        "Tiles.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 5.5
+        },
+        "Tiles32.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 2
+        },
+        "mapfinal1280..tmx": {
+            "scale": 0.9685546875,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 640.6452913893932,
+                "y": 360.330711837064
+            }
+        },
+        "mapfinal1280.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 639.5,
+                "y": 341
+            }
+        },
+        "mapfinal1280.tmx#Props": {
+            "scaleInDock": 1
+        },
+        "mapfinal1280.tmx#Tiles": {
+            "scaleInDock": 1
+        }
+    },
+    "last.exportedFilePath": "C:/Users/totor/OneDrive/Escritorio/Nexus-Studios/NexusStudios_Project-II_DraggedOffTime/Output/Assets/Maps",
+    "last.imagePath": "D:/GRADO/2º CARRERA/PROYECTO/Tilesets/Pixel Crawler - FREE - 1.8/Pixel Crawler - FREE - 1.8/Heroes/Knight/Idle",
+    "map.height": 45,
+    "map.lastUsedExportFilter": "Todos los archivos (*)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 80,
+    "openFiles": [
+        "Tiles.tsx",
+        "Props.tsx",
+        "mapfinal1280.tmx",
+        "Idle-Sheet.tsx"
+    ],
+    "project": "",
+    "property.type": "bool",
+    "recentFiles": [
+        "mapfinal1280.tmx",
+        "Idle-Sheet.tsx",
+        "Props.tsx",
+        "Tiles.tsx",
+        "mapfinal1280..tmx",
+        "9Tiles.tsx",
+        "8+Tiles.tsx",
+        "7Tiles.tsx",
+        "6Tiles.tsx",
+        "5Tiles.tsx",
+        "4Tiles.tsx",
+        "Tiles32.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}

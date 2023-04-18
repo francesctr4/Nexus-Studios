@@ -23,7 +23,7 @@
   </audio>
 
   <sceneGameplay>
-	<player x="200" y="200" texturepath="Assets/Textures/Player.png"/>
+	<player x="200" y="600" texturepath="Assets/Textures/Player.png"/>
 	  
 	<npc type="rogue" x="400" y="400" texturepath="Assets/Textures/Rogue.png"/>
 	<npc type="wizard" x="600" y="400" texturepath="Assets/Textures/Wizard.png"/>
@@ -37,7 +37,7 @@
 
   <map>
     <mapfolder path="Assets/Maps/"/>
-    <mapfile_1 path="Assets/Maps/Map_Final.tmx"/>
+    <mapfile_1 path="Assets/Maps/mapfinal1280.tmx"/>
 	<mapfile_2 path="Assets/Maps/Lvl1.tmx"/>
 	<mapfile_3 path="Assets/Maps/Lvl2.tmx"/>
   </map>
