@@ -41,6 +41,8 @@ public:
 	bool enableMusic;
 	bool qte = false; //Quick Time Event 
 
+	//Combat turn
+	int turn;
 
 	//Variables a cambiar por las del player y las del enemigo
 	
@@ -75,6 +77,8 @@ public:
 	int e_DEF = 10;
 	int e_DMG = 20;
 
+	int enemy_last_action = NULL; // 0 => Attack // 1 => Defense
+
 	//Sprite player (TODO)
 
 	SDL_Texture* playerInCombat;
@@ -103,6 +107,8 @@ private:
 	SDL_Texture* healthBar = nullptr;
 
 	SDL_Texture* selectionArrow = nullptr;
+
+	SDL_Texture* playerSelection = nullptr;
 
 	int action_selected = 0; 
 

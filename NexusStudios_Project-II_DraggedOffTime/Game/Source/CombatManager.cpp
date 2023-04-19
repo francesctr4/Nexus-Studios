@@ -112,13 +112,13 @@ bool CombatManager::Run() {
 };
 
 int CombatManager::ChangeParty(int selected_player) {
-	if (selected_player  == 1)
+	if (selected_player  == 0)
 	{
-		return 2;	//Cambiar a player 2
+		return 1;	//Cambiar a player 2
 	}
-	else if (selected_player == 2)
+	else if (selected_player == 1)
 	{
-		return 1;	//Cambiar a player 1
+		return 0;	//Cambiar a player 1
 	}
 };
 
@@ -127,6 +127,11 @@ int CombatManager::EnemyAttack(int e_DMG, int p_HP, int p_DEF) {
 
 	int totalDamage;
 	totalDamage = e_DMG - (p_DEF + increasedDefense);
+
+	if (totalDamage < 0)
+	{
+		return 0;
+	}
 
 	if (totalDamage > p_HP)
 	{

@@ -54,9 +54,10 @@ bool SceneBattle::Start()
 {
 	//Cambiar para después de la vertical slice
 	party_members = 2;
-	selected_player = 1;
+	selected_player = 0;
+	turn = 0;
 
-	m_players = new Party_Member[4] { {100, 100, 50, 20}, {150, 150, 75, 30}, {200, 200, 100, 40}, {200, 200, 100, 40} };
+	m_players = new Party_Member[4] { {100, 100, 10, 20}, {150, 150, 10, 30}, {200, 200, 10, 40}, {200, 200, 10, 40} };
 
 	enableMusic = true;
 
@@ -66,6 +67,7 @@ bool SceneBattle::Start()
 	actionButtons = app->tex->Load("Assets/UI/ActionButtons.png");
 	healthBar = app->tex->Load("Assets/UI/HealthBar.png");
 	selectionArrow = app->tex->Load("Assets/UI/SelectionArrow.png");
+	playerSelection = app->tex->Load("Assets/UI/PlayerSelector.png");
 
 	action_selected = 0;
 
@@ -150,7 +152,7 @@ bool SceneBattle::Update(float dt)
 			}
 			else if (action_selected == 0)
 			{
-				action_selected = 4;
+				action_selected = 5;
 			}
 			
 		}
@@ -158,11 +160,11 @@ bool SceneBattle::Update(float dt)
 		if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN)
 		{
 			
-			if (action_selected != 4)
+			if (action_selected != 5)
 			{
 				action_selected++;
 			}
-			else if (action_selected == 4)
+			else if (action_selected == 5)
 			{
 				action_selected = 0;
 			}
@@ -194,6 +196,9 @@ bool SceneBattle::Update(float dt)
 				{
 					LOG("You failed to run away");
 				}
+				break;
+			case 5:
+				selected_player = app->combatManager->ChangeParty(selected_player);
 				break;
 			}
 			app->combatManager->playerTurn = !app->combatManager->playerTurn;
@@ -308,6 +313,7 @@ bool SceneBattle::Update(float dt)
 				LOG("Atack");
 				//Blit red color in screen
 				app->render->DrawRectangle(rect, 255, 0, 0, 150);
+				enemy_last_action = 0;
 			}
 			break;
 		case 2:
@@ -317,6 +323,7 @@ bool SceneBattle::Update(float dt)
 				LOG("Defense");
 				//Blit green color in screen
 				app->render->DrawRectangle(rect, 0, 255, 0, 150);
+				enemy_last_action = 1;
 			}
 			break;
 		default:
@@ -325,6 +332,7 @@ bool SceneBattle::Update(float dt)
 		//LOG("-------------YOUR TURN-------------");
 		
 		app->combatManager->playerTurn = !app->combatManager->playerTurn;
+		turn++;
 		
 	}
 
@@ -375,7 +383,7 @@ bool SceneBattle::PostUpdate()
 	}
 	app->render->DrawText("Enemy HP:", 800, 10, 100, 20, { 255, 255, 255, 255 });
 	std::string e_HP_string = std::to_string(e_HP);
-	app->render->DrawText(e_HP_string, 800 + 125, 10, 25, 20, { 255, 255, 255, 255 });
+	app->render->DrawText(e_HP_string, 800 + 125, 10, 15, 20, { 255, 255, 255, 255 });
 
 	//Enemy sprite
 
@@ -407,12 +415,13 @@ bool SceneBattle::PostUpdate()
 	}
 	app->render->DrawText("Player HP:", 80, 10, 100, 20, { 255, 255, 255, 255 });
 	std::string p_HP_string = std::to_string(m_players[0].HP);
-	app->render->DrawText(p_HP_string, 80 + 125, 10, 25, 20, { 255, 255, 255, 255 });
+	app->render->DrawText(p_HP_string, 80 + 125, 10, 15, 20, { 255, 255, 255, 255 });
 
+	
 
 	// Player 2 HP
 	double p2_percentage_life = (m_players[1].HP * 100.0) / m_players[1].max_HP;
-	if (p_percentage_life < 50 && p2_percentage_life >= 20)	//Yellow color
+	if (p2_percentage_life < 50 && p2_percentage_life >= 20)	//Yellow color
 	{
 		SDL_Rect rect_p2 = { 0, 20, 3 * p2_percentage_life, 20 };
 		app->render->DrawTexture(healthBar, 80, 85, &rect_p2);
@@ -429,7 +438,7 @@ bool SceneBattle::PostUpdate()
 	}
 	app->render->DrawText("Player 2 HP:", 80, 70, 100, 20, { 255, 255, 255, 255 });
 	std::string p2_HP_string = std::to_string(m_players[1].HP);
-	app->render->DrawText(p2_HP_string, 80 + 125, 70, 25, 20, { 255, 255, 255, 255 });
+	app->render->DrawText(p2_HP_string, 80 + 125, 70, 15, 20, { 255, 255, 255, 255 });
 
 	//Player 3 y 4 HP (Provisional)
 	//SDL_Rect rect_p2 = { 0, 0, 300, 20 }; //p2
@@ -456,16 +465,42 @@ bool SceneBattle::PostUpdate()
 	if (app->sceneGameplay->player->godMode)
 	{
 		// Combat UI - Controls (Debug)
-		app->render->DrawText("1 - Standar Attack", 100, 100, 100, 20, { 255, 255, 255, 255 });
-		app->render->DrawText("2 - Quick Time Event Attack", 100, 115, 100, 20, { 255, 255, 255, 255 });
-		app->render->DrawText("3 - Defend (Block)", 100, 130, 100, 20, { 255, 255, 255, 255 });
-		app->render->DrawText("4 - Use Item", 100, 145, 100, 20, { 255, 255, 255, 255 });
-		app->render->DrawText("5 - Run away", 100, 160, 100, 20, { 255, 255, 255, 255 });
-		app->render->DrawText("6 - Switch Member", 100, 175, 100, 20, { 255, 255, 255, 255 });
-		app->render->DrawText("7 - Enemy Attack", 100, 190, 100, 20, { 255, 255, 255, 255 });
-		app->render->DrawText("8 - Enemy Defense", 100, 205, 100, 20, { 255, 255, 255, 255 });
-		app->render->DrawText("TAB - Skip Turn", 100, 205, 100, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("1 - Standar Attack", 500, 100, 100, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("2 - Quick Time Event Attack", 500, 115, 100, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("3 - Defend (Block)", 500, 130, 100, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("4 - Use Item", 500, 145, 100, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("5 - Run away", 500, 160, 100, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("6 - Switch Member", 500, 175, 100, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("7 - Enemy Attack", 500, 190, 100, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("8 - Enemy Defense", 500, 205, 100, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("TAB - Skip Turn", 500, 230, 100, 20, { 255, 255, 255, 255 });
+
+		//LOG - Provisional
+		app->render->DrawText("Enemy Last Action: ", 500, 50, 100, 20, { 255, 255, 255, 255 });	//Last enemy action
+
+		if (enemy_last_action == 0)
+		{
+			app->render->DrawText("Attack", 600, 50, 75, 20, { 255, 255, 255, 255 });
+		}
+		else if (enemy_last_action == 1)
+		{
+			app->render->DrawText("Defense", 600, 50, 75, 20, { 255, 255, 255, 255 });
+		}
+		else if (enemy_last_action == NULL)
+		{
+
+		}
+
+		std::string turn_s = std::to_string(turn);								//Turn number LOG
+		app->render->DrawText(turn_s, 600, 30, 15, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("Actual Turn: ", 500, 30, 100, 20, {255, 255, 255, 255});
+
 	}
+
+	
+	
+
+	
 
 	//Combat UI - Visual
 	app->render->DrawTexture(classID, 20, 20);
@@ -474,6 +509,24 @@ bool SceneBattle::PostUpdate()
 	app->render->DrawTexture(lifeFrame, 80, 140);	//Barra Player 3
 	app->render->DrawTexture(lifeFrame, 80, 195);	//Barra Player 4
 	app->render->DrawTexture(lifeFrame, 800, 30);	//Barra Enemy (Provisional)
+
+	//Player selector
+	switch (selected_player)
+	{
+	case 0:
+		app->render->DrawTexture(playerSelection, 5, 29);
+		break;
+	case 1:
+		app->render->DrawTexture(playerSelection, 5, 84);
+		break;
+	case 2:
+		app->render->DrawTexture(playerSelection, 5, 139);
+		break;
+	case 3:
+		app->render->DrawTexture(playerSelection, 5, 194);
+		break;
+	}
+	
 
 	//Atcion selector
 
