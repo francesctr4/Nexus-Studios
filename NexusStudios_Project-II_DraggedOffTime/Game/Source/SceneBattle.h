@@ -8,8 +8,6 @@
 
 struct SDL_Texture;
 
-
-
 class SceneBattle : public Module
 {
 public:

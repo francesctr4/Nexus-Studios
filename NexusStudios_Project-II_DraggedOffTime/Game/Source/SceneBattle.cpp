@@ -56,28 +56,7 @@ bool SceneBattle::Start()
 	party_members = 2;
 	selected_player = 1;
 
-	//Party_Member players[4];
-
-	Party_Member players[4] = {
-	{100, 100, 50, 20},
-	{150, 150, 75, 30},
-	{200, 200, 100, 40},
-	{200, 200, 100, 40}
-	};
-
-	////Stats Player 1
-	//players[0] = { 100, 100, 20, 20 };
-
-	//////Stats Player 2
-	//players[1] = { 100, 100, 5, 10 };
-
-	//////Stats Player 3
-	//players[2] = { 100, 100, 5, 10 };
-
-	//////Stats Player 4
-	//players[3] = { 100, 100, 5, 10 };
-
-	m_players = players;
+	m_players = new Party_Member[4] { {100, 100, 50, 20}, {150, 150, 75, 30}, {200, 200, 100, 40}, {200, 200, 100, 40} };
 
 	enableMusic = true;
 
