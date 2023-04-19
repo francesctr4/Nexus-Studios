@@ -228,7 +228,7 @@ bool SceneBattle::Update(float dt)
 
 			if (app->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN)
 			{
-				selected_player =  app->combatManager->ChangeParty(selected_player);
+				//selected_player =  app->combatManager->ChangeParty(selected_player);
 				app->combatManager->playerTurn = !app->combatManager->playerTurn;
 			}
 		
