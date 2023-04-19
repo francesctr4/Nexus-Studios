@@ -27,11 +27,11 @@
 	  
 	<npc type="rogue" x="400" y="400" texturepath="Assets/Textures/Rogue.png"/>
 	<npc type="wizard" x="600" y="400" texturepath="Assets/Textures/Wizard.png"/>
-	<npc type="orc" x="800" y="400" texturepath="Assets/Textures/Orc.png"/>
+	<npc type="orc" x="800" y="400" texturepath="Assets/Textures/Skippy.png"/>
 
-	<enemy type = "damage" x="900" y="100" texturepath="Assets/Textures/Damage.png"/>
-	<enemy type = "support" x="1000" y="100" texturepath="Assets/Textures/Support.png"/>
-	<enemy type = "tank" x="1100" y="100" texturepath="Assets/Textures/Tank.png"/>
+	<enemy type = "damage" x="900" y="100" texturepath="Assets/Textures/Damage_New.png"/>
+	<enemy type = "support" x="1000" y="100" texturepath="Assets/Textures/Support_New.png"/>
+	<enemy type = "tank" x="1100" y="100" texturepath="Assets/Textures/Tank_New.png"/>
 
   </sceneGameplay>
 
