@@ -4,6 +4,7 @@
 #include "GuiButton.h"
 #include "GuiSlider.h"
 #include "GuiCheckBox.h"
+#include "Animation.h"
 
 struct SDL_Texture;
 
@@ -75,7 +76,9 @@ private:
 
 	//Sprite player (TODO)
 
-	
+	SDL_Texture* playerInCombat;
+	Animation playerAnimation;
+	Animation* currentAnimation;
 
 	//Sprites UI
 	SDL_Texture* classID = nullptr;

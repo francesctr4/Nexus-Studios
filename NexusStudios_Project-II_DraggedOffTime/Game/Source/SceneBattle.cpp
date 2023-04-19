@@ -29,6 +29,14 @@ SceneBattle::~SceneBattle()
 bool SceneBattle::Awake(pugi::xml_node& config)
 {
 
+	for (int i = 0; i < 4; i++) {
+
+		playerAnimation.PushBack({ 177 * (0 + i), 177 * 0, 177, 177 });
+
+	}
+	playerAnimation.loop = true;
+	playerAnimation.speed = 0.06f;
+
 	return true;
 }
 
@@ -75,6 +83,12 @@ bool SceneBattle::Start()
 	itemButton = app->tex->Load("Assets/UI/Item.png");
 	SDL_Rect item_rect = { 900, 500, 250, 108 };
 	ItemButton = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 12, itemButton, "", item_rect, this);*/
+
+	// Player texture
+
+	currentAnimation = &playerAnimation;
+
+	playerInCombat = app->tex->Load("Assets/Textures/PlayerInCombat.png");
 
 	return true;
 }
@@ -416,6 +430,12 @@ bool SceneBattle::PostUpdate()
 	//Player sprite
 	SDL_Rect player_sprite_rect = { 200, 420, 140, 160 };
 	app->render->DrawRectangle(player_sprite_rect, 180, 125, 230, 255);
+
+	currentAnimation->Update();
+
+	SDL_Rect playerRect = currentAnimation->GetCurrentFrame();
+
+	app->render->DrawTexture(playerInCombat,185,405,&playerRect);
 
 	if (app->sceneGameplay->player->godMode)
 	{
