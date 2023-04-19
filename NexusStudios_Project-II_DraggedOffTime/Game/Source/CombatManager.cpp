@@ -111,7 +111,7 @@ bool CombatManager::Run() {
 	}
 };
 
-int ChangeParty(int selected_player) {
+int CombatManager::ChangeParty(int selected_player) {
 	if (selected_player  == 1)
 	{
 		return 2;	//Cambiar a player 2

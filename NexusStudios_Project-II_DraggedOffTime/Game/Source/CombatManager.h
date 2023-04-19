@@ -54,7 +54,7 @@ public:
 	bool Run();
 
 	//6.Change player
-	//int ChangeParty(int selected_player);
+	int ChangeParty(int selected_player);
 
 	//7.Enemy attack (Return p_HP)
 	int EnemyAttack(int e_DMG, int p_HP, int p_DEF);

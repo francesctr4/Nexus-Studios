@@ -8,12 +8,7 @@
 
 struct SDL_Texture;
 
-struct Party_Member {
-	int HP;
-	int max_HP;
-	int DEF;
-	int DMG;
-};
+
 
 class SceneBattle : public Module
 {
@@ -53,6 +48,16 @@ public:
 	
 	int selected_player;
 	int party_members;
+
+	struct Party_Member {
+		int HP;
+		int max_HP;
+		int DEF;
+		int DMG;
+	};
+
+	Party_Member* m_players;
+	/*std::array<Party_Member, 4> m_players;*/
 
 	//Player 1
 	int p_HP = 100;
