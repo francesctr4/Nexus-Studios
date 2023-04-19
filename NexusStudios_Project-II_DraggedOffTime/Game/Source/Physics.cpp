@@ -221,7 +221,7 @@ PhysBody* Physics::CreateChain(int x, int y, int* points, int size, bodyType typ
 
 	b->CreateFixture(&fixture);
 
-	delete p;
+	
 
 	PhysBody* pbody = new PhysBody();
 	pbody->ctype = ctype;
@@ -328,7 +328,7 @@ bool Physics::CleanUp()
 
 	// Delete the whole physics world!
 
-	
+	delete world;
 
 	return true;
 }
