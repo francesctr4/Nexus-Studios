@@ -3,6 +3,7 @@
 #include "App.h"
 #include "Audio.h"
 #include "Log.h"
+#include "SceneTitle.h"
 
 GuiButton::GuiButton(uint32 id, SDL_Rect bounds, SDL_Texture* tex, const char* text) : GuiControl(GuiControlType::BUTTON, id)
 {
@@ -81,9 +82,12 @@ bool GuiButton::Draw(Render* render)
 	switch (state)
 	{
 	case GuiControlState::DISABLED:
+		if (!app->sceneTitle->showSettings) {
 
-		rect.y = bounds.h * 3;
-		app->render->DrawTexture(tex, -app->render->camera.x + bounds.x, -app->render->camera.y + bounds.y, &rect);
+			rect.y = bounds.h * 3;
+			app->render->DrawTexture(tex, -app->render->camera.x + bounds.x, -app->render->camera.y + bounds.y, &rect);
+		}
+		
 		break;
 	case GuiControlState::NORMAL:
 

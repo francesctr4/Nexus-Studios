@@ -42,8 +42,13 @@ public:
 	uint titleFX;
 	bool FX_played;
 
+	bool showSettings;
+
 private:
 	
+
+	SDL_Texture* Fondo;
+
 	SDL_Texture* titleScreen;
 	SDL_Texture* draggedOffTime;
 
@@ -57,8 +62,6 @@ private:
 	SDL_Texture* settings;
 	GuiButton* Settings;
 
-	bool showSettings;
-
 	SDL_Texture* credits;
 	GuiButton* Credits;
 
@@ -68,12 +71,31 @@ private:
 	SDL_Texture* back;
 	GuiButton* Back;
 
+	SDL_Texture* SettingsTitle;
+	SDL_Texture* PauseTitle;
+
 	SDL_Texture* slider;
+	SDL_Texture* SlideBar;
+
+	SDL_Texture* Music;
 	GuiSlider* SliderMusic;
+
+	SDL_Texture* SFX;
 	GuiSlider* SliderFX;
 
+	SDL_Texture* framecap;
+	SDL_Texture* FPS;
+	SDL_Texture* framecapUP;
+	GuiButton* FramecapUP;
+	SDL_Texture* framecapDOWN;
+	GuiButton* FramecapDOWN;
+
 	SDL_Texture* checkBox;
+
+	SDL_Texture* checkBoxFullscreen;
 	GuiCheckBox* CheckBoxFullscreen;
+
+	SDL_Texture* checkBoxVsync;
 	GuiCheckBox* CheckBoxVsync;
 
 	bool showCredits;
