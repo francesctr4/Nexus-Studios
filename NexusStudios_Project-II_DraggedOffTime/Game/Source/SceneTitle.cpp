@@ -39,6 +39,7 @@ bool SceneTitle::Start()
 
 	titleScreen = app->tex->Load("Assets/Textures/TitleScreen2.png");
 	draggedOffTime = app->tex->Load("Assets/Textures/DraggedOffTime3.png");
+	Fondo = app->tex->Load("Assets/Textures/PauseBackground.png");
 
 	enableMusic = true;
 
@@ -48,6 +49,7 @@ bool SceneTitle::Start()
 
 	// UI
 
+	SettingsTitle= app->tex->Load("Assets/UI/SettingsTitle.png");
 	newGame = app->tex->Load("Assets/UI/NewGame.png"); 
 
 	NewGame = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 0, newGame, "", { 142,295,294,49 }, this);
@@ -58,7 +60,7 @@ bool SceneTitle::Start()
 
 	settings = app->tex->Load("Assets/UI/Settings.png");
 
-	Settings = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, settings, "", { 148,433,277,49 }, this);
+	Settings = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, settings, "", { 148,433,277,55 }, this);
 
 	credits = app->tex->Load("Assets/UI/Credits.png");
 
@@ -69,24 +71,47 @@ bool SceneTitle::Start()
 	Exit = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 5, exit, "", { 217,571,133,49 }, this);
 
 	back = app->tex->Load("Assets/UI/Back.png");
-	Back = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 6, back, "", { 704,619,112,59 }, this);
+	Back = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 6, back, "", { 586,592,102,38 }, this);
 	Back->state = GuiControlState::DISABLED;
 
 	slider = app->tex->Load("Assets/UI/Slider.png");
-
-	SliderMusic = (GuiSlider*)app->guiManager->CreateGuiControl(GuiControlType::SLIDER, 7, slider, "", { 621,220,30,59 }, this);
+	SlideBar = app->tex->Load("Assets/UI/SlideBar.png");
+	
+	SliderMusic = (GuiSlider*)app->guiManager->CreateGuiControl(GuiControlType::SLIDER, 7, slider, "", { 631,417,30,59 }, this);
 	SliderMusic->state = GuiControlState::DISABLED;
 
-	SliderFX = (GuiSlider*)app->guiManager->CreateGuiControl(GuiControlType::SLIDER, 8, slider, "", { 621,375,30,59 }, this);
+	Music = app->tex->Load("Assets/UI/Music.png");
+
+	SliderFX = (GuiSlider*)app->guiManager->CreateGuiControl(GuiControlType::SLIDER, 8, slider, "", { 631,494,30,59 }, this);
 	SliderFX->state = GuiControlState::DISABLED;
+
+	SFX = app->tex->Load("Assets/UI/SFX.png");
+
+	//Implementar control de los FPS
+
+	framecap = app->tex->Load("Assets/UI/Framecap.png");
+	FPS = app->tex->Load("Assets/UI/60FPS.png");
+
+	framecapUP = app->tex->Load("Assets/UI/FramecapUP.png");
+	FramecapUP = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 11, framecapUP, "", { 787,352,25,26 }, this);
+	FramecapUP->state = GuiControlState::DISABLED;
+
+	framecapDOWN = app->tex->Load("Assets/UI/FramecapDOWN.png");
+	FramecapDOWN = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 11, framecapDOWN, "", { 787,374,25,26 }, this);
+	FramecapDOWN->state = GuiControlState::DISABLED;
+
 
 	checkBox = app->tex->Load("Assets/UI/CheckBox.png");
 
-	CheckBoxFullscreen = (GuiCheckBox*)app->guiManager->CreateGuiControl(GuiControlType::CHECKBOX, 9, checkBox, "", { 701,472,48,47 }, this);
+	CheckBoxFullscreen = (GuiCheckBox*)app->guiManager->CreateGuiControl(GuiControlType::CHECKBOX, 9, checkBox, "", { 729,195,48,47 }, this);
 	CheckBoxFullscreen->state = GuiControlState::DISABLED;
 
-	CheckBoxVsync = (GuiCheckBox*)app->guiManager->CreateGuiControl(GuiControlType::CHECKBOX, 10, checkBox, "", { 610,570,48,47 }, this);
+	checkBoxFullscreen = app->tex->Load("Assets/UI/Fullscreen.png");
+
+	CheckBoxVsync = (GuiCheckBox*)app->guiManager->CreateGuiControl(GuiControlType::CHECKBOX, 10, checkBox, "", { 729,270,48,47 }, this);
 	CheckBoxVsync->state = GuiControlState::DISABLED;
+
+	checkBoxVsync = app->tex->Load("Assets/UI/Vsync.png");
 
 	BackCredits = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 6, back, "", { 704,619,112,59 }, this);
 	BackCredits->state = GuiControlState::DISABLED;
@@ -129,7 +154,7 @@ bool SceneTitle::Update(float dt)
 
 	}
 
-	app->render->DrawTexture(titleScreen, 0, 0);
+
 
 	if (!FX_played) {
 
@@ -241,7 +266,12 @@ bool SceneTitle::PostUpdate()
 
 	bool ret = true;
 
+	app->render->DrawTexture(titleScreen, 0, 0);
+
 	app->guiManager->Draw();
+
+	if(!showSettings)app->render->DrawTexture(draggedOffTime, -12, 50);
+	
 
 	if (showCredits) {
 
@@ -271,23 +301,44 @@ bool SceneTitle::PostUpdate()
 
 	if (showSettings) {
 
+		app->render->DrawTexture(Fondo, 0, 0);
+
+		app->render->DrawTexture(SlideBar, 636, 438);
+		app->render->DrawTexture(SlideBar, 636, 515);
+
 		if (Back->state == GuiControlState::DISABLED) Back->state = GuiControlState::NORMAL;
 		if (SliderMusic->state == GuiControlState::DISABLED) SliderMusic->state = GuiControlState::NORMAL;
 		if (SliderFX->state == GuiControlState::DISABLED) SliderFX->state = GuiControlState::NORMAL;
 		if (CheckBoxFullscreen->state == GuiControlState::DISABLED) CheckBoxFullscreen->state = GuiControlState::NORMAL;
 		if (CheckBoxVsync->state == GuiControlState::DISABLED) CheckBoxVsync->state = GuiControlState::NORMAL;
+		if (FramecapUP->state == GuiControlState::DISABLED) FramecapUP->state = GuiControlState::NORMAL;
+		if (FramecapDOWN->state == GuiControlState::DISABLED) FramecapDOWN->state = GuiControlState::NORMAL;
 
 		if (NewGame->state != GuiControlState::DISABLED) NewGame->state = GuiControlState::DISABLED;
 		if (Continue_->state != GuiControlState::DISABLED) Continue_->state = GuiControlState::DISABLED;
 		if (Settings->state != GuiControlState::DISABLED) Settings->state = GuiControlState::DISABLED;
 		if (Credits->state != GuiControlState::DISABLED) Credits->state = GuiControlState::DISABLED;
 		if (Exit->state != GuiControlState::DISABLED) Exit->state = GuiControlState::DISABLED;
+		
+
+		app->render->DrawTexture(SettingsTitle, 449, 73);
+		app->render->DrawTexture(checkBoxFullscreen, 496, 202);
+		app->render->DrawTexture(checkBoxVsync, 496, 279);
+		app->render->DrawTexture(framecap, 496, 356);
+		app->render->DrawTexture(FPS, 728, 364);
+		app->render->DrawTexture(Music, 496, 433);
+		app->render->DrawTexture(SFX, 496, 510);
 
 		Back->Draw(app->render);
 		SliderMusic->Draw(app->render);
 		SliderFX->Draw(app->render);
 		CheckBoxFullscreen->Draw(app->render);
 		CheckBoxVsync->Draw(app->render);
+		FramecapUP->Draw(app->render);
+		FramecapUP->Draw(app->render);
+		FramecapDOWN->Draw(app->render);
+
+		
 
 		/*if (app->win->configWindow.child("fullscreen").attribute("value").as_bool() == false) {
 			app->win->configWindow.child("fullscreen").append_attribute("value") = "true";
@@ -308,10 +359,12 @@ bool SceneTitle::PostUpdate()
 		if (SliderFX->state != GuiControlState::DISABLED) SliderFX->state = GuiControlState::DISABLED;
 		if (CheckBoxFullscreen->state != GuiControlState::DISABLED) CheckBoxFullscreen->state = GuiControlState::DISABLED;
 		if (CheckBoxVsync->state != GuiControlState::DISABLED) CheckBoxVsync->state = GuiControlState::DISABLED;
+		if (FramecapUP->state != GuiControlState::DISABLED) FramecapUP->state = GuiControlState::DISABLED;
+		if (FramecapDOWN->state != GuiControlState::DISABLED) FramecapDOWN->state = GuiControlState::DISABLED;
 
 	}
 
-	app->render->DrawTexture(draggedOffTime,-12,50);
+	
 
 	//app->scene->player->hitsTaken = 0;
 
