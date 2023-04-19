@@ -279,6 +279,7 @@ bool Map::CleanUp()
         objectItem = objectItem->next;
     }
     mapData.objectlayers.Clear();
+   
 
     return true;
 }
@@ -547,7 +548,7 @@ bool Map::LoadObjectLayer(pugi::xml_node& node, MapLayer* objectLayer) {
             if (objectLayer->properties.GetProperty("Platform") != NULL && objectLayer->properties.GetProperty("Platform")->value) {
 
                 app->physics->CreateChain(x, y, converted_points, length, bodyType::STATIC, ColliderType::PLATFORM);
-
+               
             }
 
             delete[] converted_points;
@@ -563,7 +564,7 @@ bool Map::LoadObjectLayer(pugi::xml_node& node, MapLayer* objectLayer) {
             app->physics->CreateRectangleSensor(x + width / 2, y + height / 2, width, height, bodyType::STATIC, ColliderType::SPIKES);
 
         }
-
+        
     }
 
     return ret;
@@ -584,7 +585,7 @@ bool Map::LoadAllObjectLayers(pugi::xml_node mapNode) {
         //add the layer to the map
 
         mapData.objectlayers.Add(objectLayer);
-
+       
     }
 
     return ret;

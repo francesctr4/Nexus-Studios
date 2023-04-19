@@ -23,7 +23,7 @@
   </audio>
 
   <sceneGameplay>
-	<player x="200" y="600" texturepath="Assets/Textures/Player.png"/>
+	<player x="150" y="500" texturepath="Assets/Textures/Player.png"/>
 	  
 	<npc type="rogue" x="400" y="400" texturepath="Assets/Textures/Rogue.png"/>
 	<npc type="wizard" x="600" y="400" texturepath="Assets/Textures/Wizard.png"/>
