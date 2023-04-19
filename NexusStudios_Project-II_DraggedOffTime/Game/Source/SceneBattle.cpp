@@ -69,6 +69,9 @@ bool SceneBattle::Start()
 	selectionArrow = app->tex->Load("Assets/UI/SelectionArrow.png");
 	playerSelection = app->tex->Load("Assets/UI/PlayerSelector.png");
 
+	//Load audios
+	fx_sword_hit = app->audio->LoadFx("Assets/Audio/FX/SwordFX.wav");
+
 	action_selected = 0;
 
 	/*attackButton = app->tex->Load("Assets/UI/Attack.png");
@@ -176,15 +179,18 @@ bool SceneBattle::Update(float dt)
 			{
 			case 0: //Standar attack
 				e_HP = app->combatManager->StandarAttack(m_players[selected_player].DMG, e_HP, e_DEF);
+				app->audio->PlayFx(fx_sword_hit);
 				break;
 			case 1:	//Quick time event attack (TODO)
 				e_HP = app->combatManager->StandarAttack(m_players[selected_player].DMG, e_HP, e_DEF);
+				app->audio->PlayFx(fx_sword_hit);
 				break;
 			case 2: //Heal
 				m_players[selected_player].HP = app->combatManager->UseItem(m_players[selected_player].HP);
 				break;
 			case 3: //Habilidades (TODO)
 				e_HP = app->combatManager->StandarAttack(m_players[selected_player].DMG, e_HP, e_DEF);
+				app->audio->PlayFx(fx_sword_hit);
 				break;
 			case 4: //Run away
 				if (app->combatManager->Run())
@@ -311,6 +317,7 @@ bool SceneBattle::Update(float dt)
 			{
 				m_players[selected_player].HP = app->combatManager->EnemyAttack(e_DMG, m_players[selected_player].HP, m_players[selected_player].DEF);
 				LOG("Atack");
+				app->audio->PlayFx(fx_sword_hit);
 				//Blit red color in screen
 				app->render->DrawRectangle(rect, 255, 0, 0, 150);
 				enemy_last_action = 0;
@@ -533,6 +540,13 @@ bool SceneBattle::PostUpdate()
 	app->render->DrawTexture(selectionArrow, 191, 316);
 	SDL_Rect actionSelector_rect = { action_selected * 70, 0, 70, 70};
 	app->render->DrawTexture(actionButtons, 235, 305, &actionSelector_rect);
+
+
+
+	if (e_HP == 0)
+	{
+		app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
+	}
 
 	return true;
 }

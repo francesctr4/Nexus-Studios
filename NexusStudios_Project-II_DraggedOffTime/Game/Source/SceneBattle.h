@@ -41,6 +41,8 @@ public:
 	bool enableMusic;
 	bool qte = false; //Quick Time Event 
 
+	int fx_sword_hit;
+
 	//Combat turn
 	int turn;
 
