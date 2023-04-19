@@ -77,9 +77,8 @@ bool SceneGameplay::PreUpdate()
 // Called each loop iteration
 bool SceneGameplay::Update(float dt)
 {
-	
-
 	OPTICK_EVENT();
+
 	if (player->godMode == true)
 	{
 		if (app->input->GetKey(SDL_SCANCODE_M) == KEY_DOWN)

@@ -7,6 +7,7 @@
 #include "Log.h"
 #include "Point.h"
 #include "Physics.h"
+#include "SceneBattle.h"
 #include <iostream>
 
 Player::Player() : Entity(EntityType::PLAYER)
@@ -24,6 +25,7 @@ bool Player::Awake() {
 	position.x = parameters.attribute("x").as_int();
 	position.y = parameters.attribute("y").as_int();
 	texturePath = parameters.attribute("texturepath").as_string();
+	texturePath2 = parameters.attribute("texturepath2").as_string();
 
 	for (int i = 0; i < 4; i++) {
 
@@ -40,6 +42,7 @@ bool Player::Start() {
 
 	//initilize textures.
 	texture = app->tex->Load(texturePath);
+	texture2 = app->tex->Load(texturePath2);
 
 	// Add physics to the player.
 	pbody = app->physics->CreateCircle(position.x + 16, position.y + 16, 16, bodyType::DYNAMIC);
@@ -53,6 +56,8 @@ bool Player::Start() {
 	currentAnimation = &idle_right;
 
 	godMode = false;
+
+	textureChange = false;
 
 	return true;
 }
@@ -94,7 +99,21 @@ bool Player::Update()
 
 	SDL_Rect playerRect = currentAnimation->GetCurrentFrame();
 
-	app->render->DrawTexture(texture, position.x, position.y, &playerRect);
+	if (godMode && app->input->GetKey(SDL_SCANCODE_7) == KEY_DOWN) textureChange = !textureChange;
+
+	if (!textureChange) {
+
+		app->sceneBattle->selected_player = 0;
+		app->render->DrawTexture(texture, position.x, position.y, &playerRect);
+
+	}
+
+	else {
+
+		app->sceneBattle->selected_player = 1;
+		app->render->DrawTexture(texture2, position.x, position.y, &playerRect);
+
+	}
 
 	return true;
 }

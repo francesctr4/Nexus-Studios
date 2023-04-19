@@ -91,6 +91,7 @@ bool SceneBattle::Start()
 	currentAnimation = &playerAnimation;
 
 	playerInCombat = app->tex->Load("Assets/Textures/PlayerInCombat.png");
+	playerInCombat2 = app->tex->Load("Assets/Textures/PlayerInCombat2.png");
 
 	// Enemy texture
 
@@ -467,7 +468,19 @@ bool SceneBattle::PostUpdate()
 
 	SDL_Rect playerRect = currentAnimation->GetCurrentFrame();
 
-	app->render->DrawTexture(playerInCombat,185,405,&playerRect);
+	if (selected_player == 0) {
+
+		app->sceneGameplay->player->textureChange = false;
+		app->render->DrawTexture(playerInCombat, 185, 405, &playerRect);
+
+	}
+
+	if (selected_player == 1) {
+
+		app->sceneGameplay->player->textureChange = true;
+		app->render->DrawTexture(playerInCombat2, 185, 405, &playerRect);
+
+	}
 
 	if (app->sceneGameplay->player->godMode)
 	{
@@ -541,11 +554,11 @@ bool SceneBattle::PostUpdate()
 	SDL_Rect actionSelector_rect = { action_selected * 70, 0, 70, 70};
 	app->render->DrawTexture(actionButtons, 235, 305, &actionSelector_rect);
 
+	if (e_HP == 0) {
 
-
-	if (e_HP == 0)
-	{
+		e_HP = e_max_HP;
 		app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
+
 	}
 
 	return true;

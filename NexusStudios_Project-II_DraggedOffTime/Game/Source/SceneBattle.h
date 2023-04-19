@@ -84,6 +84,7 @@ public:
 	//Sprite player (TODO)
 
 	SDL_Texture* playerInCombat;
+	SDL_Texture* playerInCombat2;
 	Animation playerAnimation;
 	Animation* currentAnimation;
 
