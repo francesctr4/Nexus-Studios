@@ -111,6 +111,17 @@ bool CombatManager::Run() {
 	}
 };
 
+int ChangeParty(int selected_player) {
+	if (selected_player  == 1)
+	{
+		return 2;	//Cambiar a player 2
+	}
+	else if (selected_player == 2)
+	{
+		return 1;	//Cambiar a player 1
+	}
+};
+
 //Enemy actions
 int CombatManager::EnemyAttack(int e_DMG, int p_HP, int p_DEF) {
 

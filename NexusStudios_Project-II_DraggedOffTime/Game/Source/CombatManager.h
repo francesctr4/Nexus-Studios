@@ -53,11 +53,16 @@ public:
 	//5.Run from the battle
 	bool Run();
 
-	//5.Enemy attack (Return p_HP)
+	//6.Change player
+	int ChangeParty(int selected_player);
+
+	//7.Enemy attack (Return p_HP)
 	int EnemyAttack(int e_DMG, int p_HP, int p_DEF);
 
-	//6.Enemy blocks attack
+	//8.Enemy blocks attack
 	void EnemyBlockAttack();
+
+	
 
 	//QuickTimeEvent fuction. Devuelve el valor de qué tan cerca estuvo de hacer clic en el momento adecuado (en ms)
 	//int QuickTimeEvent();

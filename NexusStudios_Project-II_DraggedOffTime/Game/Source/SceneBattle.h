@@ -7,6 +7,13 @@
 
 struct SDL_Texture;
 
+struct Party_Member {
+	int HP;
+	int max_HP;
+	int DEF;
+	int DMG;
+};
+
 class SceneBattle : public Module
 {
 public:
@@ -42,11 +49,21 @@ public:
 
 
 	//Variables a cambiar por las del player y las del enemigo
-	//Player
+	
+	int selected_player;
+	int party_members;
+
+	//Player 1
 	int p_HP = 100;
 	int p_max_HP = 100;
 	int p_DEF = 10;
-	int p_DMG = 50;
+	int p_DMG = 20;
+
+	//Player 2
+	int p2_HP = 250;
+	int p2_max_HP = 250;
+	int p2_DEF = 5;
+	int p2_DMG = 10;
 
 	//Enemy
 	int e_HP = 60;

@@ -35,7 +35,24 @@ bool SceneBattle::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool SceneBattle::Start()
 {
-	
+	//Cambiar para después de la vertical slice
+	party_members = 2;
+	selected_player = 1;
+
+	Party_Member players[4];
+
+	//Stats Player 1
+	players[0] = { 100, 100, 20, 20 };
+
+	////Stats Player 2
+	players[1] = { 100, 100, 5, 10 };
+
+	////Stats Player 3
+	players[2] = { 100, 100, 5, 10 };
+
+	////Stats Player 4
+	players[3] = { 100, 100, 5, 10 };
+
 	enableMusic = true;
 
 	//Load textures
@@ -209,14 +226,21 @@ bool SceneBattle::Update(float dt)
 				}
 			}
 
-			if (app->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
+			if (app->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN)
+			{
+				selected_player =  app->combatManager->ChangeParty(selected_player);
+				app->combatManager->playerTurn = !app->combatManager->playerTurn;
+			}
+		
+
+			if (app->input->GetKey(SDL_SCANCODE_7) == KEY_DOWN)
 			{
 				p_HP = app->combatManager->EnemyAttack(e_DMG, p_HP, p_DEF);
 				app->combatManager->playerTurn = !app->combatManager->playerTurn;
 			}
 
 
-			if (app->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN)
+			if (app->input->GetKey(SDL_SCANCODE_8) == KEY_DOWN)
 			{
 				app->combatManager->EnemyBlockAttack();
 				app->combatManager->playerTurn = !app->combatManager->playerTurn;
@@ -336,7 +360,7 @@ bool SceneBattle::PostUpdate()
 	SDL_Rect enemy_sprite_rect = { 888, 225, 100, 115 };
 	app->render->DrawRectangle(enemy_sprite_rect, 225, 30, 30, 255);
 
-	// Player HP
+	// Player 1 HP
 	double p_percentage_life = (p_HP * 100.0) / p_max_HP;
 	if (p_percentage_life < 50 && p_percentage_life >= 20)	//Yellow color
 	{
@@ -357,9 +381,30 @@ bool SceneBattle::PostUpdate()
 	std::string p_HP_string = std::to_string(p_HP);
 	app->render->DrawText(p_HP_string, 80 + 125, 10, 25, 20, { 255, 255, 255, 255 });
 
-	//Player 2,3 y 4 HP (Provisional)
-	SDL_Rect rect_p2 = { 0, 0, 300, 20 }; //p2
-	app->render->DrawTexture(healthBar, 80, 85, &rect_p2);
+	// Player 2 HP
+	double p2_percentage_life = (p2_HP * 100.0) / p2_max_HP;
+	if (p_percentage_life < 50 && p2_percentage_life >= 20)	//Yellow color
+	{
+		SDL_Rect rect_p2 = { 0, 20, 3 * p2_percentage_life, 20 };
+		app->render->DrawTexture(healthBar, 80, 85, &rect_p2);
+	}
+	if (p2_percentage_life < 20) //Red color
+	{
+		SDL_Rect rect_p2 = { 0, 40, 3 * p2_percentage_life, 20 };
+		app->render->DrawTexture(healthBar, 80, 85, &rect_p2);
+	}
+	if (p2_percentage_life >= 50) //Green color
+	{
+		SDL_Rect rect_p2 = { 0, 0, 3 * p2_percentage_life, 20 };
+		app->render->DrawTexture(healthBar, 80, 85, &rect_p2);
+	}
+	app->render->DrawText("Player 2 HP:", 80, 70, 100, 20, { 255, 255, 255, 255 });
+	std::string p2_HP_string = std::to_string(p2_HP);
+	app->render->DrawText(p2_HP_string, 80 + 125, 70, 25, 20, { 255, 255, 255, 255 });
+
+	//Player 3 y 4 HP (Provisional)
+	//SDL_Rect rect_p2 = { 0, 0, 300, 20 }; //p2
+	//app->render->DrawTexture(healthBar, 80, 85, &rect_p2);
 
 	SDL_Rect rect_p3 = { 0, 0, 300, 20 };	//p3
 	app->render->DrawTexture(healthBar, 80, 140, &rect_p3);
