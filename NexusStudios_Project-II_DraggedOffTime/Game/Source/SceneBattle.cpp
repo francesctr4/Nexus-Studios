@@ -112,6 +112,8 @@ bool SceneBattle::Start()
 
 	currentAnimationEnemy = &enemyAnimation;
 
+	background = app->tex->Load("Assets/Textures/BattleBackground.png");
+
 	return true;
 }
 
@@ -369,6 +371,8 @@ bool SceneBattle::PostUpdate()
 	OPTICK_EVENT();
 
 	bool ret = true;
+
+	app->render->DrawTexture(background, 0, 0);
 	
 	//LOG("Player HP: %d", p_HP);
 	//LOG("Enemy HP: %d", e_HP);
@@ -396,8 +400,8 @@ bool SceneBattle::PostUpdate()
 
 	//Enemy sprite
 
-	SDL_Rect enemy_sprite_rect = { 888, 225, 100, 115 };
-	app->render->DrawRectangle(enemy_sprite_rect, 225, 30, 30, 255);
+	//SDL_Rect enemy_sprite_rect = { 888, 225, 100, 115 };
+	//app->render->DrawRectangle(enemy_sprite_rect, 225, 30, 30, 255);
 
 	currentAnimationEnemy->Update();
 
@@ -460,8 +464,9 @@ bool SceneBattle::PostUpdate()
 
 
 	//Player sprite
-	SDL_Rect player_sprite_rect = { 200, 420, 140, 160 };
-	app->render->DrawRectangle(player_sprite_rect, 180, 125, 230, 255);
+	
+	//SDL_Rect player_sprite_rect = { 200, 420, 140, 160 };
+	//app->render->DrawRectangle(player_sprite_rect, 180, 125, 230, 255);
 
 	currentAnimation->Update();
 

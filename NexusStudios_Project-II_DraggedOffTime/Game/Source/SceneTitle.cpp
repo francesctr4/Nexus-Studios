@@ -37,8 +37,8 @@ bool SceneTitle::Start()
 {
 	//app->map->actualmap = 1;
 
-	titleScreen = app->tex->Load("Assets/Textures/TitleScreen.png");
-	draggedOffTime = app->tex->Load("Assets/Textures/DraggedOffTime.png");
+	titleScreen = app->tex->Load("Assets/Textures/TitleScreen2.png");
+	draggedOffTime = app->tex->Load("Assets/Textures/DraggedOffTime3.png");
 
 	enableMusic = true;
 
@@ -300,7 +300,7 @@ bool SceneTitle::PostUpdate()
 
 	}
 
-	app->render->DrawTexture(draggedOffTime,80,60);
+	app->render->DrawTexture(draggedOffTime,-12,50);
 
 	//app->scene->player->hitsTaken = 0;
 

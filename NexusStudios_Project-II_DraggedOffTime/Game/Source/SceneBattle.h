@@ -91,6 +91,10 @@ public:
 
 private:
 
+	// Sprite Background
+
+	SDL_Texture* background;
+
 	//Sprites UI
 	SDL_Texture* classID = nullptr;
 
@@ -104,7 +108,6 @@ private:
 
 	int action_selected = 0; 
 
-
 	//GUI
 	SDL_Texture* attackButton;
 	GuiButton* AttackButton;
@@ -114,7 +117,6 @@ private:
 
 	SDL_Texture* itemButton;
 	GuiButton* ItemButton;
-
 
 	// Variables para el control del QTE
 	int startTime = 0;
