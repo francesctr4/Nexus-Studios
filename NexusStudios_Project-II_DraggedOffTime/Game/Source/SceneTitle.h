@@ -39,6 +39,9 @@ public:
 
 	bool enableMusic;
 
+	uint titleFX;
+	bool FX_played;
+
 private:
 	
 	SDL_Texture* titleScreen;

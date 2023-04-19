@@ -40,7 +40,11 @@ bool SceneLogo::Start()
 
 	nexusStudiosLogo = app->tex->Load("Assets/Textures/SceneLogo.png");
 
+	logoFX = app->audio->LoadFx("Assets/Audio/Fx/LogoFX2.wav");
+
 	enableMusic = true;
+
+	FX_played = false;
 
 	return true;
 }
@@ -75,6 +79,13 @@ bool SceneLogo::Update(float dt)
 	}
 
 	app->render->DrawTexture(nexusStudiosLogo, 0, 0);
+
+	if (!FX_played) {
+
+		app->audio->PlayFx(logoFX);
+		FX_played = true;
+
+	}
 
 	return true;
 }

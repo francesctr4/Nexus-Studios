@@ -38,4 +38,7 @@ private:
 
 	SDL_Texture* nexusStudiosLogo;
 
+	uint logoFX;
+	bool FX_played;
+
 };

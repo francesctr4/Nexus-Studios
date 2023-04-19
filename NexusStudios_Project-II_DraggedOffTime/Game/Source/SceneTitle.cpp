@@ -42,6 +42,10 @@ bool SceneTitle::Start()
 
 	enableMusic = true;
 
+	titleFX = app->audio->LoadFx("Assets/Audio/Fx/TitleFX.wav");
+
+	FX_played = false;
+
 	// UI
 
 	newGame = app->tex->Load("Assets/UI/NewGame.png"); 
@@ -126,6 +130,13 @@ bool SceneTitle::Update(float dt)
 	}
 
 	app->render->DrawTexture(titleScreen, 0, 0);
+
+	if (!FX_played) {
+
+		app->audio->PlayFx(titleFX);
+		FX_played = true;
+
+	}
 
 	//app->map->Draw();
 
