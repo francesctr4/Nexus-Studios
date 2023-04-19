@@ -72,8 +72,8 @@ bool NPC::Start() {
 		
 	if (type == NPC_Types::ORC) {
 
-		npcIcon = app->tex->Load("Assets/Textures/OrcIcon.png");
-		npcIcon_Transparent = app->tex->Load("Assets/Textures/OrcIcon_Transparent.png");
+		npcIcon = app->tex->Load("Assets/Textures/SkippyIcon.png");
+		npcIcon_Transparent = app->tex->Load("Assets/Textures/SkippyIcon_Transparent.png");
 
 	}
 
@@ -186,7 +186,7 @@ bool NPC::Update()
 
 		if (type == NPC_Types::ROGUE) DialogueGenerator(firstConversation);
 		if (type == NPC_Types::WIZARD) DialogueGenerator(secondConversation);
-		if (type == NPC_Types::ORC) ;
+		if (type == NPC_Types::ORC) DialogueGenerator(firstConversation);
 
 	}
 	else {
@@ -267,7 +267,7 @@ void NPC::DialogueGenerator(Conversation conversation) {
 
 			if (type == NPC_Types::ROGUE) app->render->DrawTexture(npcIcon_Transparent, 876, 409);
 			if (type == NPC_Types::WIZARD) app->render->DrawTexture(npcIcon_Transparent, 869, 407);
-			if (type == NPC_Types::ORC) app->render->DrawTexture(npcIcon_Transparent, 863, 400);
+			if (type == NPC_Types::ORC) app->render->DrawTexture(npcIcon_Transparent, 864, 397);
 
 			app->render->DrawTexture(selector, selectorPositions[selectorIterator].x, selectorPositions[selectorIterator].y);
 	
@@ -284,7 +284,7 @@ void NPC::DialogueGenerator(Conversation conversation) {
 
 			if (type == NPC_Types::ROGUE) app->render->DrawTexture(npcIcon, 876, 409);
 			if (type == NPC_Types::WIZARD) app->render->DrawTexture(npcIcon, 869, 407);
-			if (type == NPC_Types::ORC) app->render->DrawTexture(npcIcon, 863, 400);
+			if (type == NPC_Types::ORC) app->render->DrawTexture(npcIcon, 864, 397);
 
 			app->render->DrawTexture(conversation.dialogues[dialogueIterator].text, 266, 553);
 
