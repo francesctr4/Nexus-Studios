@@ -77,13 +77,19 @@ public:
 	int e_DEF = 10;
 	int e_DMG = 20;
 
-private:
-
 	//Sprite player (TODO)
 
 	SDL_Texture* playerInCombat;
 	Animation playerAnimation;
 	Animation* currentAnimation;
+
+	//Sprite enemy (TODO)
+
+	SDL_Texture* enemyInCombat;
+	Animation enemyAnimation;
+	Animation* currentAnimationEnemy;
+
+private:
 
 	//Sprites UI
 	SDL_Texture* classID = nullptr;

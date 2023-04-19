@@ -47,6 +47,14 @@ public:
 
 	void Death();
 
+public:
+
+	SDL_Texture* texture;
+	const char* texturePath;
+
+	SDL_Texture* textureBattle;
+	const char* texturePathBattle;
+
 private:
 
 	EnemyType type;
@@ -56,9 +64,6 @@ private:
 	int def;
 
 	bool playerInteraction;
-
-	SDL_Texture* texture;
-	const char* texturePath;
 
 	PhysBody* pbody;
 	PhysBody* enemySensor;

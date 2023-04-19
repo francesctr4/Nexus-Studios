@@ -29,10 +29,10 @@
 	<npc type="wizard" x="600" y="400" texturepath="Assets/Textures/Wizard.png"/>
 	<npc type="orc" x="800" y="400" texturepath="Assets/Textures/Skippy.png"/>
 
-	<enemy type = "damage" x="900" y="100" texturepath="Assets/Textures/Damage_New.png"/>
-	<enemy type = "support" x="1000" y="100" texturepath="Assets/Textures/Support_New.png"/>
-	<enemy type = "tank" x="1100" y="100" texturepath="Assets/Textures/Tank_New.png"/>
-	<enemy type = "damage" x="700" y="300" texturepath="Assets/Textures/Cyberpunk.png"/>
+	<enemy type = "damage" x="900" y="100" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png"/>
+	<enemy type = "support" x="1000" y="100" texturepath="Assets/Textures/Support_New.png" battletexturepath ="Assets/Textures/SupportInCombat.png"/>
+	<enemy type = "tank" x="1100" y="100" texturepath="Assets/Textures/Tank_New.png" battletexturepath ="Assets/Textures/TankInCombat.png"/>
+	<enemy type = "damage" x="700" y="300" texturepath="Assets/Textures/Cyberpunk.png" battletexturepath ="Assets/Textures/CyberpunkInCombat.png"/>
 
   </sceneGameplay>
 

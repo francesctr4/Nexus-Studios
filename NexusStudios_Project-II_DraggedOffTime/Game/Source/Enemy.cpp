@@ -10,6 +10,7 @@
 #include "PathFinding.h"
 #include "Map.h"
 #include "FadeToBlack.h"
+#include "SceneBattle.h"
 
 #include <iostream>
 
@@ -54,6 +55,7 @@ bool Enemy::Awake() {
 	position.x = parameters.attribute("x").as_int();
 	position.y = parameters.attribute("y").as_int();
 	texturePath = parameters.attribute("texturepath").as_string();
+	texturePathBattle = parameters.attribute("battletexturepath").as_string();
 
 	for (int i = 0; i < 4; i++) {
 
@@ -69,6 +71,7 @@ bool Enemy::Awake() {
 bool Enemy::Start() {
 
 	texture = app->tex->Load(texturePath);
+	textureBattle = app->tex->Load(texturePathBattle);
 
 	int width = 32;
 	int height = 32;
@@ -131,6 +134,7 @@ void Enemy::OnCollision(PhysBody* physA, PhysBody* physB) {
 		LOG("Collision PLAYER");
 
 		playerInteraction = true;
+		app->sceneBattle->enemyInCombat = textureBattle;
 
 		break;
 

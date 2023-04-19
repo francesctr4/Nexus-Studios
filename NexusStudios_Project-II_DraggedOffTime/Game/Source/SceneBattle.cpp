@@ -37,6 +37,15 @@ bool SceneBattle::Awake(pugi::xml_node& config)
 	playerAnimation.loop = true;
 	playerAnimation.speed = 0.06f;
 
+	for (int i = 3; i >= 0; i--) {
+
+		enemyAnimation.PushBack({ 115 * (0 + i), 115 * 0, 115, 115 });
+
+	}
+	enemyAnimation.loop = true;
+	enemyAnimation.speed = 0.06f;
+
+
 	return true;
 }
 
@@ -98,6 +107,10 @@ bool SceneBattle::Start()
 	currentAnimation = &playerAnimation;
 
 	playerInCombat = app->tex->Load("Assets/Textures/PlayerInCombat.png");
+
+	// Enemy texture
+
+	currentAnimationEnemy = &enemyAnimation;
 
 	return true;
 }
@@ -382,9 +395,15 @@ bool SceneBattle::PostUpdate()
 	app->render->DrawText(e_HP_string, 800 + 125, 10, 25, 20, { 255, 255, 255, 255 });
 
 	//Enemy sprite
+
 	SDL_Rect enemy_sprite_rect = { 888, 225, 100, 115 };
 	app->render->DrawRectangle(enemy_sprite_rect, 225, 30, 30, 255);
 
+	currentAnimationEnemy->Update();
+
+	SDL_Rect enemyRect = currentAnimationEnemy->GetCurrentFrame();
+
+	app->render->DrawTexture(enemyInCombat, 880, 226, &enemyRect);
 
 	// Player 1 HP
 	double p_percentage_life = (m_players[0].HP * 100.0) / m_players[0].max_HP;
