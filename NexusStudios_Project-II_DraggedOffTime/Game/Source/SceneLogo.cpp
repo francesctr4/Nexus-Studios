@@ -27,7 +27,7 @@ SceneLogo::~SceneLogo()
 
 bool SceneLogo::Awake(pugi::xml_node& config)
 {
-
+	
 	return true;
 }
 

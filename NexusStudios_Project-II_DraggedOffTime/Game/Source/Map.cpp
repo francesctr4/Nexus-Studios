@@ -2,6 +2,7 @@
 #include "Render.h"
 #include "Textures.h"
 #include "Map.h"
+#include "Enemy.h"
 #include "Physics.h"
 
 #include "Defs.h"
@@ -289,8 +290,9 @@ bool Map::CleanUp()
         objectItem = objectItem->next; 
         
     }
-    mapData.objectlayers.Clear();
    
+    mapData.objectlayers.Clear();
+    
     
 
     return true;

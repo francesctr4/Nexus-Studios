@@ -63,10 +63,11 @@ bool EntityManager::Start() {
 // Called before quitting
 bool EntityManager::CleanUp()
 {
+	
 	bool ret = true;
 	ListItem<Entity*>* item;
 	item = entities.end;
-
+	
 	while (item != NULL && ret == true)
 	{
 		ret = item->data->CleanUp();

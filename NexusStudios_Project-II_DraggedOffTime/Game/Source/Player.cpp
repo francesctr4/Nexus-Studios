@@ -22,8 +22,7 @@ Player::~Player() {
 bool Player::Awake() {
 
 	// Initialize Player parameters from XML
-	position.x = parameters.attribute("x").as_int();
-	position.y = parameters.attribute("y").as_int();
+	
 	texturePath = parameters.attribute("texturepath").as_string();
 	texturePath2 = parameters.attribute("texturepath2").as_string();
 
@@ -39,7 +38,8 @@ bool Player::Awake() {
 }
 
 bool Player::Start() {
-
+	position.x = parameters.attribute("x").as_int();
+	position.y = parameters.attribute("y").as_int();
 	//initilize textures.
 	texture = app->tex->Load(texturePath);
 	texture2 = app->tex->Load(texturePath2);
