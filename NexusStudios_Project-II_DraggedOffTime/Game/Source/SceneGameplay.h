@@ -52,6 +52,7 @@ public:
 	int actually = 0;
 
 	List<Enemy*> enemies;
+	List<NPC*> npcs;
 
 	SDL_Texture* Fondo;
 

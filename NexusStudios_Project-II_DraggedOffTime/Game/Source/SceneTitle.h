@@ -44,8 +44,7 @@ public:
 
 	bool showSettings;
 
-private:
-
+public:
 
 	SDL_Texture* Fondo;
 

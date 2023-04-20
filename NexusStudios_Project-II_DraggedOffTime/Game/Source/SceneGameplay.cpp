@@ -11,6 +11,7 @@
 #include "Map.h"
 #include "FadeToBlack.h"
 #include "EntityManager.h"
+#include "SceneTitle.h"
 
 #include "SceneGameplay.h"
 
@@ -34,6 +35,8 @@ bool SceneGameplay::Awake(pugi::xml_node& config)
 	{
 		NPC* npc = (NPC*)app->entityManager->CreateEntity(EntityType::NPC);
 		npc->parameters = npcNode;
+
+		npcs.Add(npc);
 
 	}
 
@@ -189,7 +192,7 @@ bool SceneGameplay::Update(float dt)
 
 	if (CheckBoxFullscreen->crossed) {
 
-		//app->scene->CheckBoxFullscreen->crossed = true;
+		app->sceneTitle->CheckBoxFullscreen->crossed = true;
 		SDL_SetWindowFullscreen(app->win->window, SDL_WINDOW_FULLSCREEN_DESKTOP);
 		SDL_RenderSetLogicalSize(app->render->renderer, 1280, 720);
 
@@ -197,23 +200,29 @@ bool SceneGameplay::Update(float dt)
 
 	if (!CheckBoxFullscreen->crossed) {
 
-		//app->scene->CheckBoxFullscreen->crossed = false;
+		app->sceneTitle->CheckBoxFullscreen->crossed = false;
 		SDL_SetWindowFullscreen(app->win->window, 0);
 
 	}
 
 	if (CheckBoxVsync->crossed) {
 
-		//app->scene->CheckBoxVsync->crossed = true;
+		app->sceneTitle->CheckBoxVsync->crossed = true;
 		SDL_GL_SetSwapInterval(1);
 
 	}
 	if (!CheckBoxVsync->crossed) {
 
-		//app->scene->CheckBoxVsync->crossed = false;
+		app->sceneTitle->CheckBoxVsync->crossed = false;
 		SDL_GL_SetSwapInterval(0);
 
 	}
+	
+	app->sceneTitle->SliderMusic->bounds.x = SliderMusic->bounds.x;
+	app->sceneTitle->SliderMusic->posx = SliderMusic->posx;
+
+	app->sceneTitle->SliderFX->bounds.x = SliderFX->bounds.x;
+	app->sceneTitle->SliderFX->posx = SliderFX->posx;
 
 	Mix_VolumeMusic((SliderMusic->bounds.x - 631) * (128 - 0) / (753 - 631) + 0);
 
