@@ -11,6 +11,7 @@
 #include "FadeToBlack.h"
 #include "EntityManager.h"
 #include "Map.h"
+#include "SceneGameplay.h"
 
 #include "SceneTitle.h"
 
@@ -205,7 +206,7 @@ bool SceneTitle::Update(float dt)
 
 	if (CheckBoxFullscreen->crossed) {
 
-		//app->scene->CheckBoxFullscreen->crossed = true;
+		app->sceneGameplay->CheckBoxFullscreen->crossed = true;
 		SDL_SetWindowFullscreen(app->win->window, SDL_WINDOW_FULLSCREEN_DESKTOP);
 		SDL_RenderSetLogicalSize(app->render->renderer, 1280, 720);
 
@@ -213,30 +214,30 @@ bool SceneTitle::Update(float dt)
 
 	if (!CheckBoxFullscreen->crossed) {
 
-		//app->scene->CheckBoxFullscreen->crossed = false;
+		app->sceneGameplay->CheckBoxFullscreen->crossed = false;
 		SDL_SetWindowFullscreen(app->win->window, 0);
 
 	}
 
 	if (CheckBoxVsync->crossed) {
 
-		//app->scene->CheckBoxVsync->crossed = true;
+		app->sceneGameplay->CheckBoxVsync->crossed = true;
 		SDL_GL_SetSwapInterval(1);
 
 	}
 
 	if (!CheckBoxVsync->crossed) {
 
-		//app->scene->CheckBoxVsync->crossed = false;
+		app->sceneGameplay->CheckBoxVsync->crossed = false;
 		SDL_GL_SetSwapInterval(0);
 
 	}
 
-	//app->scene->SliderMusic->bounds.x = SliderMusic->bounds.x;
-	//app->scene->SliderMusic->posx = SliderMusic->posx;
+	app->sceneGameplay->SliderMusic->bounds.x = SliderMusic->bounds.x;
+	app->sceneGameplay->SliderMusic->posx = SliderMusic->posx;
 
-	//app->scene->SliderFX->bounds.x = SliderFX->bounds.x;
-	//app->scene->SliderFX->posx = SliderFX->posx;
+	app->sceneGameplay->SliderFX->bounds.x = SliderFX->bounds.x;
+	app->sceneGameplay->SliderFX->posx = SliderFX->posx;
 
 	Mix_VolumeMusic((SliderMusic->bounds.x - 631) * (128 - 0) / (753 - 631) + 0);
 
