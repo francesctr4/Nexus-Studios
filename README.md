@@ -63,25 +63,33 @@ periods and reuniting all the temporal parts of the protagonist.
 ## Game controls
 
 ### GAMEPAD ###
-
+	
 	[_Work in progress_]
+	
+	Left Joystick: Move the player
+	Start: Next scene
 
 ### MOUSE ###
 
-	[_Work in progress_]
+	RIGHT CLICK: Interact with the UI
 
 ### KEYBOARD ###
 	
 	WASD: Move the player around
-	F10: God mode
+	E: Talk with the NPCs
+	SPACE in Gameplay: Skip dialogue
+	SPACE in Battle: Use selected action
 	
+	F10: God mode --> Enables Debug Keys
+	ENTER: Next scene
 
 ### DEBUG KEYS ###
 
 	Gameplay:
 		M :Change Maps
+		7: Change to second player
 	Battle:
-		1: Standar attack
+		1: Standard attack
 		2: Quick Time Event attack
 		3: Defend
 		4: Heal yourself
