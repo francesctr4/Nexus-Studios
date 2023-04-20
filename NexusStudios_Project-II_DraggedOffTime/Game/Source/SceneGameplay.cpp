@@ -36,6 +36,8 @@ bool SceneGameplay::Awake(pugi::xml_node& config)
 		NPC* npc = (NPC*)app->entityManager->CreateEntity(EntityType::NPC);
 		npc->parameters = npcNode;
 
+		npcs.Add(npc);
+
 	}
 
 	for (pugi::xml_node enemyNode = config.child("enemy"); enemyNode; enemyNode = enemyNode.next_sibling("enemy"))
@@ -215,7 +217,7 @@ bool SceneGameplay::Update(float dt)
 		SDL_GL_SetSwapInterval(0);
 
 	}
-
+	
 	app->sceneTitle->SliderMusic->bounds.x = SliderMusic->bounds.x;
 	app->sceneTitle->SliderMusic->posx = SliderMusic->posx;
 
