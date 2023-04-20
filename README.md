@@ -59,6 +59,8 @@ Over the course of the journey of a university student named **Kleos**, players 
 
 [_Work in progress_]
 
+The objective of 
+
 ## Game controls
 
 ### GAMEPAD ###
