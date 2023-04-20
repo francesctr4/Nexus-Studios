@@ -57,7 +57,8 @@ Over the course of the journey of a university student named **Kleos**, players 
 
 ## Objective
 
-[_Work in progress_]
+The objective of the game is to escape alive from the time rift and return to the real world by traversing the various dungeons located in different time 
+periods and reuniting all the temporal parts of the protagonist.
 
 ## Game controls
 

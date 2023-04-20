@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "mapfinal1280.tmx",
+    "activeFile": "",
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
@@ -58,16 +58,44 @@
                 "y": 200.55603489598317
             }
         },
+        "D:/GRADO/2º CARRERA/PROYECTO/MapasConCollider/MapasConCollider/Sala_Cofre.tmx": {
+            "scale": 0.8127777777777777,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 319.8906356801093,
+                "y": 533.9712918660287
+            }
+        },
+        "D:/GRADO/2º CARRERA/PROYECTO/MapasConCollider/MapasConCollider/Sala_Cofre.tmx#Props": {
+            "scaleInDock": 1
+        },
+        "D:/GRADO/2º CARRERA/PROYECTO/MapasConCollider/MapasConCollider/Sala_Cofre.tmx#Tiles": {
+            "scaleInDock": 1
+        },
         "Idle-Sheet.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "JovaniJV.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 666,
+                "y": 437.33333333333337
+            }
+        },
+        "JovaniJV.tmx#Props": {
+            "scaleInDock": 1
+        },
+        "JovaniJV.tmx#Tiles": {
+            "scaleInDock": 1
         },
         "Map_Final.tmx": {
             "scale": 1.5496875,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 421.6979229683404,
-                "y": 200.36297640653356
+                "x": 420.7299858842509,
+                "y": 200.04033071183707
             }
         },
         "Map_Final.tmx#Props": {
@@ -81,11 +109,14 @@
             "scaleInEditor": 5.5
         },
         "Sala_Cofre.tmx": {
+            "expandedObjectLayers": [
+                5
+            ],
             "scale": 1,
-            "selectedLayer": 3,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 295,
-                "y": 310
+                "x": 742,
+                "y": 374
             }
         },
         "Sala_Cofre.tmx#Props": {
@@ -114,8 +145,8 @@
             "scale": 1,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 638,
-                "y": 337
+                "x": 639.5,
+                "y": 359.5
             }
         },
         "mapfinal1280.tmx#Props": {
@@ -141,10 +172,10 @@
     "project": "",
     "property.type": "bool",
     "recentFiles": [
-        "Sala_Cofre.tmx",
         "Map_Final.tmx",
         "Idle-Sheet.tsx",
         "mapfinal1280.tmx",
+        "Sala_Cofre.tmx",
         "Tiles.tsx",
         "Props.tsx",
         "mapfinal1280..tmx",
