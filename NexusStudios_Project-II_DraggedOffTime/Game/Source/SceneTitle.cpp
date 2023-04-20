@@ -145,15 +145,6 @@ bool SceneTitle::Update(float dt)
 {
 	OPTICK_EVENT();
 
-	if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_START] == KEY_DOWN) {
-
-		enableMusic = true;
-		app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
-
-	}
-
-
-
 	if (!FX_played) {
 
 		app->audio->PlayFx(titleFX);
@@ -161,11 +152,9 @@ bool SceneTitle::Update(float dt)
 
 	}
 
-	//app->map->Draw();
-
 	// UI
 
-	if (NewGame->state == GuiControlState::PRESSED) {
+	if (NewGame->state == GuiControlState::PRESSED || app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_START] == KEY_DOWN) {
 
 		enableMusic = true;
 		NewGame->state = GuiControlState::DISABLED;
