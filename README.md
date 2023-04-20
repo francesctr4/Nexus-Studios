@@ -72,8 +72,22 @@ periods and reuniting all the temporal parts of the protagonist.
 
 ### KEYBOARD ###
 	
-	[_Work in progress_]
+	WASD: Move the player around
+	F10: God mode
+	
 
 ### DEBUG KEYS ###
 
-	[_Work in progress_]
+	Gameplay:
+		M :Change Maps
+	Battle:
+		1: Standar attack
+		2: Quick Time Event attack
+		3: Defend
+		4: Heal yourself
+		5: Run away
+		6: Switch party member
+		7: Enemy attack
+		8: Enemy defense
+		H: Fully Recover enemy
+		TAB: Skip turn
