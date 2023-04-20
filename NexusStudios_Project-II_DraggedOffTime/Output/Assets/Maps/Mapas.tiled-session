@@ -58,6 +58,20 @@
                 "y": 200.55603489598317
             }
         },
+        "D:/GRADO/2º CARRERA/PROYECTO/MapasConCollider/MapasConCollider/JovaniJV.tmx": {
+            "scale": 1.4629999999999999,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 200.2734107997266,
+                "y": 200.27341079972663
+            }
+        },
+        "D:/GRADO/2º CARRERA/PROYECTO/MapasConCollider/MapasConCollider/JovaniJV.tmx#Props": {
+            "scaleInDock": 1
+        },
+        "D:/GRADO/2º CARRERA/PROYECTO/MapasConCollider/MapasConCollider/JovaniJV.tmx#Tiles": {
+            "scaleInDock": 1
+        },
         "D:/GRADO/2º CARRERA/PROYECTO/MapasConCollider/MapasConCollider/Sala_Cofre.tmx": {
             "scale": 0.8127777777777777,
             "selectedLayer": 4,
@@ -156,11 +170,11 @@
             }
         },
         "mapfinal1280.tmx": {
-            "scale": 1,
-            "selectedLayer": 1,
+            "scale": 0.75,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 639.5,
-                "y": 359.5
+                "x": 688,
+                "y": 349.33333333333326
             }
         },
         "mapfinal1280.tmx#Props": {
