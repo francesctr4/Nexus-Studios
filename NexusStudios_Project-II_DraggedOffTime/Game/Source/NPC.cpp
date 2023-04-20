@@ -56,10 +56,16 @@ bool NPC::Start() {
 
 	texture = app->tex->Load(texturePath);
 
+	name_player = app->tex->Load("Assets/Textures/Names/Kleos_Name.png");
+	name_player_transparent = app->tex->Load("Assets/Textures/Names/Kleos_Name_Transparent.png");
+
 	if (type == NPC_Types::ROGUE) {
 
 		npcIcon = app->tex->Load("Assets/Textures/RogueIcon.png");
 		npcIcon_Transparent = app->tex->Load("Assets/Textures/RogueIcon_Transparent.png");
+
+		name_npc = app->tex->Load("Assets/Textures/Names/Rogue_Name.png");
+		name_npc_transparent = app->tex->Load("Assets/Textures/Names/Rogue_Name_Transparent.png");
 
 	}
 
@@ -68,12 +74,18 @@ bool NPC::Start() {
 		npcIcon = app->tex->Load("Assets/Textures/WizardIcon.png");
 		npcIcon_Transparent = app->tex->Load("Assets/Textures/WizardIcon_Transparent.png");
 
+		name_npc = app->tex->Load("Assets/Textures/Names/Wiwi_Name.png");
+		name_npc_transparent = app->tex->Load("Assets/Textures/Names/Wiwi_Name_Transparent.png");
+
 	}
 		
 	if (type == NPC_Types::ORC) {
 
 		npcIcon = app->tex->Load("Assets/Textures/SkippyIcon.png");
 		npcIcon_Transparent = app->tex->Load("Assets/Textures/SkippyIcon_Transparent.png");
+
+		name_npc = app->tex->Load("Assets/Textures/Names/Skippy_Name.png");
+		name_npc_transparent = app->tex->Load("Assets/Textures/Names/Skippy_Name_Transparent.png");
 
 	}
 
@@ -117,34 +129,48 @@ bool NPC::Start() {
 	firstDialogue = new Dialogue[firstConversation.size];
 	firstConversation.dialogues = firstDialogue;
 
-	firstDialogue[0].text = loremIpsum;
+	firstDialogue[0].text = app->tex->Load("Assets/Dialogue/Conversacion1_Texto1_Skippy.png");
 	firstDialogue[0].whoIsTalking = DialogueType::NPC;
 
-	firstDialogue[1].text = playerSampleText;
-	firstDialogue[1].whoIsTalking = DialogueType::PLAYER;
+	firstDialogue[1].text = app->tex->Load("Assets/Dialogue/Conversacion1_Texto2_Player.png");
+	firstDialogue[1].whoIsTalking = DialogueType::PLAYER_SELECTOR;
 
-	firstDialogue[2].text = app->tex->Load("Assets/Textures/Dialogo2.png");
+	firstDialogue[2].text = app->tex->Load("Assets/Dialogue/Conversacion1_Texto3_Skippy.png");
 	firstDialogue[2].whoIsTalking = DialogueType::NPC;
 
-	firstDialogue[3].text = playerSampleText;
-	firstDialogue[3].whoIsTalking = DialogueType::PLAYER;
+	firstDialogue[3].text = app->tex->Load("Assets/Dialogue/Conversacion1_Texto4_Player.png");
+	firstDialogue[3].whoIsTalking = DialogueType::PLAYER_SELECTOR;
 
-	firstDialogue[4].text = app->tex->Load("Assets/Textures/Dialogo3.png");
+	firstDialogue[4].text = app->tex->Load("Assets/Dialogue/Conversacion1_Texto5_Skippy.png");
 	firstDialogue[4].whoIsTalking = DialogueType::NPC;
 
 	// ---------------------------------------------------------------------------------
 
 	secondConversation.id = 2;
-	secondConversation.size = 2;
+	secondConversation.size = 3;
 
 	secondDialogue = new Dialogue[secondConversation.size];
 	secondConversation.dialogues = secondDialogue;
 
-	secondDialogue[0].text = loremIpsum;
+	secondDialogue[0].text = app->tex->Load("Assets/Dialogue/Conversacion2_Texto1_Rogue.png");
 	secondDialogue[0].whoIsTalking = DialogueType::NPC;
 
-	secondDialogue[1].text = playerSampleText;
-	secondDialogue[1].whoIsTalking = DialogueType::NPC;
+	secondDialogue[1].text = app->tex->Load("Assets/Dialogue/Conversacion2_Texto2_Player.png");
+	secondDialogue[1].whoIsTalking = DialogueType::PLAYER_SELECTOR;
+
+	secondDialogue[2].text = app->tex->Load("Assets/Dialogue/Conversacion2_Texto3_Rogue.png");
+	secondDialogue[2].whoIsTalking = DialogueType::NPC;
+
+	// ---------------------------------------------------------------------------------
+
+	thirdConversation.id = 3;
+	thirdConversation.size = 1;
+
+	thirdDialogue = new Dialogue[thirdConversation.size];
+	thirdConversation.dialogues = thirdDialogue;
+
+	thirdDialogue[0].text = app->tex->Load("Assets/Dialogue/Conversacion3_Texto1_Wizard.png");
+	thirdDialogue[0].whoIsTalking = DialogueType::PLAYER;
 
 	return true;
 }
@@ -184,8 +210,8 @@ bool NPC::Update()
 	 
 	if (dialogueActivated) {
 
-		if (type == NPC_Types::ROGUE) DialogueGenerator(firstConversation);
-		if (type == NPC_Types::WIZARD) DialogueGenerator(secondConversation);
+		if (type == NPC_Types::ROGUE) DialogueGenerator(secondConversation);
+		if (type == NPC_Types::WIZARD) DialogueGenerator(thirdConversation);
 		if (type == NPC_Types::ORC) DialogueGenerator(firstConversation);
 
 	}
@@ -254,6 +280,36 @@ void NPC::DialogueGenerator(Conversation conversation) {
 
 		case DialogueType::PLAYER: {
 
+			app->render->DrawTexture(dialogueUI_player, 202, 389);
+
+			if (type == NPC_Types::ROGUE) {
+
+				app->render->DrawTexture(npcIcon_Transparent, 876, 409);
+				app->render->DrawTexture(name_npc_transparent, 714 , 485);
+
+			}
+			if (type == NPC_Types::WIZARD) {
+
+				app->render->DrawTexture(npcIcon_Transparent, 869, 407);
+				app->render->DrawTexture(name_npc_transparent, 748, 485);
+
+			}
+			if (type == NPC_Types::ORC) {
+
+				app->render->DrawTexture(npcIcon_Transparent, 864, 397);
+				app->render->DrawTexture(name_npc_transparent, 705, 485);
+
+			}
+				
+			app->render->DrawTexture(name_player, 437, 485);
+
+			app->render->DrawTexture(conversation.dialogues[dialogueIterator].text, 261, 557);
+
+			break;
+		}
+
+		case DialogueType::PLAYER_SELECTOR: {
+
 			// Change between dialogue options when pressing T
 
 			if (app->input->GetKey(SDL_SCANCODE_T) == KEY_DOWN) {
@@ -265,12 +321,29 @@ void NPC::DialogueGenerator(Conversation conversation) {
 
 			app->render->DrawTexture(dialogueUI_player, 202, 389);
 
-			if (type == NPC_Types::ROGUE) app->render->DrawTexture(npcIcon_Transparent, 876, 409);
-			if (type == NPC_Types::WIZARD) app->render->DrawTexture(npcIcon_Transparent, 869, 407);
-			if (type == NPC_Types::ORC) app->render->DrawTexture(npcIcon_Transparent, 864, 397);
+			if (type == NPC_Types::ROGUE) {
+
+				app->render->DrawTexture(npcIcon_Transparent, 876, 409);
+				app->render->DrawTexture(name_npc_transparent, 714, 485);
+
+			}
+			if (type == NPC_Types::WIZARD) {
+
+				app->render->DrawTexture(npcIcon_Transparent, 869, 407);
+				app->render->DrawTexture(name_npc_transparent, 748, 485);
+
+			}
+			if (type == NPC_Types::ORC) {
+
+				app->render->DrawTexture(npcIcon_Transparent, 864, 397);
+				app->render->DrawTexture(name_npc_transparent, 705, 485);
+
+			}
 
 			app->render->DrawTexture(selector, selectorPositions[selectorIterator].x, selectorPositions[selectorIterator].y);
-	
+			
+			app->render->DrawTexture(name_player, 437, 485);
+
 			app->render->DrawTexture(conversation.dialogues[dialogueIterator].text, 261, 557);
 
 			break;
@@ -282,9 +355,26 @@ void NPC::DialogueGenerator(Conversation conversation) {
 
 			app->render->DrawTexture(dialogueUI_npc, 202, 389);
 
-			if (type == NPC_Types::ROGUE) app->render->DrawTexture(npcIcon, 876, 409);
-			if (type == NPC_Types::WIZARD) app->render->DrawTexture(npcIcon, 869, 407);
-			if (type == NPC_Types::ORC) app->render->DrawTexture(npcIcon, 864, 397);
+			if (type == NPC_Types::ROGUE) {
+
+				app->render->DrawTexture(npcIcon, 876, 409);
+				app->render->DrawTexture(name_npc, 714, 485);
+
+			}
+			if (type == NPC_Types::WIZARD) {
+
+				app->render->DrawTexture(npcIcon, 869, 407);
+				app->render->DrawTexture(name_npc, 748, 485);
+
+			}
+			if (type == NPC_Types::ORC) {
+
+				app->render->DrawTexture(npcIcon, 864, 397);
+				app->render->DrawTexture(name_npc, 705, 485);
+
+			}
+
+			app->render->DrawTexture(name_player_transparent, 437, 485);
 
 			app->render->DrawTexture(conversation.dialogues[dialogueIterator].text, 266, 553);
 
