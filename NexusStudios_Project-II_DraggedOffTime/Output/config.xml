@@ -32,7 +32,7 @@
 	<enemy type = "damage" x="900" y="100" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png"/>
 	<enemy type = "support" x="1000" y="100" texturepath="Assets/Textures/Support_New.png" battletexturepath ="Assets/Textures/SupportInCombat.png"/>
 	<enemy type = "tank" x="1100" y="100" texturepath="Assets/Textures/Tank_New.png" battletexturepath ="Assets/Textures/TankInCombat.png"/>
-	<enemy type = "damage" x="700" y="300" texturepath="Assets/Textures/Cyberpunk.png" battletexturepath ="Assets/Textures/CyberpunkInCombat.png"/>
+	<enemy type = "damage" x="700" y="200" texturepath="Assets/Textures/Cyberpunk.png" battletexturepath ="Assets/Textures/CyberpunkInCombat.png"/>
 
   </sceneGameplay>
 
