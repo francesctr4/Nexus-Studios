@@ -49,7 +49,11 @@ _**Marcel Sunyer Caldu**_
 
 ## Game Description
 
-[_Work in progress_]
+**Dragged Off Time** is an **action RPG** with Roguelike variants, designed and developed by **Nexus Studios** during the Project II subject of the Videogame Design and Development degree, taught at CITM UPC and supervised by [Pedro Omedas](https://github.com/pomedas).
+
+Its setting is based on a virtual world with 4 different types of scenarios within it (in total there would be 5 types of scenarios), which are: prehistoric, medieval-magical, futuristic and apocalyptic.
+
+Over the course of the journey of a university student named **Kleos**, players will find a wide variety of weapons, armour, and items in order to progress through enemy-filled dungeons, discover the meaning of that world and make their way back into the real world. Alive.
 
 ## Objective
 
