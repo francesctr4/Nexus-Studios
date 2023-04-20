@@ -72,6 +72,20 @@
         "D:/GRADO/2º CARRERA/PROYECTO/MapasConCollider/MapasConCollider/Sala_Cofre.tmx#Tiles": {
             "scaleInDock": 1
         },
+        "D:/GRADO/2º CARRERA/PROYECTO/MapasConCollider/MapasConCollider/mapfinal1280.tmx": {
+            "scale": 0.8127777777777777,
+            "selectedLayer": 6,
+            "viewCenter": {
+                "x": 641.0116199589885,
+                "y": 360.49213943950787
+            }
+        },
+        "D:/GRADO/2º CARRERA/PROYECTO/MapasConCollider/MapasConCollider/mapfinal1280.tmx#Props": {
+            "scaleInDock": 1
+        },
+        "D:/GRADO/2º CARRERA/PROYECTO/MapasConCollider/MapasConCollider/mapfinal1280.tmx#Tiles": {
+            "scaleInDock": 1
+        },
         "Idle-Sheet.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -112,11 +126,11 @@
             "expandedObjectLayers": [
                 5
             ],
-            "scale": 1,
+            "scale": 1.5,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 742,
-                "y": 374
+                "x": 702,
+                "y": 221.99999999999997
             }
         },
         "Sala_Cofre.tmx#Props": {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="2">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="4">
  <tileset firstgid="1" name="Tiles" tilewidth="16" tileheight="16" tilecount="625" columns="25">
   <image source="Tiles.png" width="400" height="400"/>
  </tileset>
@@ -10830,7 +10830,7 @@
    <tile/>
   </data>
  </layer>
- <layer id="4" name="decoracion" width="80" height="45" visible="0">
+ <layer id="4" name="decoracion" width="80" height="45">
   <properties>
    <property name="Draw" type="bool" value="true"/>
    <property name="Navigation" type="bool" value="false"/>
@@ -18046,7 +18046,7 @@
    <tile/>
   </data>
  </layer>
- <layer id="7" name="personaje" width="80" height="45" visible="0">
+ <layer id="7" name="personaje" width="80" height="45">
   <properties>
    <property name="Draw" type="bool" value="false"/>
    <property name="Navigation" type="bool" value="false"/>
@@ -21655,9 +21655,11 @@
   </data>
  </layer>
  <objectgroup id="8" name="Object_Layer1">
- <properties>
-  <property name="Platform" type="bool" value="true"/>
- </properties>
-  <object id="1" x="151.274" y="88.4571" width="846.111" height="480.745"/>
+  <properties>
+   <property name="Platform" type="bool" value="true"/>
+  </properties>
+  <object id="2" x="176" y="304">
+   <polygon points="48,0 48,40.125 -0.0248025,40.1664 0,80 -32,80 -32,87.99 -47.9778,88.067 -48,80 -128,80 -128,368 352,368 352.25,324 240.25,324 240,288 224,288 224,256 240,256 240,224 688,224 688.25,324 592.25,324 592,368 1056,368 1056.18,99.8182 1040.18,99.8182 1040,84.5455 1008,84.5455 1008,48 976,48 975.818,86.7273 911.818,86.7273 912,64 880,64 879.978,72.0222 863.978,72.0222 864,64 816,64 815.978,72.0181 799.978,72.0181 800,64 752,64 752,160 688,160 688.25,131 640.25,131 640,112 624,112 624,64 608,64 608,0 544,0 544,-32 624,-32 624,-112 752,-112 752,-32 960,-32 960,-160 1056,-160 1056,-240 1008,-240 1008,-225.029 960,-225.029 960,-240 912,-240 912,-256 880,-256 880,-240 832,-240 832,-224.483 784,-224.483 784,-240 752,-240 752,-176 704,-176 704.125,-151.625 672.125,-151.625 672,-176 624,-176 624,-240 560,-240 559.989,-231.998 543.989,-231.998 544,-240 528,-240 527.989,-231.998 511.989,-231.998 512,-240 464,-240 464,-224 432,-224 432,-32 480,-32 480,0 416,0 400,0 400,32 368,32 368.016,40 352.016,40 352,32 304,32 304,52.25 272,52.25 272,80 208,80 207.995,88.013 191.995,88.013 192,80 112,80 112,88 96,88 96,80 48,80 48,-288 1088,-288 1088,400 -160,400 -160,0"/>
+  </object>
  </objectgroup>
 </map>
