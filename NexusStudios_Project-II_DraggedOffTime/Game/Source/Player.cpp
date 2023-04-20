@@ -4,6 +4,7 @@
 #include "Audio.h"
 #include "Input.h"
 #include "Render.h"
+#include "Map.h"
 #include "Log.h"
 #include "FadeToBlack.h"
 #include "Point.h"
@@ -72,7 +73,10 @@ bool Player::Update()
 	if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN) godMode = !godMode;
 
 	speed = 5;
-
+	if (godMode)
+	{
+		speed = 10;
+	}
 	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) vel = b2Vec2(GRAVITY_X, -speed);
 	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) vel = b2Vec2(GRAVITY_X, speed);
 	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) vel = b2Vec2(-speed, -GRAVITY_Y);
@@ -114,6 +118,10 @@ bool Player::Update()
 		app->sceneBattle->selected_player = 1;
 		app->render->DrawTexture(texture2, position.x, position.y, &playerRect);
 
+	}
+	if (app->map->actualmap == 1)
+	{
+		Teleport(10, 10);
 	}
 
 	return true;

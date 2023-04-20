@@ -108,11 +108,12 @@ bool Enemy::Update()
 
 	if (playerInteraction)
 	{
+		Death();
 		app->fadeToBlack->Fade((Module*)app->sceneGameplay,	(Module*)app->sceneBattle);
 	}
-	if (playerInteraction && app->sceneBattle->e_HP==0)
+	if (app->sceneBattle->e_HP<=0)
 	{
-		Death();
+		
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_9) == KEY_DOWN)
