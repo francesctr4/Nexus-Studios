@@ -60,7 +60,7 @@ bool GuiSlider::Update(float dt)
 
 				if (posx >= 0 && posx + bounds.w <= app->win->width) {
 
-					if (bounds.x >= 324 && bounds.x <= 674) {
+					if (bounds.x >= 631 && bounds.x <= 753) {
 
 						bounds.x = x0 - bounds.w / 2;
 						posx = x0 - bounds.w / 2;
@@ -68,16 +68,16 @@ bool GuiSlider::Update(float dt)
 					}
 					else {
 
-						if (bounds.x > 500) {
+						if (bounds.x > 753) {
 
-							bounds.x = 674;
-							posx = 674;
+							bounds.x = 753;
+							posx = 753;
 
 						}
 						else {
 
-							bounds.x = 324;
-							posx = 324;
+							bounds.x = 631;
+							posx = 631;
 
 						}
 						

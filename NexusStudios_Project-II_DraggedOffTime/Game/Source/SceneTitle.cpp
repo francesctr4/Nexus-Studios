@@ -75,12 +75,12 @@ bool SceneTitle::Start()
 	slider = app->tex->Load("Assets/UI/Slider.png");
 	SlideBar = app->tex->Load("Assets/UI/SlideBar.png");
 
-	SliderMusic = (GuiSlider*)app->guiManager->CreateGuiControl(GuiControlType::SLIDER, 7, slider, "", { 631,417,30,59 }, this);
+	SliderMusic = (GuiSlider*)app->guiManager->CreateGuiControl(GuiControlType::SLIDER, 7, slider, "", { 692,417,30,59 }, this);
 	SliderMusic->state = GuiControlState::DISABLED;
 
 	Music = app->tex->Load("Assets/UI/Music.png");
 
-	SliderFX = (GuiSlider*)app->guiManager->CreateGuiControl(GuiControlType::SLIDER, 8, slider, "", { 631,494,30,59 }, this);
+	SliderFX = (GuiSlider*)app->guiManager->CreateGuiControl(GuiControlType::SLIDER, 8, slider, "", { 692,494,30,59 }, this);
 	SliderFX->state = GuiControlState::DISABLED;
 
 	SFX = app->tex->Load("Assets/UI/SFX.png");
@@ -238,11 +238,11 @@ bool SceneTitle::Update(float dt)
 	//app->scene->SliderFX->bounds.x = SliderFX->bounds.x;
 	//app->scene->SliderFX->posx = SliderFX->posx;
 
-	Mix_VolumeMusic((SliderMusic->bounds.x - 324) * (128 - 0) / (674 - 324) + 0);
+	Mix_VolumeMusic((SliderMusic->bounds.x - 631) * (128 - 0) / (753 - 631) + 0);
 
 	for (int i = 0; i < app->audio->fx.Count(); i++) {
 
-		Mix_VolumeChunk(app->audio->fx.At(i)->data, (SliderFX->bounds.x - 324) * (128 - 0) / (674 - 324) + 0);
+		Mix_VolumeChunk(app->audio->fx.At(i)->data, (SliderFX->bounds.x - 631) * (128 - 0) / (753 - 631) + 0);
 
 	}
 
