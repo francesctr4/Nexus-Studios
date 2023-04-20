@@ -277,6 +277,8 @@ bool SceneBattle::Update(float dt)
 				app->combatManager->playerTurn = !app->combatManager->playerTurn;
 			}
 
+			if (app->input->GetKey(SDL_SCANCODE_H) == KEY_DOWN)		//Heal enemy HP
+				e_HP = e_max_HP;
 
 			if (app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
 				app->combatManager->playerTurn = !app->combatManager->playerTurn;
@@ -318,9 +320,9 @@ bool SceneBattle::Update(float dt)
 			{
 				m_players[selected_player].HP = app->combatManager->EnemyAttack(e_DMG, m_players[selected_player].HP, m_players[selected_player].DEF);
 				LOG("Atack");
-				app->audio->PlayFx(fx_sword_hit);
+				//app->audio->PlayFx(fx_sword_hit); //Se buguea un montón porque se sobreponen los sonidos, hay que  añadirle un timer o algo para evitarlo y que sea algo mas lento el combate
 				//Blit red color in screen
-				app->render->DrawRectangle(rect, 255, 0, 0, 150);
+				//app->render->DrawRectangle(rect, 255, 0, 0, 150);
 				enemy_last_action = 0;
 			}
 			break;
@@ -330,7 +332,7 @@ bool SceneBattle::Update(float dt)
 				app->combatManager->EnemyBlockAttack();
 				LOG("Defense");
 				//Blit green color in screen
-				app->render->DrawRectangle(rect, 0, 255, 0, 150);
+				//app->render->DrawRectangle(rect, 0, 255, 0, 150);
 				enemy_last_action = 1;
 			}
 			break;
@@ -484,27 +486,28 @@ bool SceneBattle::PostUpdate()
 
 	if (app->sceneGameplay->player->godMode)
 	{
-		// Combat UI - Controls (Debug)
-		app->render->DrawText("1 - Standar Attack", 500, 100, 100, 20, { 255, 255, 255, 255 });
-		app->render->DrawText("2 - Quick Time Event Attack", 500, 115, 100, 20, { 255, 255, 255, 255 });
-		app->render->DrawText("3 - Defend (Block)", 500, 130, 100, 20, { 255, 255, 255, 255 });
+		// Combat UI - Controls (Debug) (Tamaño fuente: 8,3 x Nº de caracteres del string)
+		app->render->DrawText("1 - Standar Attack", 500, 100, 150, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("2 - Quick Time Event Attack", 500, 115, 225, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("3 - Defend (Block)", 500, 130, 150, 20, { 255, 255, 255, 255 });
 		app->render->DrawText("4 - Use Item", 500, 145, 100, 20, { 255, 255, 255, 255 });
 		app->render->DrawText("5 - Run away", 500, 160, 100, 20, { 255, 255, 255, 255 });
-		app->render->DrawText("6 - Switch Member", 500, 175, 100, 20, { 255, 255, 255, 255 });
-		app->render->DrawText("7 - Enemy Attack", 500, 190, 100, 20, { 255, 255, 255, 255 });
-		app->render->DrawText("8 - Enemy Defense", 500, 205, 100, 20, { 255, 255, 255, 255 });
-		app->render->DrawText("TAB - Skip Turn", 500, 230, 100, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("6 - Switch Member", 500, 175, 142, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("7 - Enemy Attack", 500, 190, 133, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("8 - Enemy Defense", 500, 205, 142, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("H - Enemy Full Recover", 500, 220, 183, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("TAB - Skip Turn", 500, 235, 125, 20, { 255, 255, 255, 255 });
 
 		//LOG - Provisional
-		app->render->DrawText("Enemy Last Action: ", 500, 50, 100, 20, { 255, 255, 255, 255 });	//Last enemy action
+		app->render->DrawText("Enemy Last Action: ", 500, 50, 158, 20, { 255, 255, 255, 255 });	//Last enemy action
 
 		if (enemy_last_action == 0)
 		{
-			app->render->DrawText("Attack", 600, 50, 75, 20, { 255, 255, 255, 255 });
+			app->render->DrawText("Attack", 660, 50, 50, 20, { 255, 255, 255, 255 });
 		}
 		else if (enemy_last_action == 1)
 		{
-			app->render->DrawText("Defense", 600, 50, 75, 20, { 255, 255, 255, 255 });
+			app->render->DrawText("Defense", 660, 50, 58, 20, { 255, 255, 255, 255 });
 		}
 		else if (enemy_last_action == NULL)
 		{

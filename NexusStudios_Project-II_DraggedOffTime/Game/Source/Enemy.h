@@ -55,7 +55,7 @@ public:
 	SDL_Texture* textureBattle;
 	const char* texturePathBattle;
 
-private:
+public:
 
 	EnemyType type;
 
@@ -64,6 +64,8 @@ private:
 	int def;
 
 	bool playerInteraction;
+
+	List<Enemy*> enemies;
 
 	PhysBody* pbody;
 	PhysBody* enemySensor;

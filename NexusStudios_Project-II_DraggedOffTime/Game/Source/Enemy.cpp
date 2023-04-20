@@ -106,9 +106,15 @@ bool Enemy::Update()
 
 	app->render->DrawTexture(texture, position.x, position.y, &playerRect);
 
-	if (playerInteraction) app->fadeToBlack->Fade((Module*)app->sceneGameplay, (Module*)app->sceneBattle);
-
+	if (playerInteraction)
+	{
+		app->map->CleanUp();
+		app->fadeToBlack->Fade((Module*)app->sceneGameplay,	(Module*)app->sceneBattle);
+		
+	}
+	
 	return true;
+
 }
 
 bool Enemy::CleanUp()

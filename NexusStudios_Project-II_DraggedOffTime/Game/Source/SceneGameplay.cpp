@@ -241,6 +241,7 @@ bool SceneGameplay::Update(float dt)
 		if (map_selector == true && app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN && actually == 0)
 		{
 			app->map->CleanUp();
+			
 			app->map->actualmap = 1;
 			bool retLoad = app->map->Load();
 			map_selector = false;
@@ -298,6 +299,7 @@ bool SceneGameplay::Update(float dt)
 
 	if (app->sceneGameplay->player->godMode) app->physics->debug = true;
 	else app->physics->debug = false;
+
 
 	if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_START] == KEY_DOWN) {
 
@@ -406,23 +408,24 @@ bool SceneGameplay::PostUpdate()
 	//Player
 	if (player->godMode == true)
 	{
-		app->render->DrawText("GODMODE", 100, 100, 150, 60, { 255, 255, 255, 255 });
-		app->render->DrawText("1. Maps", 150, 150, 90, 45, { 255, 255, 255, 255 });
 
+		app->render->DrawText("GODMODE", 100, 100, 90, 40, { 255, 255, 255, 255 });
+		app->render->DrawText("1. Maps", 150, 150, 60, 20, { 255, 255, 255, 255 });
+		
 		if (map_selector == true && actually == 0)
 		{
-			app->render->DrawText("1. Mapa Jovani", 260, 150, 140, 45, { 255, 255, 255, 255 });
-			app->render->DrawText("2. Mapa Cofre", 260, 180, 140, 45, { 255, 255, 255, 255 });
+			app->render->DrawText("1. Mapa Jovani", 260, 150, 125, 20, { 255, 255, 255, 255 });
+			app->render->DrawText("2. Mapa Cofre", 260, 180, 108, 20, { 255, 255, 255, 255 });
 		}
 		if (map_selector == true && actually == 1)
 		{
-			app->render->DrawText("1. Mapa Mazmorra", 260, 150, 160, 45, { 255, 255, 255, 255 });
-			app->render->DrawText("2. Mapa Cofre", 260, 180, 140, 45, { 255, 255, 255, 255 });
+			app->render->DrawText("1. Mapa Mazmorra", 260, 150, 142, 20, { 255, 255, 255, 255 });
+			app->render->DrawText("2. Mapa Cofre", 260, 180, 108, 20, { 255, 255, 255, 255 });
 		}
 		if (map_selector == true && actually == 2)
 		{
-			app->render->DrawText("1. Mapa Mazmorra", 260, 150, 160, 45, { 255, 255, 255, 255 });
-			app->render->DrawText("2. Mapa Jovani", 260, 180, 140, 45, { 255, 255, 255, 255 });
+			app->render->DrawText("1. Mapa Mazmorra", 260, 150, 142, 20, { 255, 255, 255, 255 });
+			app->render->DrawText("2. Mapa Jovani", 260, 180, 125, 20, { 255, 255, 255, 255 });
 		}
 	}
 

@@ -2,6 +2,7 @@
 #include "Render.h"
 #include "Textures.h"
 #include "Map.h"
+#include "Enemy.h"
 #include "Physics.h"
 
 #include "Defs.h"
@@ -275,11 +276,24 @@ bool Map::CleanUp()
     
     while (objectItem != NULL)
     {
+        ListItem<PhysBody*>* colliderItem;
+        colliderItem = objectItem->data->colliders.start;
+
+        while (colliderItem != NULL)
+        {
+            app->physics->DestroyBody(colliderItem->data);
+            colliderItem = colliderItem->next;
+        }
+        objectItem->data->colliders.Clear();
+
         RELEASE(objectItem->data);
-        objectItem = objectItem->next;
+        objectItem = objectItem->next; 
+        
     }
-    mapData.objectlayers.Clear();
    
+    mapData.objectlayers.Clear();
+    
+    
 
     return true;
 }
@@ -522,7 +536,7 @@ bool Map::LoadObjectLayer(pugi::xml_node& node, MapLayer* objectLayer) {
 
     objectLayer->id = node.attribute("id").as_int();
     objectLayer->name = node.attribute("name").as_string();
-
+   
     // Call Load Propoerties
     LoadProperties(node, objectLayer->properties);
 
@@ -545,10 +559,11 @@ bool Map::LoadObjectLayer(pugi::xml_node& node, MapLayer* objectLayer) {
 
             int* converted_points = ConvertPolygonVerticesToArray(points, length);
 
-            if (objectLayer->properties.GetProperty("Platform") != NULL && objectLayer->properties.GetProperty("Platform")->value) {
-
-                app->physics->CreateChain(x, y, converted_points, length, bodyType::STATIC, ColliderType::PLATFORM);
+            if (objectLayer->properties.GetProperty("Platform") != NULL && objectLayer->properties.GetProperty("Platform")->value) 
+            {
+                PhysBody* collider = app->physics->CreateChain(x, y, converted_points, length, bodyType::STATIC, ColliderType::PLATFORM);
                
+                objectLayer->colliders.Add(collider);
             }
 
             delete[] converted_points;
