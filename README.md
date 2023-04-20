@@ -2,7 +2,7 @@
 
 ### Repository Link: [Nexus Studios](https://github.com/francesctr4/Nexus-Studios)
 
-### Current release version: None
+### Current release version: Vertical Slice (v0.5.0)
 
 ## Team Members
 
