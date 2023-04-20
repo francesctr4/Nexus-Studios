@@ -13,6 +13,7 @@ struct SDL_Texture;
 enum class DialogueType {
 
 	PLAYER,
+	PLAYER_SELECTOR,
 	NPC
 
 };
@@ -83,6 +84,9 @@ private:
 	Conversation secondConversation;
 	Dialogue* secondDialogue;
 
+	Conversation thirdConversation;
+	Dialogue* thirdDialogue;
+
 	// Sample Text for Conversations
 
 	SDL_Texture* playerSampleText;
@@ -92,6 +96,13 @@ private:
 
 	SDL_Texture* dialogueUI_npc;
 	SDL_Texture* dialogueUI_player;
+
+	// Dialogue Names
+
+	SDL_Texture* name_npc;
+	SDL_Texture* name_player;
+	SDL_Texture* name_npc_transparent;
+	SDL_Texture* name_player_transparent;
 
 	// Player Dialogue Selector
 
