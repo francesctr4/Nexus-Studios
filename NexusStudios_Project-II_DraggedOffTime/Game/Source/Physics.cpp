@@ -328,7 +328,7 @@ bool Physics::CleanUp()
 
 	// Delete the whole physics world!
 
-	delete world;
+	RELEASE(world);
 
 	return true;
 }
@@ -462,4 +462,24 @@ b2WeldJoint* Physics::CreateWeldJoint(PhysBody* A, b2Vec2 anchorA, PhysBody* B, 
 	weldJointDef.referenceAngle = 0;
 
 	return (b2WeldJoint*)world->CreateJoint(&weldJointDef);
+}
+
+void Physics::DestroyBody(PhysBody* body)
+{
+	if (world == NULL)
+	{
+		return;
+	}
+	if (body == NULL)
+	{
+		return;
+	}
+
+	if (body->body != NULL)
+	{
+		world->DestroyBody(body->body);
+		body->body = NULL;
+	}
+
+	RELEASE(body);
 }

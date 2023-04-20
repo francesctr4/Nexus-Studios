@@ -78,6 +78,7 @@ struct MapLayer
 	int width;
 	int height;
 	uint* data;
+	List<PhysBody*> colliders;
 	
 
 	// Store custom properties
