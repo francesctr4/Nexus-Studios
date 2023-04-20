@@ -82,12 +82,12 @@ bool GuiButton::Draw(Render* render)
 	switch (state)
 	{
 	case GuiControlState::DISABLED:
-		if (!app->sceneTitle->showSettings) {
+		if (!app->sceneTitle->showSettings && app->sceneTitle->active) {
 
 			rect.y = bounds.h * 3;
 			app->render->DrawTexture(tex, -app->render->camera.x + bounds.x, -app->render->camera.y + bounds.y, &rect);
 		}
-		
+
 		break;
 	case GuiControlState::NORMAL:
 
@@ -102,7 +102,7 @@ bool GuiButton::Draw(Render* render)
 			app->audio->PlayFx(buttonHovering);
 			hoverOnce = true;
 		}
-;		rect.y = bounds.h;
+		;		rect.y = bounds.h;
 		app->render->DrawTexture(tex, -app->render->camera.x + bounds.x, -app->render->camera.y + bounds.y, &rect);
 		if (debug) app->render->DrawRectangle({ -app->render->camera.x + bounds.x, -app->render->camera.y + bounds.y, bounds.w, bounds.h }, 0, 0, 255, 255, false);
 
@@ -113,7 +113,7 @@ bool GuiButton::Draw(Render* render)
 			app->audio->PlayFx(buttonPressed);
 			pressedOnce = true;
 		}
-		rect.y = bounds.h * 2; 
+		rect.y = bounds.h * 2;
 		app->render->DrawTexture(tex, -app->render->camera.x + bounds.x, -app->render->camera.y + bounds.y, &rect);
 		if (debug) app->render->DrawRectangle({ -app->render->camera.x + bounds.x, -app->render->camera.y + bounds.y, bounds.w, bounds.h }, 255, 0, 0, 255, false);
 
