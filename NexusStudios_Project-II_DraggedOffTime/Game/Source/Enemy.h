@@ -47,6 +47,8 @@ public:
 
 	void Death();
 
+	void Restart();
+
 public:
 
 	SDL_Texture* texture;

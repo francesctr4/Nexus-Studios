@@ -6,6 +6,7 @@
 #include "Textures.h"
 #include "Audio.h"
 #include "Render.h"
+#include "Physics.h"
 #include "Window.h"
 #include "Map.h"
 #include "FadeToBlack.h"
@@ -240,12 +241,14 @@ bool SceneGameplay::Update(float dt)
 		}
 		if (map_selector == true && app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN && actually == 0)
 		{
-			app->map->CleanUp();
 			
+			app->map->CleanUp();
 			app->map->actualmap = 1;
 			bool retLoad = app->map->Load();
 			map_selector = false;
 			actually = 1;
+			app->sceneGameplay->player->Teleport(650, 700);
+			
 		}
 		if (map_selector == true && app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN && actually == 0)
 		{
@@ -254,6 +257,7 @@ bool SceneGameplay::Update(float dt)
 			bool retLoad = app->map->Load();
 			map_selector = false;
 			actually = 2;
+			app->sceneGameplay->player->Teleport(650, 700);
 		}
 		if (map_selector == true && app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN && actually == 1)
 		{
@@ -263,6 +267,8 @@ bool SceneGameplay::Update(float dt)
 			bool retLoad = app->map->Load();
 			map_selector = false;
 			actually = 0;
+			app->sceneGameplay->player->Teleport(150, 430);
+			
 		}
 		if (map_selector == true && app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN && actually == 1)
 		{
@@ -272,6 +278,7 @@ bool SceneGameplay::Update(float dt)
 			bool retLoad = app->map->Load();
 			map_selector = false;
 			actually = 2;
+			app->sceneGameplay->player->Teleport(650, 700);
 		}
 		if (map_selector == true && app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN && actually == 2)
 		{
@@ -280,6 +287,7 @@ bool SceneGameplay::Update(float dt)
 			bool retLoad = app->map->Load();
 			map_selector = false;
 			actually = 0;
+			app->sceneGameplay->player->Teleport(150, 430);
 		}
 		if (map_selector == true && app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN && actually == 2)
 		{
@@ -288,9 +296,13 @@ bool SceneGameplay::Update(float dt)
 			bool retLoad = app->map->Load();
 			map_selector = false;
 			actually = 1;
+			app->sceneGameplay->player->Teleport(650, 700);
 		}
 	}
-
+	if (app->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
+	{
+		app->sceneGameplay->player->Teleport(700, 500);
+	}
 
 	if (!app->entityManager->IsEnabled()) {
 
@@ -308,7 +320,12 @@ bool SceneGameplay::Update(float dt)
 		app->fadeToBlack->Fade(this, (Module*)app->sceneBattle);
 
 	}
-
+	
+	
+	if (app->map->actualmap == 2)
+	{
+		
+	}
 	app->map->Draw();
 
 	return true;

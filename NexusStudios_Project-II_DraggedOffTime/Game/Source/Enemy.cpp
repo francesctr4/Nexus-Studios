@@ -17,7 +17,6 @@
 Enemy::Enemy() : Entity(EntityType::ENEMY)
 {
 	name.Create("Enemy");
-
 }
 
 Enemy::~Enemy() {
@@ -64,12 +63,13 @@ bool Enemy::Awake() {
 	}
 	idle_right.loop = true;
 	idle_right.speed = 0.06f;
-
+	
 	return true;
 }
 
 bool Enemy::Start() {
 
+	
 	texture = app->tex->Load(texturePath);
 	textureBattle = app->tex->Load(texturePathBattle);
 
@@ -93,7 +93,6 @@ bool Enemy::Start() {
 
 bool Enemy::Update()
 {
-	
 	b2Transform transform = pbody->body->GetTransform();
 	b2Vec2 pos = transform.p;
 
@@ -111,14 +110,10 @@ bool Enemy::Update()
 		Death();
 		app->fadeToBlack->Fade((Module*)app->sceneGameplay,	(Module*)app->sceneBattle);
 	}
-	if (app->sceneBattle->e_HP<=0)
-	{
-		
-	}
 
 	if (app->input->GetKey(SDL_SCANCODE_9) == KEY_DOWN)
 	{
-		
+		Death();
 	}
 	
 	return true;
@@ -164,10 +159,9 @@ void Enemy::OnCollisionEnd(PhysBody* physA, PhysBody* physB) {
 
 }
 
-void Enemy::Death() {
-
+void Enemy::Death() 
+{
 	Disable();
 	pbody->body->DestroyFixture(pbody->body->GetFixtureList());
 	enemySensor->body->DestroyFixture(enemySensor->body->GetFixtureList());
-
 }

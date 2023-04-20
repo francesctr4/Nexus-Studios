@@ -69,6 +69,8 @@ bool Player::Update()
 	// Add physics to the player and update player position using physics.
 	
 	b2Vec2 vel = b2Vec2(0, -GRAVITY_Y);
+	
+
 
 	if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN) godMode = !godMode;
 
@@ -98,6 +100,7 @@ bool Player::Update()
 	position.x = METERS_TO_PIXELS(pbody->body->GetTransform().p.x) - 16;
 	position.y = METERS_TO_PIXELS(pbody->body->GetTransform().p.y) - 16;
 
+	
 	// Draw player texture.
 
 	currentAnimation->Update();
@@ -119,9 +122,13 @@ bool Player::Update()
 		app->render->DrawTexture(texture2, position.x, position.y, &playerRect);
 
 	}
-	if (app->map->actualmap == 1)
+	
+	if (newPos.t == true)
 	{
-		Teleport(10, 10);
+		b2Vec2 resetPos = b2Vec2(PIXEL_TO_METERS(newPos.posX), PIXEL_TO_METERS(newPos.posY));
+		pbody->body->SetTransform(resetPos, 0);
+
+		newPos.t = false;
 	}
 
 	return true;

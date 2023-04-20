@@ -359,6 +359,7 @@ bool SceneBattle::Update(float dt)
 
 		enableMusic = true;
 		app->fadeToBlack->Fade(this, (Module*)app->sceneLogo);
+		app->map->actualmap = 0;
 
 	}
 

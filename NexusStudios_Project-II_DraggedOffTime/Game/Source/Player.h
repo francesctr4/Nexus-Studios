@@ -37,7 +37,7 @@ public:
 
 	void Death();
 
-	void Player::Teleport(int x, int y);
+	void Teleport(int x, int y);
 
 public:
 
