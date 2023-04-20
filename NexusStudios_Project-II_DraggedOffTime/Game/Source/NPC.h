@@ -72,7 +72,7 @@ public:
 
 	void Death();
 
-private:
+public:
 
 	// NPC Conversations
 
@@ -139,6 +139,7 @@ private:
 
 	Animation* currentAnimation;
 	Animation idle_right;
+
 
 
 };

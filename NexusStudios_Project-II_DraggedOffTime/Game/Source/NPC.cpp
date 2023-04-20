@@ -193,6 +193,7 @@ bool NPC::Update()
 
 	app->render->DrawTexture(texture, position.x, position.y, &npcRect);
 
+
 	// NPC Sensor Logic
 
 	if (playerInteraction) {
