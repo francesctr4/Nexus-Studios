@@ -124,6 +124,8 @@ bool Enemy::Update()
 
 }
 
+
+
 bool Enemy::CleanUp()
 {
 	

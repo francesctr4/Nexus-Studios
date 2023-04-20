@@ -10,6 +10,13 @@
 
 struct SDL_Texture;
 
+struct NewPosition {
+	float posX;
+	float posY;
+	bool t;
+
+};
+
 class Player : public Entity
 {
 public:
@@ -29,6 +36,8 @@ public:
 	void OnCollision(PhysBody* physA, PhysBody* physB);
 
 	void Death();
+
+	void Player::Teleport(int x, int y);
 
 public:
 
@@ -52,6 +61,8 @@ private:
 
 	Animation* currentAnimation;
 	Animation idle_right;
+
+	NewPosition newPos;
 
 };
 

@@ -119,6 +119,13 @@ bool Player::Update()
 	return true;
 }
 
+void Player::Teleport(int x, int y)
+{
+	newPos.posX = x;
+	newPos.posY = y;
+	newPos.t = true;
+}
+
 bool Player::CleanUp()
 {
 
