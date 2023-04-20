@@ -294,3 +294,10 @@ void NPC::DialogueGenerator(Conversation conversation) {
 	}
 
 }
+
+void NPC::Death()
+{
+	Disable();
+	pbody->body->DestroyFixture(pbody->body->GetFixtureList());
+	npcSensor->body->DestroyFixture(npcSensor->body->GetFixtureList());
+}

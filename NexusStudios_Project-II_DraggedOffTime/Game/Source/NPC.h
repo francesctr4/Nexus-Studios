@@ -69,6 +69,8 @@ public:
 
 	void DialogueGenerator(Conversation conversation);
 
+	void Death();
+
 private:
 
 	// NPC Conversations
@@ -126,5 +128,6 @@ private:
 
 	Animation* currentAnimation;
 	Animation idle_right;
+
 
 };

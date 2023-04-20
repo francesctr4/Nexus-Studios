@@ -108,8 +108,12 @@ bool Enemy::Update()
 
 	if (playerInteraction)
 	{
-		app->map->CleanUp();
+		Death();
 		app->fadeToBlack->Fade((Module*)app->sceneGameplay,	(Module*)app->sceneBattle);
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_9) == KEY_DOWN)
+	{
 		
 	}
 	
@@ -119,7 +123,7 @@ bool Enemy::Update()
 
 bool Enemy::CleanUp()
 {
-
+	
 	return true;
 }
 
@@ -156,6 +160,8 @@ void Enemy::OnCollisionEnd(PhysBody* physA, PhysBody* physB) {
 
 void Enemy::Death() {
 
-	
+	Disable();
+	pbody->body->DestroyFixture(pbody->body->GetFixtureList());
+	enemySensor->body->DestroyFixture(enemySensor->body->GetFixtureList());
 
 }

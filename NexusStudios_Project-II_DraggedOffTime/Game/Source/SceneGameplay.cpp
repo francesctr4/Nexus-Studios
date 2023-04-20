@@ -138,6 +138,8 @@ bool SceneGameplay::Update(float dt)
 		}
 	}
 	
+	
+
 	if (!app->entityManager->IsEnabled()) {
 
 		app->entityManager->Enable();
