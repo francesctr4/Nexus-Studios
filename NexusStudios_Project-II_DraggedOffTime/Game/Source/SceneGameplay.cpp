@@ -58,7 +58,7 @@ bool SceneGameplay::Start()
 
 	enableMusic = true;
 
-	Fondo = app->tex->Load("Assets/UI/Fondo.png");
+	Fondo = app->tex->Load("Assets/UI/PauseBackground.png");
 
 	//Pause UI
 
@@ -316,14 +316,15 @@ bool SceneGameplay::PostUpdate()
 {
 	OPTICK_EVENT();
 
-	app->guiManager->Draw();
+	bool ret = true;
 
+	app->guiManager->Draw();
 
 	//Pause UI
 
-	if (showPause) {
+	if (showPause || showSettings) app->render->DrawTexture(Fondo, 0, 0);
 
-		app->render->DrawTexture(Fondo, 0, 0);
+	if (showPause) {
 
 		if (Resume->state == GuiControlState::DISABLED) Resume->state = GuiControlState::NORMAL;
 		if (Settings->state == GuiControlState::DISABLED) Settings->state = GuiControlState::NORMAL;
@@ -352,7 +353,6 @@ bool SceneGameplay::PostUpdate()
 	if (showSettings) {
 
 		showPause = false;
-		app->render->DrawTexture(Fondo, 0, 0);
 
 		app->render->DrawTexture(SlideBar, 636, 438);
 		app->render->DrawTexture(SlideBar, 636, 515);
@@ -426,9 +426,9 @@ bool SceneGameplay::PostUpdate()
 		}
 	}
 
-	bool ret = true;
+	if (Exit->state == GuiControlState::PRESSED) ret = false;
 
-	return true;
+	return ret;
 }
 
 // Called before quitting
