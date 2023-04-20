@@ -164,23 +164,23 @@ bool SceneGameplay::PostUpdate()
 	OPTICK_EVENT();
 	if (player->godMode == true)
 	{
-		app->render->DrawText("GODMODE", 100, 100, 150, 60, { 255, 255, 255, 255 });
-		app->render->DrawText("1. Maps", 150, 150, 90, 45, { 255, 255, 255, 255 });
+		app->render->DrawText("GODMODE", 100, 100, 90, 40, { 255, 255, 255, 255 });
+		app->render->DrawText("1. Maps", 150, 150, 60, 20, { 255, 255, 255, 255 });
 		
 		if (map_selector == true && actually == 0)
 		{
-			app->render->DrawText("1. Mapa Jovani", 260, 150, 140, 45, { 255, 255, 255, 255 });
-			app->render->DrawText("2. Mapa Cofre", 260, 180, 140, 45, { 255, 255, 255, 255 });
+			app->render->DrawText("1. Mapa Jovani", 260, 150, 125, 20, { 255, 255, 255, 255 });
+			app->render->DrawText("2. Mapa Cofre", 260, 180, 108, 20, { 255, 255, 255, 255 });
 		}
 		if (map_selector == true && actually == 1)
 		{
-			app->render->DrawText("1. Mapa Mazmorra", 260, 150, 160, 45, { 255, 255, 255, 255 });
-			app->render->DrawText("2. Mapa Cofre", 260, 180, 140, 45, { 255, 255, 255, 255 });
+			app->render->DrawText("1. Mapa Mazmorra", 260, 150, 142, 20, { 255, 255, 255, 255 });
+			app->render->DrawText("2. Mapa Cofre", 260, 180, 108, 20, { 255, 255, 255, 255 });
 		}
 		if (map_selector == true && actually == 2)
 		{
-			app->render->DrawText("1. Mapa Mazmorra", 260, 150, 160, 45, { 255, 255, 255, 255 });
-			app->render->DrawText("2. Mapa Jovani", 260, 180, 140, 45, { 255, 255, 255, 255 });
+			app->render->DrawText("1. Mapa Mazmorra", 260, 150, 142, 20, { 255, 255, 255, 255 });
+			app->render->DrawText("2. Mapa Jovani", 260, 180, 125, 20, { 255, 255, 255, 255 });
 		}
 	}
 
