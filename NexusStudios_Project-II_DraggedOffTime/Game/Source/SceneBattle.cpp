@@ -211,6 +211,13 @@ bool SceneBattle::Update(float dt)
 			app->combatManager->playerTurn = !app->combatManager->playerTurn;
 		}
 
+		if (m_players[0].HP == 0 && m_players[1].HP==0)
+		{
+			app->fadeToBlack->Fade((Module*)app->sceneBattle, (Module*)app->sceneGameplay);
+			m_players[0].HP = m_players[0].max_HP;
+			m_players[1].HP = m_players[1].max_HP;
+		}
+
 		//Debug controls
 		if (app->sceneGameplay->player->godMode)
 		{

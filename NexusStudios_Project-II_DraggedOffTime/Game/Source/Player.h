@@ -28,6 +28,8 @@ public:
 
 	void OnCollision(PhysBody* physA, PhysBody* physB);
 
+	void Death();
+
 public:
 
 	bool godMode;

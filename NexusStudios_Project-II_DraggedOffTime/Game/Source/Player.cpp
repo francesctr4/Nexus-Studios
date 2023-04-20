@@ -5,6 +5,7 @@
 #include "Input.h"
 #include "Render.h"
 #include "Log.h"
+#include "FadeToBlack.h"
 #include "Point.h"
 #include "Physics.h"
 #include "SceneBattle.h"
@@ -126,6 +127,12 @@ bool Player::CleanUp()
 
 void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 
+	
+
+}
+
+void Player::Death()
+{
 	
 
 }
