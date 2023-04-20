@@ -35,7 +35,7 @@ public:
 
 	bool OnGuiMouseClickEvent(GuiControl* control);
 
-public: 
+public:
 
 	bool enableMusic;
 
@@ -45,7 +45,7 @@ public:
 	bool showSettings;
 
 private:
-	
+
 
 	SDL_Texture* Fondo;
 

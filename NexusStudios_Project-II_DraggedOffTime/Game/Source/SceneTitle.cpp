@@ -39,7 +39,7 @@ bool SceneTitle::Start()
 
 	titleScreen = app->tex->Load("Assets/Textures/TitleScreen2.png");
 	draggedOffTime = app->tex->Load("Assets/Textures/DraggedOffTime3.png");
-	Fondo = app->tex->Load("Assets/Textures/PauseBackground.png");
+	Fondo = app->tex->Load("Assets/UI/PauseBackground.png");
 
 	enableMusic = true;
 
@@ -49,9 +49,10 @@ bool SceneTitle::Start()
 
 	// UI
 
-	SettingsTitle= app->tex->Load("Assets/UI/SettingsTitle.png");
-	newGame = app->tex->Load("Assets/UI/NewGame.png"); 
+	SettingsTitle = app->tex->Load("Assets/UI/SettingsTitle.png");
 
+
+	newGame = app->tex->Load("Assets/UI/NewGame.png");
 	NewGame = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 0, newGame, "", { 142,295,294,49 }, this);
 
 	continue_ = app->tex->Load("Assets/UI/Continue.png");
@@ -59,15 +60,12 @@ bool SceneTitle::Start()
 	Continue_->state = GuiControlState::DISABLED;
 
 	settings = app->tex->Load("Assets/UI/Settings.png");
-
 	Settings = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, settings, "", { 148,433,277,55 }, this);
 
 	credits = app->tex->Load("Assets/UI/Credits.png");
-
 	Credits = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 4, credits, "", { 165,502,241,49 }, this);
 
 	exit = app->tex->Load("Assets/UI/Exit.png");
-
 	Exit = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 5, exit, "", { 217,571,133,49 }, this);
 
 	back = app->tex->Load("Assets/UI/Back.png");
@@ -76,7 +74,7 @@ bool SceneTitle::Start()
 
 	slider = app->tex->Load("Assets/UI/Slider.png");
 	SlideBar = app->tex->Load("Assets/UI/SlideBar.png");
-	
+
 	SliderMusic = (GuiSlider*)app->guiManager->CreateGuiControl(GuiControlType::SLIDER, 7, slider, "", { 631,417,30,59 }, this);
 	SliderMusic->state = GuiControlState::DISABLED;
 
@@ -147,15 +145,6 @@ bool SceneTitle::Update(float dt)
 {
 	OPTICK_EVENT();
 
-	if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_START] == KEY_DOWN) {
-		
-		enableMusic = true;
-		app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
-
-	}
-
-
-
 	if (!FX_played) {
 
 		app->audio->PlayFx(titleFX);
@@ -163,13 +152,16 @@ bool SceneTitle::Update(float dt)
 
 	}
 
-	//app->map->Draw();
-
 	// UI
 
-	if (NewGame->state == GuiControlState::PRESSED) {
+	if (NewGame->state == GuiControlState::PRESSED || app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_START] == KEY_DOWN) {
 
 		enableMusic = true;
+		NewGame->state = GuiControlState::DISABLED;
+		Continue_->state = GuiControlState::DISABLED;
+		Settings->state = GuiControlState::DISABLED;
+		Credits->state = GuiControlState::DISABLED;
+		Exit->state = GuiControlState::DISABLED;
 
 		app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
 
@@ -270,8 +262,8 @@ bool SceneTitle::PostUpdate()
 
 	app->guiManager->Draw();
 
-	if(!showSettings)app->render->DrawTexture(draggedOffTime, -12, 50);
-	
+	if (!showSettings)app->render->DrawTexture(draggedOffTime, -12, 50);
+
 
 	if (showCredits) {
 
@@ -319,7 +311,7 @@ bool SceneTitle::PostUpdate()
 		if (Settings->state != GuiControlState::DISABLED) Settings->state = GuiControlState::DISABLED;
 		if (Credits->state != GuiControlState::DISABLED) Credits->state = GuiControlState::DISABLED;
 		if (Exit->state != GuiControlState::DISABLED) Exit->state = GuiControlState::DISABLED;
-		
+
 
 		app->render->DrawTexture(SettingsTitle, 449, 73);
 		app->render->DrawTexture(checkBoxFullscreen, 496, 202);
@@ -338,7 +330,7 @@ bool SceneTitle::PostUpdate()
 		FramecapUP->Draw(app->render);
 		FramecapDOWN->Draw(app->render);
 
-		
+
 
 		/*if (app->win->configWindow.child("fullscreen").attribute("value").as_bool() == false) {
 			app->win->configWindow.child("fullscreen").append_attribute("value") = "true";
@@ -364,7 +356,7 @@ bool SceneTitle::PostUpdate()
 
 	}
 
-	
+
 
 	//app->scene->player->hitsTaken = 0;
 
@@ -381,7 +373,7 @@ bool SceneTitle::CleanUp()
 
 	//app->map->CleanUp();
 
-	
+
 
 	return true;
 }
