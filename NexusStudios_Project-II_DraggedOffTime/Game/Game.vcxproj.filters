@@ -189,9 +189,6 @@
     <ClInclude Include="Source\Module.h">
       <Filter>Game Loop</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Entity.h">
-      <Filter>Game Loop</Filter>
-    </ClInclude>
     <ClInclude Include="Source\SceneTitle.h">
       <Filter>Game Loop\Scenes</Filter>
     </ClInclude>
@@ -209,6 +206,12 @@
     </ClInclude>
     <ClInclude Include="Source\NPC.h">
       <Filter>Game Loop\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Entity.h">
+      <Filter>Game Loop</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Weapon.h">
+      <Filter>Game Loop\Features</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -241,6 +244,9 @@
     </Filter>
     <Filter Include="Game Loop\Scenes">
       <UniqueIdentifier>{0acd7ad5-1d30-47f0-8890-399fd74fa1f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Loop\Features">
+      <UniqueIdentifier>{47084a7b-aec0-4e50-8a67-f33db5b5ae69}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
