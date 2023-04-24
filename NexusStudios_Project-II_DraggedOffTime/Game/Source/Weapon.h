@@ -1,6 +1,10 @@
 #pragma once
 
 #include "Animation.h"
+#include "SString.h"
+#include "App.h"
+#include "Textures.h"
+#include "Render.h"
 
 struct SDL_Texture;
 
@@ -13,9 +17,21 @@ enum class WeaponType
 
 class Weapon 
 {
-public:	
+public:
+
+	Weapon(int width);
+
+	virtual ~Weapon();
+
+	void Load(const char* path);
+
+	void Draw(int posX, int posY);
+
+private:	
 
 	SDL_Texture* texture;
+	int width;
+
 	int damage;
 	Animation* currentAnimation;
 	Animation idle;

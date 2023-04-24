@@ -88,6 +88,9 @@
     <ClCompile Include="Source\NPC.cpp">
       <Filter>Game Loop\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Weapon.cpp">
+      <Filter>Game Loop\Features</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
