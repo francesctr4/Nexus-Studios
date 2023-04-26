@@ -49,6 +49,14 @@ private:
 #include "Module.h"
 #include "SDL\include\SDL_rect.h"
 
+enum class FadeStep {
+
+	NONE,
+	TO_BLACK,
+	FROM_BLACK
+
+};
+
 class FadeToBlack : public Module
 {
 public:
@@ -56,7 +64,7 @@ public:
 	FadeToBlack(bool startEnabled);
 
 	//Destructor
-	~FadeToBlack();
+	virtual ~FadeToBlack();
 
 	bool Awake();
 
@@ -79,12 +87,8 @@ public:
 
 private:
 
-	enum Fade_Step
-	{
-		NONE,
-		TO_BLACK,
-		FROM_BLACK
-	} currentStep = Fade_Step::NONE;
+	// Current step of the fade to black
+	FadeStep currentStep = FadeStep::NONE;
 
 	// A frame count system to handle the fade time and ratio
 	Uint32 frameCount = 0;

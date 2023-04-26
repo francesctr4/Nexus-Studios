@@ -136,7 +136,7 @@ bool FadeToBlack::Fade(Module* moduleToDisable, Module* moduleToEnable)
 
 FadeToBlack::FadeToBlack(bool startEnabled) : Module(startEnabled)
 {
-
+	screenRect = { 0,0,0,0 };
 }
 FadeToBlack::~FadeToBlack()
 {
@@ -157,6 +157,7 @@ bool FadeToBlack::Start()
 
 	// Enable blending mode for transparency
 	SDL_SetRenderDrawBlendMode(app->render->renderer, SDL_BLENDMODE_BLEND);
+
 	return true;
 }
 
@@ -165,9 +166,9 @@ bool FadeToBlack::Update(float dt)
 	OPTICK_EVENT();
 
 	// Exit this function if we are not performing a fade
-	if (currentStep == Fade_Step::NONE) return true;
+	if (currentStep == FadeStep::NONE) return true;
 
-	if (currentStep == Fade_Step::TO_BLACK)
+	if (currentStep == FadeStep::TO_BLACK)
 	{
 		++frameCount;
 		if (frameCount >= maxFadeFrames)
@@ -175,7 +176,7 @@ bool FadeToBlack::Update(float dt)
 			moduleToDisable->Disable();
 			moduleToEnable->Enable();
 
-			currentStep = Fade_Step::FROM_BLACK;
+			currentStep = FadeStep::FROM_BLACK;
 		}
 	}
 	else
@@ -183,7 +184,7 @@ bool FadeToBlack::Update(float dt)
 		--frameCount;
 		if (frameCount <= 0)
 		{
-			currentStep = Fade_Step::NONE;
+			currentStep = FadeStep::NONE;
 		}
 	}
 
@@ -194,7 +195,7 @@ bool FadeToBlack::PostUpdate()
 {
 	OPTICK_EVENT();
 	// Exit this function if we are not performing a fade
-	if (currentStep == Fade_Step::NONE) return true;
+	if (currentStep == FadeStep::NONE) return true;
 
 	float fadeRatio = (float)frameCount / (float)maxFadeFrames;
 
@@ -211,9 +212,9 @@ bool FadeToBlack::Fade(Module* moduleToDisable, Module* moduleToEnable)
 	bool ret = false;
 
 	// If we are already in a fade process, ignore this call
-	if (currentStep == Fade_Step::NONE)
+	if (currentStep == FadeStep::NONE)
 	{
-		currentStep = Fade_Step::TO_BLACK;
+		currentStep = FadeStep::TO_BLACK;
 		frameCount = 0;
 		maxFadeFrames = 0;
 
