@@ -14,6 +14,7 @@
 #include "SceneTitle.h"
 #include "SceneGameplay.h"
 #include <ctime>
+#include "Timer.h"
 
 #include "SceneBattle.h"
 
@@ -52,6 +53,7 @@ bool SceneBattle::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool SceneBattle::Start()
 {
+
 	//Cambiar para después de la vertical slice
 	party_members = 2;
 	selected_player = 0;
@@ -316,40 +318,49 @@ bool SceneBattle::Update(float dt)
 	}
 	else
 	{
-		
-		//LOG("-------------ENEMY TURN-------------");
-		int random_num = (rand() % 2) + 1;
-		//LOG("Numero aleatorio %d", random_num);
-		switch (random_num)
+		if (!timer_started)
 		{
-		case 1:
-			if (e_HP > 0)
-			{
-				m_players[selected_player].HP = app->combatManager->EnemyAttack(e_DMG, m_players[selected_player].HP, m_players[selected_player].DEF);
-				LOG("Atack");
-				//app->audio->PlayFx(fx_sword_hit); //Se buguea un montón porque se sobreponen los sonidos, hay que  añadirle un timer o algo para evitarlo y que sea algo mas lento el combate
-				//Blit red color in screen
-				//app->render->DrawRectangle(rect, 255, 0, 0, 150);
-				enemy_last_action = 0;
-			}
-			break;
-		case 2:
-			if (e_HP > 0)
-			{
-				app->combatManager->EnemyBlockAttack();
-				LOG("Defense");
-				//Blit green color in screen
-				//app->render->DrawRectangle(rect, 0, 255, 0, 150);
-				enemy_last_action = 1;
-			}
-			break;
-		default:
-			break;
+			timer.Start();
+			timer_started = true;
 		}
-		//LOG("-------------YOUR TURN-------------");
-		
-		app->combatManager->playerTurn = !app->combatManager->playerTurn;
-		turn++;
+		if (timer.ReadMSec() >= 1000)
+		{
+			//LOG("-------------ENEMY TURN-------------");
+			int random_num = (rand() % 2) + 1;
+			//LOG("Numero aleatorio %d", random_num);
+			switch (random_num)
+			{
+			case 1:
+				if (e_HP > 0)
+				{
+					m_players[selected_player].HP = app->combatManager->EnemyAttack(e_DMG, m_players[selected_player].HP, m_players[selected_player].DEF);
+					LOG("Atack");
+					//app->audio->PlayFx(fx_sword_hit); //Se buguea un montón porque se sobreponen los sonidos, hay que  añadirle un timer o algo para evitarlo y que sea algo mas lento el combate
+					//Blit red color in screen
+					//app->render->DrawRectangle(rect, 255, 0, 0, 150);
+					enemy_last_action = 0;
+				}
+				break;
+			case 2:
+				if (e_HP > 0)
+				{
+					app->combatManager->EnemyBlockAttack();
+					LOG("Defense");
+					//Blit green color in screen
+					//app->render->DrawRectangle(rect, 0, 255, 0, 150);
+					enemy_last_action = 1;
+				}
+				break;
+			default:
+				break;
+			}
+			//LOG("-------------YOUR TURN-------------");
+
+
+			app->combatManager->playerTurn = !app->combatManager->playerTurn;
+			turn++;
+			timer_started = false;
+		}
 		
 	}
 
