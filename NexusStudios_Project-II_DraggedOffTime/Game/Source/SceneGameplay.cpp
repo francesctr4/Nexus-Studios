@@ -48,7 +48,7 @@ bool SceneGameplay::Awake(pugi::xml_node& config)
 		enemies.Add(enemy);
 
 	}
-
+	
 	return true;
 }
 
@@ -131,6 +131,11 @@ bool SceneGameplay::Start()
 
 	OpenPause = app->audio->LoadFx("Assets/Audio/Fx/OpenPause.wav");
 	ClosePause = app->audio->LoadFx("Assets/Audio/Fx/ClosePause.wav");
+
+	sensorJovani = app->physics->CreateCircleSensor(500,500,10, bodyType::KINEMATIC, ColliderType::PUERTA_JOVANI);
+
+	sensorJovani->listener;
+
 
 	return true;
 }

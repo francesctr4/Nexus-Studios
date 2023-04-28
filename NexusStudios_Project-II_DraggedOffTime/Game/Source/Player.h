@@ -64,6 +64,8 @@ private:
 
 	NewPosition newPos;
 
+	
+
 };
 
 #endif // __PLAYER_H__

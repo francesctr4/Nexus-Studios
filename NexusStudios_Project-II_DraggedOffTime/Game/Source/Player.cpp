@@ -10,6 +10,7 @@
 #include "Point.h"
 #include "Physics.h"
 #include "SceneBattle.h"
+#include "SceneGameplay.h"
 #include <iostream>
 
 Player::Player() : Entity(EntityType::PLAYER)
@@ -148,7 +149,47 @@ bool Player::CleanUp()
 }
 
 void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
+	
+	switch (physB->ctype)
+	{
+	case ColliderType::PUERTA_COFRE:
+		LOG("Collision PLATFORM");
 
+		break;
+	case ColliderType::PUERTA_JOVANI:
+		LOG("Collision PUERTA_JOVANI");
+		
+		app->map->CleanUp();
+		app->map->actualmap = 2;
+		bool retLoad = app->map->Load();
+		app->sceneGameplay->actually = 2;
+		app->sceneGameplay->player->Teleport(650, 700);
+
+		//Move Npcs Map_2
+		app->sceneGameplay->npcs.At(0)->data->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+		app->sceneGameplay->npcs.At(0)->data->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+		app->sceneGameplay->npcs.At(1)->data->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+		app->sceneGameplay->npcs.At(1)->data->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+		app->sceneGameplay->npcs.At(2)->data->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+		app->sceneGameplay->npcs.At(2)->data->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+		//Move Enemies Map_2
+		app->sceneGameplay->enemies.At(0)->data->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+		app->sceneGameplay->enemies.At(0)->data->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+		app->sceneGameplay->enemies.At(1)->data->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+		app->sceneGameplay->enemies.At(1)->data->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+		app->sceneGameplay->enemies.At(2)->data->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+		app->sceneGameplay->enemies.At(2)->data->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+		app->sceneGameplay->enemies.At(3)->data->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+		app->sceneGameplay->enemies.At(3)->data->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+		
+		break;
+	}
 	
 
 }

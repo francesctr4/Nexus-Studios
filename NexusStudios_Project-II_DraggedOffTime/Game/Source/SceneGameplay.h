@@ -107,4 +107,6 @@ public:
 	uint OpenPause;
 	uint ClosePause;
 
+	PhysBody* sensorJovani;
+
 };

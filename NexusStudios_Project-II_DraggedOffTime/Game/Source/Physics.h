@@ -34,6 +34,8 @@ enum class ColliderType {
 	NPC_SENSOR,
 	ENEMY_SENSOR,
 	ENEMY,
+	PUERTA_COFRE,
+	PUERTA_JOVANI,
 	UNKNOWN
 	// ..
 };
