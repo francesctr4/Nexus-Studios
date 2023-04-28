@@ -130,4 +130,9 @@ private:
 	int endTime = NULL;
 	int tolerance = 500; //Tolerancia en ms
 	int objetiveTime = 100; //Valor objetivo en ms
+
+	//Timer - Variables
+	Timer timer;
+	bool timer_started = false;
+
 };
