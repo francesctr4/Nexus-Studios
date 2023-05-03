@@ -39,7 +39,6 @@ public:
 public:
 
 	bool enableMusic;
-	bool qte = false; //Quick Time Event 
 
 	int fx_sword_hit;
 
@@ -61,17 +60,17 @@ public:
 	Party_Member* m_players;
 	/*std::array<Party_Member, 4> m_players;*/
 
-	//Player 1
-	int p_HP = 100;
-	int p_max_HP = 100;
-	int p_DEF = 10;
-	int p_DMG = 20;
+	////Player 1
+	//int p_HP = 100;
+	//int p_max_HP = 100;
+	//int p_DEF = 10;
+	//int p_DMG = 20;
 
-	//Player 2
-	int p2_HP = 250;
-	int p2_max_HP = 250;
-	int p2_DEF = 5;
-	int p2_DMG = 10;
+	////Player 2
+	//int p2_HP = 250;
+	//int p2_max_HP = 250;
+	//int p2_DEF = 5;
+	//int p2_DMG = 10;
 
 	//Enemy
 	int e_HP = 60;
@@ -126,10 +125,10 @@ private:
 	GuiButton* ItemButton;
 
 	// Variables para el control del QTE
-	int startTime = 0;
-	int endTime = NULL;
-	int tolerance = 500; //Tolerancia en ms
-	int objetiveTime = 100; //Valor objetivo en ms
+	Timer qte_timer;
+	int tolerance = 2; //Tolerancia en ms
+	int objetiveTime = 2; //Valor objetivo en ms
+	bool qte = false;		//Definir si está en curso un quick time event
 
 	//Timer - Variables
 	Timer timer;

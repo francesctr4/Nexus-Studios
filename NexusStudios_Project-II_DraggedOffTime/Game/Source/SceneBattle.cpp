@@ -145,175 +145,215 @@ bool SceneBattle::Update(float dt)
 
 	if (app->combatManager->playerTurn)
 	{
-		//Standar actions
-		if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN)
-			app->sceneGameplay->player->godMode = !app->sceneGameplay->player->godMode;
-
-		if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN)
+		if (!qte)
 		{
-			if (action_selected != 0)
-			{
-				action_selected--;
 
-			}
-			else if (action_selected == 0)
-			{
-				action_selected = 5;
-			}
-			
-		}
+			//Standar actions
+			if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN)
+				app->sceneGameplay->player->godMode = !app->sceneGameplay->player->godMode;
 
-		if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN)
-		{
-			
-			if (action_selected != 5)
+			if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN)
 			{
-				action_selected++;
-			}
-			else if (action_selected == 5)
-			{
-				action_selected = 0;
-			}
-		}
-
-		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
-		{
-			switch (action_selected)
-			{
-			case 0: //Standar attack
-				e_HP = app->combatManager->StandarAttack(m_players[selected_player].DMG, e_HP, e_DEF);
-				app->audio->PlayFx(fx_sword_hit);
-				break;
-			case 1:	//Quick time event attack (TODO)
-				e_HP = app->combatManager->StandarAttack(m_players[selected_player].DMG, e_HP, e_DEF);
-				app->audio->PlayFx(fx_sword_hit);
-				break;
-			case 2: //Heal
-				m_players[selected_player].HP = app->combatManager->UseItem(m_players[selected_player].HP);
-				break;
-			case 3: //Habilidades (TODO)
-				e_HP = app->combatManager->StandarAttack(m_players[selected_player].DMG, e_HP, e_DEF);
-				app->audio->PlayFx(fx_sword_hit);
-				break;
-			case 4: //Run away
-				if (app->combatManager->Run())
+				if (action_selected != 0)
 				{
-					//Transition to Gameplay Screen
-					app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
+					action_selected--;
+
 				}
-				else
+				else if (action_selected == 0)
 				{
-					LOG("You failed to run away");
+					action_selected = 5;
 				}
-				break;
-			case 5:
-				selected_player = app->combatManager->ChangeParty(selected_player);
-				break;
-			}
-			app->combatManager->playerTurn = !app->combatManager->playerTurn;
-		}
 
-		if (m_players[0].HP == 0 && m_players[1].HP==0)
-		{
-			app->fadeToBlack->Fade((Module*)app->sceneBattle, (Module*)app->sceneGameplay);
-			m_players[0].HP = m_players[0].max_HP;
-			m_players[1].HP = m_players[1].max_HP;
-		}
-
-		//Debug controls
-		if (app->sceneGameplay->player->godMode)
-		{
-			if (app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
-			{
-				e_HP = app->combatManager->StandarAttack(m_players[selected_player].DMG, e_HP, e_DEF);
-				app->combatManager->playerTurn = !app->combatManager->playerTurn;
 			}
 
-
-			if (app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
+			if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN)
 			{
-				e_HP = app->combatManager->StandarAttack(m_players[selected_player].DMG, e_HP, e_DEF);
-				app->combatManager->playerTurn = !app->combatManager->playerTurn;
-				/*qte = true;
-				startTime = SDL_GetTicks();*/
-			}
 
-
-			if (app->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
-			{
-				app->combatManager->BlockAttack();
-				app->combatManager->playerTurn = !app->combatManager->playerTurn;
-			}
-
-
-			if (app->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
-			{
-				m_players[selected_player].HP = app->combatManager->UseItem(m_players[selected_player].HP);
-				app->combatManager->playerTurn = !app->combatManager->playerTurn;
-			}
-
-			if (app->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
-			{
-				if (app->combatManager->Run())
+				if (action_selected != 5)
 				{
-					//Transition to Gameplay Screen
-					app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
+					action_selected++;
 				}
-				else
+				else if (action_selected == 5)
 				{
-					LOG("You failed to run away");
+					action_selected = 0;
+				}
+			}
+
+			if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+			{
+				switch (action_selected)
+				{
+				case 0: //Standar attack
+					e_HP = app->combatManager->StandarAttack(m_players[selected_player].DMG, e_HP, e_DEF);
+					app->audio->PlayFx(fx_sword_hit);
+					app->combatManager->playerTurn = !app->combatManager->playerTurn;
+					break;
+				case 1:	//Quick time event attack (TODO)
+					qte_timer.Start();
+					qte = true;
+					break;
+				case 2: //Heal
+					m_players[selected_player].HP = app->combatManager->UseItem(m_players[selected_player].HP);
+					app->combatManager->playerTurn = !app->combatManager->playerTurn;
+					break;
+				case 3: //Habilidades (TODO)
+					e_HP = app->combatManager->StandarAttack(m_players[selected_player].DMG, e_HP, e_DEF);
+					app->audio->PlayFx(fx_sword_hit);
+					app->combatManager->playerTurn = !app->combatManager->playerTurn;
+					break;
+				case 4: //Run away
+					if (app->combatManager->Run())
+					{
+						//Transition to Gameplay Screen
+						app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
+						app->combatManager->playerTurn = !app->combatManager->playerTurn;
+					}
+					else
+					{
+						LOG("You failed to run away");
+						app->combatManager->playerTurn = !app->combatManager->playerTurn;
+					}
+					break;
+				case 5:
+					selected_player = app->combatManager->ChangeParty(selected_player);
+					app->combatManager->playerTurn = !app->combatManager->playerTurn;
+					break;
+				}
+				
+			}
+
+			if (m_players[0].HP == 0 && m_players[1].HP == 0)
+			{
+				app->fadeToBlack->Fade((Module*)app->sceneBattle, (Module*)app->sceneGameplay);
+				m_players[0].HP = m_players[0].max_HP;
+				m_players[1].HP = m_players[1].max_HP;
+			}
+
+			//Debug controls
+			if (app->sceneGameplay->player->godMode)
+			{
+				if (app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
+				{
+					e_HP = app->combatManager->StandarAttack(m_players[selected_player].DMG, e_HP, e_DEF);
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
 				}
+
+
+				if (app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
+				{
+					//e_HP = app->combatManager->StandarAttack(m_players[selected_player].DMG, e_HP, e_DEF);
+					//app->combatManager->playerTurn = !app->combatManager->playerTurn;
+					///*qte = true;
+					//startTime = SDL_GetTicks();*/
+
+					qte_timer.Start();
+					qte = true;
+
+				}
+
+
+				if (app->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
+				{
+					app->combatManager->BlockAttack();
+					app->combatManager->playerTurn = !app->combatManager->playerTurn;
+				}
+
+
+				if (app->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
+				{
+					m_players[selected_player].HP = app->combatManager->UseItem(m_players[selected_player].HP);
+					app->combatManager->playerTurn = !app->combatManager->playerTurn;
+				}
+
+				if (app->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
+				{
+					if (app->combatManager->Run())
+					{
+						//Transition to Gameplay Screen
+						app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
+					}
+					else
+					{
+						LOG("You failed to run away");
+						app->combatManager->playerTurn = !app->combatManager->playerTurn;
+					}
+				}
+
+				if (app->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN)
+				{
+					selected_player = app->combatManager->ChangeParty(selected_player);
+					app->combatManager->playerTurn = !app->combatManager->playerTurn;
+				}
+
+
+				if (app->input->GetKey(SDL_SCANCODE_7) == KEY_DOWN)
+				{
+					m_players[selected_player].HP = app->combatManager->EnemyAttack(e_DMG, m_players[selected_player].HP, m_players[selected_player].DEF);
+					app->combatManager->playerTurn = !app->combatManager->playerTurn;
+				}
+
+
+				if (app->input->GetKey(SDL_SCANCODE_8) == KEY_DOWN)
+				{
+					app->combatManager->EnemyBlockAttack();
+					app->combatManager->playerTurn = !app->combatManager->playerTurn;
+				}
+
+				if (app->input->GetKey(SDL_SCANCODE_H) == KEY_DOWN)		//Heal enemy HP
+					e_HP = e_max_HP;
+
+				if (app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
+					app->combatManager->playerTurn = !app->combatManager->playerTurn;
+
+				//Quick Time Event attack (Para la alpha)
+				/*if (qte)
+				{
+					if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN)
+					{
+						endTime = SDL_GetTicks();
+					}
+
+					if (endTime != 0 && endTime - startTime >= (objetiveTime - tolerance) && endTime - startTime <= (objetiveTime + tolerance))
+					{
+						LOG("Ataque acertado");
+						qte = false;
+						app->combatManager->playerTurn = !app->combatManager->playerTurn;
+					}
+
+					if((!endTime - startTime >= (objetiveTime - tolerance) && endTime - startTime <= (objetiveTime + tolerance)))
+					{
+						LOG("Ataque fallido");
+						qte = false;
+						app->combatManager->playerTurn = !app->combatManager->playerTurn;
+					}
+				}*/
 			}
+		}
 
-			if (app->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN)
+		if (qte)
+		{
+			LOG("Quick Time Event Started");
+			
+
+			if (qte_timer.ReadSec() < tolerance)
 			{
-				selected_player = app->combatManager->ChangeParty(selected_player);
-				app->combatManager->playerTurn = !app->combatManager->playerTurn;
-			}
-		
 
-			if (app->input->GetKey(SDL_SCANCODE_7) == KEY_DOWN)
-			{
-				m_players[selected_player].HP = app->combatManager->EnemyAttack(e_DMG, m_players[selected_player].HP, m_players[selected_player].DEF);
-				app->combatManager->playerTurn = !app->combatManager->playerTurn;
-			}
-
-
-			if (app->input->GetKey(SDL_SCANCODE_8) == KEY_DOWN)
-			{
-				app->combatManager->EnemyBlockAttack();
-				app->combatManager->playerTurn = !app->combatManager->playerTurn;
-			}
-
-			if (app->input->GetKey(SDL_SCANCODE_H) == KEY_DOWN)		//Heal enemy HP
-				e_HP = e_max_HP;
-
-			if (app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
-				app->combatManager->playerTurn = !app->combatManager->playerTurn;
-
-			//Quick Time Event attack (Para la alpha)
-			/*if (qte)
-			{
 				if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN)
 				{
-					endTime = SDL_GetTicks();
+					LOG("MS: %f", qte_timer.ReadMSec());
+					e_HP = app->combatManager->TimeEventAttack(m_players[selected_player].DMG, e_HP, e_DEF, qte_timer.ReadMSec());
+					qte = false;
 				}
 
-				if (endTime != 0 && endTime - startTime >= (objetiveTime - tolerance) && endTime - startTime <= (objetiveTime + tolerance))
-				{
-					LOG("Ataque acertado");
-					qte = false;
-					app->combatManager->playerTurn = !app->combatManager->playerTurn;
-				}
-
-				if((!endTime - startTime >= (objetiveTime - tolerance) && endTime - startTime <= (objetiveTime + tolerance)))
-				{
-					LOG("Ataque fallido");
-					qte = false;
-					app->combatManager->playerTurn = !app->combatManager->playerTurn;
-				}
-			}*/
+			}
+			else
+			{
+				LOG("Ataque QTE fallado -> Hace 1 de daño");
+				//e_HP = app->combatManager->StandarAttack(1, e_HP, e_DEF);
+				qte = false;
+				app->combatManager->playerTurn = !app->combatManager->playerTurn;
+			}
+				
 		}
 	}
 	else

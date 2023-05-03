@@ -74,11 +74,46 @@ int CombatManager::StandarAttack(int p_DMG, int e_HP, int e_DEF) {
 	}
 };
 
-int CombatManager::TimeEventAttack(int p_DMG, int e_HP, int e_DEF) {
+int CombatManager::TimeEventAttack(int p_DMG, int e_HP, int e_DEF, float delay) {
 	//De momento nada, se incluirá en la siguiente versión
 	
+	if (delay > 750 && delay < 1250)
+	{
+		int totalDamage;
+		totalDamage = 2*p_DMG - (e_DEF + enemy_increasedDefense);	//De momento va a ser el doble del daño del player si aciertas en timing
 
-	return 0;
+		if (totalDamage > e_HP)
+		{
+			enemy_increasedDefense = 0;
+			//Kill enemy
+			return 0;
+		}
+		else
+		{
+			enemy_increasedDefense = 0;
+			//Return amount of e_HP
+			return e_HP - totalDamage;
+		}
+	}
+	else
+	{
+		LOG("Bad Timing");											//Si fallas el timing vas a hacer la mitad de daño que de habitual
+		int totalDamage;
+		totalDamage = 0.5 * p_DMG - (e_DEF + enemy_increasedDefense);	
+
+		if (totalDamage > e_HP)
+		{
+			enemy_increasedDefense = 0;
+			//Kill enemy
+			return 0;
+		}
+		else
+		{
+			enemy_increasedDefense = 0;
+			//Return amount of e_HP
+			return e_HP - totalDamage;
+		}
+	}
 };
 
 void CombatManager::BlockAttack() {
