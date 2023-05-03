@@ -88,9 +88,9 @@ void CombatManager::BlockAttack() {
 };
 
 int CombatManager::UseItem(int p_HP) {
-	if (p_HP + 25 > app->sceneBattle->p_max_HP)
+	if (p_HP + 25 > app->sceneBattle->m_players[app->sceneBattle->selected_player].max_HP)
 	{
-		return app->sceneBattle->p_max_HP;
+		return app->sceneBattle->m_players[app->sceneBattle->selected_player].max_HP;
 	}
 	else
 	{
