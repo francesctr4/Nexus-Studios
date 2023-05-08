@@ -62,6 +62,8 @@ bool Player::Start() {
 
 	textureChange = false;
 
+	itemCollectedFx = app->audio->LoadFx("Assets/Audio/Fx/Item.wav");
+
 	return true;
 }
 
@@ -152,6 +154,31 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	
 	switch (physB->ctype)
 	{
+
+	case ColliderType::ITEM_POTION:
+
+		app->audio->PlayFx(itemCollectedFx);
+
+		break;
+
+	case ColliderType::ITEM_BATTERY:
+
+		app->audio->PlayFx(itemCollectedFx);
+
+		break;
+
+	case ColliderType::ITEM_GEM:
+
+		app->audio->PlayFx(itemCollectedFx);
+
+		break;
+
+	case ColliderType::ITEM_MANGO:
+
+		app->audio->PlayFx(itemCollectedFx);
+
+		break;
+
 	case ColliderType::PUERTA_COFRE:
 		LOG("Collision PLATFORM");
 

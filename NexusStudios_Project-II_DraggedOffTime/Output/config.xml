@@ -34,6 +34,11 @@
 	<enemy type = "tank" x="75" y="615" texturepath="Assets/Textures/Tank_New.png" battletexturepath ="Assets/Textures/TankInCombat.png"/>
 	<enemy type = "damage" x="1120" y="600" texturepath="Assets/Textures/Cyberpunk.png" battletexturepath ="Assets/Textures/CyberpunkInCombat.png"/>
 
+	<item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1.png"/>
+	<item type ="Mango" x="600" y="450" texturepath="Assets/Textures/Items/Mangoes/Mango.png"/>
+	<item type ="Gem" x="700" y="450" texturepath="Assets/Textures/Items/Gems/BlueGem.png"/>
+	<item type ="Battery" x="800" y="450" texturepath="Assets/Textures/Items/Batteries/Battery.png"/>
+	  
   </sceneGameplay>
 
   <map>

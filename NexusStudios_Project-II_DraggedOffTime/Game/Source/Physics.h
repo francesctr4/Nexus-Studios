@@ -36,6 +36,10 @@ enum class ColliderType {
 	ENEMY,
 	PUERTA_COFRE,
 	PUERTA_JOVANI,
+	ITEM_POTION,
+	ITEM_MANGO,
+	ITEM_GEM,
+	ITEM_BATTERY,
 	UNKNOWN
 	// ..
 };

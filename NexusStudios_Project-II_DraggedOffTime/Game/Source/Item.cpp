@@ -26,16 +26,28 @@ bool Item::Awake() {
 	audioPath = parameters.attribute("audiopath").as_string();
 
 	if (SString(parameters.attribute("type").as_string()) == SString("Potion"))
+	{
 		type = ItemType::POTION;
+		ctype = ColliderType::ITEM_POTION;
+	}
 
 	if (SString(parameters.attribute("type").as_string()) == SString("Mango"))
+	{
 		type = ItemType::MANGO;
+		ctype = ColliderType::ITEM_MANGO;
+	}
 
 	if (SString(parameters.attribute("type").as_string()) == SString("Gem"))
+	{
 		type = ItemType::GEM;
+		ctype = ColliderType::ITEM_GEM;
+	}
 
 	if (SString(parameters.attribute("type").as_string()) == SString("Battery"))
+	{
 		type = ItemType::BATTERY;
+		ctype = ColliderType::ITEM_BATTERY;
+	}
 
 	if (SString(parameters.attribute("type").as_string()) == SString("Item_5"))
 		type = ItemType::ITEM_5;
@@ -48,15 +60,27 @@ bool Item::Awake() {
 
 bool Item::Start() {
 
-	
+	texture = app->tex->Load(texturePath);
+
+	int width = 16;
+	int height = 16;
+
+	pbody = app->physics->CreateRectangleSensor(position.x, position.y, width, height, bodyType::KINEMATIC, ctype);
+	pbody->listener = this;
 
 	return true;
 }
 
 bool Item::Update()
 {
-	
-	
+	b2Transform transform = pbody->body->GetTransform();
+	b2Vec2 pos = transform.p;
+
+	position.x = METERS_TO_PIXELS(pos.x) - 8;
+	position.y = METERS_TO_PIXELS(pos.y) - 8;
+
+	app->render->DrawTexture(texture, position.x, position.y);
+
 	return true;
 }
 

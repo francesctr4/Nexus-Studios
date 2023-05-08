@@ -3,6 +3,7 @@
 
 #include "Entity.h"
 #include "Point.h"
+#include "Physics.h"
 #include "SDL/include/SDL.h"
 
 struct SDL_Texture;
@@ -47,6 +48,8 @@ private:
 
 	PhysBody* pbody;
 	ItemType type;
+	ColliderType ctype;
+
 };
 
 #endif // __ITEM_H__

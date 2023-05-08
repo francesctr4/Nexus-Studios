@@ -64,7 +64,9 @@ private:
 
 	NewPosition newPos;
 
-	
+	// Items FX
+
+	uint itemCollectedFx;
 
 };
 

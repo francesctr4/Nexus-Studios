@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "NPC.h"
 #include "Enemy.h"
+#include "Item.h"
 #include "GuiManager.h"
 #include "GuiButton.h"
 #include "GuiSlider.h"
