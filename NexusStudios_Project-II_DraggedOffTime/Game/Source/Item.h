@@ -15,7 +15,9 @@ enum class ItemType {
 	GEM,
 	BATTERY,
 	ITEM_5,
-	ITEM_6
+	ITEM_6,
+	TELEPORT_JOVANI,
+	TELEPORT_COFRE
 
 };
 

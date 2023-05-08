@@ -39,6 +39,9 @@
 	<item type ="Gem" x="700" y="450" texturepath="Assets/Textures/Items/Gems/BlueGem.png"/>
 	<item type ="Battery" x="800" y="450" texturepath="Assets/Textures/Items/Batteries/Battery.png"/>
 	  
+	<item type ="Teleport_Jovani" x="900" y="450"/>
+	<item type ="Teleport_Cofre" x="1168" y="365"/>
+	  
   </sceneGameplay>
 
   <map>

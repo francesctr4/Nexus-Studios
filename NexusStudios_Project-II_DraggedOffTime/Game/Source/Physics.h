@@ -40,7 +40,9 @@ enum class ColliderType {
 	ITEM_MANGO,
 	ITEM_GEM,
 	ITEM_BATTERY,
-	UNKNOWN
+	UNKNOWN,
+	TELEPORT_JOVANI,
+	TELEPORT_COFRE
 	// ..
 };
 

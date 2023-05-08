@@ -55,6 +55,19 @@ bool Item::Awake() {
 	if (SString(parameters.attribute("type").as_string()) == SString("Item_6"))
 		type = ItemType::ITEM_6;
 
+	if (SString(parameters.attribute("type").as_string()) == SString("Teleport_Jovani")) 
+	{
+		type = ItemType::TELEPORT_JOVANI;
+		ctype = ColliderType::TELEPORT_JOVANI;
+	}
+		
+
+	if (SString(parameters.attribute("type").as_string()) == SString("Teleport_Cofre")) 
+	{
+		type = ItemType::TELEPORT_COFRE;
+		ctype = ColliderType::TELEPORT_COFRE;
+	}
+
 	return true;
 }
 
@@ -65,7 +78,17 @@ bool Item::Start() {
 	int width = 16;
 	int height = 16;
 
-	pbody = app->physics->CreateRectangleSensor(position.x, position.y, width, height, bodyType::KINEMATIC, ctype);
+	if (type == ItemType::TELEPORT_COFRE || type == ItemType::TELEPORT_JOVANI) {
+
+		pbody = app->physics->CreateRectangleSensor(position.x, position.y, 40, 20, bodyType::KINEMATIC, ctype);
+
+	}
+	else {
+
+		pbody = app->physics->CreateRectangleSensor(position.x, position.y, width, height, bodyType::KINEMATIC, ctype);
+
+	}
+	
 	pbody->listener = this;
 
 	return true;

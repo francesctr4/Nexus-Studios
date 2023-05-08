@@ -179,6 +179,40 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 
 		break;
 
+	case ColliderType::TELEPORT_COFRE:
+
+		app->map->CleanUp();
+		app->map->actualmap = 1;
+		app->map->Load();
+		app->sceneGameplay->map_selector = false;
+		app->sceneGameplay->actually = 1;
+		app->sceneGameplay->player->Teleport(650, 700);
+
+		//Move Npcs Map_1
+		app->sceneGameplay->npcs.At(0)->data->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+		app->sceneGameplay->npcs.At(0)->data->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+		app->sceneGameplay->npcs.At(1)->data->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+		app->sceneGameplay->npcs.At(1)->data->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+		app->sceneGameplay->npcs.At(2)->data->pbody->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
+		app->sceneGameplay->npcs.At(2)->data->npcSensor->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
+
+		//Move Enemies Map_1
+		app->sceneGameplay->enemies.At(0)->data->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+		app->sceneGameplay->enemies.At(0)->data->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+		app->sceneGameplay->enemies.At(1)->data->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+		app->sceneGameplay->enemies.At(1)->data->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+		app->sceneGameplay->enemies.At(2)->data->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+		app->sceneGameplay->enemies.At(2)->data->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+		app->sceneGameplay->enemies.At(3)->data->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+		app->sceneGameplay->enemies.At(3)->data->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+		break;
+
 	case ColliderType::PUERTA_COFRE:
 		LOG("Collision PLATFORM");
 
@@ -188,7 +222,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		
 		app->map->CleanUp();
 		app->map->actualmap = 2;
-		bool retLoad = app->map->Load();
+		app->map->Load();
 		app->sceneGameplay->actually = 2;
 		app->sceneGameplay->player->Teleport(650, 700);
 
