@@ -7,6 +7,7 @@
 ## Team Members
 
 ### TEAM LEAD
+
 _**Francesc Teruel Rodríguez**_
 * **GitHub:** [francesctr4](https://github.com/francesctr4)
 
