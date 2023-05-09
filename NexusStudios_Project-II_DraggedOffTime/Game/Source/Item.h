@@ -4,6 +4,7 @@
 #include "Entity.h"
 #include "Point.h"
 #include "Physics.h"
+#include "Animation.h"
 #include "SDL/include/SDL.h"
 
 struct SDL_Texture;
@@ -51,6 +52,9 @@ private:
 	PhysBody* pbody;
 	ItemType type;
 	ColliderType ctype;
+
+	Animation idle;
+	Animation* currentAnimation;
 
 };
 

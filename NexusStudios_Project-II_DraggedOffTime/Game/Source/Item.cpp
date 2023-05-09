@@ -68,6 +68,14 @@ bool Item::Awake() {
 		ctype = ColliderType::TELEPORT_COFRE;
 	}
 
+	for (int i = 0; i < 6; i++) {
+
+		idle.PushBack({ 16 * (0 + i), 18 * 0, 16, 18 });
+
+	}
+	idle.loop = true;
+	idle.speed = 0.1f;
+
 	return true;
 }
 
@@ -91,6 +99,8 @@ bool Item::Start() {
 	
 	pbody->listener = this;
 
+	currentAnimation = &idle;
+
 	return true;
 }
 
@@ -102,7 +112,11 @@ bool Item::Update()
 	position.x = METERS_TO_PIXELS(pos.x) - 8;
 	position.y = METERS_TO_PIXELS(pos.y) - 8;
 
-	app->render->DrawTexture(texture, position.x, position.y);
+	currentAnimation->Update();
+
+	SDL_Rect itemRect = currentAnimation->GetCurrentFrame();
+
+	app->render->DrawTexture(texture, position.x, position.y, &itemRect);
 
 	return true;
 }
