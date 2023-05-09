@@ -221,11 +221,9 @@ PhysBody* Physics::CreateChain(int x, int y, int* points, int size, bodyType typ
 
 	b->CreateFixture(&fixture);
 
-	
-
 	PhysBody* pbody = new PhysBody();
-	pbody->ctype = ctype;
 	pbody->body = b;
+	pbody->ctype = ctype;
 	b->SetUserData(pbody);
 	pbody->width = pbody->height = 0;
 
