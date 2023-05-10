@@ -27,8 +27,15 @@ public:
 
 	int i;
 	int j;
+	int k;
 
 	SDL_Texture* statsSheet;
+
+	SDL_Texture* jambitaEstirada;
+
+	SDL_Texture* inventory;
+
+	SDL_Texture* skills;
 
 	//Menu* menu = new Menu[4] { Menu::STATS, Menu::INVENTORY, Menu::SKILLS, Menu::EQUIPMENT };
 
