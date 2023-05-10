@@ -30,6 +30,7 @@ class SceneBattle;
 class GuiManager;
 class CombatManager;
 class EntityManager;
+class QuestManager;
 class FadeToBlack;
 
 class App
@@ -110,6 +111,7 @@ public:
 	GuiManager* guiManager;
 	CombatManager* combatManager;
 	EntityManager* entityManager;
+	QuestManager* questManager;
 	FadeToBlack* fadeToBlack;
 
 	uint frames;

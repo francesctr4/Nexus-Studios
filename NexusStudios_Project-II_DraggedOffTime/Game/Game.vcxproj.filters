@@ -91,6 +91,15 @@
     <ClCompile Include="Source\Weapon.cpp">
       <Filter>Game Loop\Features</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Inventory.cpp">
+      <Filter>Game Loop\Features</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\QuestManager.cpp">
+      <Filter>Game Loop\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Stats.cpp">
+      <Filter>Game Loop\Features</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -214,6 +223,15 @@
       <Filter>Game Loop</Filter>
     </ClInclude>
     <ClInclude Include="Source\Weapon.h">
+      <Filter>Game Loop\Features</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Inventory.h">
+      <Filter>Game Loop\Features</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\QuestManager.h">
+      <Filter>Game Loop\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Stats.h">
       <Filter>Game Loop\Features</Filter>
     </ClInclude>
   </ItemGroup>

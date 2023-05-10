@@ -103,6 +103,7 @@
     <ClCompile Include="Source\GuiCheckBox.cpp" />
     <ClCompile Include="Source\GuiManager.cpp" />
     <ClCompile Include="Source\GuiSlider.cpp" />
+    <ClCompile Include="Source\Inventory.cpp" />
     <ClCompile Include="Source\Item.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\App.cpp" />
@@ -114,11 +115,13 @@
     <ClCompile Include="Source\PerfTimer.cpp" />
     <ClCompile Include="Source\Physics.cpp" />
     <ClCompile Include="Source\Player.cpp" />
+    <ClCompile Include="Source\QuestManager.cpp" />
     <ClCompile Include="Source\Render.cpp" />
     <ClCompile Include="Source\SceneBattle.cpp" />
     <ClCompile Include="Source\SceneGameplay.cpp" />
     <ClCompile Include="Source\SceneLogo.cpp" />
     <ClCompile Include="Source\SceneTitle.cpp" />
+    <ClCompile Include="Source\Stats.cpp" />
     <ClCompile Include="Source\Textures.cpp" />
     <ClCompile Include="Source\Timer.cpp" />
     <ClCompile Include="Source\Weapon.cpp" />
@@ -134,6 +137,7 @@
     <ClInclude Include="Source\GuiControl.h" />
     <ClInclude Include="Source\GuiManager.h" />
     <ClInclude Include="Source\GuiSlider.h" />
+    <ClInclude Include="Source\Inventory.h" />
     <ClInclude Include="Source\Item.h" />
     <ClInclude Include="Source\Map.h" />
     <ClInclude Include="Source\NPC.h" />
@@ -142,6 +146,7 @@
     <ClInclude Include="Source\Physics.h" />
     <ClInclude Include="Source\Player.h" />
     <ClInclude Include="Source\PQueue.h" />
+    <ClInclude Include="Source\QuestManager.h" />
     <ClInclude Include="Source\Queue.h" />
     <ClInclude Include="Source\Audio.h" />
     <ClInclude Include="Source\Input.h" />
@@ -152,6 +157,7 @@
     <ClInclude Include="Source\SceneGameplay.h" />
     <ClInclude Include="Source\SceneLogo.h" />
     <ClInclude Include="Source\SceneTitle.h" />
+    <ClInclude Include="Source\Stats.h" />
     <ClInclude Include="Source\Textures.h" />
     <ClInclude Include="Source\Timer.h" />
     <ClInclude Include="Source\Weapon.h" />

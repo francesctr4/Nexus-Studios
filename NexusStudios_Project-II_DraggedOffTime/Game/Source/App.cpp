@@ -25,6 +25,7 @@
 #include "EntityManager.h"
 #include "GuiManager.h"
 #include "CombatManager.h"
+#include "QuestManager.h"
 #include "FadeToBlack.h"
 
 // Constructor
@@ -50,6 +51,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	guiManager = new GuiManager(true);
 	combatManager = new CombatManager(true);
 	entityManager = new EntityManager(true);
+	questManager = new QuestManager(true);
 	fadeToBlack = new FadeToBlack(true);
 
 	// Ordered for awake / Start / Update
@@ -71,6 +73,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(guiManager);
 	AddModule(combatManager);
 	AddModule(entityManager);
+	AddModule(questManager);
 	AddModule(fadeToBlack);
 
 	// Render last to swap buffer
