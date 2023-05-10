@@ -8,6 +8,7 @@
 #include "GuiButton.h"
 #include "GuiSlider.h"
 #include "GuiCheckBox.h"
+#include "Stats.h"
 
 struct SDL_Texture;
 
@@ -109,5 +110,9 @@ public:
 	uint ClosePause;
 
 	PhysBody* sensorJovani;
+
+	//Stats
+
+	Stats stats;
 
 };

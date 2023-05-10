@@ -143,6 +143,9 @@ bool SceneGameplay::Start()
 
 	sensorJovani->listener;
 
+	// Stats
+
+	stats.Load();
 
 	return true;
 }
@@ -490,6 +493,10 @@ bool SceneGameplay::Update(float dt)
 	}
 	app->map->Draw();
 
+	// Stats
+
+	stats.Update();
+
 	return true;
 }
 
@@ -610,6 +617,10 @@ bool SceneGameplay::PostUpdate()
 	}
 
 	if (Exit->state == GuiControlState::PRESSED) ret = false;
+
+	// Stats
+
+	stats.Draw();
 
 	return ret;
 }
