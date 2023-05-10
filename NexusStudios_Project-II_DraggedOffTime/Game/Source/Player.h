@@ -35,6 +35,8 @@ public:
 
 	void OnCollision(PhysBody* physA, PhysBody* physB);
 
+	void TeleportCofre();
+
 	void Death();
 
 	void Teleport(int x, int y);
@@ -67,6 +69,8 @@ private:
 	// Items FX
 
 	uint itemCollectedFx;
+
+	bool executeTeleportCofre = false;
 
 };
 
