@@ -112,6 +112,7 @@
     <ClCompile Include="Source\Map.cpp" />
     <ClCompile Include="Source\NPC.cpp" />
     <ClCompile Include="Source\PathFinding.cpp" />
+    <ClCompile Include="Source\Pause.cpp" />
     <ClCompile Include="Source\PerfTimer.cpp" />
     <ClCompile Include="Source\Physics.cpp" />
     <ClCompile Include="Source\Player.cpp" />
@@ -142,6 +143,7 @@
     <ClInclude Include="Source\Map.h" />
     <ClInclude Include="Source\NPC.h" />
     <ClInclude Include="Source\PathFinding.h" />
+    <ClInclude Include="Source\Pause.h" />
     <ClInclude Include="Source\PerfTimer.h" />
     <ClInclude Include="Source\Physics.h" />
     <ClInclude Include="Source\Player.h" />

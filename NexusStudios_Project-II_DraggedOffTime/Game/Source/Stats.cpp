@@ -3,6 +3,8 @@
 #include "Textures.h"
 #include "Render.h"
 #include "Input.h"
+#include "SceneGameplay.h"
+#include "Pause.h"
 
 void Stats::Load()
 {
@@ -31,7 +33,7 @@ void Stats::Load()
 
 void Stats::Update()
 {
-	if (app->input->GetKey(SDL_SCANCODE_I) == KEY_DOWN) {
+	if (app->input->GetKey(SDL_SCANCODE_I) == KEY_DOWN && !app->sceneGameplay->showPause && !app->sceneGameplay->showSettings) {
 
 		statsEnabled = !statsEnabled;
 

@@ -100,6 +100,7 @@
     <ClCompile Include="Source\Stats.cpp">
       <Filter>Game Loop\Features</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Pause.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -234,6 +235,7 @@
     <ClInclude Include="Source\Stats.h">
       <Filter>Game Loop\Features</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Pause.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">

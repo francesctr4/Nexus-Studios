@@ -9,6 +9,7 @@
 #include "GuiSlider.h"
 #include "GuiCheckBox.h"
 #include "Stats.h"
+#include "Pause.h"
 
 struct SDL_Texture;
 
@@ -44,11 +45,6 @@ public:
 
 	bool enableMusic;
 
-	bool showPause;
-	bool showSettings;
-
-public:
-
 	Player* player;
 	bool map_selector = false;
 	int actually = 0;
@@ -56,61 +52,65 @@ public:
 	List<Enemy*> enemies;
 	List<NPC*> npcs;
 
-	SDL_Texture* Fondo;
+	//SDL_Texture* Fondo;
 
-	//Pause UI
+	////Pause UI
 
-	SDL_Texture* PauseTitle;
+	//bool showPause;
+	//bool showSettings;
 
-	SDL_Texture* resume;
-	GuiButton* Resume;
+	//SDL_Texture* PauseTitle;
 
-	SDL_Texture* settings;
-	GuiButton* Settings;
+	//SDL_Texture* resume;
+	//GuiButton* Resume;
 
-	SDL_Texture* backTitle;
-	GuiButton* BackTitle;
+	//SDL_Texture* settings;
+	//GuiButton* Settings;
 
-	SDL_Texture* exit;
-	GuiButton* Exit;
+	//SDL_Texture* backTitle;
+	//GuiButton* BackTitle;
 
-	//Settings UI
+	//SDL_Texture* exit;
+	//GuiButton* Exit;
 
-	SDL_Texture* SettingsTitle;
+	////Settings UI
 
-	SDL_Texture* checkBox;
+	//SDL_Texture* SettingsTitle;
 
-	SDL_Texture* checkBoxFullscreen;
-	GuiCheckBox* CheckBoxFullscreen;
+	//SDL_Texture* checkBox;
 
-	SDL_Texture* checkBoxVsync;
-	GuiCheckBox* CheckBoxVsync;
+	//SDL_Texture* checkBoxFullscreen;
+	//GuiCheckBox* CheckBoxFullscreen;
 
-	SDL_Texture* framecap;
-	SDL_Texture* FPS;
-	SDL_Texture* framecapUP;
-	GuiButton* FramecapUP;
-	SDL_Texture* framecapDOWN;
-	GuiButton* FramecapDOWN;
+	//SDL_Texture* checkBoxVsync;
+	//GuiCheckBox* CheckBoxVsync;
 
-	SDL_Texture* slider;
-	SDL_Texture* SlideBar;
+	//SDL_Texture* framecap;
+	//SDL_Texture* FPS;
+	//SDL_Texture* framecapUP;
+	//GuiButton* FramecapUP;
+	//SDL_Texture* framecapDOWN;
+	//GuiButton* FramecapDOWN;
 
-	SDL_Texture* Music;
-	GuiSlider* SliderMusic;
+	//SDL_Texture* slider;
+	//SDL_Texture* SlideBar;
 
-	SDL_Texture* SFX;
-	GuiSlider* SliderFX;
+	//SDL_Texture* Music;
+	//GuiSlider* SliderMusic;
 
-	SDL_Texture* back;
-	GuiButton* Back;
+	//SDL_Texture* SFX;
+	//GuiSlider* SliderFX;
 
-	//SFX
-	uint OpenPause;
-	uint ClosePause;
+	//SDL_Texture* back;
+	//GuiButton* Back;
+
+	////SFX
+	//uint OpenPause;
+	//uint ClosePause;
 
 	//Stats
 
 	Stats stats;
+	Pause pause;
 
 };
