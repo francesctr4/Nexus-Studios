@@ -39,6 +39,8 @@ public:
 
 	SDL_Texture* equipment;
 
+	SDL_Texture* quests;
+
 	int e_characterSelector;
 	int e_weaponSelector;
 

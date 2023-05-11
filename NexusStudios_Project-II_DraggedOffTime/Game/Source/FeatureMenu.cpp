@@ -20,6 +20,8 @@ void FeatureMenu::Load()
 
 	equipment = app->tex->Load("Assets/UI/Stats/Equipment.png");
 
+	quests = app->tex->Load("Assets/UI/Stats/Quests.png");
+
 	statsEnabled = false;
 
 	i = 0;
@@ -177,6 +179,8 @@ void FeatureMenu::PostUpdate()
 
 	SDL_Rect rect4 = { 0, 720 * k,1280,720 };
 
+	SDL_Rect rect5 = { 0, 0 ,1280,720 };
+
 	if (statsEnabled) {
 
 		app->render->DrawTexture(texture, 0, 0, &rect);
@@ -213,6 +217,7 @@ void FeatureMenu::PostUpdate()
 
 			case 4: {
 				
+				app->render->DrawTexture(quests, 0, 0, &rect5);
 				break;
 
 			}
