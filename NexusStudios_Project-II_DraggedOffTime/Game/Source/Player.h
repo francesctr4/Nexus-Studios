@@ -63,6 +63,11 @@ private:
 
 	Animation* currentAnimation;
 	Animation idle_right;
+	Animation idle_left;
+	Animation walk_right;
+	Animation walk_left;
+
+	bool idleDirection;
 
 	NewPosition newPos;
 

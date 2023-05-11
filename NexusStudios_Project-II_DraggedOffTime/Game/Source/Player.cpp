@@ -38,6 +38,30 @@ bool Player::Awake() {
 	idle_right.loop = true;
 	idle_right.speed = 0.06f;
 
+	for (int i = 0; i < 4; i++) {
+
+		idle_left.PushBack({ 32 * (0 + i), 32 * 1, 32, 32 });
+
+	}
+	idle_left.loop = true;
+	idle_left.speed = 0.06f;
+
+	for (int i = 0; i < 4; i++) {
+
+		walk_right.PushBack({ 32 * (0 + i), 32 * 2, 32, 32 });
+
+	}
+	walk_right.loop = true;
+	walk_right.speed = 0.1f;
+
+	for (int i = 0; i < 4; i++) {
+
+		walk_left.PushBack({ 32 * (0 + i), 32 * 3, 32, 32 });
+
+	}
+	walk_left.loop = true;
+	walk_left.speed = 0.1f;
+
 	return true;
 }
 
@@ -63,6 +87,8 @@ bool Player::Start() {
 	textureChange = false;
 
 	itemCollectedFx = app->audio->LoadFx("Assets/Audio/Fx/Item.wav");
+	
+	idleDirection = false;
 
 	return true;
 }
@@ -88,11 +114,72 @@ bool Player::Update()
 	{
 		speed = 10;
 	}
-	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) vel = b2Vec2(GRAVITY_X, -speed);
-	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) vel = b2Vec2(GRAVITY_X, speed);
-	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) vel = b2Vec2(-speed, -GRAVITY_Y);
-	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) vel = b2Vec2(speed, -GRAVITY_Y);
 
+	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE && 
+		app->input->GetKey(SDL_SCANCODE_A) == KEY_IDLE &&
+		app->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE &&
+		app->input->GetKey(SDL_SCANCODE_D) == KEY_IDLE) {
+
+		if (idleDirection) {
+
+			currentAnimation = &idle_left;
+
+		}
+		else {
+
+			currentAnimation = &idle_right;
+
+		}
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) {
+
+		vel = b2Vec2(GRAVITY_X, -speed);
+
+		if (idleDirection) {
+
+			currentAnimation = &walk_left;
+
+		}
+		else {
+
+			currentAnimation = &walk_right;
+
+		}
+
+	}
+		
+	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) {
+
+		vel = b2Vec2(GRAVITY_X, speed);
+
+		if (idleDirection) {
+
+			currentAnimation = &walk_left;
+
+		}
+		else {
+
+			currentAnimation = &walk_right;
+
+		}
+
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) {
+
+		vel = b2Vec2(-speed, -GRAVITY_Y);
+		currentAnimation = &walk_left;
+		idleDirection = true;
+	}
+		
+	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) {
+
+		vel = b2Vec2(speed, -GRAVITY_Y);
+		currentAnimation = &walk_right;
+		idleDirection = false;
+	}
+		
 	if (app->input->activeControllers.Count()) {
 
 		if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_y, 10000, 2) < 0) vel = b2Vec2(GRAVITY_X, -speed);
