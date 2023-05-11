@@ -409,7 +409,7 @@ bool SceneBattle::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_START] == KEY_DOWN) {
 
 		enableMusic = true;
-		app->fadeToBlack->Fade(this, (Module*)app->sceneLogo);
+		app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
 		app->map->actualmap = 0;
 
 	}

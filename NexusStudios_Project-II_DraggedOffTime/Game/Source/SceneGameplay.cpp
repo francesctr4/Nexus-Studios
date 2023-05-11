@@ -139,10 +139,6 @@ bool SceneGameplay::Start()
 	OpenPause = app->audio->LoadFx("Assets/Audio/Fx/OpenPause.wav");
 	ClosePause = app->audio->LoadFx("Assets/Audio/Fx/ClosePause.wav");
 
-	sensorJovani = app->physics->CreateCircleSensor(500,500,10, bodyType::KINEMATIC, ColliderType::PUERTA_JOVANI);
-
-	sensorJovani->listener;
-
 	// Stats
 
 	stats.Load();
@@ -170,9 +166,7 @@ bool SceneGameplay::Update(float dt)
 {
 	OPTICK_EVENT();
 
-
 	//UI
-
 	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_START] == KEY_DOWN) {
 
 		showPause = true;
@@ -204,7 +198,7 @@ bool SceneGameplay::Update(float dt)
 		app->fadeToBlack->Fade(this, (Module*)app->sceneTitle);
 
 	}
-
+	
 	if (CheckBoxFullscreen->crossed) {
 
 		app->sceneTitle->CheckBoxFullscreen->crossed = true;
@@ -462,13 +456,6 @@ bool SceneGameplay::Update(float dt)
 		}
 	}
 
-
-
-	if (app->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
-	{
-		app->sceneGameplay->player->Teleport(700, 500);
-	}
-
 	if (!app->entityManager->IsEnabled()) {
 
 		app->entityManager->Enable();
@@ -478,21 +465,13 @@ bool SceneGameplay::Update(float dt)
 	if (app->sceneGameplay->player->godMode) app->physics->debug = true;
 	else app->physics->debug = false;
 
-
 	if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_START] == KEY_DOWN) {
 
 		enableMusic = true;
 		app->fadeToBlack->Fade(this, (Module*)app->sceneBattle);
 
 	}
-	
-	
-	if (app->map->actualmap == 2)
-	{
-		
-	}
 	app->map->Draw();
-
 	// Stats
 
 	stats.Update();
@@ -639,3 +618,4 @@ bool SceneGameplay::OnGuiMouseClickEvent(GuiControl* control)
 
 	return true;
 }
+

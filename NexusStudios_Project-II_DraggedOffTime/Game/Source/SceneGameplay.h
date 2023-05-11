@@ -109,8 +109,6 @@ public:
 	uint OpenPause;
 	uint ClosePause;
 
-	PhysBody* sensorJovani;
-
 	//Stats
 
 	Stats stats;
