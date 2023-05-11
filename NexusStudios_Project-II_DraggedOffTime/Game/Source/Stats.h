@@ -37,6 +37,11 @@ public:
 
 	SDL_Texture* skills;
 
+	SDL_Texture* equipment;
+
+	int e_characterSelector;
+	int e_weaponSelector;
+
 	//Menu* menu = new Menu[4] { Menu::STATS, Menu::INVENTORY, Menu::SKILLS, Menu::EQUIPMENT };
 
 };

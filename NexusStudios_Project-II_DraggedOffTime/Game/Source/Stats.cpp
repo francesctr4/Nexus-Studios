@@ -16,11 +16,17 @@ void Stats::Load()
 
 	skills = app->tex->Load("Assets/UI/Stats/Skills.png");
 
+	equipment = app->tex->Load("Assets/UI/Stats/Equipment.png");
+
 	statsEnabled = false;
 
 	i = 0;
 	j = 0;
 	k = 0;
+
+	e_characterSelector = 0;
+	e_weaponSelector = 0;
+
 }
 
 void Stats::Update()
@@ -71,9 +77,67 @@ void Stats::Update()
 
 	case 2: 
 
-		break;
+		if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
 
-	
+			if (e_characterSelector < 3) {
+
+				e_characterSelector++;
+
+			}
+			else if (e_characterSelector == 3) {
+
+				e_characterSelector = 0;
+
+			}
+
+		}
+
+		if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
+
+			if (e_characterSelector > 0) {
+
+				e_characterSelector--;
+
+			}
+			else if (e_characterSelector == 0) {
+
+				e_characterSelector = 3;
+
+			}
+
+		}
+
+		if (app->input->GetKey(SDL_SCANCODE_K) == KEY_DOWN) {
+
+			if (e_weaponSelector < 2) {
+
+				e_weaponSelector++;
+
+			}
+			else if (e_weaponSelector == 2) {
+
+				e_weaponSelector = 0;
+
+			}
+
+		}
+
+		if (app->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN) {
+
+			if (e_weaponSelector > 0) {
+
+				e_weaponSelector--;
+
+			}
+			else if (e_weaponSelector == 0) {
+
+				e_weaponSelector = 2;
+
+			}
+
+		}
+
+		break;
 
 	case 3: 
 
@@ -103,7 +167,9 @@ void Stats::Draw()
 
 	SDL_Rect rect2 = { 1280 * j, 0,1280,720 };
 
-	SDL_Rect rect3 = { 0, 720 * k,1280,720 };
+	SDL_Rect rect3 = { 1280 * e_weaponSelector, 720 * e_characterSelector,1280,720 };
+
+	SDL_Rect rect4 = { 0, 720 * k,1280,720 };
 
 	if (statsEnabled) {
 
@@ -127,13 +193,14 @@ void Stats::Draw()
 				
 			case 2: {
 
+				app->render->DrawTexture(equipment, 0, 0, &rect3);
 				break;
 
 			}
 
 			case 3: {
 
-				app->render->DrawTexture(skills, 0, 0, &rect3);
+				app->render->DrawTexture(skills, 0, 0, &rect4);
 				break;
 
 			}
