@@ -122,7 +122,7 @@
     <ClCompile Include="Source\SceneGameplay.cpp" />
     <ClCompile Include="Source\SceneLogo.cpp" />
     <ClCompile Include="Source\SceneTitle.cpp" />
-    <ClCompile Include="Source\Stats.cpp" />
+    <ClCompile Include="Source\FeatureMenu.cpp" />
     <ClCompile Include="Source\Textures.cpp" />
     <ClCompile Include="Source\Timer.cpp" />
     <ClCompile Include="Source\Weapon.cpp" />
@@ -159,7 +159,7 @@
     <ClInclude Include="Source\SceneGameplay.h" />
     <ClInclude Include="Source\SceneLogo.h" />
     <ClInclude Include="Source\SceneTitle.h" />
-    <ClInclude Include="Source\Stats.h" />
+    <ClInclude Include="Source\FeatureMenu.h" />
     <ClInclude Include="Source\Textures.h" />
     <ClInclude Include="Source\Timer.h" />
     <ClInclude Include="Source\Weapon.h" />

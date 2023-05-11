@@ -1,4 +1,4 @@
-#include "Stats.h"
+#include "FeatureMenu.h"
 #include "App.h"
 #include "Textures.h"
 #include "Render.h"
@@ -6,7 +6,7 @@
 #include "SceneGameplay.h"
 #include "Pause.h"
 
-void Stats::Load()
+void FeatureMenu::Load()
 {
 	texture = app->tex->Load("Assets/UI/Stats/SpritesheetMenu.png");
 
@@ -31,7 +31,7 @@ void Stats::Load()
 
 }
 
-void Stats::Update()
+void FeatureMenu::Update()
 {
 	if (app->input->GetKey(SDL_SCANCODE_I) == KEY_DOWN /* && !app->sceneGameplay->showPause && !app->sceneGameplay->showSettings*/) {
 
@@ -41,7 +41,7 @@ void Stats::Update()
 
 	if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN) {
 
-		if (i < 3) i++;
+		if (i < 4) i++;
 		
 	}
 
@@ -158,12 +158,16 @@ void Stats::Update()
 
 		break;
 
+	case 4:
+
+		break;
+
 	
 	}
 
 }
 
-void Stats::Draw()
+void FeatureMenu::PostUpdate()
 {
 	SDL_Rect rect = { 1280 * i, 0,1280,720 };
 
@@ -203,6 +207,12 @@ void Stats::Draw()
 			case 3: {
 
 				app->render->DrawTexture(skills, 0, 0, &rect4);
+				break;
+
+			}
+
+			case 4: {
+				
 				break;
 
 			}

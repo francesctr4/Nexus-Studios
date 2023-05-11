@@ -97,10 +97,12 @@
     <ClCompile Include="Source\QuestManager.cpp">
       <Filter>Game Loop\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Stats.cpp">
+    <ClCompile Include="Source\FeatureMenu.cpp">
       <Filter>Game Loop\Features</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Pause.cpp" />
+    <ClCompile Include="Source\Pause.cpp">
+      <Filter>Game Loop\Features</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -232,10 +234,12 @@
     <ClInclude Include="Source\QuestManager.h">
       <Filter>Game Loop\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Stats.h">
+    <ClInclude Include="Source\FeatureMenu.h">
       <Filter>Game Loop\Features</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Pause.h" />
+    <ClInclude Include="Source\Pause.h">
+      <Filter>Game Loop\Features</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">

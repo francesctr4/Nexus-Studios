@@ -11,14 +11,14 @@ struct SDL_Texture;
 //
 //};
 
-class Stats {
+class FeatureMenu {
 public:
 
 	void Load();
 
 	void Update();
 
-	void Draw();
+	void PostUpdate();
 
 public:
 
