@@ -64,7 +64,7 @@ public:
 	int hp;
 	int atk;
 	int def;
-
+ 
 	bool playerInteraction;
 
 	List<Enemy*> enemies;

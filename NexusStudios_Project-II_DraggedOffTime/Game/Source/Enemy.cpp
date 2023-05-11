@@ -11,6 +11,7 @@
 #include "Map.h"
 #include "FadeToBlack.h"
 #include "SceneBattle.h"
+#include "SceneGameplay.h"
 
 #include <iostream>
 
@@ -78,7 +79,7 @@ bool Enemy::Start() {
 
 	pbody = app->physics->CreateRectangle(position.x, position.y, width, height, bodyType::STATIC);
 
-	enemySensor = app->physics->CreateCircleSensor(position.x, position.y, 40, bodyType::KINEMATIC, ColliderType::ENEMY_SENSOR);
+	enemySensor = app->physics->CreateCircleSensor(position.x, position.y, 25, bodyType::KINEMATIC, ColliderType::ENEMY_SENSOR);
 
 	//pbody->listener = this;
 
@@ -107,8 +108,9 @@ bool Enemy::Update()
 
 	if (playerInteraction)
 	{
-		Death();
 		app->fadeToBlack->Fade((Module*)app->sceneGameplay,	(Module*)app->sceneBattle);
+		app->sceneGameplay->player->Teleport(position.x,position.y + 50);
+		playerInteraction = false;
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_9) == KEY_DOWN)
