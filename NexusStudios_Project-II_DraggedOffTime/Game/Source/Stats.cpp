@@ -33,7 +33,7 @@ void Stats::Load()
 
 void Stats::Update()
 {
-	if (app->input->GetKey(SDL_SCANCODE_I) == KEY_DOWN && !app->sceneGameplay->showPause && !app->sceneGameplay->showSettings) {
+	if (app->input->GetKey(SDL_SCANCODE_I) == KEY_DOWN /* && !app->sceneGameplay->showPause && !app->sceneGameplay->showSettings*/) {
 
 		statsEnabled = !statsEnabled;
 
