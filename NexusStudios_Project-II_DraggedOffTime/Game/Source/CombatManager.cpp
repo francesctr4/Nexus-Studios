@@ -79,10 +79,11 @@ int CombatManager::TimeEventAttack(int p_DMG, int e_HP, int e_DEF, float delay) 
 	
 	if (delay > 750 && delay < 1250)
 	{
+		LOG("Good Timing");
 		int totalDamage;
 		totalDamage = 2*p_DMG - (e_DEF + enemy_increasedDefense);	//De momento va a ser el doble del daño del player si aciertas en timing
 
-		if (totalDamage > e_HP)
+		if (totalDamage >= e_HP)
 		{
 			enemy_increasedDefense = 0;
 			//Kill enemy
@@ -92,7 +93,7 @@ int CombatManager::TimeEventAttack(int p_DMG, int e_HP, int e_DEF, float delay) 
 		{
 			enemy_increasedDefense = 0;
 			//Return amount of e_HP
-			return e_HP - totalDamage;
+			return (e_HP - totalDamage);
 		}
 	}
 	else
@@ -111,7 +112,7 @@ int CombatManager::TimeEventAttack(int p_DMG, int e_HP, int e_DEF, float delay) 
 		{
 			enemy_increasedDefense = 0;
 			//Return amount of e_HP
-			return e_HP - totalDamage;
+			return (e_HP - totalDamage);
 		}
 	}
 };
@@ -119,7 +120,7 @@ int CombatManager::TimeEventAttack(int p_DMG, int e_HP, int e_DEF, float delay) 
 void CombatManager::BlockAttack() {
 
 	//Add X ammout of DEF to the player for the next turn
-	increasedDefense = 5; //10 is a placeholder
+	increasedDefense = 5; //5 is a placeholder
 };
 
 int CombatManager::UseItem(int p_HP) {
@@ -185,7 +186,7 @@ int CombatManager::EnemyAttack(int e_DMG, int p_HP, int p_DEF) {
 void CombatManager::EnemyBlockAttack() {
 
 	//Add X ammout of DEF to the enemy for the next turn
-	enemy_increasedDefense = 10; //10 is a placeholder
+	enemy_increasedDefense = 5; //5 is a placeholder
 }
 
 
