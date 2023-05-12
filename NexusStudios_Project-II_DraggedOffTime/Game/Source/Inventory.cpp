@@ -5,7 +5,6 @@
 #include "Render.h"
 #include "Player.h"
 #include "Item.h"
-#include "SceneGameplay.h"
 
 
 Inventory::Inventory(unsigned cap)
@@ -43,19 +42,17 @@ bool Inventory::PostUpdate()
 {
 
 	// TODO 4: delete the last item picked when pressing a key
-	if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN && app->sceneGameplay->featureMenu.inventoryManager.nrOfItems)
+	if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN && nrOfItems)
 	{
 		removeItem();
 	}
-	
-	SDL_Rect Rect = { 0,0,16,18 };
 
-	if (app->sceneGameplay->featureMenu.inventoryManager.inventoryOn)
+	if (inventoryOn)
 	{
 		//	TODO 4: Show the items' sprites in the inventory
-		for (int i = 0; i < app->sceneGameplay->featureMenu.inventoryManager.nrOfItems; i++)
+		for (int i = 0; i < nrOfItems; i++)
 		{
-			app->render->DrawTexture(app->sceneGameplay->featureMenu.inventoryManager.items[i]->texture, 182 + 32 * i, 132, &Rect);
+			app->render->DrawTexture(items[i]->texture, 182 + 32 * i, 132, &SDL_Rect({ 0,0,16,18 }));
 		}
 	}
 

@@ -62,7 +62,7 @@ public:
 
 	//Menu* menu = new Menu[4] { Menu::STATS, Menu::INVENTORY, Menu::SKILLS, Menu::EQUIPMENT };
 	
-	//
+	// Inventory
 
 	Inventory inventoryManager;
 
