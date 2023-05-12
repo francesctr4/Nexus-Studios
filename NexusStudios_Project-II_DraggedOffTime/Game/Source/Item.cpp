@@ -122,16 +122,6 @@ bool Item::Update()
 
 	app->render->DrawTexture(texture, position.x, position.y, &itemRect);
 
-	//// TODO 3: Some interface for the inventory
-	//if (app->sceneGameplay->featureMenu.inventoryManager.inventoryOn)
-	//{
-	//	//	TODO 4: Show the items' sprites in the inventory
-	//	for (int i = 0; i < app->sceneGameplay->featureMenu.inventoryManager.nrOfItems; i++)
-	//	{
-	//		app->render->DrawTexture(app->sceneGameplay->featureMenu.inventoryManager.items[i]->texture, 182 + 32 * i, 132, &itemRect);
-	//	}
-	//}
-
 	return true;
 }
 

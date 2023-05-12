@@ -15,7 +15,6 @@ Inventory::Inventory()
 	this->items = new Item * [cap];
 }
 
-
 // Destructor
 Inventory::~Inventory()
 {
@@ -35,7 +34,6 @@ bool Inventory::Start()
 	}
 	return true;
 }
-
 
 bool Inventory::PostUpdate()
 {
@@ -78,13 +76,11 @@ bool Inventory::PostUpdate()
 	return true;
 }
 
-
 // Called before quitting
 bool Inventory::CleanUp()
 {
 	return true;
 }
-
 
 // TODO 2: Create functions to add and remove items from the inventory
 void Inventory::addItem(Item& item)
@@ -97,8 +93,7 @@ void Inventory::addItem(Item& item)
 	
 }
 
-
 void Inventory::removeItem()
 {
-	delete items[nrOfItems--];
+	delete this->items[(this->nrOfItems--) - 1];
 }
