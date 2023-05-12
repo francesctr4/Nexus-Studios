@@ -11,15 +11,15 @@ void FeatureMenu::Load()
 
 	for (int i = 0; i < 4; i++) {
 
-		KleosMedieval.PushBack({ 275 * (0 + i), 275 * 0, 275, 275 });
+		KleosIdle.PushBack({ 275 * (0 + i), 275 * 0, 275, 275 });
 
 	}
-	KleosMedieval.loop = true;
-	KleosMedieval.speed = 0.06f;
+	KleosIdle.loop = true;
+	KleosIdle.speed = 0.06f;
 
 	texture = app->tex->Load("Assets/UI/Stats/SpritesheetMenu.png");
 
-	statsSheet = app->tex->Load("Assets/UI/Stats/StatsSheet2.png");
+	statsSheet = app->tex->Load("Assets/UI/Stats/StatsSheet3.png");
 
 	jambitaEstirada = app->tex->Load("Assets/UI/Stats/unknown.png");
 
@@ -33,6 +33,12 @@ void FeatureMenu::Load()
 
 	kleosMedieval = app->tex->Load("Assets/UI/Stats/SpriteSheet_Kleos_Stats.png");
 
+	//kleosPrehistoric = app->tex->Load("Assets/UI/Stats/SpriteSheet_Kleos_Stats.png");
+
+	//kleosCyberpunk = app->tex->Load("Assets/UI/Stats/SpriteSheet_Kleos_Stats.png");
+
+	kleosApocalypse = app->tex->Load("Assets/UI/Stats/Demon_Kleos_Stats.png");
+
 	statsEnabled = false;
 
 	i = 0;
@@ -43,7 +49,7 @@ void FeatureMenu::Load()
 	e_characterSelector = 0;
 	e_weaponSelector = 0;
 
-	currentAnimation = &KleosMedieval;
+	currentAnimation = &KleosIdle;
 
 }
 
@@ -224,6 +230,14 @@ void FeatureMenu::PostUpdate()
 					SDL_Rect kleosRect = currentAnimation->GetCurrentFrame();
 
 					app->render->DrawTexture(kleosMedieval, 340, 278, &kleosRect);
+
+				}
+
+				if (j == 3) {
+
+					SDL_Rect kleosRect = currentAnimation->GetCurrentFrame();
+
+					app->render->DrawTexture(kleosApocalypse, 340, 278, &kleosRect);
 
 				}
 				
