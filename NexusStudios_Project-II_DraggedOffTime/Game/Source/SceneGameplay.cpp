@@ -12,6 +12,7 @@
 #include "FadeToBlack.h"
 #include "EntityManager.h"
 #include "SceneTitle.h"
+#include "Tweening.h"
 
 #include "SceneGameplay.h"
 
@@ -63,6 +64,12 @@ bool SceneGameplay::Awake(pugi::xml_node& config)
 bool SceneGameplay::Start()
 {
 	app->map->actualmap = 0;
+
+	Juan = app->tex->Load("Assets/UI/Back.png");
+	Juan_anim.Set();
+	Juan_anim.smoothness = 4;
+	Juan_anim.AddTween(50, 150, EXPONENTIAL_OUT);
+
 
 	bool retLoad = app->map->Load();
 	//app->map->Enable();
@@ -330,8 +337,31 @@ bool SceneGameplay::Update(float dt)
 	pause.Update();
 
 	// Stats
-
 	featureMenu.Update();
+
+
+	Juan_anim.Step(2, false);
+
+	bool activad = false;
+
+	if (app->input->GetKey(SDL_SCANCODE_0) == KEY_REPEAT)
+	{
+		activad = !activad;
+	}
+	if (activad)
+	{
+		Juan_anim.Foward();
+	}
+	else
+	{
+		Juan_anim.Backward();
+	}
+
+	int offset = 720;
+	float point = 0;
+	point = Juan_anim.GetPoint();
+	app->render->DrawTexture(Juan, offset, 100 + point * (400 - offset));
+
 
 	return true;
 }

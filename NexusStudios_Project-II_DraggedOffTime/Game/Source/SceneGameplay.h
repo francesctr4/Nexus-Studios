@@ -10,6 +10,7 @@
 #include "GuiCheckBox.h"
 #include "FeatureMenu.h"
 #include "Pause.h"
+#include "Tweening.h"
 
 struct SDL_Texture;
 
@@ -48,6 +49,9 @@ public:
 	Player* player;
 	bool map_selector = false;
 	int actually = 0;
+
+	SDL_Texture* Juan;
+	Tween Juan_anim;
 
 	List<Enemy*> enemies;
 	List<NPC*> npcs;
