@@ -5,6 +5,7 @@
 #include "Render.h"
 #include "Player.h"
 #include "Item.h"
+#include "SceneGameplay.h"
 
 
 Inventory::Inventory(unsigned cap)
@@ -45,6 +46,17 @@ bool Inventory::PreUpdate()
 	if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN)
 	{
 		removeItem();
+	}
+	
+	SDL_Rect Rect = { 0,0,16,18 };
+
+	if (app->sceneGameplay->featureMenu.inventoryManager.inventoryOn)
+	{
+		//	TODO 4: Show the items' sprites in the inventory
+		for (int i = 0; i < app->sceneGameplay->featureMenu.inventoryManager.nrOfItems; i++)
+		{
+			app->render->DrawTexture(app->sceneGameplay->featureMenu.inventoryManager.items[i]->texture, 182 + 32 * i, 132, &Rect);
+		}
 	}
 
 	return true;

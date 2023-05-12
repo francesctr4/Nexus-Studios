@@ -45,7 +45,7 @@ public:
 
 	bool handledCollision = false;
 
-private:
+public:
 
 	SDL_Texture* texture;
 	const char* texturePath;

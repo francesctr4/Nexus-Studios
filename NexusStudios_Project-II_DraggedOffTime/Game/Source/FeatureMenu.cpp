@@ -208,8 +208,6 @@ void FeatureMenu::Update()
 
 	currentAnimation->Update();
 
-	inventoryManager.PreUpdate();
-
 }
 
 void FeatureMenu::PostUpdate()
@@ -293,5 +291,7 @@ void FeatureMenu::PostUpdate()
 		}
 
 	}
+
+	inventoryManager.PreUpdate();
 
 }
