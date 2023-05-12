@@ -48,6 +48,9 @@ public:
 public:
 
 	SDL_Texture* texture;
+	SDL_Texture* icon;
+
+	const char* iconPath;
 	const char* texturePath;
 	const char* audioPath;
 

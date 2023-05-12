@@ -24,6 +24,7 @@ bool Item::Awake() {
 
 	position.x = parameters.attribute("x").as_int();
 	position.y = parameters.attribute("y").as_int();
+	iconPath = parameters.attribute("iconpath").as_string();
 	texturePath = parameters.attribute("texturepath").as_string();
 	audioPath = parameters.attribute("audiopath").as_string();
 
@@ -84,6 +85,7 @@ bool Item::Awake() {
 bool Item::Start() {
 
 	texture = app->tex->Load(texturePath);
+	icon = app->tex->Load(iconPath);
 
 	int width = 16;
 	int height = 16;

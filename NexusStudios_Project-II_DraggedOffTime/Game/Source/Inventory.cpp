@@ -52,7 +52,7 @@ bool Inventory::PostUpdate()
 		//	TODO 4: Show the items' sprites in the inventory
 		for (int i = 0; i < nrOfItems; i++)
 		{
-			app->render->DrawTexture(items[i]->texture, 182 + 32 * i, 132, &SDL_Rect({ 0,0,16,18 }));
+			app->render->DrawTexture(items[i]->icon, 264 + 98 * i, 210, &SDL_Rect({ 0,0,62,62 }));
 		}
 	}
 
