@@ -40,11 +40,6 @@ bool Inventory::Start()
 
 bool Inventory::PreUpdate()
 {
-	// TODO 3: Make the inventoryOn bool true when pressing a key
-	if (app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
-	{
-		inventoryOn = !inventoryOn;
-	}
 
 	// TODO 4: delete the last item picked when pressing a key
 	if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN)

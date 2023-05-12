@@ -75,6 +75,12 @@ void FeatureMenu::Update()
 
 	}
 
+	if (!statsEnabled || i != 1) {
+
+		inventoryManager.inventoryOn = false;
+
+	}
+
 	switch (i) {
 
 	case 0: 
@@ -96,10 +102,9 @@ void FeatureMenu::Update()
 
 	case 1: 
 
+		if (statsEnabled) inventoryManager.inventoryOn = true;
 
 		break;
-
-	
 
 	case 2: 
 
@@ -289,5 +294,4 @@ void FeatureMenu::PostUpdate()
 
 	}
 
-	
 }
