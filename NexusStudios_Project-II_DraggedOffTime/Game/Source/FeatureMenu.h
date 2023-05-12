@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Animation.h"
+
 struct SDL_Texture;
 
 //enum class Menu {
@@ -28,6 +30,11 @@ public:
 	int i;
 	int j;
 	int k;
+	int l;
+
+	SDL_Texture* kleosMedieval;
+	Animation* currentAnimation;
+	Animation KleosMedieval;
 
 	SDL_Texture* statsSheet;
 

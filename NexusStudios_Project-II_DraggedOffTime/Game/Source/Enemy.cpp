@@ -109,7 +109,7 @@ bool Enemy::Update()
 	if (playerInteraction)
 	{
 		app->fadeToBlack->Fade((Module*)app->sceneGameplay,	(Module*)app->sceneBattle);
-		app->sceneGameplay->player->Teleport(position.x,position.y + 50);
+		//app->sceneGameplay->player->Teleport(position.x,position.y + 50);
 		playerInteraction = false;
 	}
 

@@ -99,9 +99,9 @@ int CombatManager::TimeEventAttack(int p_DMG, int e_HP, int e_DEF, float delay) 
 	{
 		LOG("Bad Timing");											//Si fallas el timing vas a hacer la mitad de daño que de habitual
 		int totalDamage;
-		totalDamage = 0.5 * p_DMG - (e_DEF + enemy_increasedDefense);	
+		totalDamage = 0.75 * p_DMG - (e_DEF + enemy_increasedDefense);	
 
-		if (totalDamage > e_HP)
+		if (totalDamage >= e_HP)
 		{
 			enemy_increasedDefense = 0;
 			//Kill enemy
@@ -119,7 +119,7 @@ int CombatManager::TimeEventAttack(int p_DMG, int e_HP, int e_DEF, float delay) 
 void CombatManager::BlockAttack() {
 
 	//Add X ammout of DEF to the player for the next turn
-	increasedDefense = 10; //10 is a placeholder
+	increasedDefense = 5; //10 is a placeholder
 };
 
 int CombatManager::UseItem(int p_HP) {

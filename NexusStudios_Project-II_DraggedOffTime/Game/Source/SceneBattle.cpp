@@ -343,6 +343,7 @@ bool SceneBattle::Update(float dt)
 					LOG("MS: %f", qte_timer.ReadMSec());
 					e_HP = app->combatManager->TimeEventAttack(m_players[selected_player].DMG, e_HP, e_DEF, qte_timer.ReadMSec());
 					qte = false;
+					app->combatManager->playerTurn = !app->combatManager->playerTurn;
 				}
 
 			}
@@ -577,6 +578,17 @@ bool SceneBattle::PostUpdate()
 		std::string turn_s = std::to_string(turn);								//Turn number LOG
 		app->render->DrawText(turn_s, 600, 30, 15, 20, { 255, 255, 255, 255 });
 		app->render->DrawText("Actual Turn: ", 500, 30, 100, 20, {255, 255, 255, 255});
+
+
+		app->render->DrawText("QTE: ", 500, 10, 50, 20, { 255, 255, 255, 255 });	//Quick Time Event
+		if (qte)
+		{
+			app->render->DrawText("ON", 550, 10, 10, 20, { 255, 255, 255, 255 });	
+		}
+		else
+		{
+			app->render->DrawText("OFF", 550, 10, 10, 20, { 255, 255, 255, 255 });	
+		}
 
 	}
 
