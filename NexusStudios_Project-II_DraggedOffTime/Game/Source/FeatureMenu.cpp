@@ -8,9 +8,18 @@
 
 void FeatureMenu::Load()
 {
+
+	for (int i = 0; i < 4; i++) {
+
+		KleosMedieval.PushBack({ 275 * (0 + i), 275 * 0, 275, 275 });
+
+	}
+	KleosMedieval.loop = true;
+	KleosMedieval.speed = 0.06f;
+
 	texture = app->tex->Load("Assets/UI/Stats/SpritesheetMenu.png");
 
-	statsSheet = app->tex->Load("Assets/UI/Stats/StatsSheet.png");
+	statsSheet = app->tex->Load("Assets/UI/Stats/StatsSheet2.png");
 
 	jambitaEstirada = app->tex->Load("Assets/UI/Stats/unknown.png");
 
@@ -22,6 +31,8 @@ void FeatureMenu::Load()
 
 	quests = app->tex->Load("Assets/UI/Stats/Quests.png");
 
+	kleosMedieval = app->tex->Load("Assets/UI/Stats/SpriteSheet_Kleos_Stats.png");
+
 	statsEnabled = false;
 
 	i = 0;
@@ -31,6 +42,8 @@ void FeatureMenu::Load()
 
 	e_characterSelector = 0;
 	e_weaponSelector = 0;
+
+	currentAnimation = &KleosMedieval;
 
 }
 
@@ -180,6 +193,8 @@ void FeatureMenu::Update()
 	
 	}
 
+	currentAnimation->Update();
+
 }
 
 void FeatureMenu::PostUpdate()
@@ -203,6 +218,15 @@ void FeatureMenu::PostUpdate()
 			case 0: {
 
 				app->render->DrawTexture(statsSheet, 0, 0, &rect2);
+
+				if (j == 0) {
+
+					SDL_Rect kleosRect = currentAnimation->GetCurrentFrame();
+
+					app->render->DrawTexture(kleosMedieval, 340, 278, &kleosRect);
+
+				}
+				
 				break;
 
 			}
@@ -239,4 +263,5 @@ void FeatureMenu::PostUpdate()
 
 	}
 
+	
 }
