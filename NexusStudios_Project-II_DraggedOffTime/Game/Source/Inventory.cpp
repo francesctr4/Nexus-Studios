@@ -6,67 +6,54 @@
 #include "Player.h"
 #include "Item.h"
 
-Inventory::Inventory()
-{
-
-	// TODO 1: initialize the inventory capacity, the number of items contained and the array of this items
-	this->cap = 33;
-	this->nrOfItems = 0;
-	this->items = new Item * [cap];
-}
+// Constructor
+Inventory::Inventory() {}
 
 // Destructor
-Inventory::~Inventory()
-{
-	//Delete the whole array
-	for (int i = 0; i < this->nrOfItems; i++)
-	{
-		delete[] this->items;
-	}
-}
-
-bool Inventory::Start()
-{
-	// TODO 1: Add a null pointer to every position of the inventory array
-	for (int i = 0; i < this->cap; i++)
-	{
-		this->items[i] = nullptr;
-	}
-	return true;
-}
+Inventory::~Inventory() {}
 
 bool Inventory::PostUpdate()
 {
 
-	// TODO 4: delete the last item picked when pressing a key
-	if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN && nrOfItems)
+	if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN && items.size())
 	{
-		removeItem();
+		RemoveLastItem();
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN && items.size())
+	{
+		RemoveCertainItem(1);
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_H) == KEY_DOWN)
+	{
+		EmptyInventory();
 	}
 
 	if (inventoryOn)
 	{
-		//	TODO 4: Show the items' sprites in the inventory
-		for (int i = 0; i < nrOfItems; i++)
+		// Show the items' sprites in the inventory
+
+		for (int i = 0; i < items.size(); i++)
 		{
 			if (i < 8) {
 
-				app->render->DrawTexture(items[i]->icon, 264 + 98 * i, 210, &SDL_Rect({ 0,0,62,62 }));
+				app->render->DrawTexture(items[i].icon, 264 + 98 * i, 210, &SDL_Rect({ 0,0,62,62 }));
 
 			}
 			else if (i >= 8 && i < 16) {
 
-				app->render->DrawTexture(items[i]->icon, 264 + 98 * i - 98 * 8, 310, &SDL_Rect({ 0,0,62,62 }));
+				app->render->DrawTexture(items[i].icon, 264 + 98 * i - 98 * 8, 310, &SDL_Rect({ 0,0,62,62 }));
 
 			}
 			else if (i >= 16 && i < 24) {
 
-				app->render->DrawTexture(items[i]->icon, 264 + 98 * i - 98 * 16, 410, &SDL_Rect({ 0,0,62,62 }));
+				app->render->DrawTexture(items[i].icon, 264 + 98 * i - 98 * 16, 410, &SDL_Rect({ 0,0,62,62 }));
 
 			}
 			else if (i >= 24) {
 
-				app->render->DrawTexture(items[i]->icon, 264 + 98 * i - 98 * 24, 510, &SDL_Rect({ 0,0,62,62 }));
+				app->render->DrawTexture(items[i].icon, 264 + 98 * i - 98 * 24, 510, &SDL_Rect({ 0,0,62,62 }));
 
 			}
 			
@@ -76,24 +63,36 @@ bool Inventory::PostUpdate()
 	return true;
 }
 
-// Called before quitting
-bool Inventory::CleanUp()
+void Inventory::AddItem(Item& item)
 {
-	return true;
-}
+	if (items.size() < cap) {
 
-// TODO 2: Create functions to add and remove items from the inventory
-void Inventory::addItem(Item& item)
-{
-	if (nrOfItems < cap - 1) {
-
-		this->items[this->nrOfItems++] = new Item(item);
+		items.push_back(item);
 
 	}
 	
 }
 
-void Inventory::removeItem()
+void Inventory::RemoveLastItem()
 {
-	delete this->items[(this->nrOfItems--) - 1];
+	
+	items.erase(items.end() - 1);
+
+}
+
+void Inventory::RemoveCertainItem(int index)
+{
+	if (index < items.size()) {
+
+		items.erase(items.begin() + index);
+
+	}
+	
+}
+
+void Inventory::EmptyInventory()
+{
+
+	items.clear();
+
 }

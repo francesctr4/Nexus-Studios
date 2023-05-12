@@ -2,38 +2,30 @@
 
 #include "Entity.h"
 #include "Item.h"
+#include <vector>
 
-#include "Box2D/Box2D/Box2D.h"
-
-// Module --------------------------------------
 class Inventory
 {
 public:
 
 	// Constructors & Destructors
 	Inventory();
-	~Inventory();
+	virtual ~Inventory();
 
-	// Main module steps
-	bool Start();
+	// Module Step
 	bool PostUpdate();
-	bool CleanUp();
 
-	// TODO 2: Create functions to add and remove items from the inventory
-	void addItem(Item& item);
-	void removeItem();
+	// Inventory functions
+	void AddItem(Item& item);
+	void RemoveLastItem();
+	void RemoveCertainItem(int index);
+	void EmptyInventory();
 
 public:
-	SDL_Texture* texture;
-	const char* texturePath;
-	SDL_Rect rect;
 
-	// TODO 3: Create a bool to check if inventory is being shown
 	bool inventoryOn = false;
 
-	// TODO 1: Create the array Item class, and the variables for the capacity and the number of items contained
-	Item** items;
-	unsigned cap;
-	unsigned nrOfItems;
+	std::vector<Item> items;
+	unsigned int cap = 32;
 
 };

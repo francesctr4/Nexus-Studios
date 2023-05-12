@@ -39,48 +39,6 @@
 	<item type ="Gem" x="700" y="450" texturepath="Assets/Textures/Items/Gems/BlueGem-Sheet.png" iconpath="Assets/Textures/Items/Gems/BlueGem.png"/>
 	<item type ="Battery" x="800" y="450" texturepath="Assets/Textures/Items/Batteries/Battery-Sheet.png" iconpath="Assets/Textures/Items/Batteries/Battery.png"/>
 
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	  <item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-
 	<item type ="Teleport_Jovani" x="900" y="450"/>
 	<item type ="Teleport_Cofre" x="1168" y="365"/>
 	  

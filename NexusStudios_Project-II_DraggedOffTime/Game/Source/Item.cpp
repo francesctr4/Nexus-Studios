@@ -145,13 +145,21 @@ void Item::OnCollision(PhysBody* physA, PhysBody* physB) {
 				app->sceneGameplay->trigger_2++;
 			}
 
-			if (!handledCollision)
-				app->sceneGameplay->featureMenu.inventoryManager.addItem(*this);
+			if (!handledCollision) {
+
+				app->sceneGameplay->featureMenu.inventoryManager.AddItem(*this);
+
+			}
 
 			break;
 		}
 
 	}
+
+}
+
+void Item::OnCollisionEnd(PhysBody* physA, PhysBody* physB)
+{
 
 	handledCollision = true;
 
