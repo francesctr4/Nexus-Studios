@@ -27,6 +27,7 @@ void FeatureMenu::Load()
 	i = 0;
 	j = 0;
 	k = 0;
+	l = 0;
 
 	e_characterSelector = 0;
 	e_weaponSelector = 0;
@@ -162,6 +163,18 @@ void FeatureMenu::Update()
 
 	case 4:
 
+		if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
+
+			if (l < 4) l++;
+
+		}
+
+		if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
+
+			if (l > 0) l--;
+
+		}
+
 		break;
 
 	
@@ -179,7 +192,7 @@ void FeatureMenu::PostUpdate()
 
 	SDL_Rect rect4 = { 0, 720 * k,1280,720 };
 
-	SDL_Rect rect5 = { 0, 0 ,1280,720 };
+	SDL_Rect rect5 = { 0, 720 * l ,1280,720 };
 
 	if (statsEnabled) {
 
