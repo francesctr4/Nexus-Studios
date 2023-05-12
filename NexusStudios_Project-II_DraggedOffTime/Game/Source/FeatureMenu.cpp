@@ -292,6 +292,6 @@ void FeatureMenu::PostUpdate()
 
 	}
 
-	inventoryManager.PreUpdate();
+	inventoryManager.PostUpdate();
 
 }

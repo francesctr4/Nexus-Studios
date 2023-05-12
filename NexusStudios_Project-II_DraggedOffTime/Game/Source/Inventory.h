@@ -16,7 +16,7 @@ public:
 
 	// Main module steps
 	bool Start();
-	bool PreUpdate();
+	bool PostUpdate();
 	bool CleanUp();
 
 	// TODO 2: Create functions to add and remove items from the inventory

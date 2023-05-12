@@ -39,11 +39,11 @@ bool Inventory::Start()
 }
 
 
-bool Inventory::PreUpdate()
+bool Inventory::PostUpdate()
 {
 
 	// TODO 4: delete the last item picked when pressing a key
-	if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN)
+	if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN && app->sceneGameplay->featureMenu.inventoryManager.nrOfItems)
 	{
 		removeItem();
 	}
