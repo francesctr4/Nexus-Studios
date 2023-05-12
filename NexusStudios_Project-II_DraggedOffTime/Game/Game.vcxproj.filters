@@ -103,6 +103,9 @@
     <ClCompile Include="Source\Pause.cpp">
       <Filter>Game Loop\Features</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Tweening.cpp">
+      <Filter>Game Loop\Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -239,6 +242,9 @@
     </ClInclude>
     <ClInclude Include="Source\Pause.h">
       <Filter>Game Loop\Features</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Tweening.h">
+      <Filter>Game Loop\Modules</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
