@@ -7,6 +7,7 @@
 #include "Log.h"
 #include "Point.h"
 #include "Physics.h"
+#include "SceneGameplay.h"
 
 Item::Item() : Entity(EntityType::ITEM)
 {
@@ -136,6 +137,10 @@ void Item::OnCollision(PhysBody* physA, PhysBody* physB) {
 
 			Disable();
 			pbody->body->DestroyFixture(pbody->body->GetFixtureList());
+			if (physA->ctype == ColliderType::ITEM_BATTERY || physA->ctype == ColliderType::ITEM_GEM || physA->ctype == ColliderType::ITEM_MANGO || physA->ctype == ColliderType::ITEM_POTION)
+			{
+				app->sceneGameplay->trigger_2++;
+			}
 
 			break;
 		}

@@ -320,6 +320,9 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 }
 
 void Player::TeleportCofre() {
+	//Quest
+	app->sceneGameplay->trigger_3 = true;
+
 	app->map->CleanUp();
 	app->map->actualmap = 1;
 	app->map->Load();
