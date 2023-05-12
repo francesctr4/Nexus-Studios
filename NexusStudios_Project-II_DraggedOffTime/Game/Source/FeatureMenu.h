@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Animation.h"
+#include "Inventory.h"
 
 struct SDL_Texture;
 
@@ -60,5 +61,9 @@ public:
 	int e_weaponSelector;
 
 	//Menu* menu = new Menu[4] { Menu::STATS, Menu::INVENTORY, Menu::SKILLS, Menu::EQUIPMENT };
+	
+	//
+
+	Inventory inventoryManager;
 
 };

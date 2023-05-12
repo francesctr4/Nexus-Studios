@@ -43,6 +43,8 @@ public:
 
 	bool isPicked = false;
 
+	bool handledCollision = false;
+
 private:
 
 	SDL_Texture* texture;

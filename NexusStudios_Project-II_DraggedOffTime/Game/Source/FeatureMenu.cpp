@@ -51,6 +51,8 @@ void FeatureMenu::Load()
 
 	currentAnimation = &KleosIdle;
 
+	inventoryManager.Start();
+
 }
 
 void FeatureMenu::Update()
@@ -200,6 +202,8 @@ void FeatureMenu::Update()
 	}
 
 	currentAnimation->Update();
+
+	inventoryManager.PreUpdate();
 
 }
 
