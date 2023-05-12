@@ -262,7 +262,7 @@ void FeatureMenu::PostUpdate()
 				
 			case 1: {
 
-				app->render->DrawTexture(inventory, 0, 0);
+				//app->render->DrawTexture(inventory, 0, 0);
 				break;
 
 			}

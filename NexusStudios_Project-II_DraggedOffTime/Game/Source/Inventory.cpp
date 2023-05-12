@@ -6,12 +6,11 @@
 #include "Player.h"
 #include "Item.h"
 
-
-Inventory::Inventory(unsigned cap)
+Inventory::Inventory()
 {
 
 	// TODO 1: initialize the inventory capacity, the number of items contained and the array of this items
-	this->cap = cap;
+	this->cap = 33;
 	this->nrOfItems = 0;
 	this->items = new Item * [cap];
 }
@@ -52,7 +51,27 @@ bool Inventory::PostUpdate()
 		//	TODO 4: Show the items' sprites in the inventory
 		for (int i = 0; i < nrOfItems; i++)
 		{
-			app->render->DrawTexture(items[i]->icon, 264 + 98 * i, 210, &SDL_Rect({ 0,0,62,62 }));
+			if (i < 8) {
+
+				app->render->DrawTexture(items[i]->icon, 264 + 98 * i, 210, &SDL_Rect({ 0,0,62,62 }));
+
+			}
+			else if (i >= 8 && i < 16) {
+
+				app->render->DrawTexture(items[i]->icon, 264 + 98 * i - 98 * 8, 310, &SDL_Rect({ 0,0,62,62 }));
+
+			}
+			else if (i >= 16 && i < 24) {
+
+				app->render->DrawTexture(items[i]->icon, 264 + 98 * i - 98 * 16, 410, &SDL_Rect({ 0,0,62,62 }));
+
+			}
+			else if (i >= 24) {
+
+				app->render->DrawTexture(items[i]->icon, 264 + 98 * i - 98 * 24, 510, &SDL_Rect({ 0,0,62,62 }));
+
+			}
+			
 		}
 	}
 
@@ -70,7 +89,12 @@ bool Inventory::CleanUp()
 // TODO 2: Create functions to add and remove items from the inventory
 void Inventory::addItem(Item& item)
 {
-	this->items[this->nrOfItems++] = new Item(item);
+	if (nrOfItems < cap - 1) {
+
+		this->items[this->nrOfItems++] = new Item(item);
+
+	}
+	
 }
 
 
