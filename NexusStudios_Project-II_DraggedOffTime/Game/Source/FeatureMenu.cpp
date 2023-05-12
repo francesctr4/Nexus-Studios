@@ -19,7 +19,7 @@ void FeatureMenu::Load()
 
 	texture = app->tex->Load("Assets/UI/Stats/SpritesheetMenu.png");
 
-	statsSheet = app->tex->Load("Assets/UI/Stats/StatsSheet3.png");
+	statsSheet = app->tex->Load("Assets/UI/Stats/StatsSheet4.png");
 
 	jambitaEstirada = app->tex->Load("Assets/UI/Stats/unknown.png");
 
@@ -35,7 +35,7 @@ void FeatureMenu::Load()
 
 	//kleosPrehistoric = app->tex->Load("Assets/UI/Stats/SpriteSheet_Kleos_Stats.png");
 
-	//kleosCyberpunk = app->tex->Load("Assets/UI/Stats/SpriteSheet_Kleos_Stats.png");
+	kleosCyberpunk = app->tex->Load("Assets/UI/Stats/Cyberpunk_Kleos_Stats.png");
 
 	kleosApocalypse = app->tex->Load("Assets/UI/Stats/Demon_Kleos_Stats.png");
 
@@ -230,6 +230,14 @@ void FeatureMenu::PostUpdate()
 					SDL_Rect kleosRect = currentAnimation->GetCurrentFrame();
 
 					app->render->DrawTexture(kleosMedieval, 340, 278, &kleosRect);
+
+				}
+
+				if (j == 2) {
+
+					SDL_Rect kleosRect = currentAnimation->GetCurrentFrame();
+
+					app->render->DrawTexture(kleosCyberpunk, 340, 278, &kleosRect);
 
 				}
 
