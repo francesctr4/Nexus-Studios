@@ -2,6 +2,12 @@
 #define __TWEENY_H__
 
 #include "External/Tweeny/tweeny.h"
+#include "App.h"
+#include "Render.h"
+#include "Textures.h"
+#include "Point.h"
+#include "Physics.h"
+
 enum easing2
 {
     DEF,
@@ -478,5 +484,27 @@ private:
     int accumDuration;
     int totalTweenings;
     int currentTweening;
+ 
+//public:
+//     void crear_Animation(SDL_Texture* textura, b2Vec2 position, b2Vec2 distancia, bool condicional)
+//     {
+//         Step(1, false);
+//         
+//        if(condicional)
+//         {
+//             Foward();
+//         }
+//        else
+//         {
+//             Backward();
+//         }
+//
+//         
+//         int offset = 0;
+//         int point = 0;
+//         point = GetPoint();
+//         
+//         app->render->DrawTexture(textura,position.x + point * (offset + distancia.x), position.y + point * (offset + distancia.y));
+//     }
 };
 #endif

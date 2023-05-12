@@ -50,8 +50,8 @@ public:
 	bool map_selector = false;
 	int actually = 0;
 
-	SDL_Texture* Juan;
-	Tween Juan_anim;
+	/*SDL_Texture* Juan;
+	Tween Juan_anim;*/
 
 	List<Enemy*> enemies;
 	List<NPC*> npcs;

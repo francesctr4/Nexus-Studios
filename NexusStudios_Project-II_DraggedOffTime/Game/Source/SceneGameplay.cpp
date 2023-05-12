@@ -65,12 +65,11 @@ bool SceneGameplay::Start()
 {
 	app->map->actualmap = 0;
 
-	Juan = app->tex->Load("Assets/UI/Back.png");
+	/*Juan = app->tex->Load("Assets/UI/Back.png");
+
 	Juan_anim.Set();
 	Juan_anim.smoothness = 4;
-	Juan_anim.AddTween(50, 150, EXPONENTIAL_OUT);
-
-
+	Juan_anim.AddTween(50, 150, EXPONENTIAL_OUT);*/
 	bool retLoad = app->map->Load();
 	//app->map->Enable();
 
@@ -338,29 +337,19 @@ bool SceneGameplay::Update(float dt)
 
 	// Stats
 	featureMenu.Update();
-
-
-	Juan_anim.Step(2, false);
-
-	bool activad = false;
-
-	if (app->input->GetKey(SDL_SCANCODE_0) == KEY_REPEAT)
-	{
-		activad = !activad;
-	}
-	if (activad)
-	{
-		Juan_anim.Foward();
-	}
-	else
-	{
-		Juan_anim.Backward();
-	}
-
-	int offset = 720;
-	float point = 0;
-	point = Juan_anim.GetPoint();
-	app->render->DrawTexture(Juan, offset, 100 + point * (400 - offset));
+	//bool activad = false;
+	//if (app->input->GetKey(SDL_SCANCODE_U) == KEY_DOWN)
+	//{
+	//	activad = !activad;
+	//}
+	//
+	////La textura ya esta aplicada, aplicar un v2V
+	//app->render->DrawTexture(Juan,0,0);
+	//if (app->input->GetKey(SDL_SCANCODE_0) == KEY_DOWN)
+	//{
+	//	Juan_anim.crear_Animation(Juan, {15,15}, { 500,500 }, activad);
+	//}
+	//
 
 
 	return true;
