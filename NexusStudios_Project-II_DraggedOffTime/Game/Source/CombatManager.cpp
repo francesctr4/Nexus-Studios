@@ -119,7 +119,7 @@ int CombatManager::TimeEventAttack(int p_DMG, int e_HP, int e_DEF, float delay) 
 void CombatManager::BlockAttack() {
 
 	//Add X ammout of DEF to the player for the next turn
-	increasedDefense = 10; //10 is a placeholder
+	increasedDefense = 5; //10 is a placeholder
 };
 
 int CombatManager::UseItem(int p_HP) {
