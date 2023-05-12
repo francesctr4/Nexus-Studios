@@ -1,0 +1,216 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "InfernalMap5.tmx",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "": {
+            "scaleInDock": 1,
+            "scaleInEditor": 4
+        },
+        "#InfernalTiles": {
+            "scaleInDock": 1
+        },
+        "D:/GRADO/2º CARRERA/PROYECTO/InfernalMaps/InfernalMap4.tmx": {
+            "scale": 0.8127777777777777,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 639.7812713602187,
+                "y": 221.46274777853722
+            }
+        },
+        "D:/GRADO/2º CARRERA/PROYECTO/InfernalMaps/JovaniRoom.tmx": {
+            "scale": 0.8127777777777777,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 641.0116199589884,
+                "y": 535.2016404647984
+            }
+        },
+        "D:/GRADO/2º CARRERA/PROYECTO/InfernalMaps/Props.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/GRADO/2º CARRERA/PROYECTO/InfernalMaps/Tiles.tsx": {
+            "scaleInDock": 1
+        },
+        "Idle-Sheet.tsx": {
+            "scaleInDock": 1
+        },
+        "InfernalMap1.tmx": {
+            "scale": 1,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 634,
+                "y": 365
+            }
+        },
+        "InfernalMap1.tmx#InfernalProps": {
+            "scaleInDock": 1
+        },
+        "InfernalMap1.tmx#InfernalTiles": {
+            "scaleInDock": 1
+        },
+        "InfernalMap2.tmx": {
+            "scale": 1,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 907,
+                "y": 359
+            }
+        },
+        "InfernalMap2.tmx#InfernalProps": {
+            "scaleInDock": 1
+        },
+        "InfernalMap2.tmx#InfernalTiles": {
+            "scaleInDock": 1
+        },
+        "InfernalMap3.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 906,
+                "y": 391
+            }
+        },
+        "InfernalMap3.tmx#InfernalProps": {
+            "scaleInDock": 1
+        },
+        "InfernalMap3.tmx#InfernalTiles": {
+            "scaleInDock": 1
+        },
+        "InfernalMap4.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 658.6666666666666,
+                "y": 429.33333333333326
+            }
+        },
+        "InfernalMap4.tmx#InfernalProps": {
+            "scaleInDock": 1
+        },
+        "InfernalMap4.tmx#InfernalTiles": {
+            "scaleInDock": 1
+        },
+        "InfernalMap4fixed.tmx": {
+            "scale": 1,
+            "selectedLayer": -1,
+            "viewCenter": {
+                "x": 608,
+                "y": 357
+            }
+        },
+        "InfernalMap4fixed.tmx#InfernalProps": {
+            "scaleInDock": 1
+        },
+        "InfernalMap4fixed.tmx#InfernalTiles": {
+            "scaleInDock": 1
+        },
+        "InfernalMap5.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 872,
+                "y": 316
+            }
+        },
+        "InfernalMapPuzzle.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 661,
+                "y": 371
+            }
+        },
+        "InfernalProps.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 2
+        },
+        "InfernalTiles.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 2
+        },
+        "JovaniRoom.tmx": {
+            "scale": 0.9678125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 636.4869228285437,
+                "y": 357.50726509525344
+            }
+        },
+        "MapaInfernalBoss.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 623,
+                "y": 366
+            }
+        },
+        "Props.tsx": {
+            "scaleInDock": 1
+        },
+        "Tiles.tsx": {
+            "scaleInDock": 1
+        },
+        "enemy.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 2
+        },
+        "mapfinal1280.tmx": {
+            "scale": 0.9678125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 640.6199547949628,
+                "y": 360.60703907006786
+            }
+        },
+        "mapfinal1280.tmx#Props": {
+            "scaleInDock": 1
+        },
+        "mapfinal1280.tmx#Tiles": {
+            "scaleInDock": 1
+        }
+    },
+    "last.externalTilesetPath": "C:/Users/totor/OneDrive/Escritorio/Nexus-Studios/NexusStudios_Project-II_DraggedOffTime/Output/Assets/Maps",
+    "last.imagePath": "C:/Users/totor/OneDrive/Escritorio/Nexus-Studios/NexusStudios_Project-II_DraggedOffTime/Output/Assets/Textures",
+    "map.height": 45,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 80,
+    "openFiles": [
+        "InfernalMap1.tmx",
+        "InfernalMap2.tmx",
+        "InfernalMap3.tmx",
+        "InfernalMap4.tmx",
+        "JovaniRoom.tmx",
+        "MapaInfernalBoss.tmx",
+        "InfernalMapPuzzle.tmx",
+        "InfernalMap5.tmx"
+    ],
+    "project": "InfernalMaps.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "InfernalMap4fixed.tmx",
+        "InfernalTiles.tsx",
+        "InfernalMap4.tmx",
+        "InfernalMap3.tmx",
+        "InfernalMap2.tmx",
+        "InfernalProps.tsx",
+        "InfernalMap1.tmx",
+        "mapfinal1280.tmx",
+        "JovaniRoom.tmx",
+        "MapaInfernalBoss.tmx",
+        "InfernalMapPuzzle.tmx",
+        "InfernalMap5.tmx"
+    ],
+    "tileset.lastUsedFilter": "Archivos de conjuntos de patrones Tiled (*.tsx *.xml)",
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}

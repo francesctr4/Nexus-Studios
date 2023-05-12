@@ -46,9 +46,13 @@
 
   <map>
     <mapfolder path="Assets/Maps/"/>
-    <mapfile_1 path="Assets/Maps/mapfinal1280.tmx"/>
-	<mapfile_2 path="Assets/Maps/JovaniJV.tmx"/>
-	<mapfile_3 path="Assets/Maps/Sala_Cofre.tmx"/>
+    <mapfile_1 path="Assets/Maps/InfernalMap1.tmx"/>
+	<mapfile_2 path="Assets/Maps/InfernalMap2.tmx"/>
+	<mapfile_3 path="Assets/Maps/InfernalMap3.tmx"/>
+	<mapfile_4 path="Assets/Maps/InfernalMap4.tmx"/>
+	<mapfile_5 path="Assets/Maps/InfernalMap5.tmx"/>
+	<mapfile_6 path="Assets/Maps/JovaniRoom.tmx"/>
+
   </map>
   
 </config>
