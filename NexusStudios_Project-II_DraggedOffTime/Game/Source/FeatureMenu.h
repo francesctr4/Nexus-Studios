@@ -32,9 +32,17 @@ public:
 	int k;
 	int l;
 
+	// ---------------------------------
+
 	SDL_Texture* kleosMedieval;
+	SDL_Texture* kleosPrehistoric;
+	SDL_Texture* kleosCyberpunk;
+	SDL_Texture* kleosApocalypse;
+
 	Animation* currentAnimation;
-	Animation KleosMedieval;
+	Animation KleosIdle;
+
+	// ---------------------------------
 
 	SDL_Texture* statsSheet;
 
