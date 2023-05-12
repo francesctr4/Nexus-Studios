@@ -42,6 +42,8 @@ public:
 
 	bool OnGuiMouseClickEvent(GuiControl* control);
 
+	void CheckEvent();
+
 public:
 
 	bool enableMusic;
@@ -60,5 +62,19 @@ public:
 
 	FeatureMenu featureMenu;
 	Pause pause;
+
+	//Quests
+
+	int r = 0; //Times you completed any mision
+	
+	//Triggers
+	bool trigger_1 = false;
+	int trigger_2 = 0;
+	bool trigger_3 = false;
+
+	//Misions completed
+	bool first_mision = false;
+	bool second_mision = false;
+	bool third_mision = false;
 
 };

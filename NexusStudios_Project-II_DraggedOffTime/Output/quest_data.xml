@@ -1,0 +1,33 @@
+<!-- Quest Data -->
+<quests>
+  <quest 
+	id="1"
+	title="Talk to Skippy" 
+	type="1" 
+	trigger="1" 
+	description="Talk to Skippy and listen to his advice" 
+	reward="1"
+	requisites="0"> 
+  </quest>
+
+  <quest 
+	id="2"
+	title="Mango Mission" 
+	type="1"  
+	trigger="1" 
+	description="Collect all the items" 
+	reward="2"
+	requisites="1">  
+  </quest>
+  
+  <quest 
+	id="3"
+	title="Go to The Shop" 
+	type="1" 
+	trigger="1" 
+	description="Tóma mango" 
+	reward="3" 
+	requisites="2"> 
+  </quest>
+
+</quests>

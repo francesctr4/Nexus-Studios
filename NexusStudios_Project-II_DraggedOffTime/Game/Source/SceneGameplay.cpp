@@ -13,6 +13,7 @@
 #include "EntityManager.h"
 #include "SceneTitle.h"
 #include "Tweening.h"
+#include "QuestManager.h"
 
 #include "SceneGameplay.h"
 
@@ -351,6 +352,8 @@ bool SceneGameplay::Update(float dt)
 	//}
 	//
 
+	//Quests
+	CheckEvent();
 
 	return true;
 }
@@ -413,5 +416,92 @@ bool SceneGameplay::OnGuiMouseClickEvent(GuiControl* control)
 {
 
 	return true;
+}
+
+//Función dedicada a comprobar en todo momento si hay alguna misión completada
+void SceneGameplay::CheckEvent()
+{
+	//Check the variables
+	if (trigger_1 == true)
+	{
+		first_mision = true;
+	}
+
+	if (trigger_2 == 8)
+	{
+		second_mision = true;
+	}
+
+	if (trigger_3 == true)
+	{
+		third_mision = true;
+	}
+	//------------
+
+	for (std::list <Quest*>::iterator it = app->questManager->active_quests.begin(); it != app->questManager->active_quests.end(); it++)
+	{
+		int quest_id = (*it)->id;
+
+		switch (quest_id)
+		{
+		case 1:
+			if (first_mision == true && second_mision == true && third_mision == true && r >= 0)
+			{
+				(*it)->completed = true;
+				r = 1;
+				LOG("R: %d", r);
+				//Reset variables
+				this->trigger_1 = 0;
+				this->trigger_2 = 0;
+				this->trigger_3 = 0;
+				first_mision = false;
+				second_mision = false;
+				third_mision = false;
+				//------------
+				app->questManager->finished_quests.push_back((*it));
+				app->questManager->active_quests.erase(it);
+			}
+			break;
+		case 2:
+			if (first_mision == true && second_mision == true && third_mision == true && r >= 1)
+			{
+				(*it)->completed = true;
+				r = 2;
+				LOG("R: %d", r);
+				//Reset variables
+				this->trigger_1 = 0;
+				this->trigger_2 = 0;
+				this->trigger_3 = 0;
+				first_mision = false;
+				second_mision = false;
+				third_mision = false;
+				//------------
+				app->questManager->finished_quests.push_back((*it));
+				app->questManager->active_quests.erase(it);
+			}
+			break;
+		case 3:
+			if (first_mision == true && second_mision == true && third_mision == true && r >= 2)
+			{
+				(*it)->completed = true;
+				r = 3;
+				LOG("R: %d", r);
+				//Reset variables
+				this->trigger_1 = 0;
+				this->trigger_2 = 0;
+				this->trigger_3 = 0;
+				first_mision = false;
+				second_mision = false;
+				third_mision = false;
+				//------------
+				app->questManager->finished_quests.push_back((*it));
+				app->questManager->active_quests.erase(it);
+
+			}
+			break;
+		default:
+			break;
+		}
+	}
 }
 

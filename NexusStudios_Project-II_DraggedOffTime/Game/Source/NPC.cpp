@@ -213,8 +213,11 @@ bool NPC::Update()
 
 		if (type == NPC_Types::ROGUE) DialogueGenerator(secondConversation);
 		if (type == NPC_Types::WIZARD) DialogueGenerator(thirdConversation);
-		if (type == NPC_Types::ORC) DialogueGenerator(firstConversation);
-
+		if (type == NPC_Types::ORC)
+		{
+			app->sceneGameplay->trigger_1 = true;
+			DialogueGenerator(firstConversation);
+		}
 	}
 	else {
 
