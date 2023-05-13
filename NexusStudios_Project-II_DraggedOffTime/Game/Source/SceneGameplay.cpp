@@ -450,13 +450,13 @@ void SceneGameplay::CheckEvent()
 				(*it)->completed = true;
 				r = 1;
 				LOG("R: %d", r);
-				//Reset variables
-				this->trigger_1 = 0;
-				this->trigger_2 = 0;
-				this->trigger_3 = 0;
-				first_mision = false;
-				second_mision = false;
-				third_mision = false;
+				////Reset variables
+				//this->trigger_1 = 0;
+				//this->trigger_2 = 0;
+				//this->trigger_3 = 0;
+				//first_mision = false;
+				//second_mision = false;
+				//third_mision = false;
 				//------------
 				app->questManager->finished_quests.push_back((*it));
 				app->questManager->active_quests.erase(it);
@@ -468,31 +468,31 @@ void SceneGameplay::CheckEvent()
 				(*it)->completed = true;
 				r = 2;
 				LOG("R: %d", r);
-				//Reset variables
-				this->trigger_1 = 0;
-				this->trigger_2 = 0;
-				this->trigger_3 = 0;
-				first_mision = false;
-				second_mision = false;
-				third_mision = false;
+				////Reset variables
+				//this->trigger_1 = 0;
+				//this->trigger_2 = 0;
+				//this->trigger_3 = 0;
+				//first_mision = false;
+				//second_mision = false;
+				//third_mision = false;
 				//------------
 				app->questManager->finished_quests.push_back((*it));
 				app->questManager->active_quests.erase(it);
 			}
 			break;
 		case 3:
-			if (first_mision == true && second_mision == true && third_mision == true && r >= 2)
+			if (first_mision == true && second_mision == true && third_mision == true && r >= 1)
 			{
 				(*it)->completed = true;
 				r = 3;
 				LOG("R: %d", r);
-				//Reset variables
-				this->trigger_1 = 0;
-				this->trigger_2 = 0;
-				this->trigger_3 = 0;
-				first_mision = false;
-				second_mision = false;
-				third_mision = false;
+				////Reset variables
+				//this->trigger_1 = 0;
+				//this->trigger_2 = 0;
+				//this->trigger_3 = 0;
+				//first_mision = false;
+				//second_mision = false;
+				//third_mision = false;
 				//------------
 				app->questManager->finished_quests.push_back((*it));
 				app->questManager->active_quests.erase(it);

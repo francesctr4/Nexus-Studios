@@ -27,7 +27,7 @@
 	trigger="1" 
 	description="Tóma mango" 
 	reward="3" 
-	requisites="2"> 
+	requisites="1"> 
   </quest>
 
 </quests>
