@@ -26,6 +26,6 @@ public:
 	bool inventoryOn = false;
 
 	std::vector<Item> items;
-	unsigned int cap = 32;
+	unsigned int cap = 18;
 
 };

@@ -22,7 +22,7 @@ void FeatureMenu::Load()
 	Stats_visual = app->tex->Load("Assets/UI/Stats/CharacterStats_Spritesheet.png");
 
 	inventory_ = app->tex->Load("Assets/UI/Stats/Inventory_Spritesheet.png");
-	Inventory_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, inventory_, "", { 376,84,177,59 }, (Module*)app->sceneGameplay);
+	Inventory_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 40, inventory_, "", { 376,84,177,59 }, (Module*)app->sceneGameplay);
 	Inventory_->state = GuiControlState::DISABLED;
 
 	Inventory_visual = app->tex->Load("Assets/UI/Stats/Inventory.png");
@@ -304,7 +304,7 @@ void FeatureMenu::Update()
 
 	}
 
-	if (!statsEnabled || i != 1) {
+	if (!ShowSlots) {
 
 		inventoryManager.inventoryOn = false;
 

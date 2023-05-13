@@ -415,6 +415,12 @@ bool SceneGameplay::CleanUp()
 bool SceneGameplay::OnGuiMouseClickEvent(GuiControl* control)
 {
 
+	if (featureMenu.ShowSlots) {
+
+		featureMenu.inventoryManager.RemoveCertainItem(control->id);
+
+	}
+
 	return true;
 }
 
