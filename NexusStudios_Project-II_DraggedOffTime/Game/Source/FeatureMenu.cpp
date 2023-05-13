@@ -12,7 +12,9 @@
 void FeatureMenu::Load()
 {
 	//UI Buttons
-	
+
+	ChangeCharacters = false;
+
 	stats = app->tex->Load("Assets/UI/Stats/Stats_Spritesheet.png");
 	Stats = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, stats, "", { 199,84,177,59 }, (Module*)app->sceneGameplay);
 	Stats->state = GuiControlState::DISABLED;
@@ -57,6 +59,28 @@ void FeatureMenu::Load()
 	apocalypse = app->tex->Load("Assets/UI/Stats/Apocalypse_Selection.png");
 	Apocalypse = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, apocalypse, "", { 238,485,90,90 }, (Module*)app->sceneGameplay);
 	Apocalypse->state = GuiControlState::INVISIBLE;
+
+	//Equipment
+
+	leftArrow = app->tex->Load("Assets/UI/Stats/Left_Arrow.png");
+	LeftArrow = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, leftArrow, "", { 454,242,34,27 }, (Module*)app->sceneGameplay);
+	LeftArrow->state = GuiControlState::DISABLED;
+
+	rightArrow = app->tex->Load("Assets/UI/Stats/Right_Arrow.png");
+	RightArrow = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, rightArrow, "", { 620,242,34,27 }, (Module*)app->sceneGameplay);
+	RightArrow->state = GuiControlState::DISABLED;
+
+	Equipment_visual = app->tex->Load("Assets/UI/Stats/Equipment_Weapon_SpriteSheet.png");
+
+	//Skills
+
+	Skills_visual = app->tex->Load("Assets/UI/Stats/Skills_Text_Spritesheet.png"); 
+
+	//Quests
+
+	Quests_visual = app->tex->Load("Assets/UI/Stats/Quest_Background.png");
+
+
 
 	Fondo = app->tex->Load("Assets/UI/PauseBackground.png");
 
@@ -108,10 +132,18 @@ void FeatureMenu::Update()
 {
 	//Menu
 
+
 	if (app->input->GetKey(SDL_SCANCODE_I) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_START] == KEY_DOWN) {
 
 		statsEnabled = !statsEnabled;
+
+		i = 0;
+
+		ChangeCharacters = !ChangeCharacters;
+		ChangeWeapons = false;
+		
 	}
+
 
 	//UI Buttons
 
@@ -120,13 +152,15 @@ void FeatureMenu::Update()
 		i = 0;
 
 		ChangeCharacters = true;
+		ChangeWeapons = false;
 	}
 
 	if (Inventory_->state == GuiControlState::PRESSED) {
 
 		i = 1;
 
-		!ChangeCharacters;
+		ChangeCharacters = false;
+		ChangeWeapons = false;
 	}
 
 	if (Equipment->state == GuiControlState::PRESSED) {
@@ -134,20 +168,23 @@ void FeatureMenu::Update()
 		i = 2;
 
 		ChangeCharacters = true;
+		ChangeWeapons = true;
 	}
 
 	if (Skills->state == GuiControlState::PRESSED) {
 
 		i = 3;
 
-		!ChangeCharacters;
+		ChangeCharacters = true;
+		ChangeWeapons = false;
 	}
 
 	if (Quests->state == GuiControlState::PRESSED) {
 
 		i = 4;
 
-		!ChangeCharacters;
+		ChangeCharacters = false;
+		ChangeWeapons = false;
 	}
 
 	//Stats Character Selection
@@ -172,6 +209,17 @@ void FeatureMenu::Update()
 		j = 3;
 	}
 
+	//Weapon Selection Arrows
+
+	if (LeftArrow->state == GuiControlState::PRESSED) {
+
+		if (k > 0) k--;
+	}
+
+	if (RightArrow->state == GuiControlState::PRESSED) {
+
+		if (k <= 1 ) k++;
+	}
 
 
 
@@ -337,58 +385,13 @@ void FeatureMenu::PostUpdate()
 
 	if (statsEnabled) {
 
-		if (Stats->state == GuiControlState::DISABLED) Stats->state = GuiControlState::NORMAL;
-		if (Inventory_->state == GuiControlState::DISABLED) Inventory_->state = GuiControlState::NORMAL;
-		if (Equipment->state == GuiControlState::DISABLED) Equipment->state = GuiControlState::NORMAL;
-		if (Skills->state == GuiControlState::DISABLED) Skills->state = GuiControlState::NORMAL;
-		if (Quests->state == GuiControlState::DISABLED) Quests->state = GuiControlState::NORMAL;
-
-		Stats->Draw(app->render);
-		Inventory_->Draw(app->render);
-		Equipment->Draw(app->render);
-		Skills->Draw(app->render);
-		Quests->Draw(app->render);
-
-		if (ChangeCharacters) {
-
-			if (Medieval->state == GuiControlState::INVISIBLE) Medieval->state = GuiControlState::NORMAL;
-			if (Prehistorical->state == GuiControlState::INVISIBLE) Prehistorical->state = GuiControlState::NORMAL;
-			if (Cyberpunk->state == GuiControlState::INVISIBLE) Cyberpunk->state = GuiControlState::NORMAL;
-			if (Apocalypse->state == GuiControlState::INVISIBLE) Apocalypse->state = GuiControlState::NORMAL;
-
-			Medieval->Draw(app->render);
-			Prehistorical->Draw(app->render);
-			Cyberpunk->Draw(app->render);
-			Apocalypse->Draw(app->render);
-		}
-		if (!ChangeCharacters) {
-
-			if (Medieval->state != GuiControlState::INVISIBLE) Medieval->state = GuiControlState::INVISIBLE;
-			if (Prehistorical->state != GuiControlState::INVISIBLE) Prehistorical->state = GuiControlState::INVISIBLE;
-			if (Cyberpunk->state != GuiControlState::INVISIBLE) Cyberpunk->state = GuiControlState::INVISIBLE;
-			if (Apocalypse->state != GuiControlState::INVISIBLE) Apocalypse->state = GuiControlState::INVISIBLE;
-		}
-
-	}
-	if (!statsEnabled) {
-
-		if (Stats->state != GuiControlState::DISABLED) Stats->state = GuiControlState::DISABLED;
-		if (Inventory_->state != GuiControlState::DISABLED) Inventory_->state = GuiControlState::DISABLED;
-		if (Equipment->state != GuiControlState::DISABLED) Equipment->state = GuiControlState::DISABLED;
-		if (Skills->state != GuiControlState::DISABLED) Skills->state = GuiControlState::DISABLED;
-		if (Quests->state != GuiControlState::DISABLED) Quests->state = GuiControlState::DISABLED;
-
-	}
-
-	if (statsEnabled) {
-
 		switch (i) {
 
 		case 0: {
 
 			if (j == 0) {
 
-				app->render->DrawTexture(Stats_visual, 0, 0, &SDL_Rect ({ 1280 * 0, 0, 1280, 720 }));
+				app->render->DrawTexture(Stats_visual, 0, 0, &SDL_Rect({ 1280 * 0, 0, 1280, 720 }));
 
 				SDL_Rect kleosRect = currentAnimation->GetCurrentFrame();
 
@@ -444,6 +447,88 @@ void FeatureMenu::PostUpdate()
 		case 2: {
 
 			//app->render->DrawTexture(equipment, 0, 0, &rect3);
+
+
+			if (j == 0) {
+
+				if (k == 0) {
+
+					app->render->DrawTexture(Equipment_visual, 0, 0, &SDL_Rect({ 1280 * 0, 720 * 0, 1280, 720 }));
+
+				}
+
+				if (k == 1) {
+
+					app->render->DrawTexture(Equipment_visual, 0, 0, &SDL_Rect({ 1280 * 1, 720 * 0, 1280, 720 }));
+				}
+
+				if (k == 2) {
+
+					app->render->DrawTexture(Equipment_visual, 0, 0, &SDL_Rect({ 1280 * 2, 720 * 0, 1280, 720 }));
+				}
+			}
+
+
+			if (j == 1) {
+
+				if (k == 0) {
+
+					app->render->DrawTexture(Equipment_visual, 0, 0, &SDL_Rect({ 1280 * 0, 720 * 1, 1280, 720 }));
+
+				}
+
+				if (k == 1) {
+
+					app->render->DrawTexture(Equipment_visual, 0, 0, &SDL_Rect({ 1280 * 1, 720 * 1, 1280, 720 }));
+				}
+
+				if (k == 2) {
+
+					app->render->DrawTexture(Equipment_visual, 0, 0, &SDL_Rect({ 1280 * 2, 720 * 1, 1280, 720 }));
+				}
+
+			}
+
+			if (j == 2) {
+
+				if (k == 0) {
+
+					app->render->DrawTexture(Equipment_visual, 0, 0, &SDL_Rect({ 1280 * 0, 720 * 2, 1280, 720 }));
+
+				}
+
+				if (k == 1) {
+
+					app->render->DrawTexture(Equipment_visual, 0, 0, &SDL_Rect({ 1280 * 1, 720 * 2, 1280, 720 }));
+				}
+
+				if (k == 2) {
+
+					app->render->DrawTexture(Equipment_visual, 0, 0, &SDL_Rect({ 1280 * 2, 720 * 2, 1280, 720 }));
+				}
+
+			}
+
+			if (j == 3) {
+
+				if (k == 0) {
+
+					app->render->DrawTexture(Equipment_visual, 0, 0, &SDL_Rect({ 1280 * 0, 720 * 3, 1280, 720 }));
+
+				}
+
+				if (k == 1) {
+
+					app->render->DrawTexture(Equipment_visual, 0, 0, &SDL_Rect({ 1280 * 1, 720 * 3, 1280, 720 }));
+				}
+
+				if (k == 2) {
+
+					app->render->DrawTexture(Equipment_visual, 0, 0, &SDL_Rect({ 1280 * 2, 720 * 3, 1280, 720 }));
+				}
+
+			}
+
 			break;
 
 		}
@@ -451,6 +536,31 @@ void FeatureMenu::PostUpdate()
 		case 3: {
 
 			//app->render->DrawTexture(skills, 0, 0, &rect4);
+
+			if (j == 0) {
+
+				app->render->DrawTexture(Skills_visual, 0, 0, &SDL_Rect({ 1280 * 0, 0, 1280, 720 }));
+
+			}
+
+			if (j == 1) {
+
+				app->render->DrawTexture(Skills_visual, 0, 0, &SDL_Rect({ 1280 * 1, 0, 1280, 720 }));
+
+			}
+
+			if (j == 2) {
+
+				app->render->DrawTexture(Skills_visual, 0, 0, &SDL_Rect({ 1280 * 2, 0, 1280, 720 }));
+
+			}
+
+			if (j == 3) {
+
+				app->render->DrawTexture(Skills_visual, 0, 0, &SDL_Rect({ 1280 * 3, 0, 1280, 720 }));
+
+			}
+
 			break;
 
 		}
@@ -458,6 +568,9 @@ void FeatureMenu::PostUpdate()
 		case 4: {
 
 			//app->render->DrawTexture(quests, 0, 0, &rect5);
+
+			app->render->DrawTexture(Quests_visual, 0, 0, &SDL_Rect({ 0, 0, 1280, 720 }));
+
 			break;
 
 		}
@@ -466,6 +579,76 @@ void FeatureMenu::PostUpdate()
 
 	}
 
+
+	if (statsEnabled) {
+
+		if (Stats->state == GuiControlState::DISABLED) Stats->state = GuiControlState::NORMAL;
+		if (Inventory_->state == GuiControlState::DISABLED) Inventory_->state = GuiControlState::NORMAL;
+		if (Equipment->state == GuiControlState::DISABLED) Equipment->state = GuiControlState::NORMAL;
+		if (Skills->state == GuiControlState::DISABLED) Skills->state = GuiControlState::NORMAL;
+		if (Quests->state == GuiControlState::DISABLED) Quests->state = GuiControlState::NORMAL;
+
+		Stats->Draw(app->render);
+		Inventory_->Draw(app->render);
+		Equipment->Draw(app->render);
+		Skills->Draw(app->render);
+		Quests->Draw(app->render);
+
+		if (ChangeCharacters) {
+
+			if (Medieval->state == GuiControlState::INVISIBLE) Medieval->state = GuiControlState::NORMAL;
+			if (Prehistorical->state == GuiControlState::INVISIBLE) Prehistorical->state = GuiControlState::NORMAL;
+			if (Cyberpunk->state == GuiControlState::INVISIBLE) Cyberpunk->state = GuiControlState::NORMAL;
+			if (Apocalypse->state == GuiControlState::INVISIBLE) Apocalypse->state = GuiControlState::NORMAL;
+
+			Medieval->Draw(app->render);
+			Prehistorical->Draw(app->render);
+			Cyberpunk->Draw(app->render);
+			Apocalypse->Draw(app->render);
+		}
+		if (!ChangeCharacters) {
+
+			if (Medieval->state != GuiControlState::INVISIBLE) Medieval->state = GuiControlState::INVISIBLE;
+			if (Prehistorical->state != GuiControlState::INVISIBLE) Prehistorical->state = GuiControlState::INVISIBLE;
+			if (Cyberpunk->state != GuiControlState::INVISIBLE) Cyberpunk->state = GuiControlState::INVISIBLE;
+			if (Apocalypse->state != GuiControlState::INVISIBLE) Apocalypse->state = GuiControlState::INVISIBLE;
+		}
+
+		if (ChangeWeapons) {
+
+			if (LeftArrow->state == GuiControlState::DISABLED) LeftArrow->state = GuiControlState::NORMAL;
+			if (RightArrow->state == GuiControlState::DISABLED) RightArrow->state = GuiControlState::NORMAL;
+
+			LeftArrow->Draw(app->render);
+			RightArrow->Draw(app->render);
+	
+		}
+		if (!ChangeWeapons) {
+
+			if (LeftArrow->state != GuiControlState::DISABLED) LeftArrow->state = GuiControlState::DISABLED;
+			if (RightArrow->state != GuiControlState::DISABLED) RightArrow->state = GuiControlState::DISABLED;
+		}
+
+	}
+	if (!statsEnabled) {
+
+		if (Stats->state != GuiControlState::DISABLED) Stats->state = GuiControlState::DISABLED;
+		if (Inventory_->state != GuiControlState::DISABLED) Inventory_->state = GuiControlState::DISABLED;
+		if (Equipment->state != GuiControlState::DISABLED) Equipment->state = GuiControlState::DISABLED;
+		if (Skills->state != GuiControlState::DISABLED) Skills->state = GuiControlState::DISABLED;
+		if (Quests->state != GuiControlState::DISABLED) Quests->state = GuiControlState::DISABLED;
+
+		if (Medieval->state != GuiControlState::INVISIBLE) Medieval->state = GuiControlState::INVISIBLE;
+		if (Prehistorical->state != GuiControlState::INVISIBLE) Prehistorical->state = GuiControlState::INVISIBLE;
+		if (Cyberpunk->state != GuiControlState::INVISIBLE) Cyberpunk->state = GuiControlState::INVISIBLE;
+		if (Apocalypse->state != GuiControlState::INVISIBLE) Apocalypse->state = GuiControlState::INVISIBLE;
+
+		if (LeftArrow->state != GuiControlState::DISABLED) LeftArrow->state = GuiControlState::DISABLED;
+		if (RightArrow->state != GuiControlState::DISABLED) RightArrow->state = GuiControlState::DISABLED;
+
+	}
+
+	
 
 
 

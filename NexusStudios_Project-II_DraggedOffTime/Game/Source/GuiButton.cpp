@@ -4,6 +4,7 @@
 #include "Audio.h"
 #include "Log.h"
 #include "SceneTitle.h"
+#include "SceneGameplay.h"
 
 GuiButton::GuiButton(uint32 id, SDL_Rect bounds, SDL_Texture* tex, const char* text) : GuiControl(GuiControlType::BUTTON, id)
 {
@@ -30,7 +31,7 @@ GuiButton::~GuiButton()
 
 bool GuiButton::Update(float dt)
 {
-	if (state != GuiControlState::DISABLED)
+	if (state != GuiControlState::DISABLED && state != GuiControlState::INVISIBLE)
 	{
 		// Update the state of the GUiButton according to the mouse position
 		app->input->GetMousePosition(mouseX, mouseY);
@@ -81,14 +82,6 @@ bool GuiButton::Draw(Render* render)
 
 	switch (state)
 	{
-	case GuiControlState::INVISIBLE:
-		
-
-		rect.y = bounds.h * 4;
-		app->render->DrawTexture(tex, -app->render->camera.x + bounds.x, -app->render->camera.y + bounds.y, &rect);
-		
-
-		break;
 
 	case GuiControlState::DISABLED:
 		if (!app->sceneTitle->showSettings && app->sceneTitle->active) {
@@ -127,7 +120,21 @@ bool GuiButton::Draw(Render* render)
 		if (debug) app->render->DrawRectangle({ -app->render->camera.x + bounds.x, -app->render->camera.y + bounds.y, bounds.w, bounds.h }, 255, 0, 0, 255, false);
 
 		break;
+
+	case GuiControlState::INVISIBLE:
+
+
+		if (!app->sceneGameplay->featureMenu.statsEnabled) {
+
+			rect.y = bounds.h * 4;
+			app->render->DrawTexture(tex, -app->render->camera.x + bounds.x, -app->render->camera.y + bounds.y, &rect);
+		}
+
+		break;
 	}
+
+
+
 
 	app->render->DrawText(text.GetString(), bounds.x, bounds.y, bounds.w, bounds.h, { 255,255,255 });
 

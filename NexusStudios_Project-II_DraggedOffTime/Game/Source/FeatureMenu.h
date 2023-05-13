@@ -29,7 +29,7 @@ public:
 
 public:
 
-	//Visuals
+	//Upper buttons
 
 	SDL_Texture* Fondo;
 
@@ -73,6 +73,21 @@ public:
 	SDL_Texture* Stats_visual;
 
 	SDL_Texture* Inventory_visual;
+
+	SDL_Texture* Skills_visual;
+
+	SDL_Texture* Quests_visual;
+
+	SDL_Texture* Equipment_visual;
+
+
+	bool ChangeWeapons;
+
+	SDL_Texture* leftArrow;
+	GuiButton* LeftArrow;
+
+	SDL_Texture* rightArrow;
+	GuiButton* RightArrow;
 
 
 	bool statsEnabled;

@@ -30,7 +30,7 @@ enum class GuiControlState
 	FOCUSED,
 	PRESSED,
 	SELECTED,
-	INVISIBLE
+	INVISIBLE,
 };
 
 class GuiControl
