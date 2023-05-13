@@ -330,36 +330,49 @@ bool SceneBattle::Update(float dt)
 			}
 		}
 
+		// Quick Time Event - Timer
 		if (qte)
 		{
 			LOG("Quick Time Event Started");
-			
 
-			if (qte_timer.ReadSec() < tolerance)
+			if ((app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN))
 			{
+				delay = qte_timer.ReadMSec();
+				
+				LOG("QTE-Inicio (MS): %f", qte_timer.ReadMSec());
+				//Reset qte_timer
+				qte_timer.Start();
 
-				if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN)
+				if (delay > 500 && delay < 1500)
 				{
-					LOG("MS: %f", qte_timer.ReadMSec());
-					e_HP = app->combatManager->TimeEventAttack(m_players[selected_player].DMG, e_HP, e_DEF, qte_timer.ReadMSec());
+					num_hits++; // Incrementar el contador de pulsaciones
+
+					// Si el jugador ha presionado la tecla Q suficientes veces, llama a TimeEventAttack con un valor de MAX_HITS y reinicia el contador
+					if (num_hits == MAX_HITS)
+					{
+						e_HP = app->combatManager->TimeEventAttack(m_players[selected_player].DMG, e_HP, e_DEF, true, MAX_HITS);
+						qte = false;
+						num_hits = 0; // Reiniciar el contador de hits
+						app->combatManager->playerTurn = !app->combatManager->playerTurn;
+
+					}
+				}
+				else
+				{
+					LOG("Ataque QTE fallado");
+					e_HP = app->combatManager->TimeEventAttack(m_players[selected_player].DMG, e_HP, e_DEF, false, num_hits);
 					qte = false;
+					num_hits = 0; // Reiniciar el contador de hits
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
 				}
+			}
 
-			}
-			else
-			{
-				LOG("Ataque QTE fallado -> Hace 1 de daño");
-				//e_HP = app->combatManager->StandarAttack(1, e_HP, e_DEF);
-				qte = false;
-				app->combatManager->playerTurn = !app->combatManager->playerTurn;
-			}
-				
 		}
 	}
 	else
-	{
-		if (!timer_started)
+	{	
+		//Timer enemigo
+		if (!timer_started)	
 		{
 			timer.Start();
 			timer_started = true;
@@ -590,12 +603,17 @@ bool SceneBattle::PostUpdate()
 			app->render->DrawText("OFF", 550, 10, 10, 20, { 255, 255, 255, 255 });	
 		}
 
+		//Muestra el numero de veces que se golpea al enemigo (dentro de cada QTE)
+		std::string hits = std::to_string(num_hits);
+		app->render->DrawText(hits, 575, 10, 10, 20, { 255, 255, 255, 255 });	
+
+		//Debug Draw (QTE)
+		app->render->DrawText("Timer: ", 110, 400, 40, 20, {255, 255, 255, 255});
+		std::string time = std::to_string(qte_timer.ReadMSec());
+		app->render->DrawText(time, 150, 400, 100, 20, { 255, 255, 255, 255 });
+
 	}
 
-	
-	
-
-	
 
 	//Combat UI - Visual
 	app->render->DrawTexture(classID, 20, 20);
@@ -632,9 +650,17 @@ bool SceneBattle::PostUpdate()
 	if (e_HP == 0) {
 
 		e_HP = e_max_HP;
+		turn = 0;
 		app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
 
 	}
+
+	//QTE - Mostrar algo cuando es buen momento para volver a pulsar la Q
+	if (qte_timer.ReadMSec() > 500 && qte_timer.ReadMSec() < 1500 && qte)
+	{
+		app->render->DrawTexture(playerSelection, 350, 420);
+	}
+
 
 	return true;
 }

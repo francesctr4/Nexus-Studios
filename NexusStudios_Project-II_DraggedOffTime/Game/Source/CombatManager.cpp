@@ -74,14 +74,14 @@ int CombatManager::StandarAttack(int p_DMG, int e_HP, int e_DEF) {
 	}
 };
 
-int CombatManager::TimeEventAttack(int p_DMG, int e_HP, int e_DEF, float delay) {
+int CombatManager::TimeEventAttack(int p_DMG, int e_HP, int e_DEF, bool timing, int num_hits) {
 	//De momento nada, se incluirá en la siguiente versión
 	
-	if (delay > 750 && delay < 1250)
+	if (timing)
 	{
-		LOG("Good Timing");
+		LOG("Good Timing");	//timing == true
 		int totalDamage;
-		totalDamage = 2*p_DMG - (e_DEF + enemy_increasedDefense);	//De momento va a ser el doble del daño del player si aciertas en timing
+		totalDamage = (1.2 * p_DMG - (e_DEF + enemy_increasedDefense)) * num_hits;	//De momento va a ser el doble del daño del player si aciertas en timing
 
 		if (totalDamage >= e_HP)
 		{
@@ -98,9 +98,9 @@ int CombatManager::TimeEventAttack(int p_DMG, int e_HP, int e_DEF, float delay) 
 	}
 	else
 	{
-		LOG("Bad Timing");											//Si fallas el timing vas a hacer la mitad de daño que de habitual
+		LOG("Bad Timing");	//timing == false
 		int totalDamage;
-		totalDamage = 0.75 * p_DMG - (e_DEF + enemy_increasedDefense);	
+		totalDamage = (0.75 * p_DMG - (e_DEF + enemy_increasedDefense)) * num_hits;
 
 		if (totalDamage >= e_HP)
 		{

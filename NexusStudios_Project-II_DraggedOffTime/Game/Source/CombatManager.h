@@ -42,7 +42,7 @@ public:
 	int StandarAttack(int p_DMG, int e_HP, int e_DEF);
 
 	//2.Deal Quick time event attack (Return e_HP)
-	int TimeEventAttack(int p_DMG, int e_HP, int e_DEF, float delay);
+	int TimeEventAttack(int p_DMG, int e_HP, int e_DEF, bool timing, int num_hits);
 
 	//3.Block enemy attack - QTE
 	void BlockAttack();

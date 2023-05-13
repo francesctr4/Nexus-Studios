@@ -126,12 +126,16 @@ private:
 
 	// Variables para el control del QTE
 	Timer qte_timer;
-	int tolerance = 2; //Tolerancia en ms
+	int tolerance = 2; //Tolerancia en segundos
 	int objetiveTime = 2; //Valor objetivo en ms
 	bool qte = false;		//Definir si está en curso un quick time event
+
+	int num_hits = 0;	//Numero de veces que se ha completado correctamente el quick time event
+	int MAX_HITS = 3;
 
 	//Timer - Variables
 	Timer timer;
 	bool timer_started = false;
+	float delay = 0;
 
 };
