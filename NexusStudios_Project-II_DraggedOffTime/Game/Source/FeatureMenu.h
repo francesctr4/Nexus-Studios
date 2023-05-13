@@ -64,6 +64,32 @@ public:
 	SDL_Texture* apocalypse;
 	GuiButton* Apocalypse;
 
+	//Inventory
+
+	bool ShowSlots;
+
+	SDL_Texture* Slot_texture;
+
+	GuiButton* Inventory_1;
+	GuiButton* Inventory_2;
+	GuiButton* Inventory_3;
+	GuiButton* Inventory_4;
+	GuiButton* Inventory_5;
+	GuiButton* Inventory_6;
+	GuiButton* Inventory_7;
+	GuiButton* Inventory_8;
+	GuiButton* Inventory_9;
+	GuiButton* Inventory_10;
+	GuiButton* Inventory_11;
+	GuiButton* Inventory_12;
+	GuiButton* Inventory_13;
+	GuiButton* Inventory_14;
+	GuiButton* Inventory_15;
+	GuiButton* Inventory_16;
+	GuiButton* Inventory_17;
+	GuiButton* Inventory_18;
+
+
 	//SFX
 	uint OpenPause;
 	uint ClosePause;

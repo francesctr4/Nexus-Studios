@@ -60,6 +60,64 @@ void FeatureMenu::Load()
 	Apocalypse = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, apocalypse, "", { 238,485,90,90 }, (Module*)app->sceneGameplay);
 	Apocalypse->state = GuiControlState::INVISIBLE;
 
+	//Inventory
+
+	Slot_texture = app->tex->Load("Assets/UI/Stats/Inventory_Slot.png");
+
+	Inventory_1 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 0, Slot_texture, "", { 281,227,90,90 }, (Module*)app->sceneGameplay);
+	Inventory_1->state = GuiControlState::DISABLED;
+
+	Inventory_2 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 1, Slot_texture, "", { 407,227,90,90 }, (Module*)app->sceneGameplay);
+	Inventory_2->state = GuiControlState::DISABLED;
+
+	Inventory_3 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 2, Slot_texture, "", { 533,227,90,90 }, (Module*)app->sceneGameplay);
+	Inventory_3->state = GuiControlState::DISABLED;
+
+	Inventory_4 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, Slot_texture, "", { 659,227,90,90 }, (Module*)app->sceneGameplay);
+	Inventory_4->state = GuiControlState::DISABLED;
+
+	Inventory_5 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 4, Slot_texture, "", { 785,227,90,90 }, (Module*)app->sceneGameplay);
+	Inventory_5->state = GuiControlState::DISABLED;
+
+	Inventory_6 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 5, Slot_texture, "", { 911,227,90,90 }, (Module*)app->sceneGameplay);
+	Inventory_6->state = GuiControlState::DISABLED;
+
+	Inventory_7 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 6, Slot_texture, "", { 281,349,90,90 }, (Module*)app->sceneGameplay);
+	Inventory_7->state = GuiControlState::DISABLED;
+
+	Inventory_8 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 7, Slot_texture, "", { 407,349,90,90 }, (Module*)app->sceneGameplay);
+	Inventory_8->state = GuiControlState::DISABLED;
+
+	Inventory_9 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 8, Slot_texture, "", { 533,349,90,90 }, (Module*)app->sceneGameplay);
+	Inventory_9->state = GuiControlState::DISABLED;
+
+	Inventory_10 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 9, Slot_texture, "", { 659,349,90,90 }, (Module*)app->sceneGameplay);
+	Inventory_10->state = GuiControlState::DISABLED;
+
+	Inventory_11 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 10, Slot_texture, "", { 785,349,90,90 }, (Module*)app->sceneGameplay);
+	Inventory_11->state = GuiControlState::DISABLED;
+
+	Inventory_12 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 11, Slot_texture, "", { 911,349,90,90 }, (Module*)app->sceneGameplay);
+	Inventory_12->state = GuiControlState::DISABLED;
+
+	Inventory_13 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 12, Slot_texture, "", { 281,471,90,90 }, (Module*)app->sceneGameplay);
+	Inventory_13->state = GuiControlState::DISABLED;
+
+	Inventory_14 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 13, Slot_texture, "", { 407,471,90,90 }, (Module*)app->sceneGameplay);
+	Inventory_14->state = GuiControlState::DISABLED;
+
+	Inventory_15 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 14, Slot_texture, "", { 533,471,90,90 }, (Module*)app->sceneGameplay);
+	Inventory_15->state = GuiControlState::DISABLED;
+
+	Inventory_16 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 15, Slot_texture, "", { 659,471,90,90 }, (Module*)app->sceneGameplay);
+	Inventory_16->state = GuiControlState::DISABLED;
+
+	Inventory_17 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 16, Slot_texture, "", { 785,471,90,90 }, (Module*)app->sceneGameplay);
+	Inventory_17->state = GuiControlState::DISABLED;
+
+	Inventory_18 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 17, Slot_texture, "", { 911,471,90,90 }, (Module*)app->sceneGameplay);
+	Inventory_18->state = GuiControlState::DISABLED;
+
 	//Equipment
 
 	leftArrow = app->tex->Load("Assets/UI/Stats/Left_Arrow.png");
@@ -79,7 +137,6 @@ void FeatureMenu::Load()
 	//Quests
 
 	Quests_visual = app->tex->Load("Assets/UI/Stats/Quest_Background.png");
-
 
 
 	Fondo = app->tex->Load("Assets/UI/PauseBackground.png");
@@ -137,10 +194,11 @@ void FeatureMenu::Update()
 
 		statsEnabled = !statsEnabled;
 
-		i = 0;
+	
 
 		ChangeCharacters = !ChangeCharacters;
 		ChangeWeapons = false;
+		ShowSlots = false;
 		
 	}
 
@@ -153,6 +211,7 @@ void FeatureMenu::Update()
 
 		ChangeCharacters = true;
 		ChangeWeapons = false;
+		ShowSlots = false;
 	}
 
 	if (Inventory_->state == GuiControlState::PRESSED) {
@@ -161,6 +220,7 @@ void FeatureMenu::Update()
 
 		ChangeCharacters = false;
 		ChangeWeapons = false;
+		ShowSlots = true;
 	}
 
 	if (Equipment->state == GuiControlState::PRESSED) {
@@ -169,6 +229,7 @@ void FeatureMenu::Update()
 
 		ChangeCharacters = true;
 		ChangeWeapons = true;
+		ShowSlots = false;
 	}
 
 	if (Skills->state == GuiControlState::PRESSED) {
@@ -177,6 +238,7 @@ void FeatureMenu::Update()
 
 		ChangeCharacters = true;
 		ChangeWeapons = false;
+		ShowSlots = false;
 	}
 
 	if (Quests->state == GuiControlState::PRESSED) {
@@ -185,6 +247,7 @@ void FeatureMenu::Update()
 
 		ChangeCharacters = false;
 		ChangeWeapons = false;
+		ShowSlots = false;
 	}
 
 	//Stats Character Selection
@@ -395,7 +458,7 @@ void FeatureMenu::PostUpdate()
 
 				SDL_Rect kleosRect = currentAnimation->GetCurrentFrame();
 
-				app->render->DrawTexture(kleosMedieval, 340, 278, &kleosRect);
+				app->render->DrawTexture(kleosMedieval, 370, 278, &kleosRect);
 
 			}
 
@@ -406,7 +469,7 @@ void FeatureMenu::PostUpdate()
 
 				SDL_Rect kleosRect = currentAnimation->GetCurrentFrame();
 
-				app->render->DrawTexture(kleosMedieval, 340, 278, &kleosRect);
+				app->render->DrawTexture(kleosMedieval, 370, 278, &kleosRect);
 
 			}
 
@@ -416,7 +479,7 @@ void FeatureMenu::PostUpdate()
 
 				SDL_Rect kleosRect = currentAnimation->GetCurrentFrame();
 
-				app->render->DrawTexture(kleosCyberpunk, 340, 278, &kleosRect);
+				app->render->DrawTexture(kleosCyberpunk, 370, 278, &kleosRect);
 
 			}
 
@@ -426,7 +489,7 @@ void FeatureMenu::PostUpdate()
 
 				SDL_Rect kleosRect = currentAnimation->GetCurrentFrame();
 
-				app->render->DrawTexture(kleosApocalypse, 340, 278, &kleosRect);
+				app->render->DrawTexture(kleosApocalypse, 370, 278, &kleosRect);
 
 			}
 
@@ -629,6 +692,71 @@ void FeatureMenu::PostUpdate()
 			if (RightArrow->state != GuiControlState::DISABLED) RightArrow->state = GuiControlState::DISABLED;
 		}
 
+		if (ShowSlots) {
+
+			if (Inventory_1->state == GuiControlState::DISABLED) Inventory_1->state = GuiControlState::NORMAL;
+			if (Inventory_2->state == GuiControlState::DISABLED) Inventory_2->state = GuiControlState::NORMAL;
+			if (Inventory_3->state == GuiControlState::DISABLED) Inventory_3->state = GuiControlState::NORMAL;
+			if (Inventory_4->state == GuiControlState::DISABLED) Inventory_4->state = GuiControlState::NORMAL;
+			if (Inventory_5->state == GuiControlState::DISABLED) Inventory_5->state = GuiControlState::NORMAL;
+			if (Inventory_6->state == GuiControlState::DISABLED) Inventory_6->state = GuiControlState::NORMAL;
+			if (Inventory_7->state == GuiControlState::DISABLED) Inventory_7->state = GuiControlState::NORMAL;
+			if (Inventory_8->state == GuiControlState::DISABLED) Inventory_8->state = GuiControlState::NORMAL;
+			if (Inventory_9->state == GuiControlState::DISABLED) Inventory_9->state = GuiControlState::NORMAL;
+			if (Inventory_10->state == GuiControlState::DISABLED) Inventory_10->state = GuiControlState::NORMAL;
+			if (Inventory_11->state == GuiControlState::DISABLED) Inventory_11->state = GuiControlState::NORMAL;
+			if (Inventory_12->state == GuiControlState::DISABLED) Inventory_12->state = GuiControlState::NORMAL;
+			if (Inventory_13->state == GuiControlState::DISABLED) Inventory_13->state = GuiControlState::NORMAL;
+			if (Inventory_14->state == GuiControlState::DISABLED) Inventory_14->state = GuiControlState::NORMAL;
+			if (Inventory_15->state == GuiControlState::DISABLED) Inventory_15->state = GuiControlState::NORMAL;
+			if (Inventory_16->state == GuiControlState::DISABLED) Inventory_16->state = GuiControlState::NORMAL;
+			if (Inventory_17->state == GuiControlState::DISABLED) Inventory_17->state = GuiControlState::NORMAL;
+			if (Inventory_18->state == GuiControlState::DISABLED) Inventory_18->state = GuiControlState::NORMAL;
+
+			Inventory_1->Draw(app->render);
+			Inventory_2->Draw(app->render);
+			Inventory_1->Draw(app->render);
+			Inventory_2->Draw(app->render);
+			Inventory_3->Draw(app->render);
+			Inventory_4->Draw(app->render);
+			Inventory_5->Draw(app->render);
+			Inventory_6->Draw(app->render);
+			Inventory_7->Draw(app->render);
+			Inventory_8->Draw(app->render);
+			Inventory_9->Draw(app->render);
+			Inventory_10->Draw(app->render);
+			Inventory_11->Draw(app->render);
+			Inventory_12->Draw(app->render);
+			Inventory_13->Draw(app->render);
+			Inventory_14->Draw(app->render);
+			Inventory_15->Draw(app->render);
+			Inventory_16->Draw(app->render);
+			Inventory_17->Draw(app->render);
+			Inventory_18->Draw(app->render);
+
+		}
+		if (!ShowSlots) {
+
+			if (Inventory_1->state != GuiControlState::DISABLED) Inventory_1->state = GuiControlState::DISABLED;
+			if (Inventory_2->state != GuiControlState::DISABLED) Inventory_2->state = GuiControlState::DISABLED;
+			if (Inventory_3->state != GuiControlState::DISABLED) Inventory_3->state = GuiControlState::DISABLED;
+			if (Inventory_4->state != GuiControlState::DISABLED) Inventory_4->state = GuiControlState::DISABLED;
+			if (Inventory_5->state != GuiControlState::DISABLED) Inventory_5->state = GuiControlState::DISABLED;
+			if (Inventory_6->state != GuiControlState::DISABLED) Inventory_6->state = GuiControlState::DISABLED;
+			if (Inventory_7->state != GuiControlState::DISABLED) Inventory_7->state = GuiControlState::DISABLED;
+			if (Inventory_8->state != GuiControlState::DISABLED) Inventory_8->state = GuiControlState::DISABLED;
+			if (Inventory_9->state != GuiControlState::DISABLED) Inventory_9->state = GuiControlState::DISABLED;
+			if (Inventory_10->state != GuiControlState::DISABLED) Inventory_10->state = GuiControlState::DISABLED;
+			if (Inventory_11->state != GuiControlState::DISABLED) Inventory_11->state = GuiControlState::DISABLED;
+			if (Inventory_12->state != GuiControlState::DISABLED) Inventory_12->state = GuiControlState::DISABLED;
+			if (Inventory_13->state != GuiControlState::DISABLED) Inventory_13->state = GuiControlState::DISABLED;
+			if (Inventory_14->state != GuiControlState::DISABLED) Inventory_14->state = GuiControlState::DISABLED;
+			if (Inventory_15->state != GuiControlState::DISABLED) Inventory_15->state = GuiControlState::DISABLED;
+			if (Inventory_16->state != GuiControlState::DISABLED) Inventory_16->state = GuiControlState::DISABLED;
+			if (Inventory_17->state != GuiControlState::DISABLED) Inventory_17->state = GuiControlState::DISABLED;
+			if (Inventory_18->state != GuiControlState::DISABLED) Inventory_18->state = GuiControlState::DISABLED;
+		}
+
 	}
 	if (!statsEnabled) {
 
@@ -645,6 +773,25 @@ void FeatureMenu::PostUpdate()
 
 		if (LeftArrow->state != GuiControlState::DISABLED) LeftArrow->state = GuiControlState::DISABLED;
 		if (RightArrow->state != GuiControlState::DISABLED) RightArrow->state = GuiControlState::DISABLED;
+
+		if (Inventory_1->state != GuiControlState::DISABLED) Inventory_1->state = GuiControlState::DISABLED;
+		if (Inventory_2->state != GuiControlState::DISABLED) Inventory_2->state = GuiControlState::DISABLED;
+		if (Inventory_3->state != GuiControlState::DISABLED) Inventory_3->state = GuiControlState::DISABLED;
+		if (Inventory_4->state != GuiControlState::DISABLED) Inventory_4->state = GuiControlState::DISABLED;
+		if (Inventory_5->state != GuiControlState::DISABLED) Inventory_5->state = GuiControlState::DISABLED;
+		if (Inventory_6->state != GuiControlState::DISABLED) Inventory_6->state = GuiControlState::DISABLED;
+		if (Inventory_7->state != GuiControlState::DISABLED) Inventory_7->state = GuiControlState::DISABLED;
+		if (Inventory_8->state != GuiControlState::DISABLED) Inventory_8->state = GuiControlState::DISABLED;
+		if (Inventory_9->state != GuiControlState::DISABLED) Inventory_9->state = GuiControlState::DISABLED;
+		if (Inventory_10->state != GuiControlState::DISABLED) Inventory_10->state = GuiControlState::DISABLED;
+		if (Inventory_11->state != GuiControlState::DISABLED) Inventory_11->state = GuiControlState::DISABLED;
+		if (Inventory_12->state != GuiControlState::DISABLED) Inventory_12->state = GuiControlState::DISABLED;
+		if (Inventory_13->state != GuiControlState::DISABLED) Inventory_13->state = GuiControlState::DISABLED;
+		if (Inventory_14->state != GuiControlState::DISABLED) Inventory_14->state = GuiControlState::DISABLED;
+		if (Inventory_15->state != GuiControlState::DISABLED) Inventory_15->state = GuiControlState::DISABLED;
+		if (Inventory_16->state != GuiControlState::DISABLED) Inventory_16->state = GuiControlState::DISABLED;
+		if (Inventory_17->state != GuiControlState::DISABLED) Inventory_17->state = GuiControlState::DISABLED;
+		if (Inventory_18->state != GuiControlState::DISABLED) Inventory_18->state = GuiControlState::DISABLED;
 
 	}
 
