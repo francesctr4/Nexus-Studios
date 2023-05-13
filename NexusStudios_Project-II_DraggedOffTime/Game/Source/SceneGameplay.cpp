@@ -107,6 +107,17 @@ bool SceneGameplay::Update(float dt)
 {
 	OPTICK_EVENT();
 
+	if (app->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN) {
+
+		app->SaveGameRequest();
+
+		app->sceneTitle->continueEnabled = true;
+
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_F6) == KEY_DOWN)
+		app->LoadGameRequest();
+
 	//Player
 
 	if (player->godMode == true)

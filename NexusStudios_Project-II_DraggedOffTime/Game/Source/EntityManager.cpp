@@ -7,6 +7,7 @@
 #include "Textures.h"
 #include "Physics.h"
 #include "Input.h"
+#include "SceneGameplay.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -152,12 +153,51 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 {
 	OPTICK_EVENT();
 
+	float x = data.child("player").attribute("x").as_int();
+	float y = data.child("player").attribute("y").as_int();
+
+	app->sceneGameplay->player->pbody->body->SetTransform({ PIXEL_TO_METERS(x),PIXEL_TO_METERS(y) }, 0);
+
+	ListItem<Enemy*>* item;
+
+	pugi::xml_node enemyNode = data.child("enemy");
+
+	for (item = app->sceneGameplay->enemies.start; item != NULL; item = item->next, enemyNode = enemyNode.next_sibling("enemy"))
+	{
+		float x = enemyNode.attribute("x").as_int();
+		float y = enemyNode.attribute("y").as_int();
+
+		item->data->pbody->body->SetTransform({ PIXEL_TO_METERS(x),PIXEL_TO_METERS(y) }, 0);
+	}
+
 	return true;
 }
 
 bool EntityManager::SaveState(pugi::xml_node& data)
 {
 	OPTICK_EVENT();
+
+	pugi::xml_node player = data.append_child("player");
+
+	player.append_attribute("x") = app->sceneGameplay->player->position.x + 16;
+	player.append_attribute("y") = app->sceneGameplay->player->position.y + 16;
+
+	playerX = app->sceneGameplay->player->position.x;
+	playerY = app->sceneGameplay->player->position.y;
+
+	ListItem<Enemy*>* item;
+
+	for (item = app->sceneGameplay->enemies.start; item != NULL; item = item->next)
+	{
+		pugi::xml_node enemy = data.append_child("enemy");
+
+		int x, y;
+		item->data->pbody->GetPosition(x, y);
+
+		enemy.append_attribute("x") = x + 16;
+		enemy.append_attribute("y") = y + 16;
+
+	}
 
 	return true;
 }

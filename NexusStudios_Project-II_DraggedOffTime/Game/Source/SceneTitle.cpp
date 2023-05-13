@@ -167,11 +167,19 @@ bool SceneTitle::Update(float dt)
 
 		app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
 
+		app->sceneGameplay->player->pbody->body->SetTransform({ PIXEL_TO_METERS(150),PIXEL_TO_METERS(430) }, 0);
+
 	}
 
 	if (Continue_->state == GuiControlState::PRESSED) {
 
 		enableMusic = true;
+
+		NewGame->state = GuiControlState::DISABLED;
+		Continue_->state = GuiControlState::DISABLED;
+		Settings->state = GuiControlState::DISABLED;
+		Credits->state = GuiControlState::DISABLED;
+		Exit->state = GuiControlState::DISABLED;
 
 		app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
 

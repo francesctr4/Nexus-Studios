@@ -4,22 +4,25 @@
 	<window />
 	<textures />
 	<audio />
+	<map />
 	<:anonymous />
 	<pathfinding />
 	<sceneLogo />
 	<sceneTitle />
-	<scene />
+	<sceneGameplay />
 	<sceneEnding />
-	<entitymanager>
-		<player x="480" y="744" />
-		<enemy x="859" y="164" />
-		<enemy x="377" y="737" />
-	</entitymanager>
-	<map />
-	<:anonymous />
-	<:anonymous />
 	<guiManager />
+	<CombatManager />
+	<entitymanager>
+		<player x="337" y="469" />
+		<enemy x="690" y="160" />
+		<enemy x="1050" y="160" />
+		<enemy x="75" y="615" />
+		<enemy x="1120" y="600" />
+	</entitymanager>
+	<:anonymous />
+	<:anonymous />
 	<renderer>
-		<camera x="0" y="-192" />
+		<camera x="0" y="0" />
 	</renderer>
 </save_state>

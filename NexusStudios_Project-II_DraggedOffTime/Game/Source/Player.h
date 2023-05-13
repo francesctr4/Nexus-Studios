@@ -47,7 +47,7 @@ public:
 
 	bool textureChange;
 
-private:
+public:
 
 	int speed;
 
