@@ -170,6 +170,25 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 		item->data->pbody->body->SetTransform({ PIXEL_TO_METERS(x),PIXEL_TO_METERS(y) }, 0);
 	}
 
+	ListItem<Item*>* it;
+
+	pugi::xml_node itemNode = data.child("item");
+
+	for (it = app->sceneGameplay->items.start; it != NULL; it = it->next, itemNode = itemNode.next_sibling("item"))
+	{
+		float x = itemNode.attribute("x").as_int();
+		float y = itemNode.attribute("y").as_int();
+
+		if (SString(itemNode.attribute("isPicked").as_string()) == SString("False")) {
+
+			it->data->Awake();
+			it->data->Start();
+			it->data->pbody->body->SetTransform({ PIXEL_TO_METERS(x),PIXEL_TO_METERS(y) }, 0);
+
+		}
+
+	}
+
 	return true;
 }
 
@@ -196,6 +215,31 @@ bool EntityManager::SaveState(pugi::xml_node& data)
 
 		enemy.append_attribute("x") = x + 16;
 		enemy.append_attribute("y") = y + 16;
+
+	}
+
+	ListItem<Item*>* it;
+
+	for (it = app->sceneGameplay->items.start; it != NULL; it = it->next)
+	{
+		pugi::xml_node item = data.append_child("item");
+
+		int x, y;
+		it->data->pbody->GetPosition(x, y);
+
+		item.append_attribute("x") = x + 16;
+		item.append_attribute("y") = y + 16;
+
+		if (it->data->isPicked) {
+
+			item.append_attribute("isPicked") = "True";
+
+		}
+		else {
+
+			item.append_attribute("isPicked") = "False";
+
+		}
 
 	}
 

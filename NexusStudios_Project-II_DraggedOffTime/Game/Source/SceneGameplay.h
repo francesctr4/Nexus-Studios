@@ -56,6 +56,7 @@ public:
 	Tween Juan_anim;*/
 
 	List<Enemy*> enemies;
+	List<Item*> items;
 	List<NPC*> npcs;
 
 	// Menus

@@ -14,11 +14,17 @@
 	<guiManager />
 	<CombatManager />
 	<entitymanager>
-		<player x="337" y="469" />
+		<player x="522" y="442" />
 		<enemy x="690" y="160" />
 		<enemy x="1050" y="160" />
 		<enemy x="75" y="615" />
 		<enemy x="1120" y="600" />
+		<item x="500" y="450" isPicked="True" />
+		<item x="600" y="450" isPicked="False" />
+		<item x="700" y="450" isPicked="False" />
+		<item x="800" y="450" isPicked="False" />
+		<item x="876" y="446" isPicked="False" />
+		<item x="1144" y="361" isPicked="False" />
 	</entitymanager>
 	<:anonymous />
 	<:anonymous />

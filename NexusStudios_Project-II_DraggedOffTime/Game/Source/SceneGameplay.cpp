@@ -56,6 +56,8 @@ bool SceneGameplay::Awake(pugi::xml_node& config)
 		Item* item = (Item*)app->entityManager->CreateEntity(EntityType::ITEM);
 		item->parameters = itemNode;
 
+		items.Add(item);
+
 	}
 	
 	return true;

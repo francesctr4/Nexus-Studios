@@ -70,24 +70,7 @@ bool Enemy::Awake() {
 
 bool Enemy::Start() {
 
-	
-	texture = app->tex->Load(texturePath);
-	textureBattle = app->tex->Load(texturePathBattle);
-
-	int width = 32;
-	int height = 32;
-
-	pbody = app->physics->CreateRectangle(position.x, position.y, width, height, bodyType::STATIC);
-
-	enemySensor = app->physics->CreateCircleSensor(position.x, position.y, 25, bodyType::KINEMATIC, ColliderType::ENEMY_SENSOR);
-
-	//pbody->listener = this;
-
-	enemySensor->listener = this;
-
-	currentAnimation = &idle_right;
-
-	playerInteraction = false;
+	Restart();
 
 	return true;
 }
@@ -121,8 +104,6 @@ bool Enemy::Update()
 	return true;
 
 }
-
-
 
 bool Enemy::CleanUp()
 {
@@ -166,4 +147,25 @@ void Enemy::Death()
 	Disable();
 	pbody->body->DestroyFixture(pbody->body->GetFixtureList());
 	enemySensor->body->DestroyFixture(enemySensor->body->GetFixtureList());
+}
+
+void Enemy::Restart()
+{
+	texture = app->tex->Load(texturePath);
+	textureBattle = app->tex->Load(texturePathBattle);
+
+	int width = 32;
+	int height = 32;
+
+	pbody = app->physics->CreateRectangle(position.x, position.y, width, height, bodyType::STATIC);
+
+	enemySensor = app->physics->CreateCircleSensor(position.x, position.y, 25, bodyType::KINEMATIC, ColliderType::ENEMY_SENSOR);
+
+	//pbody->listener = this;
+
+	enemySensor->listener = this;
+
+	currentAnimation = &idle_right;
+
+	playerInteraction = false;
 }

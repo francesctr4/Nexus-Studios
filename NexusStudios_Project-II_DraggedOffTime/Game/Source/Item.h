@@ -41,6 +41,8 @@ public:
 
 	void OnCollisionEnd(PhysBody* physA, PhysBody* physB);
 
+	void Restart();
+
 public:
 
 	bool isPicked = false;

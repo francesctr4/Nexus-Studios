@@ -84,26 +84,7 @@ bool Item::Awake() {
 
 bool Item::Start() {
 
-	texture = app->tex->Load(texturePath);
-	icon = app->tex->Load(iconPath);
-
-	int width = 16;
-	int height = 16;
-
-	if (type == ItemType::TELEPORT_COFRE || type == ItemType::TELEPORT_JOVANI) {
-
-		pbody = app->physics->CreateRectangleSensor(position.x, position.y, 40, 20, bodyType::KINEMATIC, ctype);
-
-	}
-	else {
-
-		pbody = app->physics->CreateRectangleSensor(position.x, position.y, width, height, bodyType::KINEMATIC, ctype);
-
-	}
-	
-	pbody->listener = this;
-
-	currentAnimation = &idle;
+	Restart();
 
 	return true;
 }
@@ -138,6 +119,8 @@ void Item::OnCollision(PhysBody* physA, PhysBody* physB) {
 		{
 			LOG("Collision PLAYER");
 
+			isPicked = true;
+
 			Disable();
 			pbody->body->DestroyFixture(pbody->body->GetFixtureList());
 			if (physA->ctype == ColliderType::ITEM_BATTERY || physA->ctype == ColliderType::ITEM_GEM || physA->ctype == ColliderType::ITEM_MANGO || physA->ctype == ColliderType::ITEM_POTION)
@@ -163,4 +146,28 @@ void Item::OnCollisionEnd(PhysBody* physA, PhysBody* physB)
 
 	handledCollision = true;
 
+}
+
+void Item::Restart()
+{
+	texture = app->tex->Load(texturePath);
+	icon = app->tex->Load(iconPath);
+
+	int width = 16;
+	int height = 16;
+
+	if (type == ItemType::TELEPORT_COFRE || type == ItemType::TELEPORT_JOVANI) {
+
+		pbody = app->physics->CreateRectangleSensor(position.x, position.y, 40, 20, bodyType::KINEMATIC, ctype);
+
+	}
+	else {
+
+		pbody = app->physics->CreateRectangleSensor(position.x, position.y, width, height, bodyType::KINEMATIC, ctype);
+
+	}
+
+	pbody->listener = this;
+
+	currentAnimation = &idle;
 }
