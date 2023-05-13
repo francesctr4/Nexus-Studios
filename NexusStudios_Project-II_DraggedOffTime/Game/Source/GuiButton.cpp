@@ -81,6 +81,15 @@ bool GuiButton::Draw(Render* render)
 
 	switch (state)
 	{
+	case GuiControlState::INVISIBLE:
+		
+
+		rect.y = bounds.h * 4;
+		app->render->DrawTexture(tex, -app->render->camera.x + bounds.x, -app->render->camera.y + bounds.y, &rect);
+		
+
+		break;
+
 	case GuiControlState::DISABLED:
 		if (!app->sceneTitle->showSettings && app->sceneTitle->active) {
 
