@@ -141,21 +141,25 @@ int CombatManager::WeaponAttack(int p_DMG, int e_HP, int e_DEF, bool timing, int
 	}
 };
 
-void CombatManager::SkillAttack(int slected_player) {
+void CombatManager::SkillAttack(int slected_player, int p_DMG, int p_DEF) {
 
 	switch (slected_player) {
 	case 0:	//Ranged - 360 No-scope (Dispara y ignora la defensa del enemigo)
-
+		int totalDamage;
+		totalDamage = p_DMG;
+		app->sceneBattle->e_HP = app->sceneBattle->e_HP - totalDamage;
 		break;
 	case 1:	//Tank - I’m the one who bonks! (Cada vez que el enemigo te ataque cuando esté activa esta variable, el enemigo recibirá daño al atacar)
 
 
 		break;
-	case 2:	//Mage - Middle ages steroids (Sube tus estadísticas durante 2 turnos)
+	case 2:	//Mage - Middle ages steroids (Sube levemente tus estadísticas durante toda la batalla (p_DMG y p_DEF))
 
 		break;
 	case 3:	//Rogue - Ouroboros Sight (Añade "confusión" al enemigo que provoca que se ataque a sí mismo y le inflige algo de daño + p_HP se ve ligeramente reducido)
-
+		app->sceneBattle->e_confusion_turns = 3;
+		app->sceneBattle->e_HP -= 10;
+		app->sceneBattle->m_players[app->sceneBattle->selected_player].HP -= 5;
 		break;
 	}
 };

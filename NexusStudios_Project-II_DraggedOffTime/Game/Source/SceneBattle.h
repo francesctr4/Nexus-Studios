@@ -77,6 +77,7 @@ public:
 	int e_max_HP = 60;
 	int e_DEF = 10;
 	int e_DMG = 20;
+	int e_confusion_turns = 0;
 
 	int enemy_last_action = NULL; // 0 => Attack // 1 => Defense
 
