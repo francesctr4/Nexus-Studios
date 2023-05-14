@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "MapaInfernalBoss.tmx",
+    "activeFile": "InfernalMap5.tmx",
     "expandedProjectPaths": [
     ],
     "fileStates": {
@@ -122,11 +122,14 @@
             "scaleInDock": 1
         },
         "InfernalMap5.tmx": {
+            "expandedObjectLayers": [
+                5
+            ],
             "scale": 0.5,
             "selectedLayer": 4,
             "viewCenter": {
                 "x": 733,
-                "y": 508
+                "y": 506
             }
         },
         "InfernalMap5.tmx#InfernalProps": {
@@ -152,6 +155,9 @@
             "scaleInEditor": 2
         },
         "JovaniRoom.tmx": {
+            "expandedObjectLayers": [
+                7
+            ],
             "scale": 1.5,
             "selectedLayer": 4,
             "viewCenter": {
@@ -166,11 +172,14 @@
             "scaleInDock": 1
         },
         "MapaInfernalBoss.tmx": {
-            "scale": 1,
-            "selectedLayer": 3,
+            "expandedObjectLayers": [
+                5
+            ],
+            "scale": 0.75,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 41.5,
-                "y": 6
+                "x": 530,
+                "y": 306.66666666666663
             }
         },
         "MapaInfernalBoss.tmx#InfernalProps": {
@@ -212,31 +221,30 @@
     "map.tileWidth": 16,
     "map.width": 80,
     "openFiles": [
+        "InfernalMap1.tmx",
         "InfernalMap2.tmx",
         "InfernalMap3.tmx",
         "InfernalMap4fixed.tmx",
-        "InfernalMap4.tmx",
+        "InfernalMap5.tmx",
         "JovaniRoom.tmx",
         "MapaInfernalBoss.tmx",
         "InfernalMapPuzzle.tmx",
-        "InfernalMap5.tmx",
-        "InfernalMap1.tmx",
         "InfernalTiles.tsx"
     ],
     "project": "InfernalMaps.tiled-project",
     "property.type": "bool",
     "recentFiles": [
-        "mapfinal1280.tmx",
-        "InfernalMap4.tmx",
-        "JovaniRoom.tmx",
-        "MapaInfernalBoss.tmx",
-        "InfernalMap5.tmx",
-        "InfernalMap4fixed.tmx",
+        "InfernalMap1.tmx",
         "InfernalMap2.tmx",
         "InfernalMap3.tmx",
+        "InfernalMap4fixed.tmx",
         "InfernalTiles.tsx",
-        "InfernalMap1.tmx",
         "InfernalMapPuzzle.tmx",
+        "MapaInfernalBoss.tmx",
+        "JovaniRoom.tmx",
+        "InfernalMap5.tmx",
+        "mapfinal1280.tmx",
+        "InfernalMap4.tmx",
         "InfernalProps.tsx"
     ],
     "tileset.lastUsedFilter": "Archivos de conjuntos de patrones Tiled (*.tsx *.xml)",
