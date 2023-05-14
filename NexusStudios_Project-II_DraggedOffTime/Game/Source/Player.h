@@ -17,6 +17,17 @@ struct NewPosition {
 
 };
 
+struct PlayerStats {
+
+	int level;
+	int next;
+	int hp;
+	int atk;
+	int def;
+	int ap;
+
+};
+
 class Player : public Entity
 {
 public:
@@ -45,6 +56,7 @@ public:
 
 	bool godMode;
 
+	PlayerStats playerStats[4];
 	int playerChange;
 	uint changeFX;
 

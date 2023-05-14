@@ -76,6 +76,11 @@ bool Player::Start() {
 	texture[2] = app->tex->Load(texturePath3);
 	texture[3] = app->tex->Load(texturePath4);
 
+	playerStats[0] = {1,200,12,7,5,25};
+	playerStats[1] = {1,200,20,5,10,15};
+	playerStats[2] = {1,200,15,10,7,15};
+	playerStats[3] = {1,200,10,12,2,20};
+
 	// Add physics to the player.
 	pbody = app->physics->CreateCircle(position.x + 16, position.y + 16, 16, bodyType::DYNAMIC);
 

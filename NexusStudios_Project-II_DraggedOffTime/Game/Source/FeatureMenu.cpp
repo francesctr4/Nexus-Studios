@@ -189,6 +189,8 @@ void FeatureMenu::Load()
 
 	currentAnimation = &KleosIdle;
 
+	statsReference = app->tex->Load("Assets/UI/Stats/Reference_Stats.png");
+
 }
 
 void FeatureMenu::Update()
@@ -363,6 +365,20 @@ void FeatureMenu::PostUpdate()
 
 				app->render->DrawTexture(kleosMedieval, 370, 278, &kleosRect);
 
+				app->render->DrawTexture(statsReference, 784, 246);
+
+				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[0].level), 1013, 261, 20, 50, colorStats);
+
+				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[0].next), 955, 300, 40, 30, colorStats);
+
+				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[0].hp), 986, 351, 50, 50, colorStats);
+
+				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[0].atk), 1008, 400, 30, 50, colorStats);
+
+				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[0].def), 1008, 449, 30, 50, colorStats);
+
+				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[0].ap), 985, 498, 50, 50, colorStats);
+
 			}
 
 
@@ -374,6 +390,22 @@ void FeatureMenu::PostUpdate()
 
 				app->render->DrawTexture(kleosPrehistoric, 370, 278, &kleosRect);
 
+				app->render->DrawTexture(statsReference, 784, 246);
+
+				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[1].level), 1013, 261, 20, 50, colorStats);
+
+				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[1].next), 955, 300, 40, 30, colorStats);
+
+				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[1].hp), 986, 351, 50, 50, colorStats);
+
+				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[1].atk), 1008, 400, 30, 50, colorStats);
+
+				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[1].def), 986, 449, 50, 50, colorStats);
+
+				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[1].ap), 985, 498, 50, 50, colorStats);
+
+				
+
 			}
 
 			if (j == 2) {
@@ -384,6 +416,19 @@ void FeatureMenu::PostUpdate()
 
 				app->render->DrawTexture(kleosCyberpunk, 370, 278, &kleosRect);
 
+				app->render->DrawTexture(statsReference, 784, 246);
+
+				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[2].level), 1013, 261, 20, 50, colorStats);
+
+				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[2].next), 955, 300, 40, 30, colorStats);
+
+				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[2].hp), 986, 351, 50, 50, colorStats);
+
+				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[2].atk), 986, 400, 50, 50, colorStats);
+
+				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[2].def), 1008, 449, 30, 50, colorStats);
+
+				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[2].ap), 985, 498, 50, 50, colorStats);
 			}
 
 			if (j == 3) {
@@ -393,6 +438,20 @@ void FeatureMenu::PostUpdate()
 				SDL_Rect kleosRect = currentAnimation->GetCurrentFrame();
 
 				app->render->DrawTexture(kleosApocalypse, 370, 278, &kleosRect);
+
+				app->render->DrawTexture(statsReference, 784, 246);
+
+				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[3].level), 1013, 261, 20, 50, colorStats);
+
+				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[3].next), 955, 300, 40, 30, colorStats);
+
+				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[3].hp), 986, 351, 50, 50, colorStats);
+
+				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[3].atk), 986, 400, 50, 50, colorStats);
+
+				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[3].def), 1008, 449, 30, 50, colorStats);
+
+				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[3].ap), 985, 498, 50, 50, colorStats);
 
 			}
 

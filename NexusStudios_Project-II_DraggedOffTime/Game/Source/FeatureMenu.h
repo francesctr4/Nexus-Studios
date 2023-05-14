@@ -185,4 +185,9 @@ public:
 
 	Inventory inventoryManager;
 
+	// Stats Reference
+
+	SDL_Texture* statsReference;
+	SDL_Color colorStats = {105,0,0};
+
 };
