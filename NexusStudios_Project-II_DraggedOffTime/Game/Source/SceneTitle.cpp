@@ -50,7 +50,7 @@ bool SceneTitle::Start()
 {
 	//app->map->actualmap = 1;
 
-	titleSpritesheet = app->tex->Load("Assets/Textures/Intro_Animations/Title_SpriteSheet4.png");
+	titleSpritesheet = app->tex->Load("Assets/Textures/Intro_Animations/Title_SpriteSheet.png");
 
 	titleScreen = app->tex->Load("Assets/Textures/TitleScreen2.png");
 	draggedOffTime = app->tex->Load("Assets/Textures/DraggedOffTime3.png");
