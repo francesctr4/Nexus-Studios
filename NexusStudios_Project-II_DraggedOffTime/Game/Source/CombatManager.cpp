@@ -55,26 +55,50 @@ bool CombatManager::Update(float dt)
 }
 
 //Player actions
-int CombatManager::StandarAttack(int p_DMG, int e_HP, int e_DEF) {
+int CombatManager:: NormalAttack(int p_DMG, int e_HP, int e_DEF, bool timing, int num_hits) {
 	
-	int totalDamage;
-	totalDamage = p_DMG - (e_DEF + enemy_increasedDefense);
-
-	if (totalDamage > e_HP)
+	if (timing)
 	{
-		enemy_increasedDefense = 0;
-		//Kill enemy
-		return 0;
+		LOG("Good Timing");	//timing == true
+		int totalDamage;
+		totalDamage = (p_DMG - (e_DEF + enemy_increasedDefense)) * num_hits;	//De momento va a ser el doble del daño del player si aciertas en timing
+
+		if (totalDamage >= e_HP)
+		{
+			enemy_increasedDefense = 0;
+			//Kill enemy
+			return 0;
+		}
+		else
+		{
+			enemy_increasedDefense = 0;
+			//Return amount of e_HP
+			return (e_HP - totalDamage);
+		}
 	}
 	else
 	{
-		enemy_increasedDefense = 0;
-		//Return amount of e_HP
-		return e_HP - totalDamage;
+		LOG("Bad Timing");	//timing == false
+		int totalDamage;
+		totalDamage = (0.5 * p_DMG - (e_DEF + enemy_increasedDefense)) * num_hits;
+
+		if (totalDamage >= e_HP)
+		{
+			enemy_increasedDefense = 0;
+			//Kill enemy
+			return 0;
+		}
+		else
+		{
+			enemy_increasedDefense = 0;
+			//Return amount of e_HP
+			return (e_HP - totalDamage);
+		}
 	}
+	
 };
 
-int CombatManager::TimeEventAttack(int p_DMG, int e_HP, int e_DEF, bool timing, int num_hits) {
+int CombatManager::WeaponAttack(int p_DMG, int e_HP, int e_DEF, bool timing, int num_hits) {
 	//De momento nada, se incluirá en la siguiente versión
 	
 	if (timing)
@@ -117,10 +141,22 @@ int CombatManager::TimeEventAttack(int p_DMG, int e_HP, int e_DEF, bool timing, 
 	}
 };
 
-void CombatManager::BlockAttack() {
+int CombatManager::SkillAttack(int slected_player) {
 
-	//Add X ammout of DEF to the player for the next turn
-	increasedDefense = 5; //5 is a placeholder
+	switch (slected_player) {
+	case 0:
+
+		break;
+	case 1:
+
+		break;
+	case 2:
+
+		break;
+	case 3:
+
+		break;
+	}
 };
 
 int CombatManager::UseItem(int p_HP) {
@@ -188,51 +224,3 @@ void CombatManager::EnemyBlockAttack() {
 	//Add X ammout of DEF to the enemy for the next turn
 	enemy_increasedDefense = 5; //5 is a placeholder
 }
-
-
-//int CombatManager::QuickTimeEvent() {
-//	// Tiempo objetivo en milisegundos
-//	int objectiveTime = 500;
-//
-//	// Variables para el control del QTE
-//	bool qteStarted = false;
-//	bool completed = false;
-//	int startTime = 0;
-//	int endTime = 0;
-//
-//	// Bucle principal del QTE
-//	while (true) {
-//		// Comprobar si el usuario ha iniciado el QTE
-//		if (app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN) {
-//			qteStarted = true;
-//			startTime = SDL_GetTicks();
-//		}
-//
-//		// Salir del bucle si el QTE ha terminado
-//		if (completed || SDL_GetTicks() - startTime >= objectiveTime) {
-//			break;
-//		}
-//
-//		// Comprobar si el usuario ha completado el QTE
-//		if (qteStarted && app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN) {
-//			completed = true;
-//			endTime = SDL_GetTicks();
-//		}
-//
-//		// Dibujar el QTE
-//		SDL_SetRenderDrawColor(app->render->renderer, 0, 0, 255, 255);
-//		SDL_Rect rect = { 100, 100, 100, 100 };
-//		SDL_RenderFillRect(app->render->renderer, &rect);
-//		SDL_RenderPresent(app->render->renderer);
-//	}
-//
-//	// Devolver la cantidad de milisegundos que ha y de diferencia entre el tiempo objetivo y el input del jugador
-//	if (completed) {
-//		LOG("Resultado: %f", endTime - startTime);
-//		return endTime - startTime;		
-//	}
-//	else {
-//		LOG("Resultado: %f", objectiveTime);
-//		return objectiveTime;
-//	}
-//}

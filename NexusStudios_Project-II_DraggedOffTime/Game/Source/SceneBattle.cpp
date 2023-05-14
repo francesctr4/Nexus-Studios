@@ -184,9 +184,11 @@ bool SceneBattle::Update(float dt)
 				switch (action_selected)
 				{
 				case 0: //Standar attack
-					e_HP = app->combatManager->StandarAttack(m_players[selected_player].DMG, e_HP, e_DEF);
+					/*e_HP = app->combatManager->StandarAttack(m_players[selected_player].DMG, e_HP, e_DEF);
 					app->audio->PlayFx(fx_sword_hit);
-					app->combatManager->playerTurn = !app->combatManager->playerTurn;
+					app->combatManager->playerTurn = !app->combatManager->playerTurn;*/
+					qte_timer.Start();
+					qte = true;
 					break;
 				case 1:	//Quick time event attack (TODO)
 					qte_timer.Start();
@@ -197,7 +199,7 @@ bool SceneBattle::Update(float dt)
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
 					break;
 				case 3: //Habilidades (TODO)
-					e_HP = app->combatManager->StandarAttack(m_players[selected_player].DMG, e_HP, e_DEF);
+					//e_HP = app->combatManager->StandarAttack(m_players[selected_player].DMG, e_HP, e_DEF);
 					app->audio->PlayFx(fx_sword_hit);
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
 					break;
@@ -234,8 +236,11 @@ bool SceneBattle::Update(float dt)
 			{
 				if (app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 				{
-					e_HP = app->combatManager->StandarAttack(m_players[selected_player].DMG, e_HP, e_DEF);
-					app->combatManager->playerTurn = !app->combatManager->playerTurn;
+					/*e_HP = app->combatManager->StandarAttack(m_players[selected_player].DMG, e_HP, e_DEF);
+					app->combatManager->playerTurn = !app->combatManager->playerTurn;*/
+
+					qte_timer.Start();
+					qte = true;
 				}
 
 
@@ -254,7 +259,7 @@ bool SceneBattle::Update(float dt)
 
 				if (app->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
 				{
-					app->combatManager->BlockAttack();
+					app->combatManager->SkillAttack();
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
 				}
 
@@ -350,7 +355,15 @@ bool SceneBattle::Update(float dt)
 					// Si el jugador ha presionado la tecla Q suficientes veces, llama a TimeEventAttack con un valor de MAX_HITS y reinicia el contador
 					if (num_hits == MAX_HITS)
 					{
-						e_HP = app->combatManager->TimeEventAttack(m_players[selected_player].DMG, e_HP, e_DEF, true, MAX_HITS);
+						switch (action_selected) {
+							case 0:	//Normal Hit
+								e_HP = app->combatManager->NormalAttack(m_players[selected_player].DMG, e_HP, e_DEF, true, MAX_HITS);
+								break;
+							case 1:	//Weapon Hit 
+								e_HP = app->combatManager->WeaponAttack(m_players[selected_player].DMG, e_HP, e_DEF, true, MAX_HITS);
+								break;
+						}
+						
 						qte = false;
 						num_hits = 0; // Reiniciar el contador de hits
 						app->combatManager->playerTurn = !app->combatManager->playerTurn;
@@ -360,7 +373,14 @@ bool SceneBattle::Update(float dt)
 				else
 				{
 					LOG("Ataque QTE fallado");
-					e_HP = app->combatManager->TimeEventAttack(m_players[selected_player].DMG, e_HP, e_DEF, false, num_hits);
+					switch (action_selected) {
+					case 0:	//Normal Hit
+						e_HP = app->combatManager->NormalAttack(m_players[selected_player].DMG, e_HP, e_DEF, true, MAX_HITS);
+						break;
+					case 1:	//Weapon Hit 
+						e_HP = app->combatManager->WeaponAttack(m_players[selected_player].DMG, e_HP, e_DEF, true, MAX_HITS);
+						break;
+					}
 					qte = false;
 					num_hits = 0; // Reiniciar el contador de hits
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
@@ -561,9 +581,9 @@ bool SceneBattle::PostUpdate()
 	if (app->sceneGameplay->player->godMode)
 	{
 		// Combat UI - Controls (Debug) (Tamaño fuente: 8,3 x Nº de caracteres del string)
-		app->render->DrawText("1 - Standar Attack", 500, 100, 150, 20, { 255, 255, 255, 255 });
-		app->render->DrawText("2 - Quick Time Event Attack", 500, 115, 225, 20, { 255, 255, 255, 255 });
-		app->render->DrawText("3 - Defend (Block)", 500, 130, 150, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("1 - Normal Attack", 500, 100, 150, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("2 - Weapon Attack", 500, 115, 150, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("3 - Skill Attack", 500, 130, 150, 20, { 255, 255, 255, 255 });
 		app->render->DrawText("4 - Use Item", 500, 145, 100, 20, { 255, 255, 255, 255 });
 		app->render->DrawText("5 - Run away", 500, 160, 100, 20, { 255, 255, 255, 255 });
 		app->render->DrawText("6 - Switch Member", 500, 175, 142, 20, { 255, 255, 255, 255 });

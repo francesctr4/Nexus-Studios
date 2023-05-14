@@ -39,13 +39,13 @@ public:
 	//Combat Fuctions
 	
 	//1.Deal standar attack (Return e_HP)
-	int StandarAttack(int p_DMG, int e_HP, int e_DEF);
+	int NormalAttack(int p_DMG, int e_HP, int e_DEF, bool timing, int num_hits);
 
 	//2.Deal Quick time event attack (Return e_HP)
-	int TimeEventAttack(int p_DMG, int e_HP, int e_DEF, bool timing, int num_hits);
+	int WeaponAttack(int p_DMG, int e_HP, int e_DEF, bool timing, int num_hits);
 
-	//3.Block enemy attack - QTE
-	void BlockAttack();
+	//3.Skill attack
+	int SkillAttack(int selected_player);
 
 	//4.Use an item in combat - Heal (Returns p_HP)
 	int UseItem(int p_HP);
