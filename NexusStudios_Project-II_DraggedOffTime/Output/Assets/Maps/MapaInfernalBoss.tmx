@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="1">
- <tileset firstgid="1" source="InfernalTiles.tsx"/>
- <tileset firstgid="626" source="InfernalProps.tsx"/>
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="8">
+ <tileset firstgid="1" name="InfernalTiles" tilewidth="16" tileheight="16" tilecount="625" columns="25">
+  <image source="InfernalTiles.png" width="400" height="400"/>
+ </tileset>
+ <tileset firstgid="626" name="InfernalProps" tilewidth="16" tileheight="16" tilecount="625" columns="25">
+  <image source="InfernalProps.png" width="400" height="400"/>
+ </tileset>
  <layer id="2" name="Suelo" width="80" height="45">
   <properties>
    <property name="Draw" type="bool" value="true"/>
@@ -14434,4 +14438,27 @@
    <tile/>
   </data>
  </layer>
+ <objectgroup id="5" name="Colliders">
+  <object id="1" x="608" y="720">
+   <polygon points="0,0 0,-80 -304,-80 -304,-544 -112,-544 -112,-592 -224,-592 -224,-688 288,-688 288,-640 368,-640 368,-592 176,-592 176,-544 368,-544 368,-80 64,-80 64,0 672,0 672,-720 -608,-720 -608,0"/>
+  </object>
+  <object id="2" x="464" y="256">
+   <polygon points="0,0 0,48 32,48 32,0"/>
+  </object>
+  <object id="3" x="784" y="256">
+   <polygon points="0,0 0,48 32,48 32,0"/>
+  </object>
+  <object id="4" x="784" y="384">
+   <polygon points="0,0 0,48 32,48 32,0"/>
+  </object>
+  <object id="5" x="464" y="384">
+   <polygon points="0,0 0,48 32,48 32,0"/>
+  </object>
+  <object id="6" x="784" y="512">
+   <polygon points="0,0 0,48 32,48 32,0"/>
+  </object>
+  <object id="7" x="464" y="512">
+   <polygon points="0,0 0,48 32,48 32,0"/>
+  </object>
+ </objectgroup>
 </map>

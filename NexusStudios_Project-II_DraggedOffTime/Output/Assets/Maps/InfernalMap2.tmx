@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="1">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="8">
  <tileset firstgid="1" name="InfernalTiles" tilewidth="16" tileheight="16" tilecount="625" columns="25">
   <image source="InfernalTiles.png" width="400" height="400"/>
  </tileset>
@@ -14438,4 +14438,18 @@
    <tile/>
   </data>
  </layer>
+ <objectgroup id="6" name="Colliders">
+  <object id="1" x="1280" y="512">
+   <polygon points="0,0 -240,0 -240,-384 -400,-384 -400,-208 -624,-208 -624,-384 -752,-384 -752,-304 -672,-304 -672,-208 -864,-208 -864,-368 -928,-368 -928,-352 -960,-352 -960,-384 -1008,-384 -1008,-304 -1072,-304 -1072,-384 -1152,-384 -1152,-352 -1184,-352 -1184,-336 -1216,-336 -1216,-208 -1280,-208 -1280,-512 0,-512"/>
+  </object>
+  <object id="4" x="0" y="400">
+   <polygon points="0,0 64,0 64,144 160,144 160,64 704,64 704,160 704,176 928,176 928,192 960,192 960,208 1280,208 1280,320 0,320"/>
+  </object>
+  <object id="5" x="880" y="304">
+   <polygon points="0,23.75 64,23.9375 64,16 0,16"/>
+  </object>
+  <object id="7" x="976" y="304">
+   <polygon points="0,23.75 64,23.9375 64,16 0,16"/>
+  </object>
+ </objectgroup>
 </map>

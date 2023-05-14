@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="1">
- <tileset firstgid="1" source="InfernalTiles.tsx"/>
- <tileset firstgid="626" source="InfernalProps.tsx"/>
+ <tileset firstgid="1" name="InfernalTiles" tilewidth="16" tileheight="16" tilecount="625" columns="25">
+  <image source="InfernalTiles.png" width="400" height="400"/>
+ </tileset>
+ <tileset firstgid="626" name="InfernalProps" tilewidth="16" tileheight="16" tilecount="625" columns="25">
+  <image source="InfernalProps.png" width="400" height="400"/>
+ </tileset>
  <layer id="2" name="Suelo" width="80" height="45">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+   <property name="Navigation" type="bool" value="false"/>
+  </properties>
   <data>
    <tile gid="31"/>
    <tile gid="31"/>
@@ -3607,6 +3615,10 @@
   </data>
  </layer>
  <layer id="1" name="Pared" width="80" height="45">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+   <property name="Navigation" type="bool" value="false"/>
+  </properties>
   <data>
    <tile gid="311"/>
    <tile gid="311"/>
@@ -7211,6 +7223,10 @@
   </data>
  </layer>
  <layer id="3" name="Decoracion" width="80" height="45">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+   <property name="Navigation" type="bool" value="false"/>
+  </properties>
   <data>
    <tile/>
    <tile/>
@@ -10815,6 +10831,10 @@
   </data>
  </layer>
  <layer id="4" name="Decoracion2" width="80" height="45">
+  <properties>
+   <property name="Draw" type="bool" value="true"/>
+   <property name="Navigation" type="bool" value="false"/>
+  </properties>
   <data>
    <tile/>
    <tile/>

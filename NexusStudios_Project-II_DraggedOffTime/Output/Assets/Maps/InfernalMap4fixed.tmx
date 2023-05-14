@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="1">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="2">
  <tileset firstgid="1" name="InfernalTiles" tilewidth="16" tileheight="16" tilecount="625" columns="25">
   <image source="InfernalTiles.png" width="400" height="400"/>
   <wangsets>
@@ -29,7 +29,6 @@
  <tileset firstgid="626" name="InfernalProps" tilewidth="16" tileheight="16" tilecount="625" columns="25">
   <image source="InfernalProps.png" width="400" height="400"/>
  </tileset>
- <tileset firstgid="1251" source="InfernalTiles.tsx"/>
  <layer id="2" name="Suelo" width="80" height="45">
   <properties>
    <property name="Draw" type="bool" value="true"/>
@@ -95,13 +94,13 @@
    <tile gid="31"/>
    <tile gid="31"/>
    <tile gid="31"/>
-   <tile gid="1504"/>
    <tile gid="31"/>
    <tile gid="31"/>
    <tile gid="31"/>
-   <tile gid="1508"/>
-   <tile gid="1509"/>
-   <tile gid="1510"/>
+   <tile gid="31"/>
+   <tile gid="31"/>
+   <tile gid="31"/>
+   <tile gid="31"/>
    <tile gid="31"/>
    <tile gid="31"/>
    <tile gid="31"/>
@@ -179,8 +178,6 @@
    <tile gid="31"/>
    <tile gid="31"/>
    <tile gid="31"/>
-   <tile gid="1533"/>
-   <tile gid="1534"/>
    <tile gid="31"/>
    <tile gid="31"/>
    <tile gid="31"/>
@@ -188,7 +185,6 @@
    <tile gid="31"/>
    <tile gid="31"/>
    <tile gid="31"/>
-   <tile gid="1542"/>
    <tile gid="31"/>
    <tile gid="31"/>
    <tile gid="31"/>
@@ -262,7 +258,6 @@
    <tile gid="31"/>
    <tile gid="31"/>
    <tile gid="31"/>
-   <tile gid="1561"/>
    <tile gid="31"/>
    <tile gid="31"/>
    <tile gid="31"/>
@@ -340,8 +335,12 @@
    <tile gid="31"/>
    <tile gid="31"/>
    <tile gid="31"/>
-   <tile gid="1584"/>
-   <tile gid="1585"/>
+   <tile gid="31"/>
+   <tile gid="31"/>
+   <tile gid="31"/>
+   <tile gid="31"/>
+   <tile gid="31"/>
+   <tile gid="31"/>
    <tile gid="31"/>
    <tile gid="31"/>
    <tile gid="31"/>
@@ -14462,4 +14461,9 @@
    <tile/>
   </data>
  </layer>
+ <objectgroup id="7" name="Colliders">
+  <object id="1" x="288" y="240">
+   <polygon points="0,0 -160,0 -160,176 -112,176 -112,192 -80,192 -80,176 -32,176 -32,192 -16,192 -16,240 -32,240 -32,256 -48,256 -48,272 -64,272 -64,320 -48,320 -48,480 -288,480 -288,-240 992,-240 992,480 48,480 48,320 192,320 192,16 272,16 272,320 640,320 640,224 688,224 688,176 704,176 704,48 784,48 784,16 752,16 752,0 752,-16 720,-16 720,0 688,0 688,-16 608,-16 608,-64 832,-64 832,-144 512,-144 512,-128 480,-128 480,-96 496,-96 496,-64 480,-64 480,-16 496,-16 496,16 480,16 480,48 624,48 624,128 528,128 528,144 480,144 480,208 432,208 432,-112 400,-112 400,-144 160,-144 160,-128 96,-128 96,-144 0,-144"/>
+  </object>
+ </objectgroup>
 </map>
