@@ -36,28 +36,24 @@ bool Inventory::PostUpdate()
 
 		for (int i = 0; i < items.size(); i++)
 		{
-			if (i < 8) {
+			if (i < 6) {
 
-				app->render->DrawTexture(items[i].icon, 264 + 98 * i, 210, &SDL_Rect({ 0,0,62,62 }));
-
-			}
-			else if (i >= 8 && i < 16) {
-
-				app->render->DrawTexture(items[i].icon, 264 + 98 * i - 98 * 8, 310, &SDL_Rect({ 0,0,62,62 }));
+				app->render->DrawTexture(items[i].icon, 294 + 126 * i, 237, &SDL_Rect({ 0,0,62,62 }));
 
 			}
-			else if (i >= 16 && i < 24) {
+			else if (i >= 6 && i < 12) {
 
-				app->render->DrawTexture(items[i].icon, 264 + 98 * i - 98 * 16, 410, &SDL_Rect({ 0,0,62,62 }));
+				app->render->DrawTexture(items[i].icon, 294 + 126 * i - 126 * 6, 359, &SDL_Rect({ 0,0,62,62 }));
 
 			}
-			else if (i >= 24) {
+			else if (i >= 12) {
 
-				app->render->DrawTexture(items[i].icon, 264 + 98 * i - 98 * 24, 510, &SDL_Rect({ 0,0,62,62 }));
+				app->render->DrawTexture(items[i].icon, 294 + 126 * i - 126 * 12, 481, &SDL_Rect({ 0,0,62,62 }));
 
 			}
 			
 		}
+
 	}
 
 	return true;

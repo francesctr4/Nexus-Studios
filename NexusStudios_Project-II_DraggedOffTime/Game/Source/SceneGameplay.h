@@ -11,6 +11,7 @@
 #include "FeatureMenu.h"
 #include "Pause.h"
 #include "Tweening.h"
+#include "Timer.h"
 
 struct SDL_Texture;
 

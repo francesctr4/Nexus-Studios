@@ -4,6 +4,7 @@
 #include "Audio.h"
 #include "Log.h"
 #include "SceneTitle.h"
+#include "SceneGameplay.h"
 
 GuiButton::GuiButton(uint32 id, SDL_Rect bounds, SDL_Texture* tex, const char* text) : GuiControl(GuiControlType::BUTTON, id)
 {
@@ -21,6 +22,8 @@ GuiButton::GuiButton(uint32 id, SDL_Rect bounds, SDL_Texture* tex, const char* t
 	buttonPressed = app->audio->LoadFx("Assets/Audio/Fx/PressingButton.wav");
 	pressedOnce = false;
 
+	timePressed.Start();
+
 }
 
 GuiButton::~GuiButton()
@@ -30,7 +33,7 @@ GuiButton::~GuiButton()
 
 bool GuiButton::Update(float dt)
 {
-	if (state != GuiControlState::DISABLED)
+	if (state != GuiControlState::DISABLED && state != GuiControlState::INVISIBLE /* && timePressed.ReadMSec() > 100*/)
 	{
 		// Update the state of the GUiButton according to the mouse position
 		app->input->GetMousePosition(mouseX, mouseY);
@@ -48,11 +51,13 @@ bool GuiButton::Update(float dt)
 
 			if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_REPEAT) {
 				state = GuiControlState::PRESSED;
+				//timePressed.Start();
 			}
 
 			//
 			if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP) {
 				NotifyObserver();
+				
 			}
 		}
 		else {
@@ -81,6 +86,7 @@ bool GuiButton::Draw(Render* render)
 
 	switch (state)
 	{
+
 	case GuiControlState::DISABLED:
 		if (!app->sceneTitle->showSettings && app->sceneTitle->active) {
 
@@ -112,13 +118,28 @@ bool GuiButton::Draw(Render* render)
 		if (!pressedOnce) {
 			app->audio->PlayFx(buttonPressed);
 			pressedOnce = true;
+			
 		}
 		rect.y = bounds.h * 2;
 		app->render->DrawTexture(tex, -app->render->camera.x + bounds.x, -app->render->camera.y + bounds.y, &rect);
 		if (debug) app->render->DrawRectangle({ -app->render->camera.x + bounds.x, -app->render->camera.y + bounds.y, bounds.w, bounds.h }, 255, 0, 0, 255, false);
 
 		break;
+
+	case GuiControlState::INVISIBLE:
+
+
+		if (!app->sceneGameplay->featureMenu.statsEnabled) {
+
+			rect.y = bounds.h * 4;
+			app->render->DrawTexture(tex, -app->render->camera.x + bounds.x, -app->render->camera.y + bounds.y, &rect);
+		}
+
+		break;
 	}
+
+
+
 
 	app->render->DrawText(text.GetString(), bounds.x, bounds.y, bounds.w, bounds.h, { 255,255,255 });
 

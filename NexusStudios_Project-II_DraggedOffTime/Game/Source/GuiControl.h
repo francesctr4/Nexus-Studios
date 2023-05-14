@@ -3,6 +3,7 @@
 #include "Input.h"
 #include "Render.h"
 #include "Module.h"
+#include "Timer.h"
 
 #include "Point.h"
 #include "SString.h"
@@ -30,6 +31,7 @@ enum class GuiControlState
 	FOCUSED,
 	PRESSED,
 	SELECTED,
+	INVISIBLE,
 };
 
 class GuiControl
@@ -79,6 +81,8 @@ public:
 	uint32 id;
 	GuiControlType type;
 	GuiControlState state;
+
+	Timer timePressed;
 
 	SString text;           // Control text (if required)
 	SDL_Rect bounds;        // Position and size
