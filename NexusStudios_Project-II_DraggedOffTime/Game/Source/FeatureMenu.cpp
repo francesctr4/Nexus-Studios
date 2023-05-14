@@ -207,7 +207,6 @@ void FeatureMenu::Update()
 		
 	}
 
-
 	//UI Buttons
 
 	if (Stats->state == GuiControlState::PRESSED) {
@@ -333,7 +332,7 @@ void FeatureMenu::Update()
 	}
 
 
-	if (!ShowSlots) {
+	if (!ShowSlots || !statsEnabled) {
 
 		inventoryManager.inventoryOn = false;
 

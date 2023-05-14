@@ -199,7 +199,7 @@ bool SceneBattle::Update(float dt)
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
 					break;
 				case 3: //Habilidades (TODO)
-					//e_HP = app->combatManager->StandarAttack(m_players[selected_player].DMG, e_HP, e_DEF);
+					app->combatManager->SkillAttack(selected_player, m_players[selected_player].DMG, m_players[selected_player].DEF);
 					app->audio->PlayFx(fx_sword_hit);
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
 					break;
@@ -259,7 +259,7 @@ bool SceneBattle::Update(float dt)
 
 				if (app->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
 				{
-					//app->combatManager->SkillAttack();
+					app->combatManager->SkillAttack(selected_player, m_players[selected_player].DMG, m_players[selected_player].DEF);
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
 				}
 
@@ -309,29 +309,6 @@ bool SceneBattle::Update(float dt)
 
 				if (app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
-
-				//Quick Time Event attack (Para la alpha)
-				/*if (qte)
-				{
-					if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN)
-					{
-						endTime = SDL_GetTicks();
-					}
-
-					if (endTime != 0 && endTime - startTime >= (objetiveTime - tolerance) && endTime - startTime <= (objetiveTime + tolerance))
-					{
-						LOG("Ataque acertado");
-						qte = false;
-						app->combatManager->playerTurn = !app->combatManager->playerTurn;
-					}
-
-					if((!endTime - startTime >= (objetiveTime - tolerance) && endTime - startTime <= (objetiveTime + tolerance)))
-					{
-						LOG("Ataque fallido");
-						qte = false;
-						app->combatManager->playerTurn = !app->combatManager->playerTurn;
-					}
-				}*/
 			}
 		}
 
@@ -407,7 +384,12 @@ bool SceneBattle::Update(float dt)
 			case 1:
 				if (e_HP > 0)
 				{
-					m_players[selected_player].HP = app->combatManager->EnemyAttack(e_DMG, m_players[selected_player].HP, m_players[selected_player].DEF);
+					if(e_confusion_turns == 0)
+						m_players[selected_player].HP = app->combatManager->EnemyAttack(e_DMG, m_players[selected_player].HP, m_players[selected_player].DEF);
+
+					if (e_confusion_turns > 0)
+						e_HP = app->combatManager->NormalAttack(e_DMG, e_HP, e_DEF, true, 1);
+
 					LOG("Atack");
 					//app->audio->PlayFx(fx_sword_hit); //Se buguea un montón porque se sobreponen los sonidos, hay que  añadirle un timer o algo para evitarlo y que sea algo mas lento el combate
 					//Blit red color in screen
@@ -430,6 +412,8 @@ bool SceneBattle::Update(float dt)
 			}
 			//LOG("-------------YOUR TURN-------------");
 
+			if (e_confusion_turns > 0)
+				e_confusion_turns--;
 
 			app->combatManager->playerTurn = !app->combatManager->playerTurn;
 			turn++;
@@ -632,6 +616,10 @@ bool SceneBattle::PostUpdate()
 		std::string time = std::to_string(qte_timer.ReadMSec());
 		app->render->DrawText(time, 150, 400, 100, 20, { 255, 255, 255, 255 });
 
+		//Muestra la cantidad de turnos que le quedan con confusión al enemigo
+		std::string confusion = std::to_string(e_confusion_turns);
+		app->render->DrawText(confusion, 1000+100, 10, 10, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("Confusion turns: ", 900+100, 10, 100, 20, { 255, 255, 255, 255 });
 	}
 
 
