@@ -46,6 +46,7 @@ public:
 	bool godMode;
 
 	int playerChange;
+	uint changeFX;
 
 	int speed;
 

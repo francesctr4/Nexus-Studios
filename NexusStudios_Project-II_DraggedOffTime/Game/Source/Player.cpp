@@ -95,6 +95,8 @@ bool Player::Start() {
 	
 	idleDirection = false;
 
+	changeFX = app->audio->LoadFx("Assets/Audio/Fx/ChangePlayer.wav");
+
 	return true;
 }
 
@@ -208,6 +210,8 @@ bool Player::Update()
 	SDL_Rect playerRect = currentAnimation->GetCurrentFrame();
 
 	if (app->input->GetKey(SDL_SCANCODE_C) == KEY_DOWN) {
+
+		app->audio->PlayFx(changeFX);
 
 		if (playerChange < 3) {
 
