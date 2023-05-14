@@ -191,11 +191,21 @@ bool CombatManager::Run() {
 int CombatManager::ChangeParty(int selected_player) {
 	if (selected_player  == 0)
 	{
-		return 1;	//Cambiar a player 2
+		return 1;	// Cambiar a player 2
 	}
 	else if (selected_player == 1)
 	{
-		return 0;	//Cambiar a player 1
+		return 2;	// Cambiar a player 3
+	}
+	else if (selected_player == 2) { 
+
+		return 3; // Cambiar a player 4
+
+	}
+	else if (selected_player == 3) {
+
+		return 0; // Cambiar a player 1
+
 	}
 };
 

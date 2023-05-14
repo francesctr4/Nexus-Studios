@@ -83,8 +83,11 @@ public:
 
 	//Sprite player (TODO)
 
-	SDL_Texture* playerInCombat;
-	SDL_Texture* playerInCombat2;
+	SDL_Texture* medievalInCombat;
+	SDL_Texture* prehistoricInCombat;
+	SDL_Texture* cyberpunkInCombat;
+	SDL_Texture* apocalypseInCombat;
+
 	Animation playerAnimation;
 	Animation* currentAnimation;
 

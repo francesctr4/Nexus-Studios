@@ -92,8 +92,10 @@ bool SceneBattle::Start()
 
 	currentAnimation = &playerAnimation;
 
-	playerInCombat = app->tex->Load("Assets/Textures/PlayerInCombat.png");
-	playerInCombat2 = app->tex->Load("Assets/Textures/PlayerInCombat2.png");
+	medievalInCombat = app->tex->Load("Assets/Textures/Medieval_InCombat.png");
+	prehistoricInCombat = app->tex->Load("Assets/Textures/Prehistoric_InCombat.png");
+	cyberpunkInCombat = app->tex->Load("Assets/Textures/Cyberpunk_InCombat.png");
+	apocalypseInCombat = app->tex->Load("Assets/Textures/Apocalypse_InCombat.png");
 
 	// Enemy texture
 
@@ -551,14 +553,28 @@ bool SceneBattle::PostUpdate()
 	if (selected_player == 0) {
 
 		app->sceneGameplay->player->playerChange = 0;
-		app->render->DrawTexture(playerInCombat, 185, 405, &playerRect);
+		app->render->DrawTexture(medievalInCombat, 185, 405, &playerRect);
 
 	}
 
 	if (selected_player == 1) {
 
 		app->sceneGameplay->player->playerChange = 1;
-		app->render->DrawTexture(playerInCombat2, 185, 405, &playerRect);
+		app->render->DrawTexture(prehistoricInCombat, 185, 405, &playerRect);
+
+	}
+
+	if (selected_player == 2) {
+
+		app->sceneGameplay->player->playerChange = 2;
+		app->render->DrawTexture(cyberpunkInCombat, 185, 405, &playerRect);
+
+	}
+
+	if (selected_player == 3) {
+
+		app->sceneGameplay->player->playerChange = 3;
+		app->render->DrawTexture(apocalypseInCombat, 185, 405, &playerRect);
 
 	}
 
