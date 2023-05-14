@@ -27,7 +27,29 @@ SceneLogo::~SceneLogo()
 
 bool SceneLogo::Awake(pugi::xml_node& config)
 {
-	
+
+	for (int i = 0; i < 17; i++) {
+
+		for (int j = 0; j < 8; j++) {
+
+			nexus1.PushBack({ 1280 * j, 720 * i, 1280, 720 });
+
+		}
+	}
+	nexus1.loop = true;
+	nexus1.speed = 0.5f;
+
+	for (int i = 0; i < 4; i++) {
+
+		for (int j = 0; j < 3; j++) {
+
+			nexus2.PushBack({ 1280 * j, 720 * i, 1280, 720 });
+
+		}
+	}
+	nexus2.loop = true;
+	nexus2.speed = 0.5f;
+
 	return true;
 }
 
@@ -38,6 +60,9 @@ bool SceneLogo::Start()
 
 	//bool retLoad = app->map->Load();
 
+	//nexusSpritesheet1 = app->tex->Load("Assets/Textures/Intro_Animations/NexusAnimation1.png");
+	nexusSpritesheet2 = app->tex->Load("Assets/Textures/Intro_Animations/NexusAnimation2.png");
+
 	nexusStudiosLogo = app->tex->Load("Assets/Textures/SceneLogo.png");
 
 	logoFX = app->audio->LoadFx("Assets/Audio/Fx/LogoFX2.wav");
@@ -45,6 +70,8 @@ bool SceneLogo::Start()
 	enableMusic = true;
 
 	FX_played = false;
+
+	currentAnimation = &nexus2;
 
 	return true;
 }
@@ -75,6 +102,7 @@ bool SceneLogo::Update(float dt)
 
 		enableMusic = true;
 		app->fadeToBlack->Fade(this, (Module*)app->sceneTitle);
+		this->CleanUp();
 
 	}
 
@@ -86,6 +114,12 @@ bool SceneLogo::Update(float dt)
 		FX_played = true;
 
 	}
+
+	currentAnimation->Update();
+
+	SDL_Rect rect = currentAnimation->GetCurrentFrame();
+
+	app->render->DrawTexture(nexusSpritesheet2, 0, 0, &rect);
 
 	return true;
 }
@@ -107,8 +141,9 @@ bool SceneLogo::PostUpdate()
 bool SceneLogo::CleanUp()
 {
 	LOG("Freeing scene");
-	
-	//app->map->CleanUp();
+
+	app->tex->UnLoad(nexusSpritesheet2);
+	app->tex->UnLoad(nexusStudiosLogo);
 
 	return true;
 }

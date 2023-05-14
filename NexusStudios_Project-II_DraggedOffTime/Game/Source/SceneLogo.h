@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Animation.h"
+
 struct SDL_Texture;
 
 class SceneLogo : public Module
@@ -37,6 +39,14 @@ public:
 private:
 
 	SDL_Texture* nexusStudiosLogo;
+
+	SDL_Texture* nexusSpritesheet1;
+	Animation nexus1;
+
+	SDL_Texture* nexusSpritesheet2;
+	Animation nexus2;
+
+	Animation* currentAnimation;
 
 	uint logoFX;
 	bool FX_played;
