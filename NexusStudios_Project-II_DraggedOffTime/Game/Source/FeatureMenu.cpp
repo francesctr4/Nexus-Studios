@@ -175,7 +175,7 @@ void FeatureMenu::Load()
 
 	kleosMedieval = app->tex->Load("Assets/UI/Stats/SpriteSheet_Kleos_Stats.png");
 
-	//kleosPrehistoric = app->tex->Load("Assets/UI/Stats/SpriteSheet_Kleos_Stats.png");
+	kleosPrehistoric = app->tex->Load("Assets/UI/Stats/Prehistoric_Kleos_Stats.png");
 
 	kleosCyberpunk = app->tex->Load("Assets/UI/Stats/Cyberpunk_Kleos_Stats.png");
 
@@ -374,7 +374,7 @@ void FeatureMenu::PostUpdate()
 
 				SDL_Rect kleosRect = currentAnimation->GetCurrentFrame();
 
-				app->render->DrawTexture(kleosMedieval, 370, 278, &kleosRect);
+				app->render->DrawTexture(kleosPrehistoric, 370, 278, &kleosRect);
 
 			}
 
