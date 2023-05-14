@@ -27,8 +27,11 @@ bool Player::Awake() {
 	// Initialize Player parameters from XML
 	position.x = parameters.attribute("x").as_int();
 	position.y = parameters.attribute("y").as_int();
+
 	texturePath = parameters.attribute("texturepath").as_string();
 	texturePath2 = parameters.attribute("texturepath2").as_string();
+	texturePath3 = parameters.attribute("texturepath3").as_string();
+	texturePath4 = parameters.attribute("texturepath4").as_string();
 
 	for (int i = 0; i < 4; i++) {
 
@@ -68,8 +71,10 @@ bool Player::Awake() {
 bool Player::Start() {
 	
 	//initilize textures.
-	texture = app->tex->Load(texturePath);
-	texture2 = app->tex->Load(texturePath2);
+	texture[0] = app->tex->Load(texturePath);
+	texture[1] = app->tex->Load(texturePath2);
+	texture[2] = app->tex->Load(texturePath3);
+	texture[3] = app->tex->Load(texturePath4);
 
 	// Add physics to the player.
 	pbody = app->physics->CreateCircle(position.x + 16, position.y + 16, 16, bodyType::DYNAMIC);
@@ -84,7 +89,7 @@ bool Player::Start() {
 
 	godMode = false;
 
-	textureChange = false;
+	playerChange = 0;
 
 	itemCollectedFx = app->audio->LoadFx("Assets/Audio/Fx/Item.wav");
 	
@@ -105,11 +110,10 @@ bool Player::Update()
 	
 	b2Vec2 vel = b2Vec2(0, -GRAVITY_Y);
 	
-
-
 	if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN) godMode = !godMode;
 
 	speed = 5;
+
 	if (godMode)
 	{
 		speed = 10;
@@ -203,21 +207,24 @@ bool Player::Update()
 
 	SDL_Rect playerRect = currentAnimation->GetCurrentFrame();
 
-	if (godMode && app->input->GetKey(SDL_SCANCODE_7) == KEY_DOWN) textureChange = !textureChange;
+	if (app->input->GetKey(SDL_SCANCODE_C) == KEY_DOWN) {
 
-	if (!textureChange) {
+		if (playerChange < 3) {
 
-		app->sceneBattle->selected_player = 0;
-		app->render->DrawTexture(texture, position.x, position.y, &playerRect);
+			playerChange++;
+
+		}
+		else {
+
+			playerChange = 0;
+
+		}
 
 	}
 
-	else {
+	app->sceneBattle->selected_player = playerChange;
+	app->render->DrawTexture(texture[playerChange], position.x, position.y, &playerRect);
 
-		app->sceneBattle->selected_player = 1;
-		app->render->DrawTexture(texture2, position.x, position.y, &playerRect);
-
-	}
 	
 	if (newPos.t == true)
 	{

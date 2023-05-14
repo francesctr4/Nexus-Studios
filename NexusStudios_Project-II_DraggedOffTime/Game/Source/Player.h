@@ -45,18 +45,17 @@ public:
 
 	bool godMode;
 
-	bool textureChange;
-
-public:
+	int playerChange;
 
 	int speed;
 
 	// Declare player parameters
-	SDL_Texture* texture;
-	SDL_Texture* texture2;
+	SDL_Texture* texture[4];
 
 	const char* texturePath;
 	const char* texturePath2;
+	const char* texturePath3;
+	const char* texturePath4;
 
 	// Add physics to the player 
 	PhysBody* pbody;

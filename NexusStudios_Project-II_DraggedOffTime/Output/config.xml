@@ -23,7 +23,7 @@
   </audio>
 
   <sceneGameplay>
-	<player x="150 " y="430" texturepath="Assets/Textures/SpriteSheet_Kleos.png" texturepath2="Assets/Textures/Demon_Kleos_SpriteSheet.png"/>
+	<player x="150 " y="430" texturepath="Assets/Textures/SpriteSheet_Kleos.png" texturepath2="Assets/Textures/Prehistoric_Kleos_SpriteSheet.png" texturepath3="Assets/Textures/Cyberpunk_Kleos_SpriteSheet.png" texturepath4="Assets/Textures/Demon_Kleos_SpriteSheet.png"/>
 	  
 	<npc type="rogue" x="950" y="410" texturepath="Assets/Textures/Rogue.png"/>
 	<npc type="wizard" x="755" y="350" texturepath="Assets/Textures/Wizard.png"/>

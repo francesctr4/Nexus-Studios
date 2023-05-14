@@ -546,14 +546,14 @@ bool SceneBattle::PostUpdate()
 
 	if (selected_player == 0) {
 
-		app->sceneGameplay->player->textureChange = false;
+		app->sceneGameplay->player->playerChange = 0;
 		app->render->DrawTexture(playerInCombat, 185, 405, &playerRect);
 
 	}
 
 	if (selected_player == 1) {
 
-		app->sceneGameplay->player->textureChange = true;
+		app->sceneGameplay->player->playerChange = 1;
 		app->render->DrawTexture(playerInCombat2, 185, 405, &playerRect);
 
 	}
