@@ -259,7 +259,7 @@ bool SceneBattle::Update(float dt)
 
 				if (app->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
 				{
-					app->combatManager->SkillAttack();
+					//app->combatManager->SkillAttack();
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
 				}
 
