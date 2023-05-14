@@ -159,8 +159,7 @@ void FeatureMenu::Load()
 	SideQuest_3->state = GuiControlState::DISABLED;
 
 	//SFX
-	OpenPause = app->audio->LoadFx("Assets/Audio/Fx/OpenPause.wav");
-	ClosePause = app->audio->LoadFx("Assets/Audio/Fx/ClosePause.wav");
+	Mission_Completed = app->audio->LoadFx("Assets/Audio/Fx/Mission_Completed.wav");
 
 	Fondo = app->tex->Load("Assets/UI/PauseBackground.png");
 
@@ -207,7 +206,6 @@ void FeatureMenu::Update()
 		ChangeQuests = false;
 		
 	}
-
 
 	//UI Buttons
 
@@ -334,7 +332,7 @@ void FeatureMenu::Update()
 	}
 
 
-	if (!ShowSlots) {
+	if (!ShowSlots || !statsEnabled) {
 
 		inventoryManager.inventoryOn = false;
 
@@ -504,22 +502,6 @@ void FeatureMenu::PostUpdate()
 
 		case 4: {
 
-			if (app->sceneGameplay->first_mision) {
-
-				app->render->DrawTexture(Quest_Completed, 582, 387);
-			}
-
-			if (app->sceneGameplay->second_mision) {
-
-				app->render->DrawTexture(Quest_Completed, 582, 434);
-			}
-
-			if (app->sceneGameplay->third_mision) {
-
-				app->render->DrawTexture(Quest_Completed, 582, 481);
-			}
-
-
 			if (q == 0) {
 				app->render->DrawTexture(Quests_visual, 0, 0, &SDL_Rect({ 1280 * 0, 0, 1280, 720 }));
 			}
@@ -535,6 +517,24 @@ void FeatureMenu::PostUpdate()
 			if (q == 3) {
 				app->render->DrawTexture(Quests_visual, 0, 0, &SDL_Rect({ 1280 * 3, 0, 1280, 720 }));
 			}
+
+			if (app->sceneGameplay->first_mision) {
+
+				app->render->DrawTexture(Quest_Completed, 582, 387);
+
+			}
+
+			if (app->sceneGameplay->second_mision) {
+
+				app->render->DrawTexture(Quest_Completed, 582, 481);
+				
+			}
+
+			if (app->sceneGameplay->third_mision) {
+
+				app->render->DrawTexture(Quest_Completed, 582, 434);
+				
+			}
 			
 			break;
 
@@ -544,6 +544,26 @@ void FeatureMenu::PostUpdate()
 
 	}
 
+	if (app->sceneGameplay->first_mision && !firstMissionFX) {
+
+		app->audio->PlayFx(Mission_Completed);
+		firstMissionFX = true;
+
+	}
+
+	if (app->sceneGameplay->second_mision && !secondMissionFX) {
+
+		app->audio->PlayFx(Mission_Completed);
+		secondMissionFX = true;
+
+	}
+
+	if (app->sceneGameplay->third_mision && !thirdMissionFX) {
+
+		app->audio->PlayFx(Mission_Completed);
+		thirdMissionFX = true;
+
+	}
 
 	if (statsEnabled) {
 
