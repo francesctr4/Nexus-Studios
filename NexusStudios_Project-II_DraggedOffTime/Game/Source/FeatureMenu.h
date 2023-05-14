@@ -138,8 +138,10 @@ public:
 	GuiButton* RightArrow;
 
 	//SFX
-	uint Mission_Complited;
-
+	uint Mission_Completed;
+	bool firstMissionFX = false;
+	bool secondMissionFX = false;
+	bool thirdMissionFX = false;
 
 	bool statsEnabled;
 	SDL_Texture* texture;

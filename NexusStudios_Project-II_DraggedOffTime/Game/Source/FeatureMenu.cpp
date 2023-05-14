@@ -159,7 +159,7 @@ void FeatureMenu::Load()
 	SideQuest_3->state = GuiControlState::DISABLED;
 
 	//SFX
-	Mission_Complited = app->audio->LoadFx("Assets/Audio/Fx/OpenPause.wav");
+	Mission_Completed = app->audio->LoadFx("Assets/Audio/Fx/Mission_Completed.wav");
 
 	Fondo = app->tex->Load("Assets/UI/PauseBackground.png");
 
@@ -522,19 +522,19 @@ void FeatureMenu::PostUpdate()
 			if (app->sceneGameplay->first_mision) {
 
 				app->render->DrawTexture(Quest_Completed, 582, 387);
-				app->audio->PlayFx(Mission_Complited);
+
 			}
 
 			if (app->sceneGameplay->second_mision) {
 
 				app->render->DrawTexture(Quest_Completed, 582, 481);
-				app->audio->PlayFx(Mission_Complited);
+				
 			}
 
 			if (app->sceneGameplay->third_mision) {
 
 				app->render->DrawTexture(Quest_Completed, 582, 434);
-				app->audio->PlayFx(Mission_Complited);
+				
 			}
 			
 			break;
@@ -545,6 +545,26 @@ void FeatureMenu::PostUpdate()
 
 	}
 
+	if (app->sceneGameplay->first_mision && !firstMissionFX) {
+
+		app->audio->PlayFx(Mission_Completed);
+		firstMissionFX = true;
+
+	}
+
+	if (app->sceneGameplay->second_mision && !secondMissionFX) {
+
+		app->audio->PlayFx(Mission_Completed);
+		secondMissionFX = true;
+
+	}
+
+	if (app->sceneGameplay->third_mision && !thirdMissionFX) {
+
+		app->audio->PlayFx(Mission_Completed);
+		thirdMissionFX = true;
+
+	}
 
 	if (statsEnabled) {
 
