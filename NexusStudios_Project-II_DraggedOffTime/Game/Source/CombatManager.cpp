@@ -141,19 +141,20 @@ int CombatManager::WeaponAttack(int p_DMG, int e_HP, int e_DEF, bool timing, int
 	}
 };
 
-int CombatManager::SkillAttack(int slected_player) {
+void CombatManager::SkillAttack(int slected_player) {
 
 	switch (slected_player) {
-	case 0:
+	case 0:	//Ranged - 360 No-scope (Dispara y ignora la defensa del enemigo)
 
 		break;
-	case 1:
+	case 1:	//Tank - I’m the one who bonks! (Cada vez que el enemigo te ataque cuando esté activa esta variable, el enemigo recibirá daño al atacar)
+
 
 		break;
-	case 2:
+	case 2:	//Mage - Middle ages steroids (Sube tus estadísticas durante 2 turnos)
 
 		break;
-	case 3:
+	case 3:	//Rogue - Ouroboros Sight (Añade "confusión" al enemigo que provoca que se ataque a sí mismo y le inflige algo de daño + p_HP se ve ligeramente reducido)
 
 		break;
 	}

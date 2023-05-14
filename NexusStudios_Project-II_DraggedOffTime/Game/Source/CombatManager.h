@@ -45,7 +45,7 @@ public:
 	int WeaponAttack(int p_DMG, int e_HP, int e_DEF, bool timing, int num_hits);
 
 	//3.Skill attack
-	int SkillAttack(int selected_player);
+	void SkillAttack(int selected_player);
 
 	//4.Use an item in combat - Heal (Returns p_HP)
 	int UseItem(int p_HP);
