@@ -120,13 +120,25 @@ void FeatureMenu::Load()
 
 	//Equipment
 
-	leftArrow = app->tex->Load("Assets/UI/Stats/Left_Arrow.png");
-	LeftArrow = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, leftArrow, "", { 454,242,34,27 }, (Module*)app->sceneGameplay);
-	LeftArrow->state = GuiControlState::DISABLED;
+	melee = app->tex->Load("Assets/UI/Stats/Melee_Slot.png");
+	Melee = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 17, melee, "", { 753,321,60,60 }, (Module*)app->sceneGameplay);
+	Melee->state = GuiControlState::DISABLED;
 
-	rightArrow = app->tex->Load("Assets/UI/Stats/Right_Arrow.png");
-	RightArrow = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, rightArrow, "", { 620,242,34,27 }, (Module*)app->sceneGameplay);
-	RightArrow->state = GuiControlState::DISABLED;
+	mid = app->tex->Load("Assets/UI/Stats/Mid_Slot.png");
+	Mid = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 17, mid, "", { 753,396,60,60 }, (Module*)app->sceneGameplay);
+	Mid->state = GuiControlState::DISABLED;
+
+	rangued = app->tex->Load("Assets/UI/Stats/Rangued_Slot.png");
+	Rangued = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 17, rangued, "", { 753,471,60,60 }, (Module*)app->sceneGameplay);
+	Rangued->state = GuiControlState::DISABLED;
+
+	//leftArrow = app->tex->Load("Assets/UI/Stats/Left_Arrow.png");
+	//LeftArrow = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, leftArrow, "", { 454,242,34,27 }, (Module*)app->sceneGameplay);
+	//LeftArrow->state = GuiControlState::DISABLED;
+
+	//rightArrow = app->tex->Load("Assets/UI/Stats/Right_Arrow.png");
+	//RightArrow = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, rightArrow, "", { 620,242,34,27 }, (Module*)app->sceneGameplay);
+	//RightArrow->state = GuiControlState::DISABLED;
 
 	Equipment_visual = app->tex->Load("Assets/UI/Stats/Equipment_Weapon_SpriteSheet.png");
 
@@ -136,7 +148,23 @@ void FeatureMenu::Load()
 
 	//Quests
 
-	Quests_visual = app->tex->Load("Assets/UI/Stats/Quest_Background.png");
+	Quests_visual = app->tex->Load("Assets/UI/Stats/Visual_Quests_Spritesheet.png");
+
+	mainQuest = app->tex->Load("Assets/UI/Stats/MainQuest_Spritesheet.png");
+	MainQuest = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, mainQuest, "", { 273,260,300,33 }, (Module*)app->sceneGameplay);
+	MainQuest->state = GuiControlState::DISABLED;
+
+	sideQuest_1 = app->tex->Load("Assets/UI/Stats/SideQuest1_Spritesheet.png");
+	SideQuest_1 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, sideQuest_1, "", { 273,398,300,33 }, (Module*)app->sceneGameplay);
+	SideQuest_1->state = GuiControlState::DISABLED;
+
+	sideQuest_2 = app->tex->Load("Assets/UI/Stats/SideQuest2_Spritesheet.png");
+	SideQuest_2 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, sideQuest_2, "", { 273,445,300,33 }, (Module*)app->sceneGameplay);
+	SideQuest_2->state = GuiControlState::DISABLED;
+
+	sideQuest_3 = app->tex->Load("Assets/UI/Stats/SideQuest3_Spritesheet.png");
+	SideQuest_3 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, sideQuest_3, "", { 273,492,300,33 }, (Module*)app->sceneGameplay);
+	SideQuest_3->state = GuiControlState::DISABLED;
 
 
 	Fondo = app->tex->Load("Assets/UI/PauseBackground.png");
@@ -177,6 +205,7 @@ void FeatureMenu::Load()
 	j = 0;
 	k = 0;
 	l = 0;
+	q = 0;
 
 	e_characterSelector = 0;
 	e_weaponSelector = 0;
@@ -199,6 +228,7 @@ void FeatureMenu::Update()
 		ChangeCharacters = !ChangeCharacters;
 		ChangeWeapons = false;
 		ShowSlots = false;
+		ChangeQuests = false;
 		
 	}
 
@@ -212,6 +242,7 @@ void FeatureMenu::Update()
 		ChangeCharacters = true;
 		ChangeWeapons = false;
 		ShowSlots = false;
+		ChangeQuests = false;
 	}
 
 	if (Inventory_->state == GuiControlState::PRESSED) {
@@ -221,6 +252,7 @@ void FeatureMenu::Update()
 		ChangeCharacters = false;
 		ChangeWeapons = false;
 		ShowSlots = true;
+		ChangeQuests = false;
 	}
 
 	if (Equipment->state == GuiControlState::PRESSED) {
@@ -230,6 +262,7 @@ void FeatureMenu::Update()
 		ChangeCharacters = true;
 		ChangeWeapons = true;
 		ShowSlots = false;
+		ChangeQuests = false;
 	}
 
 	if (Skills->state == GuiControlState::PRESSED) {
@@ -239,6 +272,7 @@ void FeatureMenu::Update()
 		ChangeCharacters = true;
 		ChangeWeapons = false;
 		ShowSlots = false;
+		ChangeQuests = false;
 	}
 
 	if (Quests->state == GuiControlState::PRESSED) {
@@ -248,6 +282,7 @@ void FeatureMenu::Update()
 		ChangeCharacters = false;
 		ChangeWeapons = false;
 		ShowSlots = false;
+		ChangeQuests = true;
 	}
 
 	//Stats Character Selection
@@ -272,17 +307,55 @@ void FeatureMenu::Update()
 		j = 3;
 	}
 
-	//Weapon Selection Arrows
+	//Weapon Selection 
 
-	if (LeftArrow->state == GuiControlState::PRESSED) {
+	if (Melee->state == GuiControlState::PRESSED) {
 
-		if (k > 0) k--;
+		k = 0;
 	}
 
-	if (RightArrow->state == GuiControlState::PRESSED) {
+	if (Mid->state == GuiControlState::PRESSED) {
 
-		if (k <= 1 ) k++;
+		k = 1;
 	}
+
+	if (Rangued->state == GuiControlState::PRESSED) {
+
+		k = 2;
+	}
+
+	//if (LeftArrow->state == GuiControlState::PRESSED) {
+
+	//	if (k > 0) k--;
+	//}
+
+	//if (RightArrow->state == GuiControlState::PRESSED) {
+
+	//	if (k <= 1 ) k++;
+	//}
+
+	//Quest selection
+
+	if (MainQuest->state == GuiControlState::PRESSED) {
+
+		q = 0;
+	}
+
+	if (SideQuest_1->state == GuiControlState::PRESSED) {
+
+		q = 1;
+	}
+
+	if (SideQuest_2->state == GuiControlState::PRESSED) {
+
+		q = 2;
+	}
+
+	if (SideQuest_3->state == GuiControlState::PRESSED) {
+
+		q = 3;
+	}
+
 
 
 
@@ -292,17 +365,17 @@ void FeatureMenu::Update()
 
 	//}
 
-	if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN) {
+	//if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN) {
 
-		if (i < 4) i++;
-		
-	}
+	//	if (i < 4) i++;
+	//	
+	//}
 
-	if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN) {
+	//if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN) {
 
-		if (i > 0) i--;
+	//	if (i > 0) i--;
 
-	}
+	//}
 
 	if (!ShowSlots) {
 
@@ -310,130 +383,130 @@ void FeatureMenu::Update()
 
 	}
 
-	switch (i) {
+	//switch (i) {
 
-	case 0: 
+	//case 0: 
 
-		if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
+	//	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
 
-			if (j < 3) j++;
+	//		if (j < 3) j++;
 
-		}
+	//	}
 
-		if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
+	//	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
 
-			if (j > 0) j--;
+	//		if (j > 0) j--;
 
-		}
-		break;
+	//	}
+	//	break;
 
-	
+	//
 
-	case 1: 
+	//case 1: 
 
-		if (statsEnabled) inventoryManager.inventoryOn = true;
+	//	if (statsEnabled) inventoryManager.inventoryOn = true;
 
-		break;
+	//	break;
 
-	case 2: 
+	//case 2: 
 
-		if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
+	//	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
 
-			if (e_characterSelector < 3) {
+	//		if (e_characterSelector < 3) {
 
-				e_characterSelector++;
+	//			e_characterSelector++;
 
-			}
-			else if (e_characterSelector == 3) {
+	//		}
+	//		else if (e_characterSelector == 3) {
 
-				e_characterSelector = 0;
+	//			e_characterSelector = 0;
 
-			}
+	//		}
 
-		}
+	//	}
 
-		if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
+	//	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
 
-			if (e_characterSelector > 0) {
+	//		if (e_characterSelector > 0) {
 
-				e_characterSelector--;
+	//			e_characterSelector--;
 
-			}
-			else if (e_characterSelector == 0) {
+	//		}
+	//		else if (e_characterSelector == 0) {
 
-				e_characterSelector = 3;
+	//			e_characterSelector = 3;
 
-			}
+	//		}
 
-		}
+	//	}
 
-		if (app->input->GetKey(SDL_SCANCODE_K) == KEY_DOWN) {
+	//	if (app->input->GetKey(SDL_SCANCODE_K) == KEY_DOWN) {
 
-			if (e_weaponSelector < 2) {
+	//		if (e_weaponSelector < 2) {
 
-				e_weaponSelector++;
+	//			e_weaponSelector++;
 
-			}
-			else if (e_weaponSelector == 2) {
+	//		}
+	//		else if (e_weaponSelector == 2) {
 
-				e_weaponSelector = 0;
+	//			e_weaponSelector = 0;
 
-			}
+	//		}
 
-		}
+	//	}
 
-		if (app->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN) {
+	//	if (app->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN) {
 
-			if (e_weaponSelector > 0) {
+	//		if (e_weaponSelector > 0) {
 
-				e_weaponSelector--;
+	//			e_weaponSelector--;
 
-			}
-			else if (e_weaponSelector == 0) {
+	//		}
+	//		else if (e_weaponSelector == 0) {
 
-				e_weaponSelector = 2;
+	//			e_weaponSelector = 2;
 
-			}
+	//		}
 
-		}
+	//	}
 
-		break;
+	//	break;
 
-	case 3: 
+	//case 3: 
 
 
-		if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
+	//	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
 
-			if (k < 3) k++;
+	//		if (k < 3) k++;
 
-		}
+	//	}
 
-		if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
+	//	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
 
-			if (k > 0) k--;
+	//		if (k > 0) k--;
 
-		}
+	//	}
 
-		break;
+	//	break;
 
-	case 4:
+	//case 4:
 
-		if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
+	//	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
 
-			if (l < 4) l++;
+	//		if (l < 4) l++;
 
-		}
+	//	}
 
-		if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
+	//	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
 
-			if (l > 0) l--;
+	//		if (l > 0) l--;
 
-		}
+	//	}
 
-		break;
+	//	break;
 
-	
-	}
+	//
+	//}
 
 	currentAnimation->Update();
 
@@ -515,18 +588,14 @@ void FeatureMenu::PostUpdate()
 			if (j == 0) {
 
 				if (k == 0) {
-
 					app->render->DrawTexture(Equipment_visual, 0, 0, &SDL_Rect({ 1280 * 0, 720 * 0, 1280, 720 }));
-
 				}
 
 				if (k == 1) {
-
 					app->render->DrawTexture(Equipment_visual, 0, 0, &SDL_Rect({ 1280 * 1, 720 * 0, 1280, 720 }));
 				}
 
 				if (k == 2) {
-
 					app->render->DrawTexture(Equipment_visual, 0, 0, &SDL_Rect({ 1280 * 2, 720 * 0, 1280, 720 }));
 				}
 			}
@@ -535,18 +604,14 @@ void FeatureMenu::PostUpdate()
 			if (j == 1) {
 
 				if (k == 0) {
-
 					app->render->DrawTexture(Equipment_visual, 0, 0, &SDL_Rect({ 1280 * 0, 720 * 1, 1280, 720 }));
-
 				}
 
 				if (k == 1) {
-
 					app->render->DrawTexture(Equipment_visual, 0, 0, &SDL_Rect({ 1280 * 1, 720 * 1, 1280, 720 }));
 				}
 
 				if (k == 2) {
-
 					app->render->DrawTexture(Equipment_visual, 0, 0, &SDL_Rect({ 1280 * 2, 720 * 1, 1280, 720 }));
 				}
 
@@ -555,18 +620,14 @@ void FeatureMenu::PostUpdate()
 			if (j == 2) {
 
 				if (k == 0) {
-
 					app->render->DrawTexture(Equipment_visual, 0, 0, &SDL_Rect({ 1280 * 0, 720 * 2, 1280, 720 }));
-
 				}
 
 				if (k == 1) {
-
 					app->render->DrawTexture(Equipment_visual, 0, 0, &SDL_Rect({ 1280 * 1, 720 * 2, 1280, 720 }));
 				}
 
 				if (k == 2) {
-
 					app->render->DrawTexture(Equipment_visual, 0, 0, &SDL_Rect({ 1280 * 2, 720 * 2, 1280, 720 }));
 				}
 
@@ -575,18 +636,14 @@ void FeatureMenu::PostUpdate()
 			if (j == 3) {
 
 				if (k == 0) {
-
 					app->render->DrawTexture(Equipment_visual, 0, 0, &SDL_Rect({ 1280 * 0, 720 * 3, 1280, 720 }));
-
 				}
 
 				if (k == 1) {
-
 					app->render->DrawTexture(Equipment_visual, 0, 0, &SDL_Rect({ 1280 * 1, 720 * 3, 1280, 720 }));
 				}
 
 				if (k == 2) {
-
 					app->render->DrawTexture(Equipment_visual, 0, 0, &SDL_Rect({ 1280 * 2, 720 * 3, 1280, 720 }));
 				}
 
@@ -601,27 +658,19 @@ void FeatureMenu::PostUpdate()
 			//app->render->DrawTexture(skills, 0, 0, &rect4);
 
 			if (j == 0) {
-
 				app->render->DrawTexture(Skills_visual, 0, 0, &SDL_Rect({ 1280 * 0, 0, 1280, 720 }));
-
 			}
 
 			if (j == 1) {
-
 				app->render->DrawTexture(Skills_visual, 0, 0, &SDL_Rect({ 1280 * 1, 0, 1280, 720 }));
-
 			}
 
 			if (j == 2) {
-
 				app->render->DrawTexture(Skills_visual, 0, 0, &SDL_Rect({ 1280 * 2, 0, 1280, 720 }));
-
 			}
 
 			if (j == 3) {
-
 				app->render->DrawTexture(Skills_visual, 0, 0, &SDL_Rect({ 1280 * 3, 0, 1280, 720 }));
-
 			}
 
 			break;
@@ -632,8 +681,22 @@ void FeatureMenu::PostUpdate()
 
 			//app->render->DrawTexture(quests, 0, 0, &rect5);
 
-			app->render->DrawTexture(Quests_visual, 0, 0, &SDL_Rect({ 0, 0, 1280, 720 }));
+			if (q == 0) {
+				app->render->DrawTexture(Quests_visual, 0, 0, &SDL_Rect({ 1280 * 0, 0, 1280, 720 }));
+			}
 
+			if (q == 1) {
+				app->render->DrawTexture(Quests_visual, 0, 0, &SDL_Rect({ 1280 * 1, 0, 1280, 720 }));
+			}
+
+			if (q == 2) {
+				app->render->DrawTexture(Quests_visual, 0, 0, &SDL_Rect({ 1280 * 2, 0, 1280, 720 }));
+			}
+
+			if (q == 3) {
+				app->render->DrawTexture(Quests_visual, 0, 0, &SDL_Rect({ 1280 * 3, 0, 1280, 720 }));
+			}
+			
 			break;
 
 		}
@@ -679,17 +742,29 @@ void FeatureMenu::PostUpdate()
 
 		if (ChangeWeapons) {
 
-			if (LeftArrow->state == GuiControlState::DISABLED) LeftArrow->state = GuiControlState::NORMAL;
-			if (RightArrow->state == GuiControlState::DISABLED) RightArrow->state = GuiControlState::NORMAL;
+			if (Melee->state == GuiControlState::DISABLED) Melee->state = GuiControlState::NORMAL;
+			if (Mid->state == GuiControlState::DISABLED) Mid->state = GuiControlState::NORMAL;
+			if (Rangued->state == GuiControlState::DISABLED) Rangued->state = GuiControlState::NORMAL;
 
-			LeftArrow->Draw(app->render);
-			RightArrow->Draw(app->render);
+		/*	if (LeftArrow->state == GuiControlState::DISABLED) LeftArrow->state = GuiControlState::NORMAL;
+			if (RightArrow->state == GuiControlState::DISABLED) RightArrow->state = GuiControlState::NORMAL;*/
+
+			Melee->Draw(app->render);
+			Mid->Draw(app->render);
+			Rangued->Draw(app->render);
+
+		/*	LeftArrow->Draw(app->render);
+			RightArrow->Draw(app->render);*/
 	
 		}
 		if (!ChangeWeapons) {
 
-			if (LeftArrow->state != GuiControlState::DISABLED) LeftArrow->state = GuiControlState::DISABLED;
-			if (RightArrow->state != GuiControlState::DISABLED) RightArrow->state = GuiControlState::DISABLED;
+			if (Melee->state != GuiControlState::DISABLED) Melee->state = GuiControlState::DISABLED;
+			if (Mid->state != GuiControlState::DISABLED) Mid->state = GuiControlState::DISABLED;
+			if (Rangued->state != GuiControlState::DISABLED) Rangued->state = GuiControlState::DISABLED;
+
+		/*	if (LeftArrow->state != GuiControlState::DISABLED) LeftArrow->state = GuiControlState::DISABLED;
+			if (RightArrow->state != GuiControlState::DISABLED) RightArrow->state = GuiControlState::DISABLED;*/
 		}
 
 		if (ShowSlots) {
@@ -757,6 +832,27 @@ void FeatureMenu::PostUpdate()
 			if (Inventory_18->state != GuiControlState::DISABLED) Inventory_18->state = GuiControlState::DISABLED;
 		}
 
+		if (ChangeQuests) {
+
+			if (MainQuest->state == GuiControlState::DISABLED) MainQuest->state = GuiControlState::NORMAL;
+			if (SideQuest_1->state == GuiControlState::DISABLED) SideQuest_1->state = GuiControlState::NORMAL;
+			if (SideQuest_2->state == GuiControlState::DISABLED) SideQuest_2->state = GuiControlState::NORMAL;
+			if (SideQuest_3->state == GuiControlState::DISABLED) SideQuest_3->state = GuiControlState::NORMAL;
+
+			MainQuest->Draw(app->render);
+			SideQuest_1->Draw(app->render);
+			SideQuest_2->Draw(app->render);
+			SideQuest_3->Draw(app->render);
+
+		}
+		if (!ChangeQuests) {
+
+			if (MainQuest->state != GuiControlState::DISABLED) MainQuest->state = GuiControlState::DISABLED;
+			if (SideQuest_1->state != GuiControlState::DISABLED) SideQuest_1->state = GuiControlState::DISABLED;
+			if (SideQuest_2->state != GuiControlState::DISABLED) SideQuest_2->state = GuiControlState::DISABLED;
+			if (SideQuest_3->state != GuiControlState::DISABLED) SideQuest_3->state = GuiControlState::DISABLED;
+		}
+
 	}
 	if (!statsEnabled) {
 
@@ -771,8 +867,12 @@ void FeatureMenu::PostUpdate()
 		if (Cyberpunk->state != GuiControlState::INVISIBLE) Cyberpunk->state = GuiControlState::INVISIBLE;
 		if (Apocalypse->state != GuiControlState::INVISIBLE) Apocalypse->state = GuiControlState::INVISIBLE;
 
-		if (LeftArrow->state != GuiControlState::DISABLED) LeftArrow->state = GuiControlState::DISABLED;
-		if (RightArrow->state != GuiControlState::DISABLED) RightArrow->state = GuiControlState::DISABLED;
+		if (Melee->state != GuiControlState::DISABLED) Melee->state = GuiControlState::DISABLED;
+		if (Mid->state != GuiControlState::DISABLED) Mid->state = GuiControlState::DISABLED;
+		if (Rangued->state != GuiControlState::DISABLED) Rangued->state = GuiControlState::DISABLED;
+
+		//if (LeftArrow->state != GuiControlState::DISABLED) LeftArrow->state = GuiControlState::DISABLED;
+		//if (RightArrow->state != GuiControlState::DISABLED) RightArrow->state = GuiControlState::DISABLED;
 
 		if (Inventory_1->state != GuiControlState::DISABLED) Inventory_1->state = GuiControlState::DISABLED;
 		if (Inventory_2->state != GuiControlState::DISABLED) Inventory_2->state = GuiControlState::DISABLED;
@@ -792,6 +892,11 @@ void FeatureMenu::PostUpdate()
 		if (Inventory_16->state != GuiControlState::DISABLED) Inventory_16->state = GuiControlState::DISABLED;
 		if (Inventory_17->state != GuiControlState::DISABLED) Inventory_17->state = GuiControlState::DISABLED;
 		if (Inventory_18->state != GuiControlState::DISABLED) Inventory_18->state = GuiControlState::DISABLED;
+
+		if (MainQuest->state != GuiControlState::DISABLED) MainQuest->state = GuiControlState::DISABLED;
+		if (SideQuest_1->state != GuiControlState::DISABLED) SideQuest_1->state = GuiControlState::DISABLED;
+		if (SideQuest_2->state != GuiControlState::DISABLED) SideQuest_2->state = GuiControlState::DISABLED;
+		if (SideQuest_3->state != GuiControlState::DISABLED) SideQuest_3->state = GuiControlState::DISABLED;
 
 	}
 

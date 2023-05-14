@@ -68,6 +68,8 @@ public:
 
 	bool ShowSlots;
 
+	SDL_Texture* Inventory_visual;
+
 	SDL_Texture* Slot_texture;
 
 	GuiButton* Inventory_1;
@@ -90,30 +92,53 @@ public:
 	GuiButton* Inventory_18;
 
 
-	//SFX
-	uint OpenPause;
-	uint ClosePause;
-
-	//Textures
-
+	//Stats
 	SDL_Texture* Stats_visual;
 
-	SDL_Texture* Inventory_visual;
-
+	//Skills
 	SDL_Texture* Skills_visual;
+
+	//Quests
+
+	bool ChangeQuests;
 
 	SDL_Texture* Quests_visual;
 
+	SDL_Texture* mainQuest;
+	GuiButton* MainQuest;
+
+	SDL_Texture* sideQuest_1;
+	GuiButton* SideQuest_1;
+
+	SDL_Texture* sideQuest_2;
+	GuiButton* SideQuest_2;
+
+	SDL_Texture* sideQuest_3;
+	GuiButton* SideQuest_3;
+
+	//Equipment
 	SDL_Texture* Equipment_visual;
 
-
 	bool ChangeWeapons;
+
+	SDL_Texture* melee;
+	GuiButton* Melee;
+
+	SDL_Texture* mid;
+	GuiButton* Mid;
+
+	SDL_Texture* rangued;
+	GuiButton* Rangued;
 
 	SDL_Texture* leftArrow;
 	GuiButton* LeftArrow;
 
 	SDL_Texture* rightArrow;
 	GuiButton* RightArrow;
+
+	//SFX
+	uint OpenPause;
+	uint ClosePause;
 
 
 	bool statsEnabled;
@@ -123,6 +148,7 @@ public:
 	int j;
 	int k;
 	int l;
+	int q;
 
 	// ---------------------------------
 
