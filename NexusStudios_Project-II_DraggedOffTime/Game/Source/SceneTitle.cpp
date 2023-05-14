@@ -31,6 +31,17 @@ SceneTitle::~SceneTitle()
 bool SceneTitle::Awake(pugi::xml_node& config)
 {
 
+	for (int i = 0; i < 6; i++) {
+
+		for (int j = 0; j < 4; j++) {
+
+			title.PushBack({ 532 * j, 224 * i, 532, 224 });
+
+		}
+	}
+	title.loop = true;
+	title.speed = 0.4f;
+
 	return true;
 }
 
@@ -38,6 +49,8 @@ bool SceneTitle::Awake(pugi::xml_node& config)
 bool SceneTitle::Start()
 {
 	//app->map->actualmap = 1;
+
+	titleSpritesheet = app->tex->Load("Assets/Textures/Intro_Animations/Title_SpriteSheet4.png");
 
 	titleScreen = app->tex->Load("Assets/Textures/TitleScreen2.png");
 	draggedOffTime = app->tex->Load("Assets/Textures/DraggedOffTime3.png");
@@ -122,6 +135,8 @@ bool SceneTitle::Start()
 
 	OpenPause = app->audio->LoadFx("Assets/Audio/Fx/OpenPause.wav");
 	ClosePause = app->audio->LoadFx("Assets/Audio/Fx/ClosePause.wav");
+
+	currentAnimation = &title;
 
 	return true;
 }
@@ -258,6 +273,8 @@ bool SceneTitle::Update(float dt)
 
 	//app->scene->startCounting = true;
 
+	currentAnimation->Update();
+
 	return true;
 }
 
@@ -272,9 +289,9 @@ bool SceneTitle::PostUpdate()
 
 	app->guiManager->Draw();
 
-	if (!showSettings)app->render->DrawTexture(draggedOffTime, -12, 50);
-
-
+	SDL_Rect rect = currentAnimation->GetCurrentFrame();
+	if (!showSettings) app->render->DrawTexture(titleSpritesheet, 30, 45, &rect);
+	
 	if (showCredits) {
 
 		if (BackCredits->state == GuiControlState::DISABLED) BackCredits->state = GuiControlState::NORMAL;
@@ -365,8 +382,6 @@ bool SceneTitle::PostUpdate()
 		if (FramecapDOWN->state != GuiControlState::DISABLED) FramecapDOWN->state = GuiControlState::DISABLED;
 
 	}
-
-
 
 	//app->scene->player->hitsTaken = 0;
 

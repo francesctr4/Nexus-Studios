@@ -5,6 +5,8 @@
 #include "GuiSlider.h"
 #include "GuiCheckBox.h"
 
+#include "Animation.h"
+
 struct SDL_Texture;
 
 class SceneTitle : public Module
@@ -102,5 +104,9 @@ public:
 
 	uint OpenPause;
 	uint ClosePause;
+
+	SDL_Texture* titleSpritesheet;
+	Animation title;
+	Animation* currentAnimation;
 
 };
