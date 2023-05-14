@@ -94,8 +94,15 @@ public:
 
 	// Dialogue UI
 
-	SDL_Texture* dialogueUI_npc;
-	SDL_Texture* dialogueUI_player;
+	SDL_Texture* dialogueUI_npc_medieval;
+	SDL_Texture* dialogueUI_npc_prehistoric;
+	SDL_Texture* dialogueUI_npc_cyberpunk;
+	SDL_Texture* dialogueUI_npc_apocalypse;
+
+	SDL_Texture* dialogueUI_player_medieval;
+	SDL_Texture* dialogueUI_player_prehistoric;
+	SDL_Texture* dialogueUI_player_cyberpunk;
+	SDL_Texture* dialogueUI_player_apocalypse;
 
 	// Dialogue Names
 

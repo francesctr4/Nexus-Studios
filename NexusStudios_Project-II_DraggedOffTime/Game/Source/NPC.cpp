@@ -108,8 +108,15 @@ bool NPC::Start() {
 
 	// Dialogue UI
 
-	dialogueUI_npc = app->tex->Load("Assets/Textures/DialogueUI.png");
-	dialogueUI_player = app->tex->Load("Assets/Textures/DialogueUI_Player.png");
+	dialogueUI_npc_medieval = app->tex->Load("Assets/Textures/DialogueUI_Medieval.png");
+	dialogueUI_npc_prehistoric = app->tex->Load("Assets/Textures/DialogueUI_Prehistoric.png");
+	dialogueUI_npc_cyberpunk = app->tex->Load("Assets/Textures/DialogueUI_Cyberpunk.png");
+	dialogueUI_npc_apocalypse = app->tex->Load("Assets/Textures/DialogueUI_Apocalypse.png");
+
+	dialogueUI_player_medieval = app->tex->Load("Assets/Textures/DialogueUI_Player_Medieval.png");
+	dialogueUI_player_prehistoric = app->tex->Load("Assets/Textures/DialogueUI_Player_Prehistoric.png");
+	dialogueUI_player_cyberpunk = app->tex->Load("Assets/Textures/DialogueUI_Player_Cyberpunk.png");
+	dialogueUI_player_apocalypse = app->tex->Load("Assets/Textures/DialogueUI_Player_Apocalypse.png");
 
 	// Player Dialogue Selector
 
@@ -284,7 +291,20 @@ void NPC::DialogueGenerator(Conversation conversation) {
 
 		case DialogueType::PLAYER: {
 
-			app->render->DrawTexture(dialogueUI_player, 202, 389);
+			switch (app->sceneGameplay->player->playerChange) {
+			case 0:
+				app->render->DrawTexture(dialogueUI_player_medieval, 202, 389);
+				break;
+			case 1:
+				app->render->DrawTexture(dialogueUI_player_prehistoric, 202, 389);
+				break;
+			case 2:
+				app->render->DrawTexture(dialogueUI_player_cyberpunk, 202, 389);
+				break;
+			case 3:
+				app->render->DrawTexture(dialogueUI_player_apocalypse, 202, 389);
+				break;
+			}
 
 			if (type == NPC_Types::ROGUE) {
 
@@ -323,7 +343,20 @@ void NPC::DialogueGenerator(Conversation conversation) {
 
 			}
 
-			app->render->DrawTexture(dialogueUI_player, 202, 389);
+			switch (app->sceneGameplay->player->playerChange) {
+			case 0:
+				app->render->DrawTexture(dialogueUI_player_medieval, 202, 389);
+				break;
+			case 1:
+				app->render->DrawTexture(dialogueUI_player_prehistoric, 202, 389);
+				break;
+			case 2:
+				app->render->DrawTexture(dialogueUI_player_cyberpunk, 202, 389);
+				break;
+			case 3:
+				app->render->DrawTexture(dialogueUI_player_apocalypse, 202, 389);
+				break;
+			}
 
 			if (type == NPC_Types::ROGUE) {
 
@@ -357,7 +390,20 @@ void NPC::DialogueGenerator(Conversation conversation) {
 
 			selectorIterator = 0; // Reset player's dialogue options
 
-			app->render->DrawTexture(dialogueUI_npc, 202, 389);
+			switch (app->sceneGameplay->player->playerChange) {
+			case 0:
+				app->render->DrawTexture(dialogueUI_npc_medieval, 202, 389);
+				break;
+			case 1:
+				app->render->DrawTexture(dialogueUI_npc_prehistoric, 202, 389);
+				break;
+			case 2:
+				app->render->DrawTexture(dialogueUI_npc_cyberpunk, 202, 389);
+				break;
+			case 3:
+				app->render->DrawTexture(dialogueUI_npc_apocalypse, 202, 389);
+				break;
+			}
 
 			if (type == NPC_Types::ROGUE) {
 
