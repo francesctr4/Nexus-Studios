@@ -102,6 +102,7 @@ public:
 
 	bool ChangeQuests;
 
+	SDL_Texture* Quest_Completed;
 	SDL_Texture* Quests_visual;
 
 	SDL_Texture* mainQuest;

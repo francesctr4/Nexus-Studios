@@ -39,8 +39,6 @@ void FeatureMenu::Load()
 	Quests = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, quests, "", { 907,83,177,59 }, (Module*)app->sceneGameplay);
 	Quests->state = GuiControlState::DISABLED;
 
-	OpenPause = app->audio->LoadFx("Assets/Audio/Fx/OpenPause.wav");
-	ClosePause = app->audio->LoadFx("Assets/Audio/Fx/ClosePause.wav");
 
 	//Stats Character Selection
 
@@ -132,14 +130,6 @@ void FeatureMenu::Load()
 	Rangued = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 17, rangued, "", { 753,471,60,60 }, (Module*)app->sceneGameplay);
 	Rangued->state = GuiControlState::DISABLED;
 
-	//leftArrow = app->tex->Load("Assets/UI/Stats/Left_Arrow.png");
-	//LeftArrow = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, leftArrow, "", { 454,242,34,27 }, (Module*)app->sceneGameplay);
-	//LeftArrow->state = GuiControlState::DISABLED;
-
-	//rightArrow = app->tex->Load("Assets/UI/Stats/Right_Arrow.png");
-	//RightArrow = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, rightArrow, "", { 620,242,34,27 }, (Module*)app->sceneGameplay);
-	//RightArrow->state = GuiControlState::DISABLED;
-
 	Equipment_visual = app->tex->Load("Assets/UI/Stats/Equipment_Weapon_SpriteSheet.png");
 
 	//Skills
@@ -149,6 +139,8 @@ void FeatureMenu::Load()
 	//Quests
 
 	Quests_visual = app->tex->Load("Assets/UI/Stats/Visual_Quests_Spritesheet.png");
+
+	Quest_Completed = app->tex->Load("Assets/UI/Stats/Check.png");
 
 	mainQuest = app->tex->Load("Assets/UI/Stats/MainQuest_Spritesheet.png");
 	MainQuest = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, mainQuest, "", { 273,260,300,33 }, (Module*)app->sceneGameplay);
@@ -166,6 +158,9 @@ void FeatureMenu::Load()
 	SideQuest_3 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, sideQuest_3, "", { 273,492,300,33 }, (Module*)app->sceneGameplay);
 	SideQuest_3->state = GuiControlState::DISABLED;
 
+	//SFX
+	OpenPause = app->audio->LoadFx("Assets/Audio/Fx/OpenPause.wav");
+	ClosePause = app->audio->LoadFx("Assets/Audio/Fx/ClosePause.wav");
 
 	Fondo = app->tex->Load("Assets/UI/PauseBackground.png");
 
@@ -177,19 +172,6 @@ void FeatureMenu::Load()
 	KleosIdle.loop = true;
 	KleosIdle.speed = 0.06f;
 
-	/*texture = app->tex->Load("Assets/UI/Stats/SpritesheetMenu.png");
-
-	statsSheet = app->tex->Load("Assets/UI/Stats/StatsSheet4.png");
-
-	jambitaEstirada = app->tex->Load("Assets/UI/Stats/unknown.png");
-
-	inventory = app->tex->Load("Assets/UI/Stats/Inventory.png");
-
-	skills = app->tex->Load("Assets/UI/Stats/Skills.png");
-
-	equipment = app->tex->Load("Assets/UI/Stats/Equipment.png");
-
-	quests = app->tex->Load("Assets/UI/Stats/Quests.png");*/
 
 	kleosMedieval = app->tex->Load("Assets/UI/Stats/SpriteSheet_Kleos_Stats.png");
 
@@ -204,11 +186,7 @@ void FeatureMenu::Load()
 	i = 0;
 	j = 0;
 	k = 0;
-	l = 0;
 	q = 0;
-
-	e_characterSelector = 0;
-	e_weaponSelector = 0;
 
 	currentAnimation = &KleosIdle;
 
@@ -223,8 +201,6 @@ void FeatureMenu::Update()
 
 		statsEnabled = !statsEnabled;
 
-	
-
 		ChangeCharacters = !ChangeCharacters;
 		ChangeWeapons = false;
 		ShowSlots = false;
@@ -238,47 +214,53 @@ void FeatureMenu::Update()
 	if (Stats->state == GuiControlState::PRESSED) {
 
 		i = 0;
-
-		ChangeCharacters = true;
-		ChangeWeapons = false;
-		ShowSlots = false;
-		ChangeQuests = false;
 	}
 
 	if (Inventory_->state == GuiControlState::PRESSED) {
 
 		i = 1;
-
-		ChangeCharacters = false;
-		ChangeWeapons = false;
-		ShowSlots = true;
-		ChangeQuests = false;
 	}
 
 	if (Equipment->state == GuiControlState::PRESSED) {
 
 		i = 2;
-
-		ChangeCharacters = true;
-		ChangeWeapons = true;
-		ShowSlots = false;
-		ChangeQuests = false;
 	}
 
 	if (Skills->state == GuiControlState::PRESSED) {
 
 		i = 3;
-
-		ChangeCharacters = true;
-		ChangeWeapons = false;
-		ShowSlots = false;
-		ChangeQuests = false;
 	}
 
 	if (Quests->state == GuiControlState::PRESSED) {
 
 		i = 4;
+	}
 
+	if (i == 0) {
+		ChangeCharacters = true;
+		ChangeWeapons = false;
+		ShowSlots = false;
+		ChangeQuests = false;
+	}
+	if (i == 1) {
+		ChangeCharacters = false;
+		ChangeWeapons = false;
+		ShowSlots = true;
+		ChangeQuests = false;
+	}
+	if (i == 2) {
+		ChangeCharacters = true;
+		ChangeWeapons = true;
+		ShowSlots = false;
+		ChangeQuests = false;
+	}
+	if (i == 3) {
+		ChangeCharacters = true;
+		ChangeWeapons = false;
+		ShowSlots = false;
+		ChangeQuests = false;
+	}
+	if (i == 4) {
 		ChangeCharacters = false;
 		ChangeWeapons = false;
 		ShowSlots = false;
@@ -324,16 +306,6 @@ void FeatureMenu::Update()
 		k = 2;
 	}
 
-	//if (LeftArrow->state == GuiControlState::PRESSED) {
-
-	//	if (k > 0) k--;
-	//}
-
-	//if (RightArrow->state == GuiControlState::PRESSED) {
-
-	//	if (k <= 1 ) k++;
-	//}
-
 	//Quest selection
 
 	if (MainQuest->state == GuiControlState::PRESSED) {
@@ -356,157 +328,17 @@ void FeatureMenu::Update()
 		q = 3;
 	}
 
+	if (i == 1) {
 
+		if (statsEnabled) inventoryManager.inventoryOn = true;
+	}
 
-
-	//if (app->input->GetKey(SDL_SCANCODE_I) == KEY_DOWN /* && !app->sceneGameplay->showPause && !app->sceneGameplay->showSettings*/) {
-
-	//	statsEnabled = !statsEnabled;
-
-	//}
-
-	//if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN) {
-
-	//	if (i < 4) i++;
-	//	
-	//}
-
-	//if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN) {
-
-	//	if (i > 0) i--;
-
-	//}
 
 	if (!ShowSlots) {
 
 		inventoryManager.inventoryOn = false;
 
 	}
-
-	//switch (i) {
-
-	//case 0: 
-
-	//	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
-
-	//		if (j < 3) j++;
-
-	//	}
-
-	//	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
-
-	//		if (j > 0) j--;
-
-	//	}
-	//	break;
-
-	//
-
-	//case 1: 
-
-	//	if (statsEnabled) inventoryManager.inventoryOn = true;
-
-	//	break;
-
-	//case 2: 
-
-	//	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
-
-	//		if (e_characterSelector < 3) {
-
-	//			e_characterSelector++;
-
-	//		}
-	//		else if (e_characterSelector == 3) {
-
-	//			e_characterSelector = 0;
-
-	//		}
-
-	//	}
-
-	//	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
-
-	//		if (e_characterSelector > 0) {
-
-	//			e_characterSelector--;
-
-	//		}
-	//		else if (e_characterSelector == 0) {
-
-	//			e_characterSelector = 3;
-
-	//		}
-
-	//	}
-
-	//	if (app->input->GetKey(SDL_SCANCODE_K) == KEY_DOWN) {
-
-	//		if (e_weaponSelector < 2) {
-
-	//			e_weaponSelector++;
-
-	//		}
-	//		else if (e_weaponSelector == 2) {
-
-	//			e_weaponSelector = 0;
-
-	//		}
-
-	//	}
-
-	//	if (app->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN) {
-
-	//		if (e_weaponSelector > 0) {
-
-	//			e_weaponSelector--;
-
-	//		}
-	//		else if (e_weaponSelector == 0) {
-
-	//			e_weaponSelector = 2;
-
-	//		}
-
-	//	}
-
-	//	break;
-
-	//case 3: 
-
-
-	//	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
-
-	//		if (k < 3) k++;
-
-	//	}
-
-	//	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
-
-	//		if (k > 0) k--;
-
-	//	}
-
-	//	break;
-
-	//case 4:
-
-	//	if (app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_DOWN) {
-
-	//		if (l < 4) l++;
-
-	//	}
-
-	//	if (app->input->GetKey(SDL_SCANCODE_UP) == KEY_DOWN) {
-
-	//		if (l > 0) l--;
-
-	//	}
-
-	//	break;
-
-	//
-	//}
 
 	currentAnimation->Update();
 
@@ -572,8 +404,6 @@ void FeatureMenu::PostUpdate()
 
 		case 1: {
 
-			//app->render->DrawTexture(inventory, 0, 0);
-
 			app->render->DrawTexture(Inventory_visual, 0, 0);
 
 			break;
@@ -581,9 +411,6 @@ void FeatureMenu::PostUpdate()
 		}
 
 		case 2: {
-
-			//app->render->DrawTexture(equipment, 0, 0, &rect3);
-
 
 			if (j == 0) {
 
@@ -655,8 +482,6 @@ void FeatureMenu::PostUpdate()
 
 		case 3: {
 
-			//app->render->DrawTexture(skills, 0, 0, &rect4);
-
 			if (j == 0) {
 				app->render->DrawTexture(Skills_visual, 0, 0, &SDL_Rect({ 1280 * 0, 0, 1280, 720 }));
 			}
@@ -679,7 +504,21 @@ void FeatureMenu::PostUpdate()
 
 		case 4: {
 
-			//app->render->DrawTexture(quests, 0, 0, &rect5);
+			if (app->sceneGameplay->first_mision) {
+
+				app->render->DrawTexture(Quest_Completed, 582, 387);
+			}
+
+			if (app->sceneGameplay->second_mision) {
+
+				app->render->DrawTexture(Quest_Completed, 582, 434);
+			}
+
+			if (app->sceneGameplay->third_mision) {
+
+				app->render->DrawTexture(Quest_Completed, 582, 481);
+			}
+
 
 			if (q == 0) {
 				app->render->DrawTexture(Quests_visual, 0, 0, &SDL_Rect({ 1280 * 0, 0, 1280, 720 }));
@@ -746,15 +585,9 @@ void FeatureMenu::PostUpdate()
 			if (Mid->state == GuiControlState::DISABLED) Mid->state = GuiControlState::NORMAL;
 			if (Rangued->state == GuiControlState::DISABLED) Rangued->state = GuiControlState::NORMAL;
 
-		/*	if (LeftArrow->state == GuiControlState::DISABLED) LeftArrow->state = GuiControlState::NORMAL;
-			if (RightArrow->state == GuiControlState::DISABLED) RightArrow->state = GuiControlState::NORMAL;*/
-
 			Melee->Draw(app->render);
 			Mid->Draw(app->render);
 			Rangued->Draw(app->render);
-
-		/*	LeftArrow->Draw(app->render);
-			RightArrow->Draw(app->render);*/
 	
 		}
 		if (!ChangeWeapons) {
@@ -762,9 +595,6 @@ void FeatureMenu::PostUpdate()
 			if (Melee->state != GuiControlState::DISABLED) Melee->state = GuiControlState::DISABLED;
 			if (Mid->state != GuiControlState::DISABLED) Mid->state = GuiControlState::DISABLED;
 			if (Rangued->state != GuiControlState::DISABLED) Rangued->state = GuiControlState::DISABLED;
-
-		/*	if (LeftArrow->state != GuiControlState::DISABLED) LeftArrow->state = GuiControlState::DISABLED;
-			if (RightArrow->state != GuiControlState::DISABLED) RightArrow->state = GuiControlState::DISABLED;*/
 		}
 
 		if (ShowSlots) {
@@ -871,9 +701,6 @@ void FeatureMenu::PostUpdate()
 		if (Mid->state != GuiControlState::DISABLED) Mid->state = GuiControlState::DISABLED;
 		if (Rangued->state != GuiControlState::DISABLED) Rangued->state = GuiControlState::DISABLED;
 
-		//if (LeftArrow->state != GuiControlState::DISABLED) LeftArrow->state = GuiControlState::DISABLED;
-		//if (RightArrow->state != GuiControlState::DISABLED) RightArrow->state = GuiControlState::DISABLED;
-
 		if (Inventory_1->state != GuiControlState::DISABLED) Inventory_1->state = GuiControlState::DISABLED;
 		if (Inventory_2->state != GuiControlState::DISABLED) Inventory_2->state = GuiControlState::DISABLED;
 		if (Inventory_3->state != GuiControlState::DISABLED) Inventory_3->state = GuiControlState::DISABLED;
@@ -899,120 +726,6 @@ void FeatureMenu::PostUpdate()
 		if (SideQuest_3->state != GuiControlState::DISABLED) SideQuest_3->state = GuiControlState::DISABLED;
 
 	}
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	//SDL_Rect rect = { 1280 * i, 0,1280,720 };
-
-	//SDL_Rect rect2 = { 1280 * j, 0,1280,720 };
-
-	//SDL_Rect rect3 = { 1280 * e_weaponSelector, 720 * e_characterSelector,1280,720 };
-
-	//SDL_Rect rect4 = { 0, 720 * k,1280,720 };
-
-	//SDL_Rect rect5 = { 0, 720 * l ,1280,720 };
-
-	//if (statsEnabled) {
-
-	//	app->render->DrawTexture(texture, 0, 0, &rect);
-
-	//	switch (i) {
-
-	//		case 0: {
-
-	//			app->render->DrawTexture(statsSheet, 0, 0, &rect2);
-
-	//			if (j == 0) {
-
-	//				SDL_Rect kleosRect = currentAnimation->GetCurrentFrame();
-
-	//				app->render->DrawTexture(kleosMedieval, 340, 278, &kleosRect);
-
-	//			}
-
-	//			if (j == 2) {
-
-	//				SDL_Rect kleosRect = currentAnimation->GetCurrentFrame();
-
-	//				app->render->DrawTexture(kleosCyberpunk, 340, 278, &kleosRect);
-
-	//			}
-
-	//			if (j == 3) {
-
-	//				SDL_Rect kleosRect = currentAnimation->GetCurrentFrame();
-
-	//				app->render->DrawTexture(kleosApocalypse, 340, 278, &kleosRect);
-
-	//			}
-	//			
-	//			break;
-
-	//		}
-	//			
-	//		case 1: {
-
-	//			//app->render->DrawTexture(inventory, 0, 0);
-	//			break;
-
-	//		}
-	//			
-	//		case 2: {
-
-	//			app->render->DrawTexture(equipment, 0, 0, &rect3);
-	//			break;
-
-	//		}
-
-	//		case 3: {
-
-	//			app->render->DrawTexture(skills, 0, 0, &rect4);
-	//			break;
-
-	//		}
-
-	//		case 4: {
-	//			
-	//			app->render->DrawTexture(quests, 0, 0, &rect5);
-	//			break;
-
-	//		}
-	//		
-	//	}
-
-	//}
 
 	inventoryManager.PostUpdate();
 
