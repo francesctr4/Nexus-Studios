@@ -182,7 +182,7 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 		if (SString(itemNode.attribute("isPicked").as_string()) == SString("False")) {
 
 			it->data->Awake();
-			it->data->Start();
+			it->data->Restart();
 			it->data->pbody->body->SetTransform({ PIXEL_TO_METERS(x),PIXEL_TO_METERS(y) }, 0);
 
 		}
