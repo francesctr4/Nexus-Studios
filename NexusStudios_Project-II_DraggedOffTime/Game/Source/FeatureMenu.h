@@ -138,8 +138,7 @@ public:
 	GuiButton* RightArrow;
 
 	//SFX
-	uint OpenPause;
-	uint ClosePause;
+	uint Mission_Complited;
 
 
 	bool statsEnabled;

@@ -159,8 +159,7 @@ void FeatureMenu::Load()
 	SideQuest_3->state = GuiControlState::DISABLED;
 
 	//SFX
-	OpenPause = app->audio->LoadFx("Assets/Audio/Fx/OpenPause.wav");
-	ClosePause = app->audio->LoadFx("Assets/Audio/Fx/ClosePause.wav");
+	Mission_Complited = app->audio->LoadFx("Assets/Audio/Fx/OpenPause.wav");
 
 	Fondo = app->tex->Load("Assets/UI/PauseBackground.png");
 
@@ -504,22 +503,6 @@ void FeatureMenu::PostUpdate()
 
 		case 4: {
 
-			if (app->sceneGameplay->first_mision) {
-
-				app->render->DrawTexture(Quest_Completed, 582, 387);
-			}
-
-			if (app->sceneGameplay->second_mision) {
-
-				app->render->DrawTexture(Quest_Completed, 582, 434);
-			}
-
-			if (app->sceneGameplay->third_mision) {
-
-				app->render->DrawTexture(Quest_Completed, 582, 481);
-			}
-
-
 			if (q == 0) {
 				app->render->DrawTexture(Quests_visual, 0, 0, &SDL_Rect({ 1280 * 0, 0, 1280, 720 }));
 			}
@@ -534,6 +517,24 @@ void FeatureMenu::PostUpdate()
 
 			if (q == 3) {
 				app->render->DrawTexture(Quests_visual, 0, 0, &SDL_Rect({ 1280 * 3, 0, 1280, 720 }));
+			}
+
+			if (app->sceneGameplay->first_mision) {
+
+				app->render->DrawTexture(Quest_Completed, 582, 387);
+				app->audio->PlayFx(Mission_Complited);
+			}
+
+			if (app->sceneGameplay->second_mision) {
+
+				app->render->DrawTexture(Quest_Completed, 582, 481);
+				app->audio->PlayFx(Mission_Complited);
+			}
+
+			if (app->sceneGameplay->third_mision) {
+
+				app->render->DrawTexture(Quest_Completed, 582, 434);
+				app->audio->PlayFx(Mission_Complited);
 			}
 			
 			break;
