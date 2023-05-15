@@ -90,6 +90,8 @@ bool SceneGameplay::Start()
 	// Puzzles
 
 	puzzle1.Load();
+	puzzle2.Load();
+	puzzle3.Load();
 
 	return true;
 }
@@ -352,6 +354,8 @@ bool SceneGameplay::Update(float dt)
 	// Puzzles
 
 	puzzle1.Update();
+	puzzle2.Update();
+	puzzle3.Update();
 
 	return true;
 }

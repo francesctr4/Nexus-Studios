@@ -116,7 +116,9 @@
     <ClCompile Include="Source\PerfTimer.cpp" />
     <ClCompile Include="Source\Physics.cpp" />
     <ClCompile Include="Source\Player.cpp" />
-    <ClCompile Include="Source\Puzzle.cpp" />
+    <ClCompile Include="Source\Puzzle1.cpp" />
+    <ClCompile Include="Source\Puzzle2.cpp" />
+    <ClCompile Include="Source\Puzzle3.cpp" />
     <ClCompile Include="Source\QuestManager.cpp" />
     <ClCompile Include="Source\Render.cpp" />
     <ClCompile Include="Source\SceneBattle.cpp" />
@@ -150,7 +152,9 @@
     <ClInclude Include="Source\Physics.h" />
     <ClInclude Include="Source\Player.h" />
     <ClInclude Include="Source\PQueue.h" />
-    <ClInclude Include="Source\Puzzle.h" />
+    <ClInclude Include="Source\Puzzle1.h" />
+    <ClInclude Include="Source\Puzzle2.h" />
+    <ClInclude Include="Source\Puzzle3.h" />
     <ClInclude Include="Source\QuestManager.h" />
     <ClInclude Include="Source\Queue.h" />
     <ClInclude Include="Source\Audio.h" />
