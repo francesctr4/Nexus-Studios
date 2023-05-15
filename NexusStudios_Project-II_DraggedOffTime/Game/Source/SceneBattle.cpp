@@ -72,6 +72,7 @@ bool SceneBattle::Start()
 
 	//Load audios
 	fx_sword_hit = app->audio->LoadFx("Assets/Audio/FX/SwordFX.wav");
+	selectFX = app->audio->LoadFx("Assets/Audio/FX/Select1.wav");
 
 	action_selected = 0;
 
@@ -165,6 +166,8 @@ bool SceneBattle::Update(float dt)
 					action_selected = 5;
 				}
 
+				app->audio->PlayFx(selectFX);
+
 			}
 
 			if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN)
@@ -178,6 +181,9 @@ bool SceneBattle::Update(float dt)
 				{
 					action_selected = 0;
 				}
+
+				app->audio->PlayFx(selectFX);
+
 			}
 
 			if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)

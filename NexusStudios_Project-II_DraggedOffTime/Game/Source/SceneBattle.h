@@ -42,6 +42,8 @@ public:
 
 	int fx_sword_hit;
 
+	uint selectFX;
+
 	//Combat turn
 	int turn;
 
