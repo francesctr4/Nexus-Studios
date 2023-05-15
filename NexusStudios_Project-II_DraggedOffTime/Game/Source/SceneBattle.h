@@ -45,10 +45,7 @@ public:
 	//Combat turn
 	int turn;
 
-	//Variables a cambiar por las del player y las del enemigo
-	
 	int selected_player;
-	int party_members;
 
 	struct Party_Member {
 		int HP;
@@ -61,22 +58,10 @@ public:
 		int base_DMG;
 
 		int buf_turns = 0;
+		int counter_turns = 0;
 	};
 
 	Party_Member* m_players;
-	/*std::array<Party_Member, 4> m_players;*/
-
-	////Player 1
-	//int p_HP = 100;
-	//int p_max_HP = 100;
-	//int p_DEF = 10;
-	//int p_DMG = 20;
-
-	////Player 2
-	//int p2_HP = 250;
-	//int p2_max_HP = 250;
-	//int p2_DEF = 5;
-	//int p2_DMG = 10;
 
 	//Enemy
 	int e_HP = 60;

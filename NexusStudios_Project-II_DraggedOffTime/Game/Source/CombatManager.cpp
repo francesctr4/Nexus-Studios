@@ -150,8 +150,7 @@ void CombatManager::SkillAttack(int slected_player, int p_DMG, int p_DEF) {
 		app->sceneBattle->e_HP = app->sceneBattle->e_HP - totalDamage;
 		break;
 	case 1:	//Tank - I’m the one who bonks! (Cada vez que el enemigo te ataque cuando esté activa esta variable, el enemigo recibirá daño al atacar)
-
-
+		app->sceneBattle->m_players[slected_player].counter_turns = 2;
 		break;
 	case 2:	//Mage - Middle ages steroids (Sube levemente tus estadísticas durante 2 turnos (p_DMG y p_DEF)) p_buf_turns
 		app->sceneBattle->m_players[slected_player].buf_turns = 2;
