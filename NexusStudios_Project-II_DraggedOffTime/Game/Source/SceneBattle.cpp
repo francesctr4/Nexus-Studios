@@ -73,6 +73,11 @@ bool SceneBattle::Start()
 	//Load audios
 	fx_sword_hit = app->audio->LoadFx("Assets/Audio/FX/SwordFX.wav");
 	selectFX = app->audio->LoadFx("Assets/Audio/FX/Select1.wav");
+	healFX = app->audio->LoadFx("Assets/Audio/FX/Heal.wav");
+	skillFX = app->audio->LoadFx("Assets/Audio/FX/Fire.wav");
+	clawsFX = app->audio->LoadFx("Assets/Audio/FX/Claws.wav");
+	runFX = app->audio->LoadFx("Assets/Audio/FX/Run.wav");
+	receiveHitFX = app->audio->LoadFx("Assets/Audio/FX/Hit.wav");
 
 	action_selected = 0;
 
@@ -195,27 +200,33 @@ bool SceneBattle::Update(float dt)
 					app->audio->PlayFx(fx_sword_hit);
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;*/
 					qte_timer.Start();
+					app->audio->PlayFx(fx_sword_hit);
 					qte = true;
 					break;
 				case 1:	//Quick time event attack (TODO)
 					qte_timer.Start();
 					qte = true;
+					app->audio->PlayFx(clawsFX);
 					break;
 				case 2: //Heal
 					m_players[selected_player].HP = app->combatManager->UseItem(m_players[selected_player].HP);
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
+					app->audio->PlayFx(healFX);
 					break;
 				case 3: //Habilidades (TODO)
 					app->combatManager->SkillAttack(selected_player, m_players[selected_player].DMG, m_players[selected_player].DEF);
-					app->audio->PlayFx(fx_sword_hit);
+					app->audio->PlayFx(skillFX);
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
 					break;
 				case 4: //Run away
 					if (app->combatManager->Run())
 					{
 						//Transition to Gameplay Screen
+						app->audio->PlayMusic("Assets/Audio/Music/Level1_Music.ogg", 0);
+						enableMusic = true;
 						app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
 						app->combatManager->playerTurn = !app->combatManager->playerTurn;
+						
 					}
 					else
 					{
@@ -413,6 +424,7 @@ bool SceneBattle::Update(float dt)
 					}
 
 					LOG("Atack");
+					app->audio->PlayFx(receiveHitFX);
 					//app->audio->PlayFx(fx_sword_hit); //Se buguea un montón porque se sobreponen los sonidos, hay que  añadirle un timer o algo para evitarlo y que sea algo mas lento el combate
 					//Blit red color in screen
 					//app->render->DrawRectangle(rect, 255, 0, 0, 150);
