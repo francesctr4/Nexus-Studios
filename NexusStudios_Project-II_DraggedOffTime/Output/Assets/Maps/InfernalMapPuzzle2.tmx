@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="3">
- <tileset firstgid="1" source="InfernalTiles.tsx"/>
+ <tileset firstgid="1" name="InfernalTiles" tilewidth="16" tileheight="16" tilecount="625" columns="25">
+  <image source="InfernalTiles.png" width="400" height="400"/>
+ </tileset>
+ <tileset firstgid="626" name="InfernalProps" tilewidth="16" tileheight="16" tilecount="625" columns="25">
+  <image source="InfernalProps.png" width="400" height="400"/>
+ </tileset>
  <layer id="2" name="Suelo" width="80" height="45">
   <data>
    <tile gid="31"/>
