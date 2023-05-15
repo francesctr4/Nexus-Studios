@@ -14439,6 +14439,9 @@
   </data>
  </layer>
  <objectgroup id="5" name="Colliders">
+  <properties>
+   <property name="Platform" type="bool" value="true"/>
+  </properties>
   <object id="1" x="608" y="0">
    <polygon points="0,0 0,128 -80,128 -80,144 -160,144 -160,256 48,256 48,336 0,336 0,352 -160,352 -160,592 0,592 0,720 -608,720 -608,0"/>
   </object>

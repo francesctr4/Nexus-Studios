@@ -124,7 +124,10 @@ bool SceneGameplay::Update(float dt)
 
 	if (player->godMode == true)
 	{
-		
+		if (app->input->GetKey(SDL_SCANCODE_M) == KEY_DOWN)
+		{
+			map_selector = !map_selector;
+		}
 		if (map_selector == true && app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN && actually == 0)
 		{
 			
@@ -321,10 +324,6 @@ bool SceneGameplay::Update(float dt)
 
 			enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 			enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		}
-		if (app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
-		{
-			map_selector = !map_selector;
 		}
 	}
 
