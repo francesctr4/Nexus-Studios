@@ -134,14 +134,20 @@ void Item::OnCollision(PhysBody* physA, PhysBody* physB) {
 
 	switch (physB->ctype)
 	{
-		case ColliderType::PLAYER: 
+	case ColliderType::PLAYER:
 		{
 			LOG("Collision PLAYER");
 
 			isPicked = true;
+			if (type == ItemType::TELEPORT_COFRE)
+			{
 
+			}
+			else
+			{ 
 			Disable();
 			pbody->body->DestroyFixture(pbody->body->GetFixtureList());
+			}
 			
 			if (physA->ctype == ColliderType::ITEM_BATTERY || physA->ctype == ColliderType::ITEM_GEM || physA->ctype == ColliderType::ITEM_MANGO || physA->ctype == ColliderType::ITEM_POTION)
 			{

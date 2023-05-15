@@ -180,7 +180,7 @@ public:
 
 public:
 
-	SString mapFileName[4];
+	SString mapFileName[16];
 	int actualmap = 0;
 	SString mapFolder;
     bool mapLoaded;
