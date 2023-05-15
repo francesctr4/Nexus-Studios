@@ -59,7 +59,7 @@ bool SceneBattle::Start()
 	selected_player = 0;
 	turn = 0;
 
-	m_players = new Party_Member[4] { {100, 100, 10, 20}, {150, 150, 10, 30}, {200, 200, 10, 40}, {200, 200, 10, 40} };
+	m_players = new Party_Member[4] { {100, 100, 10, 10, 20, 20}, {150, 150, 10, 10, 30, 30}, {200, 200, 10, 10, 40, 40}, {200, 200, 10, 10, 40, 40} };
 
 	enableMusic = true;
 
@@ -416,6 +416,19 @@ bool SceneBattle::Update(float dt)
 
 			if (e_confusion_turns > 0)
 				e_confusion_turns--;
+			
+			for (int i = 0; i < 3; i++)
+			{
+				if (m_players[i].buf_turns == 0)
+				{
+					m_players[i].DEF = m_players[i].base_DEF;
+					m_players[i].DMG = m_players[i].base_DMG;
+				}
+				if (m_players[i].buf_turns > 0)	
+					m_players[i].buf_turns--;
+				
+			}
+			
 
 			app->combatManager->playerTurn = !app->combatManager->playerTurn;
 			turn++;

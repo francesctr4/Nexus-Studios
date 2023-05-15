@@ -53,8 +53,14 @@ public:
 	struct Party_Member {
 		int HP;
 		int max_HP;
+
 		int DEF;
+		int base_DEF;
+
 		int DMG;
+		int base_DMG;
+
+		int buf_turns = 0;
 	};
 
 	Party_Member* m_players;
