@@ -88,6 +88,12 @@ public:
 	uint itemCollectedFx;
 
 	bool executeTeleportCofre = false;
+	bool executeTeleportJovani= false;
+	bool executeTeleportInfierno = false;
+	bool executeTeleportFuturo = false;
+	bool executeTeleportPrehistoria = false;
+	bool executeTeleportMedieval = false;
+
 
 };
 

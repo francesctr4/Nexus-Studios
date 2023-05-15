@@ -51,6 +51,7 @@ public:
 
 	Player* player;
 	bool map_selector = false;
+	bool infierno = false;
 	int actually = 0;
 
 	/*SDL_Texture* Juan;
