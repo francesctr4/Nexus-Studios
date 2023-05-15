@@ -148,6 +148,18 @@ void CombatManager::SkillAttack(int slected_player, int p_DMG, int p_DEF) {
 		int totalDamage;
 		totalDamage = p_DMG;
 		app->sceneBattle->e_HP = app->sceneBattle->e_HP - totalDamage;
+		if (totalDamage >= app->sceneBattle->e_HP)
+		{
+			enemy_increasedDefense = 0;
+			//Kill enemy
+			app->sceneBattle->e_HP = 0;
+		}
+		else
+		{
+			enemy_increasedDefense = 0;
+			//Return amount of e_HP
+			app->sceneBattle->e_HP = (app->sceneBattle->e_HP - totalDamage);
+		}
 		break;
 	case 1:	//Tank - I’m the one who bonks! (Cada vez que el enemigo te ataque cuando esté activa esta variable, el enemigo recibirá daño al atacar)
 		app->sceneBattle->m_players[slected_player].counter_turns = 2;
@@ -160,7 +172,31 @@ void CombatManager::SkillAttack(int slected_player, int p_DMG, int p_DEF) {
 	case 3:	//Rogue - Ouroboros Sight (Añade "confusión" al enemigo que provoca que se ataque a sí mismo y le inflige algo de daño + p_HP se ve ligeramente reducido)
 		app->sceneBattle->e_confusion_turns = 3;
 		app->sceneBattle->e_HP -= 10;
-		app->sceneBattle->m_players[app->sceneBattle->selected_player].HP -= 5;
+		//Comprobar vida del enemy
+		if (10 >= app->sceneBattle->e_HP)
+		{
+			enemy_increasedDefense = 0;
+			//Kill enemy
+			app->sceneBattle->e_HP = 0;
+		}
+		else
+		{
+			enemy_increasedDefense = 0;
+			//Return amount of e_HP
+			app->sceneBattle->e_HP -= 10;
+		}
+
+		//Comprobar vida del player
+		if (5 >= app->sceneBattle->m_players[slected_player].HP)
+		{
+			//Kill player
+			app->sceneBattle->m_players[slected_player].HP = 0;
+		}
+		else
+		{
+			app->sceneBattle->m_players[app->sceneBattle->selected_player].HP -= 5;
+		}
+		
 		break;
 	}
 };
