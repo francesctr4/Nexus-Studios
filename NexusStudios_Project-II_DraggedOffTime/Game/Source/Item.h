@@ -41,7 +41,7 @@ public:
 
 	void OnCollisionEnd(PhysBody* physA, PhysBody* physB);
 
-	void Restart();
+	void Restart(ItemType type, ColliderType ctype, int x, int y, std::string iconPath, std::string texturepath);
 
 public:
 
