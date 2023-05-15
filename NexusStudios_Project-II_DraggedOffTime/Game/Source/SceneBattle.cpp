@@ -219,6 +219,7 @@ bool SceneBattle::Update(float dt)
 					break;
 				case 5:
 					selected_player = app->combatManager->ChangeParty(selected_player);
+					app->audio->PlayFx(app->sceneGameplay->player->changeFX);
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
 					break;
 				}
@@ -309,6 +310,12 @@ bool SceneBattle::Update(float dt)
 
 				if (app->input->GetKey(SDL_SCANCODE_H) == KEY_DOWN)		//Heal enemy HP
 					e_HP = e_max_HP;
+
+				if (app->input->GetKey(SDL_SCANCODE_E) == KEY_REPEAT && app->input->GetKey(SDL_SCANCODE_0) == KEY_DOWN)		//Reset enemy HP
+					e_HP = 1;
+
+				if (app->input->GetKey(SDL_SCANCODE_E) == KEY_REPEAT && app->input->GetKey(SDL_SCANCODE_0) == KEY_DOWN)		//Reset player HP
+					m_players[selected_player].HP = 1;
 
 				if (app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
