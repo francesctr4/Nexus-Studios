@@ -153,8 +153,10 @@ void CombatManager::SkillAttack(int slected_player, int p_DMG, int p_DEF) {
 
 
 		break;
-	case 2:	//Mage - Middle ages steroids (Sube levemente tus estadísticas durante toda la batalla (p_DMG y p_DEF))
-
+	case 2:	//Mage - Middle ages steroids (Sube levemente tus estadísticas durante 2 turnos (p_DMG y p_DEF)) p_buf_turns
+		app->sceneBattle->m_players[slected_player].buf_turns = 2;
+		app->sceneBattle->m_players[slected_player].DEF += 5;
+		app->sceneBattle->m_players[slected_player].DMG += 5;
 		break;
 	case 3:	//Rogue - Ouroboros Sight (Añade "confusión" al enemigo que provoca que se ataque a sí mismo y le inflige algo de daño + p_HP se ve ligeramente reducido)
 		app->sceneBattle->e_confusion_turns = 3;
