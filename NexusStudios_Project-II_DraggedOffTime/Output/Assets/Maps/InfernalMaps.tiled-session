@@ -3,13 +3,13 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "InfernalMap5.tmx",
+    "activeFile": "InfernalMapPuzzle2.tmx",
     "expandedProjectPaths": [
     ],
     "fileStates": {
         "": {
             "scaleInDock": 1,
-            "scaleInEditor": 1
+            "scaleInEditor": 5.5
         },
         "#InfernalTiles": {
             "scaleInDock": 1
@@ -43,11 +43,11 @@
             "expandedObjectLayers": [
                 8
             ],
-            "scale": 1.5,
+            "scale": 0.5,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 587,
-                "y": 325.99999999999994
+                "x": 993,
+                "y": 334
             }
         },
         "InfernalMap1.tmx#InfernalProps": {
@@ -63,8 +63,8 @@
             "scale": 1,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 579.5,
-                "y": 352
+                "x": 638.5,
+                "y": 358
             }
         },
         "InfernalMap2.tmx#InfernalProps": {
@@ -78,10 +78,10 @@
                 4
             ],
             "scale": 1,
-            "selectedLayer": 3,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 873.5,
-                "y": 302
+                "x": 941.5,
+                "y": 313
             }
         },
         "InfernalMap3.tmx#InfernalProps": {
@@ -111,8 +111,8 @@
             "scale": 0.75,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 690,
-                "y": 353.33333333333326
+                "x": 638,
+                "y": 357.33333333333326
             }
         },
         "InfernalMap4fixed.tmx#InfernalProps": {
@@ -125,11 +125,11 @@
             "expandedObjectLayers": [
                 5
             ],
-            "scale": 0.5,
+            "scale": 0.75,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 733,
-                "y": 506
+                "x": 664.6666666666667,
+                "y": 453.33333333333326
             }
         },
         "InfernalMap5.tmx#InfernalProps": {
@@ -139,18 +139,54 @@
             "scaleInDock": 1
         },
         "InfernalMapPuzzle.tmx": {
+            "expandedObjectLayers": [
+                4
+            ],
             "scale": 1,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 658.5,
-                "y": 369
+                "x": 554.5,
+                "y": 359
             }
         },
+        "InfernalMapPuzzle2.tmx": {
+            "expandedObjectLayers": [
+                10
+            ],
+            "scale": 0.75,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 447.33333333333326,
+                "y": 371.99999999999994
+            }
+        },
+        "InfernalMapPuzzle2.tmx#InfernalProps": {
+            "scaleInDock": 0.75
+        },
+        "InfernalMapPuzzle2.tmx#InfernalTiles": {
+            "scaleInDock": 0.75
+        },
+        "InfernalMapPuzzle3.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 536.6666666666666,
+                "y": 325.33333333333326
+            }
+        },
+        "InfernalMapPuzzle3.tmx#InfernalProps": {
+            "scaleInDock": 1
+        },
+        "InfernalMapPuzzle3.tmx#InfernalTiles": {
+            "scaleInDock": 1
+        },
         "InfernalProps.tsx": {
+            "dynamicWrapping": true,
             "scaleInDock": 1,
             "scaleInEditor": 2
         },
         "InfernalTiles.tsx": {
+            "dynamicWrapping": false,
             "scaleInDock": 1,
             "scaleInEditor": 2
         },
@@ -161,8 +197,8 @@
             "scale": 1.5,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 663.6666666666666,
-                "y": 300.66666666666663
+                "x": 660.3333333333334,
+                "y": 294.66666666666663
             }
         },
         "JovaniRoom.tmx#InfernalProps": {
@@ -175,11 +211,11 @@
             "expandedObjectLayers": [
                 5
             ],
-            "scale": 0.75,
-            "selectedLayer": 4,
+            "scale": 1,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 530,
-                "y": 306.66666666666663
+                "x": 644.5,
+                "y": 309
             }
         },
         "MapaInfernalBoss.tmx#InfernalProps": {
@@ -214,7 +250,7 @@
         }
     },
     "last.externalTilesetPath": "C:/Users/totor/OneDrive/Escritorio/Nexus-Studios/NexusStudios_Project-II_DraggedOffTime/Output/Assets/Maps",
-    "last.imagePath": "C:/Users/totor/OneDrive/Escritorio/Nexus-Studios/NexusStudios_Project-II_DraggedOffTime/Output/Assets/Textures",
+    "last.imagePath": "C:/Users/totor/OneDrive/Escritorio/Nexus-Studios/NexusStudios_Project-II_DraggedOffTime/Output/Assets/Maps",
     "map.height": 45,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
@@ -229,22 +265,23 @@
         "JovaniRoom.tmx",
         "MapaInfernalBoss.tmx",
         "InfernalMapPuzzle.tmx",
-        "InfernalTiles.tsx"
+        "InfernalTiles.tsx",
+        "InfernalMapPuzzle2.tmx"
     ],
     "project": "InfernalMaps.tiled-project",
     "property.type": "bool",
     "recentFiles": [
         "InfernalMap1.tmx",
-        "InfernalMap2.tmx",
         "InfernalMap3.tmx",
         "InfernalMap4fixed.tmx",
-        "InfernalTiles.tsx",
-        "InfernalMapPuzzle.tmx",
-        "MapaInfernalBoss.tmx",
-        "JovaniRoom.tmx",
         "InfernalMap5.tmx",
-        "mapfinal1280.tmx",
-        "InfernalMap4.tmx",
+        "InfernalMap2.tmx",
+        "InfernalMapPuzzle3.tmx",
+        "JovaniRoom.tmx",
+        "MapaInfernalBoss.tmx",
+        "InfernalMapPuzzle.tmx",
+        "InfernalTiles.tsx",
+        "InfernalMapPuzzle2.tmx",
         "InfernalProps.tsx"
     ],
     "tileset.lastUsedFilter": "Archivos de conjuntos de patrones Tiled (*.tsx *.xml)",
@@ -252,5 +289,6 @@
     "tileset.tileSize": {
         "height": 16,
         "width": 16
-    }
+    },
+    "tileset.type": 1
 }
