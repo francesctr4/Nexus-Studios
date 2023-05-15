@@ -147,6 +147,8 @@ public:
 	Animation* currentAnimation;
 	Animation idle_right;
 
-
+	uint openDialogue;
+	uint closeDialogue;
+	uint dialogueOptions;
 
 };

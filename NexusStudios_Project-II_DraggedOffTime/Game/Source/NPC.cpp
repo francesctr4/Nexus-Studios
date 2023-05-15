@@ -179,6 +179,10 @@ bool NPC::Start() {
 	thirdDialogue[0].text = app->tex->Load("Assets/Dialogue/Conversacion3_Texto1_Wizard.png");
 	thirdDialogue[0].whoIsTalking = DialogueType::PLAYER;
 
+	openDialogue = app->audio->LoadFx("Assets/Audio/Fx/SceneGameplay/OpenDialogue.wav");
+	closeDialogue = app->audio->LoadFx("Assets/Audio/Fx/SceneGameplay/CloseDialogue.wav");
+	dialogueOptions = app->audio->LoadFx("Assets/Audio/Fx/SceneGameplay/DialogueOptions.wav");
+
 	return true;
 }
 
@@ -211,6 +215,8 @@ bool NPC::Update()
 			
 			dialogueActivated = true;
 
+			app->audio->PlayFx(openDialogue);
+
 		}
 	}
 
@@ -229,6 +235,7 @@ bool NPC::Update()
 	else {
 
 		dialogueIterator = 0;
+		
 
 	}
 
@@ -280,9 +287,19 @@ void NPC::DialogueGenerator(Conversation conversation) {
 
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 
-		if (dialogueIterator < conversation.size - 1) dialogueIterator++;
-		else dialogueActivated = false;
+		if (dialogueIterator < conversation.size - 1) {
 
+			dialogueIterator++;
+			app->audio->PlayFx(openDialogue);
+
+		}
+		else {
+
+			dialogueActivated = false;
+			app->audio->PlayFx(closeDialogue);
+
+		}
+			
 	}
 
 	// Dialogue Manager
@@ -340,6 +357,8 @@ void NPC::DialogueGenerator(Conversation conversation) {
 
 				if (selectorIterator < 3) selectorIterator++;
 				else selectorIterator = 0;
+
+				app->audio->PlayFx(dialogueOptions);
 
 			}
 
