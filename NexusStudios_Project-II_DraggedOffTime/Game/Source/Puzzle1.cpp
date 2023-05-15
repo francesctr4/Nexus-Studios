@@ -1,18 +1,18 @@
-#include "Puzzle.h"
+#include "Puzzle1.h"
 #include "Textures.h"
 #include "App.h"
 #include "Render.h"
 #include "Audio.h"
 
-Puzzle::Puzzle()
+Puzzle1::Puzzle1()
 {
 }
 
-Puzzle::~Puzzle()
+Puzzle1::~Puzzle1()
 {
 }
 
-void Puzzle::Load()
+void Puzzle1::Load()
 {
 	texture = app->tex->Load("Assets/Textures/Puzzles/Puzzle1_Buttons.png");
 	buttonPressed = app->audio->LoadFx("Assets/Audio/Fx/SceneGameplay/ClickButton_Puzzle1.wav");
@@ -31,7 +31,7 @@ void Puzzle::Load()
 
 }
 
-void Puzzle::Update()
+void Puzzle1::Update()
 {
 
 	if (!sensor1Pressed) {
@@ -119,10 +119,5 @@ void Puzzle::Update()
 		app->render->DrawTexture(texture, posButton4.x, posButton4.y, &SDL_Rect({ 32 * 3, 32 * 3,32,32 }));
 
 	}
-
-}
-
-void Puzzle::Draw()
-{
 
 }

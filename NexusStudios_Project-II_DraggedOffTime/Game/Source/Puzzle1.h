@@ -6,18 +6,16 @@
 
 struct SDL_Texture;
 
-class Puzzle {
+class Puzzle1 {
 public:
 
-	Puzzle();
+	Puzzle1();
 
-	virtual ~Puzzle();
+	virtual ~Puzzle1();
 
 	void Load();
 
 	void Update();
-
-	void Draw();
 
 public:
 
@@ -50,9 +48,9 @@ public:
 	std::vector<int> order;
 	std::string combination;
 
-	b2Vec2 posButton1 = {300,420};
-	b2Vec2 posButton2 = {350,420};
-	b2Vec2 posButton3 = {300,470};
-	b2Vec2 posButton4 = {350,470};
+	b2Vec2 posButton1 = {200,500};
+	b2Vec2 posButton2 = {250,500};
+	b2Vec2 posButton3 = {200,550};
+	b2Vec2 posButton4 = {250,550};
 
 };

@@ -12,7 +12,7 @@
 #include "Pause.h"
 #include "Tweening.h"
 #include "Timer.h"
-#include "Puzzle.h"
+#include "Puzzle1.h"
 
 struct SDL_Texture;
 
@@ -83,6 +83,6 @@ public:
 
 	// Puzzles
 
-	Puzzle puzzles;
+	Puzzle1 puzzle1;
 
 };
