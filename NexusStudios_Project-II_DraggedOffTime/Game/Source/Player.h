@@ -46,6 +46,8 @@ public:
 
 	void OnCollision(PhysBody* physA, PhysBody* physB);
 
+	void OnCollisionEnd(PhysBody* physA, PhysBody* physB);
+
 	void TeleportCofre();
 
 	void Death();

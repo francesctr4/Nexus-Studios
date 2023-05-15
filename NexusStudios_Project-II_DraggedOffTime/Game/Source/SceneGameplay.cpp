@@ -16,6 +16,7 @@
 #include "QuestManager.h"
 
 #include "SceneGameplay.h"
+#include "Puzzle.h"
 
 #include "SDL_mixer/include/SDL_mixer.h"
 
@@ -85,6 +86,10 @@ bool SceneGameplay::Start()
 	// Stats
 
 	featureMenu.Load();
+
+	// Puzzles
+
+	puzzles.Load();
 
 	return true;
 }
@@ -344,6 +349,10 @@ bool SceneGameplay::Update(float dt)
 	//Quests
 	CheckEvent();
 
+	// Puzzles
+
+	puzzles.Update();
+
 	return true;
 }
 
@@ -385,6 +394,10 @@ bool SceneGameplay::PostUpdate()
 	// Stats
 	
 	featureMenu.PostUpdate();
+
+	// Puzzles
+
+	puzzles.Draw();
 
 	return ret;
 }

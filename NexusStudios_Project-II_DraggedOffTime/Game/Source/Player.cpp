@@ -261,10 +261,63 @@ bool Player::CleanUp()
 	return true;
 }
 
+void Player::OnCollisionEnd(PhysBody* physA, PhysBody* physB) {
+
+	//app->sceneGameplay->puzzles.sensor1Pressed = false;
+
+}
+
 void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	
 	switch (physB->ctype)
 	{
+	case ColliderType::SENSOR_BUTTON1_PUZZLE1:
+
+		if (!app->sceneGameplay->puzzles.sensor1Pressed) {
+
+			app->sceneGameplay->puzzles.order.push_back(1);
+			app->audio->PlayFx(app->sceneGameplay->puzzles.buttonPressed);
+			app->sceneGameplay->puzzles.sensor1Pressed = true;
+
+		}
+		
+		break;
+
+	case ColliderType::SENSOR_BUTTON2_PUZZLE1:
+
+		if (!app->sceneGameplay->puzzles.sensor2Pressed) {
+
+			app->sceneGameplay->puzzles.order.push_back(2);
+			app->audio->PlayFx(app->sceneGameplay->puzzles.buttonPressed);
+			app->sceneGameplay->puzzles.sensor2Pressed = true;
+
+		}
+		
+		break;
+
+	case ColliderType::SENSOR_BUTTON3_PUZZLE1:
+
+		if (!app->sceneGameplay->puzzles.sensor3Pressed) {
+
+			app->sceneGameplay->puzzles.order.push_back(3);
+			app->audio->PlayFx(app->sceneGameplay->puzzles.buttonPressed);
+			app->sceneGameplay->puzzles.sensor3Pressed = true;
+
+		}
+
+		break;
+
+	case ColliderType::SENSOR_BUTTON4_PUZZLE1:
+
+		if (!app->sceneGameplay->puzzles.sensor4Pressed) {
+
+			app->sceneGameplay->puzzles.order.push_back(4);
+			app->audio->PlayFx(app->sceneGameplay->puzzles.buttonPressed);
+			app->sceneGameplay->puzzles.sensor4Pressed = true;
+
+		}
+
+		break;
 
 	case ColliderType::ITEM_POTION:
 

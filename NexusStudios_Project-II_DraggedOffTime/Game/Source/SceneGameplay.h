@@ -12,6 +12,7 @@
 #include "Pause.h"
 #include "Tweening.h"
 #include "Timer.h"
+#include "Puzzle.h"
 
 struct SDL_Texture;
 
@@ -79,5 +80,9 @@ public:
 	bool first_mision = false;
 	bool second_mision = false;
 	bool third_mision = false;
+
+	// Puzzles
+
+	Puzzle puzzles;
 
 };
