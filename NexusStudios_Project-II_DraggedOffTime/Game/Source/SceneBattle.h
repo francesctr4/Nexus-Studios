@@ -43,6 +43,11 @@ public:
 	int fx_sword_hit;
 
 	uint selectFX;
+	uint healFX;
+	uint skillFX;
+	uint clawsFX;
+	uint runFX;
+	uint receiveHitFX;
 
 	//Combat turn
 	int turn;
