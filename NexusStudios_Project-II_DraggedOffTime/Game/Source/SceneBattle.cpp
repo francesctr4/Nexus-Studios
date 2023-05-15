@@ -71,13 +71,16 @@ bool SceneBattle::Start()
 	playerSelection = app->tex->Load("Assets/UI/PlayerSelector.png");
 
 	//Load audios
-	fx_sword_hit = app->audio->LoadFx("Assets/Audio/FX/SwordFX.wav");
-	selectFX = app->audio->LoadFx("Assets/Audio/FX/Select1.wav");
-	healFX = app->audio->LoadFx("Assets/Audio/FX/Heal.wav");
-	skillFX = app->audio->LoadFx("Assets/Audio/FX/Fire.wav");
-	clawsFX = app->audio->LoadFx("Assets/Audio/FX/Claws.wav");
-	runFX = app->audio->LoadFx("Assets/Audio/FX/Run.wav");
-	receiveHitFX = app->audio->LoadFx("Assets/Audio/FX/Hit.wav");
+	fx_sword_hit = app->audio->LoadFx("Assets/Audio/FX/SceneBattle/SwordFX.wav");
+	selectFX = app->audio->LoadFx("Assets/Audio/FX/SceneBattle/Select.wav");
+	healFX = app->audio->LoadFx("Assets/Audio/FX/SceneBattle/Heal.wav");
+	skillFX = app->audio->LoadFx("Assets/Audio/FX/SceneBattle/Fire.wav");
+	clawsFX = app->audio->LoadFx("Assets/Audio/FX/SceneBattle/Claws.wav");
+	runFX = app->audio->LoadFx("Assets/Audio/FX/SceneBattle/Run.wav");
+	receiveHitFX = app->audio->LoadFx("Assets/Audio/FX/SceneBattle/Hit.wav");
+	battleStartFX = app->audio->LoadFx("Assets/Audio/FX/SceneBattle/BattleStart.wav");
+	failedToRunFX = app->audio->LoadFx("Assets/Audio/FX/SceneBattle/FailedToRun.wav");
+	enemyFailFX = app->audio->LoadFx("Assets/Audio/FX/SceneBattle/EnemyFail.wav");
 
 	action_selected = 0;
 
@@ -121,6 +124,9 @@ bool SceneBattle::PreUpdate()
 	if (enableMusic) {
 
 		app->audio->PlayMusic("Assets/Audio/Music/BattleTheme.ogg", 0);
+
+		app->audio->PlayFx(battleStartFX);
+
 		enableMusic = false;
 
 	}
@@ -222,6 +228,7 @@ bool SceneBattle::Update(float dt)
 					if (app->combatManager->Run())
 					{
 						//Transition to Gameplay Screen
+						app->audio->PlayFx(runFX);
 						app->audio->PlayMusic("Assets/Audio/Music/Level1_Music.ogg", 0);
 						enableMusic = true;
 						app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
@@ -231,6 +238,7 @@ bool SceneBattle::Update(float dt)
 					else
 					{
 						LOG("You failed to run away");
+						app->audio->PlayFx(failedToRunFX);
 						app->combatManager->playerTurn = !app->combatManager->playerTurn;
 					}
 					break;
@@ -439,6 +447,7 @@ bool SceneBattle::Update(float dt)
 					//Blit green color in screen
 					//app->render->DrawRectangle(rect, 0, 255, 0, 150);
 					enemy_last_action = 1;
+					app->audio->PlayFx(enemyFailFX);
 				}
 				break;
 			default:

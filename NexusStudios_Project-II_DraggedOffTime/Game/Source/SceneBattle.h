@@ -40,14 +40,18 @@ public:
 
 	bool enableMusic;
 
-	int fx_sword_hit;
+	// 10 FX in Battle
 
+	uint fx_sword_hit;
 	uint selectFX;
 	uint healFX;
 	uint skillFX;
 	uint clawsFX;
 	uint runFX;
 	uint receiveHitFX;
+	uint battleStartFX;
+	uint failedToRunFX;
+	uint enemyFailFX;
 
 	//Combat turn
 	int turn;
