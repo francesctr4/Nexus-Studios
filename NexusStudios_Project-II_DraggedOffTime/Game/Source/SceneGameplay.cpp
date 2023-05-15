@@ -124,19 +124,15 @@ bool SceneGameplay::Update(float dt)
 
 	if (player->godMode == true)
 	{
-		if (app->input->GetKey(SDL_SCANCODE_M) == KEY_DOWN)
-		{
-			map_selector = !map_selector;
-		}
-		if (map_selector == true && app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN && actually == 0)
+		
+		if (map_selector == true && app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN )
 		{
 			
 			app->map->CleanUp();
-			app->map->actualmap = 1;
+			app->map->actualmap = 0;
 			bool retLoad = app->map->Load();
 			map_selector = false;
-			actually = 1;
-			app->sceneGameplay->player->Teleport(650, 700);
+			app->sceneGameplay->player->Teleport(150, 430);
 
 			//Move Npcs Map_1
 			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
@@ -163,14 +159,13 @@ bool SceneGameplay::Update(float dt)
 
 
 		}
-		if (map_selector == true && app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN && actually == 0)
+		if (map_selector == true && app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
 		{
 			app->map->CleanUp();
-			app->map->actualmap = 2;
+			app->map->actualmap = 1;
 			bool retLoad = app->map->Load();
 			map_selector = false;
-			actually = 2;
-			app->sceneGameplay->player->Teleport(650, 700);
+			app->sceneGameplay->player->Teleport(25, 560);
 			
 			//Move Npcs Map_2
 			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
@@ -195,50 +190,17 @@ bool SceneGameplay::Update(float dt)
 			enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 			enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 		}
-		if (map_selector == true && app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN && actually == 1)
-		{
-
-			app->map->CleanUp();
-			app->map->actualmap = 0;
-			bool retLoad = app->map->Load();
-			map_selector = false;
-			actually = 0;
-			app->sceneGameplay->player->Teleport(150, 430);
-			
-			//Move Npcs Map_0
-			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(950),PIXEL_TO_METERS(410) }, 0);
-			npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(950),PIXEL_TO_METERS(410) }, 0);
-
-			npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(755),PIXEL_TO_METERS(350) }, 0);
-			npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(755),PIXEL_TO_METERS(350) }, 0);
-
-			npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(75),PIXEL_TO_METERS(420) }, 0);
-			npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(75),PIXEL_TO_METERS(420) }, 0);
-			
-			//Move Npcs Map_0
-			enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(690),PIXEL_TO_METERS(160) }, 0);
-			enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(690),PIXEL_TO_METERS(160) }, 0);
-
-			enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(1050),PIXEL_TO_METERS(160) }, 0);
-			enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(1050),PIXEL_TO_METERS(160) }, 0);
-
-			enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(75),PIXEL_TO_METERS(615) }, 0);
-			enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(75),PIXEL_TO_METERS(615) }, 0);
-
-			enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(1120),PIXEL_TO_METERS(600) }, 0);
-			enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(1120),PIXEL_TO_METERS(600) }, 0);
-		}
-		if (map_selector == true && app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN && actually == 1)
+	
+		if (map_selector == true && app->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
 		{
 
 			app->map->CleanUp();
 			app->map->actualmap = 2;
 			bool retLoad = app->map->Load();
 			map_selector = false;
-			actually = 2;
 			app->sceneGameplay->player->Teleport(650, 700);
 			
-			//Move Npcs Map_2
+			//Move Npcs Map_3
 			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 			npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 
@@ -248,7 +210,7 @@ bool SceneGameplay::Update(float dt)
 			npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 			npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 
-			//Move Enemies Map_2
+			//Move Enemies Map_3
 			enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 			enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 
@@ -261,69 +223,10 @@ bool SceneGameplay::Update(float dt)
 			enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
 			enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
 		}
-		if (map_selector == true && app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN && actually == 2)
+		
+		if (app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 		{
-			app->map->CleanUp();
-			app->map->actualmap = 0;
-			bool retLoad = app->map->Load();
-			map_selector = false;
-			actually = 0;
-			app->sceneGameplay->player->Teleport(150, 430);
-
-			//Move Npcs Map_0
-			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(950),PIXEL_TO_METERS(410) }, 0);
-			npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(950),PIXEL_TO_METERS(410) }, 0);
-
-			npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(755),PIXEL_TO_METERS(350) }, 0);
-			npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(755),PIXEL_TO_METERS(350) }, 0);
-
-			npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(75),PIXEL_TO_METERS(420) }, 0);
-			npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(75),PIXEL_TO_METERS(420) }, 0);
-			
-			//Move Enemies Map_0
-			enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(690),PIXEL_TO_METERS(160) }, 0);
-			enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(690),PIXEL_TO_METERS(160) }, 0);
-
-			enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(1050),PIXEL_TO_METERS(160) }, 0);
-			enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(1050),PIXEL_TO_METERS(160) }, 0);
-
-			enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(75),PIXEL_TO_METERS(615) }, 0);
-			enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(75),PIXEL_TO_METERS(615) }, 0);
-
-			enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(1120),PIXEL_TO_METERS(600) }, 0);
-			enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(1120),PIXEL_TO_METERS(600) }, 0);
-		}
-		if (map_selector == true && app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN && actually == 2)
-		{
-			app->map->CleanUp();
-			app->map->actualmap = 1;
-			bool retLoad = app->map->Load();
-			map_selector = false;
-			actually = 1;
-			app->sceneGameplay->player->Teleport(650, 700);
-			
-			//Move Npcs Map_1
-			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
-			npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
-
-			//Move Enemies Map_1
-			enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			map_selector = !map_selector;
 		}
 	}
 
@@ -392,18 +295,18 @@ bool SceneGameplay::PostUpdate()
 		
 		if (map_selector == true && actually == 0)
 		{
-			app->render->DrawText("1. Mapa Jovani", 260, 150, 125, 20, { 255, 255, 255, 255 });
+			app->render->DrawText("1. Mapa Infierno", 260, 150, 125, 20, { 255, 255, 255, 255 });
 			app->render->DrawText("2. Mapa Cofre", 260, 180, 108, 20, { 255, 255, 255, 255 });
 		}
 		if (map_selector == true && actually == 1)
 		{
-			app->render->DrawText("1. Mapa Mazmorra", 260, 150, 142, 20, { 255, 255, 255, 255 });
+			app->render->DrawText("1. Mapa Infierno", 260, 150, 142, 20, { 255, 255, 255, 255 });
 			app->render->DrawText("2. Mapa Cofre", 260, 180, 108, 20, { 255, 255, 255, 255 });
 		}
 		if (map_selector == true && actually == 2)
 		{
-			app->render->DrawText("1. Mapa Mazmorra", 260, 150, 142, 20, { 255, 255, 255, 255 });
-			app->render->DrawText("2. Mapa Jovani", 260, 180, 125, 20, { 255, 255, 255, 255 });
+			app->render->DrawText("1. Mapa Infierno", 260, 150, 142, 20, { 255, 255, 255, 255 });
+			app->render->DrawText("2. Mapa Cofre", 260, 180, 125, 20, { 255, 255, 255, 255 });
 		}
 	}
 

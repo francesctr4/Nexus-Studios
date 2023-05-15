@@ -300,35 +300,6 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::PUERTA_JOVANI:
 		LOG("Collision PUERTA_JOVANI");
 		
-		app->map->CleanUp();
-		app->map->actualmap = 2;
-		app->map->Load();
-		app->sceneGameplay->actually = 2;
-		app->sceneGameplay->player->Teleport(650, 700);
-
-		//Move Npcs Map_2
-		app->sceneGameplay->npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		//Move Enemies Map_2
-		app->sceneGameplay->enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		
 		break;
 	}
 	
@@ -337,16 +308,16 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 
 void Player::TeleportCofre() {
 	//Quest
-	if (app->map->actualmap == 0)
+	switch (app->map->actualmap)
 	{
+	case 0:
 		app->sceneGameplay->trigger_3 = true;
 
 		app->map->CleanUp();
 		app->map->actualmap = 1;
 		app->map->Load();
 		app->sceneGameplay->map_selector = false;
-		app->sceneGameplay->actually = 1;
-		app->sceneGameplay->player->Teleport(650, 700);
+		app->sceneGameplay->player->Teleport(25, 560);
 
 		//Move Npcs Map_1
 		app->sceneGameplay->npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
@@ -370,16 +341,12 @@ void Player::TeleportCofre() {
 
 		app->sceneGameplay->enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 		app->sceneGameplay->enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-	}
-	if (app->map->actualmap == 1)
-	{
-		app->sceneGameplay->trigger_3 = true;
-
+		//Esto esta mal
+	case 1:
 		app->map->CleanUp();
 		app->map->actualmap = 2;
-		app->map->Load();
+		bool retLoad = app->map->Load();
 		app->sceneGameplay->map_selector = false;
-		app->sceneGameplay->actually = 2;
 		app->sceneGameplay->player->Teleport(650, 700);
 
 		//Move Npcs Map_1
