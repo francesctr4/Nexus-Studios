@@ -219,6 +219,7 @@ bool SceneBattle::Update(float dt)
 					break;
 				case 5:
 					selected_player = app->combatManager->ChangeParty(selected_player);
+					app->audio->PlayFx(app->sceneGameplay->player->changeFX);
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
 					break;
 				}
