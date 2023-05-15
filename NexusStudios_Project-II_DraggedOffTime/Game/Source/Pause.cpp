@@ -78,9 +78,6 @@ void Pause::Load()
 	back = app->tex->Load("Assets/UI/Back.png");
 	Back = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 6, back, "", { 586,622,102,38 }, (Module*)app->sceneGameplay);
 	Back->state = GuiControlState::DISABLED;
-
-	OpenPause = app->audio->LoadFx("Assets/Audio/Fx/OpenPause.wav");
-	ClosePause = app->audio->LoadFx("Assets/Audio/Fx/ClosePause.wav");
 }
 
 void Pause::Update()
@@ -94,13 +91,12 @@ void Pause::Update()
 	if (Resume->state == GuiControlState::PRESSED) {
 
 		showPause = false;
-		app->audio->PlayFx(OpenPause);
+		
 	}
 
 	if (Settings->state == GuiControlState::PRESSED) {
 
 		showSettings = true;
-		app->audio->PlayFx(OpenPause);
 		Back->state = GuiControlState::NORMAL;
 
 	}
@@ -163,7 +159,6 @@ void Pause::Update()
 	if (Back->state == GuiControlState::PRESSED) {
 		showSettings = false;
 		showPause = true;
-		app->audio->PlayFx(ClosePause);
 	}
 }
 

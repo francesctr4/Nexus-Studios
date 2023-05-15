@@ -133,9 +133,6 @@ bool SceneTitle::Start()
 	showCredits = false;
 	continueEnabled = false;
 
-	OpenPause = app->audio->LoadFx("Assets/Audio/Fx/OpenPause.wav");
-	ClosePause = app->audio->LoadFx("Assets/Audio/Fx/ClosePause.wav");
-
 	currentAnimation = &title;
 
 	return true;
@@ -203,20 +200,17 @@ bool SceneTitle::Update(float dt)
 	if (Settings->state == GuiControlState::PRESSED) {
 
 		showSettings = true;
-		app->audio->PlayFx(OpenPause);
 		Back->state = GuiControlState::NORMAL;
 
 	}
 
 	if (Back->state == GuiControlState::PRESSED) {
 		showSettings = false;
-		app->audio->PlayFx(ClosePause);
 	}
 
 	if (Credits->state == GuiControlState::PRESSED) {
 
 		showCredits = true;
-		app->audio->PlayFx(OpenPause);
 		BackCredits->state = GuiControlState::NORMAL;
 
 	}
@@ -224,7 +218,6 @@ bool SceneTitle::Update(float dt)
 	if (BackCredits->state == GuiControlState::PRESSED) {
 
 		showCredits = false;
-		app->audio->PlayFx(ClosePause);
 
 	}
 

@@ -102,9 +102,6 @@ public:
 	bool showCredits;
 	GuiButton* BackCredits;
 
-	uint OpenPause;
-	uint ClosePause;
-
 	SDL_Texture* titleSpritesheet;
 	Animation title;
 	Animation* currentAnimation;

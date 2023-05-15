@@ -96,11 +96,11 @@ bool Player::Start() {
 
 	playerChange = 0;
 
-	itemCollectedFx = app->audio->LoadFx("Assets/Audio/Fx/Item.wav");
+	itemCollectedFx = app->audio->LoadFx("Assets/Audio/Fx/SceneGameplay/Item.wav");
 	
 	idleDirection = false;
 
-	changeFX = app->audio->LoadFx("Assets/Audio/Fx/ChangePlayer.wav");
+	changeFX = app->audio->LoadFx("Assets/Audio/Fx/SceneGameplay/ChangePlayer.wav");
 
 	return true;
 }
@@ -182,6 +182,7 @@ bool Player::Update()
 		vel = b2Vec2(-speed, -GRAVITY_Y);
 		currentAnimation = &walk_left;
 		idleDirection = true;
+
 	}
 		
 	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) {
@@ -189,6 +190,7 @@ bool Player::Update()
 		vel = b2Vec2(speed, -GRAVITY_Y);
 		currentAnimation = &walk_right;
 		idleDirection = false;
+
 	}
 		
 	if (app->input->activeControllers.Count()) {

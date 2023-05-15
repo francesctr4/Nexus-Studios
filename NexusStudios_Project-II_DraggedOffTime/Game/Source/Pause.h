@@ -70,8 +70,4 @@ public:
 	SDL_Texture* back;
 	GuiButton* Back;
 
-	//SFX
-	uint OpenPause;
-	uint ClosePause;
-
 };

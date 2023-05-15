@@ -159,7 +159,7 @@ void FeatureMenu::Load()
 	SideQuest_3->state = GuiControlState::DISABLED;
 
 	//SFX
-	Mission_Completed = app->audio->LoadFx("Assets/Audio/Fx/Mission_Completed.wav");
+	Mission_Completed = app->audio->LoadFx("Assets/Audio/Fx/SceneGameplay/Mission_Completed.wav");
 
 	Fondo = app->tex->Load("Assets/UI/PauseBackground.png");
 
@@ -191,6 +191,9 @@ void FeatureMenu::Load()
 
 	statsReference = app->tex->Load("Assets/UI/Stats/Reference_Stats.png");
 
+	OpenPause = app->audio->LoadFx("Assets/Audio/Fx/SceneGameplay/OpenPause.wav");
+	ClosePause = app->audio->LoadFx("Assets/Audio/Fx/SceneGameplay/ClosePause.wav");
+
 }
 
 void FeatureMenu::Update()
@@ -206,6 +209,9 @@ void FeatureMenu::Update()
 		ChangeWeapons = false;
 		ShowSlots = false;
 		ChangeQuests = false;
+
+		if (statsEnabled) app->audio->PlayFx(OpenPause);
+		else app->audio->PlayFx(ClosePause);
 		
 	}
 

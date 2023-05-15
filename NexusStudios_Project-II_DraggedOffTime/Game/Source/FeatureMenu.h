@@ -190,4 +190,7 @@ public:
 	SDL_Texture* statsReference;
 	SDL_Color colorStats = {105,0,0};
 
+	uint OpenPause;
+	uint ClosePause;
+
 };
