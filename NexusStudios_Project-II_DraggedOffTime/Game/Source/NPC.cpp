@@ -182,6 +182,7 @@ bool NPC::Start() {
 	openDialogue = app->audio->LoadFx("Assets/Audio/Fx/SceneGameplay/OpenDialogue.wav");
 	closeDialogue = app->audio->LoadFx("Assets/Audio/Fx/SceneGameplay/CloseDialogue.wav");
 	dialogueOptions = app->audio->LoadFx("Assets/Audio/Fx/SceneGameplay/DialogueOptions.wav");
+	npcTalking = app->audio->LoadFx("Assets/Audio/Fx/SceneGameplay/NpcTalking.wav");
 
 	return true;
 }
@@ -216,6 +217,8 @@ bool NPC::Update()
 			dialogueActivated = true;
 
 			app->audio->PlayFx(openDialogue);
+
+			app->audio->PlayFx(npcTalking);
 
 		}
 	}
@@ -291,6 +294,8 @@ void NPC::DialogueGenerator(Conversation conversation) {
 
 			dialogueIterator++;
 			app->audio->PlayFx(openDialogue);
+
+			if (conversation.dialogues[dialogueIterator].whoIsTalking == DialogueType::NPC) app->audio->PlayFx(npcTalking);
 
 		}
 		else {

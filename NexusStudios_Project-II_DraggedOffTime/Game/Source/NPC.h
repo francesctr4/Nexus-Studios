@@ -150,5 +150,6 @@ public:
 	uint openDialogue;
 	uint closeDialogue;
 	uint dialogueOptions;
+	uint npcTalking;
 
 };
