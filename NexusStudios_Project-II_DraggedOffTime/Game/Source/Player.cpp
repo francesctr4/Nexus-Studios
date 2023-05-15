@@ -292,6 +292,25 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		executeTeleportCofre = true;
 
 		break;
+	case ColliderType::TELEPORT_FUTURO:
+		executeTeleportFuturo = true;
+
+		break;
+	case ColliderType::TELEPORT_INFIERNO:
+		executeTeleportInfierno = true;
+
+		break;
+	case ColliderType::TELEPORT_MEDIEVAL:
+		executeTeleportMedieval = true;
+
+		break;
+	case ColliderType::TELEPORT_PREHISTORIA:
+		executeTeleportPrehistoria = true;
+		break;
+
+	case ColliderType::TELEPORT_JOVANI:
+		executeTeleportJovani = true;
+		break;
 
 	case ColliderType::PUERTA_COFRE:
 		LOG("Collision PLATFORM");
@@ -341,7 +360,7 @@ void Player::TeleportCofre() {
 
 		app->sceneGameplay->enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 		app->sceneGameplay->enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		//Esto esta mal
+		break;
 	case 1:
 		app->map->CleanUp();
 		app->map->actualmap = 2;
@@ -371,6 +390,7 @@ void Player::TeleportCofre() {
 
 		app->sceneGameplay->enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 		app->sceneGameplay->enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+		break;
 	}
 
 }
