@@ -139,6 +139,9 @@ void Item::OnCollision(PhysBody* physA, PhysBody* physB) {
 			LOG("Collision PLAYER");
 
 			isPicked = true;
+
+			Disable();
+			pbody->body->DestroyFixture(pbody->body->GetFixtureList());
 			
 			if (physA->ctype == ColliderType::ITEM_BATTERY || physA->ctype == ColliderType::ITEM_GEM || physA->ctype == ColliderType::ITEM_MANGO || physA->ctype == ColliderType::ITEM_POTION)
 			{
@@ -150,11 +153,6 @@ void Item::OnCollision(PhysBody* physA, PhysBody* physB) {
 				app->sceneGameplay->featureMenu.inventoryManager.AddItem(*this);
 
 			}
-
-			/*app->sceneGameplay->items.at(this.)*/
-
-			Disable();
-			pbody->body->DestroyFixture(pbody->body->GetFixtureList());
 
 			break;
 		}

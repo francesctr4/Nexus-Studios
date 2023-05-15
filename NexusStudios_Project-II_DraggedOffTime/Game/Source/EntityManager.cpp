@@ -175,22 +175,62 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 
 	ListItem<Item*>* it;
 
-	pugi::xml_node itemNode = data.child("item");
-
-	for (auto& it : app->sceneGameplay->items)
+	for (pugi::xml_node itemNode = data.child("item"); itemNode; itemNode = itemNode.next_sibling("item"))
 	{
-		float x = itemNode.attribute("x").as_int();
-		float y = itemNode.attribute("y").as_int();
-
 		if (SString(itemNode.attribute("isPicked").as_string()) == SString("False")) {
 
-			it->Awake();
-			it->Restart();
-			it->pbody->body->SetTransform({ PIXEL_TO_METERS(x),PIXEL_TO_METERS(y) }, 0);
+			float x = itemNode.attribute("x").as_int();
+			float y = itemNode.attribute("y").as_int();
+			std::string iconPath = itemNode.attribute("iconpath").as_string();
+			std::string texturePath = itemNode.attribute("texturepath").as_string();
+			ItemType type;
+			ColliderType ctype;
+
+			if (SString(itemNode.attribute("type").as_string()) == SString("Potion"))
+			{
+				type = ItemType::POTION;
+				ctype = ColliderType::ITEM_POTION;
+
+				Item* item = (Item*)app->entityManager->CreateEntity(EntityType::ITEM);
+				item->Restart(type, ctype, x, y, iconPath, texturePath);
+
+				app->sceneGameplay->items.push_back(item);
+			}
+			else if (SString(itemNode.attribute("type").as_string()) == SString("Mango"))
+			{
+				type = ItemType::MANGO;
+				ctype = ColliderType::ITEM_MANGO;
+
+				Item* item = (Item*)app->entityManager->CreateEntity(EntityType::ITEM);
+				item->Restart(type, ctype, x, y, iconPath, texturePath);
+
+				app->sceneGameplay->items.push_back(item);
+
+			}
+			else if (SString(itemNode.attribute("type").as_string()) == SString("Gem"))
+			{
+				type = ItemType::GEM;
+				ctype = ColliderType::ITEM_GEM;
+
+				Item* item = (Item*)app->entityManager->CreateEntity(EntityType::ITEM);
+				item->Restart(type, ctype, x, y, iconPath, texturePath);
+
+				app->sceneGameplay->items.push_back(item);
+			}
+			else if (SString(itemNode.attribute("type").as_string()) == SString("Battery"))
+			{
+				type = ItemType::BATTERY;
+				ctype = ColliderType::ITEM_BATTERY;
+
+				Item* item = (Item*)app->entityManager->CreateEntity(EntityType::ITEM);
+				item->Restart(type, ctype, x, y, iconPath, texturePath);
+
+				app->sceneGameplay->items.push_back(item);
+			}
+
+			//it->pbody->body->SetTransform({ PIXEL_TO_METERS(x),PIXEL_TO_METERS(y) }, 0);
 
 		}
-
-		itemNode = itemNode.next_sibling("item");
 
 	}
 
@@ -236,19 +276,15 @@ bool EntityManager::SaveState(pugi::xml_node& data)
 		{
 		case ItemType::POTION:
 			item.append_attribute("type") = "Potion";
-			item.append_attribute("ctype") = "item_potion";
 			break;
 		case ItemType::MANGO:
 			item.append_attribute("type") = "Mango";
-			item.append_attribute("ctype") = "item_mango";
 			break;
 		case ItemType::GEM:
 			item.append_attribute("type") = "Gem";
-			item.append_attribute("ctype") = "item_gem";
 			break;
 		case ItemType::BATTERY:
 			item.append_attribute("type") = "Battery";
-			item.append_attribute("ctype") = "item_battery";
 			break;
 		case ItemType::ITEM_5:
 			break;

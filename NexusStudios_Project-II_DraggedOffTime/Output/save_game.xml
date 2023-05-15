@@ -14,12 +14,12 @@
 	<guiManager />
 	<CombatManager />
 	<entitymanager>
-		<player x="544" y="453" />
+		<player x="400" y="448" />
 		<enemy x="690" y="160" />
 		<enemy x="1050" y="160" />
 		<enemy x="75" y="615" />
 		<enemy x="1120" y="600" />
-		<item type="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png" isPicked="True" />
+		<item type="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png" isPicked="False" />
 		<item type="Mango" x="600" y="450" texturepath="Assets/Textures/Items/Mangoes/Mango-Sheet.png" iconpath="Assets/Textures/Items/Mangoes/Mango.png" isPicked="False" />
 		<item type="Gem" x="700" y="450" texturepath="Assets/Textures/Items/Gems/BlueGem-Sheet.png" iconpath="Assets/Textures/Items/Gems/BlueGem.png" isPicked="False" />
 		<item type="Battery" x="800" y="450" texturepath="Assets/Textures/Items/Batteries/Battery-Sheet.png" iconpath="Assets/Textures/Items/Batteries/Battery.png" isPicked="False" />
