@@ -231,9 +231,42 @@ bool EntityManager::SaveState(pugi::xml_node& data)
 
 		int x, y;
 		it->pbody->GetPosition(x, y);
+		
+		switch (it->type)
+		{
+		case ItemType::POTION:
+			item.append_attribute("type") = "Potion";
+			item.append_attribute("ctype") = "item_potion";
+			break;
+		case ItemType::MANGO:
+			item.append_attribute("type") = "Mango";
+			item.append_attribute("ctype") = "item_mango";
+			break;
+		case ItemType::GEM:
+			item.append_attribute("type") = "Gem";
+			item.append_attribute("ctype") = "item_gem";
+			break;
+		case ItemType::BATTERY:
+			item.append_attribute("type") = "Battery";
+			item.append_attribute("ctype") = "item_battery";
+			break;
+		case ItemType::ITEM_5:
+			break;
+		case ItemType::ITEM_6:
+			break;
+		case ItemType::TELEPORT_JOVANI:
+			break;
+		case ItemType::TELEPORT_COFRE:
+			break;
+		default:
+			break;
+		}
 
 		item.append_attribute("x") = x + 16;
 		item.append_attribute("y") = y + 16;
+
+		item.append_attribute("texturepath") = it->texturePath;
+		item.append_attribute("iconpath") = it->iconPath;
 
 		if (it->isPicked) {
 
