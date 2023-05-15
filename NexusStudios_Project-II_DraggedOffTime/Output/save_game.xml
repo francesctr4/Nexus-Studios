@@ -14,12 +14,12 @@
 	<guiManager />
 	<CombatManager />
 	<entitymanager>
-		<player x="429" y="451" />
+		<player x="459" y="453" />
 		<enemy x="690" y="160" />
 		<enemy x="1050" y="160" />
 		<enemy x="75" y="615" />
 		<enemy x="1120" y="600" />
-		<item x="500" y="450" isPicked="False" />
+		<item x="500" y="450" isPicked="True" />
 		<item x="600" y="450" isPicked="False" />
 		<item x="700" y="450" isPicked="False" />
 		<item x="800" y="450" isPicked="False" />

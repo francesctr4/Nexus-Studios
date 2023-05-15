@@ -123,6 +123,7 @@ void Item::OnCollision(PhysBody* physA, PhysBody* physB) {
 
 			Disable();
 			pbody->body->DestroyFixture(pbody->body->GetFixtureList());
+			//app->sceneGameplay->items.
 			if (physA->ctype == ColliderType::ITEM_BATTERY || physA->ctype == ColliderType::ITEM_GEM || physA->ctype == ColliderType::ITEM_MANGO || physA->ctype == ColliderType::ITEM_POTION)
 			{
 				app->sceneGameplay->trigger_2++;

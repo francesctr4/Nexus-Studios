@@ -56,9 +56,9 @@ public:
 	/*SDL_Texture* Juan;
 	Tween Juan_anim;*/
 
-	List<Enemy*> enemies;
-	List<Item*> items;
-	List<NPC*> npcs;
+	std::vector<Enemy*> enemies;
+	std::vector<Item*> items;
+	std::vector<NPC*> npcs;
 
 	// Menus
 
