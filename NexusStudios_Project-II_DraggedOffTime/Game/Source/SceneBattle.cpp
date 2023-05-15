@@ -55,7 +55,6 @@ bool SceneBattle::Start()
 {
 
 	//Cambiar para después de la vertical slice
-	party_members = 2;
 	selected_player = 0;
 	turn = 0;
 
@@ -231,6 +230,8 @@ bool SceneBattle::Update(float dt)
 				app->fadeToBlack->Fade((Module*)app->sceneBattle, (Module*)app->sceneGameplay);
 				m_players[0].HP = m_players[0].max_HP;
 				m_players[1].HP = m_players[1].max_HP;
+				m_players[2].HP = m_players[2].max_HP;
+				m_players[3].HP = m_players[3].max_HP;
 			}
 
 			//Debug controls
@@ -386,11 +387,17 @@ bool SceneBattle::Update(float dt)
 			case 1:
 				if (e_HP > 0)
 				{
-					if(e_confusion_turns == 0)
+					if(e_confusion_turns == 0 && m_players[selected_player].counter_turns == 0)
 						m_players[selected_player].HP = app->combatManager->EnemyAttack(e_DMG, m_players[selected_player].HP, m_players[selected_player].DEF);
 
 					if (e_confusion_turns > 0)
 						e_HP = app->combatManager->NormalAttack(e_DMG, e_HP, e_DEF, true, 1);
+
+					if (m_players[selected_player].counter_turns > 0)
+					{
+						m_players[selected_player].HP = app->combatManager->EnemyAttack(e_DMG, m_players[selected_player].HP, m_players[selected_player].DEF);
+						e_HP = app->combatManager->NormalAttack(e_DMG, e_HP, e_DEF, true, 1);
+					}
 
 					LOG("Atack");
 					//app->audio->PlayFx(fx_sword_hit); //Se buguea un montón porque se sobreponen los sonidos, hay que  añadirle un timer o algo para evitarlo y que sea algo mas lento el combate
@@ -417,6 +424,7 @@ bool SceneBattle::Update(float dt)
 			if (e_confusion_turns > 0)
 				e_confusion_turns--;
 			
+			//Skill Mage - Middle ages steroids
 			for (int i = 0; i < 3; i++)
 			{
 				if (m_players[i].buf_turns == 0)
@@ -427,6 +435,13 @@ bool SceneBattle::Update(float dt)
 				if (m_players[i].buf_turns > 0)	
 					m_players[i].buf_turns--;
 				
+			}
+
+			//Skill Tank - I'm the one who bonks!
+			for (int i = 0; i < 3; i++)
+			{
+				if (m_players[i].counter_turns > 0)
+					m_players[i].counter_turns--;
 			}
 			
 
