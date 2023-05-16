@@ -21,6 +21,8 @@ public:
 
 	SDL_Texture* texture;
 
+	float NewPosX;
+
 	b2Vec2 Box_Position = { 100,500 };
 
 	PhysBody* TopSensor;
