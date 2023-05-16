@@ -106,10 +106,10 @@ void Puzzle2::Update()
 		Box2_Position.y = Box2_Position.y - 2;
 
 		float NewPosY_Top = Box2_Position.y - 16;
-		TopSensor1->body->SetTransform({ PIXEL_TO_METERS(NewPosX2),PIXEL_TO_METERS(Box2_Position.y) }, 0);
+		TopSensor2->body->SetTransform({ PIXEL_TO_METERS(NewPosX2),PIXEL_TO_METERS(Box2_Position.y) }, 0);
 
 		float NewPosY_Bot = Box2_Position.y + 32;
-		BottomSensor1->body->SetTransform({ PIXEL_TO_METERS(NewPosX2),PIXEL_TO_METERS(NewPosY_Bot) }, 0);
+		BottomSensor2->body->SetTransform({ PIXEL_TO_METERS(NewPosX2),PIXEL_TO_METERS(NewPosY_Bot) }, 0);
 
 		float NewPosY_Box = Box2_Position.y + 32 - 16;
 		Box2_Collider->body->SetTransform({ PIXEL_TO_METERS(NewPosX2),PIXEL_TO_METERS(NewPosY_Box) }, 0);
@@ -131,7 +131,7 @@ void Puzzle2::Update()
 		BottomSensor3->body->SetTransform({ PIXEL_TO_METERS(NewPosX3),PIXEL_TO_METERS(NewPosY_Bot) }, 0);
 
 		float NewPosY_Box = Box3_Position.y + 16;
-		Box2_Collider->body->SetTransform({ PIXEL_TO_METERS(NewPosX3),PIXEL_TO_METERS(NewPosY_Box) }, 0);
+		Box3_Collider->body->SetTransform({ PIXEL_TO_METERS(NewPosX3),PIXEL_TO_METERS(NewPosY_Box) }, 0);
 
 	}
 	if (bottom_collision3) {
@@ -223,3 +223,34 @@ void Puzzle2::Update()
 	app->render->DrawTexture(texture, Box5_Position.x, Box5_Position.y);
 
 }
+
+void Puzzle2::CleanUp()
+{
+	//Box 1
+	app->physics->DestroyBody(TopSensor1);
+	app->physics->DestroyBody(BottomSensor1);
+	app->physics->DestroyBody(Box1_Collider);
+
+	//Box 2
+	app->physics->DestroyBody(TopSensor2);
+	app->physics->DestroyBody(BottomSensor2);
+	app->physics->DestroyBody(Box2_Collider);
+
+	//Box 3
+	app->physics->DestroyBody(TopSensor3);
+	app->physics->DestroyBody(BottomSensor3);
+	app->physics->DestroyBody(Box3_Collider);
+
+	//Box 4
+	app->physics->DestroyBody(TopSensor4);
+	app->physics->DestroyBody(BottomSensor4);
+	app->physics->DestroyBody(Box4_Collider);
+
+	//Box 5
+	app->physics->DestroyBody(TopSensor5);
+	app->physics->DestroyBody(BottomSensor5);
+	app->physics->DestroyBody(Box5_Collider);
+	
+
+}
+
