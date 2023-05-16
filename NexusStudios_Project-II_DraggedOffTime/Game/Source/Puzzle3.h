@@ -30,7 +30,7 @@ public:
 	bool clockPicked = false;
 	bool coinPicked = false;
 
-	b2Vec2 posRelojArena = {400,450};
+	b2Vec2 posRelojArena = {400,480};
 
 	std::vector<PhysBody*> sensors;
 
@@ -39,5 +39,16 @@ public:
 	bool completed = false;
 
 	int coinCount = 0;
+
+	Animation idleCoin;
+	Animation* currentAnimationCoin;
+
+	Animation idleClock;
+	Animation* currentAnimationClock;
+
+	uint fail;
+	uint correct;
+	uint coinFX;
+	uint clockFX;
 
 };

@@ -26,6 +26,7 @@ class SceneLogo;
 class SceneTitle;
 class SceneGameplay;
 class SceneBattle;
+class SceneEnding;
 
 class GuiManager;
 class CombatManager;
@@ -107,6 +108,7 @@ public:
 	SceneTitle* sceneTitle;
 	SceneGameplay* sceneGameplay;
 	SceneBattle* sceneBattle;
+	SceneEnding* sceneEnding;
 
 	GuiManager* guiManager;
 	CombatManager* combatManager;
