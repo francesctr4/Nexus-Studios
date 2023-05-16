@@ -391,7 +391,7 @@ void Player::TeleportCofre() {
 		app->map->actualmap = 1;
 		app->map->Load();
 		app->sceneGameplay->map_selector = false;
-		app->sceneGameplay->player->Teleport(25, 560);
+		app->sceneGameplay->player->Teleport(650, 671);
 
 		//Move Npcs Map_1
 		app->sceneGameplay->npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);

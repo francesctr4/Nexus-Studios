@@ -139,7 +139,7 @@ bool SceneGameplay::Update(float dt)
 			app->map->actualmap = 1;
 			bool retLoad = app->map->Load();
 			infierno = false;
-			app->sceneGameplay->player->Teleport(150, 430);
+			app->sceneGameplay->player->Teleport(650, 671);
 
 			//Move Npcs Map_1
 			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
@@ -172,7 +172,7 @@ bool SceneGameplay::Update(float dt)
 			app->map->actualmap = 2;
 			bool retLoad = app->map->Load();
 			infierno = false;
-			app->sceneGameplay->player->Teleport(25, 560);
+			app->sceneGameplay->player->Teleport(1265, 560);
 			
 			//Move Npcs Map_2
 			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
