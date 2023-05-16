@@ -36,7 +36,6 @@ public:
 	uint buttonPressed;
 
 	bool everySensorPressed = false;
-
 	Timer failTimer;
 	uint fail;
 	bool failed = false;
