@@ -115,6 +115,9 @@
     <ClCompile Include="Source\Puzzle3.cpp">
       <Filter>Game Loop\Features\Puzzles</Filter>
     </ClCompile>
+    <ClCompile Include="Source\SceneEnding.cpp">
+      <Filter>Game Loop\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -263,6 +266,9 @@
     </ClInclude>
     <ClInclude Include="Source\Puzzle2.h">
       <Filter>Game Loop\Features\Puzzles</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneEnding.h">
+      <Filter>Game Loop\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

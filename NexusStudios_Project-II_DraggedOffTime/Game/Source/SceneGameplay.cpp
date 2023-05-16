@@ -486,6 +486,13 @@ bool SceneGameplay::Update(float dt)
 		Tp_Jovani = false;
 	}
 
+	// Go to Ending Screen
+
+	if (app->input->GetKey(SDL_SCANCODE_0) == KEY_DOWN) {
+
+		app->fadeToBlack->Fade(this, (Module*)app->sceneEnding);
+
+	}
 
 	return true;
 }
