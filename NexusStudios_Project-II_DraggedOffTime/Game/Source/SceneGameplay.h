@@ -115,5 +115,6 @@ public:
 	bool Tp_Puzzle_3 = true;
 	bool Tp_Boss = true;
 
+	uint endingScreenFX;
 
 };

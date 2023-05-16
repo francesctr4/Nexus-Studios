@@ -14,6 +14,7 @@
 #include "Player.h"
 
 #include "SceneEnding.h"
+#include "SceneGameplay.h"
 
 SceneEnding::SceneEnding(bool startEnabled) : Module(startEnabled)
 {

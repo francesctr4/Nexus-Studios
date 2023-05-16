@@ -87,6 +87,8 @@ bool SceneGameplay::Start()
 
 	featureMenu.Load();
 
+	endingScreenFX = app->audio->LoadFx("Assets/Audio/Fx/EndingScreen.wav");
+
 	return true;
 }
 
@@ -542,10 +544,11 @@ bool SceneGameplay::Update(float dt)
 
 	if (app->input->GetKey(SDL_SCANCODE_M) == KEY_DOWN) {
 
+		app->audio->PlayFx(endingScreenFX);
 		app->fadeToBlack->Fade(this, (Module*)app->sceneEnding);
 
 	}
-
+	
 	return true;
 }
 
