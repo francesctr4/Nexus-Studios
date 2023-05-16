@@ -2,6 +2,7 @@
 
 #include "Timer.h"
 #include "Physics.h"
+#include "Item.h"
 #include <vector>
 
 struct SDL_Texture;
@@ -19,6 +20,13 @@ public:
 
 public:
 
+	SDL_Texture* relojArena;
+	PhysBody* sensor;
+	bool clockPicked = false;
+	bool coinPicked = false;
 
+	b2Vec2 posRelojArena = {400,450};
+
+	std::vector<Item> coins;
 
 };

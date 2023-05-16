@@ -15,7 +15,7 @@ enum class ItemType {
 	MANGO,
 	GEM,
 	BATTERY,
-	ITEM_5,
+	COIN,
 	ITEM_6,
 	TELEPORT_JOVANI,
 	TELEPORT_COFRE
