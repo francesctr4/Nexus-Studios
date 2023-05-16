@@ -286,8 +286,7 @@ bool EntityManager::SaveState(pugi::xml_node& data)
 		case ItemType::BATTERY:
 			item.append_attribute("type") = "Battery";
 			break;
-		case ItemType::ITEM_5:
-			break;
+
 		case ItemType::ITEM_6:
 			break;
 		case ItemType::TELEPORT_JOVANI:
