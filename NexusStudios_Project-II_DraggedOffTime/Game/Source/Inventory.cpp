@@ -20,10 +20,10 @@ bool Inventory::PostUpdate()
 		RemoveLastItem();
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN && items.size())
+	/*if (app->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN && items.size())
 	{
 		RemoveCertainItem(1);
-	}
+	}*/
 
 	if (app->input->GetKey(SDL_SCANCODE_H) == KEY_DOWN)
 	{
