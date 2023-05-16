@@ -22,9 +22,9 @@ public:
 	b2Vec2 Box_Position = { 200,500 };
 
 	PhysBody* TopSensor;
-	PhysBody* LeftSensor;
-	PhysBody* RightSensor;
 	PhysBody* BottomSensor;
+
+	PhysBody* Box_Collider;
 	
 
 };
