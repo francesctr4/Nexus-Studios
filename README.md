@@ -2,7 +2,7 @@
 
 ### Repository Link: [Nexus Studios](https://github.com/francesctr4/Nexus-Studios)
 
-### Current release version: Vertical Slice (v0.5.0)
+### Current release version: Alpha (v0.8.0)
 
 ## Team Members
 
@@ -66,8 +66,7 @@ periods and reuniting all the temporal parts of the protagonist.
 	
 	[_Work in progress_]
 	
-	Left Joystick: Move the player
-	Start: Next scene
+	The gamepad is supported but all the controls have not been adapted yet.
 
 ### MOUSE ###
 
