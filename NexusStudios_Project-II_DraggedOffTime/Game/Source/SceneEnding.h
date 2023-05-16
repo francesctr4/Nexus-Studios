@@ -38,6 +38,9 @@ public:
 
 private:
 
+	SDL_Texture* endingScreen;
 
+	Animation ending;
+	Animation* currentAnimation;
 
 };

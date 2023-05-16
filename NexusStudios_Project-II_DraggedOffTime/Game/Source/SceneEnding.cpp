@@ -27,14 +27,42 @@ SceneEnding::~SceneEnding()
 bool SceneEnding::Awake(pugi::xml_node& config)
 {
 
+	for (int i = 0; i < 7; i++) {
+
+		if (i == 6) {
+
+			for (int j = 0; j < 5; j++) {
+
+				ending.PushBack({ 1280 * (0 + j), 720 * (0 + i), 1280, 720 });
+
+			}
+
+		}
+		else {
+
+			for (int j = 0; j < 6; j++) {
+
+				ending.PushBack({ 1280 * (0 + j), 720 * (0 + i), 1280, 720 });
+
+			}
+
+		}
+
+	}
+	ending.loop = true;
+	ending.speed = 0.5f;
+
 	return true;
 }
 
 // Called before the first frame
 bool SceneEnding::Start()
 {
-
 	enableMusic = true;
+
+	endingScreen = app->tex->Load("Assets/Textures/EndingScreen.png");
+
+	currentAnimation = &ending;
 
 	return true;
 }
@@ -65,9 +93,14 @@ bool SceneEnding::Update(float dt)
 
 		enableMusic = true;
 		app->fadeToBlack->Fade(this, (Module*)app->sceneTitle);
-		this->CleanUp();
 
 	}
+
+	currentAnimation->Update();
+
+	SDL_Rect rect = currentAnimation->GetCurrentFrame();
+
+	app->render->DrawTexture(endingScreen,0,0, &rect);
 
 	return true;
 }
