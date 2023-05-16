@@ -19,6 +19,10 @@ public:
 
 public:
 
+	SDL_Texture* relojArena;
+	PhysBody* sensor;
+	bool clockPicked = false;
 
+	b2Vec2 posRelojArena = {400,450};
 
 };
