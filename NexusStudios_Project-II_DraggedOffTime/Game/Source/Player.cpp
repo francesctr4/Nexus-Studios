@@ -300,6 +300,8 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 
 		app->sceneGameplay->puzzle3.coinPicked = true;
 
+		break;
+
 	case ColliderType::SENSOR_TOP_BOX_PUZZLE2:
 
 		app->sceneGameplay->puzzle2.top_collision = true;

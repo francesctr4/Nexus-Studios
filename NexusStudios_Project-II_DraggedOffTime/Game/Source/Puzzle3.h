@@ -21,12 +21,23 @@ public:
 public:
 
 	SDL_Texture* relojArena;
+	SDL_Texture* coin;
+
+	bool timerStarted = false;
+	Timer coinTimer;
+
 	PhysBody* sensor;
 	bool clockPicked = false;
 	bool coinPicked = false;
 
 	b2Vec2 posRelojArena = {400,450};
 
-	std::vector<Item> coins;
+	std::vector<PhysBody*> sensors;
+
+	bool createSensorClock = true;
+
+	bool completed = false;
+
+	int coinCount = 0;
 
 };

@@ -11,6 +11,7 @@
 struct SDL_Texture;
 
 struct NewPosition {
+
 	float posX;
 	float posY;
 	bool t;
