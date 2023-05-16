@@ -50,7 +50,10 @@
 	  <mapfile_3 path="Assets/Maps/InfernalMap2.tmx"/>
 	  <mapfile_4 path="Assets/Maps/InfernalMap3.tmx"/>
 	  <mapfile_5 path="Assets/Maps/InfernalMap4.tmx"/>
-	  <mapfile_6 path="Assets/Maps/InfernalMap5.tmx"/>
+	  <mapfile_6 path="Assets/Maps/MapaInfernalBoss.tmx"/>
+	  <mapfile_Puzzle_1 path="Assets/Maps/InfernalMapPuzzle1.tmx"/>
+	  <mapfile_Puzzle_2 path="Assets/Maps/InfernalMapPuzzle2.tmx"/>
+	  <mapfile_Puzzle_3 path="Assets/Maps/InfernalMapPuzzle3.tmx"/>
 
   </map>
   
