@@ -21,6 +21,7 @@
 #include "SceneTitle.h"
 #include "SceneGameplay.h"
 #include "SceneBattle.h"
+#include "SceneEnding.h"
 
 #include "EntityManager.h"
 #include "GuiManager.h"
@@ -47,6 +48,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	sceneTitle = new SceneTitle(false);
 	sceneGameplay = new SceneGameplay(false);
 	sceneBattle = new SceneBattle(false);
+	sceneEnding = new SceneEnding(false);
 
 	guiManager = new GuiManager(true);
 	combatManager = new CombatManager(true);
@@ -69,6 +71,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(sceneTitle);
 	AddModule(sceneGameplay);
 	AddModule(sceneBattle);
+	AddModule(sceneEnding);
 
 	AddModule(guiManager);
 	AddModule(combatManager);
