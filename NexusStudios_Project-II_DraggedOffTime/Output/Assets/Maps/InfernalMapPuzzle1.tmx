@@ -18069,7 +18069,7 @@
    <tile/>
   </data>
  </layer>
- <objectgroup id="6" name="Colliders" visible="0">
+ <objectgroup id="6" name="Colliders">
   <object id="1" x="0" y="256">
    <polygon points="0,0 32,0 32,-176 400,-176 400,0 464,0 464,-192 1248,-192 1248,-128 1072,-128 1072,-96 1056,-96 1056,-64 1136,-64 1136,80 1168,80 1168,-80 1280,-80 1280,-256 0,-256"/>
   </object>
