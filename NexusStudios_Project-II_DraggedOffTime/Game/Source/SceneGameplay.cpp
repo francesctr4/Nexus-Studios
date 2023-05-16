@@ -485,7 +485,6 @@ bool SceneGameplay::Update(float dt)
 	{
 		TP_Infierno_3 = app->physics->CreateRectangleSensor(1273, 590, 9, 95, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
 		Tp_3 = false;
-		
 	}
 
 	if (app->map->actualmap == 3 && Tp_Cofre == true)
@@ -493,31 +492,31 @@ bool SceneGameplay::Update(float dt)
 		TP_Infierno_Cofre = app->physics->CreateRectangleSensor(1180, 255, 20, 9, bodyType::KINEMATIC, ColliderType::TELEPORT_JOVANI);
 		Tp_Cofre = false;
 	}
-	//Puzzle1
-	if (app->map->actualmap == 4 && Tp_4 == true)
+
+	if (app->map->actualmap == 6 && Tp_Puzzle_1 == true)
 	{
 		TP_Infierno_4 = app->physics->CreateRectangleSensor(1180, 255, 20, 9, bodyType::KINEMATIC, ColliderType::TELEPORT_JOVANI);
 		Tp_4 = false;
 	}
-	if (app->map->actualmap == 4 && Tp_Jovani == true)
+	if (app->map->actualmap == 7 && Tp_Puzzle_2 == true)
 	{
 		TP_Infierno_Jovani = app->physics->CreateRectangleSensor(1180, 255, 20, 9, bodyType::KINEMATIC, ColliderType::TELEPORT_JOVANI);
 		Tp_Jovani = false;
 	}
-	//Puzzle2
-	if (app->map->actualmap == 4 && Tp_Jovani == true)
+
+	if (app->map->actualmap == 8 && Tp_Puzzle_3 == true)
 	{
 		TP_Infierno_Jovani = app->physics->CreateRectangleSensor(1180, 255, 20, 9, bodyType::KINEMATIC, ColliderType::TELEPORT_JOVANI);
 		Tp_Jovani = false;
 	}
 	//Puzzle3
-	if (app->map->actualmap == 4 && Tp_Jovani == true)
+	if (app->map->actualmap == 7 && Tp_Jovani == true)
 	{
 		TP_Infierno_Jovani = app->physics->CreateRectangleSensor(1180, 255, 20, 9, bodyType::KINEMATIC, ColliderType::TELEPORT_JOVANI);
 		Tp_Jovani = false;
 	}
 	//BossFinal
-	if (app->map->actualmap == 4 && Tp_Jovani == true)
+	if (app->map->actualmap == 8 && Tp_Jovani == true)
 	{
 		TP_Infierno_Jovani = app->physics->CreateRectangleSensor(1180, 255, 20, 9, bodyType::KINEMATIC, ColliderType::TELEPORT_JOVANI);
 		Tp_Jovani = false;
