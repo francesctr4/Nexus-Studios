@@ -283,6 +283,8 @@ bool Player::CleanUp()
 void Player::OnCollisionEnd(PhysBody* physA, PhysBody* physB) {
 
 	//app->sceneGameplay->puzzles.sensor1Pressed = false;
+	app->sceneGameplay->puzzle2.top_collision = false;
+	app->sceneGameplay->puzzle2.bottom_collision = false;
 
 }
 
@@ -294,10 +296,19 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	
 	switch (physB->ctype)
 	{
-
 	case ColliderType::SENSOR_COIN_PUZZLE3:
 
 		app->sceneGameplay->puzzle3.coinPicked = true;
+
+	case ColliderType::SENSOR_TOP_BOX_PUZZLE2:
+
+		app->sceneGameplay->puzzle2.top_collision = true;
+
+		break;
+
+	case ColliderType::SENSOR_BOTTOM_BOX_PUZZLE2:
+
+		app->sceneGameplay->puzzle2.bottom_collision = true;
 
 		break;
 

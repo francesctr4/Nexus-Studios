@@ -19,10 +19,15 @@ public:
 
 public:
 
-	b2Vec2 Box_Position = { 200,500 };
+	SDL_Texture* texture;
+
+	b2Vec2 Box_Position = { 100,500 };
 
 	PhysBody* TopSensor;
+	bool top_collision;
+
 	PhysBody* BottomSensor;
+	bool bottom_collision;
 
 	PhysBody* Box_Collider;
 	
