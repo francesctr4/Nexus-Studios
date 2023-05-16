@@ -107,6 +107,7 @@ public:
 	bool Tp_2 = true;
 	bool Tp_3 = true;
 	bool Tp_4 = true;
+	bool Tp_5 = true;
 	bool Tp_Cofre = true;
 	bool Tp_Jovani = true;
 	bool Tp_Puzzle_1 = true;

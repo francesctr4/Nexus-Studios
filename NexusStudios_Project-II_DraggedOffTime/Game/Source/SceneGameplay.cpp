@@ -126,7 +126,7 @@ bool SceneGameplay::Update(float dt)
 	if (player->godMode == true)
 	{
 		
-		if (infierno == true && app->input->GetKey(SDL_SCANCODE_0) == KEY_DOWN )
+		if (infierno == true && app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN )
 		{
 			
 			app->map->CleanUp();
@@ -160,7 +160,7 @@ bool SceneGameplay::Update(float dt)
 
 
 		}
-		if (infierno == true && app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
+		if (infierno == true && app->input->GetKey(SDL_SCANCODE_0) == KEY_DOWN)
 		{
 
 			app->map->CleanUp();
@@ -194,7 +194,7 @@ bool SceneGameplay::Update(float dt)
 
 
 		}
-		if (infierno == true && app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
+		if (infierno == true && app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 		{
 			app->map->CleanUp();
 			app->map->actualmap = 2;
@@ -226,7 +226,7 @@ bool SceneGameplay::Update(float dt)
 			enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 		}
 	
-		if (infierno == true && app->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
+		if (infierno == true && app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
 		{
 
 			app->map->CleanUp();
@@ -259,7 +259,7 @@ bool SceneGameplay::Update(float dt)
 			enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
 		}
 
-		if (infierno == true && app->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
+		if (infierno == true && app->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
 		{
 
 			app->map->CleanUp();
@@ -292,7 +292,7 @@ bool SceneGameplay::Update(float dt)
 			enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
 		}
 
-		if (infierno == true && app->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
+		if (infierno == true && app->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
 		{
 			app->map->CleanUp();
 			app->map->actualmap = 5;
@@ -323,27 +323,43 @@ bool SceneGameplay::Update(float dt)
 			enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
 			enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
 		}
-		if (infierno == true && app->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN)
+		if (infierno == true && app->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
 		{
 			app->map->CleanUp();
 			app->map->actualmap = 6;
 			bool retLoad = app->map->Load();
 			infierno = false;
-			app->sceneGameplay->player->Teleport(650, 700);
+			app->sceneGameplay->player->Teleport(10, 300);
 		}
-		if (infierno == true && app->input->GetKey(SDL_SCANCODE_7) == KEY_DOWN)
+		if (infierno == true && app->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN)
 		{
 			app->map->CleanUp();
 			app->map->actualmap = 7;
 			bool retLoad = app->map->Load();
 			infierno = false;
-			app->sceneGameplay->player->Teleport(650, 700);
+			app->sceneGameplay->player->Teleport(12, 600);
 			
+		}
+		if (infierno == true && app->input->GetKey(SDL_SCANCODE_7) == KEY_DOWN)
+		{
+			app->map->CleanUp();
+			app->map->actualmap = 8;
+			bool retLoad = app->map->Load();
+			infierno = false;
+			app->sceneGameplay->player->Teleport(650, 700);
 		}
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_8) == KEY_DOWN)
 		{
 			app->map->CleanUp();
-			app->map->actualmap = 8;
+			app->map->actualmap = 4;
+			bool retLoad = app->map->Load();
+			infierno = false;
+			app->sceneGameplay->player->Teleport(650, 700);
+		}
+		if (infierno == true && app->input->GetKey(SDL_SCANCODE_9) == KEY_DOWN)
+		{
+			app->map->CleanUp();
+			app->map->actualmap = 5;
 			bool retLoad = app->map->Load();
 			infierno = false;
 			app->sceneGameplay->player->Teleport(650, 700);
@@ -495,31 +511,31 @@ bool SceneGameplay::Update(float dt)
 
 	if (app->map->actualmap == 6 && Tp_Puzzle_1 == true)
 	{
-		TP_Infierno_4 = app->physics->CreateRectangleSensor(1180, 255, 20, 9, bodyType::KINEMATIC, ColliderType::TELEPORT_JOVANI);
+		TP_Infierno_4 = app->physics->CreateRectangleSensor(1280, 210, 9, 95, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
 		Tp_4 = false;
 	}
 	if (app->map->actualmap == 7 && Tp_Puzzle_2 == true)
 	{
-		TP_Infierno_Jovani = app->physics->CreateRectangleSensor(1180, 255, 20, 9, bodyType::KINEMATIC, ColliderType::TELEPORT_JOVANI);
+		TP_Infierno_Jovani = app->physics->CreateRectangleSensor(610, 0, 95, 9, bodyType::KINEMATIC, ColliderType::TELEPORT_JOVANI);
 		Tp_Jovani = false;
 	}
 
 	if (app->map->actualmap == 8 && Tp_Puzzle_3 == true)
 	{
-		TP_Infierno_Jovani = app->physics->CreateRectangleSensor(1180, 255, 20, 9, bodyType::KINEMATIC, ColliderType::TELEPORT_JOVANI);
+		TP_Infierno_Jovani = app->physics->CreateRectangleSensor(610, 0, 20, 9, bodyType::KINEMATIC, ColliderType::TELEPORT_JOVANI);
 		Tp_Jovani = false;
 	}
 	//Puzzle3
-	if (app->map->actualmap == 7 && Tp_Jovani == true)
+	if (app->map->actualmap == 4 && Tp_4 == true)
 	{
-		TP_Infierno_Jovani = app->physics->CreateRectangleSensor(1180, 255, 20, 9, bodyType::KINEMATIC, ColliderType::TELEPORT_JOVANI);
-		Tp_Jovani = false;
+		TP_Infierno_Jovani = app->physics->CreateRectangleSensor(610, 0, 20, 9, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
+		Tp_4 = false;
 	}
 	//BossFinal
-	if (app->map->actualmap == 8 && Tp_Jovani == true)
+	if (app->map->actualmap == 5 && Tp_5 == true)
 	{
-		TP_Infierno_Jovani = app->physics->CreateRectangleSensor(1180, 255, 20, 9, bodyType::KINEMATIC, ColliderType::TELEPORT_JOVANI);
-		Tp_Jovani = false;
+		TP_Infierno_Jovani = app->physics->CreateRectangleSensor(960,80, 20, 20, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
+		Tp_5 = false;
 	}
 
 	// Go to Ending Screen
