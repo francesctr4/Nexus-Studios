@@ -459,7 +459,7 @@ bool SceneGameplay::Update(float dt)
 	}
 
 
-	if (app->map->actualmap == 6) {
+	if (app->map->actualmap == 8) {
 
 		if (puzzle1.canLoad) {
 
@@ -470,7 +470,7 @@ bool SceneGameplay::Update(float dt)
 		puzzle1.Update();
 		puzzle1.canClean = true;
 	}
-	else if (puzzle1.canClean == true && app->map->actualmap != 6) {
+	else if (puzzle1.canClean == true && app->map->actualmap != 8) {
 
 		puzzle1.CleanUp();
 		puzzle1.canClean = false;
@@ -516,13 +516,13 @@ bool SceneGameplay::Update(float dt)
 	}
 	if (app->map->actualmap == 7 && Tp_Puzzle_2 == true)
 	{
-		TP_Infierno_Jovani = app->physics->CreateRectangleSensor(610, 0, 95, 9, bodyType::KINEMATIC, ColliderType::TELEPORT_JOVANI);
+		TP_Infierno_Jovani = app->physics->CreateRectangleSensor(610, 0, 95, 9, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
 		Tp_Jovani = false;
 	}
 
 	if (app->map->actualmap == 8 && Tp_Puzzle_3 == true)
 	{
-		TP_Infierno_Jovani = app->physics->CreateRectangleSensor(610, 0, 20, 9, bodyType::KINEMATIC, ColliderType::TELEPORT_JOVANI);
+		TP_Infierno_Jovani = app->physics->CreateRectangleSensor(610, 0, 20, 9, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
 		Tp_Jovani = false;
 	}
 	//Puzzle3
@@ -540,7 +540,7 @@ bool SceneGameplay::Update(float dt)
 
 	// Go to Ending Screen
 
-	if (app->input->GetKey(SDL_SCANCODE_0) == KEY_DOWN) {
+	if (app->input->GetKey(SDL_SCANCODE_M) == KEY_DOWN) {
 
 		app->fadeToBlack->Fade(this, (Module*)app->sceneEnding);
 
