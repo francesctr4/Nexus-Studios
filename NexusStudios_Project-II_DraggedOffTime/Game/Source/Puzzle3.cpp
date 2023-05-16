@@ -26,6 +26,5 @@ void Puzzle3::Update()
 		app->render->DrawTexture(relojArena, posRelojArena.x, posRelojArena.y);
 		
 	}
-	
 
 }
