@@ -299,6 +299,7 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::SENSOR_COIN_PUZZLE3:
 
 		app->sceneGameplay->puzzle3.coinPicked = true;
+		app->audio->PlayFx(app->sceneGameplay->puzzle3.coinFX);
 
 		break;
 
