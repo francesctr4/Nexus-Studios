@@ -89,7 +89,7 @@ bool SceneGameplay::Start()
 
 	// Puzzles
 	
-	TP_Infierno_1 = app->physics->CreateRectangleSensor(1168, 365, 50, 50, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
+	
 	
 	puzzle1.Load();
 	puzzle2.Load();
@@ -134,14 +134,14 @@ bool SceneGameplay::Update(float dt)
 	if (player->godMode == true)
 	{
 		
-		if (infierno == true && app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN )
+		if (infierno == true && app->input->GetKey(SDL_SCANCODE_0) == KEY_DOWN )
 		{
 			
 			app->map->CleanUp();
-			app->map->actualmap = 1;
+			app->map->actualmap = 0;
 			bool retLoad = app->map->Load();
 			infierno = false;
-			app->sceneGameplay->player->Teleport(650, 671);
+			app->sceneGameplay->player->Teleport(200, 671);
 
 			//Move Npcs Map_1
 			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
@@ -163,6 +163,40 @@ bool SceneGameplay::Update(float dt)
 			enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 			enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 			
+			enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+
+		}
+		if (infierno == true && app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
+		{
+
+			app->map->CleanUp();
+			app->map->actualmap = 1;
+			bool retLoad = app->map->Load();
+			infierno = false;
+			app->sceneGameplay->player->Teleport(650, 700);
+
+			//Move Npcs Map_1
+			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+			npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+			npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
+			npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
+
+			//Move Enemies Map_1
+			enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+			enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+			enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
 			enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 			enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 
@@ -207,7 +241,7 @@ bool SceneGameplay::Update(float dt)
 			app->map->actualmap = 3;
 			bool retLoad = app->map->Load();
 			infierno = false;
-			app->sceneGameplay->player->Teleport(650, 700);
+			app->sceneGameplay->player->Teleport(1255, 106);
 			
 			//Move Npcs Map_3
 			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
@@ -353,15 +387,50 @@ bool SceneGameplay::Update(float dt)
 	//Quests
 	CheckEvent();
 	//Ya va
-	if (app->map->actualmap == 1 && caragado == true)
-	{
-		TP_Infierno_2 = app->physics->CreateRectangleSensor(0, 500, 50, 50, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
-		caragado = false;
-	}
+
 	// Puzzles
 	puzzle1.Update();
 	puzzle2.Update();
 	puzzle3.Update();
+
+
+	//Puzzle update
+
+
+
+
+
+
+
+	//Charge all the sensors on the different maps
+	if (app->map->actualmap == 0 && Tp_0 == true)
+	{
+		TP_Infierno_0 = app->physics->CreateRectangleSensor(1168, 365, 50, 50, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
+	}
+	
+	if (app->map->actualmap == 1 && Tp_1 == true)
+	{
+		TP_Infierno_1 = app->physics->CreateRectangleSensor(0, 550, 9, 95, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
+		Tp_1 = false;
+	}
+	if (app->map->actualmap == 2 && Tp_2 == true)
+	{
+		TP_Infierno_2 = app->physics->CreateRectangleSensor(0, 350, 9, 95, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
+		Tp_2 = false;
+	}
+	
+	if (app->map->actualmap == 3 && Tp_3 == true)
+	{
+		TP_Infierno_3 = app->physics->CreateRectangleSensor(1273, 590, 9, 95, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
+		Tp_3 = false;
+	}
+
+	if (app->map->actualmap == 4 && Tp_4 == true)
+	{
+		TP_Infierno_4 = app->physics->CreateRectangleSensor(303, 531, 9, 95, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
+		Tp_4 = false;
+	}
+
 
 	return true;
 }
