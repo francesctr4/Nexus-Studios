@@ -283,9 +283,23 @@ bool Player::CleanUp()
 void Player::OnCollisionEnd(PhysBody* physA, PhysBody* physB) {
 
 	//app->sceneGameplay->puzzles.sensor1Pressed = false;
-	app->sceneGameplay->puzzle2.top_collision = false;
-	app->sceneGameplay->puzzle2.bottom_collision = false;
 
+	//Box Puzzle
+
+	app->sceneGameplay->puzzle2.top_collision1 = false;
+	app->sceneGameplay->puzzle2.bottom_collision1 = false;
+
+	app->sceneGameplay->puzzle2.top_collision2 = false;
+	app->sceneGameplay->puzzle2.bottom_collision2 = false;
+
+	app->sceneGameplay->puzzle2.top_collision3 = false;
+	app->sceneGameplay->puzzle2.bottom_collision3 = false;
+
+	app->sceneGameplay->puzzle2.top_collision4 = false;
+	app->sceneGameplay->puzzle2.bottom_collision4 = false;
+
+	app->sceneGameplay->puzzle2.top_collision5 = false;
+	app->sceneGameplay->puzzle2.bottom_collision5 = false;
 }
 
 void Player::TeleportCofre()
@@ -303,15 +317,63 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 
 		break;
 
-	case ColliderType::SENSOR_TOP_BOX_PUZZLE2:
+	case ColliderType::SENSOR_TOP_BOX1_PUZZLE2:
 
-		app->sceneGameplay->puzzle2.top_collision = true;
+		app->sceneGameplay->puzzle2.top_collision1 = true;
 
 		break;
 
-	case ColliderType::SENSOR_BOTTOM_BOX_PUZZLE2:
+	case ColliderType::SENSOR_BOTTOM_BOX1_PUZZLE2:
 
-		app->sceneGameplay->puzzle2.bottom_collision = true;
+		app->sceneGameplay->puzzle2.bottom_collision1 = true;
+
+		break;
+
+	case ColliderType::SENSOR_TOP_BOX2_PUZZLE2:
+
+		app->sceneGameplay->puzzle2.top_collision2 = true;
+
+		break;
+
+	case ColliderType::SENSOR_BOTTOM_BOX2_PUZZLE2:
+
+		app->sceneGameplay->puzzle2.bottom_collision2 = true;
+
+		break;
+
+	case ColliderType::SENSOR_TOP_BOX3_PUZZLE2:
+
+		app->sceneGameplay->puzzle2.top_collision3 = true;
+
+		break;
+
+	case ColliderType::SENSOR_BOTTOM_BOX3_PUZZLE2:
+
+		app->sceneGameplay->puzzle2.bottom_collision3 = true;
+
+		break;
+
+	case ColliderType::SENSOR_TOP_BOX4_PUZZLE2:
+
+		app->sceneGameplay->puzzle2.top_collision4 = true;
+
+		break;
+
+	case ColliderType::SENSOR_BOTTOM_BOX4_PUZZLE2:
+
+		app->sceneGameplay->puzzle2.bottom_collision4 = true;
+
+		break;
+
+	case ColliderType::SENSOR_TOP_BOX5_PUZZLE2:
+
+		app->sceneGameplay->puzzle2.top_collision5 = true;
+
+		break;
+
+	case ColliderType::SENSOR_BOTTOM_BOX5_PUZZLE2:
+
+		app->sceneGameplay->puzzle2.bottom_collision5 = true;
 
 		break;
 
