@@ -127,10 +127,8 @@ bool SceneGameplay::Update(float dt)
 
 	if (player->godMode == true)
 	{
-		
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN )
 		{
-			
 			app->map->CleanUp();
 			app->map->actualmap = 0;
 			bool retLoad = app->map->Load();
@@ -144,12 +142,12 @@ bool SceneGameplay::Update(float dt)
 			npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 			npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 			
-			npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
-			npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
+			npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(332),PIXEL_TO_METERS(200) }, 0);
+			npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(332),PIXEL_TO_METERS(200) }, 0);
 
 			//Move Enemies Map_1
-			enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(95),PIXEL_TO_METERS(555) }, 0);
+			enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(95),PIXEL_TO_METERS(555) }, 0);
 
 			enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 			enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
@@ -164,7 +162,6 @@ bool SceneGameplay::Update(float dt)
 		}
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_0) == KEY_DOWN)
 		{
-
 			app->map->CleanUp();
 			app->map->actualmap = 1;
 			bool retLoad = app->map->Load();
@@ -175,8 +172,8 @@ bool SceneGameplay::Update(float dt)
 			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 			npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 
-			npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
+			npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(220) }, 0);
 
 			npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
 			npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
@@ -208,8 +205,8 @@ bool SceneGameplay::Update(float dt)
 			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 			npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 
-			npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(956),PIXEL_TO_METERS(220) }, 0);
+			npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(956),PIXEL_TO_METERS(220) }, 0);
 
 			npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 			npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
@@ -218,8 +215,8 @@ bool SceneGameplay::Update(float dt)
 			enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 			enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 
-			enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(490),PIXEL_TO_METERS(400) }, 0);
+			enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(490),PIXEL_TO_METERS(400) }, 0);
 
 			enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 			enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
@@ -238,14 +235,15 @@ bool SceneGameplay::Update(float dt)
 			app->sceneGameplay->player->Teleport(1255, 106);
 			
 			//Move Npcs Map_3
-			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
+			npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
 
 			npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 			npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 
 			npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 			npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
 
 			//Move Enemies Map_3
 			enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
@@ -257,22 +255,22 @@ bool SceneGameplay::Update(float dt)
 			enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 			enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 
-			enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
-			enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
+			enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(700),PIXEL_TO_METERS(500) }, 0);
+			enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(700),PIXEL_TO_METERS(500) }, 0);
 		}
 
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
 		{
 
 			app->map->CleanUp();
-			app->map->actualmap = 4;
+			app->map->actualmap = 6;
 			bool retLoad = app->map->Load();
 			infierno = false;
-			app->sceneGameplay->player->Teleport(650, 700);
+			app->sceneGameplay->player->Teleport(10, 300);
 
 			//Move Npcs Map_3
-			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(450),PIXEL_TO_METERS(350) }, 0);
+			npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(450),PIXEL_TO_METERS(350) }, 0);
 
 			npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 			npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
@@ -287,8 +285,8 @@ bool SceneGameplay::Update(float dt)
 			enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 			enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 
-			enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(800),PIXEL_TO_METERS(275) }, 0);
+			enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(800),PIXEL_TO_METERS(275) }, 0);
 
 			enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
 			enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
@@ -297,17 +295,17 @@ bool SceneGameplay::Update(float dt)
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
 		{
 			app->map->CleanUp();
-			app->map->actualmap = 5;
+			app->map->actualmap = 7;
 			bool retLoad = app->map->Load();
 			infierno = false;
-			app->sceneGameplay->player->Teleport(650, 700);
+			app->sceneGameplay->player->Teleport(12, 600);
 
 			//Move Npcs Map_3
 			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 			npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 
-			npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(800),PIXEL_TO_METERS(550) }, 0);
+			npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(800),PIXEL_TO_METERS(550) }, 0);
 
 			npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 			npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
@@ -319,8 +317,8 @@ bool SceneGameplay::Update(float dt)
 			enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 			enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 
-			enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(600),PIXEL_TO_METERS(200) }, 0);
+			enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(600),PIXEL_TO_METERS(200) }, 0);
 
 			enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
 			enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
@@ -328,44 +326,129 @@ bool SceneGameplay::Update(float dt)
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
 		{
 			app->map->CleanUp();
-			app->map->actualmap = 6;
-			bool retLoad = app->map->Load();
-			infierno = false;
-			app->sceneGameplay->player->Teleport(10, 300);
-		}
-		if (infierno == true && app->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN)
-		{
-			app->map->CleanUp();
-			app->map->actualmap = 7;
-			bool retLoad = app->map->Load();
-			infierno = false;
-			app->sceneGameplay->player->Teleport(12, 600);
-			
-		}
-		if (infierno == true && app->input->GetKey(SDL_SCANCODE_7) == KEY_DOWN)
-		{
-			app->map->CleanUp();
 			app->map->actualmap = 8;
 			bool retLoad = app->map->Load();
 			infierno = false;
-			app->sceneGameplay->player->Teleport(650, 700);
+			app->sceneGameplay->player->Teleport(640, 700);
+			
+			//Move Npcs Map_3
+			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(642),PIXEL_TO_METERS(500) }, 0);
+			npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(642),PIXEL_TO_METERS(500) }, 0);
+
+			npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
+			npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
+
+			npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+			//Move Enemies Map_3
+			enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+			enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+			enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
+			enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
+
+			enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
+			enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
 		}
-		if (infierno == true && app->input->GetKey(SDL_SCANCODE_8) == KEY_DOWN)
+		if (infierno == true && app->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN)
 		{
 			app->map->CleanUp();
 			app->map->actualmap = 4;
 			bool retLoad = app->map->Load();
 			infierno = false;
-			app->sceneGameplay->player->Teleport(650, 700);
+			app->sceneGameplay->player->Teleport(640, 700);
+			
+			//Move Npcs Map_3
+			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
+			npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
+
+			npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
+			npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
+
+			npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+			//Move Enemies Map_3
+			enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+			enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+			enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(735),PIXEL_TO_METERS(310) }, 0);
+			enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(735),PIXEL_TO_METERS(310) }, 0);
+
+			enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
+			enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
+			
 		}
-		if (infierno == true && app->input->GetKey(SDL_SCANCODE_9) == KEY_DOWN)
+		if (infierno == true && app->input->GetKey(SDL_SCANCODE_7) == KEY_DOWN)
 		{
 			app->map->CleanUp();
 			app->map->actualmap = 5;
 			bool retLoad = app->map->Load();
 			infierno = false;
-			app->sceneGameplay->player->Teleport(650, 700);
+			app->sceneGameplay->player->Teleport(640, 700);
+			
+			//Move Npcs Map_2
+			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+			npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
+			npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752	) }, 0);
+
+			npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(332),PIXEL_TO_METERS(200) }, 0);
+			npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(332),PIXEL_TO_METERS(200) }, 0);
+
+			//Move Enemies Map_2
+			enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+			enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
+			enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
+
+			enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+			enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
 		}
+		if (infierno == true && app->input->GetKey(SDL_SCANCODE_8) == KEY_DOWN)
+		{
+			app->map->CleanUp();
+			app->map->actualmap = 9;
+			bool retLoad = app->map->Load();
+			infierno = false;
+			app->sceneGameplay->player->Teleport(650, 700);
+
+			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+			npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
+			npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
+
+			npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
+			npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
+
+			//Move Enemies Map_2
+			enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+			enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
+			enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
+
+			enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+
+			enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+			enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
+		}
+		
 
 		if (app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN && infierno == false)
 		{
@@ -568,18 +651,23 @@ bool SceneGameplay::PostUpdate()
 	if (player->godMode == true)
 	{
 
-		app->render->DrawText("GODMODE", 100, 100, 90, 40, { 255, 255, 255, 255 });
-		app->render->DrawText("1. Maps", 150, 150, 60, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("GODMODE", 100, 100, 130, 80, { 255, 255, 255, 255 });
+		app->render->DrawText("1. Maps", 150, 165, 85, 50, { 255, 255, 255, 255 });
 		
 		if (map_selector == true)
 		{
-			app->render->DrawText("Mapa Infierno", 260, 150, 125, 20, { 255, 255, 255, 255 });
+			app->render->DrawText("2- Mapa Infierno", 245, 170, 160, 45, { 255, 255, 255, 255 });
 			if(infierno == true)
 			{
-				app->render->DrawText("   1st Room", 400, 150, 125, 20, { 255, 255, 255, 255 });
-				app->render->DrawText("   2nd Room", 400, 180, 125, 20, { 255, 255, 255, 255 });
-				app->render->DrawText("   3st Room", 400, 210, 125, 20, { 255, 255, 255, 255 });
-				app->render->DrawText("   4th Room", 400, 240, 125, 20, { 255, 255, 255, 255 });
+				app->render->DrawText("0- 1st Room", 420, 180, 125, 20, { 255, 255, 255, 255 });
+				app->render->DrawText("1- 2nd Room", 420, 210, 125, 20, { 255, 255, 255, 255 });
+				app->render->DrawText("2- 3rd Room", 420, 240, 125, 20, { 255, 255, 255, 255 });
+				app->render->DrawText("3- 4th Room", 420, 270, 125, 20, { 255, 255, 255, 255 });
+				app->render->DrawText("4- 5th Room", 420, 300, 125, 20, { 255, 255, 255, 255 });
+				app->render->DrawText("5- 6th Room", 420, 330, 125, 20, { 255, 255, 255, 255 });
+				app->render->DrawText("6- 7th Room", 420, 360, 125, 20, { 255, 255, 255, 255 });
+				app->render->DrawText("7- Chest", 420, 390, 125, 20, { 255, 255, 255, 255 });
+				app->render->DrawText("8- Jovani Room", 420, 420, 125, 20, { 255, 255, 255, 255 });
 			}
 		}
 		
