@@ -121,3 +121,12 @@ void Puzzle1::Update()
 	}
 
 }
+
+void Puzzle1::CleanUp()
+{
+	app->physics->DestroyBody(sensor1);
+	app->physics->DestroyBody(sensor2);
+	app->physics->DestroyBody(sensor3);
+	app->physics->DestroyBody(sensor4);
+
+}

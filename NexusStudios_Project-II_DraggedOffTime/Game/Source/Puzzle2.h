@@ -17,9 +17,13 @@ public:
 
 	void Update();
 
+	void CleanUp();
+
 public:
 
 	SDL_Texture* texture;
+	bool canLoad = true;
+	bool canClean = false;
 
 	//Box 1
 	float NewPosX1;

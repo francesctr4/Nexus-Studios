@@ -20,6 +20,9 @@ public:
 
 public:
 
+	bool canLoad = true;
+	bool canClean = false;
+
 	SDL_Texture* relojArena;
 	SDL_Texture* coin;
 
@@ -30,7 +33,7 @@ public:
 	bool clockPicked = false;
 	bool coinPicked = false;
 
-	b2Vec2 posRelojArena = {400,480};
+	b2Vec2 posRelojArena = {300,300};
 
 	std::vector<PhysBody*> sensors;
 

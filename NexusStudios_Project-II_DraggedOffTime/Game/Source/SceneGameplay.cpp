@@ -87,14 +87,6 @@ bool SceneGameplay::Start()
 
 	featureMenu.Load();
 
-	// Puzzles
-	
-	
-	
-	puzzle1.Load();
-	puzzle2.Load();
-	puzzle3.Load();
-
 	return true;
 }
 
@@ -346,6 +338,7 @@ bool SceneGameplay::Update(float dt)
 			bool retLoad = app->map->Load();
 			infierno = false;
 			app->sceneGameplay->player->Teleport(650, 700);
+			
 		}
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_8) == KEY_DOWN)
 		{
@@ -413,18 +406,62 @@ bool SceneGameplay::Update(float dt)
 	//Ya va
 
 	// Puzzles
-	puzzle1.Update();
-	puzzle2.Update();
-	puzzle3.Update();
+	if (app->map->actualmap == 6) {
+
+		if (puzzle3.canLoad) {
+
+			puzzle3.Load();
+			puzzle3.canLoad = false;
+		}
+
+		puzzle3.Update();
+		puzzle3.canClean = true;
+	}
+	else if (puzzle3.canClean == true && app->map->actualmap != 6) {
+
+		puzzle3.canClean = false;
+		puzzle3.canLoad = true;
+	}
 
 
-	//Puzzle update
+	if (app->map->actualmap == 7) {
+
+		if (puzzle2.canLoad) {
+
+			puzzle2.Load();
+			puzzle2.canLoad = false;
+		}
+		
+		puzzle2.Update();
+		puzzle2.canClean = true;
+	} 
+	else if(puzzle2.canClean == true && app->map->actualmap != 7){
+
+		puzzle2.CleanUp();
+		puzzle2.canClean = false;
+		puzzle2.canLoad = true;
+	}
 
 
+	if (app->map->actualmap == 6) {
 
+		if (puzzle1.canLoad) {
 
+			puzzle1.Load();
+			puzzle1.canLoad = false;
+		}
 
+		puzzle1.Update();
+		puzzle1.canClean = true;
+	}
+	else if (puzzle1.canClean == true && app->map->actualmap != 6) {
 
+		puzzle1.CleanUp();
+		puzzle1.canClean = false;
+		puzzle1.canLoad = true;
+	}
+	
+	
 
 	//Charge all the sensors on the different maps
 	if (app->map->actualmap == 0 && Tp_0 == true)

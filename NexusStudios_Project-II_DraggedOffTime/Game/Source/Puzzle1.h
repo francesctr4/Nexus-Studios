@@ -17,7 +17,12 @@ public:
 
 	void Update();
 
+	void CleanUp();
+
 public:
+
+	bool canLoad = true;
+	bool canClean = false;
 
 	SDL_Texture* texture;
 
@@ -47,9 +52,9 @@ public:
 	std::vector<int> order;
 	std::string combination;
 
-	b2Vec2 posButton1 = {200,500};
-	b2Vec2 posButton2 = {250,500};
-	b2Vec2 posButton3 = {200,550};
-	b2Vec2 posButton4 = {250,550};
+	b2Vec2 posButton1 = {544,352};
+	b2Vec2 posButton2 = {720,352};
+	b2Vec2 posButton3 = {544,528};
+	b2Vec2 posButton4 = {720,528};
 
 };
