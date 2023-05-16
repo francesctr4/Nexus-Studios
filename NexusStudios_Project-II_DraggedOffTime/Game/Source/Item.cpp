@@ -52,12 +52,6 @@ bool Item::Awake() {
 		ctype = ColliderType::ITEM_BATTERY;
 	}
 
-	if (SString(parameters.attribute("type").as_string()) == SString("Item_5"))
-		type = ItemType::ITEM_5;
-
-	if (SString(parameters.attribute("type").as_string()) == SString("Item_6"))
-		type = ItemType::ITEM_6;
-
 	if (SString(parameters.attribute("type").as_string()) == SString("Teleport_Jovani")) 
 	{
 		type = ItemType::TELEPORT_JOVANI;

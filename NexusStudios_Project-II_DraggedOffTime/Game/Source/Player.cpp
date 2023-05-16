@@ -271,6 +271,12 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	
 	switch (physB->ctype)
 	{
+	case ColliderType::SENSOR_COIN_PUZZLE3:
+
+		app->sceneGameplay->puzzle3.coinPicked = true;
+
+		break;
+
 	case ColliderType::SENSOR_CLOCK_PUZZLE3:
 
 		app->sceneGameplay->puzzle3.clockPicked = true;

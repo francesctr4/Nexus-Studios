@@ -26,5 +26,18 @@ void Puzzle3::Update()
 		app->render->DrawTexture(relojArena, posRelojArena.x, posRelojArena.y);
 		
 	}
+	else {
+
+		for (int i = 0; i < 4; i++) {
+
+			app->physics->CreateRectangleSensor(posRelojArena.x + 30 * i, posRelojArena.y + 8, 16, 16, bodyType::KINEMATIC, ColliderType::SENSOR_COIN_PUZZLE3);
+
+		}
+		
+	}
+
+	if (coinPicked) {
+
+	}
 
 }
