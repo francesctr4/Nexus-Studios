@@ -46,7 +46,7 @@
             "scale": 0.75,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 639.3333333333333,
+                "x": 684.6666666666666,
                 "y": 360
             }
         },
@@ -195,11 +195,11 @@
             "scaleInDock": 0.75
         },
         "InfernalMapPuzzle3.tmx": {
-            "scale": 0.5,
-            "selectedLayer": 0,
+            "scale": 1,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 1035,
-                "y": 496
+                "x": 610,
+                "y": 360
             }
         },
         "InfernalMapPuzzle3.tmx#InfernalProps": {
@@ -299,8 +299,8 @@
     "project": "InfernalMaps.tiled-project",
     "property.type": "bool",
     "recentFiles": [
-        "InfernalMap1.tmx",
         "InfernalMap2.tmx",
+        "InfernalMap1.tmx",
         "InfernalMap3.tmx",
         "InfernalMap4.tmx",
         "InfernalMapPuzzle2.tmx",

@@ -29,6 +29,7 @@
  <tileset firstgid="626" name="InfernalProps" tilewidth="16" tileheight="16" tilecount="625" columns="25">
   <image source="InfernalProps.png" width="400" height="400"/>
  </tileset>
+ <tileset firstgid="1251" source="InfernalTiles.tsx"/>
  <layer id="9" name="Suelo" width="80" height="45">
   <properties>
    <property name="Draw" type="bool" value="true"/>
@@ -4881,10 +4882,10 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="278"/>
+   <tile gid="279"/>
+   <tile gid="279"/>
+   <tile gid="280"/>
    <tile/>
    <tile/>
    <tile/>
@@ -18069,7 +18070,7 @@
    <tile/>
   </data>
  </layer>
- <objectgroup id="10" name="Colliders">
+ <objectgroup id="10" name="Colliders" visible="0">
   <object id="1" x="608" y="0">
    <polygon points="0,0 0,32 -288,32 -288,176 0,176 0,240 -288,240 -288,704 0,704 0,720 -608,720 -608,0"/>
   </object>
