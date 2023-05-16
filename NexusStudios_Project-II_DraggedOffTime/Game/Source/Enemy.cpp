@@ -71,6 +71,7 @@ bool Enemy::Awake() {
 bool Enemy::Start() {
 
 	Restart();
+
 	return true;
 }
 
