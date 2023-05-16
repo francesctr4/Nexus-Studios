@@ -306,6 +306,10 @@ void Player::TeleportCofre()
 {
 }
 
+void Player::TeleportJovani()
+{
+}
+
 void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	
 	switch (physB->ctype)
