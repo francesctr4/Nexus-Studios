@@ -88,7 +88,9 @@ bool SceneGameplay::Start()
 	featureMenu.Load();
 
 	// Puzzles
-
+	
+	TP_Infierno_1 = app->physics->CreateRectangleSensor(1168, 365, 50, 50, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
+	
 	puzzle1.Load();
 	puzzle2.Load();
 	puzzle3.Load();
@@ -350,9 +352,13 @@ bool SceneGameplay::Update(float dt)
 
 	//Quests
 	CheckEvent();
-
+	//Ya va
+	if (app->map->actualmap == 1 && caragado == true)
+	{
+		TP_Infierno_2 = app->physics->CreateRectangleSensor(0, 500, 50, 50, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
+		caragado = false;
+	}
 	// Puzzles
-
 	puzzle1.Update();
 	puzzle2.Update();
 	puzzle3.Update();

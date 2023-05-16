@@ -49,6 +49,12 @@ public:
 	void OnCollisionEnd(PhysBody* physA, PhysBody* physB);
 
 	void TeleportCofre();
+	void TeleportJovani();
+	void TeleportInfierno();
+	void TeleportPrehistoria();
+	void TeleportFuturo();
+	void TeleportMedieval();
+
 
 	void Death();
 

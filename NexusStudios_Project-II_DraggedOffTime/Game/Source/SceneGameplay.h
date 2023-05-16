@@ -90,4 +90,8 @@ public:
 	Puzzle2 puzzle2;
 	Puzzle3 puzzle3;
 
+	PhysBody* TP_Infierno_1;
+	PhysBody* TP_Infierno_2;
+	bool caragado = true;
+
 };

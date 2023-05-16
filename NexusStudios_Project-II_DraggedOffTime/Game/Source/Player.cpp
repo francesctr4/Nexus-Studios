@@ -112,6 +112,25 @@ bool Player::Update()
 		TeleportCofre();
 		executeTeleportCofre = false;
 	}
+	if (executeTeleportInfierno) {
+		TeleportInfierno();
+		executeTeleportInfierno = false;
+	}
+	if (executeTeleportMedieval) {
+		TeleportCofre();
+		executeTeleportMedieval = false;
+	}
+	if (executeTeleportPrehistoria) {
+		TeleportCofre();
+		executeTeleportPrehistoria = false;
+	}
+	if (executeTeleportFuturo) {
+		TeleportCofre();
+		executeTeleportFuturo = false;
+	}
+
+
+
 
 	// Add physics to the player and update player position using physics.
 	
@@ -267,10 +286,15 @@ void Player::OnCollisionEnd(PhysBody* physA, PhysBody* physB) {
 
 }
 
+void Player::TeleportCofre()
+{
+}
+
 void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	
 	switch (physB->ctype)
 	{
+		
 	case ColliderType::SENSOR_BUTTON1_PUZZLE1:
 
 		if (!app->sceneGameplay->puzzle1.sensor1Pressed) {
@@ -366,25 +390,18 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::TELEPORT_JOVANI:
 		executeTeleportJovani = true;
 		break;
-
-	case ColliderType::PUERTA_COFRE:
-		LOG("Collision PLATFORM");
-
-		break;
-	case ColliderType::PUERTA_JOVANI:
-		LOG("Collision PUERTA_JOVANI");
 		
-		break;
 	}
 	
 
 }
 
-void Player::TeleportCofre() {
+void Player::TeleportInfierno() {
 	//Quest
 	switch (app->map->actualmap)
 	{
 	case 0:
+		app->physics->DestroyBody(app->sceneGameplay->TP_Infierno_1);
 		app->sceneGameplay->trigger_3 = true;
 
 		app->map->CleanUp();
@@ -417,6 +434,7 @@ void Player::TeleportCofre() {
 		app->sceneGameplay->enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
 		break;
 	case 1:
+		app->physics->DestroyBody(app->sceneGameplay->TP_Infierno_2);
 		app->map->CleanUp();
 		app->map->actualmap = 2;
 		bool retLoad = app->map->Load();
@@ -448,6 +466,18 @@ void Player::TeleportCofre() {
 		break;
 	}
 
+}
+
+void Player::TeleportPrehistoria()
+{
+}
+
+void Player::TeleportFuturo()
+{
+}
+
+void Player::TeleportMedieval()
+{
 }
 
 void Player::Death()
