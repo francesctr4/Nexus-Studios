@@ -1,25 +1,26 @@
-#include "Mapa_Infierno.h"
-#include "App.h"
-#include "Map.h"
-#include "SceneGameplay.h"
+#include "Infierno.h"
 #include "Textures.h"
-#include "Physics.h"
-#include "CombatManager.h"
-#include "Input.h"
-#include "Player.h"
+#include "App.h"
+#include "Render.h"
+#include "SceneGameplay.h"
+#include "Map.h"
+#include "Audio.h"
 
-Infierno::Infierno() {}
+Infierno::Infierno()
+{
+}
 
-Infierno::~Infierno() {}
+Infierno::~Infierno()
+{
+}
 
 void Infierno::Start()
 {
 	app->map->actualmap = 4;
 
 	bool retLoad = app->map->Load();
+
 }
-
-
 
 void Infierno::Update()
 {
@@ -361,11 +362,10 @@ void Infierno::Update()
 			infierno = false;
 		}
 	}
-	
-	
+
 }
 
 void Infierno::CleanUp()
 {
-	
+
 }

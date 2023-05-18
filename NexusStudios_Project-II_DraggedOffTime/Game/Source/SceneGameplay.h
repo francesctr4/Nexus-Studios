@@ -12,7 +12,7 @@
 #include "Pause.h"
 #include "Tweening.h"
 #include "Timer.h"
-#include "Mapa_Infierno.h"
+#include "Infierno.h"
 
 #include "Puzzle1.h"
 #include "Puzzle2.h"
@@ -69,7 +69,6 @@ public:
 
 	FeatureMenu featureMenu;
 	Pause pause;
-
 	//Quests
 
 	int r = 0; //Times you completed any mision
@@ -101,6 +100,8 @@ public:
 	PhysBody* Tp_Puzzle1;
 	PhysBody* Tp_Puzzle2;
 	PhysBody* Tp_Puzzle3;
+
+	Infierno juan;
 	
 	bool Tp_0 = true;
 	bool Tp_1 = true;

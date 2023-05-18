@@ -118,7 +118,7 @@
     <ClCompile Include="Source\SceneEnding.cpp">
       <Filter>Game Loop\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Mapa_Infierno.cpp">
+    <ClCompile Include="Source\Infierno.cpp">
       <Filter>Game Loop\Mapas</Filter>
     </ClCompile>
   </ItemGroup>
@@ -273,7 +273,7 @@
     <ClInclude Include="Source\SceneEnding.h">
       <Filter>Game Loop\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Mapa_Infierno.h">
+    <ClInclude Include="Source\Infierno.h">
       <Filter>Game Loop\Mapas</Filter>
     </ClInclude>
   </ItemGroup>

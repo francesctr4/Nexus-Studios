@@ -14,7 +14,7 @@
 #include "SceneTitle.h"
 #include "Tweening.h"
 #include "QuestManager.h"
-#include "Mapa_Infierno.h"
+#include "Infierno.h"
 
 #include "SceneGameplay.h"
 #include "Puzzle1.h"
@@ -81,7 +81,7 @@ bool SceneGameplay::Start()
 	enableMusic = true;
 
 	// Pause
-	pause.Load();
+	pause.Load(); 
 	
 	// Stats
 
@@ -144,7 +144,10 @@ bool SceneGameplay::Update(float dt)
 
 	// Pause
 
-	
+	if (app->input->GetKey(SDL_SCANCODE_H) == KEY_DOWN)
+	{
+		juan.Start();
+	}
 
 	pause.Update();
 
@@ -293,6 +296,7 @@ bool SceneGameplay::Update(float dt)
 		app->fadeToBlack->Fade(this, (Module*)app->sceneEnding);
 
 	}
+	juan.Update();
 	
 	return true;
 }
