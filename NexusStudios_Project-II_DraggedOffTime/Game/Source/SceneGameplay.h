@@ -12,6 +12,7 @@
 #include "Pause.h"
 #include "Tweening.h"
 #include "Timer.h"
+#include "Mapa_Infierno.h"
 
 #include "Puzzle1.h"
 #include "Puzzle2.h"
@@ -56,7 +57,6 @@ public:
 	Player* player;
 	bool map_selector = false;
 	bool infierno = false;
-	int actually = 0;
 
 	/*SDL_Texture* Juan;
 	Tween Juan_anim;*/

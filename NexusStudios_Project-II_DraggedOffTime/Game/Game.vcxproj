@@ -103,6 +103,7 @@
     <ClCompile Include="Source\GuiCheckBox.cpp" />
     <ClCompile Include="Source\GuiManager.cpp" />
     <ClCompile Include="Source\GuiSlider.cpp" />
+    <ClCompile Include="Source\Mapa_Infierno.cpp" />
     <ClCompile Include="Source\Inventory.cpp" />
     <ClCompile Include="Source\Item.cpp" />
     <ClCompile Include="Source\Main.cpp" />
@@ -146,6 +147,7 @@
     <ClInclude Include="Source\Inventory.h" />
     <ClInclude Include="Source\Item.h" />
     <ClInclude Include="Source\Map.h" />
+    <ClInclude Include="Source\Mapa_Infierno.h" />
     <ClInclude Include="Source\NPC.h" />
     <ClInclude Include="Source\PathFinding.h" />
     <ClInclude Include="Source\Pause.h" />

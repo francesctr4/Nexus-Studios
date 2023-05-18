@@ -118,6 +118,9 @@
     <ClCompile Include="Source\SceneEnding.cpp">
       <Filter>Game Loop\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Mapa_Infierno.cpp">
+      <Filter>Game Loop\Mapas</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -270,6 +273,9 @@
     <ClInclude Include="Source\SceneEnding.h">
       <Filter>Game Loop\Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Mapa_Infierno.h">
+      <Filter>Game Loop\Mapas</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
@@ -307,6 +313,9 @@
     </Filter>
     <Filter Include="Game Loop\Features\Puzzles">
       <UniqueIdentifier>{6e898ac2-29d0-4e77-bfc4-e50597056347}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Loop\Mapas">
+      <UniqueIdentifier>{f08b522b-b69e-45e9-b429-0d200963118f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
