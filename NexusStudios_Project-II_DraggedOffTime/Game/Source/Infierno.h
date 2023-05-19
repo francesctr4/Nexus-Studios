@@ -60,4 +60,30 @@ public:
 	bool map_selector = false;
 	bool infierno = false;
 
+	PhysBody* TP_Infierno_0;
+	PhysBody* TP_Infierno_1;
+	PhysBody* TP_Infierno_2;
+	PhysBody* TP_Infierno_3;
+	PhysBody* TP_Infierno_4;
+	PhysBody* TP_Infierno_5;
+	PhysBody* TP_Infierno_Cofre;
+	PhysBody* TP_Infierno_Jovani;
+	PhysBody* Tp_Puzzle1;
+	PhysBody* Tp_Puzzle2;
+	PhysBody* Tp_Puzzle3;
+
+	bool Tp_0 = true;
+	bool Tp_1 = true;
+	bool Tp_2 = true;
+	bool Tp_3 = true;
+	bool Tp_4 = true;
+	bool Tp_5 = true;
+	bool Tp_Cofre = true;
+	bool Tp_Jovani = true;
+	bool Tp_Puzzle_1 = true;
+	bool Tp_Puzzle_2 = true;
+	bool Tp_Puzzle_3 = true;
+	bool Tp_Boss = true;
+
+
 };

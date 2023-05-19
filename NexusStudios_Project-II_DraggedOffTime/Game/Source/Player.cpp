@@ -8,6 +8,7 @@
 #include "Log.h"
 #include "FadeToBlack.h"
 #include "Point.h"
+#include "Infierno.h"
 #include "Physics.h"
 #include "SceneBattle.h"
 #include "SceneGameplay.h"
@@ -490,13 +491,13 @@ void Player::TeleportInfierno() {
 	switch (app->map->actualmap)
 	{
 	case 0:
-		app->physics->DestroyBody(app->sceneGameplay->TP_Infierno_0);
+		app->physics->DestroySensor(app->sceneGameplay->mapa_Infierno.TP_Infierno_0);
 		app->sceneGameplay->trigger_3 = true;
 
 		app->map->CleanUp();
 		app->map->actualmap = 1;
 		app->map->Load();
-		app->sceneGameplay->map_selector = false;
+		app->sceneGameplay->mapa_Infierno.map_selector = false;
 		app->sceneGameplay->player->Teleport(650, 671);
 
 		//Move Npcs Map_1
@@ -525,11 +526,11 @@ void Player::TeleportInfierno() {
 		break;
 
 	case 1:
-		app->physics->DestroyBody(app->sceneGameplay->TP_Infierno_1);
+		app->physics->DestroyBody(app->sceneGameplay->mapa_Infierno.TP_Infierno_1);
 		app->map->CleanUp();
 		app->map->actualmap = 2;
 		app->map->Load();
-		app->sceneGameplay->map_selector = false;
+		app->sceneGameplay->mapa_Infierno.map_selector = false;
 		app->sceneGameplay->player->Teleport(1265, 560);
 		
 		//Move Npcs Map_2
@@ -558,11 +559,11 @@ void Player::TeleportInfierno() {
 		break;
 
 	case 2:
-		app->physics->DestroyBody(app->sceneGameplay->TP_Infierno_2);
+		app->physics->DestroyBody(app->sceneGameplay->mapa_Infierno.TP_Infierno_2);
 		app->map->CleanUp();
 		app->map->actualmap = 3;
 		app->map->Load();
-		app->sceneGameplay->map_selector = false;
+		app->sceneGameplay->mapa_Infierno.map_selector = false;
 		app->sceneGameplay->player->Teleport(1255, 106);
 		
 		//Move Npcs Map_3
@@ -591,11 +592,11 @@ void Player::TeleportInfierno() {
 		
 		break;
 	case 3:
-		app->physics->DestroyBody(app->sceneGameplay->TP_Infierno_3);
+		app->physics->DestroyBody(app->sceneGameplay->mapa_Infierno.TP_Infierno_3);
 		app->map->CleanUp();
 		app->map->actualmap = 6;
 		app->map->Load();
-		app->sceneGameplay->map_selector = false;
+		app->sceneGameplay->mapa_Infierno.map_selector = false;
 		app->sceneGameplay->player->Teleport(10, 300);
 		
 		//Move Npcs Map_3
@@ -623,11 +624,11 @@ void Player::TeleportInfierno() {
 
 		break;
 	case 4:
-		app->physics->DestroyBody(app->sceneGameplay->TP_Infierno_4);
+		app->physics->DestroyBody(app->sceneGameplay->mapa_Infierno.TP_Infierno_4);
 		app->map->CleanUp();
 		app->map->actualmap = 5;
 		app->map->Load();
-		app->sceneGameplay->map_selector = false;
+		app->sceneGameplay->mapa_Infierno.map_selector = false;
 		app->sceneGameplay->player->Teleport(640, 700);
 		
 		//Move Npcs Map_2
@@ -655,11 +656,11 @@ void Player::TeleportInfierno() {
 
 		break;
 	case 5:
-		app->physics->DestroyBody(app->sceneGameplay->TP_Infierno_5);
+		app->physics->DestroyBody(app->sceneGameplay->mapa_Infierno.TP_Infierno_5);
 		app->map->CleanUp();
 		app->map->actualmap = 0;
 		app->map->Load();
-		app->sceneGameplay->map_selector = false;
+		app->sceneGameplay->mapa_Infierno.map_selector = false;
 		app->sceneGameplay->player->Teleport(200, 671);
 		
 		//Move Npcs Map_2
@@ -688,11 +689,11 @@ void Player::TeleportInfierno() {
 
 		break;
 	case 6:
-		app->physics->DestroyBody(app->sceneGameplay->Tp_Puzzle1);
+		app->physics->DestroyBody(app->sceneGameplay->mapa_Infierno.Tp_Puzzle1);
 		app->map->CleanUp();
 		app->map->actualmap = 7;
 		app->map->Load();
-		app->sceneGameplay->map_selector = false;
+		app->sceneGameplay->mapa_Infierno.map_selector = false;
 		app->sceneGameplay->player->Teleport(12, 600);
 		
 		//Move Npcs Map_3
@@ -720,11 +721,11 @@ void Player::TeleportInfierno() {
 		
 		break;
 	case 7:
-		app->physics->DestroyBody(app->sceneGameplay->Tp_Puzzle2);
+		app->physics->DestroyBody(app->sceneGameplay->mapa_Infierno.Tp_Puzzle2);
 		app->map->CleanUp();
 		app->map->actualmap = 8;
 		app->map->Load();
-		app->sceneGameplay->map_selector = false;
+		app->sceneGameplay->mapa_Infierno.map_selector = false;
 		app->sceneGameplay->player->Teleport(640, 700);
 		
 		//Move Npcs Map_3
@@ -752,11 +753,11 @@ void Player::TeleportInfierno() {
 		break;
 	
 	case 8:
-		app->physics->DestroyBody(app->sceneGameplay->Tp_Puzzle3);
+		app->physics->DestroyBody(app->sceneGameplay->mapa_Infierno.Tp_Puzzle3);
 		app->map->CleanUp();
 		app->map->actualmap = 4;
 		app->map->Load();
-		app->sceneGameplay->map_selector = false;
+		app->sceneGameplay->mapa_Infierno.map_selector = false;
 		app->sceneGameplay->player->Teleport(637, 700);
 		
 		//Move Npcs Map_3
