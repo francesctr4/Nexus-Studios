@@ -49,13 +49,16 @@ public:
 
 	void OnCollisionEnd(PhysBody* physA, PhysBody* physB);
 
+	// Player Movement Functions
+	void KeyboardMovementManagement();
+	void GamepadMovementManagement();
+
 	void TeleportCofre();
 	void TeleportJovani();
 	void TeleportInfierno();
 	void TeleportPrehistoria();
 	void TeleportFuturo();
 	void TeleportMedieval();
-
 
 	void Death();
 
@@ -69,7 +72,12 @@ public:
 	int playerChange;
 	uint changeFX;
 
-	int speed;
+	int speedX;
+	int speedY;
+
+	int speedValue;
+
+	b2Vec2 vel;
 
 	// Declare player parameters
 	SDL_Texture* texture[4];

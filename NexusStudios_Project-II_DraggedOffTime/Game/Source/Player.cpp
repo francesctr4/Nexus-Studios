@@ -14,18 +14,22 @@
 #include "SceneGameplay.h"
 #include <iostream>
 
+#define SPEED_VALUE 5
+
 Player::Player() : Entity(EntityType::PLAYER)
 {
 	name.Create("Player");
 }
 
-Player::~Player() {
+Player::~Player() 
+{
 
 }
 
 bool Player::Awake() {
 
 	// Initialize Player parameters from XML
+
 	position.x = parameters.attribute("x").as_int();
 	position.y = parameters.attribute("y").as_int();
 
@@ -33,6 +37,8 @@ bool Player::Awake() {
 	texturePath2 = parameters.attribute("texturepath2").as_string();
 	texturePath3 = parameters.attribute("texturepath3").as_string();
 	texturePath4 = parameters.attribute("texturepath4").as_string();
+
+	// Player animations
 
 	for (int i = 0; i < 4; i++) {
 
@@ -103,6 +109,8 @@ bool Player::Start() {
 
 	changeFX = app->audio->LoadFx("Assets/Audio/Fx/SceneGameplay/ChangePlayer.wav");
 
+	speedValue = SPEED_VALUE;
+
 	return true;
 }
 
@@ -129,99 +137,52 @@ bool Player::Update()
 		TeleportCofre();
 		executeTeleportFuturo = false;
 	}
-
-
-
-
-	// Add physics to the player and update player position using physics.
 	
-	b2Vec2 vel = b2Vec2(0, -GRAVITY_Y);
-	
+	// God Mode Management
+
 	if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN) godMode = !godMode;
-
-	speed = 5;
 
 	if (godMode)
 	{
-		speed = 10;
+
+		speedValue = SPEED_VALUE * 2;
+
+	}
+	else {
+
+		speedValue = SPEED_VALUE;
+
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE && 
-		app->input->GetKey(SDL_SCANCODE_A) == KEY_IDLE &&
-		app->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE &&
-		app->input->GetKey(SDL_SCANCODE_D) == KEY_IDLE) {
+	// Player Movement Management
 
-		if (idleDirection) {
+	if (!app->sceneGameplay->pause.showPause && 
+		!app->sceneGameplay->pause.showSettings &&
+		!app->sceneGameplay->featureMenu.statsEnabled && 
+		!app->sceneGameplay->npcs.at(0)->dialogueActivated && 
+		!app->sceneGameplay->npcs.at(1)->dialogueActivated && 
+		!app->sceneGameplay->npcs.at(2)->dialogueActivated) {
 
-			currentAnimation = &idle_left;
+		if (app->input->activeControllers.Count()) {
+
+			GamepadMovementManagement();
 
 		}
 		else {
 
-			currentAnimation = &idle_right;
+			KeyboardMovementManagement();
 
 		}
+
 	}
+	else {
 
-	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) {
+		vel = b2Vec2(0, 0);
 
-		vel = b2Vec2(GRAVITY_X, -speed);
-
-		if (idleDirection) {
-
-			currentAnimation = &walk_left;
-
-		}
-		else {
-
-			currentAnimation = &walk_right;
-
-		}
+		idleDirection ? currentAnimation = &idle_left : currentAnimation = &idle_right;
 
 	}
 		
-	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) {
-
-		vel = b2Vec2(GRAVITY_X, speed);
-
-		if (idleDirection) {
-
-			currentAnimation = &walk_left;
-
-		}
-		else {
-
-			currentAnimation = &walk_right;
-
-		}
-
-	}
-
-	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) {
-
-		vel = b2Vec2(-speed, -GRAVITY_Y);
-		currentAnimation = &walk_left;
-		idleDirection = true;
-
-	}
-		
-	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) {
-
-		vel = b2Vec2(speed, -GRAVITY_Y);
-		currentAnimation = &walk_right;
-		idleDirection = false;
-
-	}
-		
-	if (app->input->activeControllers.Count()) {
-
-		if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_y, 10000, 2) < 0) vel = b2Vec2(GRAVITY_X, -speed);
-		if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_y, 10000, 2) > 0) vel = b2Vec2(GRAVITY_X, speed);
-		if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_x, 10000, 2) < 0) vel = b2Vec2(-speed, -GRAVITY_Y);
-		if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_x, 10000, 2) > 0) vel = b2Vec2(speed, -GRAVITY_Y);
-
-	}
-
 	// Set the velocity of the pbody of the player.
 	pbody->body->SetLinearVelocity(vel);
 
@@ -229,8 +190,7 @@ bool Player::Update()
 	position.x = METERS_TO_PIXELS(pbody->body->GetTransform().p.x) - 16;
 	position.y = METERS_TO_PIXELS(pbody->body->GetTransform().p.y) - 16;
 
-	
-	// Draw player texture.
+	// Draw player texture according to animation and selected player
 
 	currentAnimation->Update();
 
@@ -254,8 +214,10 @@ bool Player::Update()
 	}
 
 	app->sceneBattle->selected_player = playerChange;
+
 	app->render->DrawTexture(texture[playerChange], position.x, position.y, &playerRect);
 
+	// ?
 	
 	if (newPos.t == true)
 	{
@@ -301,6 +263,164 @@ void Player::OnCollisionEnd(PhysBody* physA, PhysBody* physB) {
 
 	app->sceneGameplay->puzzle2.top_collision5 = false;
 	app->sceneGameplay->puzzle2.bottom_collision5 = false;
+}
+
+void Player::KeyboardMovementManagement()
+{
+	// Player Idle Management
+
+	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE &&
+		app->input->GetKey(SDL_SCANCODE_A) == KEY_IDLE &&
+		app->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE &&
+		app->input->GetKey(SDL_SCANCODE_D) == KEY_IDLE) {
+
+		idleDirection ? currentAnimation = &idle_left : currentAnimation = &idle_right;
+
+		vel = b2Vec2(0, 0);
+
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE &&
+		app->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE) {
+
+		speedY = 0;
+
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_IDLE &&
+		app->input->GetKey(SDL_SCANCODE_D) == KEY_IDLE) {
+
+		speedX = 0;
+
+	}
+
+	// Movement Up
+
+	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) {
+
+		speedY = -speedValue;
+
+		idleDirection ? currentAnimation = &walk_left : currentAnimation = &walk_right;
+
+	}
+
+	// Movement Down
+
+	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) {
+
+		speedY = speedValue;
+
+		idleDirection ? currentAnimation = &walk_left : currentAnimation = &walk_right;
+
+	}
+
+	// Movement Left
+
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) {
+
+		speedX = -speedValue;
+		currentAnimation = &walk_left;
+		idleDirection = true;
+
+	}
+
+	// Movement Right
+
+	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) {
+
+		speedX = speedValue;
+		currentAnimation = &walk_right;
+		idleDirection = false;
+
+	}
+
+	// Speed update
+
+	if (app->input->GetKey(SDL_SCANCODE_W) != KEY_IDLE ||
+		app->input->GetKey(SDL_SCANCODE_A) != KEY_IDLE ||
+		app->input->GetKey(SDL_SCANCODE_S) != KEY_IDLE ||
+		app->input->GetKey(SDL_SCANCODE_D) != KEY_IDLE) {
+
+		vel = b2Vec2(speedX, speedY);
+
+	}
+
+}
+
+void Player::GamepadMovementManagement()
+{
+	// Player Idle Management
+
+	if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_x, 10000, 2) == 0 &&
+		app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_y, 10000, 2) == 0) {
+
+		idleDirection ? currentAnimation = &idle_left : currentAnimation = &idle_right;
+
+		vel = b2Vec2(0, 0);
+
+	}
+
+	if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_y, 10000, 2) == 0) {
+
+		speedY = 0;
+
+	}
+
+	if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_x, 10000, 2) == 0) {
+
+		speedX = 0;
+
+	}
+
+	// Movement Up
+
+	if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_y, 10000, 2) < 0) {
+
+		speedY = -speedValue;
+
+		idleDirection ? currentAnimation = &walk_left : currentAnimation = &walk_right;
+
+	}
+
+	// Movement Down
+
+	if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_y, 10000, 2) > 0) {
+
+		speedY = speedValue;
+
+		idleDirection ? currentAnimation = &walk_left : currentAnimation = &walk_right;
+
+	}
+
+	// Movement Left
+
+	if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_x, 10000, 2) < 0) {
+
+		speedX = -speedValue;
+		currentAnimation = &walk_left;
+		idleDirection = true;
+
+	}
+
+	// Movement Right
+
+	if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_x, 10000, 2) > 0) {
+
+		speedX = speedValue;
+		currentAnimation = &walk_right;
+		idleDirection = false;
+
+	}
+
+	// Speed update
+
+	if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_x, 10000, 2) != 0 ||
+		app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_y, 10000, 2) != 0) {
+
+		vel = b2Vec2(speedX, speedY);
+
+	}
+
 }
 
 void Player::TeleportCofre()

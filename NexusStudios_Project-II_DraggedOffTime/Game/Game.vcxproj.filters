@@ -119,7 +119,7 @@
       <Filter>Game Loop\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Source\Infierno.cpp">
-      <Filter>Game Loop\Mapas</Filter>
+      <Filter>Game Loop\Maps</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -274,7 +274,7 @@
       <Filter>Game Loop\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Source\Infierno.h">
-      <Filter>Game Loop\Mapas</Filter>
+      <Filter>Game Loop\Maps</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -314,7 +314,7 @@
     <Filter Include="Game Loop\Features\Puzzles">
       <UniqueIdentifier>{6e898ac2-29d0-4e77-bfc4-e50597056347}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game Loop\Mapas">
+    <Filter Include="Game Loop\Maps">
       <UniqueIdentifier>{f08b522b-b69e-45e9-b429-0d200963118f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
