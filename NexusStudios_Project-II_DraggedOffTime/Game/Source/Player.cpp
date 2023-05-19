@@ -491,7 +491,7 @@ void Player::TeleportInfierno() {
 	switch (app->map->actualmap)
 	{
 	case 0:
-		app->physics->DestroySensor(app->sceneGameplay->mapa_Infierno.TP_Infierno_0);
+		app->physics->DestroyBody(app->sceneGameplay->mapa_Infierno.TP_Infierno_0);
 		app->sceneGameplay->trigger_3 = true;
 
 		app->map->CleanUp();
