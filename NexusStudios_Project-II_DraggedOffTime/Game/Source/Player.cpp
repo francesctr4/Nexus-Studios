@@ -227,7 +227,9 @@ bool Player::Update()
 		newPos.t = false;
 	}
 
-	// Player Progession (Levels)
+	// Player Progession (Levels) 
+
+	// XP Required to go from lvl 1 to lvl 100: 165330
 
 	if (app->input->GetKey(SDL_SCANCODE_H) == KEY_DOWN) {
 
