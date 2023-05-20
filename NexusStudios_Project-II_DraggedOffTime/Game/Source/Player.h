@@ -21,6 +21,7 @@ struct NewPosition {
 struct PlayerStats {
 
 	int level;
+	int currentXP;
 	int next;
 	int hp;
 	int atk;
@@ -53,6 +54,10 @@ public:
 	void KeyboardMovementManagement();
 	void GamepadMovementManagement();
 
+	// Player Progression Functions
+	void AddXP(int xp, int playerIndex);
+	void PlayerLevelManagement();
+
 	void TeleportCofre();
 	void TeleportJovani();
 	void TeleportInfierno();
@@ -66,11 +71,17 @@ public:
 
 public:
 
-	bool godMode;
-
-	PlayerStats playerStats[4];
 	int playerChange;
 	uint changeFX;
+
+	// Player Progession (Levels) variables
+
+	PlayerStats playerStats[4];
+	SDL_Rect xpAccumulatedRect[4] = { SDL_Rect({ 793,321,243,13 }) , SDL_Rect({ 793,321,243,13 }), SDL_Rect({ 793,321,243,13 }), SDL_Rect({ 793,321,243,13 }) };
+	float fillPercentage[4];
+	int fillWidth[4];
+
+	bool godMode;
 
 	int speedX;
 	int speedY;

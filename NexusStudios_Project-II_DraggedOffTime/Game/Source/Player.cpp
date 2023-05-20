@@ -83,10 +83,10 @@ bool Player::Start() {
 	texture[2] = app->tex->Load(texturePath3);
 	texture[3] = app->tex->Load(texturePath4);
 
-	playerStats[0] = {1,200,12,7,5,25};
-	playerStats[1] = {1,200,20,5,10,15};
-	playerStats[2] = {1,200,15,10,7,15};
-	playerStats[3] = {1,200,10,12,2,20};
+	playerStats[0] = {1,0,200,12,7,5,25};
+	playerStats[1] = {1,0,200,20,5,10,15};
+	playerStats[2] = {1,0,200,15,10,7,15};
+	playerStats[3] = {1,0,200,10,12,2,20};
 
 	// Add physics to the player.
 	pbody = app->physics->CreateCircle(position.x + 16, position.y + 16, 16, bodyType::DYNAMIC);
@@ -226,6 +226,34 @@ bool Player::Update()
 
 		newPos.t = false;
 	}
+
+	// Player Progession (Levels)
+
+	if (app->input->GetKey(SDL_SCANCODE_H) == KEY_DOWN) {
+
+		AddXP(500, 0);
+
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_J) == KEY_DOWN) {
+
+		AddXP(500, 1);
+
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_K) == KEY_DOWN) {
+
+		AddXP(500, 2);
+
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN) {
+
+		AddXP(500, 3);
+
+	}
+
+	PlayerLevelManagement();
 
 	return true;
 }
@@ -418,6 +446,51 @@ void Player::GamepadMovementManagement()
 		app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_y, 10000, 2) != 0) {
 
 		vel = b2Vec2(speedX, speedY);
+
+	}
+
+}
+
+void Player::AddXP(int xp, int playerIndex)
+{
+	playerStats[playerIndex].currentXP += xp;
+}
+
+void Player::PlayerLevelManagement()
+{
+	for (int i = 0; i < 4; i++) {
+
+		fillPercentage[i] = static_cast<float>(playerStats[i].currentXP) / playerStats[i].next;
+		fillWidth[i] = static_cast<int>(fillPercentage[i] * 243);
+
+		xpAccumulatedRect[i].w = fillWidth[i];
+
+		if (playerStats[i].currentXP == playerStats[i].next) {
+
+			playerStats[i].currentXP = 0;
+
+			playerStats[i].level++;
+			playerStats[i].hp += 3;
+			playerStats[i].atk += 3;
+			playerStats[i].def += 3;
+			playerStats[i].ap += 3;
+			playerStats[i].next += 30;
+
+		}
+		else if (playerStats[i].currentXP > playerStats[i].next) {
+
+			int xpExcess = playerStats[i].currentXP - playerStats[i].next;
+
+			playerStats[i].currentXP = xpExcess;
+
+			playerStats[i].level++;
+			playerStats[i].hp += 3;
+			playerStats[i].atk += 3;
+			playerStats[i].def += 3;
+			playerStats[i].ap += 3;
+			playerStats[i].next += 30;
+
+		}
 
 	}
 
