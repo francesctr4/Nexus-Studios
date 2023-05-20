@@ -210,10 +210,6 @@ bool SceneGameplay::Update(float dt)
 		puzzle1.canLoad = true;
 	}
 	
-	
-
-
-
 	// Go to Ending Screen
 
 	if (app->input->GetKey(SDL_SCANCODE_M) == KEY_DOWN) {

@@ -109,6 +109,8 @@ bool Player::Start() {
 
 	changeFX = app->audio->LoadFx("Assets/Audio/Fx/SceneGameplay/ChangePlayer.wav");
 
+	levelUp = app->audio->LoadFx("Assets/Audio/Fx/SceneGameplay/LevelUp.wav");
+
 	speedValue = SPEED_VALUE;
 
 	return true;
@@ -478,6 +480,8 @@ void Player::PlayerLevelManagement()
 			playerStats[i].ap += 3;
 			playerStats[i].next += 30;
 
+			//app->audio->PlayFx(levelUp);
+
 		}
 		else if (playerStats[i].currentXP > playerStats[i].next) {
 
@@ -491,6 +495,8 @@ void Player::PlayerLevelManagement()
 			playerStats[i].def += 3;
 			playerStats[i].ap += 3;
 			playerStats[i].next += 30;
+
+			//app->audio->PlayFx(levelUp);
 
 		}
 
