@@ -219,7 +219,7 @@ bool Player::Update()
 
 	app->render->DrawTexture(texture[playerChange], position.x, position.y, &playerRect);
 
-	// ?
+	// Player Teleport
 	
 	if (newPos.t == true)
 	{
