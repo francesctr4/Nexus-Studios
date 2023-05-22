@@ -70,6 +70,7 @@ bool SceneBattle::Start()
 	selectionArrow = app->tex->Load("Assets/UI/SelectionArrow.png");
 	playerSelection = app->tex->Load("Assets/UI/PlayerSelector.png");
 	q_sprite = app->tex->Load("Assets/Textures/q.png");
+	dialogue = app->tex->Load("Assets/Textures/dialogue-UI.png");
 
 	//Load audios
 	fx_sword_hit = app->audio->LoadFx("Assets/Audio/FX/SceneBattle/SwordFX.wav");
@@ -456,6 +457,8 @@ bool SceneBattle::Update(float dt)
 			}
 			//LOG("-------------YOUR TURN-------------");
 
+			combat_timmer.Start();
+
 			if (e_confusion_turns > 0)
 				e_confusion_turns--;
 			
@@ -496,6 +499,15 @@ bool SceneBattle::Update(float dt)
 
 		app->map->actualmap = 0;
 
+	}
+
+	if (combat_timmer.ReadMSec() < 2000)
+	{
+		show_battle_info = true;
+	}
+	else
+	{
+		show_battle_info = false;
 	}
 
 	
@@ -746,6 +758,24 @@ bool SceneBattle::PostUpdate()
 	if (qte_timer.ReadMSec() > 500 && qte_timer.ReadMSec() < 1500 && qte)
 	{
 		app->render->DrawTexture(q_sprite, 350, 400);
+	}
+
+	if (show_battle_info)
+	{
+		app->render->DrawTexture(dialogue, 650, 525);
+
+		if (enemy_last_action == 0)
+		{
+			app->render->DrawText("Enemy Attacked you!", 700, 568, 310, 30, { 90, 35, 24, 255 });
+		}
+		else if (enemy_last_action == 1)
+		{
+			app->render->DrawText("Enemy Defended himself!", 700, 568, 310, 30, { 90, 35, 24, 255 });
+		}
+		else if (enemy_last_action == NULL)
+		{
+
+		}
 	}
 
 

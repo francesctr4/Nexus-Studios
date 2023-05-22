@@ -36,6 +36,7 @@ public:
 
 	bool OnGuiMouseClickEvent(GuiControl* control);
 
+
 public:
 
 	bool enableMusic;
@@ -120,6 +121,8 @@ private:
 
 	SDL_Texture* q_sprite = nullptr;
 
+	SDL_Texture* dialogue = nullptr;
+
 	int action_selected = 0; 
 
 	//GUI
@@ -145,5 +148,12 @@ private:
 	Timer timer;
 	bool timer_started = false;
 	float delay = 0;
+
+	//Timer Texto de combate - Variables
+	Timer combat_timmer;
+	bool combat_timmer_started = false;
+	bool show_battle_info = true;
+
+
 
 };
