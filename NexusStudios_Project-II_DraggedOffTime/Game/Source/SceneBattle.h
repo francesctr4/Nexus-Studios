@@ -152,7 +152,7 @@ private:
 	//Timer Texto de combate - Variables
 	Timer combat_timmer;
 	bool combat_timmer_started = false;
-	bool show_battle_info = true;
+	bool show_battle_info = false;
 
 
 

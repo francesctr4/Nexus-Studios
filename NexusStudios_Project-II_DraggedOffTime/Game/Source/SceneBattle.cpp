@@ -201,6 +201,7 @@ bool SceneBattle::Update(float dt)
 
 			if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 			{
+				combat_timmer.Start();
 				switch (action_selected)
 				{
 				case 0: //Standar attack
@@ -764,17 +765,44 @@ bool SceneBattle::PostUpdate()
 	{
 		app->render->DrawTexture(dialogue, 650, 525);
 
-		if (enemy_last_action == 0)
+		if (app->combatManager->playerTurn)	//Turno enemigo
 		{
-			app->render->DrawText("Enemy Attacked you!", 700, 568, 310, 30, { 90, 35, 24, 255 });
-		}
-		else if (enemy_last_action == 1)
-		{
-			app->render->DrawText("Enemy Defended himself!", 700, 568, 310, 30, { 90, 35, 24, 255 });
-		}
-		else if (enemy_last_action == NULL)
-		{
+			if (enemy_last_action == 0)
+			{
+				app->render->DrawText("Enemy Attacked you!", 700, 568, 310, 30, { 90, 35, 24, 255 });
+			}
+			else if (enemy_last_action == 1)
+			{
+				app->render->DrawText("Enemy Defended himself!", 700, 568, 310, 30, { 90, 35, 24, 255 });
+			}
+			else if (enemy_last_action == NULL)
+			{
 
+			}
+		}
+		else                                    //Turno del jugaddor
+		{
+			switch (action_selected)
+			{
+			case 0:
+				app->render->DrawText("Atacaste al enemigo con un Ataque Normal", 700, 568, 570, 30, { 90, 35, 24, 255 });
+				break;
+			case 1:
+				app->render->DrawText("Atacaste al enemigo con tu arma", 700, 568, 506, 30, { 90, 35, 24, 255 });
+				break;
+			case 2:
+				app->render->DrawText("Usaste un item - Curacion", 700, 568, 375, 30, { 90, 35, 24, 255 });
+				break;
+			case 3:
+				app->render->DrawText("Atacaste al enemigo con tu habilidad", 700, 568, 523, 30, { 90, 35, 24, 255 });
+				break;
+			case 4:
+				app->render->DrawText("Intentaste huir del combate", 700, 568, 440, 30, { 90, 35, 24, 255 });
+				break;
+			case 5:
+				app->render->DrawText("Cambiaste de miembro del grupo", 700, 568, 456, 30, { 90, 35, 24, 255 });
+				break;
+			}
 		}
 	}
 
