@@ -69,6 +69,7 @@ bool SceneBattle::Start()
 	healthBar = app->tex->Load("Assets/UI/HealthBar.png");
 	selectionArrow = app->tex->Load("Assets/UI/SelectionArrow.png");
 	playerSelection = app->tex->Load("Assets/UI/PlayerSelector.png");
+	q_sprite = app->tex->Load("Assets/Textures/q.png");
 
 	//Load audios
 	fx_sword_hit = app->audio->LoadFx("Assets/Audio/FX/SceneBattle/SwordFX.wav");
@@ -165,7 +166,7 @@ bool SceneBattle::Update(float dt)
 			if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN)
 				app->sceneGameplay->player->godMode = !app->sceneGameplay->player->godMode;
 
-			if (app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN)
+			if (app->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN)
 			{
 				if (action_selected != 0)
 				{
@@ -181,7 +182,7 @@ bool SceneBattle::Update(float dt)
 
 			}
 
-			if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN)
+			if (app->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN)
 			{
 
 				if (action_selected != 5)
@@ -202,12 +203,11 @@ bool SceneBattle::Update(float dt)
 				switch (action_selected)
 				{
 				case 0: //Standar attack
-					/*e_HP = app->combatManager->StandarAttack(m_players[selected_player].DMG, e_HP, e_DEF);
+					e_HP = app->combatManager->NormalAttack(m_players[selected_player].DMG, e_HP, e_DEF);
 					app->audio->PlayFx(fx_sword_hit);
-					app->combatManager->playerTurn = !app->combatManager->playerTurn;*/
-					qte_timer.Start();
+					app->combatManager->playerTurn = !app->combatManager->playerTurn;
 					app->audio->PlayFx(fx_sword_hit);
-					qte = true;
+					
 					break;
 				case 1:	//Quick time event attack (TODO)
 					qte_timer.Start();
@@ -265,11 +265,9 @@ bool SceneBattle::Update(float dt)
 			{
 				if (app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 				{
-					/*e_HP = app->combatManager->StandarAttack(m_players[selected_player].DMG, e_HP, e_DEF);
-					app->combatManager->playerTurn = !app->combatManager->playerTurn;*/
+					e_HP = app->combatManager->NormalAttack(m_players[selected_player].DMG, e_HP, e_DEF);
+					app->combatManager->playerTurn = !app->combatManager->playerTurn;
 
-					qte_timer.Start();
-					qte = true;
 				}
 
 
@@ -352,6 +350,18 @@ bool SceneBattle::Update(float dt)
 		{
 			LOG("Quick Time Event Started");
 
+			if (qte_timer.ReadMSec() > 2000)
+			{
+				
+				//Weapon Hit - Si fallas el QTE vas a hacer poco daño
+				e_HP = app->combatManager->WeaponAttack(m_players[selected_player].DMG * 0.75, e_HP, e_DEF, false, num_hits);
+
+				qte = false;
+				num_hits = 0; // Reiniciar el contador de hits
+				app->combatManager->playerTurn = !app->combatManager->playerTurn;
+			}
+
+
 			if ((app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN))
 			{
 				delay = qte_timer.ReadMSec();
@@ -367,14 +377,9 @@ bool SceneBattle::Update(float dt)
 					// Si el jugador ha presionado la tecla Q suficientes veces, llama a TimeEventAttack con un valor de MAX_HITS y reinicia el contador
 					if (num_hits == MAX_HITS)
 					{
-						switch (action_selected) {
-							case 0:	//Normal Hit
-								e_HP = app->combatManager->NormalAttack(m_players[selected_player].DMG, e_HP, e_DEF, true, MAX_HITS);
-								break;
-							case 1:	//Weapon Hit 
-								e_HP = app->combatManager->WeaponAttack(m_players[selected_player].DMG, e_HP, e_DEF, true, MAX_HITS);
-								break;
-						}
+						
+						//Weapon Hit 
+						e_HP = app->combatManager->WeaponAttack(m_players[selected_player].DMG, e_HP, e_DEF, true, MAX_HITS);
 						
 						qte = false;
 						num_hits = 0; // Reiniciar el contador de hits
@@ -382,17 +387,11 @@ bool SceneBattle::Update(float dt)
 
 					}
 				}
-				else
+				else       //Bad timing
 				{
-					LOG("Ataque QTE fallado");
-					switch (action_selected) {
-					case 0:	//Normal Hit
-						e_HP = app->combatManager->NormalAttack(m_players[selected_player].DMG, e_HP, e_DEF, true, MAX_HITS);
-						break;
-					case 1:	//Weapon Hit 
-						e_HP = app->combatManager->WeaponAttack(m_players[selected_player].DMG, e_HP, e_DEF, true, MAX_HITS);
-						break;
-					}
+					//Weapon Hit 
+					e_HP = app->combatManager->WeaponAttack(m_players[selected_player].DMG, e_HP, e_DEF, false, num_hits);
+						
 					qte = false;
 					num_hits = 0; // Reiniciar el contador de hits
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
@@ -422,13 +421,15 @@ bool SceneBattle::Update(float dt)
 					if(e_confusion_turns == 0 && m_players[selected_player].counter_turns == 0)
 						m_players[selected_player].HP = app->combatManager->EnemyAttack(e_DMG, m_players[selected_player].HP, m_players[selected_player].DEF);
 
+					//Si el enemigo tiene confusión su turno será como si se atacara a si mismo
 					if (e_confusion_turns > 0)
-						e_HP = app->combatManager->NormalAttack(e_DMG, e_HP, e_DEF, true, 1);
+						e_HP = app->combatManager->NormalAttack(e_DMG, e_HP, e_DEF);
 
+					//Si el player tiene counter turns el enemigo sufre daño al atacar al player
 					if (m_players[selected_player].counter_turns > 0)
 					{
 						m_players[selected_player].HP = app->combatManager->EnemyAttack(e_DMG, m_players[selected_player].HP, m_players[selected_player].DEF);
-						e_HP = app->combatManager->NormalAttack(e_DMG, e_HP, e_DEF, true, 1);
+						e_HP = app->combatManager->NormalAttack(e_DMG, e_HP, e_DEF);
 					}
 
 					LOG("Atack");
@@ -744,7 +745,7 @@ bool SceneBattle::PostUpdate()
 	//QTE - Mostrar algo cuando es buen momento para volver a pulsar la Q
 	if (qte_timer.ReadMSec() > 500 && qte_timer.ReadMSec() < 1500 && qte)
 	{
-		app->render->DrawTexture(playerSelection, 350, 420);
+		app->render->DrawTexture(q_sprite, 350, 400);
 	}
 
 

@@ -118,6 +118,8 @@ private:
 
 	SDL_Texture* playerSelection = nullptr;
 
+	SDL_Texture* q_sprite = nullptr;
+
 	int action_selected = 0; 
 
 	//GUI

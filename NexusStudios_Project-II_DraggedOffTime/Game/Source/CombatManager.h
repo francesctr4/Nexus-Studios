@@ -39,7 +39,7 @@ public:
 	//Combat Fuctions
 	
 	//1.Deal standar attack (Return e_HP)
-	int NormalAttack(int p_DMG, int e_HP, int e_DEF, bool timing, int num_hits);
+	int NormalAttack(int p_DMG, int e_HP, int e_DEF);
 
 	//2.Deal Quick time event attack (Return e_HP)
 	int WeaponAttack(int p_DMG, int e_HP, int e_DEF, bool timing, int num_hits);

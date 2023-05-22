@@ -55,57 +55,50 @@ bool CombatManager::Update(float dt)
 }
 
 //Player actions
-int CombatManager:: NormalAttack(int p_DMG, int e_HP, int e_DEF, bool timing, int num_hits) {
+int CombatManager:: NormalAttack(int p_DMG, int e_HP, int e_DEF) {
 	
-	if (timing)
-	{
-		LOG("Good Timing");	//timing == true
-		int totalDamage;
-		totalDamage = (p_DMG - (e_DEF + enemy_increasedDefense)) * num_hits;	//De momento va a ser el doble del daño del player si aciertas en timing
+	LOG("Bad Timing");	//timing == false
+	int totalDamage;
+	totalDamage = p_DMG - (e_DEF + enemy_increasedDefense);
 
-		if (totalDamage >= e_HP)
-		{
-			enemy_increasedDefense = 0;
-			//Kill enemy
-			return 0;
-		}
-		else
-		{
-			enemy_increasedDefense = 0;
-			//Return amount of e_HP
-			return (e_HP - totalDamage);
-		}
+	if (totalDamage < 0)
+	{
+		return e_HP - 5;
+	}
+
+	if (totalDamage >= e_HP)
+	{
+		enemy_increasedDefense = 0;
+		//Kill enemy
+		return 0;
 	}
 	else
 	{
-		LOG("Bad Timing");	//timing == false
-		int totalDamage;
-		totalDamage = (0.5 * p_DMG - (e_DEF + enemy_increasedDefense)) * num_hits;
-
-		if (totalDamage >= e_HP)
-		{
-			enemy_increasedDefense = 0;
-			//Kill enemy
-			return 0;
-		}
-		else
-		{
-			enemy_increasedDefense = 0;
-			//Return amount of e_HP
-			return (e_HP - totalDamage);
-		}
+		enemy_increasedDefense = 0;
+		//Return amount of e_HP
+		return (e_HP - totalDamage);
 	}
+	
 	
 };
 
 int CombatManager::WeaponAttack(int p_DMG, int e_HP, int e_DEF, bool timing, int num_hits) {
-	//De momento nada, se incluirá en la siguiente versión
+
+	if (num_hits == 0)
+	{
+		return e_HP - 1;
+	}
 	
 	if (timing)
 	{
 		LOG("Good Timing");	//timing == true
 		int totalDamage;
-		totalDamage = (1.2 * p_DMG - (e_DEF + enemy_increasedDefense)) * num_hits;	//De momento va a ser el doble del daño del player si aciertas en timing
+		totalDamage = (1.2 * p_DMG) - (e_DEF + enemy_increasedDefense);	//De momento va a ser el doble del daño del player si aciertas en timing
+
+		if (totalDamage < 0)
+		{
+			return e_HP - 5 * num_hits;
+		}
 
 		if (totalDamage >= e_HP)
 		{
@@ -117,14 +110,19 @@ int CombatManager::WeaponAttack(int p_DMG, int e_HP, int e_DEF, bool timing, int
 		{
 			enemy_increasedDefense = 0;
 			//Return amount of e_HP
-			return (e_HP - totalDamage);
+			return (e_HP - totalDamage * num_hits);
 		}
 	}
 	else
 	{
 		LOG("Bad Timing");	//timing == false
 		int totalDamage;
-		totalDamage = (0.75 * p_DMG - (e_DEF + enemy_increasedDefense)) * num_hits;
+		totalDamage = (0.5 * p_DMG) - (e_DEF + enemy_increasedDefense);
+
+		if (totalDamage < 0)
+		{
+			return e_HP - 5 * num_hits;
+		}
 
 		if (totalDamage >= e_HP)
 		{
@@ -136,7 +134,7 @@ int CombatManager::WeaponAttack(int p_DMG, int e_HP, int e_DEF, bool timing, int
 		{
 			enemy_increasedDefense = 0;
 			//Return amount of e_HP
-			return (e_HP - totalDamage);
+			return (e_HP - totalDamage * num_hits);
 		}
 	}
 };
@@ -274,5 +272,5 @@ int CombatManager::EnemyAttack(int e_DMG, int p_HP, int p_DEF) {
 void CombatManager::EnemyBlockAttack() {
 
 	//Add X ammout of DEF to the enemy for the next turn
-	enemy_increasedDefense = 5; //5 is a placeholder
+	enemy_increasedDefense = 1; 
 }
