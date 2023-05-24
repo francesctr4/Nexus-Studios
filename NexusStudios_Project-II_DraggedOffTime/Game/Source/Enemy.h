@@ -47,9 +47,6 @@ public:
 	void Death();
 
 	void Restart();
-
-
-	void CreatEnemy(int mapa, int type, int x, int);
 	
 	void AddEnemy(Enemy* enemy, EnemyType type, int x, int y);
 

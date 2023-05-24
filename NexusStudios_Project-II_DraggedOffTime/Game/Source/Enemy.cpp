@@ -172,19 +172,6 @@ void Enemy::Restart()
 	playerInteraction = false;
 }
 
-
-void Enemy::CreatEnemy(int mapa, int type, int x, int)
-{
-	if (mapa == 1)
-	{
-		if (type == EnemyType::DAMAGE)
-		{
-			app->entityManager->CreateEntity(EntityType::ENEMY);
-		}
-	}
-	enemies.Add();
-}
-
 void Enemy::AddEnemy(Enemy* enemy, EnemyType type, int x, int y)
 {
 	if (enemy != nullptr) enemies.Add(enemy);
