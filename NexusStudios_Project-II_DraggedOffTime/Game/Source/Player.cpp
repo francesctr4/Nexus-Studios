@@ -15,6 +15,7 @@
 #include <iostream>
 
 #define SPEED_VALUE 5
+#define SPEED_VALUE_RUNNING (SPEED_VALUE + 3)
 
 Player::Player() : Entity(EntityType::PLAYER)
 {
@@ -326,6 +327,22 @@ void Player::KeyboardMovementManagement()
 
 	}
 
+	// Player Run Management
+
+	if (app->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_REPEAT) {
+
+		speedValue = SPEED_VALUE_RUNNING;
+		walk_left.speed = 0.15f;
+		walk_right.speed = 0.15f;
+
+	}
+	else {
+
+		walk_left.speed = 0.1f;
+		walk_right.speed = 0.1f;
+
+	}
+
 	// Movement Up
 
 	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) {
@@ -401,6 +418,22 @@ void Player::GamepadMovementManagement()
 	if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_x, 10000, 2) == 0) {
 
 		speedX = 0;
+
+	}
+
+	// Player Run Management
+
+	if (app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_LEFTSTICK] == KEY_REPEAT) {
+
+		speedValue = SPEED_VALUE_RUNNING;
+		walk_left.speed = 0.15f;
+		walk_right.speed = 0.15f;
+
+	}
+	else {
+
+		walk_left.speed = 0.1f;
+		walk_right.speed = 0.1f;
 
 	}
 
