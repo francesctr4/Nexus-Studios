@@ -129,6 +129,7 @@ void EntityManager::DestroyEntity(Entity* entity)
 void EntityManager::AddEntity(Entity* entity)
 {
 	if ( entity != nullptr) entities.Add(entity);
+	
 }
 
 bool EntityManager::Update(float dt)
