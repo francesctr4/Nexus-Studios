@@ -84,6 +84,7 @@ void Infierno::Update()
 		}
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_0) == KEY_DOWN)
 		{
+			
 			app->map->CleanUp();
 			app->map->actualmap = 1;
 			bool retLoad = app->map->Load();

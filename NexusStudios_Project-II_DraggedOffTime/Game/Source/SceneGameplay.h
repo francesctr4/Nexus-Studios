@@ -91,5 +91,6 @@ public:
 	uint endingScreenFX;
 
 	Infierno mapa_Infierno;
-
+	
+	PhysBody* prova;
 };
