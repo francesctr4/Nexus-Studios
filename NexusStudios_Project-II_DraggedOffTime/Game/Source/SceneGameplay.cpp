@@ -112,10 +112,6 @@ bool SceneGameplay::Update(float dt)
 {
 	OPTICK_EVENT();
 
-	app->win->scale = 1;
-
-	//app->render->CenterCamera();
-
 	if (app->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN) {
 
 		app->SaveGameRequest();
