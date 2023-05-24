@@ -2,11 +2,11 @@
 #define __RENDER_H__
 
 #include "Module.h"
-
 #include "Point.h"
 
 #include "SDL/include/SDL.h"
 #include "SDL_ttf/include/SDL_ttf.h"
+#include <algorithm>
 
 class Render : public Module
 {
@@ -47,6 +47,9 @@ public:
 	// Declare Load / Save methods
 	bool LoadState(pugi::xml_node&);
 	bool SaveState(pugi::xml_node&);
+
+	// Center camera to player
+	void CenterCamera();
 
 public:
 

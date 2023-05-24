@@ -44,7 +44,7 @@ bool Window::Awake(pugi::xml_node& config)
 		fullscreen_window = config.child("fullscreen_window").attribute("value").as_bool(); // get from config
 
 		width = config.child("resolution").attribute("width").as_int(); //get from config 
-		height = config.child("resolution").attribute("height").as_int();; //get from config 
+		height = config.child("resolution").attribute("height").as_int(); //get from config 
 		scale = config.child("resolution").attribute("scale").as_int();; //get from config 
 
 		if (fullscreen == true) flags |= SDL_WINDOW_FULLSCREEN;

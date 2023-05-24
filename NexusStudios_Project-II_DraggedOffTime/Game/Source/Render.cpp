@@ -2,6 +2,7 @@
 #include "Window.h"
 #include "Render.h"
 #include "Physics.h"
+#include "SceneGameplay.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -85,8 +86,6 @@ bool Render::PreUpdate()
 
 bool Render::Update(float dt)
 {
-	
-
 
 	return true;
 }
@@ -291,4 +290,37 @@ bool Render::SaveState(pugi::xml_node& data)
 	cam.append_attribute("y") = camera.y;
 
 	return true;
+}
+
+void Render::CenterCamera()
+{
+	int playerWidth = 32;
+	int playerHeight = 32;
+
+	int midPlayerPosX = app->sceneGameplay->player->position.x;
+	int midPlayerPosY = app->sceneGameplay->player->position.y;
+
+	int camX = -camera.x - viewport.x;
+	int camY = -camera.y - viewport.y;
+
+	if (midPlayerPosX > -camera.x + (viewport.w / 2) || midPlayerPosX < -camera.x + (viewport.w / 2))
+	{
+		camera.x = (midPlayerPosX - (viewport.w / 2));
+	}
+
+	if (midPlayerPosY > -camera.y + (viewport.h / 2) || midPlayerPosY < -camera.y + (viewport.h / 2))
+	{
+		camera.y = (midPlayerPosY - (viewport.h / 2));
+	}
+
+	// Then we establish the camera limits.
+
+	/*int mapWidth = 2048;
+	int mapHeight = 768;
+
+	if (item->data->pos.x <= 0) item->data->pos.x = 0;
+	if (item->data->pos.y <= 0) item->data->pos.y = 0;
+	if (item->data->pos.x + item->data->viewport.w >= mapWidth) item->data->pos.x = mapWidth - item->data->viewport.w;
+	if (item->data->pos.y + item->data->viewport.h >= mapHeight) item->data->pos.y = mapHeight - item->data->viewport.h;*/
+
 }

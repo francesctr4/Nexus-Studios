@@ -50,7 +50,6 @@ public:
 	bool resizable;
 	bool fullscreen_window;
 
-private:
 	SString title;
 	uint scale;
 };

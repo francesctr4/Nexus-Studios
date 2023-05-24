@@ -423,7 +423,7 @@ void Player::GamepadMovementManagement()
 
 	// Player Run Management
 
-	if (app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_LEFTSTICK] == KEY_REPEAT) {
+	if (app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_RIGHTSTICK] == KEY_REPEAT) {
 
 		speedValue = SPEED_VALUE_RUNNING;
 		walk_left.speed = 0.15f;
