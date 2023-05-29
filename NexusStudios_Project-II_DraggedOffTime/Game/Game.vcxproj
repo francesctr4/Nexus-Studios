@@ -45,6 +45,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)Build\$(Configuration)</OutDir>
+    <PreBuildEventUseInBuild>true</PreBuildEventUseInBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)Build\$(Configuration)</OutDir>
@@ -62,7 +63,7 @@
       <AdditionalIncludeDirectories>$(ProjectDir)Source\External</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;OptickCore.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(ProjectDir)Source\External\SDL\libx86;$(ProjectDir)Source\External\SDL_image\libx86;$(ProjectDir)Source\External\SDL_mixer\libx86;$(ProjectDir)Source\External\Box2D\libx86\DebugLib;$(ProjectDir)Source\External\SDL_ttf\libx86;$(ProjectDir)Source\External\Optick\lib\debugLib</AdditionalLibraryDirectories>
@@ -86,7 +87,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;Box2D.lib;OptickCore.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(ProjectDir)Source\External\SDL\libx86;$(ProjectDir)Source\External\SDL_image\libx86;$(ProjectDir)Source\External\SDL_mixer\libx86;$(ProjectDir)Source\External\Box2D\libx86\ReleaseLib;$(ProjectDir)Source\External\SDL_ttf\libx86;$(ProjectDir)Source\External\Optick\lib\releaselib</AdditionalLibraryDirectories>
     </Link>

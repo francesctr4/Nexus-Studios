@@ -48,9 +48,6 @@ public:
 	bool LoadState(pugi::xml_node&);
 	bool SaveState(pugi::xml_node&);
 
-	// Center camera to player
-	void CenterCamera();
-
 public:
 
 	SDL_Renderer* renderer;
