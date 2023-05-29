@@ -45,8 +45,6 @@ public:
 	void OnCollisionEnd(PhysBody* physA, PhysBody* physB);
 
 	void Death();
-
-	void Restart();
 	
 	void AddEnemy(Enemy* enemy, EnemyType type, int x, int y);
 
@@ -66,6 +64,9 @@ public:
 	int atk;
 	int def;
  
+	int width = 32;
+	int height = 32;
+
 	bool playerInteraction;
 
 	List<Enemy*> enemies;
@@ -75,5 +76,7 @@ public:
 
 	Animation* currentAnimation;
 	Animation idle_right;
+
+
 
 };

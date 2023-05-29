@@ -19,7 +19,7 @@
 #include "SceneGameplay.h"
 #include "Puzzle1.h"
 
-#include "SDL_mixer/include/SDL_mixer.h"
+#include "SDL_mixer/include/SDL_mixer.h" 
 
 SceneGameplay::SceneGameplay(bool startEnabled) : Module(startEnabled)
 {
@@ -41,17 +41,16 @@ bool SceneGameplay::Awake(pugi::xml_node& config)
 		npc->parameters = npcNode;
 
 		npcs.push_back(npc);
-
 	}
 
-	for (pugi::xml_node enemyNode = config.child("enemy"); enemyNode; enemyNode = enemyNode.next_sibling("enemy"))
-	{
-		Enemy* enemy = (Enemy*)app->entityManager->CreateEntity(EntityType::ENEMY);
-		enemy->parameters = enemyNode;
+	//for (pugi::xml_node enemyNode = config.child("enemy"); enemyNode; enemyNode = enemyNode.next_sibling("enemy"))
+	//{
+	//	Enemy* enemy = (Enemy*)app->entityManager->CreateEntity(EntityType::ENEMY);
+	//	enemy->parameters = enemyNode;
 
-		enemies.push_back(enemy);
+	//	enemies.push_back(enemy);
 
-	}
+	//}
 
 	for (pugi::xml_node itemNode = config.child("item"); itemNode; itemNode = itemNode.next_sibling("item"))
 	{
@@ -61,8 +60,15 @@ bool SceneGameplay::Awake(pugi::xml_node& config)
 		items.push_back(item);
 
 	}
+
+	xml_node = config;
 	
 	return true;
+}
+
+void LoadMapEntities()
+{
+	
 }
 
 // Called before the first frame
@@ -366,5 +372,61 @@ void SceneGameplay::CheckEvent()
 			break;
 		}
 	}
+}
+
+void SceneGameplay::LoadMapEntities(int map)
+{
+	//for (pugi::xml_node npcNode = xml_node.child("npc"); npcNode; npcNode = npcNode.next_sibling("npc"))
+	//{
+	//	NPC* npc = (NPC*)app->entityManager->CreateEntity(EntityType::NPC);
+	//	npc->parameters = npcNode;
+
+	//	npcs.push_back(npc);
+
+	//}
+
+	for (pugi::xml_node enemyNode = xml_node.child("enemy"); enemyNode; enemyNode = enemyNode.next_sibling("enemy"))
+	{
+		int aparicion = enemyNode.attribute("map").as_int();
+
+		if (aparicion == map)
+		{
+			Enemy* enemy = (Enemy*)app->entityManager->CreateEntity(EntityType::ENEMY);
+			enemy->parameters = enemyNode;
+			enemy->Awake();
+			enemy->Start();
+
+			enemies.push_back(enemy);
+		}
+	}
+
+	//for (pugi::xml_node itemNode = xml_node.child("item"); itemNode; itemNode = itemNode.next_sibling("item"))
+	//{
+	//	Item* item = (Item*)app->entityManager->CreateEntity(EntityType::ITEM);
+	//	item->parameters = itemNode;
+
+	//	items.push_back(item);
+
+	//}
+}
+
+void SceneGameplay::UnloadMapEntities()
+{
+	for (std::vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); ++it) 
+	{
+		app->entityManager->DestroyEntity(*it);
+	}
+
+	enemies.clear();
+}
+
+void SceneGameplay::LoadMap(int map)
+{
+	app->map->CleanUp();
+	app->sceneGameplay->UnloadMapEntities();
+	app->map->actualmap = map;
+	app->map->Load();
+	app->sceneGameplay->LoadMapEntities(map);
+
 }
 

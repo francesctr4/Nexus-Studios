@@ -64,7 +64,6 @@ bool EntityManager::Start() {
 // Called before quitting
 bool EntityManager::CleanUp()
 {
-	
 	bool ret = true;
 	ListItem<Entity*>* item;
 	item = entities.end;
@@ -72,6 +71,7 @@ bool EntityManager::CleanUp()
 	while (item != NULL && ret == true)
 	{
 		ret = item->data->CleanUp();
+		RELEASE(item->data);
 		item = item->prev;
 	}
 
@@ -122,7 +122,13 @@ void EntityManager::DestroyEntity(Entity* entity)
 
 	for (item = entities.start; item != NULL; item = item->next)
 	{
-		if (item->data == entity) entities.Del(item);
+		if (item->data == entity)
+		{
+			item->data->CleanUp();
+			RELEASE(item->data);
+			entities.Del(item);
+			break;
+		}
 	}
 }
 
@@ -143,7 +149,11 @@ bool EntityManager::Update(float dt)
 	{
 		pEntity = item->data;
 
-		if (pEntity->active == false) continue;
+		if (pEntity->active == false)
+		{
+			continue;
+		}
+
 		ret = item->data->Update();
 	}
 

@@ -497,9 +497,6 @@ bool SceneBattle::Update(float dt)
 
 		enableMusic = true;
 		app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
-
-		app->map->actualmap = 0;
-
 	}
 
 	if (combat_timmer.ReadMSec() < 2000)

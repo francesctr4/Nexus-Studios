@@ -57,6 +57,9 @@ bool Enemy::Awake() {
 	position.y = parameters.attribute("y").as_int();
 	texturePath = parameters.attribute("texturepath").as_string();
 	texturePathBattle = parameters.attribute("battletexturepath").as_string();
+	aparicion = parameters.attribute("map").as_int();
+
+
 
 	for (int i = 0; i < 4; i++) {
 
@@ -71,7 +74,24 @@ bool Enemy::Awake() {
 
 bool Enemy::Start() {
 
-	Restart();
+	texture = app->tex->Load(texturePath);
+	textureBattle = app->tex->Load(texturePathBattle);
+
+	int width = 32;
+	int height = 32;
+
+	pbody = app->physics->CreateRectangle(position.x, position.y, width, height, bodyType::STATIC);
+
+	enemySensor = app->physics->CreateCircleSensor(position.x, position.y, 25, bodyType::KINEMATIC, ColliderType::ENEMY_SENSOR);
+
+		//pbody->listener = this;
+
+	enemySensor->listener = this;
+
+	currentAnimation = &idle_right;
+
+	playerInteraction = false;
+
 	return true;
 }
 
@@ -88,13 +108,14 @@ bool Enemy::Update()
 	SDL_Rect playerRect = currentAnimation->GetCurrentFrame();
 
 	app->render->DrawTexture(texture, position.x, position.y, &playerRect);
-
-	if (playerInteraction)
+		
+	if (playerInteraction == true)
 	{
 		app->fadeToBlack->Fade((Module*)app->sceneGameplay, (Module*)app->sceneBattle);
 		//app->sceneGameplay->player->Teleport(position.x,position.y + 50);
 		playerInteraction = false;
 		Death();
+
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_9) == KEY_DOWN)
@@ -109,7 +130,9 @@ bool Enemy::Update()
 
 bool Enemy::CleanUp()
 {
-	
+	app->physics->DestroyBody(pbody);
+	app->physics->DestroyBody(enemySensor);
+
 	return true;
 }
 
@@ -146,40 +169,19 @@ void Enemy::OnCollisionEnd(PhysBody* physA, PhysBody* physB) {
 
 void Enemy::Death() 
 {
-	Disable();
-	pbody->body->DestroyFixture(pbody->body->GetFixtureList());
-	enemySensor->body->DestroyFixture(enemySensor->body->GetFixtureList());
-}
-
-void Enemy::Restart()
-{
-	texture = app->tex->Load(texturePath);
-	textureBattle = app->tex->Load(texturePathBattle);
-
-	int width = 32;
-	int height = 32;
-
-	pbody = app->physics->CreateRectangle(position.x, position.y, width, height, bodyType::STATIC);
-
-	enemySensor = app->physics->CreateCircleSensor(position.x, position.y, 25, bodyType::KINEMATIC, ColliderType::ENEMY_SENSOR);
-
-	//pbody->listener = this;
-
-	enemySensor->listener = this;
-
-	currentAnimation = &idle_right;
-
-	playerInteraction = false;
+	active = false;
+	pbody->body->SetActive(false);
+	enemySensor->body->SetActive(false);
 }
 
 void Enemy::AddEnemy(Enemy* enemy, EnemyType type, int x, int y)
 {
-	if (enemy != nullptr) enemies.Add(enemy);
+	/*if (enemy != nullptr) enemies.Add(enemy);
 	if (type == EnemyType::DAMAGE)
 	{
 		enemy->type = EnemyType::DAMAGE;
 	}
-	
+	*/
 
 }
 

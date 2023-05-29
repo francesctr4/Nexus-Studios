@@ -29,10 +29,11 @@
 	<npc type="wizard" x="755" y="350" texturepath="Assets/Textures/Wizard.png"/>
 	<npc type="orc" x="75" y="420" texturepath="Assets/Textures/Skippy.png"/>
 
-	<enemy type = "damage" x="690" y="160" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png"/>
-	<enemy type = "support" x="1050" y="160" texturepath="Assets/Textures/Support_New.png" battletexturepath ="Assets/Textures/SupportInCombat.png"/>
-	<enemy type = "tank" x="75" y="615" texturepath="Assets/Textures/Tank_New.png" battletexturepath ="Assets/Textures/TankInCombat.png"/>
-	<enemy type = "damage" x="1120" y="600" texturepath="Assets/Textures/Cyberpunk.png" battletexturepath ="Assets/Textures/CyberpunkInCombat.png"/>
+	<enemy type = "damage" x="690" y="160" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="1"/>
+	<enemy type = "damage" x="750" y="160" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="1"/>
+	<enemy type = "support" x="1050" y="160" texturepath="Assets/Textures/Support_New.png" battletexturepath ="Assets/Textures/SupportInCombat.png" map="2"/>
+	<enemy type = "tank" x="75" y="615" texturepath="Assets/Textures/Tank_New.png" battletexturepath ="Assets/Textures/TankInCombat.png" map="1"/>
+	<enemy type = "damage" x="1120" y="600" texturepath="Assets/Textures/Cyberpunk.png" battletexturepath ="Assets/Textures/CyberpunkInCombat.png" map="2"/>
 
 	<item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
 	<item type ="Mango" x="600" y="450" texturepath="Assets/Textures/Items/Mangoes/Mango-Sheet.png" iconpath="Assets/Textures/Items/Mangoes/Mango.png"/>

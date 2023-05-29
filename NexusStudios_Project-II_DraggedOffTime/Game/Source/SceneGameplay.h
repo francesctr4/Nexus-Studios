@@ -31,6 +31,7 @@ public:
 
 	bool Awake(pugi::xml_node& config);
 
+
 	// Called before the first frame
 	bool Start();
 
@@ -50,9 +51,17 @@ public:
 
 	void CheckEvent();
 
+	void LoadMapEntities(int map);
+	
+	void UnloadMapEntities();
+
+	void LoadMap(int map);
+
 public:
 
 	bool enableMusic;
+
+	pugi::xml_node xml_node;
 
 	Player* player;
 
@@ -63,13 +72,11 @@ public:
 	std::vector<Enemy*> enemies;
 	std::vector<Item*> items;
 	std::vector<NPC*> npcs;
-
 	// Menus
 
 	FeatureMenu featureMenu;
 	Pause pause;
 	//Quests
-
 	int r = 0; //Times you completed any mision
 	
 	//Triggers
