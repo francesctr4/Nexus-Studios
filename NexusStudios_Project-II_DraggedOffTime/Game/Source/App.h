@@ -32,6 +32,7 @@ class GuiManager;
 class CombatManager;
 class EntityManager;
 class QuestManager;
+class ParticleSystem;
 class FadeToBlack;
 
 class App
@@ -70,6 +71,10 @@ public:
 	void SaveGameRequest() ;
 	bool LoadFromFile();
 	bool SaveToFile() ;
+
+	// Particle System
+
+	pugi::xml_node LoadEmitters(pugi::xml_document& psystem_file) const;
 
 private:
 
@@ -114,6 +119,7 @@ public:
 	CombatManager* combatManager;
 	EntityManager* entityManager;
 	QuestManager* questManager;
+	ParticleSystem* particleSystem;
 	FadeToBlack* fadeToBlack;
 
 	uint frames;
