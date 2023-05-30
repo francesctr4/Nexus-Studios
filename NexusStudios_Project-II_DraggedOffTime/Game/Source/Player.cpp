@@ -214,6 +214,10 @@ bool Player::Update()
 
 		}
 
+		fPoint pos((float)position.x + 24, (float)position.y + 16);
+		app->sceneGameplay->eWave_1 = app->particleSystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_WAVE_1);
+		app->sceneGameplay->eBurst_1 = app->particleSystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_BURST);
+
 	}
 
 	app->sceneBattle->selected_player = playerChange;
