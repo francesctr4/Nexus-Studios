@@ -52,8 +52,9 @@ public:
 	void CheckEvent();
 
 	void LoadMapEntities(int map);
-	
 	void UnloadMapEntities();
+
+	bool IsAnyNpcDialogueActivated();
 
 	void LoadMap(int map);
 

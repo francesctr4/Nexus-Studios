@@ -184,6 +184,20 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 
 	}
 
+	ListItem<NPC*>* ite;
+	pugi::xml_node npcNode = data.child("npc");
+
+	for (auto& ite : app->sceneGameplay->npcs)
+	{
+		float x = npcNode.attribute("x").as_int();
+		float y = npcNode.attribute("y").as_int();
+
+		ite->pbody->body->SetTransform({ PIXEL_TO_METERS(x),PIXEL_TO_METERS(y) }, 0);
+
+		npcNode = npcNode.next_sibling("npc");
+
+	}
+
 	ListItem<Item*>* it;
 
 	for (pugi::xml_node itemNode = data.child("item"); itemNode; itemNode = itemNode.next_sibling("item"))

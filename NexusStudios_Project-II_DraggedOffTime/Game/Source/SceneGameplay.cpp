@@ -35,13 +35,13 @@ bool SceneGameplay::Awake(pugi::xml_node& config)
 	player = (Player*)app->entityManager->CreateEntity(EntityType::PLAYER);
 	player->parameters = config.child("player");
 
-	for (pugi::xml_node npcNode = config.child("npc"); npcNode; npcNode = npcNode.next_sibling("npc"))
+	/*for (pugi::xml_node npcNode = config.child("npc"); npcNode; npcNode = npcNode.next_sibling("npc"))
 	{
 		NPC* npc = (NPC*)app->entityManager->CreateEntity(EntityType::NPC);
 		npc->parameters = npcNode;
 
 		npcs.push_back(npc);
-	}
+	}*/
 
 	//for (pugi::xml_node enemyNode = config.child("enemy"); enemyNode; enemyNode = enemyNode.next_sibling("enemy"))
 	//{
@@ -52,14 +52,14 @@ bool SceneGameplay::Awake(pugi::xml_node& config)
 
 	//}
 
-	for (pugi::xml_node itemNode = config.child("item"); itemNode; itemNode = itemNode.next_sibling("item"))
+	/*for (pugi::xml_node itemNode = config.child("item"); itemNode; itemNode = itemNode.next_sibling("item"))
 	{
 		Item* item = (Item*)app->entityManager->CreateEntity(EntityType::ITEM);
 		item->parameters = itemNode;
 
 		items.push_back(item);
 
-	}
+	}*/
 
 	xml_node = config;
 	
@@ -372,14 +372,20 @@ void SceneGameplay::CheckEvent()
 
 void SceneGameplay::LoadMapEntities(int map)
 {
-	//for (pugi::xml_node npcNode = xml_node.child("npc"); npcNode; npcNode = npcNode.next_sibling("npc"))
-	//{
-	//	NPC* npc = (NPC*)app->entityManager->CreateEntity(EntityType::NPC);
-	//	npc->parameters = npcNode;
+	
+	for (pugi::xml_node npcNode = xml_node.child("npc"); npcNode; npcNode = npcNode.next_sibling("npc"))
+	{
+		int aparicion = npcNode.attribute("map").as_int();
 
-	//	npcs.push_back(npc);
-
-	//}
+		if (aparicion == map)
+		{
+			NPC* npc = (NPC*)app->entityManager->CreateEntity(EntityType::NPC);
+			npc->parameters = npcNode;
+			npc->Awake();
+			npc->Start();
+			npcs.push_back(npc);
+		}
+	}
 
 	for (pugi::xml_node enemyNode = xml_node.child("enemy"); enemyNode; enemyNode = enemyNode.next_sibling("enemy"))
 	{
@@ -396,14 +402,19 @@ void SceneGameplay::LoadMapEntities(int map)
 		}
 	}
 
-	//for (pugi::xml_node itemNode = xml_node.child("item"); itemNode; itemNode = itemNode.next_sibling("item"))
-	//{
-	//	Item* item = (Item*)app->entityManager->CreateEntity(EntityType::ITEM);
-	//	item->parameters = itemNode;
+	for (pugi::xml_node itemNode = xml_node.child("item"); itemNode; itemNode = itemNode.next_sibling("item"))
+	{
+		int aparicion = itemNode.attribute("map").as_int();
 
-	//	items.push_back(item);
-
-	//}
+		if (aparicion == map)
+		{
+			Item* item = (Item*)app->entityManager->CreateEntity(EntityType::ITEM);
+			item->parameters = itemNode;
+			item->Awake();
+			item->Start();
+			items.push_back(item);
+		}
+	}
 }
 
 void SceneGameplay::UnloadMapEntities()
@@ -414,6 +425,21 @@ void SceneGameplay::UnloadMapEntities()
 	}
 
 	enemies.clear();
+}
+
+bool SceneGameplay::IsAnyNpcDialogueActivated()
+{
+
+	for (std::vector<NPC*>::iterator it = npcs.begin(); it != npcs.end(); ++it)
+	{
+		if ((*it)->dialogueActivated)
+		{
+			return true;
+		}
+	}
+
+	
+	return false;
 }
 
 void SceneGameplay::LoadMap(int map)
