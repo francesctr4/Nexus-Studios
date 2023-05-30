@@ -118,6 +118,22 @@ bool SceneGameplay::Update(float dt)
 {
 	OPTICK_EVENT();
 
+	if (app->input->GetKey(SDL_SCANCODE_8) == KEY_DOWN)
+	{
+		int mx, my;
+		app->input->GetMousePosition(mx, my);
+		fPoint pos((float)mx, (float)my);
+		eWave_1 = app->particleSystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_WAVE_1);
+		eBurst_1 = app->particleSystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_BURST);
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_9) == KEY_DOWN)
+	{
+		fPoint pos((float)app->sceneGameplay->player->position.x + 16, (float)app->sceneGameplay->player->position.y + 16);
+		eWave_2 = app->particleSystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_WAVE_2);
+		eBurst_2 = app->particleSystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_BURST);
+	}
+
 	if (app->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN) {
 
 		app->SaveGameRequest();

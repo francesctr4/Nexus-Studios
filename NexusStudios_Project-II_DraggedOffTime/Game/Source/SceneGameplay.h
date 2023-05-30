@@ -18,6 +18,11 @@
 #include "Puzzle2.h"
 #include "Puzzle3.h"
 
+#include "Particle.h"
+#include "ParticlePool.h"
+#include "Emitter.h"
+#include "Point.h"
+
 struct SDL_Texture;
 
 class SceneGameplay : public Module
@@ -101,4 +106,12 @@ public:
 	Infierno mapa_Infierno;
 	
 	PhysBody* prova;
+
+	// Particles
+
+	Emitter* eWave_1 = nullptr;
+	Emitter* eWave_2 = nullptr;
+	Emitter* eBurst_1 = nullptr;
+	Emitter* eBurst_2 = nullptr;
+
 };
