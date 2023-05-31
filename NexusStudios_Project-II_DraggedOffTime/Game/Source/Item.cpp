@@ -121,6 +121,8 @@ bool Item::Update()
 
 bool Item::CleanUp()
 {
+	app->physics->DestroyBody(pbody);
+	app->tex->UnLoad(texture);
 	return true;
 }
 
@@ -139,21 +141,16 @@ void Item::OnCollision(PhysBody* physA, PhysBody* physB) {
 			}
 			else
 			{ 
-			Disable();
-			pbody->body->DestroyFixture(pbody->body->GetFixtureList());
+				Collected();
+				
 			}
 			
 			if (physA->ctype == ColliderType::ITEM_BATTERY || physA->ctype == ColliderType::ITEM_GEM || physA->ctype == ColliderType::ITEM_MANGO || physA->ctype == ColliderType::ITEM_POTION)
 			{
 				app->sceneGameplay->trigger_2++;
 			}
-
-			if (!handledCollision) {
-
-				app->sceneGameplay->featureMenu.inventoryManager.AddItem(*this);
-
-			}
-
+			
+			app->sceneGameplay->featureMenu.inventoryManager.AddItem(*this);
 			break;
 		}
 
@@ -164,7 +161,7 @@ void Item::OnCollision(PhysBody* physA, PhysBody* physB) {
 void Item::OnCollisionEnd(PhysBody* physA, PhysBody* physB)
 {
 
-	handledCollision = true;
+	
 
 }
 
@@ -198,4 +195,11 @@ void Item::Restart(ItemType type, ColliderType ctype, int x, int y, std::string 
 
 	currentAnimation = &idle;
 
+}
+
+void Item::Collected()
+{
+	active = false;
+	pbody->body->SetActive(false);
+	isPicked = true;
 }

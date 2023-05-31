@@ -43,6 +43,8 @@ public:
 
 	void Restart(ItemType type, ColliderType ctype, int x, int y, std::string iconPath, std::string texturepath);
 
+	void Collected();
+
 public:
 
 	bool isPicked = false;

@@ -441,6 +441,20 @@ void SceneGameplay::UnloadMapEntities()
 	}
 
 	enemies.clear();
+
+	for (std::vector<NPC*>::iterator it = npcs.begin(); it != npcs.end(); ++it)
+	{
+		app->entityManager->DestroyEntity(*it);
+	}
+
+	npcs.clear();
+	
+	for (std::vector<Item*>::iterator it = items.begin(); it != items.end(); ++it)
+	{
+		app->entityManager->DestroyEntity(*it);
+	}
+
+	items.clear();
 }
 
 bool SceneGameplay::IsAnyNpcDialogueActivated()

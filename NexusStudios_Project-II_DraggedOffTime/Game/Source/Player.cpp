@@ -744,59 +744,38 @@ void Player::TeleportInfierno() {
 
 	case 2:
 		app->physics->DestroyBody(app->sceneGameplay->mapa_Infierno.TP_Infierno_2);
-		app->map->CleanUp();
-		app->map->actualmap = 3;
-		app->map->Load();
-		app->sceneGameplay->mapa_Infierno.map_selector = false;
+		app->sceneGameplay->LoadMap(3);
 		app->sceneGameplay->player->Teleport(1255, 106);	
 		break;
 	case 3:
 		app->physics->DestroyBody(app->sceneGameplay->mapa_Infierno.TP_Infierno_3);
-		app->map->CleanUp();
-		app->map->actualmap = 6;
-		app->map->Load();
-		app->sceneGameplay->mapa_Infierno.map_selector = false;
+		app->sceneGameplay->LoadMap(6);
 		app->sceneGameplay->player->Teleport(10, 300);
 		break;
 	case 4:
 		app->physics->DestroyBody(app->sceneGameplay->mapa_Infierno.TP_Infierno_4);
-		app->map->CleanUp();
-		app->map->actualmap = 5;
-		app->map->Load();
-		app->sceneGameplay->mapa_Infierno.map_selector = false;
+		app->sceneGameplay->LoadMap(5);
 		app->sceneGameplay->player->Teleport(640, 700);
 		break;
 	case 5:
 		app->physics->DestroyBody(app->sceneGameplay->mapa_Infierno.TP_Infierno_5);
-		app->map->CleanUp();
-		app->map->actualmap = 0;
-		app->map->Load();
-		app->sceneGameplay->mapa_Infierno.map_selector = false;
+		app->sceneGameplay->LoadMap(0);
 		app->sceneGameplay->player->Teleport(200, 671);
 		break;
 	case 6:
 		app->physics->DestroyBody(app->sceneGameplay->mapa_Infierno.Tp_Puzzle1);
-		app->map->CleanUp();
-		app->map->actualmap = 7;
-		app->map->Load();
-		app->sceneGameplay->mapa_Infierno.map_selector = false;
+		app->sceneGameplay->LoadMap(7);
 		app->sceneGameplay->player->Teleport(12, 600);		
 		break;
 	case 7:
 		app->physics->DestroyBody(app->sceneGameplay->mapa_Infierno.Tp_Puzzle2);
-		app->map->CleanUp();
-		app->map->actualmap = 8;
-		app->map->Load();
-		app->sceneGameplay->mapa_Infierno.map_selector = false;
+		app->sceneGameplay->LoadMap(8);
 		app->sceneGameplay->player->Teleport(640, 700);
 		break;
 	
 	case 8:
 		app->physics->DestroyBody(app->sceneGameplay->mapa_Infierno.Tp_Puzzle3);
-		app->map->CleanUp();
-		app->map->actualmap = 4;
-		app->map->Load();
-		app->sceneGameplay->mapa_Infierno.map_selector = false;
+		app->sceneGameplay->LoadMap(4);
 		app->sceneGameplay->player->Teleport(637, 700);
 		break;
 	

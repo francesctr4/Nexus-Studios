@@ -51,17 +51,13 @@ void Infierno::Update()
 	{
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN)
 		{
-			app->map->CleanUp();
-			app->map->actualmap = 0;
-			bool retLoad = app->map->Load();
+			app->sceneGameplay->LoadMap(0);
 			infierno = false;
 			app->sceneGameplay->player->Teleport(200, 671);
 		}
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_0) == KEY_DOWN)
 		{
-			app->map->CleanUp();
-			app->map->actualmap = 1;
-			bool retLoad = app->map->Load();
+			app->sceneGameplay->LoadMap(1);
 			infierno = false;
 			app->sceneGameplay->player->Teleport(650, 700);
 		}
