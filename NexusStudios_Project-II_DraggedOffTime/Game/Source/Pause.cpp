@@ -29,6 +29,9 @@ void Pause::Load()
 	backTitle = app->tex->Load("Assets/UI/BackTitle.png");
 	BackTitle = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, backTitle, "", { 502,481,270,38 }, (Module*)app->sceneGameplay);
 	BackTitle->state = GuiControlState::DISABLED;
+	Animation_BackTitle.Set();
+	Animation_BackTitle.smoothness = 2;
+	Animation_BackTitle.AddTween(100, 50, EXPONENTIAL_OUT);
 
 	exit = app->tex->Load("Assets/UI/PauseExit.png");
 	Exit = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 5, exit, "", { 592,588,90,38 }, (Module*)app->sceneGameplay);
@@ -100,6 +103,25 @@ void Pause::Update()
 		Back->state = GuiControlState::NORMAL;
 
 	}
+
+	Animation_BackTitle.Step(1, false);
+	if (showPause)
+	{
+		Animation_BackTitle.Foward();
+	}
+	else
+	{
+		Animation_BackTitle.Backward();
+
+	}
+	point = Animation_BackTitle.GetPoint();
+
+	//Arriba - Abajo
+	//app->render->DrawTexture(backTitle, 550 + point * (offset - 700),  point * (offset - 400) , &SDL_Rect({0,0,270,38 }));
+	
+	//Izquierda - Derecha
+	//app->render->DrawTexture(backTitle, -300 + point * (offset + 50), 400 + point * (offset - 650), &SDL_Rect({ 0,0,270,38 }));
+	
 
 	if (BackTitle->state == GuiControlState::PRESSED) {
 
