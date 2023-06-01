@@ -73,9 +73,21 @@ public:
 
 	// Tweens
 
-	Tween Animation_BackTitle;
-
 	int offset = 808;
-	float point;
 
+	Tween Animation_Pause;
+	float point_Pause;
+
+	Tween Animation_Resume;
+	float point_Resume;
+
+	Tween Animation_BackTitle;
+	float point_BackTitle;
+
+	Tween Animation_Settings;
+	float point_Settings;
+
+	Tween Animation_Exit;
+	float point_Exit;
+	
 };
