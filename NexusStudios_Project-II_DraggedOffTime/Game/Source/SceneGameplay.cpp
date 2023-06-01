@@ -240,8 +240,17 @@ bool SceneGameplay::Update(float dt)
 		app->fadeToBlack->Fade(this, (Module*)app->sceneEnding);
 
 	}
-
 	mapa_Infierno.Update();
+	
+	if(app->input->GetKey(SDL_SCANCODE_1)== KEY_DOWN)
+	{
+		app->physics->DestroyBody(prova);
+	}
+	if (app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
+	{
+		prova = app->physics->CreateRectangleSensor(player->position.x+40, player->position.y, 30, 30, bodyType::KINEMATIC, ColliderType::NPC_SENSOR);
+	}
+
 
 	return true;
 }

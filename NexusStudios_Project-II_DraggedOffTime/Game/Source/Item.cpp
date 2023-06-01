@@ -84,6 +84,19 @@ bool Item::Start() {
 	int width = 16;
 	int height = 16;
 
+	if (type == ItemType::TELEPORT_COFRE || type == ItemType::TELEPORT_JOVANI) {
+
+		pbody = app->physics->CreateRectangleSensor(position.x, position.y, 40, 20, bodyType::KINEMATIC, ctype);
+
+	}
+	else {
+
+		pbody = app->physics->CreateRectangleSensor(position.x, position.y, width, height, bodyType::KINEMATIC, ctype);
+
+	}
+
+	pbody->listener = this;
+
 	currentAnimation = &idle;
 
 	return true;

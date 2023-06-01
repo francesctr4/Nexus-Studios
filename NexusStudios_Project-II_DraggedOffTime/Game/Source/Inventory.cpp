@@ -17,7 +17,6 @@ bool Inventory::PostUpdate()
 
 	if (app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN && items.size())
 	{
-
 		RemoveLastItem();
 	}
 
