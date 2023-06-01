@@ -132,16 +132,6 @@ void Pause::Update()
 	point_Settings = Animation_Settings.GetPoint();
 	point_BackTitle = Animation_BackTitle.GetPoint();
 	point_Exit = Animation_Exit.GetPoint();
-	
-	//Arriba - Abajo
-	//app->render->DrawTexture(backTitle, 550 + point * (offset - 700),  point * (offset - 400) , &SDL_Rect({0,0,270,38 }));
-
-	//Izquierda - Derecha
-	//app->render->DrawTexture(backTitle, -300 + point * (offset + 50), 400 + point * (offset - 650), &SDL_Rect({ 0,0,270,38 }));
-
-	//app->render->DrawTexture(backTitle, 550, point * (offset - 400), &SDL_Rect({ 0,0,270,38 }));
-
-	//app->render->DrawTexture(backTitle, point * offset - 300, 481, &SDL_Rect({ 0,0,270,38 }));
 
 	Resume->bounds.x = point_Resume * offset - 245;
 	Settings->bounds.x = point_Settings * offset + 544;

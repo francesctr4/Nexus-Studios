@@ -6,6 +6,7 @@
 #include "GuiCheckBox.h"
 
 #include "Animation.h"
+#include "Tweening.h"
 
 struct SDL_Texture;
 
@@ -105,5 +106,27 @@ public:
 	SDL_Texture* titleSpritesheet;
 	Animation title;
 	Animation* currentAnimation;
+
+	// Tweens
+
+	int offset = 808;
+
+	Tween Animation_DraggedOffTime;
+	float point_DraggedOffTime;
+
+	Tween Animation_NewGame;
+	float point_NewGame;
+
+	Tween Animation_Continue;
+	float point_Continue;
+
+	Tween Animation_Settings;
+	float point_Settings;
+
+	Tween Animation_Credits;
+	float point_Credits;
+
+	Tween Animation_Exit;
+	float point_Exit;
 
 };
