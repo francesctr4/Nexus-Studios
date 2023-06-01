@@ -60,6 +60,10 @@ void Pause::Load()
 
 	SettingsTitle = app->tex->Load("Assets/UI/SettingsTitle.png");
 
+	Animation_BigSettings.Set();
+	Animation_BigSettings.smoothness = 4;
+	Animation_BigSettings.AddTween(100, 50, EXPONENTIAL_OUT);
+
 	checkBox = app->tex->Load("Assets/UI/CheckBox.png");
 
 	checkBoxFullscreen = app->tex->Load("Assets/UI/Fullscreen.png");
@@ -98,6 +102,11 @@ void Pause::Load()
 	back = app->tex->Load("Assets/UI/Back.png");
 	Back = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 6, back, "", { 586,622,102,38 }, (Module*)app->sceneGameplay);
 	Back->state = GuiControlState::DISABLED;
+
+	Animation_Back.Set();
+	Animation_Back.smoothness = 4;
+	Animation_Back.AddTween(100, 50, EXPONENTIAL_IN);
+
 }
 
 void Pause::Update()
@@ -109,6 +118,9 @@ void Pause::Update()
 	Animation_Settings.Step(1, false);
 	Animation_BackTitle.Step(1, false);
 	Animation_Exit.Step(1, false);
+
+	Animation_BigSettings.Step(1, false);
+	Animation_Back.Step(1, false);
 
 	if (showPause)
 	{
@@ -126,6 +138,19 @@ void Pause::Update()
 		Animation_BackTitle.JumpTo(0, false);
 		Animation_Exit.JumpTo(100, false);
 	}
+
+	if (showSettings) {
+
+		Animation_BigSettings.Foward();
+		Animation_Back.Backward();
+
+	}
+	else {
+
+		Animation_BigSettings.JumpTo(0, false);
+		Animation_Back.JumpTo(100, false);
+
+	}
 	
 	point_Pause = Animation_Pause.GetPoint();
 	point_Resume = Animation_Resume.GetPoint();
@@ -133,12 +158,15 @@ void Pause::Update()
 	point_BackTitle = Animation_BackTitle.GetPoint();
 	point_Exit = Animation_Exit.GetPoint();
 
+	point_BigSettings = Animation_BigSettings.GetPoint();
+	point_Back = Animation_Back.GetPoint();
+
 	Resume->bounds.x = point_Resume * offset - 245;
 	Settings->bounds.x = point_Settings * offset + 544;
 	BackTitle->bounds.x = point_BackTitle * offset - 300;
 	Exit->bounds.x = point_Exit * offset + 594;
 
-	//app->render->DrawTexture(exit, point_Exit * offset + 594, 588, &SDL_Rect({ 0,0,90,38 }));
+	Back->bounds.y = point_Back * offset + 594;
 
 	//UI
 	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_START] == KEY_DOWN) {
@@ -270,8 +298,9 @@ void Pause::PostUpdate()
 		if (FramecapUP->state == GuiControlState::DISABLED) FramecapUP->state = GuiControlState::NORMAL;
 		if (FramecapDOWN->state == GuiControlState::DISABLED) FramecapDOWN->state = GuiControlState::NORMAL;
 
+		//app->render->DrawTexture(SettingsTitle, 449, 73);
+		app->render->DrawTexture(SettingsTitle, 449, point_BigSettings * offset - 734);
 
-		app->render->DrawTexture(SettingsTitle, 449, 73);
 		app->render->DrawTexture(checkBoxFullscreen, 496, 202);
 		app->render->DrawTexture(checkBoxVsync, 496, 279);
 		app->render->DrawTexture(framecap, 496, 356);
