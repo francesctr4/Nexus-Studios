@@ -111,20 +111,8 @@ public:
 
 	SDL_Texture* bigCredits;
 
-	SDL_Texture* code;
-	SDL_Texture* art;
-	SDL_Texture* design;
-
-	SDL_Texture* francesc;
-	SDL_Texture* victor;
-	SDL_Texture* mario;
-	SDL_Texture* jan;
-	SDL_Texture* joelM;
-	SDL_Texture* dani;
-	SDL_Texture* toni;
-	SDL_Texture* marcel;
-	SDL_Texture* eric;
-	SDL_Texture* joelR;
+	SDL_Texture* people1;
+	SDL_Texture* people2;
 
 	// Tweens
 
@@ -155,5 +143,19 @@ public:
 
 	Tween Animation_Back;
 	float point_Back;
+
+	// Tweens Credits
+
+	Tween Animation_BigCredits;
+	float point_BigCredits;
+
+	Tween Animation_People1;
+	float point_People1;
+
+	Tween Animation_People2;
+	float point_People2;
+
+	Tween Animation_BackCredits;
+	float point_BackCredits;
 
 };

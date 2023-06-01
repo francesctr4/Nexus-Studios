@@ -139,20 +139,8 @@ bool SceneTitle::Start()
 
 	bigCredits = app->tex->Load("Assets/UI/Credits/BigCredits.png");
 
-	code = app->tex->Load("Assets/UI/Credits/Code.png");
-	art = app->tex->Load("Assets/UI/Credits/Art.png");
-	design = app->tex->Load("Assets/UI/Credits/Design.png");
-
-	francesc = app->tex->Load("Assets/UI/Credits/Francesc.png");
-	victor = app->tex->Load("Assets/UI/Credits/Victor.png");
-	mario = app->tex->Load("Assets/UI/Credits/Mario.png");
-	jan = app->tex->Load("Assets/UI/Credits/Jan.png");
-	joelM = app->tex->Load("Assets/UI/Credits/JoelM.png");
-	dani = app->tex->Load("Assets/UI/Credits/Dani.png");
-	toni = app->tex->Load("Assets/UI/Credits/Toni.png");
-	marcel = app->tex->Load("Assets/UI/Credits/Marcel.png");
-	eric = app->tex->Load("Assets/UI/Credits/Eric.png");
-	joelR = app->tex->Load("Assets/UI/Credits/JoelR.png");
+	people1 = app->tex->Load("Assets/UI/Credits/People1.png");
+	people2 = app->tex->Load("Assets/UI/Credits/People2.png");
 
 	// Tweens
 
@@ -192,6 +180,24 @@ bool SceneTitle::Start()
 	Animation_Back.Set();
 	Animation_Back.smoothness = 4;
 	Animation_Back.AddTween(100, 50, EXPONENTIAL_IN);
+
+	// Tweens Credits
+
+	Animation_BigCredits.Set();
+	Animation_BigCredits.smoothness = 4;
+	Animation_BigCredits.AddTween(100, 50, EXPONENTIAL_OUT);
+
+	Animation_People1.Set();
+	Animation_People1.smoothness = 4;
+	Animation_People1.AddTween(100, 50, EXPONENTIAL_OUT);
+
+	Animation_People2.Set();
+	Animation_People2.smoothness = 4;
+	Animation_People2.AddTween(100, 50, EXPONENTIAL_IN);
+
+	Animation_BackCredits.Set();
+	Animation_BackCredits.smoothness = 4;
+	Animation_BackCredits.AddTween(100, 50, EXPONENTIAL_IN);
 
 	return true;
 }
@@ -236,6 +242,11 @@ bool SceneTitle::Update(float dt)
 	Animation_BigSettings.Step(1, false);
 	Animation_Back.Step(1, false);
 
+	Animation_BigCredits.Step(1, false);
+	Animation_People1.Step(1, false);
+	Animation_People2.Step(1, false);
+	Animation_BackCredits.Step(1, false);
+
 	Animation_DraggedOffTime.Foward();
 	Animation_NewGame.Backward();
 	Animation_Continue.Backward();
@@ -256,6 +267,23 @@ bool SceneTitle::Update(float dt)
 
 	}
 
+	if (showCredits) {
+
+		Animation_BigCredits.Foward();
+		Animation_People1.Foward();
+		Animation_People2.Backward();
+		Animation_BackCredits.Backward();
+
+	}
+	else {
+
+		Animation_BigCredits.JumpTo(0, false);
+		Animation_People1.JumpTo(0, false);
+		Animation_People2.JumpTo(100, false);
+		Animation_BackCredits.JumpTo(100, false);
+
+	}
+
 	point_DraggedOffTime = Animation_DraggedOffTime.GetPoint();
 	point_NewGame = Animation_NewGame.GetPoint();
 	point_Continue = Animation_Continue.GetPoint();
@@ -266,6 +294,11 @@ bool SceneTitle::Update(float dt)
 	point_BigSettings = Animation_BigSettings.GetPoint();
 	point_Back = Animation_Back.GetPoint();
 
+	point_BigCredits = Animation_BigCredits.GetPoint();
+	point_People1 = Animation_People1.GetPoint();
+	point_People2 = Animation_People2.GetPoint();
+	point_BackCredits = Animation_BackCredits.GetPoint();
+
 	NewGame->bounds.x = point_NewGame * offset + 143;
 	Continue_->bounds.x = point_Continue * offset + 149;
 	Settings->bounds.x = point_Settings * offset + 149;
@@ -273,6 +306,8 @@ bool SceneTitle::Update(float dt)
 	Exit->bounds.x = point_Exit * offset + 214;
 
 	Back->bounds.y = point_Back * offset + 594;
+
+	BackCredits->bounds.y = point_BackCredits * offset + 655;
 
 	// UI
 
@@ -417,39 +452,14 @@ bool SceneTitle::PostUpdate()
 
 		app->render->DrawTexture(Fondo, 0, 0);
 
-		app->render->DrawTexture(bigCredits, 476, 43);
+		//app->render->DrawTexture(bigCredits, 476, 43);
+		app->render->DrawTexture(bigCredits, 476, point_BigCredits * offset - 760);
 
-		app->render->DrawTexture(francesc, 230, 152);
-		app->render->DrawTexture(code, 362, 202);
+		//app->render->DrawTexture(people1, 230, 152);
+		app->render->DrawTexture(people1, point_People1 * offset - 576, 152);
 
-		app->render->DrawTexture(victor, 307, 265);
-		app->render->DrawTexture(design, 350, 315);
-
-		app->render->DrawTexture(mario, 273, 377);
-		app->render->DrawTexture(code, 362, 427);
-
-		app->render->DrawTexture(jan, 311, 483);
-		app->render->DrawTexture(art, 370, 533);
-
-		app->render->DrawTexture(joelM, 246, 589);
-		app->render->DrawTexture(art, 370, 639);
-
-
-
-		app->render->DrawTexture(marcel, 701, 152);
-		app->render->DrawTexture(code, 813, 202);
-
-		app->render->DrawTexture(eric, 741, 265);
-		app->render->DrawTexture(code, 813, 315);
-
-		app->render->DrawTexture(dani, 709, 377);
-		app->render->DrawTexture(art, 821, 427);
-
-		app->render->DrawTexture(toni, 716, 483);
-		app->render->DrawTexture(design, 801, 533);
-
-		app->render->DrawTexture(joelR, 728, 589);
-		app->render->DrawTexture(design, 802, 639);
+		//app->render->DrawTexture(people2, 701, 152);
+		app->render->DrawTexture(people2, point_People2 * offset + 700, 152);
 
 		if (BackCredits->state == GuiControlState::DISABLED) BackCredits->state = GuiControlState::NORMAL;
 
