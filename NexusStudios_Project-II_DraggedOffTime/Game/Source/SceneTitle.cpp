@@ -406,14 +406,14 @@ bool SceneTitle::PostUpdate()
 
 	SDL_Rect rect = currentAnimation->GetCurrentFrame();
 
-	if (!showSettings) {
+	if (!showSettings && !showCredits) {
 
 		//app->render->DrawTexture(titleSpritesheet, 30, 45, &rect);
 		app->render->DrawTexture(titleSpritesheet, 30, point_DraggedOffTime * offset - 758, &rect);
 
 	}
 	
-	if (showCredits) {
+	if (showCredits && !showSettings) {
 
 		app->render->DrawTexture(Fondo, 0, 0);
 
@@ -422,32 +422,34 @@ bool SceneTitle::PostUpdate()
 		app->render->DrawTexture(francesc, 230, 152);
 		app->render->DrawTexture(code, 362, 202);
 
-		app->render->DrawTexture(victor, 0, 0);
-		app->render->DrawTexture(design, 0, 0);
+		app->render->DrawTexture(victor, 307, 265);
+		app->render->DrawTexture(design, 350, 315);
 
-		app->render->DrawTexture(jan, 0, 0);
-		app->render->DrawTexture(art, 0, 0);
+		app->render->DrawTexture(mario, 273, 377);
+		app->render->DrawTexture(code, 362, 427);
 
-		app->render->DrawTexture(joelM, 0, 0);
-		app->render->DrawTexture(art, 0, 0);
+		app->render->DrawTexture(jan, 311, 483);
+		app->render->DrawTexture(art, 370, 533);
 
-		app->render->DrawTexture(mario, 0, 0);
-		app->render->DrawTexture(code, 0, 0);
+		app->render->DrawTexture(joelM, 246, 589);
+		app->render->DrawTexture(art, 370, 639);
 
-		app->render->DrawTexture(dani, 0, 0);
-		app->render->DrawTexture(art, 0, 0);
 
-		app->render->DrawTexture(toni, 0, 0);
-		app->render->DrawTexture(design, 0, 0);
 
-		app->render->DrawTexture(joelR, 0, 0);
-		app->render->DrawTexture(design, 0, 0);
+		app->render->DrawTexture(marcel, 701, 152);
+		app->render->DrawTexture(code, 813, 202);
 
-		app->render->DrawTexture(eric, 0, 0);
-		app->render->DrawTexture(code, 0, 0);
+		app->render->DrawTexture(eric, 741, 265);
+		app->render->DrawTexture(code, 813, 315);
 
-		app->render->DrawTexture(marcel, 0, 0);
-		app->render->DrawTexture(code, 0, 0);
+		app->render->DrawTexture(dani, 709, 377);
+		app->render->DrawTexture(art, 821, 427);
+
+		app->render->DrawTexture(toni, 716, 483);
+		app->render->DrawTexture(design, 801, 533);
+
+		app->render->DrawTexture(joelR, 728, 589);
+		app->render->DrawTexture(design, 802, 639);
 
 		if (BackCredits->state == GuiControlState::DISABLED) BackCredits->state = GuiControlState::NORMAL;
 
@@ -473,7 +475,7 @@ bool SceneTitle::PostUpdate()
 
 	}
 
-	if (showSettings) {
+	if (showSettings && !showCredits) {
 
 		app->render->DrawTexture(Fondo, 0, 0);
 
@@ -521,7 +523,7 @@ bool SceneTitle::PostUpdate()
 
 	}
 
-	if (!showSettings) {
+	if (!showSettings && !showCredits) {
 
 		if (NewGame->state == GuiControlState::DISABLED) NewGame->state = GuiControlState::NORMAL;
 		if (Continue_->state == GuiControlState::DISABLED && continueEnabled) Continue_->state = GuiControlState::NORMAL;
