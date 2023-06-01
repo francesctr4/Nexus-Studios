@@ -129,4 +129,12 @@ public:
 	Tween Animation_Exit;
 	float point_Exit;
 
+	// Tweens Settings
+
+	Tween Animation_BigSettings;
+	float point_BigSettings;
+
+	Tween Animation_Back;
+	float point_Back;
+
 };

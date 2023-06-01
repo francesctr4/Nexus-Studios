@@ -166,6 +166,14 @@ bool SceneTitle::Start()
 	Animation_Exit.AddTween(100, 50, EXPONENTIAL_IN);
 	Animation_Exit.JumpTo(100, false);
 
+	Animation_BigSettings.Set();
+	Animation_BigSettings.smoothness = 4;
+	Animation_BigSettings.AddTween(100, 50, EXPONENTIAL_OUT);
+
+	Animation_Back.Set();
+	Animation_Back.smoothness = 4;
+	Animation_Back.AddTween(100, 50, EXPONENTIAL_IN);
+
 	return true;
 }
 
@@ -206,12 +214,28 @@ bool SceneTitle::Update(float dt)
 	Animation_Credits.Step(1, false);
 	Animation_Exit.Step(1, false);
 
+	Animation_BigSettings.Step(1, false);
+	Animation_Back.Step(1, false);
+
 	Animation_DraggedOffTime.Foward();
 	Animation_NewGame.Backward();
 	Animation_Continue.Backward();
 	Animation_Settings.Backward();
 	Animation_Credits.Backward();
 	Animation_Exit.Backward();
+
+	if (showSettings) {
+
+		Animation_BigSettings.Foward();
+		Animation_Back.Backward();
+
+	}
+	else {
+
+		Animation_BigSettings.JumpTo(0, false);
+		Animation_Back.JumpTo(100, false);
+
+	}
 
 	point_DraggedOffTime = Animation_DraggedOffTime.GetPoint();
 	point_NewGame = Animation_NewGame.GetPoint();
@@ -220,11 +244,16 @@ bool SceneTitle::Update(float dt)
 	point_Credits = Animation_Credits.GetPoint();
 	point_Exit = Animation_Exit.GetPoint();
 
+	point_BigSettings = Animation_BigSettings.GetPoint();
+	point_Back = Animation_Back.GetPoint();
+
 	NewGame->bounds.x = point_NewGame * offset + 143;
 	Continue_->bounds.x = point_Continue * offset + 149;
 	Settings->bounds.x = point_Settings * offset + 149;
 	Credits->bounds.x = point_Credits * offset + 164;
 	Exit->bounds.x = point_Exit * offset + 214;
+
+	Back->bounds.y = point_Back * offset + 594;
 
 	// UI
 
@@ -412,8 +441,9 @@ bool SceneTitle::PostUpdate()
 		if (Credits->state != GuiControlState::DISABLED) Credits->state = GuiControlState::DISABLED;
 		if (Exit->state != GuiControlState::DISABLED) Exit->state = GuiControlState::DISABLED;
 
+		//app->render->DrawTexture(SettingsTitle, 449, 73);
+		app->render->DrawTexture(SettingsTitle, 449, point_BigSettings * offset - 734);
 
-		app->render->DrawTexture(SettingsTitle, 449, 73);
 		app->render->DrawTexture(checkBoxFullscreen, 496, 202);
 		app->render->DrawTexture(checkBoxVsync, 496, 279);
 		app->render->DrawTexture(framecap, 496, 356);
