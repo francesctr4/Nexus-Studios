@@ -126,7 +126,7 @@ bool SceneTitle::Start()
 
 	checkBoxVsync = app->tex->Load("Assets/UI/Vsync.png");
 
-	BackCredits = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 6, back, "", { 704,619,112,59 }, this);
+	BackCredits = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 6, back, "", { 1135,650,102,38 }, this);
 	BackCredits->state = GuiControlState::DISABLED;
 
 	showSettings = false;
@@ -134,6 +134,25 @@ bool SceneTitle::Start()
 	continueEnabled = false;
 
 	currentAnimation = &title;
+
+	// Credits
+
+	bigCredits = app->tex->Load("Assets/UI/Credits/BigCredits.png");
+
+	code = app->tex->Load("Assets/UI/Credits/Code.png");
+	art = app->tex->Load("Assets/UI/Credits/Art.png");
+	design = app->tex->Load("Assets/UI/Credits/Design.png");
+
+	francesc = app->tex->Load("Assets/UI/Credits/Francesc.png");
+	victor = app->tex->Load("Assets/UI/Credits/Victor.png");
+	mario = app->tex->Load("Assets/UI/Credits/Mario.png");
+	jan = app->tex->Load("Assets/UI/Credits/Jan.png");
+	joelM = app->tex->Load("Assets/UI/Credits/JoelM.png");
+	dani = app->tex->Load("Assets/UI/Credits/Dani.png");
+	toni = app->tex->Load("Assets/UI/Credits/Toni.png");
+	marcel = app->tex->Load("Assets/UI/Credits/Marcel.png");
+	eric = app->tex->Load("Assets/UI/Credits/Eric.png");
+	joelR = app->tex->Load("Assets/UI/Credits/JoelR.png");
 
 	// Tweens
 
@@ -395,6 +414,40 @@ bool SceneTitle::PostUpdate()
 	}
 	
 	if (showCredits) {
+
+		app->render->DrawTexture(Fondo, 0, 0);
+
+		app->render->DrawTexture(bigCredits, 476, 43);
+
+		app->render->DrawTexture(francesc, 230, 152);
+		app->render->DrawTexture(code, 362, 202);
+
+		app->render->DrawTexture(victor, 0, 0);
+		app->render->DrawTexture(design, 0, 0);
+
+		app->render->DrawTexture(jan, 0, 0);
+		app->render->DrawTexture(art, 0, 0);
+
+		app->render->DrawTexture(joelM, 0, 0);
+		app->render->DrawTexture(art, 0, 0);
+
+		app->render->DrawTexture(mario, 0, 0);
+		app->render->DrawTexture(code, 0, 0);
+
+		app->render->DrawTexture(dani, 0, 0);
+		app->render->DrawTexture(art, 0, 0);
+
+		app->render->DrawTexture(toni, 0, 0);
+		app->render->DrawTexture(design, 0, 0);
+
+		app->render->DrawTexture(joelR, 0, 0);
+		app->render->DrawTexture(design, 0, 0);
+
+		app->render->DrawTexture(eric, 0, 0);
+		app->render->DrawTexture(code, 0, 0);
+
+		app->render->DrawTexture(marcel, 0, 0);
+		app->render->DrawTexture(code, 0, 0);
 
 		if (BackCredits->state == GuiControlState::DISABLED) BackCredits->state = GuiControlState::NORMAL;
 

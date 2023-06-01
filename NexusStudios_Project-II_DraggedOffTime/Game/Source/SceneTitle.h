@@ -100,12 +100,31 @@ public:
 	SDL_Texture* checkBoxVsync;
 	GuiCheckBox* CheckBoxVsync;
 
-	bool showCredits;
-	GuiButton* BackCredits;
-
 	SDL_Texture* titleSpritesheet;
 	Animation title;
 	Animation* currentAnimation;
+
+	// Credits
+
+	bool showCredits;
+	GuiButton* BackCredits;
+
+	SDL_Texture* bigCredits;
+
+	SDL_Texture* code;
+	SDL_Texture* art;
+	SDL_Texture* design;
+
+	SDL_Texture* francesc;
+	SDL_Texture* victor;
+	SDL_Texture* mario;
+	SDL_Texture* jan;
+	SDL_Texture* joelM;
+	SDL_Texture* dani;
+	SDL_Texture* toni;
+	SDL_Texture* marcel;
+	SDL_Texture* eric;
+	SDL_Texture* joelR;
 
 	// Tweens
 
