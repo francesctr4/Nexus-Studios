@@ -22,9 +22,6 @@ public:
 	bool showPause;
 	bool showSettings;
 
-	int offset = 720;
-	float point;
-
 	SDL_Texture* Fondo;
 
 	//Pause UI
@@ -39,7 +36,6 @@ public:
 
 	SDL_Texture* backTitle;
 	GuiButton* BackTitle;
-	Tween Animation_BackTitle;
 
 	SDL_Texture* exit;
 	GuiButton* Exit;
@@ -75,5 +71,11 @@ public:
 	SDL_Texture* back;
 	GuiButton* Back;
 
+	// Tweens
+
+	Tween Animation_BackTitle;
+
+	int offset = 808;
+	float point;
 
 };
