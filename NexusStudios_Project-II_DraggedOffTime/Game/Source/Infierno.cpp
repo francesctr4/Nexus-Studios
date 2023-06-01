@@ -52,79 +52,73 @@ void Infierno::Update()
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN)
 		{
 			app->sceneGameplay->LoadMap(0);
+			map_selector = false;
 			infierno = false;
 			app->sceneGameplay->player->Teleport(200, 671);
 		}
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_0) == KEY_DOWN)
 		{
 			app->sceneGameplay->LoadMap(1);
+			map_selector = false;
 			infierno = false;
 			app->sceneGameplay->player->Teleport(650, 700);
 		}
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 		{
-			app->map->CleanUp();
-			app->map->actualmap = 2;
-			bool retLoad = app->map->Load();
+			app->sceneGameplay->LoadMap(2);
+			map_selector = false;
 			infierno = false;
 			app->sceneGameplay->player->Teleport(1265, 560);
 		}
 
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
 		{
-			app->map->CleanUp();
-			app->map->actualmap = 3;
-			bool retLoad = app->map->Load();
+			app->sceneGameplay->LoadMap(3);
+			map_selector = false;
 			infierno = false;
 			app->sceneGameplay->player->Teleport(1255, 106);
 		}
 
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
 		{
-			app->map->CleanUp();
-			app->map->actualmap = 6;
-			bool retLoad = app->map->Load();
+			app->sceneGameplay->LoadMap(6);
+			map_selector = false;
 			infierno = false;
 			app->sceneGameplay->player->Teleport(10, 300);
 		}
 
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
 		{
-			app->map->CleanUp();
-			app->map->actualmap = 7;
-			bool retLoad = app->map->Load();
+			app->sceneGameplay->LoadMap(7);
+			map_selector = false;
 			infierno = false;
 			app->sceneGameplay->player->Teleport(12, 600);
 		}
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
 		{
-			app->map->CleanUp();
-			app->map->actualmap = 8;
-			bool retLoad = app->map->Load();
+			app->sceneGameplay->LoadMap(8);
+			map_selector = false;
 			infierno = false;
 			app->sceneGameplay->player->Teleport(640, 700);
 		}
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN)
 		{
-			app->map->CleanUp();
-			app->map->actualmap = 4;
-			bool retLoad = app->map->Load();
+			app->sceneGameplay->LoadMap(4);
+			map_selector = false;
 			infierno = false;
 			app->sceneGameplay->player->Teleport(640, 700);
 		}
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_7) == KEY_DOWN)
 		{
-			app->map->CleanUp();
-			app->map->actualmap = 5;
-			bool retLoad = app->map->Load();
+			app->sceneGameplay->LoadMap(5);
+			map_selector = false;
 			infierno = false;
 			app->sceneGameplay->player->Teleport(640, 700);
 		}
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_8) == KEY_DOWN)
 		{
-			app->map->CleanUp();
-			app->map->actualmap = 9;
-			bool retLoad = app->map->Load();
+			app->sceneGameplay->LoadMap(9);
+			map_selector = false;
 			infierno = false;
 			app->sceneGameplay->player->Teleport(650, 700);
 		}
