@@ -22,8 +22,6 @@ void Infierno::Start()
 
 void Infierno::Update()
 {
-
-
 	if (app->sceneGameplay->player->godMode == true)
 	{
 		app->render->DrawText("GODMODE", 100, 100, 130, 80, { 255, 255, 255, 255 });
@@ -63,68 +61,52 @@ void Infierno::Update()
 		}
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 		{
-			app->map->CleanUp();
-			app->map->actualmap = 2;
-			bool retLoad = app->map->Load();
+			app->sceneGameplay->LoadMap(2);
 			infierno = false;
 			app->sceneGameplay->player->Teleport(1265, 560);
 		}
 
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
 		{
-			app->map->CleanUp();
-			app->map->actualmap = 3;
-			bool retLoad = app->map->Load();
+			app->sceneGameplay->LoadMap(3);
 			infierno = false;
 			app->sceneGameplay->player->Teleport(1255, 106);
 		}
 
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
 		{
-			app->map->CleanUp();
-			app->map->actualmap = 6;
-			bool retLoad = app->map->Load();
+			app->sceneGameplay->LoadMap(6);
 			infierno = false;
 			app->sceneGameplay->player->Teleport(10, 300);
 		}
 
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
 		{
-			app->map->CleanUp();
-			app->map->actualmap = 7;
-			bool retLoad = app->map->Load();
+			app->sceneGameplay->LoadMap(7);
 			infierno = false;
 			app->sceneGameplay->player->Teleport(12, 600);
 		}
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
 		{
-			app->map->CleanUp();
-			app->map->actualmap = 8;
-			bool retLoad = app->map->Load();
+			app->sceneGameplay->LoadMap(8);
 			infierno = false;
 			app->sceneGameplay->player->Teleport(640, 700);
 		}
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN)
 		{
-			app->map->CleanUp();
-			app->map->actualmap = 4;
-			bool retLoad = app->map->Load();
+			app->sceneGameplay->LoadMap(4);
 			infierno = false;
 			app->sceneGameplay->player->Teleport(640, 700);
 		}
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_7) == KEY_DOWN)
 		{
-			app->map->CleanUp();
-			app->map->actualmap = 5;
-			bool retLoad = app->map->Load();
+			app->sceneGameplay->LoadMap(5);
 			infierno = false;
 			app->sceneGameplay->player->Teleport(640, 700);
 		}
 		if (infierno == true && app->input->GetKey(SDL_SCANCODE_8) == KEY_DOWN)
 		{
-			app->map->CleanUp();
-			app->map->actualmap = 9;
-			bool retLoad = app->map->Load();
+			app->sceneGameplay->LoadMap(9 );
 			infierno = false;
 			app->sceneGameplay->player->Teleport(650, 700);
 		}
@@ -142,6 +124,7 @@ void Infierno::Update()
 			infierno = false;
 		}
 	}
+
 	//Charge all the sensors on the different maps
 	if (app->map->actualmap == 0 && Tp_0 == true)
 	{
@@ -164,12 +147,6 @@ void Infierno::Update()
 	{
 		TP_Infierno_3 = app->physics->CreateRectangleSensor(1273, 590, 9, 95, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
 		Tp_3 = false;
-	}
-
-	if (app->map->actualmap == 3 && Tp_Cofre == true)
-	{
-		TP_Infierno_Cofre = app->physics->CreateRectangleSensor(1180, 255, 20, 9, bodyType::KINEMATIC, ColliderType::TELEPORT_JOVANI);
-		Tp_Cofre = false;
 	}
 
 	if (app->map->actualmap == 6 && Tp_Puzzle_1 == true)
@@ -206,4 +183,79 @@ void Infierno::Update()
 void Infierno::CleanUp()
 {
 
+}
+
+void Infierno::TeleportInfierno()
+{
+	switch (app->map->actualmap)
+	{
+	case 0:
+		app->physics->DestroyBody(app->sceneGameplay->mapa_Infierno.TP_Infierno_0);
+		app->sceneGameplay->trigger_3 = true;
+		app->sceneGameplay->LoadMap(1);
+		app->sceneGameplay->mapa_Infierno.map_selector = false;
+		app->sceneGameplay->player->Teleport(650, 671);
+
+		break;
+
+	case 1:
+		app->physics->DestroyBody(app->sceneGameplay->mapa_Infierno.TP_Infierno_1);
+		app->sceneGameplay->LoadMap(2);
+		app->sceneGameplay->mapa_Infierno.map_selector = false;
+		app->sceneGameplay->player->Teleport(1265, 560);
+
+		break;
+
+	case 2:
+		app->physics->DestroyBody(app->sceneGameplay->mapa_Infierno.TP_Infierno_2);
+		app->sceneGameplay->LoadMap(3);
+		app->sceneGameplay->player->Teleport(1255, 106);
+
+		break;
+
+	case 3:
+		app->physics->DestroyBody(app->sceneGameplay->mapa_Infierno.TP_Infierno_3);
+		app->sceneGameplay->LoadMap(6);
+		app->sceneGameplay->player->Teleport(10, 300);
+
+		break;
+
+	case 4:
+		app->physics->DestroyBody(app->sceneGameplay->mapa_Infierno.TP_Infierno_4);
+		app->sceneGameplay->LoadMap(5);
+		app->sceneGameplay->player->Teleport(640, 700);
+
+		break;
+
+	case 5:
+		app->physics->DestroyBody(app->sceneGameplay->mapa_Infierno.TP_Infierno_5);
+		app->sceneGameplay->LoadMap(0);
+		app->sceneGameplay->player->Teleport(200, 671);
+
+		break;
+
+	case 6:
+		app->physics->DestroyBody(app->sceneGameplay->mapa_Infierno.Tp_Puzzle1);
+		app->sceneGameplay->LoadMap(7);
+		app->sceneGameplay->player->Teleport(12, 600);
+
+		break;
+
+	case 7:
+		app->physics->DestroyBody(app->sceneGameplay->mapa_Infierno.Tp_Puzzle2);
+		app->sceneGameplay->LoadMap(8);
+		app->sceneGameplay->player->Teleport(640, 700);
+
+		break;
+
+	case 8:
+		app->physics->DestroyBody(app->sceneGameplay->mapa_Infierno.Tp_Puzzle3);
+		app->sceneGameplay->LoadMap(4);
+		app->sceneGameplay->player->Teleport(637, 700);
+
+		break;
+
+	default:
+		break;
+	}
 }

@@ -60,7 +60,6 @@ public:
 
 	void TeleportCofre();
 	void TeleportJovani();
-	void TeleportInfierno();
 	void TeleportPrehistoria();
 	void TeleportFuturo();
 	void TeleportMedieval();

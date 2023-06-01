@@ -19,6 +19,8 @@ public:
 
 	void CleanUp();
 
+	void TeleportInfierno();
+
 public:
 
 	bool canLoad = true;
