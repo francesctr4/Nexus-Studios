@@ -62,6 +62,9 @@ public:
 	//8.Enemy blocks attack
 	void EnemyBlockAttack();
 
+	//9.Enemy invokes a minion
+	void AddMinion();
+
 	
 
 	//QuickTimeEvent fuction. Devuelve el valor de qué tan cerca estuvo de hacer clic en el momento adecuado (en ms)

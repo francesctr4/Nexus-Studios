@@ -280,3 +280,15 @@ void CombatManager::EnemyBlockAttack() {
 	//Add X ammout of DEF to the enemy for the next turn
 	enemy_increasedDefense = 1; 
 }
+
+void CombatManager::AddMinion()
+{
+	if (app->sceneBattle->minion)
+	{
+		app->sceneBattle->m_HP = app->sceneBattle->m_max_HP;
+	}
+	else
+	{
+		app->sceneBattle->minion = true;
+	}
+}

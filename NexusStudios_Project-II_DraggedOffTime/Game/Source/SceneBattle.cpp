@@ -205,11 +205,17 @@ bool SceneBattle::Update(float dt)
 				switch (action_selected)
 				{
 				case 0: //Standar attack
-					e_HP = app->combatManager->NormalAttack(m_players[selected_player].DMG, e_HP, e_DEF);
+					if (minion) 
+					{
+						m_HP = app->combatManager->NormalAttack(m_players[selected_player].DMG, m_HP, m_DEF);
+					}
+					else
+					{
+						e_HP = app->combatManager->NormalAttack(m_players[selected_player].DMG, e_HP, e_DEF);
+					}
 					app->audio->PlayFx(fx_sword_hit);
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
 					app->audio->PlayFx(fx_sword_hit);
-					
 					break;
 				case 1:	//Quick time event attack (TODO)
 					qte_timer.Start();
@@ -260,6 +266,13 @@ bool SceneBattle::Update(float dt)
 				m_players[1].HP = m_players[1].max_HP;
 				m_players[2].HP = m_players[2].max_HP;
 				m_players[3].HP = m_players[3].max_HP;
+			}
+
+			//Reset de la vida del minion
+			if (m_HP == 0)
+			{
+				minion = false;
+				m_HP = m_max_HP;
 			}
 
 			//Debug controls
@@ -344,6 +357,9 @@ bool SceneBattle::Update(float dt)
 
 				if (app->input->GetKey(SDL_SCANCODE_TAB) == KEY_DOWN)
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
+
+				if (app->input->GetKey(SDL_SCANCODE_M) == KEY_DOWN)
+					minion = !minion;
 			}
 		}
 
@@ -354,9 +370,17 @@ bool SceneBattle::Update(float dt)
 
 			if (qte_timer.ReadMSec() > 2000)
 			{
-				
 				//Weapon Hit - Si fallas el QTE vas a hacer poco daño
-				e_HP = app->combatManager->WeaponAttack(m_players[selected_player].DMG * 0.75, e_HP, e_DEF, false, num_hits);
+				if (minion)
+				{
+					m_HP = app->combatManager->WeaponAttack(m_players[selected_player].DMG * 0.75, m_HP, m_DEF, false, num_hits);
+				}
+				else
+				{
+					e_HP = app->combatManager->WeaponAttack(m_players[selected_player].DMG * 0.75, e_HP, e_DEF, false, num_hits);
+				}
+				
+				
 
 				qte = false;
 				num_hits = 0; // Reiniciar el contador de hits
@@ -379,9 +403,17 @@ bool SceneBattle::Update(float dt)
 					// Si el jugador ha presionado la tecla Q suficientes veces, llama a TimeEventAttack con un valor de MAX_HITS y reinicia el contador
 					if (num_hits == MAX_HITS)
 					{
-						
 						//Weapon Hit 
-						e_HP = app->combatManager->WeaponAttack(m_players[selected_player].DMG, e_HP, e_DEF, true, MAX_HITS);
+						if (minion)
+						{
+							m_HP = app->combatManager->WeaponAttack(m_players[selected_player].DMG, m_HP, m_DEF, true, MAX_HITS);
+						}
+						else
+						{
+							e_HP = app->combatManager->WeaponAttack(m_players[selected_player].DMG, e_HP, e_DEF, true, MAX_HITS);
+						}
+						
+						
 						
 						qte = false;
 						num_hits = 0; // Reiniciar el contador de hits
@@ -392,7 +424,14 @@ bool SceneBattle::Update(float dt)
 				else       //Bad timing
 				{
 					//Weapon Hit 
-					e_HP = app->combatManager->WeaponAttack(m_players[selected_player].DMG, e_HP, e_DEF, false, num_hits);
+					if (minion)
+					{
+						m_HP = app->combatManager->WeaponAttack(m_players[selected_player].DMG, m_HP, m_DEF, true, num_hits);
+					}
+					else
+					{
+						e_HP = app->combatManager->WeaponAttack(m_players[selected_player].DMG, e_HP, e_DEF, true, num_hits);
+					}
 						
 					qte = false;
 					num_hits = 0; // Reiniciar el contador de hits
@@ -404,89 +443,99 @@ bool SceneBattle::Update(float dt)
 	}
 	else
 	{	
-		//Timer enemigo
-		if (!timer_started)	
+		if (true)	//Comprobar si es un enemigo o un boss - TODO
 		{
-			timer.Start();
-			timer_started = true;
-		}
-		if (timer.ReadMSec() >= 1000)
-		{
-			//LOG("-------------ENEMY TURN-------------");
-			int random_num = (rand() % 2) + 1;
-			//LOG("Numero aleatorio %d", random_num);
-			switch (random_num)
+			//Timer enemigo
+			if (!timer_started)
 			{
-			case 1:
-				if (e_HP > 0)
+				timer.Start();
+				timer_started = true;
+			}
+			if (timer.ReadMSec() >= 1000)
+			{
+
+				//LOG("-------------ENEMY TURN-------------");
+				int random_num = (rand() % 2) + 1;
+				//LOG("Numero aleatorio %d", random_num);
+				switch (random_num)
 				{
-					if(e_confusion_turns == 0 && m_players[selected_player].counter_turns == 0)
-						m_players[selected_player].HP = app->combatManager->EnemyAttack(e_DMG, m_players[selected_player].HP, m_players[selected_player].DEF);
-
-					//Si el enemigo tiene confusión su turno será como si se atacara a si mismo
-					if (e_confusion_turns > 0)
-						e_HP = app->combatManager->NormalAttack(e_DMG, e_HP, e_DEF);
-
-					//Si el player tiene counter turns el enemigo sufre daño al atacar al player
-					if (m_players[selected_player].counter_turns > 0)
+				case 1:
+					if (e_HP > 0)
 					{
-						m_players[selected_player].HP = app->combatManager->EnemyAttack(e_DMG, m_players[selected_player].HP, m_players[selected_player].DEF);
-						e_HP = app->combatManager->NormalAttack(e_DMG, e_HP, e_DEF);
+						if (e_confusion_turns == 0 && m_players[selected_player].counter_turns == 0)
+							m_players[selected_player].HP = app->combatManager->EnemyAttack(e_DMG, m_players[selected_player].HP, m_players[selected_player].DEF);
+
+						//Si el enemigo tiene confusión su turno será como si se atacara a si mismo
+						if (e_confusion_turns > 0)
+							e_HP = app->combatManager->NormalAttack(e_DMG, e_HP, e_DEF);
+
+						//Si el player tiene counter turns el enemigo sufre daño al atacar al player
+						if (m_players[selected_player].counter_turns > 0)
+						{
+							m_players[selected_player].HP = app->combatManager->EnemyAttack(e_DMG, m_players[selected_player].HP, m_players[selected_player].DEF);
+							e_HP = app->combatManager->NormalAttack(e_DMG, e_HP, e_DEF);
+						}
+
+						LOG("Atack");
+						app->audio->PlayFx(receiveHitFX);
+						//app->audio->PlayFx(fx_sword_hit); //Se buguea un montón porque se sobreponen los sonidos, hay que  añadirle un timer o algo para evitarlo y que sea algo mas lento el combate
+						//Blit red color in screen
+						//app->render->DrawRectangle(rect, 255, 0, 0, 150);
+						enemy_last_action = 0;
 					}
-
-					LOG("Atack");
-					app->audio->PlayFx(receiveHitFX);
-					//app->audio->PlayFx(fx_sword_hit); //Se buguea un montón porque se sobreponen los sonidos, hay que  añadirle un timer o algo para evitarlo y que sea algo mas lento el combate
-					//Blit red color in screen
-					//app->render->DrawRectangle(rect, 255, 0, 0, 150);
-					enemy_last_action = 0;
+					break;
+				case 2:
+					if (e_HP > 0)
+					{
+						app->combatManager->EnemyBlockAttack();
+						LOG("Defense");
+						//Blit green color in screen
+						//app->render->DrawRectangle(rect, 0, 255, 0, 150);
+						enemy_last_action = 1;
+						app->audio->PlayFx(enemyFailFX);
+					}
+					break;
+				default:
+					break;
 				}
-				break;
-			case 2:
-				if (e_HP > 0)
+				//LOG("-------------YOUR TURN-------------");
+
+				combat_timmer.Start();
+
+				if (e_confusion_turns > 0)
+					e_confusion_turns--;
+
+				//Skill Mage - Middle ages steroids
+				for (int i = 0; i < 3; i++)
 				{
-					app->combatManager->EnemyBlockAttack();
-					LOG("Defense");
-					//Blit green color in screen
-					//app->render->DrawRectangle(rect, 0, 255, 0, 150);
-					enemy_last_action = 1;
-					app->audio->PlayFx(enemyFailFX);
+					if (m_players[i].buf_turns == 0)
+					{
+						m_players[i].DEF = m_players[i].base_DEF;
+						m_players[i].DMG = m_players[i].base_DMG;
+					}
+					if (m_players[i].buf_turns > 0)
+						m_players[i].buf_turns--;
+
 				}
-				break;
-			default:
-				break;
-			}
-			//LOG("-------------YOUR TURN-------------");
 
-			combat_timmer.Start();
-
-			if (e_confusion_turns > 0)
-				e_confusion_turns--;
-			
-			//Skill Mage - Middle ages steroids
-			for (int i = 0; i < 3; i++)
-			{
-				if (m_players[i].buf_turns == 0)
+				//Skill Tank - I'm the one who bonks!
+				for (int i = 0; i < 3; i++)
 				{
-					m_players[i].DEF = m_players[i].base_DEF;
-					m_players[i].DMG = m_players[i].base_DMG;
+					if (m_players[i].counter_turns > 0)
+						m_players[i].counter_turns--;
 				}
-				if (m_players[i].buf_turns > 0)	
-					m_players[i].buf_turns--;
-				
-			}
 
-			//Skill Tank - I'm the one who bonks!
-			for (int i = 0; i < 3; i++)
-			{
-				if (m_players[i].counter_turns > 0)
-					m_players[i].counter_turns--;
-			}
-			
 
-			app->combatManager->playerTurn = !app->combatManager->playerTurn;
-			turn++;
-			timer_started = false;
+				app->combatManager->playerTurn = !app->combatManager->playerTurn;
+				turn++;
+				timer_started = false;
+			}
+		}
+		else
+		{
+			//Habria que meter un switch o algo que permitiera controlar si te estás enfrentando con el primero, segundo, tercero o Final Boss para decicir las
+			//habilidades y los % de los diferentes ataques y habilidades
+
 		}
 		
 	}
@@ -709,6 +758,16 @@ bool SceneBattle::PostUpdate()
 		std::string confusion = std::to_string(e_confusion_turns);
 		app->render->DrawText(confusion, 1000+100, 10, 10, 20, { 255, 255, 255, 255 });
 		app->render->DrawText("Confusion turns: ", 900+100, 10, 100, 20, { 255, 255, 255, 255 });
+
+
+		if (minion)
+		{
+			app->render->DrawText("Minion: ON", 900 + 100, 300, 100, 20, { 255, 255, 255, 255 });
+		}
+		else
+		{
+			app->render->DrawText("Minion: OFF", 900 + 100, 300, 100, 20, { 255, 255, 255, 255 });
+		}
 	}
 
 

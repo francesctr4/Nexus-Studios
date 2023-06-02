@@ -84,6 +84,15 @@ public:
 
 	int enemy_last_action = NULL; // 0 => Attack // 1 => Defense
 
+
+	//Minion (Boss)
+	bool minion = false;
+	int m_HP = 60;
+	int m_max_HP = 60;
+	int m_DEF = 10;
+	int m_DMG = 20;
+	int m_confusion_turns = 0;
+
 	//Sprite player (TODO)
 
 	SDL_Texture* medievalInCombat;
