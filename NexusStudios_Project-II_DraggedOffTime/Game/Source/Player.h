@@ -78,8 +78,8 @@ public:
 
 	PlayerStats playerStats[4];
 	SDL_Rect xpAccumulatedRect[4] = { SDL_Rect({ 793,321,243,13 }) , SDL_Rect({ 793,321,243,13 }), SDL_Rect({ 793,321,243,13 }), SDL_Rect({ 793,321,243,13 }) };
-	float fillPercentage[4];
-	int fillWidth[4];
+	float fillPercentage[4] = { 0,0,0,0 };
+	int fillWidth[4] = { 0,0,0,0 };
 	uint levelUp;
 
 	bool godMode;

@@ -19,7 +19,7 @@ class Weapon
 {
 public:
 
-	Weapon(int width);
+	explicit Weapon(int width);
 
 	virtual ~Weapon();
 

@@ -299,8 +299,8 @@ public:
     //Updates the tween in whole positions. Returns the current point of the tween
     int Step(int amount, bool suppressCallbacks)
     {
-        return tween.step(amount, suppressCallbacks);
         this->suppressCallbacks = suppressCallbacks;
+        return tween.step(amount, suppressCallbacks);
     }
     //Updates the tween in percentages. Returns the current point of the tween
     int Step(float amount, bool suppressCallbacks)

@@ -19,6 +19,22 @@
 Enemy::Enemy() : Entity(EntityType::ENEMY)
 {
 	name.Create("Enemy");
+
+	texture = nullptr;
+	texturePath = nullptr;
+	textureBattle = nullptr;
+	texturePathBattle = nullptr;
+
+	etype = EnemyType::UNKNOWN;
+
+	hp = NULL;
+	atk = NULL;
+	def = NULL;
+	playerInteraction = false;
+	pbody = nullptr;
+	enemySensor = nullptr;
+	currentAnimation = nullptr;
+
 }
 
 Enemy::~Enemy() {
@@ -29,7 +45,7 @@ bool Enemy::Awake() {
 
 	if (SString(parameters.attribute("type").as_string()) == SString("damage")) {
 
-		type = EnemyType::DAMAGE;
+		etype = EnemyType::DAMAGE;
 		hp = 5;
 		atk = 10;
 		def = 5;
@@ -38,7 +54,7 @@ bool Enemy::Awake() {
 
 	if (SString(parameters.attribute("type").as_string()) == SString("support")) {
 
-		type = EnemyType::SUPPORT;
+		etype = EnemyType::SUPPORT;
 		hp = 10;
 		atk = 5;
 		def = 5;
@@ -47,7 +63,7 @@ bool Enemy::Awake() {
 		
 	if (SString(parameters.attribute("type").as_string()) == SString("tank")) {
 
-		type = EnemyType::TANK;
+		etype = EnemyType::TANK;
 		hp = 5;
 		atk = 5;
 		def = 10;
@@ -77,9 +93,6 @@ bool Enemy::Start() {
 	texture = app->tex->Load(texturePath);
 	textureBattle = app->tex->Load(texturePathBattle);
 
-	int width = 32;
-	int height = 32;
-
 	pbody = app->physics->CreateRectangle(position.x, position.y, width, height, bodyType::STATIC);
 
 	enemySensor = app->physics->CreateCircleSensor(position.x, position.y, 25, bodyType::KINEMATIC, ColliderType::ENEMY_SENSOR);
@@ -89,8 +102,6 @@ bool Enemy::Start() {
 	enemySensor->listener = this;
 
 	currentAnimation = &idle_right;
-
-	playerInteraction = false;
 
 	return true;
 }
@@ -111,7 +122,8 @@ bool Enemy::Update()
 		
 	if (playerInteraction == true)
 	{
-		app->fadeToBlack->Fade((Module*)app->sceneGameplay, (Module*)app->sceneBattle);
+		//app->fadeToBlack->Fade((Module*)app->sceneGameplay, (Module*)app->sceneBattle);
+		app->fadeToBlack->Fade(reinterpret_cast<Module*>(app->sceneGameplay), reinterpret_cast<Module*>(app->sceneBattle));
 		//app->sceneGameplay->player->Teleport(position.x,position.y + 50);
 		playerInteraction = false;
 		Death();
@@ -141,16 +153,15 @@ void Enemy::OnCollision(PhysBody* physA, PhysBody* physB) {
 	switch (physB->ctype)
 	{
 	case ColliderType::PLATFORM:
-		LOG("Collision PLATFORM");
+		
 
 		break;
 	case ColliderType::UNKNOWN:
-		LOG("Collision UNKNOWN");
+		
 
 		break;
 
 	case ColliderType::PLAYER:
-		LOG("Collision PLAYER");
 
 		playerInteraction = true;
 		app->sceneBattle->enemyInCombat = textureBattle;

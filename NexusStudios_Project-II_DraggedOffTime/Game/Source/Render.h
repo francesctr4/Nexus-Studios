@@ -12,24 +12,24 @@ class Render : public Module
 {
 public:
 
-	Render(bool startEnabled);
+	explicit Render(bool startEnabled);
 
 	// Destructor
 	virtual ~Render();
 
 	// Called before render is available
-	bool Awake(pugi::xml_node&);
+	bool Awake(pugi::xml_node&) override;
 
 	// Called before the first frame
-	bool Start();
+	bool Start() override;
 
 	// Called each loop iteration
-	bool PreUpdate();
-	bool Update(float dt);
-	bool PostUpdate();
+	bool PreUpdate() override;
+	bool Update(float dt) override;
+	bool PostUpdate() override;
 
 	// Called before quitting
-	bool CleanUp();
+	bool CleanUp() override;
 
 	void SetViewPort(const SDL_Rect& rect);
 	void ResetViewPort();
@@ -46,8 +46,8 @@ public:
 	void SetBackgroundColor(SDL_Color color);
 
 	// Declare Load / Save methods
-	bool LoadState(pugi::xml_node&);
-	bool SaveState(pugi::xml_node&);
+	bool LoadState(pugi::xml_node&) override;
+	bool SaveState(pugi::xml_node&) override;
 
 public:
 

@@ -270,7 +270,6 @@ bool SceneGameplay::PostUpdate()
 // Called before quitting
 bool SceneGameplay::CleanUp()
 {
-	LOG("Freeing scene");
 	//app->map->CleanUp();
 	//app->physics->CleanUp();
 	return true;

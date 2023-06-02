@@ -20,6 +20,38 @@
 Player::Player() : Entity(EntityType::PLAYER)
 {
 	name.Create("Player");
+
+	playerChange = NULL;
+	changeFX = NULL;
+	levelUp = NULL;
+	godMode = false;
+	speedX = NULL;
+	speedY = NULL;
+	speedValue = NULL;
+	vel(NULL);
+	idleDirection = false;
+	texturePath = nullptr;
+	texturePath2 = nullptr;
+	texturePath3 = nullptr;
+	texturePath4 = nullptr;
+	pbody = nullptr;
+	itemCollectedFx = NULL;
+	currentAnimation = nullptr;
+
+	playerStats[0] = { 1,0,200,12,7,5,25 };
+	playerStats[1] = { 1,0,200,20,5,10,15 };
+	playerStats[2] = { 1,0,200,15,10,7,15 };
+	playerStats[3] = { 1,0,200,10,12,2,20 };
+
+	texture[0] = nullptr;
+	texture[1] = nullptr;
+	texture[2] = nullptr;
+	texture[3] = nullptr;
+
+	newPos.posX = NULL;
+	newPos.posY = NULL;
+	newPos.t = NULL;
+
 }
 
 Player::~Player() 
@@ -84,11 +116,6 @@ bool Player::Start() {
 	texture[2] = app->tex->Load(texturePath3);
 	texture[3] = app->tex->Load(texturePath4);
 
-	playerStats[0] = {1,0,200,12,7,5,25};
-	playerStats[1] = {1,0,200,20,5,10,15};
-	playerStats[2] = {1,0,200,15,10,7,15};
-	playerStats[3] = {1,0,200,10,12,2,20};
-
 	// Add physics to the player.
 	pbody = app->physics->CreateCircle(position.x + 16, position.y + 16, 16, bodyType::DYNAMIC);
 
@@ -100,13 +127,9 @@ bool Player::Start() {
 
 	currentAnimation = &idle_right;
 
-	godMode = false;
-
 	playerChange = 0;
 
 	itemCollectedFx = app->audio->LoadFx("Assets/Audio/Fx/SceneGameplay/Item.wav");
-	
-	idleDirection = false;
 
 	changeFX = app->audio->LoadFx("Assets/Audio/Fx/SceneGameplay/ChangePlayer.wav");
 
