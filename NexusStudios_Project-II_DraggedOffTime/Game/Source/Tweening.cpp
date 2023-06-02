@@ -10,6 +10,10 @@
 		nextPos = 0;
 		totalLength = 0;
 		accumDuration = 0;
+
+		totalTweenings = NULL;
+		currentTweening = NULL;
+
 	}
 
 	Tween::Tween(float multiplier, float smoothness, bool suppressCallbacks) : accumDuration(0), totalLength(0), nextPos(0)
@@ -17,6 +21,10 @@
 		this->smoothness = multiplier;
 		this->multiplier = multiplier;
 		this->suppressCallbacks = suppressCallbacks;
+
+		totalTweenings = NULL;
+		currentTweening = NULL;
+
 	}
 
 

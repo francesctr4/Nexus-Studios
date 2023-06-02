@@ -562,8 +562,6 @@ bool SceneTitle::PostUpdate()
 // Called before quitting
 bool SceneTitle::CleanUp()
 {
-	LOG("Freeing scene");
-
 	//app->map->CleanUp();
 
 

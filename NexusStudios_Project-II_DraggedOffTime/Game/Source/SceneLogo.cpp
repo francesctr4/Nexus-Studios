@@ -14,9 +14,20 @@
 #include "Player.h"
 
 #include "SceneLogo.h"
+#include <memory>
 
 SceneLogo::SceneLogo(bool startEnabled) : Module(startEnabled)
 {
+	nexusStudiosLogo = nullptr;
+	nexusSpritesheet1 = nullptr;
+	nexusSpritesheet2 = nullptr;
+	currentAnimation = nullptr;
+
+	logoFX = NULL;
+
+	enableMusic = true;
+	FX_played = false;
+	
 	name.Create("sceneLogo");
 	
 }
@@ -67,10 +78,6 @@ bool SceneLogo::Start()
 
 	logoFX = app->audio->LoadFx("Assets/Audio/Fx/LogoFX2.wav");
 
-	enableMusic = true;
-
-	FX_played = false;
-
 	currentAnimation = &nexus2;
 
 	return true;
@@ -101,7 +108,8 @@ bool SceneLogo::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_START] == KEY_DOWN) {
 
 		enableMusic = true;
-		app->fadeToBlack->Fade(this, (Module*)app->sceneTitle);
+		//app->fadeToBlack->Fade(this, (Module*)app->sceneTitle);
+		app->fadeToBlack->Fade(this, reinterpret_cast<Module*>(app->sceneTitle));
 		this->CleanUp();
 
 	}
@@ -140,8 +148,6 @@ bool SceneLogo::PostUpdate()
 // Called before quitting
 bool SceneLogo::CleanUp()
 {
-	LOG("Freeing scene");
-
 	app->tex->UnLoad(nexusSpritesheet2);
 	app->tex->UnLoad(nexusStudiosLogo);
 

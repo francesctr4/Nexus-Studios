@@ -11,6 +11,14 @@ Window::Window(bool startEnabled) : Module(startEnabled)
 {	
 	window = NULL;
 	screenSurface = NULL;
+	width = NULL;
+	height = NULL;
+	fullscreen = NULL;
+	borderless = NULL;
+	resizable = NULL;
+	fullscreen_window = NULL;
+	scale = NULL;
+
 	name.Create("window");
 }
 
@@ -22,7 +30,6 @@ Window::~Window()
 // Called before render is available
 bool Window::Awake(pugi::xml_node& config)
 {
-	LOG("Init SDL window & surface");
 	bool ret = true;
 
 	configWindow = config;
@@ -78,8 +85,6 @@ bool Window::Update(float dt) {
 // Called before quitting
 bool Window::CleanUp()
 {
-	LOG("Destroying SDL window and quitting all SDL systems");
-
 	// Destroy window
 	if (window != NULL)
 	{

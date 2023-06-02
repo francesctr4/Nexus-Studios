@@ -29,8 +29,6 @@ App* app = NULL;
 
 int main(int argc, char* args[])
 {
-	LOG("Engine starting ...");
-
 	MainState state = CREATE;
 	int result = EXIT_FAILURE;
 

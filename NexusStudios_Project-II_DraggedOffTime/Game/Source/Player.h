@@ -38,17 +38,17 @@ public:
 	
 	virtual ~Player();
 
-	bool Awake();
+	bool Awake() override;
 
-	bool Start();
+	bool Start() override;
 
-	bool Update();
+	bool Update() override;
 
-	bool CleanUp();
+	bool CleanUp() override;
 
-	void OnCollision(PhysBody* physA, PhysBody* physB);
+	void OnCollision(PhysBody* physA, PhysBody* physB) override;
 
-	void OnCollisionEnd(PhysBody* physA, PhysBody* physB);
+	void OnCollisionEnd(PhysBody* physA, PhysBody* physB) override;
 
 	// Player Movement Functions
 	void KeyboardMovementManagement();

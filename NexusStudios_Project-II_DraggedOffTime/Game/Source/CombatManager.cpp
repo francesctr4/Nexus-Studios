@@ -21,7 +21,6 @@ CombatManager::~CombatManager()
 // Called before render is available
 bool CombatManager::Awake(pugi::xml_node& config)
 {
-	LOG("Loading CombatManager");
 	bool ret = true;
 
 	return ret;
@@ -57,7 +56,8 @@ bool CombatManager::Update(float dt)
 //Player actions
 int CombatManager:: NormalAttack(int p_DMG, int e_HP, int e_DEF) {
 	
-	LOG("Bad Timing");	//timing == false
+	// Timing is false
+
 	int totalDamage;
 	totalDamage = p_DMG - (e_DEF + enemy_increasedDefense);
 
@@ -91,7 +91,7 @@ int CombatManager::WeaponAttack(int p_DMG, int e_HP, int e_DEF, bool timing, int
 	
 	if (timing)
 	{
-		LOG("Good Timing");	//timing == true
+		//timing == true
 		int totalDamage;
 		totalDamage = (1.2 * p_DMG) - (e_DEF + enemy_increasedDefense);	//De momento va a ser el doble del daño del player si aciertas en timing
 
@@ -115,7 +115,7 @@ int CombatManager::WeaponAttack(int p_DMG, int e_HP, int e_DEF, bool timing, int
 	}
 	else
 	{
-		LOG("Bad Timing");	//timing == false
+		//timing == false
 		int totalDamage;
 		totalDamage = (0.5 * p_DMG) - (e_DEF + enemy_increasedDefense);
 
@@ -242,6 +242,12 @@ int CombatManager::ChangeParty(int selected_player) {
 		return 0; // Cambiar a player 1
 
 	}
+	else {
+
+		return NULL;
+
+	}
+
 };
 
 //Enemy actions
