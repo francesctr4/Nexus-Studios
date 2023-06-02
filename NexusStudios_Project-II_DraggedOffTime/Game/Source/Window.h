@@ -10,19 +10,19 @@ class Window : public Module
 {
 public:
 
-	Window(bool startEnabled);
+	explicit Window(bool startEnabled);
 
 	// Destructor
 	virtual ~Window();
 
 	// Called before render is available
-	bool Awake(pugi::xml_node&);
+	bool Awake(pugi::xml_node&) override;
 
 	// Called each loop iteration
-	bool Update(float dt);
+	bool Update(float dt) override;
 
 	// Called before quitting
-	bool CleanUp();
+	bool CleanUp() override;
 
 	// Changae title
 	void SetTitle(const char* title);

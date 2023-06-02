@@ -9,22 +9,22 @@ class EntityManager : public Module
 {
 public:
 
-	EntityManager(bool startEnabled);
+	explicit EntityManager(bool startEnabled);
 
 	// Destructor
 	virtual ~EntityManager();
 
 	// Called before render is available
-	bool Awake(pugi::xml_node&);
+	bool Awake(pugi::xml_node&) override;
 
 	// Called after Awake
-	bool Start();
+	bool Start() override;
 
 	// Called every frame
-	bool Update(float dt);
+	bool Update(float dt) override;
 
 	// Called before quitting
-	bool CleanUp();
+	bool CleanUp() override;
 
 	// Additional methods
 	Entity* CreateEntity(EntityType type);
@@ -33,8 +33,8 @@ public:
 
 	void AddEntity(Entity* entity);
 
-	bool LoadState(pugi::xml_node& data);
-	bool SaveState(pugi::xml_node& data);
+	bool LoadState(pugi::xml_node& data) override;
+	bool SaveState(pugi::xml_node& data) override;
 
 public:
 

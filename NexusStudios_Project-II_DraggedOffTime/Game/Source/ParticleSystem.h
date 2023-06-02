@@ -72,28 +72,28 @@ private:
 
 public:
 
-	ParticleSystem(bool startEnabled);
+	explicit ParticleSystem(bool startEnabled);
 
 	// Destructor
 	virtual ~ParticleSystem();
 
 	// Called when before render is available
-	bool Awake(pugi::xml_node& config);
+	bool Awake(pugi::xml_node& config) override;
 
 	// Call before first frame
-	bool Start();
+	bool Start() override;
 
 	// Called before all Updates
-	bool PreUpdate();
+	bool PreUpdate() override;
 
 	// Called each loop iteration
-	bool Update(float dt);
+	bool Update(float dt) override;
 
 	// Called after all Updates
-	bool PostUpdate();
+	bool PostUpdate() override;
 
 	// Called before quitting
-	bool CleanUp();
+	bool CleanUp() override;
 
 	// Emitter methods
 	Emitter* AddEmiter(fPoint pos, EmitterType type);

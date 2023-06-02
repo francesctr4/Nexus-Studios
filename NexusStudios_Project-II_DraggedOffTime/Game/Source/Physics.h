@@ -71,7 +71,7 @@ enum class ColliderType {
 class PhysBody
 {
 public:
-	PhysBody() : listener(NULL), body(NULL), ctype(ColliderType::UNKNOWN)
+	PhysBody() : width(NULL), height(NULL), listener(NULL), body(NULL), ctype(ColliderType::UNKNOWN)
 	{}
 
 	void GetPosition(int& x, int& y) const;
@@ -90,13 +90,13 @@ public:
 class Physics : public Module, public b2ContactListener
 {
 public:
-	Physics(bool startEnabled);
+	explicit Physics(bool startEnabled);
 	~Physics();
 
-	bool Start();
-	bool PreUpdate();
-	bool PostUpdate();
-	bool CleanUp();
+	bool Start() override;
+	bool PreUpdate() override;
+	bool PostUpdate() override;
+	bool CleanUp() override;
 
 	
 	PhysBody* CreateRectangle(int x, int y, int width, int height, bodyType type);

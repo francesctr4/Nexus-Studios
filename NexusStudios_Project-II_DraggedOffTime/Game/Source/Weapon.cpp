@@ -2,6 +2,8 @@
 
 Weapon::Weapon(int width) {
 
+	this->width = width;
+
 	for (int i = 0; i < 4; i++) {
 
 		idle.PushBack({ width * (0 + i), width * 0, width, width });
@@ -9,6 +11,11 @@ Weapon::Weapon(int width) {
 	}
 	idle.loop = true;
 	idle.speed = 0.06f;
+
+	texture = nullptr;
+	currentAnimation = nullptr;
+
+	damage = NULL;
 
 }
 

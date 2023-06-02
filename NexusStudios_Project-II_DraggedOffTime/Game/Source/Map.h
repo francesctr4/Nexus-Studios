@@ -84,7 +84,7 @@ struct MapLayer
 	// Store custom properties
 	Properties properties;
 
-	MapLayer() : data(NULL)
+	MapLayer() : data(NULL), id(NULL), width(NULL), height(NULL)
 	{}
 
 	~MapLayer()
@@ -118,13 +118,13 @@ class Map : public Module
 {
 public:
 
-    Map(bool startEnabled);
+    explicit Map(bool startEnabled);
 
     // Destructor
     virtual ~Map();
 
     // Called before render is available
-    bool Awake(pugi::xml_node& conf);
+    bool Awake(pugi::xml_node& conf) override;
 
 	bool Init();
 
@@ -132,7 +132,7 @@ public:
     void Draw();
 
     // Called before quitting
-    bool CleanUp();
+    bool CleanUp() override;
 
 
     // Load new map

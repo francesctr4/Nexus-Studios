@@ -18,7 +18,8 @@ enum class ItemType {
 	COIN,
 	ITEM_6,
 	TELEPORT_JOVANI,
-	TELEPORT_COFRE
+	TELEPORT_COFRE,
+	UNKNOWN
 
 };
 
@@ -29,17 +30,17 @@ public:
 	Item();
 	virtual ~Item();
 
-	bool Awake();
+	bool Awake() override;
 
-	bool Start();
+	bool Start() override;
 
-	bool Update();
+	bool Update() override;
 
-	bool CleanUp();
+	bool CleanUp() override;
 
-	void OnCollision(PhysBody* physA, PhysBody* physB);
+	void OnCollision(PhysBody* physA, PhysBody* physB) override;
 
-	void OnCollisionEnd(PhysBody* physA, PhysBody* physB);
+	void OnCollisionEnd(PhysBody* physA, PhysBody* physB) override;
 
 	void Restart(ItemType type, ColliderType ctype, int x, int y, std::string iconPath, std::string texturepath);
 
@@ -61,7 +62,7 @@ public:
 	const char* audioPath;
 
 	PhysBody* pbody;
-	ItemType type;
+	ItemType itype;
 	ColliderType ctype;
 
 	Animation idle;

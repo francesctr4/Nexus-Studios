@@ -7,8 +7,6 @@ ParticleSystem::ParticleSystem(bool startEnabled) : Module(startEnabled)
 {
 	name = "psystem";
 
-	LOG("Loading Particle System");
-
 }
 
 ParticleSystem::~ParticleSystem()
@@ -109,7 +107,6 @@ bool ParticleSystem::PostUpdate()
 
 bool ParticleSystem::CleanUp()
 {
-	LOG("Freeing emitters from the system.");
 
 	std::list<Emitter*>::const_iterator it;
 

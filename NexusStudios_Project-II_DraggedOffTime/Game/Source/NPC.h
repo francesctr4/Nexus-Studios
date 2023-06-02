@@ -24,7 +24,8 @@ enum class NPC_Types {
 
 	ROGUE,
 	WIZARD,
-	ORC
+	ORC,
+	UNKNOWN
 
 };
 
@@ -54,17 +55,17 @@ public:
 	NPC();
 	virtual ~NPC();
 
-	bool Awake();
+	bool Awake() override;
 
-	bool Start();
+	bool Start() override;
 
-	bool Update();
+	bool Update() override;
 
-	bool CleanUp();
+	bool CleanUp() override;
 
-	void OnCollision(PhysBody* physA, PhysBody* physB);
+	void OnCollision(PhysBody* physA, PhysBody* physB) override;
 
-	void OnCollisionEnd(PhysBody* physA, PhysBody* physB);
+	void OnCollisionEnd(PhysBody* physA, PhysBody* physB) override;
 
 	// Function to create the dialogues related to a given conversation
 
@@ -135,7 +136,7 @@ public:
 	SDL_Texture* texture;
 	const char* texturePath;
 
-	NPC_Types type;
+	NPC_Types ntype;
 
 	// NPC Physics
 

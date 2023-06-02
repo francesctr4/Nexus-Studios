@@ -12,24 +12,24 @@ class Textures : public Module
 {
 public:
 
-	Textures(bool startEnabled);
+	explicit Textures(bool startEnabled);
 
 	// Destructor
 	virtual ~Textures();
 
 	// Called before render is available
-	bool Awake(pugi::xml_node&);
+	bool Awake(pugi::xml_node&) override;
 
 	// Called before the first frame
-	bool Start();
+	bool Start() override;
 
 	// Called before quitting
-	bool CleanUp();
+	bool CleanUp() override;
 
 	// Load Texture
 	SDL_Texture* const Load(const char* path);
 	SDL_Texture* const LoadSurface(SDL_Surface* surface);
-	bool UnLoad(SDL_Texture* texture);
+	bool UnLoad(const SDL_Texture* texture);
 	void GetSize(const SDL_Texture* texture, uint& width, uint& height) const;
 
 public:
