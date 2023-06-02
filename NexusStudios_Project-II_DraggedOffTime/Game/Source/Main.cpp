@@ -14,7 +14,7 @@
 
 #include "External/Optick/include/optick.h"
 
-enum MainState
+enum class MainState
 {
 	CREATE = 1,
 	AWAKE,
@@ -29,88 +29,84 @@ App* app = NULL;
 
 int main(int argc, char* args[])
 {
-	MainState state = CREATE;
+	MainState state = MainState::CREATE;
 	int result = EXIT_FAILURE;
 
-	while(state != EXIT)
+	while(state != MainState::EXIT)
 	{
 		switch (state)
 		{
 			// Allocate the engine --------------------------------------------
-		case CREATE:
-			LOG("CREATION PHASE ===============================");
-
+		case MainState::CREATE:
+			
 			app = new App(argc, args);
 
 			if (app != NULL)
-				state = AWAKE;
+				state = MainState::AWAKE;
 			else
-				state = FAIL;
+				state = MainState::FAIL;
 
 			break;
 
 			// Awake all modules -----------------------------------------------
-		case AWAKE:
-			LOG("AWAKE PHASE ===============================");
+		case MainState::AWAKE:
+			
 			if (app->Awake() == true)
-				state = START;
+				state = MainState::START;
 			else
 			{
-				LOG("ERROR: Awake failed");
-				state = FAIL;
+				state = MainState::FAIL;
 			}
 
 			break;
 
 			// Call all modules before first frame  ----------------------------
-		case START:
-			LOG("START PHASE ===============================");
+		case MainState::START:
+			
 			if (app->Start() == true)
 			{
-				state = LOOP;
-				LOG("UPDATE PHASE ===============================");
+				state = MainState::LOOP;
+				
 			}
 			else
 			{
-				state = FAIL;
-				LOG("ERROR: Start failed");
+				state = MainState::FAIL;
+				
 			}
 			break;
 
 			// Loop all modules until we are asked to leave ---------------------
-			case LOOP:
+			case MainState::LOOP:
 			{
 				OPTICK_FRAME("Main Loop")
 
 				if (app->Update() == false)
-					state = CLEAN;
+					state = MainState::CLEAN;
 			}
 			break;
 
 			// Cleanup allocated memory -----------------------------------------
-			case CLEAN:
-			LOG("CLEANUP PHASE ===============================");
+			case MainState::CLEAN:
+			
 			if(app->CleanUp() == true)
 			{
 				RELEASE(app);
 				result = EXIT_SUCCESS;
-				state = EXIT;
+				state = MainState::EXIT;
 			}
 			else
-				state = FAIL;
+				state = MainState::FAIL;
 
 			break;
 
 			// Exit with errors and shame ---------------------------------------
-			case FAIL:
-			LOG("Exiting with errors :(");
+			case MainState::FAIL:
+			
 			result = EXIT_FAILURE;
-			state = EXIT;
+			state = MainState::EXIT;
 			break;
 		}
 	}
-
-	LOG("... Bye! :)\n");
 
 	// Dump memory leaks
 	return result;

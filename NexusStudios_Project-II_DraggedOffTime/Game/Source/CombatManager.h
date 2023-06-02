@@ -15,22 +15,22 @@ class CombatManager : public Module
 {
 public:
 
-	CombatManager(bool startEnabled);
+	explicit CombatManager(bool startEnabled);
 
 	// Destructor
 	virtual ~CombatManager();
 
 	// Called before render is available
-	bool Awake(pugi::xml_node&);
+	bool Awake(pugi::xml_node&) override;
 
 	// Called after Awake
-	bool Start();
+	bool Start() override;
 
 	// Called every frame
-	bool Update(float dt);
+	bool Update(float dt) override;
 
 	// Called before quitting
-	bool CleanUp();
+	bool CleanUp() override;
 
 	// Combat handler fuction
 	//void Combat(int p_HP, int p_DEF, int p_DMG, int e_HP, int e_DEF, int e_DMG);

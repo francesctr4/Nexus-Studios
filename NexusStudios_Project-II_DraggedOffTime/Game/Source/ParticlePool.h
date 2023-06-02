@@ -25,7 +25,7 @@ private:
 
 public:
 
-	ParticlePool(Emitter* emitter);
+	explicit ParticlePool(Emitter* emitter);
 	virtual ~ParticlePool();
 
 	// Generates a new particle each time it's called

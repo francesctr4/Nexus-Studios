@@ -10,20 +10,20 @@ class GuiManager : public Module
 public:
 
 	// Constructor
-	GuiManager(bool startEnabled);
+	explicit GuiManager(bool startEnabled);
 
 	// Destructor
 	virtual ~GuiManager();
 
 	// Called before the first frame
-	bool Start();
+	bool Start() override;
 
-	bool Update(float dt);
+	bool Update(float dt) override;
 
 	bool Draw();
 
 	// Called before quitting
-	bool CleanUp();
+	bool CleanUp() override;
 
 	// Additional methods
 	GuiControl* CreateGuiControl(GuiControlType type, int id, SDL_Texture* tex, const char* text, SDL_Rect bounds, Module* observer, SDL_Rect sliderBounds = { 0,0,0,0 });
