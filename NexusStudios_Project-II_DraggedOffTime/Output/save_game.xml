@@ -1,11 +1,10 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <save_state>
 	<input />
 	<window />
 	<textures />
 	<audio />
 	<map />
-	<:anonymous />
 	<pathfinding />
 	<sceneLogo />
 	<sceneTitle />
@@ -26,8 +25,6 @@
 		<item x="876" y="446" texturepath="" iconpath="" isPicked="False" />
 		<item x="1144" y="361" texturepath="" iconpath="" isPicked="False" />
 	</entitymanager>
-	<:anonymous />
-	<:anonymous />
 	<renderer>
 		<camera x="0" y="0" />
 	</renderer>
