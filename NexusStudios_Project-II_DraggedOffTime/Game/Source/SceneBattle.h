@@ -79,11 +79,15 @@ public:
 	int e_HP = 60;
 	int e_max_HP = 60;
 	int e_DEF = 10;
+	int e_base_DEF = 10;
 	int e_DMG = 20;
+	int e_base_DMG = 20;
 	int e_confusion_turns = 0;
+	int e_buffed_turns = 0;
 
 	int enemy_last_action = NULL; // 0 => Attack // 1 => Defense
 
+	int boss = 0;	//Variable que controla si estás combatiendo con un boss (0 = No es boss, 1,2,3,4 = Nº del Boss)
 
 	//Minion (Boss)
 	bool minion = false;

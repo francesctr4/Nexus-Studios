@@ -65,10 +65,11 @@ public:
 	//9.Enemy invokes a minion
 	void AddMinion();
 
-	
+	//10.Enemy attack to all
+	void EnemyAttackAll(int e_DMG);
 
-	//QuickTimeEvent fuction. Devuelve el valor de qué tan cerca estuvo de hacer clic en el momento adecuado (en ms)
-	//int QuickTimeEvent();
+	//11.Enemy buff stats
+	void EnemyBuff();
 
 
 

@@ -8,6 +8,9 @@
 
 #include "Defs.h"
 #include "Log.h"
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 CombatManager::CombatManager(bool startEnabled) : Module(startEnabled)
 {
@@ -292,3 +295,42 @@ void CombatManager::AddMinion()
 		app->sceneBattle->minion = true;
 	}
 }
+
+void CombatManager::EnemyAttackAll(int e_DMG)
+{
+	for (int i = 0; i <= 4; i = i+1)
+	{
+		if ((app->sceneBattle->m_players[i].HP - e_DMG) > 0)
+		{
+			app->sceneBattle->m_players[i].HP = app->sceneBattle->m_players[i].HP - e_DMG;
+		}
+		else
+		{
+			app->sceneBattle->m_players[i].HP = 0;
+		};
+	}
+	
+}
+
+void CombatManager::EnemyBuff()
+{
+	//50/50 de subirse el daño o la defensa
+	
+	app->sceneBattle->e_buffed_turns = 2;
+
+	// Semilla para generar números aleatorios
+	std::srand(std::time(nullptr));
+
+	// Generar un número aleatorio entre 0 y 1
+	int randomNum = std::rand() % 2;
+
+	if (randomNum == 0) {
+		//Subir defensa
+		app->sceneBattle->e_DEF = app->sceneBattle->e_DEF + 10;
+	}
+	else {
+		//Subir daño
+		app->sceneBattle->e_DMG = app->sceneBattle->e_DMG + 5;
+	}
+}
+	

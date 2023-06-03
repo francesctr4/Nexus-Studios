@@ -443,7 +443,7 @@ bool SceneBattle::Update(float dt)
 	}
 	else
 	{	
-		if (true)	//Comprobar si es un enemigo o un boss - TODO
+		if (boss == 0)	//Comprobar si es un enemigo o un boss - TODO
 		{
 			//Timer enemigo
 			if (!timer_started)
@@ -502,8 +502,19 @@ bool SceneBattle::Update(float dt)
 
 				combat_timmer.Start();
 
+				//Confusion enemy
 				if (e_confusion_turns > 0)
 					e_confusion_turns--;
+
+				//Buff stats enemy
+				if (e_buffed_turns > 0)
+					e_buffed_turns--;
+
+				if (e_buffed_turns == 0)
+				{
+					e_DEF = e_base_DEF;
+					e_DMG = e_base_DMG;
+				}
 
 				//Skill Mage - Middle ages steroids
 				for (int i = 0; i < 3; i++)
@@ -535,6 +546,27 @@ bool SceneBattle::Update(float dt)
 		{
 			//Habria que meter un switch o algo que permitiera controlar si te estás enfrentando con el primero, segundo, tercero o Final Boss para decicir las
 			//habilidades y los % de los diferentes ataques y habilidades
+
+			if (boss == 1)		//Primer boss - Summon minions every two turns
+			{
+				
+
+			}
+			else if (boss == 2)	//Segundo boss - Se buffea en un %
+			{
+				
+
+			}
+			else if (boss == 3)	//Tercer boss - ???
+			{
+				
+
+			}
+			else if (boss == 4)	//Boss final - Ataca a todos los enemigos + todo lo anterior
+			{
+				
+
+			}
 
 		}
 		
@@ -596,6 +628,16 @@ bool SceneBattle::PostUpdate()
 	app->render->DrawText("Enemy HP:", 800, 10, 100, 20, { 255, 255, 255, 255 });
 	std::string e_HP_string = std::to_string(e_HP);
 	app->render->DrawText(e_HP_string, 800 + 125, 10, 15, 20, { 255, 255, 255, 255 });
+
+	//Minion sprite
+	if (minion)
+	{
+		currentAnimationEnemy->Update();
+
+		SDL_Rect minionRect = currentAnimationEnemy->GetCurrentFrame();
+
+		app->render->DrawTexture(enemyInCombat, 780, 326, &minionRect);
+	}
 
 	//Enemy sprite
 
