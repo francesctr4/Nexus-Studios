@@ -346,8 +346,17 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="..\Output\config.xml">
+      <Filter>External</Filter>
+    </Xml>
+    <Xml Include="..\Output\save_game.xml">
+      <Filter>External</Filter>
+    </Xml>
+    <Xml Include="..\Output\quest_data.xml">
+      <Filter>External</Filter>
+    </Xml>
     <Xml Include="..\Output\psystem_config.xml">
-      <Filter>Game Loop\Features\Particles</Filter>
+      <Filter>External</Filter>
     </Xml>
   </ItemGroup>
 </Project>

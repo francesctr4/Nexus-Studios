@@ -153,4 +153,8 @@ public:
 	uint dialogueOptions;
 	uint npcTalking;
 
+	// Maps
+
+	int npcMap;
+
 };

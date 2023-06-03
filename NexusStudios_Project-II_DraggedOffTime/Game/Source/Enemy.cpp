@@ -34,6 +34,7 @@ Enemy::Enemy() : Entity(EntityType::ENEMY)
 	pbody = nullptr;
 	enemySensor = nullptr;
 	currentAnimation = nullptr;
+	enemyMap = NULL;
 
 }
 
@@ -73,9 +74,8 @@ bool Enemy::Awake() {
 	position.y = parameters.attribute("y").as_int();
 	texturePath = parameters.attribute("texturepath").as_string();
 	texturePathBattle = parameters.attribute("battletexturepath").as_string();
-	aparicion = parameters.attribute("map").as_int();
-
-
+	enemyMap = parameters.attribute("map").as_int();
+	aparicion = enemyMap;
 
 	for (int i = 0; i < 4; i++) {
 

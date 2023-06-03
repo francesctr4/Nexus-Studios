@@ -19,13 +19,14 @@ Item::Item() : Entity(EntityType::ITEM)
 
 	iconPath = nullptr;
 	texturePath = nullptr;
-	audioPath = nullptr;
 
 	pbody = nullptr;
 	itype = ItemType::UNKNOWN;
 	ctype = ColliderType::UNKNOWN;
 
 	currentAnimation = nullptr;
+
+	itemMap = NULL;
 
 }
 
@@ -40,7 +41,8 @@ bool Item::Awake() {
 	position.y = parameters.attribute("y").as_int();
 	iconPath = parameters.attribute("iconpath").as_string();
 	texturePath = parameters.attribute("texturepath").as_string();
-	audioPath = parameters.attribute("audiopath").as_string();
+	itemMap = parameters.attribute("map").as_int();
+	aparicion = itemMap;
 
 	if (SString(parameters.attribute("type").as_string()) == SString("Potion"))
 	{

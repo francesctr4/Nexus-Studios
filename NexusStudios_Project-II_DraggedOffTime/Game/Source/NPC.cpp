@@ -75,6 +75,7 @@ NPC::NPC() : Entity(EntityType::NPC)
 	closeDialogue = NULL;
 	dialogueOptions = NULL;
 	npcTalking = NULL;
+	npcMap = NULL;
 
 }
 
@@ -99,6 +100,8 @@ bool NPC::Awake() {
 	position.x = parameters.attribute("x").as_int();
 	position.y = parameters.attribute("y").as_int();
 	texturePath = parameters.attribute("texturepath").as_string();
+	npcMap = parameters.attribute("map").as_int();
+	aparicion = npcMap;
 
 	// Assign NPC Animation
 

@@ -70,6 +70,7 @@ bool Player::Awake() {
 	texturePath2 = parameters.attribute("texturepath2").as_string();
 	texturePath3 = parameters.attribute("texturepath3").as_string();
 	texturePath4 = parameters.attribute("texturepath4").as_string();
+	aparicion = parameters.attribute("map").as_int();
 
 	// Player animations
 

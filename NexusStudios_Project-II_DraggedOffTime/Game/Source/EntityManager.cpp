@@ -296,7 +296,7 @@ bool EntityManager::SaveState(pugi::xml_node& data)
 		int x, y;
 		it->pbody->GetPosition(x, y);
 		
-		switch (it->type)
+		switch (it->itype)
 		{
 		case ItemType::POTION:
 			item.append_attribute("type") = "Potion";

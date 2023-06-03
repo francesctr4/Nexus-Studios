@@ -34,7 +34,7 @@ bool SceneGameplay::Awake(pugi::xml_node& config)
 {
 	player = (Player*)app->entityManager->CreateEntity(EntityType::PLAYER);
 	player->parameters = config.child("player");
-
+	xml_node = config;
 	/*for (pugi::xml_node npcNode = config.child("npc"); npcNode; npcNode = npcNode.next_sibling("npc"))
 	{
 		NPC* npc = (NPC*)app->entityManager->CreateEntity(EntityType::NPC);
@@ -380,7 +380,8 @@ void SceneGameplay::LoadMapEntities(int map)
 	
 	for (pugi::xml_node npcNode = xml_node.child("npc"); npcNode; npcNode = npcNode.next_sibling("npc"))
 	{
-		int aparicion = npcNode.attribute("map").as_int();
+		//int aparicion = npcNode.attribute("map").as_int();
+		int aparicion = 0;
 
 		if (aparicion == map)
 		{
@@ -394,7 +395,8 @@ void SceneGameplay::LoadMapEntities(int map)
 
 	for (pugi::xml_node enemyNode = xml_node.child("enemy"); enemyNode; enemyNode = enemyNode.next_sibling("enemy"))
 	{
-		int aparicion = enemyNode.attribute("map").as_int();
+		//int aparicion = enemyNode.attribute("map").as_int();
+		int aparicion = 0;
 
 		if (aparicion == map)
 		{
@@ -409,7 +411,8 @@ void SceneGameplay::LoadMapEntities(int map)
 
 	for (pugi::xml_node itemNode = xml_node.child("item"); itemNode; itemNode = itemNode.next_sibling("item"))
 	{
-		int aparicion = itemNode.attribute("map").as_int();
+		//int aparicion = itemNode.attribute("map").as_int();
+		int aparicion = 0;
 
 		if (aparicion == map)
 		{

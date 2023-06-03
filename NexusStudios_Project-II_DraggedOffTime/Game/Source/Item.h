@@ -59,7 +59,6 @@ public:
 
 	const char* iconPath;
 	const char* texturePath;
-	const char* audioPath;
 
 	PhysBody* pbody;
 	ItemType itype;
@@ -67,6 +66,8 @@ public:
 
 	Animation idle;
 	Animation* currentAnimation;
+
+	int itemMap;
 
 };
 

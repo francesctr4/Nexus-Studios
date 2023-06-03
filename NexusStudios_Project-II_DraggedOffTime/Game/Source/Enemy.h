@@ -78,4 +78,6 @@ public:
 	Animation* currentAnimation;
 	Animation idle_right;
 
+	int enemyMap;
+
 };
