@@ -637,6 +637,27 @@ bool SceneBattle::PostUpdate()
 		SDL_Rect minionRect = currentAnimationEnemy->GetCurrentFrame();
 
 		app->render->DrawTexture(enemyInCombat, 780, 326, &minionRect);
+
+		// Minion HP
+		double m_percentage_life = (e_HP * 100.0) / e_max_HP;
+		if (m_percentage_life < 50 && m_percentage_life >= 20)	//Yellow color
+		{
+			SDL_Rect rect_m = { 0, 20, 3 * m_percentage_life, 20 };
+			app->render->DrawTexture(healthBar, 780, 326, &rect_m);
+		}
+		if (m_percentage_life < 20) //Red color
+		{
+			SDL_Rect rect_m = { 0, 40, 3 * m_percentage_life, 20 };
+			app->render->DrawTexture(healthBar, 780, 326, &rect_m);
+		}
+		if (m_percentage_life >= 50) //Green color
+		{
+			SDL_Rect rect_m = { 0, 0, 3 * m_percentage_life, 20 };
+			app->render->DrawTexture(healthBar, 780, 326, &rect_m);
+		}
+		app->render->DrawText("Minion HP:", 780, 306, 100, 20, { 255, 255, 255, 255 });
+		std::string m_HP_string = std::to_string(e_HP);
+		app->render->DrawText(m_HP_string, 780 + 125, 306, 15, 20, { 255, 255, 255, 255 });
 	}
 
 	//Enemy sprite
@@ -820,6 +841,7 @@ bool SceneBattle::PostUpdate()
 	app->render->DrawTexture(lifeFrame, 80, 140);	//Barra Player 3
 	app->render->DrawTexture(lifeFrame, 80, 195);	//Barra Player 4
 	app->render->DrawTexture(lifeFrame, 800, 30);	//Barra Enemy (Provisional)
+	app->render->DrawTexture(lifeFrame, 780, 326);	//Barra Minion (Provisional)
 
 	//Player selector
 	switch (selected_player)
@@ -883,22 +905,22 @@ bool SceneBattle::PostUpdate()
 			switch (action_selected)
 			{
 			case 0:
-				app->render->DrawText("Atacaste al enemigo con un Ataque Normal", 700, 568, 570, 30, { 90, 35, 24, 255 });
+				app->render->DrawText("You attacked the enemy with Normal Attack", 700, 568, 500, 30, { 90, 35, 24, 255 });
 				break;
 			case 1:
-				app->render->DrawText("Atacaste al enemigo con tu arma", 700, 568, 506, 30, { 90, 35, 24, 255 });
+				app->render->DrawText("You attacked the enemy with your weapon", 700, 568, 500, 30, { 90, 35, 24, 255 });
 				break;
 			case 2:
-				app->render->DrawText("Usaste un item - Curacion", 700, 568, 375, 30, { 90, 35, 24, 255 });
+				app->render->DrawText("You used an item - Heal", 700, 568, 375, 30, { 90, 35, 24, 255 });
 				break;
 			case 3:
-				app->render->DrawText("Atacaste al enemigo con tu habilidad", 700, 568, 523, 30, { 90, 35, 24, 255 });
+				app->render->DrawText("You attacked the enemy with your skill", 700, 568, 500, 30, { 90, 35, 24, 255 });
 				break;
 			case 4:
-				app->render->DrawText("Intentaste huir del combate", 700, 568, 440, 30, { 90, 35, 24, 255 });
+				app->render->DrawText("You tried to run away", 700, 568, 440, 30, { 90, 35, 24, 255 });
 				break;
 			case 5:
-				app->render->DrawText("Cambiaste de miembro del grupo", 700, 568, 456, 30, { 90, 35, 24, 255 });
+				app->render->DrawText("You switched your party member", 700, 500, 456, 30, { 90, 35, 24, 255 });
 				break;
 			}
 		}
