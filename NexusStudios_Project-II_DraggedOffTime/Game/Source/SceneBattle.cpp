@@ -562,7 +562,7 @@ bool SceneBattle::Update(float dt)
 				
 
 			}
-			else if (boss == 4)	//Boss final - Ataca a todos los enemigos + todo lo anterior
+			else if (boss == 4)	//Boss final - Ataca a todos los players + todo lo anterior
 			{
 				
 
