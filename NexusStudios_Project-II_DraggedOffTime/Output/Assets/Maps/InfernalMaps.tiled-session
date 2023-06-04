@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "InfernalMapPuzzle3.tmx",
+    "activeFile": "InfernalMapJovani.tmx",
     "expandedProjectPaths": [
     ],
     "fileStates": {
@@ -46,8 +46,8 @@
             "scale": 0.75,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 684.6666666666666,
-                "y": 360
+                "x": 1303.3333333333333,
+                "y": 329.33333333333326
             }
         },
         "InfernalMap1.tmx#InfernalProps": {
@@ -63,8 +63,8 @@
             "scale": 1,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 639.5,
-                "y": 360
+                "x": 1103.5,
+                "y": 337
             }
         },
         "InfernalMap2.tmx#InfernalProps": {
@@ -80,8 +80,8 @@
             "scale": 1,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 639.5,
-                "y": 360
+                "x": 1103.5,
+                "y": 337
             }
         },
         "InfernalMap3.tmx#InfernalProps": {
@@ -94,8 +94,8 @@
             "scale": 0.75,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 638,
-                "y": 358.66666666666674
+                "x": 1258,
+                "y": 329.33333333333326
             }
         },
         "InfernalMap4.tmx#InfernalProps": {
@@ -145,14 +145,28 @@
             "scale": 0.75,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 638,
-                "y": 358.66666666666674
+                "x": 1258,
+                "y": 329.33333333333326
             }
         },
         "InfernalMapChest.tmx#InfernalProps": {
             "scaleInDock": 1
         },
         "InfernalMapChest.tmx#InfernalTiles": {
+            "scaleInDock": 1
+        },
+        "InfernalMapJovani.tmx": {
+            "scale": 0.9685546875,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 387.69106674732814,
+                "y": 313.8697318007663
+            }
+        },
+        "InfernalMapJovani.tmx#InfernalProps": {
+            "scaleInDock": 1
+        },
+        "InfernalMapJovani.tmx#InfernalTiles": {
             "scaleInDock": 1
         },
         "InfernalMapPuzzle.tmx": {
@@ -170,8 +184,8 @@
             "scale": 0.75,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 638,
-                "y": 357.33333333333326
+                "x": 1298,
+                "y": 329.33333333333326
             }
         },
         "InfernalMapPuzzle1.tmx#InfernalProps": {
@@ -187,8 +201,8 @@
             "scale": 0.75,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 630,
-                "y": 287.99999999999994
+                "x": 1258,
+                "y": 329.33333333333326
             }
         },
         "InfernalMapPuzzle2.tmx#InfernalProps": {
@@ -201,8 +215,8 @@
             "scale": 1,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 647.5,
-                "y": 300
+                "x": 1103.5,
+                "y": 337
             }
         },
         "InfernalMapPuzzle3.tmx#InfernalProps": {
@@ -245,8 +259,8 @@
             "scale": 1,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 638.5,
-                "y": 359
+                "x": 1103.5,
+                "y": 337
             }
         },
         "MapaInfernalBoss.tmx#InfernalProps": {
@@ -297,29 +311,31 @@
         "MapaInfernalBoss.tmx",
         "InfernalTiles.tsx",
         "InfernalMapPuzzle3.tmx",
-        "InfernalMapPuzzle1.tmx"
+        "InfernalMapPuzzle1.tmx",
+        "InfernalMapJovani.tmx"
     ],
     "project": "InfernalMaps.tiled-project",
     "property.type": "bool",
     "recentFiles": [
-        "InfernalMapPuzzle2.tmx",
-        "InfernalMap2.tmx",
         "InfernalMap1.tmx",
+        "InfernalMap2.tmx",
         "InfernalMap3.tmx",
         "InfernalMap4.tmx",
+        "InfernalMapPuzzle2.tmx",
         "InfernalMapChest.tmx",
         "MapaInfernalBoss.tmx",
         "InfernalTiles.tsx",
-        "InfernalMapPuzzle1.tmx",
         "InfernalMapPuzzle3.tmx",
-        "InfernalMapPuzzle.tmx",
-        "JovaniRoom.tmx"
+        "InfernalMapPuzzle1.tmx",
+        "InfernalMapJovani.tmx",
+        "InfernalMapPuzzle.tmx"
     ],
+    "tileset.embedInMap": true,
     "tileset.lastUsedFilter": "Archivos de conjuntos de patrones Tiled (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
         "height": 16,
         "width": 16
     },
-    "tileset.type": 1
+    "tileset.type": 0
 }

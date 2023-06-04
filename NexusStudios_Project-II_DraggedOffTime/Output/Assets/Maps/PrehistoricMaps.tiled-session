@@ -1,0 +1,82 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "PrehistoricMap1.tmx",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "Todos los archivos (*)",
+    "fileStates": {
+        "#Prehistoric_Tiles": {
+            "scaleInDock": 0.75
+        },
+        "#Trees": {
+            "scaleInDock": 1
+        },
+        "InfernalMap1.tmx": {
+            "scale": 0.9685546875,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 640.6452913893932,
+                "y": 360.330711837064
+            }
+        },
+        "InfernalMap1.tmx#InfernalProps": {
+            "scaleInDock": 1
+        },
+        "InfernalMap1.tmx#InfernalTiles": {
+            "scaleInDock": 1
+        },
+        "PrehistoricMap1.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 743.3333333333333,
+                "y": 242.66666666666663
+            }
+        },
+        "PrehistoricMap1.tmx#Prehistoric_Tiles": {
+            "scaleInDock": 1,
+            "scaleInEditor": 2
+        },
+        "PrehistoricMap1.tmx#Trees": {
+            "scaleInDock": 0.75,
+            "scaleInEditor": 1
+        },
+        "mapfinal1280.tmx": {
+            "scale": 0.9685546875,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 640.6452913893932,
+                "y": 360.330711837064
+            }
+        },
+        "mapfinal1280.tmx#Props": {
+            "scaleInDock": 1
+        },
+        "mapfinal1280.tmx#Tiles": {
+            "scaleInDock": 1
+        }
+    },
+    "last.imagePath": "C:/Users/totor/OneDrive/Escritorio/Nexus-Studios/NexusStudios_Project-II_DraggedOffTime/Output/Assets/Maps",
+    "map.height": 45,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 80,
+    "openFiles": [
+        "PrehistoricMap1.tmx"
+    ],
+    "project": "PrehistoricMaps.tiled-project",
+    "recentFiles": [
+        "PrehistoricMap1.tmx",
+        "mapfinal1280.tmx",
+        "InfernalMap1.tmx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}
