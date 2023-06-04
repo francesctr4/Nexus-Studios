@@ -13,6 +13,70 @@
 NPC::NPC() : Entity(EntityType::NPC)
 {
 	name.Create("npc");
+
+	dialogueIterator = NULL;
+
+	firstConversation.id = NULL;
+	firstConversation.size = NULL;
+	firstConversation.dialogues = nullptr;
+	firstDialogue = nullptr;
+
+	secondConversation.id = NULL;
+	secondConversation.size = NULL;
+	secondConversation.dialogues = nullptr;
+	secondDialogue = nullptr;
+
+	thirdConversation.id = NULL;
+	thirdConversation.size = NULL;
+	thirdConversation.dialogues = nullptr;
+	thirdDialogue = nullptr;
+
+	playerSampleText = nullptr;
+	loremIpsum = nullptr;
+
+	dialogueUI_npc_medieval = nullptr;
+	dialogueUI_npc_prehistoric = nullptr;
+	dialogueUI_npc_cyberpunk = nullptr;
+	dialogueUI_npc_apocalypse = nullptr;
+
+	dialogueUI_player_medieval = nullptr;
+	dialogueUI_player_prehistoric = nullptr;
+	dialogueUI_player_cyberpunk = nullptr;
+	dialogueUI_player_apocalypse = nullptr;
+
+	name_npc = nullptr;
+	name_player = nullptr;
+	name_npc_transparent = nullptr;
+	name_player_transparent = nullptr;
+
+	selectorIterator = NULL;
+
+	selector = nullptr;
+
+	npcIcon = nullptr;
+	npcIcon_Transparent = nullptr;
+
+	playerInteraction = false;
+	dialogueActivated = false;
+
+	interactButton = nullptr;
+
+	texture = nullptr;
+	texturePath = nullptr;
+
+	ntype = NPC_Types::UNKNOWN;
+
+	pbody = nullptr;
+	npcSensor = nullptr;
+
+	currentAnimation = nullptr;
+
+	openDialogue = NULL;
+	closeDialogue = NULL;
+	dialogueOptions = NULL;
+	npcTalking = NULL;
+	npcMap = NULL;
+
 }
 
 NPC::~NPC() 
@@ -25,17 +89,19 @@ bool NPC::Awake() {
 	// Assign NPC Type
 
 	if (SString(parameters.attribute("type").as_string()) == SString("rogue"))
-		type = NPC_Types::ROGUE;
+		ntype = NPC_Types::ROGUE;
 	if (SString(parameters.attribute("type").as_string()) == SString("wizard"))
-		type = NPC_Types::WIZARD;
+		ntype = NPC_Types::WIZARD;
 	if (SString(parameters.attribute("type").as_string()) == SString("orc"))
-		type = NPC_Types::ORC;
+		ntype = NPC_Types::ORC;
 
 	// Assign NPC Position and Texture
 
 	position.x = parameters.attribute("x").as_int();
 	position.y = parameters.attribute("y").as_int();
 	texturePath = parameters.attribute("texturepath").as_string();
+	npcMap = parameters.attribute("map").as_int();
+	aparicion = npcMap;
 
 	// Assign NPC Animation
 
@@ -59,7 +125,7 @@ bool NPC::Start() {
 	name_player = app->tex->Load("Assets/Textures/Names/Kleos_Name.png");
 	name_player_transparent = app->tex->Load("Assets/Textures/Names/Kleos_Name_Transparent.png");
 
-	if (type == NPC_Types::ROGUE) {
+	if (ntype == NPC_Types::ROGUE) {
 
 		npcIcon = app->tex->Load("Assets/Textures/RogueIcon.png");
 		npcIcon_Transparent = app->tex->Load("Assets/Textures/RogueIcon_Transparent.png");
@@ -69,7 +135,7 @@ bool NPC::Start() {
 
 	}
 
-	if (type == NPC_Types::WIZARD) {
+	if (ntype == NPC_Types::WIZARD) {
 
 		npcIcon = app->tex->Load("Assets/Textures/WizardIcon.png");
 		npcIcon_Transparent = app->tex->Load("Assets/Textures/WizardIcon_Transparent.png");
@@ -79,7 +145,7 @@ bool NPC::Start() {
 
 	}
 		
-	if (type == NPC_Types::ORC) {
+	if (ntype == NPC_Types::ORC) {
 
 		npcIcon = app->tex->Load("Assets/Textures/SkippyIcon.png");
 		npcIcon_Transparent = app->tex->Load("Assets/Textures/SkippyIcon_Transparent.png");
@@ -100,9 +166,6 @@ bool NPC::Start() {
 	currentAnimation = &idle_right;
 
 	// NPC Sensor Booleans and Texture
-
-	playerInteraction = false;
-	dialogueActivated = false;
 
 	interactButton = app->tex->Load("Assets/Textures/Dialogue.png");
 
@@ -227,9 +290,9 @@ bool NPC::Update()
 	 
 	if (dialogueActivated) {
 
-		if (type == NPC_Types::ROGUE) DialogueGenerator(secondConversation);
-		if (type == NPC_Types::WIZARD) DialogueGenerator(thirdConversation);
-		if (type == NPC_Types::ORC)
+		if (ntype == NPC_Types::ROGUE) DialogueGenerator(secondConversation);
+		if (ntype == NPC_Types::WIZARD) DialogueGenerator(thirdConversation);
+		if (ntype == NPC_Types::ORC)
 		{
 			app->sceneGameplay->trigger_1 = true;
 			DialogueGenerator(firstConversation);
@@ -258,17 +321,16 @@ void NPC::OnCollision(PhysBody* physA, PhysBody* physB) {
 	switch (physB->ctype)
 	{
 	case ColliderType::PLATFORM:
-		LOG("Collision PLATFORM");
+		
 
 		break;
 	case ColliderType::UNKNOWN:
-		LOG("Collision UNKNOWN");
+		
 
 		break;
 
 	case ColliderType::PLAYER:
-		LOG("Collision PLAYER");
-
+		
 		playerInteraction = true;
 
 		break;
@@ -328,19 +390,19 @@ void NPC::DialogueGenerator(Conversation conversation) {
 				break;
 			}
 
-			if (type == NPC_Types::ROGUE) {
+			if (ntype == NPC_Types::ROGUE) {
 
 				app->render->DrawTexture(npcIcon_Transparent, 876, 409);
 				app->render->DrawTexture(name_npc_transparent, 714 , 485);
 
 			}
-			if (type == NPC_Types::WIZARD) {
+			if (ntype == NPC_Types::WIZARD) {
 
 				app->render->DrawTexture(npcIcon_Transparent, 869, 407);
 				app->render->DrawTexture(name_npc_transparent, 748, 485);
 
 			}
-			if (type == NPC_Types::ORC) {
+			if (ntype == NPC_Types::ORC) {
 
 				app->render->DrawTexture(npcIcon_Transparent, 864, 397);
 				app->render->DrawTexture(name_npc_transparent, 705, 485);
@@ -382,19 +444,19 @@ void NPC::DialogueGenerator(Conversation conversation) {
 				break;
 			}
 
-			if (type == NPC_Types::ROGUE) {
+			if (ntype == NPC_Types::ROGUE) {
 
 				app->render->DrawTexture(npcIcon_Transparent, 876, 409);
 				app->render->DrawTexture(name_npc_transparent, 714, 485);
 
 			}
-			if (type == NPC_Types::WIZARD) {
+			if (ntype == NPC_Types::WIZARD) {
 
 				app->render->DrawTexture(npcIcon_Transparent, 869, 407);
 				app->render->DrawTexture(name_npc_transparent, 748, 485);
 
 			}
-			if (type == NPC_Types::ORC) {
+			if (ntype == NPC_Types::ORC) {
 
 				app->render->DrawTexture(npcIcon_Transparent, 864, 397);
 				app->render->DrawTexture(name_npc_transparent, 705, 485);
@@ -429,19 +491,19 @@ void NPC::DialogueGenerator(Conversation conversation) {
 				break;
 			}
 
-			if (type == NPC_Types::ROGUE) {
+			if (ntype == NPC_Types::ROGUE) {
 
 				app->render->DrawTexture(npcIcon, 876, 409);
 				app->render->DrawTexture(name_npc, 714, 485);
 
 			}
-			if (type == NPC_Types::WIZARD) {
+			if (ntype == NPC_Types::WIZARD) {
 
 				app->render->DrawTexture(npcIcon, 869, 407);
 				app->render->DrawTexture(name_npc, 748, 485);
 
 			}
-			if (type == NPC_Types::ORC) {
+			if (ntype == NPC_Types::ORC) {
 
 				app->render->DrawTexture(npcIcon, 864, 397);
 				app->render->DrawTexture(name_npc, 705, 485);

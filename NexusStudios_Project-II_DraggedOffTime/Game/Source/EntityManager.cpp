@@ -24,7 +24,6 @@ EntityManager::~EntityManager()
 // Called before render is available
 bool EntityManager::Awake(pugi::xml_node& config)
 {
-	LOG("Loading Entity Manager");
 	bool ret = true;
 
 	//Iterates over the entities and calls the Awake
@@ -64,7 +63,6 @@ bool EntityManager::Start() {
 // Called before quitting
 bool EntityManager::CleanUp()
 {
-	
 	bool ret = true;
 	ListItem<Entity*>* item;
 	item = entities.end;
@@ -72,6 +70,7 @@ bool EntityManager::CleanUp()
 	while (item != NULL && ret == true)
 	{
 		ret = item->data->CleanUp();
+		RELEASE(item->data);
 		item = item->prev;
 	}
 
@@ -122,13 +121,20 @@ void EntityManager::DestroyEntity(Entity* entity)
 
 	for (item = entities.start; item != NULL; item = item->next)
 	{
-		if (item->data == entity) entities.Del(item);
+		if (item->data == entity)
+		{
+			item->data->CleanUp();
+			RELEASE(item->data);
+			entities.Del(item);
+			break;
+		}
 	}
 }
 
 void EntityManager::AddEntity(Entity* entity)
 {
 	if ( entity != nullptr) entities.Add(entity);
+	
 }
 
 bool EntityManager::Update(float dt)
@@ -142,7 +148,11 @@ bool EntityManager::Update(float dt)
 	{
 		pEntity = item->data;
 
-		if (pEntity->active == false) continue;
+		if (pEntity->active == false)
+		{
+			continue;
+		}
+
 		ret = item->data->Update();
 	}
 
@@ -170,6 +180,20 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 		item->pbody->body->SetTransform({ PIXEL_TO_METERS(x),PIXEL_TO_METERS(y) }, 0);
 
 		enemyNode = enemyNode.next_sibling("enemy");
+
+	}
+
+	ListItem<NPC*>* ite;
+	pugi::xml_node npcNode = data.child("npc");
+
+	for (auto& ite : app->sceneGameplay->npcs)
+	{
+		float x = npcNode.attribute("x").as_int();
+		float y = npcNode.attribute("y").as_int();
+
+		ite->pbody->body->SetTransform({ PIXEL_TO_METERS(x),PIXEL_TO_METERS(y) }, 0);
+
+		npcNode = npcNode.next_sibling("npc");
 
 	}
 
@@ -272,7 +296,7 @@ bool EntityManager::SaveState(pugi::xml_node& data)
 		int x, y;
 		it->pbody->GetPosition(x, y);
 		
-		switch (it->type)
+		switch (it->itype)
 		{
 		case ItemType::POTION:
 			item.append_attribute("type") = "Potion";

@@ -8,23 +8,61 @@
 #include "Log.h"
 #include "FadeToBlack.h"
 #include "Point.h"
+#include "Infierno.h"
 #include "Physics.h"
 #include "SceneBattle.h"
 #include "SceneGameplay.h"
 #include <iostream>
 
+#define SPEED_VALUE 5
+#define SPEED_VALUE_RUNNING (SPEED_VALUE + 3)
+
 Player::Player() : Entity(EntityType::PLAYER)
 {
 	name.Create("Player");
+
+	playerChange = NULL;
+	changeFX = NULL;
+	levelUp = NULL;
+	godMode = false;
+	speedX = NULL;
+	speedY = NULL;
+	speedValue = NULL;
+	vel(NULL);
+	idleDirection = false;
+	texturePath = nullptr;
+	texturePath2 = nullptr;
+	texturePath3 = nullptr;
+	texturePath4 = nullptr;
+	pbody = nullptr;
+	itemCollectedFx = NULL;
+	currentAnimation = nullptr;
+
+	playerStats[0] = { 1,0,200,12,7,5,25 };
+	playerStats[1] = { 1,0,200,20,5,10,15 };
+	playerStats[2] = { 1,0,200,15,10,7,15 };
+	playerStats[3] = { 1,0,200,10,12,2,20 };
+
+	texture[0] = nullptr;
+	texture[1] = nullptr;
+	texture[2] = nullptr;
+	texture[3] = nullptr;
+
+	newPos.posX = NULL;
+	newPos.posY = NULL;
+	newPos.t = NULL;
+
 }
 
-Player::~Player() {
+Player::~Player() 
+{
 
 }
 
 bool Player::Awake() {
 
 	// Initialize Player parameters from XML
+
 	position.x = parameters.attribute("x").as_int();
 	position.y = parameters.attribute("y").as_int();
 
@@ -32,6 +70,9 @@ bool Player::Awake() {
 	texturePath2 = parameters.attribute("texturepath2").as_string();
 	texturePath3 = parameters.attribute("texturepath3").as_string();
 	texturePath4 = parameters.attribute("texturepath4").as_string();
+	aparicion = parameters.attribute("map").as_int();
+
+	// Player animations
 
 	for (int i = 0; i < 4; i++) {
 
@@ -76,11 +117,6 @@ bool Player::Start() {
 	texture[2] = app->tex->Load(texturePath3);
 	texture[3] = app->tex->Load(texturePath4);
 
-	playerStats[0] = {1,200,12,7,5,25};
-	playerStats[1] = {1,200,20,5,10,15};
-	playerStats[2] = {1,200,15,10,7,15};
-	playerStats[3] = {1,200,10,12,2,20};
-
 	// Add physics to the player.
 	pbody = app->physics->CreateCircle(position.x + 16, position.y + 16, 16, bodyType::DYNAMIC);
 
@@ -92,15 +128,15 @@ bool Player::Start() {
 
 	currentAnimation = &idle_right;
 
-	godMode = false;
-
 	playerChange = 0;
 
 	itemCollectedFx = app->audio->LoadFx("Assets/Audio/Fx/SceneGameplay/Item.wav");
-	
-	idleDirection = false;
 
 	changeFX = app->audio->LoadFx("Assets/Audio/Fx/SceneGameplay/ChangePlayer.wav");
+
+	levelUp = app->audio->LoadFx("Assets/Audio/Fx/SceneGameplay/LevelUp.wav");
+
+	speedValue = SPEED_VALUE;
 
 	return true;
 }
@@ -128,99 +164,50 @@ bool Player::Update()
 		TeleportCofre();
 		executeTeleportFuturo = false;
 	}
-
-
-
-
-	// Add physics to the player and update player position using physics.
 	
-	b2Vec2 vel = b2Vec2(0, -GRAVITY_Y);
-	
+	// God Mode Management
+
 	if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN) godMode = !godMode;
-
-	speed = 5;
 
 	if (godMode)
 	{
-		speed = 10;
+
+		speedValue = SPEED_VALUE * 2;
+
+	}
+	else {
+
+		speedValue = SPEED_VALUE;
+
 	}
 
-	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE && 
-		app->input->GetKey(SDL_SCANCODE_A) == KEY_IDLE &&
-		app->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE &&
-		app->input->GetKey(SDL_SCANCODE_D) == KEY_IDLE) {
+	// Player Movement Management
 
-		if (idleDirection) {
+	if (!app->sceneGameplay->pause.showPause && 
+		!app->sceneGameplay->pause.showSettings &&
+		!app->sceneGameplay->featureMenu.statsEnabled && 
+		!app->sceneGameplay->IsAnyNpcDialogueActivated()) {
 
-			currentAnimation = &idle_left;
+		if (app->input->activeControllers.Count()) {
+
+			GamepadMovementManagement();
 
 		}
 		else {
 
-			currentAnimation = &idle_right;
+			KeyboardMovementManagement();
 
 		}
+
 	}
+	else {
 
-	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) {
+		vel = b2Vec2(0, 0);
 
-		vel = b2Vec2(GRAVITY_X, -speed);
-
-		if (idleDirection) {
-
-			currentAnimation = &walk_left;
-
-		}
-		else {
-
-			currentAnimation = &walk_right;
-
-		}
+		idleDirection ? currentAnimation = &idle_left : currentAnimation = &idle_right;
 
 	}
 		
-	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) {
-
-		vel = b2Vec2(GRAVITY_X, speed);
-
-		if (idleDirection) {
-
-			currentAnimation = &walk_left;
-
-		}
-		else {
-
-			currentAnimation = &walk_right;
-
-		}
-
-	}
-
-	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) {
-
-		vel = b2Vec2(-speed, -GRAVITY_Y);
-		currentAnimation = &walk_left;
-		idleDirection = true;
-
-	}
-		
-	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) {
-
-		vel = b2Vec2(speed, -GRAVITY_Y);
-		currentAnimation = &walk_right;
-		idleDirection = false;
-
-	}
-		
-	if (app->input->activeControllers.Count()) {
-
-		if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_y, 10000, 2) < 0) vel = b2Vec2(GRAVITY_X, -speed);
-		if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_y, 10000, 2) > 0) vel = b2Vec2(GRAVITY_X, speed);
-		if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_x, 10000, 2) < 0) vel = b2Vec2(-speed, -GRAVITY_Y);
-		if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_x, 10000, 2) > 0) vel = b2Vec2(speed, -GRAVITY_Y);
-
-	}
-
 	// Set the velocity of the pbody of the player.
 	pbody->body->SetLinearVelocity(vel);
 
@@ -228,8 +215,7 @@ bool Player::Update()
 	position.x = METERS_TO_PIXELS(pbody->body->GetTransform().p.x) - 16;
 	position.y = METERS_TO_PIXELS(pbody->body->GetTransform().p.y) - 16;
 
-	
-	// Draw player texture.
+	// Draw player texture according to animation and selected player
 
 	currentAnimation->Update();
 
@@ -250,11 +236,17 @@ bool Player::Update()
 
 		}
 
+		fPoint pos((float)position.x + 24, (float)position.y + 16);
+		app->sceneGameplay->eWave_1 = app->particleSystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_WAVE_1);
+		//app->sceneGameplay->eBurst_1 = app->particleSystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_BURST);
+
 	}
 
 	app->sceneBattle->selected_player = playerChange;
+
 	app->render->DrawTexture(texture[playerChange], position.x, position.y, &playerRect);
 
+	// Player Teleport
 	
 	if (newPos.t == true)
 	{
@@ -263,6 +255,36 @@ bool Player::Update()
 
 		newPos.t = false;
 	}
+
+	// Player Progession (Levels) 
+
+	// XP Required to go from lvl 1 to lvl 100: 165330
+
+	if (app->input->GetKey(SDL_SCANCODE_H) == KEY_DOWN) {
+
+		AddXP(500, 0);
+
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_J) == KEY_DOWN) {
+
+		AddXP(500, 1);
+
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_K) == KEY_DOWN) {
+
+		AddXP(500, 2);
+
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN) {
+
+		AddXP(500, 3);
+
+	}
+
+	PlayerLevelManagement();
 
 	return true;
 }
@@ -300,6 +322,245 @@ void Player::OnCollisionEnd(PhysBody* physA, PhysBody* physB) {
 
 	app->sceneGameplay->puzzle2.top_collision5 = false;
 	app->sceneGameplay->puzzle2.bottom_collision5 = false;
+}
+
+void Player::KeyboardMovementManagement()
+{
+	// Player Idle Management
+
+	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE &&
+		app->input->GetKey(SDL_SCANCODE_A) == KEY_IDLE &&
+		app->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE &&
+		app->input->GetKey(SDL_SCANCODE_D) == KEY_IDLE) {
+
+		idleDirection ? currentAnimation = &idle_left : currentAnimation = &idle_right;
+
+		vel = b2Vec2(0, 0);
+
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE &&
+		app->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE) {
+
+		speedY = 0;
+
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_IDLE &&
+		app->input->GetKey(SDL_SCANCODE_D) == KEY_IDLE) {
+
+		speedX = 0;
+
+	}
+
+	// Player Run Management
+
+	if (app->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_REPEAT) {
+
+		speedValue = SPEED_VALUE_RUNNING;
+		walk_left.speed = 0.15f;
+		walk_right.speed = 0.15f;
+
+	}
+	else {
+
+		walk_left.speed = 0.1f;
+		walk_right.speed = 0.1f;
+
+	}
+
+	// Movement Up
+
+	if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) {
+
+		speedY = -speedValue;
+
+		idleDirection ? currentAnimation = &walk_left : currentAnimation = &walk_right;
+
+	}
+
+	// Movement Down
+
+	if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) {
+
+		speedY = speedValue;
+
+		idleDirection ? currentAnimation = &walk_left : currentAnimation = &walk_right;
+
+	}
+
+	// Movement Left
+
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) {
+
+		speedX = -speedValue;
+		currentAnimation = &walk_left;
+		idleDirection = true;
+
+	}
+
+	// Movement Right
+
+	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) {
+
+		speedX = speedValue;
+		currentAnimation = &walk_right;
+		idleDirection = false;
+
+	}
+
+	// Speed update
+
+	if (app->input->GetKey(SDL_SCANCODE_W) != KEY_IDLE ||
+		app->input->GetKey(SDL_SCANCODE_A) != KEY_IDLE ||
+		app->input->GetKey(SDL_SCANCODE_S) != KEY_IDLE ||
+		app->input->GetKey(SDL_SCANCODE_D) != KEY_IDLE) {
+
+		vel = b2Vec2(speedX, speedY);
+
+	}
+
+}
+
+void Player::GamepadMovementManagement()
+{
+	// Player Idle Management
+
+	if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_x, 10000, 2) == 0 &&
+		app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_y, 10000, 2) == 0) {
+
+		idleDirection ? currentAnimation = &idle_left : currentAnimation = &idle_right;
+
+		vel = b2Vec2(0, 0);
+
+	}
+
+	if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_y, 10000, 2) == 0) {
+
+		speedY = 0;
+
+	}
+
+	if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_x, 10000, 2) == 0) {
+
+		speedX = 0;
+
+	}
+
+	// Player Run Management
+
+	if (app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_RIGHTSTICK] == KEY_REPEAT) {
+
+		speedValue = SPEED_VALUE_RUNNING;
+		walk_left.speed = 0.15f;
+		walk_right.speed = 0.15f;
+
+	}
+	else {
+
+		walk_left.speed = 0.1f;
+		walk_right.speed = 0.1f;
+
+	}
+
+	// Movement Up
+
+	if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_y, 10000, 2) < 0) {
+
+		speedY = -speedValue;
+
+		idleDirection ? currentAnimation = &walk_left : currentAnimation = &walk_right;
+
+	}
+
+	// Movement Down
+
+	if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_y, 10000, 2) > 0) {
+
+		speedY = speedValue;
+
+		idleDirection ? currentAnimation = &walk_left : currentAnimation = &walk_right;
+
+	}
+
+	// Movement Left
+
+	if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_x, 10000, 2) < 0) {
+
+		speedX = -speedValue;
+		currentAnimation = &walk_left;
+		idleDirection = true;
+
+	}
+
+	// Movement Right
+
+	if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_x, 10000, 2) > 0) {
+
+		speedX = speedValue;
+		currentAnimation = &walk_right;
+		idleDirection = false;
+
+	}
+
+	// Speed update
+
+	if (app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_x, 10000, 2) != 0 ||
+		app->input->reduce_val(SDL_IsGameController(0), app->input->controllers[0].j1_y, 10000, 2) != 0) {
+
+		vel = b2Vec2(speedX, speedY);
+
+	}
+
+}
+
+void Player::AddXP(int xp, int playerIndex)
+{
+	playerStats[playerIndex].currentXP += xp;
+}
+
+void Player::PlayerLevelManagement()
+{
+	for (int i = 0; i < 4; i++) {
+
+		fillPercentage[i] = static_cast<float>(playerStats[i].currentXP) / playerStats[i].next;
+		fillWidth[i] = static_cast<int>(fillPercentage[i] * 243);
+
+		xpAccumulatedRect[i].w = fillWidth[i];
+
+		if (playerStats[i].currentXP == playerStats[i].next) {
+
+			playerStats[i].currentXP = 0;
+
+			playerStats[i].level++;
+			playerStats[i].hp += 3;
+			playerStats[i].atk += 3;
+			playerStats[i].def += 3;
+			playerStats[i].ap += 3;
+			playerStats[i].next += 30;
+
+			//app->audio->PlayFx(levelUp);
+
+		}
+		else if (playerStats[i].currentXP > playerStats[i].next) {
+
+			int xpExcess = playerStats[i].currentXP - playerStats[i].next;
+
+			playerStats[i].currentXP = xpExcess;
+
+			playerStats[i].level++;
+			playerStats[i].hp += 3;
+			playerStats[i].atk += 3;
+			playerStats[i].def += 3;
+			playerStats[i].ap += 3;
+			playerStats[i].next += 30;
+
+			//app->audio->PlayFx(levelUp);
+
+		}
+
+	}
+
 }
 
 void Player::TeleportCofre()
@@ -485,293 +746,9 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	}
 }
 
-void Player::TeleportInfierno() {
-	//Quest
-	switch (app->map->actualmap)
-	{
-	case 0:
-		app->physics->DestroyBody(app->sceneGameplay->TP_Infierno_0);
-		app->sceneGameplay->trigger_3 = true;
-
-		app->map->CleanUp();
-		app->map->actualmap = 1;
-		app->map->Load();
-		app->sceneGameplay->map_selector = false;
-		app->sceneGameplay->player->Teleport(650, 671);
-
-		//Move Npcs Map_1
-		app->sceneGameplay->npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
-		app->sceneGameplay->npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
-
-		//Move Enemies Map_1
-		app->sceneGameplay->enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		break;
-	case 1:
-		app->physics->DestroyBody(app->sceneGameplay->TP_Infierno_1);
-		app->map->CleanUp();
-		app->map->actualmap = 2;
-		app->map->Load();
-		app->sceneGameplay->map_selector = false;
-		app->sceneGameplay->player->Teleport(1265, 560);
-		//Move Npcs Map_1
-		app->sceneGameplay->npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
-		app->sceneGameplay->npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
-
-		//Move Enemies Map_1
-		app->sceneGameplay->enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		break;
-	case 2:
-		app->physics->DestroyBody(app->sceneGameplay->TP_Infierno_2);
-		app->map->CleanUp();
-		app->map->actualmap = 3;
-		app->map->Load();
-		app->sceneGameplay->map_selector = false;
-		app->sceneGameplay->player->Teleport(1255, 106);
-		//Move Npcs Map_1
-		app->sceneGameplay->npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
-		app->sceneGameplay->npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
-
-		//Move Enemies Map_1
-		app->sceneGameplay->enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		break;
-	case 3:
-		app->physics->DestroyBody(app->sceneGameplay->TP_Infierno_3);
-		app->map->CleanUp();
-		app->map->actualmap = 6;
-		app->map->Load();
-		app->sceneGameplay->map_selector = false;
-		app->sceneGameplay->player->Teleport(10, 300);
-		//Move Npcs Map_1
-		app->sceneGameplay->npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
-		app->sceneGameplay->npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
-
-		//Move Enemies Map_1
-		app->sceneGameplay->enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		break;
-	case 4:
-		app->physics->DestroyBody(app->sceneGameplay->TP_Infierno_4);
-		app->map->CleanUp();
-		app->map->actualmap = 5;
-		app->map->Load();
-		app->sceneGameplay->map_selector = false;
-		app->sceneGameplay->player->Teleport(640, 700);
-		//Move Npcs Map_1
-		app->sceneGameplay->npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
-		app->sceneGameplay->npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
-
-		//Move Enemies Map_1
-		app->sceneGameplay->enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		break;
-	case 5:
-		app->physics->DestroyBody(app->sceneGameplay->TP_Infierno_5);
-		app->map->CleanUp();
-		app->map->actualmap = 0;
-		app->map->Load();
-		app->sceneGameplay->map_selector = false;
-		app->sceneGameplay->player->Teleport(200, 671);
-		//Move Npcs Map_1
-		app->sceneGameplay->npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
-		app->sceneGameplay->npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
-
-		//Move Enemies Map_1
-		app->sceneGameplay->enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		break;
-	case 6:
-		app->physics->DestroyBody(app->sceneGameplay->Tp_Puzzle1);
-		app->map->CleanUp();
-		app->map->actualmap = 7;
-		app->map->Load();
-		app->sceneGameplay->map_selector = false;
-		app->sceneGameplay->player->Teleport(12, 600);
-		//Move Npcs Map_1
-		app->sceneGameplay->npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
-		app->sceneGameplay->npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
-
-		//Move Enemies Map_1
-		app->sceneGameplay->enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		break;
-	case 7:
-		app->physics->DestroyBody(app->sceneGameplay->Tp_Puzzle2);
-		app->map->CleanUp();
-		app->map->actualmap = 8;
-		app->map->Load();
-		app->sceneGameplay->map_selector = false;
-		app->sceneGameplay->player->Teleport(640, 710);
-		//Move Npcs Map_1
-		app->sceneGameplay->npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
-		app->sceneGameplay->npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
-
-		//Move Enemies Map_1
-		app->sceneGameplay->enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-	case 8:
-		app->physics->DestroyBody(app->sceneGameplay->Tp_Puzzle3);
-		app->map->CleanUp();
-		app->map->actualmap = 4;
-		app->map->Load();
-		app->sceneGameplay->map_selector = false;
-		app->sceneGameplay->player->Teleport(640, 710);
-		//Move Npcs Map_1
-		app->sceneGameplay->npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
-		app->sceneGameplay->npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
-
-		//Move Enemies Map_1
-		app->sceneGameplay->enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-		app->sceneGameplay->enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		app->sceneGameplay->enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-	default:
-		break;
-	}
-		
-
-		
-
-
+void Player::TeleportInfierno() 
+{
+	
 }
 
 void Player::TeleportPrehistoria()

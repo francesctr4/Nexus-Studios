@@ -61,24 +61,22 @@ class FadeToBlack : public Module
 {
 public:
 	//Constructor
-	FadeToBlack(bool startEnabled);
+	explicit FadeToBlack(bool startEnabled);
 
 	//Destructor
 	virtual ~FadeToBlack();
 
-	bool Awake();
-
 	// Called when the module is activated
 	// Enables the blending mode for transparency
-	bool Start();
+	bool Start() override;
 
 	// Called at the middle of the application loop
 	// Updates the fade logic
-	bool Update(float dt);
+	bool Update(float dt) override;
 
 	// Called at the end of the application loop
 	// Performs the render call of a black rectangle with transparency
-	bool PostUpdate();
+	bool PostUpdate() override;
 
 	// Called from another module
 	// Starts the fade process which has two steps, fade_out and fade_in
@@ -95,7 +93,7 @@ private:
 	Uint32 maxFadeFrames = 0;
 
 	// The rectangle of the screen, used to render the black rectangle
-	SDL_Rect screenRect;
+	SDL_Rect screenRect{ 0,0,0,0 };
 
 	// The modules that should be switched after the first step
 	Module* moduleToEnable = nullptr;

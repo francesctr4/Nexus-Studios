@@ -126,7 +126,7 @@ bool SceneTitle::Start()
 
 	checkBoxVsync = app->tex->Load("Assets/UI/Vsync.png");
 
-	BackCredits = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 6, back, "", { 704,619,112,59 }, this);
+	BackCredits = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 6, back, "", { 1135,650,102,38 }, this);
 	BackCredits->state = GuiControlState::DISABLED;
 
 	showSettings = false;
@@ -134,6 +134,70 @@ bool SceneTitle::Start()
 	continueEnabled = false;
 
 	currentAnimation = &title;
+
+	// Credits
+
+	bigCredits = app->tex->Load("Assets/UI/Credits/BigCredits.png");
+
+	people1 = app->tex->Load("Assets/UI/Credits/People1.png");
+	people2 = app->tex->Load("Assets/UI/Credits/People2.png");
+
+	// Tweens
+
+	Animation_DraggedOffTime.Set();
+	Animation_DraggedOffTime.smoothness = 4;
+	Animation_DraggedOffTime.AddTween(100, 50, EXPONENTIAL_OUT);
+
+	Animation_NewGame.Set();
+	Animation_NewGame.smoothness = 4;
+	Animation_NewGame.AddTween(100, 50, EXPONENTIAL_IN);
+	Animation_NewGame.JumpTo(100, false);
+
+	Animation_Continue.Set();
+	Animation_Continue.smoothness = 4;
+	Animation_Continue.AddTween(100, 50, EXPONENTIAL_IN);
+	Animation_Continue.JumpTo(100, false);
+
+	Animation_Settings.Set();
+	Animation_Settings.smoothness = 4;
+	Animation_Settings.AddTween(100, 50, EXPONENTIAL_IN);
+	Animation_Settings.JumpTo(100, false);
+
+	Animation_Credits.Set();
+	Animation_Credits.smoothness = 4;
+	Animation_Credits.AddTween(100, 50, EXPONENTIAL_IN);
+	Animation_Credits.JumpTo(100, false);
+
+	Animation_Exit.Set();
+	Animation_Exit.smoothness = 4;
+	Animation_Exit.AddTween(100, 50, EXPONENTIAL_IN);
+	Animation_Exit.JumpTo(100, false);
+
+	Animation_BigSettings.Set();
+	Animation_BigSettings.smoothness = 4;
+	Animation_BigSettings.AddTween(100, 50, EXPONENTIAL_OUT);
+
+	Animation_Back.Set();
+	Animation_Back.smoothness = 4;
+	Animation_Back.AddTween(100, 50, EXPONENTIAL_IN);
+
+	// Tweens Credits
+
+	Animation_BigCredits.Set();
+	Animation_BigCredits.smoothness = 4;
+	Animation_BigCredits.AddTween(100, 50, EXPONENTIAL_OUT);
+
+	Animation_People1.Set();
+	Animation_People1.smoothness = 4;
+	Animation_People1.AddTween(100, 50, EXPONENTIAL_OUT);
+
+	Animation_People2.Set();
+	Animation_People2.smoothness = 4;
+	Animation_People2.AddTween(100, 50, EXPONENTIAL_IN);
+
+	Animation_BackCredits.Set();
+	Animation_BackCredits.smoothness = 4;
+	Animation_BackCredits.AddTween(100, 50, EXPONENTIAL_IN);
 
 	return true;
 }
@@ -166,6 +230,85 @@ bool SceneTitle::Update(float dt)
 
 	}
 
+	// Tweens
+
+	Animation_DraggedOffTime.Step(1, false);
+	Animation_NewGame.Step(1, false);
+	Animation_Continue.Step(1, false);
+	Animation_Settings.Step(1, false);
+	Animation_Credits.Step(1, false);
+	Animation_Exit.Step(1, false);
+
+	Animation_BigSettings.Step(1, false);
+	Animation_Back.Step(1, false);
+
+	Animation_BigCredits.Step(1, false);
+	Animation_People1.Step(1, false);
+	Animation_People2.Step(1, false);
+	Animation_BackCredits.Step(1, false);
+
+	Animation_DraggedOffTime.Foward();
+	Animation_NewGame.Backward();
+	Animation_Continue.Backward();
+	Animation_Settings.Backward();
+	Animation_Credits.Backward();
+	Animation_Exit.Backward();
+
+	if (showSettings) {
+
+		Animation_BigSettings.Foward();
+		Animation_Back.Backward();
+
+	}
+	else {
+
+		Animation_BigSettings.JumpTo(0, false);
+		Animation_Back.JumpTo(100, false);
+
+	}
+
+	if (showCredits) {
+
+		Animation_BigCredits.Foward();
+		Animation_People1.Foward();
+		Animation_People2.Backward();
+		Animation_BackCredits.Backward();
+
+	}
+	else {
+
+		Animation_BigCredits.JumpTo(0, false);
+		Animation_People1.JumpTo(0, false);
+		Animation_People2.JumpTo(100, false);
+		Animation_BackCredits.JumpTo(100, false);
+
+	}
+
+	point_DraggedOffTime = Animation_DraggedOffTime.GetPoint();
+	point_NewGame = Animation_NewGame.GetPoint();
+	point_Continue = Animation_Continue.GetPoint();
+	point_Settings = Animation_Settings.GetPoint();
+	point_Credits = Animation_Credits.GetPoint();
+	point_Exit = Animation_Exit.GetPoint();
+
+	point_BigSettings = Animation_BigSettings.GetPoint();
+	point_Back = Animation_Back.GetPoint();
+
+	point_BigCredits = Animation_BigCredits.GetPoint();
+	point_People1 = Animation_People1.GetPoint();
+	point_People2 = Animation_People2.GetPoint();
+	point_BackCredits = Animation_BackCredits.GetPoint();
+
+	NewGame->bounds.x = point_NewGame * offset + 143;
+	Continue_->bounds.x = point_Continue * offset + 149;
+	Settings->bounds.x = point_Settings * offset + 149;
+	Credits->bounds.x = point_Credits * offset + 164;
+	Exit->bounds.x = point_Exit * offset + 214;
+
+	Back->bounds.y = point_Back * offset + 594;
+
+	BackCredits->bounds.y = point_BackCredits * offset + 655;
+
 	// UI
 
 	if (NewGame->state == GuiControlState::PRESSED || app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_START] == KEY_DOWN) {
@@ -176,6 +319,13 @@ bool SceneTitle::Update(float dt)
 		Settings->state = GuiControlState::DISABLED;
 		Credits->state = GuiControlState::DISABLED;
 		Exit->state = GuiControlState::DISABLED;
+
+		Animation_DraggedOffTime.JumpTo(0, false);
+		Animation_NewGame.JumpTo(100, false);
+		Animation_Continue.JumpTo(100, false);
+		Animation_Settings.JumpTo(100, false);
+		Animation_Credits.JumpTo(100, false);
+		Animation_Exit.JumpTo(100, false);
 
 		app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
 
@@ -192,6 +342,13 @@ bool SceneTitle::Update(float dt)
 		Settings->state = GuiControlState::DISABLED;
 		Credits->state = GuiControlState::DISABLED;
 		Exit->state = GuiControlState::DISABLED;
+
+		Animation_DraggedOffTime.JumpTo(0, false);
+		Animation_NewGame.JumpTo(100, false);
+		Animation_Continue.JumpTo(100, false);
+		Animation_Settings.JumpTo(100, false);
+		Animation_Credits.JumpTo(100, false);
+		Animation_Exit.JumpTo(100, false);
 
 		app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
 
@@ -283,9 +440,26 @@ bool SceneTitle::PostUpdate()
 	app->guiManager->Draw();
 
 	SDL_Rect rect = currentAnimation->GetCurrentFrame();
-	if (!showSettings) app->render->DrawTexture(titleSpritesheet, 30, 45, &rect);
+
+	if (!showSettings && !showCredits) {
+
+		//app->render->DrawTexture(titleSpritesheet, 30, 45, &rect);
+		app->render->DrawTexture(titleSpritesheet, 30, point_DraggedOffTime * offset - 758, &rect);
+
+	}
 	
-	if (showCredits) {
+	if (showCredits && !showSettings) {
+
+		app->render->DrawTexture(Fondo, 0, 0);
+
+		//app->render->DrawTexture(bigCredits, 476, 43);
+		app->render->DrawTexture(bigCredits, 476, point_BigCredits * offset - 760);
+
+		//app->render->DrawTexture(people1, 230, 152);
+		app->render->DrawTexture(people1, point_People1 * offset - 576, 152);
+
+		//app->render->DrawTexture(people2, 701, 152);
+		app->render->DrawTexture(people2, point_People2 * offset + 700, 152);
 
 		if (BackCredits->state == GuiControlState::DISABLED) BackCredits->state = GuiControlState::NORMAL;
 
@@ -311,7 +485,7 @@ bool SceneTitle::PostUpdate()
 
 	}
 
-	if (showSettings) {
+	if (showSettings && !showCredits) {
 
 		app->render->DrawTexture(Fondo, 0, 0);
 
@@ -332,8 +506,9 @@ bool SceneTitle::PostUpdate()
 		if (Credits->state != GuiControlState::DISABLED) Credits->state = GuiControlState::DISABLED;
 		if (Exit->state != GuiControlState::DISABLED) Exit->state = GuiControlState::DISABLED;
 
+		//app->render->DrawTexture(SettingsTitle, 449, 73);
+		app->render->DrawTexture(SettingsTitle, 449, point_BigSettings * offset - 734);
 
-		app->render->DrawTexture(SettingsTitle, 449, 73);
 		app->render->DrawTexture(checkBoxFullscreen, 496, 202);
 		app->render->DrawTexture(checkBoxVsync, 496, 279);
 		app->render->DrawTexture(framecap, 496, 356);
@@ -358,7 +533,7 @@ bool SceneTitle::PostUpdate()
 
 	}
 
-	if (!showSettings) {
+	if (!showSettings && !showCredits) {
 
 		if (NewGame->state == GuiControlState::DISABLED) NewGame->state = GuiControlState::NORMAL;
 		if (Continue_->state == GuiControlState::DISABLED && continueEnabled) Continue_->state = GuiControlState::NORMAL;
@@ -387,8 +562,6 @@ bool SceneTitle::PostUpdate()
 // Called before quitting
 bool SceneTitle::CleanUp()
 {
-	LOG("Freeing scene");
-
 	//app->map->CleanUp();
 
 

@@ -12,29 +12,30 @@ class SceneBattle : public Module
 {
 public:
 
-	SceneBattle(bool startEnabled);
+	explicit SceneBattle(bool startEnabled);
 	
 	// Destructor
 	virtual ~SceneBattle();
 
-	bool Awake(pugi::xml_node& config);
+	bool Awake(pugi::xml_node& config) override;
 
 	// Called before the first frame
-	bool Start();
+	bool Start() override;
 
 	// Called before all Updates
-	bool PreUpdate();
+	bool PreUpdate() override;
 
 	// Called each loop iteration
-	bool Update(float dt);
+	bool Update(float dt) override;
 
 	// Called after all Updates
-	bool PostUpdate();
+	bool PostUpdate() override;
 
 	// Called before quitting
-	bool CleanUp();
+	bool CleanUp() override;
 
-	bool OnGuiMouseClickEvent(GuiControl* control);
+	bool OnGuiMouseClickEvent(GuiControl* control) override;
+
 
 public:
 
@@ -78,10 +79,23 @@ public:
 	int e_HP = 60;
 	int e_max_HP = 60;
 	int e_DEF = 10;
+	int e_base_DEF = 10;
 	int e_DMG = 20;
+	int e_base_DMG = 20;
 	int e_confusion_turns = 0;
+	int e_buffed_turns = 0;
 
 	int enemy_last_action = NULL; // 0 => Attack // 1 => Defense
+
+	int boss = 0;	//Variable que controla si estás combatiendo con un boss (0 = No es boss, 1,2,3,4 = Nº del Boss)
+
+	//Minion (Boss)
+	bool minion = false;
+	int m_HP = 60;
+	int m_max_HP = 60;
+	int m_DEF = 10;
+	int m_DMG = 20;
+	int m_confusion_turns = 0;
 
 	//Sprite player (TODO)
 
@@ -118,6 +132,10 @@ private:
 
 	SDL_Texture* playerSelection = nullptr;
 
+	SDL_Texture* q_sprite = nullptr;
+
+	SDL_Texture* dialogue = nullptr;
+
 	int action_selected = 0; 
 
 	//GUI
@@ -143,5 +161,12 @@ private:
 	Timer timer;
 	bool timer_started = false;
 	float delay = 0;
+
+	//Timer Texto de combate - Variables
+	Timer combat_timmer;
+	bool combat_timmer_started = false;
+	bool show_battle_info = false;
+
+
 
 };

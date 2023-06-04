@@ -13,6 +13,21 @@
 Item::Item() : Entity(EntityType::ITEM)
 {
 	name.Create("item");
+
+	texture = nullptr;
+	icon = nullptr;
+
+	iconPath = nullptr;
+	texturePath = nullptr;
+
+	pbody = nullptr;
+	itype = ItemType::UNKNOWN;
+	ctype = ColliderType::UNKNOWN;
+
+	currentAnimation = nullptr;
+
+	itemMap = NULL;
+
 }
 
 Item::~Item() 
@@ -26,42 +41,43 @@ bool Item::Awake() {
 	position.y = parameters.attribute("y").as_int();
 	iconPath = parameters.attribute("iconpath").as_string();
 	texturePath = parameters.attribute("texturepath").as_string();
-	audioPath = parameters.attribute("audiopath").as_string();
+	itemMap = parameters.attribute("map").as_int();
+	aparicion = itemMap;
 
 	if (SString(parameters.attribute("type").as_string()) == SString("Potion"))
 	{
-		type = ItemType::POTION;
+		itype = ItemType::POTION;
 		ctype = ColliderType::ITEM_POTION;
 	}
 
 	if (SString(parameters.attribute("type").as_string()) == SString("Mango"))
 	{
-		type = ItemType::MANGO;
+		itype = ItemType::MANGO;
 		ctype = ColliderType::ITEM_MANGO;
 	}
 
 	if (SString(parameters.attribute("type").as_string()) == SString("Gem"))
 	{
-		type = ItemType::GEM;
+		itype = ItemType::GEM;
 		ctype = ColliderType::ITEM_GEM;
 	}
 
 	if (SString(parameters.attribute("type").as_string()) == SString("Battery"))
 	{
-		type = ItemType::BATTERY;
+		itype = ItemType::BATTERY;
 		ctype = ColliderType::ITEM_BATTERY;
 	}
 
 	if (SString(parameters.attribute("type").as_string()) == SString("Teleport_Jovani")) 
 	{
-		type = ItemType::TELEPORT_JOVANI;
+		itype = ItemType::TELEPORT_JOVANI;
 		ctype = ColliderType::TELEPORT_JOVANI;
 	}
 		
 
 	if (SString(parameters.attribute("type").as_string()) == SString("Teleport_Cofre")) 
 	{
-		type = ItemType::TELEPORT_COFRE;
+		itype = ItemType::TELEPORT_COFRE;
 		ctype = ColliderType::TELEPORT_COFRE;
 	}
 
@@ -84,7 +100,7 @@ bool Item::Start() {
 	int width = 16;
 	int height = 16;
 
-	if (type == ItemType::TELEPORT_COFRE || type == ItemType::TELEPORT_JOVANI) {
+	if (itype == ItemType::TELEPORT_COFRE || itype == ItemType::TELEPORT_JOVANI) {
 
 		pbody = app->physics->CreateRectangleSensor(position.x, position.y, 40, 20, bodyType::KINEMATIC, ctype);
 
@@ -121,6 +137,8 @@ bool Item::Update()
 
 bool Item::CleanUp()
 {
+	app->physics->DestroyBody(pbody);
+	app->tex->UnLoad(texture);
 	return true;
 }
 
@@ -130,30 +148,24 @@ void Item::OnCollision(PhysBody* physA, PhysBody* physB) {
 	{
 	case ColliderType::PLAYER:
 		{
-			LOG("Collision PLAYER");
-
+		
 			isPicked = true;
-			if (type == ItemType::TELEPORT_COFRE)
+			if (itype == ItemType::TELEPORT_COFRE)
 			{
 
 			}
 			else
 			{ 
-			Disable();
-			pbody->body->DestroyFixture(pbody->body->GetFixtureList());
+				Collected();
+				
 			}
 			
 			if (physA->ctype == ColliderType::ITEM_BATTERY || physA->ctype == ColliderType::ITEM_GEM || physA->ctype == ColliderType::ITEM_MANGO || physA->ctype == ColliderType::ITEM_POTION)
 			{
 				app->sceneGameplay->trigger_2++;
 			}
-
-			if (!handledCollision) {
-
-				app->sceneGameplay->featureMenu.inventoryManager.AddItem(*this);
-
-			}
-
+			
+			app->sceneGameplay->featureMenu.inventoryManager.AddItem(*this);
 			break;
 		}
 
@@ -164,13 +176,13 @@ void Item::OnCollision(PhysBody* physA, PhysBody* physB) {
 void Item::OnCollisionEnd(PhysBody* physA, PhysBody* physB)
 {
 
-	handledCollision = true;
+	
 
 }
 
 void Item::Restart(ItemType type, ColliderType ctype, int x, int y, std::string iconPath, std::string texturePath)
 {
-	this->type = type;
+	this->itype = type;
 	this->ctype = ctype;
 	this->position.x = x;
 	this->position.y = y;
@@ -198,4 +210,11 @@ void Item::Restart(ItemType type, ColliderType ctype, int x, int y, std::string 
 
 	currentAnimation = &idle;
 
+}
+
+void Item::Collected()
+{
+	active = false;
+	pbody->body->SetActive(false);
+	isPicked = true;
 }

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <config>
   <app>
     <title>Game Development Testbed</title>
@@ -23,37 +24,38 @@
   </audio>
 
   <sceneGameplay>
-	<player x="150 " y="430" texturepath="Assets/Textures/SpriteSheet_Kleos.png" texturepath2="Assets/Textures/Prehistoric_Kleos_SpriteSheet.png" texturepath3="Assets/Textures/Cyberpunk_Kleos_SpriteSheet.png" texturepath4="Assets/Textures/Demon_Kleos_SpriteSheet.png"/>
+	<player x="150 " y="430" texturepath="Assets/Textures/SpriteSheet_Kleos.png" texturepath2="Assets/Textures/Prehistoric_Kleos_SpriteSheet.png" texturepath3="Assets/Textures/Cyberpunk_Kleos_SpriteSheet.png" texturepath4="Assets/Textures/Demon_Kleos_SpriteSheet.png" map="0"/>
 	  
-	<npc type="rogue" x="950" y="410" texturepath="Assets/Textures/Rogue.png"/>
-	<npc type="wizard" x="755" y="350" texturepath="Assets/Textures/Wizard.png"/>
-	<npc type="orc" x="75" y="420" texturepath="Assets/Textures/Skippy.png"/>
+	<npc type="rogue" x="950" y="410" texturepath="Assets/Textures/Rogue.png" map="0"/>
+	<npc type="wizard" x="755" y="350" texturepath="Assets/Textures/Wizard.png" map="0"/>
+	<npc type="orc" x="75" y="420" texturepath="Assets/Textures/Skippy.png" map="0"/>
 
-	<enemy type = "damage" x="690" y="160" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png"/>
-	<enemy type = "support" x="1050" y="160" texturepath="Assets/Textures/Support_New.png" battletexturepath ="Assets/Textures/SupportInCombat.png"/>
-	<enemy type = "tank" x="75" y="615" texturepath="Assets/Textures/Tank_New.png" battletexturepath ="Assets/Textures/TankInCombat.png"/>
-	<enemy type = "damage" x="1120" y="600" texturepath="Assets/Textures/Cyberpunk.png" battletexturepath ="Assets/Textures/CyberpunkInCombat.png"/>
+	<enemy type = "damage" x="690" y="160" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="1"/>
+	<enemy type = "damage" x="750" y="450" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="1"/>
+	<enemy type = "tank" x="75" y="615" texturepath="Assets/Textures/Tank_New.png" battletexturepath ="Assets/Textures/TankInCombat.png" map="1"/>
+	<enemy type = "support" x="1050" y="160" texturepath="Assets/Textures/Support_New.png" battletexturepath ="Assets/Textures/SupportInCombat.png" map="2"/>
+	<enemy type = "damage" x="1120" y="600" texturepath="Assets/Textures/Cyberpunk.png" battletexturepath ="Assets/Textures/CyberpunkInCombat.png" map="3"/>
 
-	<item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png"/>
-	<item type ="Mango" x="600" y="450" texturepath="Assets/Textures/Items/Mangoes/Mango-Sheet.png" iconpath="Assets/Textures/Items/Mangoes/Mango.png"/>
-	<item type ="Gem" x="700" y="450" texturepath="Assets/Textures/Items/Gems/BlueGem-Sheet.png" iconpath="Assets/Textures/Items/Gems/BlueGem.png"/>
-	<item type ="Battery" x="800" y="450" texturepath="Assets/Textures/Items/Batteries/Battery-Sheet.png" iconpath="Assets/Textures/Items/Batteries/Battery.png"/>
+	<item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png" map="0"/>
+	<item type ="Mango" x="600" y="450" texturepath="Assets/Textures/Items/Mangoes/Mango-Sheet.png" iconpath="Assets/Textures/Items/Mangoes/Mango.png" map="1"/>
+	<item type ="Gem" x="700" y="450" texturepath="Assets/Textures/Items/Gems/BlueGem-Sheet.png" iconpath="Assets/Textures/Items/Gems/BlueGem.png" map="2"/>
+	<item type ="Battery" x="800" y="450" texturepath="Assets/Textures/Items/Batteries/Battery-Sheet.png" iconpath="Assets/Textures/Items/Batteries/Battery.png" map="3"/>
 	  
   </sceneGameplay>
 
   <map>
     <mapfolder path="Assets/Maps/"/>
-	  <mapfile_1 path="Assets/Maps/mapfinal1280.tmx"/>
-	  <mapfile_extra_1 path="Assets/Maps/JovaniJV.tmx"/>
-	  <mapfile_extra_2 path="Assets/Maps/Sala_Cofre.tmx"/>
-	  <mapfile_2 path="Assets/Maps/InfernalMap1.tmx"/>
-	  <mapfile_3 path="Assets/Maps/InfernalMap2.tmx"/>
-	  <mapfile_4 path="Assets/Maps/InfernalMap3.tmx"/>
-	  <mapfile_5 path="Assets/Maps/InfernalMap4.tmx"/>
-	  <mapfile_6 path="Assets/Maps/MapaInfernalBoss.tmx"/>
-	  <mapfile_Puzzle_1 path="Assets/Maps/InfernalMapPuzzle1.tmx"/>
-	  <mapfile_Puzzle_2 path="Assets/Maps/InfernalMapPuzzle2.tmx"/>
-	  <mapfile_Puzzle_3 path="Assets/Maps/InfernalMapPuzzle3.tmx"/>
+	<mapfile_1 path="Assets/Maps/mapfinal1280.tmx"/>
+	<mapfile_extra_1 path="Assets/Maps/JovaniJV.tmx"/>
+	<mapfile_extra_2 path="Assets/Maps/InfernalMapJovani2.tmx"/>
+	<mapfile_2 path="Assets/Maps/InfernalMap1.tmx"/>
+	<mapfile_3 path="Assets/Maps/InfernalMap2.tmx"/>
+	<mapfile_4 path="Assets/Maps/InfernalMap3.tmx"/>
+	<mapfile_5 path="Assets/Maps/InfernalMap4.tmx"/>
+	<mapfile_6 path="Assets/Maps/MapaInfernalBoss.tmx"/>
+	<mapfile_Puzzle_1 path="Assets/Maps/InfernalMapPuzzle1.tmx"/>
+	<mapfile_Puzzle_2 path="Assets/Maps/InfernalMapPuzzle2.tmx"/>
+	<mapfile_Puzzle_3 path="Assets/Maps/InfernalMapPuzzle3.tmx"/>
 
   </map>
   

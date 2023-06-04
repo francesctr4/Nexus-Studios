@@ -19,13 +19,13 @@ class PathFinding : public Module
 {
 public:
 
-	PathFinding(bool startEnabled);
+	explicit PathFinding(bool startEnabled);
 
 	// Destructor
 	~PathFinding();
 
 	// Called before quitting
-	bool CleanUp();
+	bool CleanUp() override;
 
 	// Sets up the walkability map
 	void SetMap(uint width, uint height, uchar* data);

@@ -12,10 +12,16 @@
 #include "Pause.h"
 #include "Tweening.h"
 #include "Timer.h"
+#include "Infierno.h"
 
 #include "Puzzle1.h"
 #include "Puzzle2.h"
 #include "Puzzle3.h"
+
+#include "Particle.h"
+#include "ParticlePool.h"
+#include "Emitter.h"
+#include "Point.h"
 
 struct SDL_Texture;
 
@@ -23,40 +29,48 @@ class SceneGameplay : public Module
 {
 public:
 
-	SceneGameplay(bool startEnabled);
+	explicit SceneGameplay(bool startEnabled);
 
 	// Destructor
 	virtual ~SceneGameplay();
 
-	bool Awake(pugi::xml_node& config);
+	bool Awake(pugi::xml_node& config) override;
+
 
 	// Called before the first frame
-	bool Start();
+	bool Start() override;
 
 	// Called before all Updates
-	bool PreUpdate();
+	bool PreUpdate() override;
 
 	// Called each loop iteration
-	bool Update(float dt);
+	bool Update(float dt) override;
 
 	// Called after all Updates
-	bool PostUpdate();
+	bool PostUpdate() override;
 
 	// Called before quitting
-	bool CleanUp();
+	bool CleanUp() override;
 
-	bool OnGuiMouseClickEvent(GuiControl* control);
+	bool OnGuiMouseClickEvent(GuiControl* control) override;
 
 	void CheckEvent();
+
+	void LoadMapEntities(int map);
+	void UnloadMapEntities();
+
+	bool IsAnyNpcDialogueActivated();
+
+	void LoadMap(int map);
 
 public:
 
 	bool enableMusic;
 
+	pugi::xml_node xml_node;
+
 	Player* player;
-	bool map_selector = false;
-	bool infierno = false;
-	int actually = 0;
+
 
 	/*SDL_Texture* Juan;
 	Tween Juan_anim;*/
@@ -64,14 +78,11 @@ public:
 	std::vector<Enemy*> enemies;
 	std::vector<Item*> items;
 	std::vector<NPC*> npcs;
-
 	// Menus
 
 	FeatureMenu featureMenu;
 	Pause pause;
-
 	//Quests
-
 	int r = 0; //Times you completed any mision
 	
 	//Triggers
@@ -90,31 +101,17 @@ public:
 	Puzzle2 puzzle2;
 	Puzzle3 puzzle3;
 
-	PhysBody* TP_Infierno_0;
-	PhysBody* TP_Infierno_1;
-	PhysBody* TP_Infierno_2;
-	PhysBody* TP_Infierno_3;
-	PhysBody* TP_Infierno_4;
-	PhysBody* TP_Infierno_5;
-	PhysBody* TP_Infierno_Cofre;
-	PhysBody* TP_Infierno_Jovani;
-	PhysBody* Tp_Puzzle1;
-	PhysBody* Tp_Puzzle2;
-	PhysBody* Tp_Puzzle3;
-	
-	bool Tp_0 = true;
-	bool Tp_1 = true;
-	bool Tp_2 = true;
-	bool Tp_3 = true;
-	bool Tp_4 = true;
-	bool Tp_5 = true;
-	bool Tp_Cofre = true;
-	bool Tp_Jovani = true;
-	bool Tp_Puzzle_1 = true;
-	bool Tp_Puzzle_2 = true;
-	bool Tp_Puzzle_3 = true;
-	bool Tp_Boss = true;
-
 	uint endingScreenFX;
+
+	Infierno mapa_Infierno;
+	
+	PhysBody* prova;
+
+	// Particles
+
+	Emitter* eWave_1 = nullptr;
+	Emitter* eWave_2 = nullptr;
+	Emitter* eBurst_1 = nullptr;
+	Emitter* eBurst_2 = nullptr;
 
 };

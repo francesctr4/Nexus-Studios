@@ -21,7 +21,7 @@ class Entity
 {
 public:
 
-	Entity(EntityType type) : type(type), active(true) {}
+	explicit Entity(EntityType type) : type(type), active(true), aparicion(NULL) {}
 
 	virtual bool Awake()
 	{
@@ -60,6 +60,9 @@ public:
 			active = true;
 			Start();
 		}
+		else {
+			return;
+		}
 	}
 
 	void Entity::Disable()
@@ -68,6 +71,9 @@ public:
 		{
 			active = false;
 			CleanUp();
+		}
+		else {
+			return;
 		}
 	}
 
@@ -88,7 +94,8 @@ public:
 
 	// Possible properties, it depends on how generic we
 	// want our Entity class, maybe it's not renderable...
-	iPoint position;       
+	iPoint position;     
+	int aparicion;
 	bool renderable = true;
 };
 

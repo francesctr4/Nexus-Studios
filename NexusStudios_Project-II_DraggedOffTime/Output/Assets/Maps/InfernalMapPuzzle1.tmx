@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="10">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="11">
  <tileset firstgid="1" name="InfernalTiles" tilewidth="16" tileheight="16" tilecount="625" columns="25">
   <image source="InfernalTiles.png" width="400" height="400"/>
   <wangsets>
@@ -18096,6 +18096,9 @@
   </object>
   <object id="9" x="528" y="352">
    <polygon points="0,0 0,48 64,48 64,144 96,144 96,48 176,48 176,0"/>
+  </object>
+  <object id="10" x="-0.333333" y="368.333">
+   <polygon points="0,0 0.333333,-112.667 3,-112.333 2.33333,1"/>
   </object>
  </objectgroup>
 </map>

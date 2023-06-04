@@ -240,9 +240,19 @@ bool Physics::PostUpdate()
 	// You need to provide your own macro to translate meters to pixels
 	if (debug)
 	{
-		for (b2Body* b = world->GetBodyList(); b; b = b->GetNext())
+		for (b2Body* body = world->GetBodyList(); body; body = body->GetNext())
 		{
-			for (b2Fixture* f = b->GetFixtureList(); f; f = f->GetNext())
+			int r = 255;
+			int g = 255;
+			int b = 255;
+
+			if (!body->IsActive())
+			{
+				g = 0;
+				b = 0;
+			}
+
+			for (b2Fixture* f = body->GetFixtureList(); f; f = f->GetNext())
 			{
 				switch (f->GetType())
 				{
@@ -253,7 +263,7 @@ bool Physics::PostUpdate()
 					uint width, height;
 					app->win->GetWindowSize(width, height);
 					b2Vec2 pos = f->GetBody()->GetPosition();
-					app->render->DrawCircle(METERS_TO_PIXELS(pos.x), METERS_TO_PIXELS(pos.y), METERS_TO_PIXELS(shape->m_radius) * app->win->GetScale(), 255, 255, 255);
+					app->render->DrawCircle(METERS_TO_PIXELS(pos.x), METERS_TO_PIXELS(pos.y), METERS_TO_PIXELS(shape->m_radius) * app->win->GetScale(), r, g, b);
 
 				}
 				break;
@@ -267,15 +277,15 @@ bool Physics::PostUpdate()
 
 					for (int32 i = 0; i < count; ++i)
 					{
-						v = b->GetWorldPoint(polygonShape->GetVertex(i));
+						v = body->GetWorldPoint(polygonShape->GetVertex(i));
 						if (i > 0)
-							app->render->DrawLine(METERS_TO_PIXELS(prev.x), METERS_TO_PIXELS(prev.y), METERS_TO_PIXELS(v.x), METERS_TO_PIXELS(v.y), 255, 255, 100);
+							app->render->DrawLine(METERS_TO_PIXELS(prev.x), METERS_TO_PIXELS(prev.y), METERS_TO_PIXELS(v.x), METERS_TO_PIXELS(v.y), r, g, b);
 
 						prev = v;
 					}
 
-					v = b->GetWorldPoint(polygonShape->GetVertex(0));
-					app->render->DrawLine(METERS_TO_PIXELS(prev.x), METERS_TO_PIXELS(prev.y), METERS_TO_PIXELS(v.x), METERS_TO_PIXELS(v.y), 255, 100, 100);
+					v = body->GetWorldPoint(polygonShape->GetVertex(0));
+					app->render->DrawLine(METERS_TO_PIXELS(prev.x), METERS_TO_PIXELS(prev.y), METERS_TO_PIXELS(v.x), METERS_TO_PIXELS(v.y), r, g, b);
 				}
 				break;
 
@@ -287,14 +297,14 @@ bool Physics::PostUpdate()
 
 					for (int32 i = 0; i < shape->m_count; ++i)
 					{
-						v = b->GetWorldPoint(shape->m_vertices[i]);
+						v = body->GetWorldPoint(shape->m_vertices[i]);
 						if (i > 0)
-							app->render->DrawLine(METERS_TO_PIXELS(prev.x), METERS_TO_PIXELS(prev.y), METERS_TO_PIXELS(v.x), METERS_TO_PIXELS(v.y), 100, 255, 100);
+							app->render->DrawLine(METERS_TO_PIXELS(prev.x), METERS_TO_PIXELS(prev.y), METERS_TO_PIXELS(v.x), METERS_TO_PIXELS(v.y), r, g, b);
 						prev = v;
 					}
 
-					v = b->GetWorldPoint(shape->m_vertices[0]);
-					app->render->DrawLine(METERS_TO_PIXELS(prev.x), METERS_TO_PIXELS(prev.y), METERS_TO_PIXELS(v.x), METERS_TO_PIXELS(v.y), 100, 255, 100);
+					v = body->GetWorldPoint(shape->m_vertices[0]);
+					app->render->DrawLine(METERS_TO_PIXELS(prev.x), METERS_TO_PIXELS(prev.y), METERS_TO_PIXELS(v.x), METERS_TO_PIXELS(v.y), r, g, b);
 				}
 				break;
 
@@ -304,9 +314,9 @@ bool Physics::PostUpdate()
 					b2EdgeShape* shape = (b2EdgeShape*)f->GetShape();
 					b2Vec2 v1, v2;
 
-					v1 = b->GetWorldPoint(shape->m_vertex0);
-					v1 = b->GetWorldPoint(shape->m_vertex1);
-					app->render->DrawLine(METERS_TO_PIXELS(v1.x), METERS_TO_PIXELS(v1.y), METERS_TO_PIXELS(v2.x), METERS_TO_PIXELS(v2.y), 100, 100, 255);
+					v1 = body->GetWorldPoint(shape->m_vertex0);
+					v1 = body->GetWorldPoint(shape->m_vertex1);
+					app->render->DrawLine(METERS_TO_PIXELS(v1.x), METERS_TO_PIXELS(v1.y), METERS_TO_PIXELS(v2.x), METERS_TO_PIXELS(v2.y), r, g, b);
 				}
 				break;
 				}

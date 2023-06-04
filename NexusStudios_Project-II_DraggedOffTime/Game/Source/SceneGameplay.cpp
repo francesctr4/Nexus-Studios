@@ -14,11 +14,12 @@
 #include "SceneTitle.h"
 #include "Tweening.h"
 #include "QuestManager.h"
+#include "Infierno.h"
 
 #include "SceneGameplay.h"
 #include "Puzzle1.h"
 
-#include "SDL_mixer/include/SDL_mixer.h"
+#include "SDL_mixer/include/SDL_mixer.h" 
 
 SceneGameplay::SceneGameplay(bool startEnabled) : Module(startEnabled)
 {
@@ -33,35 +34,41 @@ bool SceneGameplay::Awake(pugi::xml_node& config)
 {
 	player = (Player*)app->entityManager->CreateEntity(EntityType::PLAYER);
 	player->parameters = config.child("player");
-
-	for (pugi::xml_node npcNode = config.child("npc"); npcNode; npcNode = npcNode.next_sibling("npc"))
+	xml_node = config;
+	/*for (pugi::xml_node npcNode = config.child("npc"); npcNode; npcNode = npcNode.next_sibling("npc"))
 	{
 		NPC* npc = (NPC*)app->entityManager->CreateEntity(EntityType::NPC);
 		npc->parameters = npcNode;
 
 		npcs.push_back(npc);
+	}*/
 
-	}
+	//for (pugi::xml_node enemyNode = config.child("enemy"); enemyNode; enemyNode = enemyNode.next_sibling("enemy"))
+	//{
+	//	Enemy* enemy = (Enemy*)app->entityManager->CreateEntity(EntityType::ENEMY);
+	//	enemy->parameters = enemyNode;
 
-	for (pugi::xml_node enemyNode = config.child("enemy"); enemyNode; enemyNode = enemyNode.next_sibling("enemy"))
-	{
-		Enemy* enemy = (Enemy*)app->entityManager->CreateEntity(EntityType::ENEMY);
-		enemy->parameters = enemyNode;
+	//	enemies.push_back(enemy);
 
-		enemies.push_back(enemy);
+	//}
 
-	}
-
-	for (pugi::xml_node itemNode = config.child("item"); itemNode; itemNode = itemNode.next_sibling("item"))
+	/*for (pugi::xml_node itemNode = config.child("item"); itemNode; itemNode = itemNode.next_sibling("item"))
 	{
 		Item* item = (Item*)app->entityManager->CreateEntity(EntityType::ITEM);
 		item->parameters = itemNode;
 
 		items.push_back(item);
 
-	}
+	}*/
+
+	xml_node = config;
 	
 	return true;
+}
+
+void LoadMapEntities()
+{
+	
 }
 
 // Called before the first frame
@@ -80,9 +87,8 @@ bool SceneGameplay::Start()
 	enableMusic = true;
 
 	// Pause
-
-	pause.Load();
-
+	pause.Load(); 
+	
 	// Stats
 
 	featureMenu.Load();
@@ -112,6 +118,22 @@ bool SceneGameplay::Update(float dt)
 {
 	OPTICK_EVENT();
 
+	if (app->input->GetKey(SDL_SCANCODE_8) == KEY_DOWN)
+	{
+		int mx, my;
+		app->input->GetMousePosition(mx, my);
+		fPoint pos((float)mx, (float)my);
+		eWave_1 = app->particleSystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_WAVE_1);
+		eBurst_1 = app->particleSystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_BURST);
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_9) == KEY_DOWN)
+	{
+		fPoint pos((float)app->sceneGameplay->player->position.x + 16, (float)app->sceneGameplay->player->position.y + 16);
+		eWave_2 = app->particleSystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_WAVE_2);
+		eBurst_2 = app->particleSystem->AddEmiter(pos, EmitterType::EMITTER_TYPE_BURST);
+	}
+
 	if (app->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN) {
 
 		app->SaveGameRequest();
@@ -123,263 +145,6 @@ bool SceneGameplay::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_F6) == KEY_DOWN)
 		app->LoadGameRequest();
 
-	//Player
-
-	if (player->godMode == true)
-	{
-		
-		if (infierno == true && app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN )
-		{
-			
-			app->map->CleanUp();
-			app->map->actualmap = 0;
-			bool retLoad = app->map->Load();
-			infierno = false;
-			app->sceneGameplay->player->Teleport(200, 671);
-
-			//Move Npcs Map_1
-			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			
-			npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			
-			npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
-			npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
-
-			//Move Enemies Map_1
-			enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			
-			enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-
-		}
-		if (infierno == true && app->input->GetKey(SDL_SCANCODE_0) == KEY_DOWN)
-		{
-
-			app->map->CleanUp();
-			app->map->actualmap = 1;
-			bool retLoad = app->map->Load();
-			infierno = false;
-			app->sceneGameplay->player->Teleport(650, 700);
-
-			//Move Npcs Map_1
-			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
-			npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(650),PIXEL_TO_METERS(260) }, 0);
-
-			//Move Enemies Map_1
-			enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-
-		}
-		if (infierno == true && app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
-		{
-			app->map->CleanUp();
-			app->map->actualmap = 2;
-			bool retLoad = app->map->Load();
-			infierno = false;
-			app->sceneGameplay->player->Teleport(1265, 560);
-			
-			//Move Npcs Map_2
-			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			//Move Enemies Map_2
-			enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-		}
-	
-		if (infierno == true && app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
-		{
-
-			app->map->CleanUp();
-			app->map->actualmap = 3;
-			bool retLoad = app->map->Load();
-			infierno = false;
-			app->sceneGameplay->player->Teleport(1255, 106);
-			
-			//Move Npcs Map_3
-			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			//Move Enemies Map_3
-			enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
-			enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
-		}
-
-		if (infierno == true && app->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
-		{
-
-			app->map->CleanUp();
-			app->map->actualmap = 4;
-			bool retLoad = app->map->Load();
-			infierno = false;
-			app->sceneGameplay->player->Teleport(650, 700);
-
-			//Move Npcs Map_3
-			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			//Move Enemies Map_3
-			enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
-			enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
-		}
-
-		if (infierno == true && app->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN)
-		{
-			app->map->CleanUp();
-			app->map->actualmap = 5;
-			bool retLoad = app->map->Load();
-			infierno = false;
-			app->sceneGameplay->player->Teleport(650, 700);
-
-			//Move Npcs Map_3
-			npcs.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			npcs.at(0)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			npcs.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			npcs.at(1)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			npcs.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			npcs.at(2)->npcSensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			//Move Enemies Map_3
-			enemies.at(0)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(0)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			enemies.at(1)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(1)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			enemies.at(2)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-			enemies.at(2)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(123297) }, 0);
-
-			enemies.at(3)->pbody->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
-			enemies.at(3)->enemySensor->body->SetTransform({ PIXEL_TO_METERS(834752),PIXEL_TO_METERS(834752) }, 0);
-		}
-		if (infierno == true && app->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
-		{
-			app->map->CleanUp();
-			app->map->actualmap = 6;
-			bool retLoad = app->map->Load();
-			infierno = false;
-			app->sceneGameplay->player->Teleport(10, 300);
-		}
-		if (infierno == true && app->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN)
-		{
-			app->map->CleanUp();
-			app->map->actualmap = 7;
-			bool retLoad = app->map->Load();
-			infierno = false;
-			app->sceneGameplay->player->Teleport(12, 600);
-			
-		}
-		if (infierno == true && app->input->GetKey(SDL_SCANCODE_7) == KEY_DOWN)
-		{
-			app->map->CleanUp();
-			app->map->actualmap = 8;
-			bool retLoad = app->map->Load();
-			infierno = false;
-			app->sceneGameplay->player->Teleport(650, 700);
-		}
-		if (infierno == true && app->input->GetKey(SDL_SCANCODE_8) == KEY_DOWN)
-		{
-			app->map->CleanUp();
-			app->map->actualmap = 4;
-			bool retLoad = app->map->Load();
-			infierno = false;
-			app->sceneGameplay->player->Teleport(650, 700);
-		}
-		if (infierno == true && app->input->GetKey(SDL_SCANCODE_9) == KEY_DOWN)
-		{
-			app->map->CleanUp();
-			app->map->actualmap = 5;
-			bool retLoad = app->map->Load();
-			infierno = false;
-			app->sceneGameplay->player->Teleport(650, 700);
-		}
-
-		if (app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN && infierno == false)
-		{
-			map_selector = !map_selector;
-		}
-		if (app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
-		{
-			infierno = !infierno;
-		}
-		if (app->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN && infierno == true)
-		{
-			infierno = false;
-		}
-	}
 
 	if (!app->entityManager->IsEnabled()) {
 
@@ -405,19 +170,7 @@ bool SceneGameplay::Update(float dt)
 
 	// Stats
 	featureMenu.Update();
-	//bool activad = false;
-	//if (app->input->GetKey(SDL_SCANCODE_U) == KEY_DOWN)
-	//{
-	//	activad = !activad;
-	//}
-	//
-	////La textura ya esta aplicada, aplicar un v2V
-	//app->render->DrawTexture(Juan,0,0);
-	//if (app->input->GetKey(SDL_SCANCODE_0) == KEY_DOWN)
-	//{
-	//	Juan_anim.crear_Animation(Juan, {15,15}, { 500,500 }, activad);
-	//}
-	//
+
 
 	//Quests
 	CheckEvent();
@@ -479,67 +232,6 @@ bool SceneGameplay::Update(float dt)
 		puzzle1.canLoad = true;
 	}
 	
-	
-
-	//Charge all the sensors on the different maps
-	if (app->map->actualmap == 0 && Tp_0 == true)
-	{
-		TP_Infierno_0 = app->physics->CreateRectangleSensor(1168, 365, 50, 50, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
-		Tp_0 = false;
-	}
-	
-	if (app->map->actualmap == 1 && Tp_1 == true)
-	{
-		TP_Infierno_1 = app->physics->CreateRectangleSensor(0, 550, 9, 95, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
-		Tp_1 = false;
-	}
-	if (app->map->actualmap == 2 && Tp_2 == true)
-	{
-		TP_Infierno_2 = app->physics->CreateRectangleSensor(0, 350, 9, 95, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
-		Tp_2 = false;
-	}
-	
-	if (app->map->actualmap == 3 && Tp_3 == true)
-	{
-		TP_Infierno_3 = app->physics->CreateRectangleSensor(1273, 590, 9, 95, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
-		Tp_3 = false;
-	}
-
-	if (app->map->actualmap == 3 && Tp_Cofre == true)
-	{
-		TP_Infierno_Cofre = app->physics->CreateRectangleSensor(1180, 255, 20, 9, bodyType::KINEMATIC, ColliderType::TELEPORT_JOVANI);
-		Tp_Cofre = false;
-	}
-
-	if (app->map->actualmap == 6 && Tp_Puzzle_1 == true)
-	{
-		TP_Infierno_4 = app->physics->CreateRectangleSensor(1280, 210, 9, 95, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
-		Tp_4 = false;
-	}
-	if (app->map->actualmap == 7 && Tp_Puzzle_2 == true)
-	{
-		TP_Infierno_Jovani = app->physics->CreateRectangleSensor(610, 0, 95, 9, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
-		Tp_Jovani = false;
-	}
-
-	if (app->map->actualmap == 8 && Tp_Puzzle_3 == true)
-	{
-		TP_Infierno_Jovani = app->physics->CreateRectangleSensor(610, 0, 20, 9, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
-		Tp_Jovani = false;
-	}
-	//Puzzle3
-	if (app->map->actualmap == 4 && Tp_4 == true)
-	{
-		TP_Infierno_Jovani = app->physics->CreateRectangleSensor(610, 0, 20, 9, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
-		Tp_4 = false;
-	}
-	//BossFinal
-	if (app->map->actualmap == 5 && Tp_5 == true)
-	{
-		TP_Infierno_Jovani = app->physics->CreateRectangleSensor(960,80, 20, 20, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
-		Tp_5 = false;
-	}
-
 	// Go to Ending Screen
 
 	if (app->input->GetKey(SDL_SCANCODE_M) == KEY_DOWN) {
@@ -548,6 +240,7 @@ bool SceneGameplay::Update(float dt)
 		app->fadeToBlack->Fade(this, (Module*)app->sceneEnding);
 
 	}
+	mapa_Infierno.Update();
 	
 	return true;
 }
@@ -565,26 +258,6 @@ bool SceneGameplay::PostUpdate()
 
 	//Player
 
-	if (player->godMode == true)
-	{
-
-		app->render->DrawText("GODMODE", 100, 100, 90, 40, { 255, 255, 255, 255 });
-		app->render->DrawText("1. Maps", 150, 150, 60, 20, { 255, 255, 255, 255 });
-		
-		if (map_selector == true)
-		{
-			app->render->DrawText("Mapa Infierno", 260, 150, 125, 20, { 255, 255, 255, 255 });
-			if(infierno == true)
-			{
-				app->render->DrawText("   1st Room", 400, 150, 125, 20, { 255, 255, 255, 255 });
-				app->render->DrawText("   2nd Room", 400, 180, 125, 20, { 255, 255, 255, 255 });
-				app->render->DrawText("   3st Room", 400, 210, 125, 20, { 255, 255, 255, 255 });
-				app->render->DrawText("   4th Room", 400, 240, 125, 20, { 255, 255, 255, 255 });
-			}
-		}
-		
-	}
-
 	if (pause.Exit->state == GuiControlState::PRESSED) ret = false;
 
 	// Stats
@@ -597,7 +270,6 @@ bool SceneGameplay::PostUpdate()
 // Called before quitting
 bool SceneGameplay::CleanUp()
 {
-	LOG("Freeing scene");
 	//app->map->CleanUp();
 	//app->physics->CleanUp();
 	return true;
@@ -701,5 +373,104 @@ void SceneGameplay::CheckEvent()
 			break;
 		}
 	}
+}
+
+void SceneGameplay::LoadMapEntities(int map)
+{
+	
+	for (pugi::xml_node npcNode = xml_node.child("npc"); npcNode; npcNode = npcNode.next_sibling("npc"))
+	{
+		//int aparicion = npcNode.attribute("map").as_int();
+		int aparicion = 0;
+
+		if (aparicion == map)
+		{
+			NPC* npc = (NPC*)app->entityManager->CreateEntity(EntityType::NPC);
+			npc->parameters = npcNode;
+			npc->Awake();
+			npc->Start();
+			npcs.push_back(npc);
+		}
+	}
+
+	for (pugi::xml_node enemyNode = xml_node.child("enemy"); enemyNode; enemyNode = enemyNode.next_sibling("enemy"))
+	{
+		//int aparicion = enemyNode.attribute("map").as_int();
+		int aparicion = 0;
+
+		if (aparicion == map)
+		{
+			Enemy* enemy = (Enemy*)app->entityManager->CreateEntity(EntityType::ENEMY);
+			enemy->parameters = enemyNode;
+			enemy->Awake();
+			enemy->Start();
+
+			enemies.push_back(enemy);
+		}
+	}
+
+	for (pugi::xml_node itemNode = xml_node.child("item"); itemNode; itemNode = itemNode.next_sibling("item"))
+	{
+		//int aparicion = itemNode.attribute("map").as_int();
+		int aparicion = 0;
+
+		if (aparicion == map)
+		{
+			Item* item = (Item*)app->entityManager->CreateEntity(EntityType::ITEM);
+			item->parameters = itemNode;
+			item->Awake();
+			item->Start();
+			items.push_back(item);
+		}
+	}
+}
+
+void SceneGameplay::UnloadMapEntities()
+{
+	for (std::vector<Enemy*>::iterator it = enemies.begin(); it != enemies.end(); ++it) 
+	{
+		app->entityManager->DestroyEntity(*it);
+	}
+
+	enemies.clear();
+
+	for (std::vector<NPC*>::iterator it = npcs.begin(); it != npcs.end(); ++it)
+	{
+		app->entityManager->DestroyEntity(*it);
+	}
+
+	npcs.clear();
+	
+	for (std::vector<Item*>::iterator it = items.begin(); it != items.end(); ++it)
+	{
+		app->entityManager->DestroyEntity(*it);
+	}
+
+	items.clear();
+}
+
+bool SceneGameplay::IsAnyNpcDialogueActivated()
+{
+
+	for (std::vector<NPC*>::iterator it = npcs.begin(); it != npcs.end(); ++it)
+	{
+		if ((*it)->dialogueActivated)
+		{
+			return true;
+		}
+	}
+
+	
+	return false;
+}
+
+void SceneGameplay::LoadMap(int map)
+{
+	app->map->CleanUp();
+	app->sceneGameplay->UnloadMapEntities();
+	app->map->actualmap = map;
+	app->map->Load();
+	app->sceneGameplay->LoadMapEntities(map);
+
 }
 

@@ -19,6 +19,12 @@
 SceneEnding::SceneEnding(bool startEnabled) : Module(startEnabled)
 {
 	name.Create("sceneEnding");
+
+	enableMusic = true;
+
+	endingScreen = nullptr;
+	currentAnimation = nullptr;
+
 }
 
 // Destructor
@@ -53,14 +59,13 @@ bool SceneEnding::Awake(pugi::xml_node& config)
 	ending.loop = true;
 	ending.speed = 0.5f;
 
+
 	return true;
 }
 
 // Called before the first frame
 bool SceneEnding::Start()
 {
-	enableMusic = true;
-
 	endingScreen = app->tex->Load("Assets/Textures/EndingScreen.png");
 
 	currentAnimation = &ending;
@@ -93,8 +98,8 @@ bool SceneEnding::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_START] == KEY_DOWN) {
 
 		enableMusic = true;
-		app->fadeToBlack->Fade(this, (Module*)app->sceneTitle);
-
+		//app->fadeToBlack->Fade(this, (Module*)app->sceneTitle);
+		app->fadeToBlack->Fade(this, reinterpret_cast<Module*>(app->sceneTitle));
 	}
 
 	currentAnimation->Update();
@@ -122,7 +127,6 @@ bool SceneEnding::PostUpdate()
 // Called before quitting
 bool SceneEnding::CleanUp()
 {
-	LOG("Freeing scene");
 
 	return true;
 }

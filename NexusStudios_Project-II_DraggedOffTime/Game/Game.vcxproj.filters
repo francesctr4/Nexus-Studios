@@ -118,6 +118,21 @@
     <ClCompile Include="Source\SceneEnding.cpp">
       <Filter>Game Loop\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Infierno.cpp">
+      <Filter>Game Loop\Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Emitter.cpp">
+      <Filter>Game Loop\Features\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Particle.cpp">
+      <Filter>Game Loop\Features\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ParticlePool.cpp">
+      <Filter>Game Loop\Features\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ParticleSystem.cpp">
+      <Filter>Game Loop\Features\Particles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -270,6 +285,21 @@
     <ClInclude Include="Source\SceneEnding.h">
       <Filter>Game Loop\Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Infierno.h">
+      <Filter>Game Loop\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Emitter.h">
+      <Filter>Game Loop\Features\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Particle.h">
+      <Filter>Game Loop\Features\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ParticlePool.h">
+      <Filter>Game Loop\Features\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ParticleSystem.h">
+      <Filter>Game Loop\Features\Particles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
@@ -308,5 +338,25 @@
     <Filter Include="Game Loop\Features\Puzzles">
       <UniqueIdentifier>{6e898ac2-29d0-4e77-bfc4-e50597056347}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game Loop\Maps">
+      <UniqueIdentifier>{f08b522b-b69e-45e9-b429-0d200963118f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Loop\Features\Particles">
+      <UniqueIdentifier>{58cec054-f3bb-423a-9832-709f43288a13}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\Output\config.xml">
+      <Filter>External</Filter>
+    </Xml>
+    <Xml Include="..\Output\save_game.xml">
+      <Filter>External</Filter>
+    </Xml>
+    <Xml Include="..\Output\quest_data.xml">
+      <Filter>External</Filter>
+    </Xml>
+    <Xml Include="..\Output\psystem_config.xml">
+      <Filter>External</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

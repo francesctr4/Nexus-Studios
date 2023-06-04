@@ -70,27 +70,41 @@ periods and reuniting all the temporal parts of the protagonist.
 
 ### MOUSE ###
 
-	RIGHT CLICK: Interact with the UI
+	LEFT CLICK: Interact with the UI
 
 ### KEYBOARD ###
 	
 	WASD: Move the player around
 	E: Talk with the NPCs
+	T: Change between Dialogue Options
 	SPACE in Gameplay: Skip dialogue
+	I: Open Feature Menu / Close Feature Menu
+	ESC: Open Pause / Close Pause
+	
 	SPACE in Battle: Use selected action
+	Arrows in Battle: Change between actions
+	ENTER in Battle: Exit battle (force)
 	
 	F10: God mode --> Enables Debug Keys
 	ENTER: Next scene
 
-### DEBUG KEYS ###
+### DEBUG KEYS (F10) ###
 
 	Gameplay:
-		M :Change Maps
-		7: Change to second player
+		1 -> 2 -> 0,1,2,3,4,5,6,7,8,9: Change Maps
+		C: Change Between Players
+		M: Go to Ending Screen
+		9: Kill all Enemies
+		F5: Save Request
+		F6: Load Request
+		F8: Show GUI Debug
+		F11: Toggle FPS cap to 30
+		Q: Remove Inventory's Last Item
+		H: Empty Inventory
 	Battle:
 		1: Standard attack
-		2: Quick Time Event attack
-		3: Defend
+		2: Weapon attack
+		3: Skill attack
 		4: Heal yourself
 		5: Run away
 		6: Switch party member

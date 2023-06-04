@@ -27,6 +27,7 @@
 #include "GuiManager.h"
 #include "CombatManager.h"
 #include "QuestManager.h"
+#include "ParticleSystem.h"
 #include "FadeToBlack.h"
 
 // Constructor
@@ -54,6 +55,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	combatManager = new CombatManager(true);
 	entityManager = new EntityManager(true);
 	questManager = new QuestManager(true);
+	particleSystem = new ParticleSystem(true);
 	fadeToBlack = new FadeToBlack(true);
 
 	// Ordered for awake / Start / Update
@@ -77,6 +79,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(combatManager);
 	AddModule(entityManager);
 	AddModule(questManager);
+	AddModule(particleSystem);
 	AddModule(fadeToBlack);
 
 	// Render last to swap buffer
@@ -453,5 +456,18 @@ bool App::SaveToFile()
 
 	saveGameRequested = false;
 
+	return ret;
+}
+
+pugi::xml_node App::LoadEmitters(pugi::xml_document& psystem_file) const
+{
+	pugi::xml_node ret;
+
+	pugi::xml_parse_result result = psystem_file.load_file("psystem_config.xml");
+
+	if (result == NULL)
+		LOG("Could not load xml file config.xml. Pugi error: %s", result.description());
+	else
+		ret = psystem_file.child("emitters");
 	return ret;
 }

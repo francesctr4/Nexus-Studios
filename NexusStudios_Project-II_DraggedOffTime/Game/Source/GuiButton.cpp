@@ -88,7 +88,7 @@ bool GuiButton::Draw(Render* render)
 	{
 
 	case GuiControlState::DISABLED:
-		if (!app->sceneTitle->showSettings && app->sceneTitle->active) {
+		if (!app->sceneTitle->showSettings && app->sceneTitle->active && !app->sceneTitle->showCredits) {
 
 			rect.y = bounds.h * 3;
 			app->render->DrawTexture(tex, -app->render->camera.x + bounds.x, -app->render->camera.y + bounds.y, &rect);

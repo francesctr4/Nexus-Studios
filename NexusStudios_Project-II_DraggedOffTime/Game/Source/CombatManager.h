@@ -15,22 +15,22 @@ class CombatManager : public Module
 {
 public:
 
-	CombatManager(bool startEnabled);
+	explicit CombatManager(bool startEnabled);
 
 	// Destructor
 	virtual ~CombatManager();
 
 	// Called before render is available
-	bool Awake(pugi::xml_node&);
+	bool Awake(pugi::xml_node&) override;
 
 	// Called after Awake
-	bool Start();
+	bool Start() override;
 
 	// Called every frame
-	bool Update(float dt);
+	bool Update(float dt) override;
 
 	// Called before quitting
-	bool CleanUp();
+	bool CleanUp() override;
 
 	// Combat handler fuction
 	//void Combat(int p_HP, int p_DEF, int p_DMG, int e_HP, int e_DEF, int e_DMG);
@@ -39,7 +39,7 @@ public:
 	//Combat Fuctions
 	
 	//1.Deal standar attack (Return e_HP)
-	int NormalAttack(int p_DMG, int e_HP, int e_DEF, bool timing, int num_hits);
+	int NormalAttack(int p_DMG, int e_HP, int e_DEF);
 
 	//2.Deal Quick time event attack (Return e_HP)
 	int WeaponAttack(int p_DMG, int e_HP, int e_DEF, bool timing, int num_hits);
@@ -62,10 +62,14 @@ public:
 	//8.Enemy blocks attack
 	void EnemyBlockAttack();
 
-	
+	//9.Enemy invokes a minion
+	void AddMinion();
 
-	//QuickTimeEvent fuction. Devuelve el valor de qué tan cerca estuvo de hacer clic en el momento adecuado (en ms)
-	//int QuickTimeEvent();
+	//10.Enemy attack to all
+	void EnemyAttackAll(int e_DMG);
+
+	//11.Enemy buff stats
+	void EnemyBuff();
 
 
 

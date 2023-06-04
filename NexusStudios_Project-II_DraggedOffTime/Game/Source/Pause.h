@@ -4,6 +4,7 @@
 #include "GuiButton.h"
 #include "GuiSlider.h"
 #include "GuiCheckBox.h"
+#include "Tweening.h"
 
 struct SDL_Texture;
 
@@ -70,4 +71,31 @@ public:
 	SDL_Texture* back;
 	GuiButton* Back;
 
+	// Tweens Pause
+
+	int offset = 808;
+
+	Tween Animation_Pause;
+	float point_Pause;
+
+	Tween Animation_Resume;
+	float point_Resume;
+
+	Tween Animation_BackTitle;
+	float point_BackTitle;
+
+	Tween Animation_Settings;
+	float point_Settings;
+
+	Tween Animation_Exit;
+	float point_Exit;
+
+	// Tweens Settings
+
+	Tween Animation_BigSettings;
+	float point_BigSettings;
+
+	Tween Animation_Back;
+	float point_Back;
+	
 };

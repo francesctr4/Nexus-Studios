@@ -18,27 +18,51 @@ void Pause::Load()
 
 	PauseTitle = app->tex->Load("Assets/UI/PauseTitle.png");
 
+	Animation_Pause.Set();
+	Animation_Pause.smoothness = 4;
+	Animation_Pause.AddTween(100, 50, EXPONENTIAL_OUT);
+
 	resume = app->tex->Load("Assets/UI/Resume.png");
 	Resume = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, resume, "", { 560,267,154,38 }, (Module*)app->sceneGameplay);
 	Resume->state = GuiControlState::DISABLED;
+
+	Animation_Resume.Set();
+	Animation_Resume.smoothness = 4;
+	Animation_Resume.AddTween(100, 50, EXPONENTIAL_OUT);
 
 	settings = app->tex->Load("Assets/UI/PauseSettings.png");
 	Settings = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, settings, "", { 544,374,186,42 }, (Module*)app->sceneGameplay);
 	Settings->state = GuiControlState::DISABLED;
 
+	Animation_Settings.Set();
+	Animation_Settings.smoothness = 4;
+	Animation_Settings.AddTween(100, 50, EXPONENTIAL_IN);
+
 	backTitle = app->tex->Load("Assets/UI/BackTitle.png");
 	BackTitle = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, backTitle, "", { 502,481,270,38 }, (Module*)app->sceneGameplay);
 	BackTitle->state = GuiControlState::DISABLED;
 
+	Animation_BackTitle.Set();
+	Animation_BackTitle.smoothness = 4;
+	Animation_BackTitle.AddTween(100, 50, EXPONENTIAL_OUT);
+
 	exit = app->tex->Load("Assets/UI/PauseExit.png");
 	Exit = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 5, exit, "", { 592,588,90,38 }, (Module*)app->sceneGameplay);
 	Exit->state = GuiControlState::DISABLED;
+
+	Animation_Exit.Set();
+	Animation_Exit.smoothness = 4;
+	Animation_Exit.AddTween(100, 50, EXPONENTIAL_IN);
 
 	//Settings UI
 
 	showSettings = false;
 
 	SettingsTitle = app->tex->Load("Assets/UI/SettingsTitle.png");
+
+	Animation_BigSettings.Set();
+	Animation_BigSettings.smoothness = 4;
+	Animation_BigSettings.AddTween(100, 50, EXPONENTIAL_OUT);
 
 	checkBox = app->tex->Load("Assets/UI/CheckBox.png");
 
@@ -78,10 +102,72 @@ void Pause::Load()
 	back = app->tex->Load("Assets/UI/Back.png");
 	Back = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 6, back, "", { 586,622,102,38 }, (Module*)app->sceneGameplay);
 	Back->state = GuiControlState::DISABLED;
+
+	Animation_Back.Set();
+	Animation_Back.smoothness = 4;
+	Animation_Back.AddTween(100, 50, EXPONENTIAL_IN);
+
 }
 
 void Pause::Update()
 {
+	// Tweens logic
+
+	Animation_Pause.Step(1, false);
+	Animation_Resume.Step(1, false);
+	Animation_Settings.Step(1, false);
+	Animation_BackTitle.Step(1, false);
+	Animation_Exit.Step(1, false);
+
+	Animation_BigSettings.Step(1, false);
+	Animation_Back.Step(1, false);
+
+	if (showPause)
+	{
+		Animation_Pause.Foward();
+		Animation_Resume.Foward();
+		Animation_Settings.Backward();
+		Animation_BackTitle.Foward();
+		Animation_Exit.Backward();
+	}
+	else
+	{
+		Animation_Pause.JumpTo(0, false);
+		Animation_Resume.JumpTo(0, false);
+		Animation_Settings.JumpTo(100, false);
+		Animation_BackTitle.JumpTo(0, false);
+		Animation_Exit.JumpTo(100, false);
+	}
+
+	if (showSettings) {
+
+		Animation_BigSettings.Foward();
+		Animation_Back.Backward();
+
+	}
+	else {
+
+		Animation_BigSettings.JumpTo(0, false);
+		Animation_Back.JumpTo(100, false);
+
+	}
+	
+	point_Pause = Animation_Pause.GetPoint();
+	point_Resume = Animation_Resume.GetPoint();
+	point_Settings = Animation_Settings.GetPoint();
+	point_BackTitle = Animation_BackTitle.GetPoint();
+	point_Exit = Animation_Exit.GetPoint();
+
+	point_BigSettings = Animation_BigSettings.GetPoint();
+	point_Back = Animation_Back.GetPoint();
+
+	Resume->bounds.x = point_Resume * offset - 245;
+	Settings->bounds.x = point_Settings * offset + 544;
+	BackTitle->bounds.x = point_BackTitle * offset - 300;
+	Exit->bounds.x = point_Exit * offset + 594;
+
+	Back->bounds.y = point_Back * offset + 594;
+
 	//UI
 	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_START] == KEY_DOWN) {
 
@@ -177,7 +263,8 @@ void Pause::PostUpdate()
 		if (BackTitle->state == GuiControlState::DISABLED) BackTitle->state = GuiControlState::NORMAL;
 		if (Exit->state == GuiControlState::DISABLED) Exit->state = GuiControlState::NORMAL;
 
-		app->render->DrawTexture(PauseTitle, 512, 143);
+		app->render->DrawTexture(PauseTitle, 512, point_Pause * offset - 660);
+		//app->render->DrawTexture(PauseTitle, 512, 143);
 
 		Resume->Draw(app->render);
 		Settings->Draw(app->render);
@@ -211,8 +298,9 @@ void Pause::PostUpdate()
 		if (FramecapUP->state == GuiControlState::DISABLED) FramecapUP->state = GuiControlState::NORMAL;
 		if (FramecapDOWN->state == GuiControlState::DISABLED) FramecapDOWN->state = GuiControlState::NORMAL;
 
+		//app->render->DrawTexture(SettingsTitle, 449, 73);
+		app->render->DrawTexture(SettingsTitle, 449, point_BigSettings * offset - 734);
 
-		app->render->DrawTexture(SettingsTitle, 449, 73);
 		app->render->DrawTexture(checkBoxFullscreen, 496, 202);
 		app->render->DrawTexture(checkBoxVsync, 496, 279);
 		app->render->DrawTexture(framecap, 496, 356);

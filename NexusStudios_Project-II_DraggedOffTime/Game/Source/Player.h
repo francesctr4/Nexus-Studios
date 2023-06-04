@@ -21,6 +21,7 @@ struct NewPosition {
 struct PlayerStats {
 
 	int level;
+	int currentXP;
 	int next;
 	int hp;
 	int atk;
@@ -37,17 +38,25 @@ public:
 	
 	virtual ~Player();
 
-	bool Awake();
+	bool Awake() override;
 
-	bool Start();
+	bool Start() override;
 
-	bool Update();
+	bool Update() override;
 
-	bool CleanUp();
+	bool CleanUp() override;
 
-	void OnCollision(PhysBody* physA, PhysBody* physB);
+	void OnCollision(PhysBody* physA, PhysBody* physB) override;
 
-	void OnCollisionEnd(PhysBody* physA, PhysBody* physB);
+	void OnCollisionEnd(PhysBody* physA, PhysBody* physB) override;
+
+	// Player Movement Functions
+	void KeyboardMovementManagement();
+	void GamepadMovementManagement();
+
+	// Player Progression Functions
+	void AddXP(int xp, int playerIndex);
+	void PlayerLevelManagement();
 
 	void TeleportCofre();
 	void TeleportJovani();
@@ -56,20 +65,31 @@ public:
 	void TeleportFuturo();
 	void TeleportMedieval();
 
-
 	void Death();
 
 	void Teleport(int x, int y);
 
 public:
 
-	bool godMode;
-
-	PlayerStats playerStats[4];
 	int playerChange;
 	uint changeFX;
 
-	int speed;
+	// Player Progession (Levels) variables
+
+	PlayerStats playerStats[4];
+	SDL_Rect xpAccumulatedRect[4] = { SDL_Rect({ 793,321,243,13 }) , SDL_Rect({ 793,321,243,13 }), SDL_Rect({ 793,321,243,13 }), SDL_Rect({ 793,321,243,13 }) };
+	float fillPercentage[4] = { 0,0,0,0 };
+	int fillWidth[4] = { 0,0,0,0 };
+	uint levelUp;
+
+	bool godMode;
+
+	int speedX;
+	int speedY;
+
+	int speedValue;
+
+	b2Vec2 vel;
 
 	// Declare player parameters
 	SDL_Texture* texture[4];

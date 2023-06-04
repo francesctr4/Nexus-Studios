@@ -136,24 +136,16 @@ bool FadeToBlack::Fade(Module* moduleToDisable, Module* moduleToEnable)
 
 FadeToBlack::FadeToBlack(bool startEnabled) : Module(startEnabled)
 {
-	screenRect = { 0,0,0,0 };
+	
 }
 FadeToBlack::~FadeToBlack()
 {
 
 }
 
-bool FadeToBlack::Awake()
-{
-	screenRect = { 0, 0, (int)app->win->width , (int)app->win->height };
-
-	return true;
-}
-
-
 bool FadeToBlack::Start()
 {
-	LOG("Preparing Fade Screen");
+	screenRect = { 0, 0, (int)app->win->width , (int)app->win->height };
 
 	// Enable blending mode for transparency
 	SDL_SetRenderDrawBlendMode(app->render->renderer, SDL_BLENDMODE_BLEND);

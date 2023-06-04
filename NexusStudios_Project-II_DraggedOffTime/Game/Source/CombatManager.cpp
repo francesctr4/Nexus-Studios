@@ -8,6 +8,9 @@
 
 #include "Defs.h"
 #include "Log.h"
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 CombatManager::CombatManager(bool startEnabled) : Module(startEnabled)
 {
@@ -21,7 +24,6 @@ CombatManager::~CombatManager()
 // Called before render is available
 bool CombatManager::Awake(pugi::xml_node& config)
 {
-	LOG("Loading CombatManager");
 	bool ret = true;
 
 	return ret;
@@ -55,57 +57,51 @@ bool CombatManager::Update(float dt)
 }
 
 //Player actions
-int CombatManager:: NormalAttack(int p_DMG, int e_HP, int e_DEF, bool timing, int num_hits) {
+int CombatManager:: NormalAttack(int p_DMG, int e_HP, int e_DEF) {
 	
-	if (timing)
-	{
-		LOG("Good Timing");	//timing == true
-		int totalDamage;
-		totalDamage = (p_DMG - (e_DEF + enemy_increasedDefense)) * num_hits;	//De momento va a ser el doble del daño del player si aciertas en timing
+	// Timing is false
 
-		if (totalDamage >= e_HP)
-		{
-			enemy_increasedDefense = 0;
-			//Kill enemy
-			return 0;
-		}
-		else
-		{
-			enemy_increasedDefense = 0;
-			//Return amount of e_HP
-			return (e_HP - totalDamage);
-		}
+	int totalDamage;
+	totalDamage = p_DMG - (e_DEF + enemy_increasedDefense);
+
+	if (totalDamage < 0)
+	{
+		return e_HP - 5;
+	}
+
+	if (totalDamage >= e_HP)
+	{
+		enemy_increasedDefense = 0;
+		//Kill enemy
+		return 0;
 	}
 	else
 	{
-		LOG("Bad Timing");	//timing == false
-		int totalDamage;
-		totalDamage = (0.5 * p_DMG - (e_DEF + enemy_increasedDefense)) * num_hits;
-
-		if (totalDamage >= e_HP)
-		{
-			enemy_increasedDefense = 0;
-			//Kill enemy
-			return 0;
-		}
-		else
-		{
-			enemy_increasedDefense = 0;
-			//Return amount of e_HP
-			return (e_HP - totalDamage);
-		}
+		enemy_increasedDefense = 0;
+		//Return amount of e_HP
+		return (e_HP - totalDamage);
 	}
+	
 	
 };
 
 int CombatManager::WeaponAttack(int p_DMG, int e_HP, int e_DEF, bool timing, int num_hits) {
-	//De momento nada, se incluirá en la siguiente versión
+
+	if (num_hits == 0)
+	{
+		return e_HP - 1;
+	}
 	
 	if (timing)
 	{
-		LOG("Good Timing");	//timing == true
+		//timing == true
 		int totalDamage;
-		totalDamage = (1.2 * p_DMG - (e_DEF + enemy_increasedDefense)) * num_hits;	//De momento va a ser el doble del daño del player si aciertas en timing
+		totalDamage = (1.2 * p_DMG) - (e_DEF + enemy_increasedDefense);	//De momento va a ser el doble del daño del player si aciertas en timing
+
+		if (totalDamage < 0)
+		{
+			return e_HP - 5 * num_hits;
+		}
 
 		if (totalDamage >= e_HP)
 		{
@@ -117,14 +113,19 @@ int CombatManager::WeaponAttack(int p_DMG, int e_HP, int e_DEF, bool timing, int
 		{
 			enemy_increasedDefense = 0;
 			//Return amount of e_HP
-			return (e_HP - totalDamage);
+			return (e_HP - totalDamage * num_hits);
 		}
 	}
 	else
 	{
-		LOG("Bad Timing");	//timing == false
+		//timing == false
 		int totalDamage;
-		totalDamage = (0.75 * p_DMG - (e_DEF + enemy_increasedDefense)) * num_hits;
+		totalDamage = (0.5 * p_DMG) - (e_DEF + enemy_increasedDefense);
+
+		if (totalDamage < 0)
+		{
+			return e_HP - 5 * num_hits;
+		}
 
 		if (totalDamage >= e_HP)
 		{
@@ -136,7 +137,7 @@ int CombatManager::WeaponAttack(int p_DMG, int e_HP, int e_DEF, bool timing, int
 		{
 			enemy_increasedDefense = 0;
 			//Return amount of e_HP
-			return (e_HP - totalDamage);
+			return (e_HP - totalDamage * num_hits);
 		}
 	}
 };
@@ -244,6 +245,12 @@ int CombatManager::ChangeParty(int selected_player) {
 		return 0; // Cambiar a player 1
 
 	}
+	else {
+
+		return NULL;
+
+	}
+
 };
 
 //Enemy actions
@@ -274,5 +281,56 @@ int CombatManager::EnemyAttack(int e_DMG, int p_HP, int p_DEF) {
 void CombatManager::EnemyBlockAttack() {
 
 	//Add X ammout of DEF to the enemy for the next turn
-	enemy_increasedDefense = 5; //5 is a placeholder
+	enemy_increasedDefense = 1; 
 }
+
+void CombatManager::AddMinion()
+{
+	if (app->sceneBattle->minion)
+	{
+		app->sceneBattle->m_HP = app->sceneBattle->m_max_HP;
+	}
+	else
+	{
+		app->sceneBattle->minion = true;
+	}
+}
+
+void CombatManager::EnemyAttackAll(int e_DMG)
+{
+	for (int i = 0; i <= 4; i = i+1)
+	{
+		if ((app->sceneBattle->m_players[i].HP - e_DMG) > 0)
+		{
+			app->sceneBattle->m_players[i].HP = app->sceneBattle->m_players[i].HP - e_DMG;
+		}
+		else
+		{
+			app->sceneBattle->m_players[i].HP = 0;
+		};
+	}
+	
+}
+
+void CombatManager::EnemyBuff()
+{
+	//50/50 de subirse el daño o la defensa
+	
+	app->sceneBattle->e_buffed_turns = 2;
+
+	// Semilla para generar números aleatorios
+	std::srand(std::time(nullptr));
+
+	// Generar un número aleatorio entre 0 y 1
+	int randomNum = std::rand() % 2;
+
+	if (randomNum == 0) {
+		//Subir defensa
+		app->sceneBattle->e_DEF = app->sceneBattle->e_DEF + 10;
+	}
+	else {
+		//Subir daño
+		app->sceneBattle->e_DMG = app->sceneBattle->e_DMG + 5;
+	}
+}
+	

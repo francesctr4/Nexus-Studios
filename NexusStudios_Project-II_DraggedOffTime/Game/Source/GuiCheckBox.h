@@ -12,8 +12,8 @@ public:
 	GuiCheckBox(uint32 id, SDL_Rect bounds, SDL_Texture* tex, const char* text);
 	virtual ~GuiCheckBox();
 
-	bool Update(float dt);
-	bool Draw(Render* render);
+	bool Update(float dt) override;
+	bool Draw(Render* render) override;
 
 	int mouseX, mouseY;
 	unsigned int click;

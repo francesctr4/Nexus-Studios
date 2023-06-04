@@ -352,7 +352,6 @@ void FeatureMenu::Update()
 
 void FeatureMenu::PostUpdate()
 {
-
 	app->guiManager->Draw();
 
 	if (statsEnabled) app->render->DrawTexture(Fondo, 0, 0);
@@ -372,18 +371,86 @@ void FeatureMenu::PostUpdate()
 				app->render->DrawTexture(kleosMedieval, 370, 278, &kleosRect);
 
 				app->render->DrawTexture(statsReference, 784, 246);
+				
+				app->render->DrawRectangle(app->sceneGameplay->player->xpAccumulatedRect[0], 46, 119, 175);
 
-				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[0].level), 1013, 261, 20, 50, colorStats);
+				if (app->sceneGameplay->player->playerStats[0].level < 10) {
 
-				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[0].next), 955, 300, 40, 30, colorStats);
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[0].level), 1008, 261, 30, 50, colorStats);
 
-				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[0].hp), 986, 351, 50, 50, colorStats);
+				}
+				else if (app->sceneGameplay->player->playerStats[0].level >= 10) {
 
-				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[0].atk), 1008, 400, 30, 50, colorStats);
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[0].level), 986, 261, 50, 50, colorStats);
 
-				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[0].def), 1008, 449, 30, 50, colorStats);
+				}
 
-				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[0].ap), 985, 498, 50, 50, colorStats);
+				int result = app->sceneGameplay->player->playerStats[0].next - app->sceneGameplay->player->playerStats[0].currentXP;
+
+				if (result < 10) {
+
+					app->render->DrawText(std::to_string(result), 975, 300, 20, 30, colorStats);
+
+				}
+				else if (result >= 10 && result < 100) {
+
+					app->render->DrawText(std::to_string(result), 965, 300, 30, 30, colorStats);
+
+				}
+				else if (result >= 100 && result < 1000) {
+
+					app->render->DrawText(std::to_string(result), 955, 300, 40, 30, colorStats);
+
+				}
+				else if (result >= 1000) {
+
+					app->render->DrawText(std::to_string(result), 945, 300, 50, 30, colorStats);
+
+				}
+
+				if (app->sceneGameplay->player->playerStats[0].hp < 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[0].hp), 1008, 351, 30, 50, colorStats);
+
+				}
+				else if (app->sceneGameplay->player->playerStats[0].hp >= 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[0].hp), 986, 351, 50, 50, colorStats);
+
+				}
+
+				if (app->sceneGameplay->player->playerStats[0].atk < 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[0].atk), 1008, 400, 30, 50, colorStats);
+
+				}
+				else if (app->sceneGameplay->player->playerStats[0].atk >= 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[0].atk), 986, 400, 50, 50, colorStats);
+
+				}
+
+				if (app->sceneGameplay->player->playerStats[0].def < 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[0].def), 1008, 449, 30, 50, colorStats);
+
+				}
+				else if (app->sceneGameplay->player->playerStats[0].def >= 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[0].def), 986, 449, 50, 50, colorStats);
+
+				}
+
+				if (app->sceneGameplay->player->playerStats[0].ap < 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[0].ap), 1008, 498, 30, 50, colorStats);
+
+				}
+				else if (app->sceneGameplay->player->playerStats[0].ap >= 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[0].ap), 986, 498, 50, 50, colorStats);
+
+				}
 
 			}
 
@@ -398,19 +465,85 @@ void FeatureMenu::PostUpdate()
 
 				app->render->DrawTexture(statsReference, 784, 246);
 
-				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[1].level), 1013, 261, 20, 50, colorStats);
+				app->render->DrawRectangle(app->sceneGameplay->player->xpAccumulatedRect[1], 46, 119, 175);
 
-				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[1].next), 955, 300, 40, 30, colorStats);
+				if (app->sceneGameplay->player->playerStats[1].level < 10) {
 
-				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[1].hp), 986, 351, 50, 50, colorStats);
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[1].level), 1008, 261, 30, 50, colorStats);
 
-				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[1].atk), 1008, 400, 30, 50, colorStats);
+				}
+				else if (app->sceneGameplay->player->playerStats[1].level >= 10) {
 
-				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[1].def), 986, 449, 50, 50, colorStats);
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[1].level), 986, 261, 50, 50, colorStats);
 
-				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[1].ap), 985, 498, 50, 50, colorStats);
+				}
 
-				
+				int result = app->sceneGameplay->player->playerStats[1].next - app->sceneGameplay->player->playerStats[1].currentXP;
+
+				if (result < 10) {
+
+					app->render->DrawText(std::to_string(result), 975, 300, 20, 30, colorStats);
+
+				}
+				else if (result >= 10 && result < 100) {
+
+					app->render->DrawText(std::to_string(result), 965, 300, 30, 30, colorStats);
+
+				}
+				else if (result >= 100 && result < 1000) {
+
+					app->render->DrawText(std::to_string(result), 955, 300, 40, 30, colorStats);
+
+				}
+				else if (result >= 1000) {
+
+					app->render->DrawText(std::to_string(result), 945, 300, 50, 30, colorStats);
+
+				}
+
+				if (app->sceneGameplay->player->playerStats[1].hp < 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[1].hp), 1008, 351, 30, 50, colorStats);
+
+				}
+				else if (app->sceneGameplay->player->playerStats[1].hp >= 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[1].hp), 986, 351, 50, 50, colorStats);
+
+				}
+
+				if (app->sceneGameplay->player->playerStats[1].atk < 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[1].atk), 1008, 400, 30, 50, colorStats);
+
+				}
+				else if (app->sceneGameplay->player->playerStats[1].atk >= 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[1].atk), 986, 400, 50, 50, colorStats);
+
+				}
+
+				if (app->sceneGameplay->player->playerStats[1].def < 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[1].def), 1008, 449, 30, 50, colorStats);
+
+				}
+				else if (app->sceneGameplay->player->playerStats[1].def >= 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[1].def), 986, 449, 50, 50, colorStats);
+
+				}
+
+				if (app->sceneGameplay->player->playerStats[1].ap < 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[1].ap), 1008, 498, 30, 50, colorStats);
+
+				}
+				else if (app->sceneGameplay->player->playerStats[1].ap >= 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[1].ap), 986, 498, 50, 50, colorStats);
+
+				}
 
 			}
 
@@ -424,17 +557,86 @@ void FeatureMenu::PostUpdate()
 
 				app->render->DrawTexture(statsReference, 784, 246);
 
-				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[2].level), 1013, 261, 20, 50, colorStats);
+				app->render->DrawRectangle(app->sceneGameplay->player->xpAccumulatedRect[2], 46, 119, 175);
 
-				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[2].next), 955, 300, 40, 30, colorStats);
+				if (app->sceneGameplay->player->playerStats[2].level < 10) {
 
-				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[2].hp), 986, 351, 50, 50, colorStats);
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[2].level), 1008, 261, 30, 50, colorStats);
 
-				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[2].atk), 986, 400, 50, 50, colorStats);
+				}
+				else if (app->sceneGameplay->player->playerStats[2].level >= 10) {
 
-				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[2].def), 1008, 449, 30, 50, colorStats);
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[2].level), 986, 261, 50, 50, colorStats);
 
-				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[2].ap), 985, 498, 50, 50, colorStats);
+				}
+
+				int result = app->sceneGameplay->player->playerStats[2].next - app->sceneGameplay->player->playerStats[2].currentXP;
+
+				if (result < 10) {
+
+					app->render->DrawText(std::to_string(result), 975, 300, 20, 30, colorStats);
+
+				}
+				else if (result >= 10 && result < 100) {
+
+					app->render->DrawText(std::to_string(result), 965, 300, 30, 30, colorStats);
+
+				}
+				else if (result >= 100 && result < 1000) {
+
+					app->render->DrawText(std::to_string(result), 955, 300, 40, 30, colorStats);
+
+				}
+				else if (result >= 1000) {
+
+					app->render->DrawText(std::to_string(result), 945, 300, 50, 30, colorStats);
+
+				}
+
+				if (app->sceneGameplay->player->playerStats[2].hp < 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[2].hp), 1008, 351, 30, 50, colorStats);
+
+				}
+				else if (app->sceneGameplay->player->playerStats[2].hp >= 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[2].hp), 986, 351, 50, 50, colorStats);
+
+				}
+
+				if (app->sceneGameplay->player->playerStats[2].atk < 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[2].atk), 1008, 400, 30, 50, colorStats);
+
+				}
+				else if (app->sceneGameplay->player->playerStats[2].atk >= 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[2].atk), 986, 400, 50, 50, colorStats);
+
+				}
+
+				if (app->sceneGameplay->player->playerStats[2].def < 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[2].def), 1008, 449, 30, 50, colorStats);
+
+				}
+				else if (app->sceneGameplay->player->playerStats[2].def >= 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[2].def), 986, 449, 50, 50, colorStats);
+
+				}
+
+				if (app->sceneGameplay->player->playerStats[2].ap < 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[2].ap), 1008, 498, 30, 50, colorStats);
+
+				}
+				else if (app->sceneGameplay->player->playerStats[2].ap >= 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[2].ap), 986, 498, 50, 50, colorStats);
+
+				}
+
 			}
 
 			if (j == 3) {
@@ -447,17 +649,85 @@ void FeatureMenu::PostUpdate()
 
 				app->render->DrawTexture(statsReference, 784, 246);
 
-				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[3].level), 1013, 261, 20, 50, colorStats);
+				app->render->DrawRectangle(app->sceneGameplay->player->xpAccumulatedRect[3], 46, 119, 175);
 
-				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[3].next), 955, 300, 40, 30, colorStats);
+				if (app->sceneGameplay->player->playerStats[3].level < 10) {
 
-				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[3].hp), 986, 351, 50, 50, colorStats);
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[3].level), 1008, 261, 30, 50, colorStats);
 
-				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[3].atk), 986, 400, 50, 50, colorStats);
+				}
+				else if (app->sceneGameplay->player->playerStats[3].level >= 10) {
 
-				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[3].def), 1008, 449, 30, 50, colorStats);
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[3].level), 986, 261, 50, 50, colorStats);
 
-				app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[3].ap), 985, 498, 50, 50, colorStats);
+				}
+
+				int result = app->sceneGameplay->player->playerStats[3].next - app->sceneGameplay->player->playerStats[3].currentXP;
+
+				if (result < 10) {
+
+					app->render->DrawText(std::to_string(result), 975, 300, 20, 30, colorStats);
+
+				}
+				else if (result >= 10 && result < 100) {
+
+					app->render->DrawText(std::to_string(result), 965, 300, 30, 30, colorStats);
+
+				}
+				else if (result >= 100 && result < 1000) {
+
+					app->render->DrawText(std::to_string(result), 955, 300, 40, 30, colorStats);
+
+				}
+				else if (result >= 1000) {
+
+					app->render->DrawText(std::to_string(result), 945, 300, 50, 30, colorStats);
+
+				}
+
+				if (app->sceneGameplay->player->playerStats[3].hp < 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[3].hp), 1008, 351, 30, 50, colorStats);
+
+				}
+				else if (app->sceneGameplay->player->playerStats[3].hp >= 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[3].hp), 986, 351, 50, 50, colorStats);
+
+				}
+
+				if (app->sceneGameplay->player->playerStats[3].atk < 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[3].atk), 1008, 400, 30, 50, colorStats);
+
+				}
+				else if (app->sceneGameplay->player->playerStats[3].atk >= 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[3].atk), 986, 400, 50, 50, colorStats);
+
+				}
+
+				if (app->sceneGameplay->player->playerStats[3].def < 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[3].def), 1008, 449, 30, 50, colorStats);
+
+				}
+				else if (app->sceneGameplay->player->playerStats[3].def >= 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[3].def), 986, 449, 50, 50, colorStats);
+
+				}
+
+				if (app->sceneGameplay->player->playerStats[3].ap < 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[3].ap), 1008, 498, 30, 50, colorStats);
+
+				}
+				else if (app->sceneGameplay->player->playerStats[3].ap >= 10) {
+
+					app->render->DrawText(std::to_string(app->sceneGameplay->player->playerStats[3].ap), 986, 498, 50, 50, colorStats);
+
+				}
 
 			}
 
