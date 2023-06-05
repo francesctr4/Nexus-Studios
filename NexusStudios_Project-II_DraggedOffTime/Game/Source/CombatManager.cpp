@@ -312,25 +312,22 @@ void CombatManager::EnemyAttackAll(int e_DMG)
 	
 }
 
-void CombatManager::EnemyBuff()
-{
-	//50/50 de subirse el daño o la defensa
-	
+void CombatManager::EnemyBuff(bool DMG, bool DEF)
+{	
 	app->sceneBattle->e_buffed_turns = 2;
 
-	// Semilla para generar números aleatorios
-	std::srand(std::time(nullptr));
-
-	// Generar un número aleatorio entre 0 y 1
-	int randomNum = std::rand() % 2;
-
-	if (randomNum == 0) {
+	if (DEF)
+	{
 		//Subir defensa
 		app->sceneBattle->e_DEF = app->sceneBattle->e_DEF + 10;
 	}
-	else {
+	
+	if (DMG)
+	{
 		//Subir daño
 		app->sceneBattle->e_DMG = app->sceneBattle->e_DMG + 5;
 	}
+	
+	
 }
 	

@@ -69,7 +69,7 @@ public:
 	void EnemyAttackAll(int e_DMG);
 
 	//11.Enemy buff stats
-	void EnemyBuff();
+	void EnemyBuff(bool DMG, bool DEF);
 
 
 
