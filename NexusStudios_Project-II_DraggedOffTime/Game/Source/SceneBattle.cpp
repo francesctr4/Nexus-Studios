@@ -715,15 +715,53 @@ bool SceneBattle::PostUpdate()
 	std::string p2_HP_string = std::to_string(m_players[1].HP);
 	app->render->DrawText(p2_HP_string, 80 + 125, 70, 15, 20, { 255, 255, 255, 255 });
 
-	//Player 3 y 4 HP (Provisional)
-	//SDL_Rect rect_p2 = { 0, 0, 300, 20 }; //p2
-	//app->render->DrawTexture(healthBar, 80, 85, &rect_p2);
+	// Player 3 HP
+	double p3_percentage_life = (m_players[2].HP * 100.0) / m_players[2].max_HP;
+	if (p3_percentage_life < 50 && p3_percentage_life >= 20)	//Yellow color
+	{
+		SDL_Rect rect_p3 = { 0, 20, 3 * p3_percentage_life, 20 };
+		app->render->DrawTexture(healthBar, 80, 140, &rect_p3);
+	}
+	if (p3_percentage_life < 20) //Red color
+	{
+		SDL_Rect rect_p3 = { 0, 40, 3 * p3_percentage_life, 20 };
+		app->render->DrawTexture(healthBar, 80, 140, &rect_p3);
+	}
+	if (p3_percentage_life >= 50) //Green color
+	{
+		SDL_Rect rect_p3 = { 0, 0, 3 * p3_percentage_life, 20 };
+		app->render->DrawTexture(healthBar, 80, 140, &rect_p3);
+	}
+	app->render->DrawText("Player 3 HP:", 80, 120, 100, 20, { 255, 255, 255, 255 });
+	std::string p3_HP_string = std::to_string(m_players[2].HP);
+	app->render->DrawText(p3_HP_string, 80 + 125, 120, 15, 20, { 255, 255, 255, 255 });
 
-	SDL_Rect rect_p3 = { 0, 0, 300, 20 };	//p3
-	app->render->DrawTexture(healthBar, 80, 140, &rect_p3);
+	// Player 4 HP
+	double p4_percentage_life = (m_players[3].HP * 100.0) / m_players[3].max_HP;
+	if (p4_percentage_life < 50 && p4_percentage_life >= 20)	//Yellow color
+	{
+		SDL_Rect rect_p4 = { 0, 20, 3 * p4_percentage_life, 20 };
+		app->render->DrawTexture(healthBar, 80, 195, &rect_p4);
+	}
+	if (p4_percentage_life < 20) //Red color
+	{
+		SDL_Rect rect_p4 = { 0, 40, 3 * p4_percentage_life, 20 };
+		app->render->DrawTexture(healthBar, 80, 195, &rect_p4);
+	}
+	if (p4_percentage_life >= 50) //Green color
+	{
+		SDL_Rect rect_p4 = { 0, 0, 3 * p4_percentage_life, 20 };
+		app->render->DrawTexture(healthBar, 80, 195, &rect_p4);
+	}
+	app->render->DrawText("Player 2 HP:", 80, 175, 100, 20, { 255, 255, 255, 255 });
+	std::string p4_HP_string = std::to_string(m_players[3].HP);
+	app->render->DrawText(p4_HP_string, 80 + 125, 175, 15, 20, { 255, 255, 255, 255 });
 
-	SDL_Rect rect_p4 = { 0, 0, 300, 20 };	//p4
-	app->render->DrawTexture(healthBar, 80, 195, &rect_p4);
+	//SDL_Rect rect_p3 = { 0, 0, 300, 20 };	//p3
+	//app->render->DrawTexture(healthBar, 80, 140, &rect_p3);
+
+	//SDL_Rect rect_p4 = { 0, 0, 300, 20 };	//p4
+	//app->render->DrawTexture(healthBar, 80, 195, &rect_p4);
 
 
 	//Player sprite
@@ -841,7 +879,8 @@ bool SceneBattle::PostUpdate()
 	app->render->DrawTexture(lifeFrame, 80, 140);	//Barra Player 3
 	app->render->DrawTexture(lifeFrame, 80, 195);	//Barra Player 4
 	app->render->DrawTexture(lifeFrame, 800, 30);	//Barra Enemy (Provisional)
-	app->render->DrawTexture(lifeFrame, 780, 326);	//Barra Minion (Provisional)
+	if (minion)
+		app->render->DrawTexture(lifeFrame, 780, 326);	//Barra Minion (Provisional)
 
 	//Player selector
 	switch (selected_player)
@@ -920,7 +959,7 @@ bool SceneBattle::PostUpdate()
 				app->render->DrawText("You tried to run away", 700, 568, 440, 30, { 90, 35, 24, 255 });
 				break;
 			case 5:
-				app->render->DrawText("You switched your party member", 700, 500, 456, 30, { 90, 35, 24, 255 });
+				app->render->DrawText("You switched your party member", 700, 568, 456, 30, { 90, 35, 24, 255 });
 				break;
 			}
 		}
