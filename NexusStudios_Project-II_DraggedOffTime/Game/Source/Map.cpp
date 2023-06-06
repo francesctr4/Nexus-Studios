@@ -15,7 +15,7 @@
 
 Map::Map(bool startEnabled) : Module(startEnabled), mapLoaded(false)
 {
-    name.Create("map_1");
+    name.Create("map");
 }
 
 // Destructor

@@ -43,7 +43,7 @@
 	  
   </sceneGameplay>
   
- <map_1>
+ <map>
     <mapfolder path="Assets/Maps/"/>
 	<mapfile_1 path="Assets/Maps/mapfinal1280.tmx"/>
 	<mapfile_extra_1 path="Assets/Maps/JovaniJV.tmx"/>
@@ -56,7 +56,6 @@
 	<mapfile_Puzzle_1 path="Assets/Maps/InfernalMapPuzzle1.tmx"/>
 	<mapfile_Puzzle_2 path="Assets/Maps/InfernalMapPuzzle2.tmx"/>
 	<mapfile_Puzzle_3 path="Assets/Maps/InfernalMapPuzzle3.tmx"/>
-
-  </map_1>
+  </map>
 
 </config>
