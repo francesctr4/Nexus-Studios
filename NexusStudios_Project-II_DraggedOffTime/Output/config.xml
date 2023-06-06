@@ -17,12 +17,12 @@
     <resizable value="false"/>
     <fullscreen_window value="false"/>
   </window>
-
+  
   <audio>
     <music volume="100"/>
     <fx volume="100"/>
   </audio>
-
+  
   <sceneGameplay>
 	<player x="150 " y="430" texturepath="Assets/Textures/SpriteSheet_Kleos.png" texturepath2="Assets/Textures/Prehistoric_Kleos_SpriteSheet.png" texturepath3="Assets/Textures/Cyberpunk_Kleos_SpriteSheet.png" texturepath4="Assets/Textures/Demon_Kleos_SpriteSheet.png" map="0"/>
 	  
@@ -42,8 +42,8 @@
 	<item type ="Battery" x="800" y="450" texturepath="Assets/Textures/Items/Batteries/Battery-Sheet.png" iconpath="Assets/Textures/Items/Batteries/Battery.png" map="3"/>
 	  
   </sceneGameplay>
-
-  <map>
+  
+ <map_1>
     <mapfolder path="Assets/Maps/"/>
 	<mapfile_1 path="Assets/Maps/mapfinal1280.tmx"/>
 	<mapfile_extra_1 path="Assets/Maps/JovaniJV.tmx"/>
@@ -57,6 +57,6 @@
 	<mapfile_Puzzle_2 path="Assets/Maps/InfernalMapPuzzle2.tmx"/>
 	<mapfile_Puzzle_3 path="Assets/Maps/InfernalMapPuzzle3.tmx"/>
 
-  </map>
-  
+  </map_1>
+
 </config>

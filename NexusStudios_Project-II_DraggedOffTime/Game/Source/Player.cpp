@@ -12,6 +12,7 @@
 #include "Physics.h"
 #include "SceneBattle.h"
 #include "SceneGameplay.h"
+#include "Infierno.h"
 #include <iostream>
 
 #define SPEED_VALUE 5
@@ -149,7 +150,7 @@ bool Player::Update()
 		executeTeleportCofre = false;
 	}
 	if (executeTeleportInfierno) {
-		TeleportInfierno();
+		app->sceneGameplay->mapa_Infierno.TeleportInfierno();
 		executeTeleportInfierno = false;
 	}
 	if (executeTeleportMedieval) {

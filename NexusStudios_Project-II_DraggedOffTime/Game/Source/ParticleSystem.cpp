@@ -18,7 +18,7 @@ bool ParticleSystem::Awake(pugi::xml_node& config)
 {
 	bool ret = true;
 
-	pugi::xml_document	psystem_config;
+	pugi::xml_document psystem_config;
 	pugi::xml_node* node = &app->LoadEmitters(psystem_config);
 	nameParticleAtlas = node->child("particleAtlas").attribute("name").as_string();
 

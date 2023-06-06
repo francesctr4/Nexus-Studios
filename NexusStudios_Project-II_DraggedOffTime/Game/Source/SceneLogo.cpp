@@ -39,7 +39,7 @@ SceneLogo::~SceneLogo()
 bool SceneLogo::Awake(pugi::xml_node& config)
 {
 
-	for (int i = 0; i < 17; i++) {
+	/*for (int i = 0; i < 17; i++) {
 
 		for (int j = 0; j < 8; j++) {
 
@@ -59,7 +59,7 @@ bool SceneLogo::Awake(pugi::xml_node& config)
 		}
 	}
 	nexus2.loop = true;
-	nexus2.speed = 0.5f;
+	nexus2.speed = 0.5f;*/
 
 	return true;
 }

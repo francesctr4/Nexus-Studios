@@ -109,7 +109,7 @@ public:
 
 public:
 
-	SString name;
+	SString name = "empty";
 	bool active;
 
 	bool isEnabled;

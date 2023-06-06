@@ -82,7 +82,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(particleSystem);
 	AddModule(fadeToBlack);
 
-	// Render last to swap buffer
+	//// Render last to swap buffer
 	AddModule(render);
 
 }
@@ -135,7 +135,9 @@ bool App::Awake()
 			// If the section with the module name exists in config.xml, fill the pointer with the valid xml_node
 			// that can be used to read all variables for that module.
 			// Send nullptr if the node does not exist in config.xml
-			pugi::xml_node node = configNode.child(item->data->name.GetString());
+			const char* name = item->data->name.GetString();		
+			
+			pugi::xml_node node = configNode.child(name);
 			ret = item->data->Awake(node);
 			item = item->next;
 		}
