@@ -19,6 +19,7 @@
 
 #include "SceneLogo.h"
 #include "SceneTitle.h"
+#include "SceneLore.h"
 #include "SceneGameplay.h"
 #include "SceneBattle.h"
 #include "SceneEnding.h"
@@ -47,6 +48,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 
 	sceneLogo = new SceneLogo(true);
 	sceneTitle = new SceneTitle(false);
+	sceneLore = new SceneLore(false);
 	sceneGameplay = new SceneGameplay(false);
 	sceneBattle = new SceneBattle(false);
 	sceneEnding = new SceneEnding(false);
@@ -71,6 +73,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 
 	AddModule(sceneLogo);
 	AddModule(sceneTitle);
+	AddModule(sceneLore);
 	AddModule(sceneGameplay);
 	AddModule(sceneBattle);
 	AddModule(sceneEnding);

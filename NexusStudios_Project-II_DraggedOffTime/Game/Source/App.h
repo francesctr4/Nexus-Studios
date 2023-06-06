@@ -24,6 +24,7 @@ class PathFinding;
 
 class SceneLogo;
 class SceneTitle;
+class SceneLore;
 class SceneGameplay;
 class SceneBattle;
 class SceneEnding;
@@ -111,6 +112,7 @@ public:
 
 	SceneLogo* sceneLogo;
 	SceneTitle* sceneTitle;
+	SceneLore* sceneLore;
 	SceneGameplay* sceneGameplay;
 	SceneBattle* sceneBattle;
 	SceneEnding* sceneEnding;

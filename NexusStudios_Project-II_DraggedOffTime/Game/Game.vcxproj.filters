@@ -133,6 +133,9 @@
     <ClCompile Include="Source\ParticleSystem.cpp">
       <Filter>Game Loop\Features\Particles</Filter>
     </ClCompile>
+    <ClCompile Include="Source\SceneLore.cpp">
+      <Filter>Game Loop\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -299,6 +302,9 @@
     </ClInclude>
     <ClInclude Include="Source\ParticleSystem.h">
       <Filter>Game Loop\Features\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneLore.h">
+      <Filter>Game Loop\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -131,6 +131,7 @@
     <ClCompile Include="Source\SceneEnding.cpp" />
     <ClCompile Include="Source\SceneGameplay.cpp" />
     <ClCompile Include="Source\SceneLogo.cpp" />
+    <ClCompile Include="Source\SceneLore.cpp" />
     <ClCompile Include="Source\SceneTitle.cpp" />
     <ClCompile Include="Source\FeatureMenu.cpp" />
     <ClCompile Include="Source\Textures.cpp" />
@@ -178,6 +179,7 @@
     <ClInclude Include="Source\SceneEnding.h" />
     <ClInclude Include="Source\SceneGameplay.h" />
     <ClInclude Include="Source\SceneLogo.h" />
+    <ClInclude Include="Source\SceneLore.h" />
     <ClInclude Include="Source\SceneTitle.h" />
     <ClInclude Include="Source\FeatureMenu.h" />
     <ClInclude Include="Source\Textures.h" />

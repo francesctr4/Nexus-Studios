@@ -15,6 +15,7 @@
 #include "Pause.h"
 
 #include "SceneTitle.h"
+#include "SceneLore.h"
 
 #include "SDL/include/SDL.h"
 #include "SDL_mixer/include/SDL_mixer.h"
@@ -326,7 +327,7 @@ bool SceneTitle::Update(float dt)
 		Animation_Credits.JumpTo(100, false);
 		Animation_Exit.JumpTo(100, false);
 
-		app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
+		app->fadeToBlack->Fade(this, (Module*)app->sceneLore);
 
 		app->sceneGameplay->player->pbody->body->SetTransform({ PIXEL_TO_METERS(150),PIXEL_TO_METERS(430) }, 0);
 
