@@ -41,6 +41,7 @@ bool Map::Awake(pugi::xml_node& config)
     mapFileName[10] = config.child("mapfile_extra_2").attribute("path").as_string();
     mapFolder = config.child("mapfolder").attribute("path").as_string();
     this->config = config;
+
     return ret;
 }
 

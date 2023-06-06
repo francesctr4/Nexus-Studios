@@ -34,6 +34,13 @@ SceneEnding::~SceneEnding()
 bool SceneEnding::Awake(pugi::xml_node& config)
 {
 
+	return true;
+}
+
+// Called before the first frame
+bool SceneEnding::Start()
+{
+
 	for (int i = 0; i < 7; i++) {
 
 		if (i == 6) {
@@ -59,13 +66,6 @@ bool SceneEnding::Awake(pugi::xml_node& config)
 	ending.loop = true;
 	ending.speed = 0.5f;
 
-
-	return true;
-}
-
-// Called before the first frame
-bool SceneEnding::Start()
-{
 	endingScreen = app->tex->Load("Assets/Textures/EndingScreen.png");
 
 	currentAnimation = &ending;

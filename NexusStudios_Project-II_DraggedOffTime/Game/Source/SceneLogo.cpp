@@ -38,8 +38,15 @@ SceneLogo::~SceneLogo()
 
 bool SceneLogo::Awake(pugi::xml_node& config)
 {
+	
+	return true;
+}
 
-	/*for (int i = 0; i < 17; i++) {
+// Called before the first frame
+bool SceneLogo::Start()
+{
+
+	for (int i = 0; i < 17; i++) {
 
 		for (int j = 0; j < 8; j++) {
 
@@ -59,17 +66,7 @@ bool SceneLogo::Awake(pugi::xml_node& config)
 		}
 	}
 	nexus2.loop = true;
-	nexus2.speed = 0.5f;*/
-
-	return true;
-}
-
-// Called before the first frame
-bool SceneLogo::Start()
-{
-	//app->map->actualmap = 0;
-
-	//bool retLoad = app->map->Load();
+	nexus2.speed = 0.5f;
 
 	//nexusSpritesheet1 = app->tex->Load("Assets/Textures/Intro_Animations/NexusAnimation1.png");
 	nexusSpritesheet2 = app->tex->Load("Assets/Textures/Intro_Animations/NexusAnimation2.png");

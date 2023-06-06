@@ -30,6 +30,13 @@ SceneBattle::~SceneBattle()
 bool SceneBattle::Awake(pugi::xml_node& config)
 {
 
+	return true;
+}
+
+// Called before the first frame
+bool SceneBattle::Start()
+{
+
 	for (int i = 0; i < 4; i++) {
 
 		playerAnimation.PushBack({ 177 * (0 + i), 177 * 0, 177, 177 });
@@ -45,14 +52,6 @@ bool SceneBattle::Awake(pugi::xml_node& config)
 	}
 	enemyAnimation.loop = true;
 	enemyAnimation.speed = 0.06f;
-
-
-	return true;
-}
-
-// Called before the first frame
-bool SceneBattle::Start()
-{
 
 	//Cambiar para después de la vertical slice
 	selected_player = 0;

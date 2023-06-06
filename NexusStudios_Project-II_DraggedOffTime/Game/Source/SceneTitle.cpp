@@ -29,6 +29,13 @@ SceneTitle::~SceneTitle()
 {}
 
 bool SceneTitle::Awake(pugi::xml_node& config)
+{	
+
+	return true;
+}
+
+// Called before the first frame
+bool SceneTitle::Start()
 {
 
 	for (int i = 0; i < 6; i++) {
@@ -41,14 +48,6 @@ bool SceneTitle::Awake(pugi::xml_node& config)
 	}
 	title.loop = true;
 	title.speed = 0.4f;
-
-	return true;
-}
-
-// Called before the first frame
-bool SceneTitle::Start()
-{
-	//app->map->actualmap = 1;
 
 	titleSpritesheet = app->tex->Load("Assets/Textures/Intro_Animations/Title_SpriteSheet.png");
 
