@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="15">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="23">
  <tileset firstgid="1" name="Prehistoric_Tiles" tilewidth="16" tileheight="16" tilecount="625" columns="25">
   <image source="Prehistoric_Tiles.png" width="400" height="400"/>
   <wangsets>
@@ -297,6 +297,7 @@
    <tile gid="207"/>
    <tile gid="207"/>
    <tile gid="207"/>
+   <tile gid="78"/>
    <tile gid="207"/>
    <tile gid="207"/>
    <tile gid="207"/>
@@ -376,6 +377,7 @@
    <tile gid="207"/>
    <tile gid="207"/>
    <tile gid="207"/>
+   <tile gid="78"/>
    <tile gid="207"/>
    <tile gid="207"/>
    <tile gid="207"/>
@@ -455,9 +457,7 @@
    <tile gid="207"/>
    <tile gid="207"/>
    <tile gid="207"/>
-   <tile gid="207"/>
-   <tile gid="207"/>
-   <tile gid="207"/>
+   <tile gid="78"/>
    <tile gid="207"/>
    <tile gid="207"/>
    <tile gid="207"/>
@@ -537,7 +537,7 @@
    <tile gid="207"/>
    <tile gid="207"/>
    <tile gid="207"/>
-   <tile gid="207"/>
+   <tile gid="78"/>
    <tile gid="207"/>
    <tile gid="207"/>
    <tile gid="207"/>
@@ -4225,7 +4225,7 @@
    <tile gid="316"/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="269"/>
    <tile gid="369"/>
    <tile gid="370"/>
    <tile gid="464"/>
@@ -4305,7 +4305,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="294"/>
    <tile gid="293"/>
    <tile gid="292"/>
    <tile gid="289"/>
@@ -4385,7 +4385,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="269"/>
    <tile/>
    <tile/>
    <tile/>
@@ -4465,7 +4465,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="294"/>
    <tile/>
    <tile/>
    <tile/>
@@ -5985,7 +5985,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="269"/>
    <tile/>
    <tile/>
    <tile/>
@@ -6065,7 +6065,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="294"/>
    <tile/>
    <tile/>
    <tile/>
@@ -6145,7 +6145,7 @@
    <tile/>
    <tile gid="366"/>
    <tile/>
-   <tile/>
+   <tile gid="269"/>
    <tile/>
    <tile/>
    <tile/>
@@ -6225,7 +6225,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="294"/>
    <tile/>
    <tile/>
    <tile/>
@@ -6305,7 +6305,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="269"/>
    <tile/>
    <tile/>
    <tile/>
@@ -6385,7 +6385,7 @@
    <tile gid="270"/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="294"/>
    <tile/>
    <tile/>
    <tile/>
@@ -6465,7 +6465,7 @@
    <tile gid="295"/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="269"/>
    <tile/>
    <tile/>
    <tile/>
@@ -6545,7 +6545,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="294"/>
    <tile/>
    <tile/>
    <tile gid="1"/>
@@ -6625,7 +6625,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="269"/>
    <tile/>
    <tile/>
    <tile gid="26"/>
@@ -6705,8 +6705,8 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="294"/>
    <tile/>
-   <tile gid="1"/>
    <tile gid="2"/>
    <tile gid="27"/>
    <tile/>
@@ -6785,7 +6785,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="269"/>
    <tile gid="26"/>
    <tile gid="27"/>
    <tile/>
@@ -6865,7 +6865,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="294"/>
    <tile/>
    <tile/>
    <tile/>
@@ -9914,7 +9914,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="320"/>
    <tile/>
    <tile/>
    <tile/>
@@ -9994,7 +9994,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="345"/>
    <tile/>
    <tile/>
    <tile/>
@@ -10074,7 +10074,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="370"/>
    <tile/>
    <tile/>
    <tile/>
@@ -10154,6 +10154,7 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="320"/>
    <tile/>
    <tile/>
    <tile/>
@@ -10233,8 +10234,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="345"/>
    <tile/>
    <tile/>
    <tile/>
@@ -10314,6 +10314,7 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="370"/>
    <tile/>
    <tile/>
    <tile/>
@@ -10393,9 +10394,8 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="26"/>
+   <tile gid="205"/>
    <tile/>
    <tile/>
    <tile/>
@@ -10475,6 +10475,7 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="205"/>
    <tile/>
    <tile/>
    <tile/>
@@ -10556,8 +10557,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="205"/>
    <tile/>
    <tile/>
    <tile/>
@@ -20498,6 +20498,7 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="320"/>
    <tile/>
    <tile/>
    <tile/>
@@ -20577,6 +20578,7 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="345"/>
    <tile/>
    <tile/>
    <tile/>
@@ -20656,9 +20658,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="370"/>
    <tile/>
    <tile/>
    <tile/>
@@ -21745,6 +21745,18 @@
   </object>
   <object id="14" x="416" y="608">
    <polygon points="0,0 0,32 48,32 48,0 0,0"/>
+  </object>
+  <object id="17" x="1262" y="80">
+   <polygon points="0,0 1,80 17,80 20,-3"/>
+  </object>
+  <object id="18" x="1279" y="464">
+   <polygon points="0.333333,-18 -15,0 -16,175 3,175"/>
+  </object>
+  <object id="21" x="0" y="480">
+   <polygon points="0,0 16,0 16,144 0,160"/>
+  </object>
+  <object id="22" x="-0.333333" y="147.333">
+   <polygon points="0,0 32.3333,-3.33333 32.3333,-19.3333 0.333333,-19.3333"/>
   </object>
  </objectgroup>
 </map>

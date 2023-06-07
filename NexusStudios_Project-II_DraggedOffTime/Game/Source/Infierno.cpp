@@ -211,7 +211,7 @@ void Infierno::TeleportInfierno()
 		app->sceneGameplay->trigger_3 = true;
 		app->sceneGameplay->LoadMap(1);
 		app->sceneGameplay->mapa_Infierno.map_selector = false;
-		app->sceneGameplay->player->Teleport(650, 671);
+		app->sceneGameplay->player->Teleport(0, 300);
 
 		break;
 

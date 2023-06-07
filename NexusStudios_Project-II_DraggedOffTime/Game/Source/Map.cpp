@@ -29,7 +29,7 @@ bool Map::Awake(pugi::xml_node& config)
     bool ret = true;
 
     mapFileName[0] = config.child("mapfile_1").attribute("path").as_string();
-    mapFileName[1] = config.child("mapfile_2").attribute("path").as_string();
+    mapFileName[1] = config.child("mapfile_Prehistoric1").attribute("path").as_string();
     mapFileName[2] = config.child("mapfile_3").attribute("path").as_string();
     mapFileName[3] = config.child("mapfile_4").attribute("path").as_string();
     mapFileName[4] = config.child("mapfile_5").attribute("path").as_string();
@@ -52,7 +52,7 @@ bool Map::Init()
     bool ret = true;
 
     mapFileName[0] = config.child("mapfile_1").attribute("path").as_string();
-    mapFileName[1] = config.child("mapfile_2").attribute("path").as_string();
+    mapFileName[1] = config.child("mapfile_Prehistoric1").attribute("path").as_string();
     mapFileName[2] = config.child("mapfile_3").attribute("path").as_string();
     mapFileName[3] = config.child("mapfile_4").attribute("path").as_string();
     mapFileName[4] = config.child("mapfile_5").attribute("path").as_string();

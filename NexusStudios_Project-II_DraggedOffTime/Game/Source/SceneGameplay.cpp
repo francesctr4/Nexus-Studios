@@ -113,6 +113,7 @@ bool SceneGameplay::PreUpdate()
 
 	}
 
+
 	return true;
 }
 
@@ -120,6 +121,8 @@ bool SceneGameplay::PreUpdate()
 bool SceneGameplay::Update(float dt)
 {
 	OPTICK_EVENT();
+
+	
 
 	if (app->input->GetKey(SDL_SCANCODE_8) == KEY_DOWN)
 	{
