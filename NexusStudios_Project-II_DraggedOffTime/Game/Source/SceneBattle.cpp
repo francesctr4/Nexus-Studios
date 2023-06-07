@@ -47,11 +47,35 @@ bool SceneBattle::Start()
 
 	for (int i = 3; i >= 0; i--) {
 
-		enemyAnimation.PushBack({ 115 * (0 + i), 115 * 0, 115, 115 });
+		enemyAnimation32x32.PushBack({ 115 * i, 115 * 0, 115, 115 });
 
 	}
-	enemyAnimation.loop = true;
-	enemyAnimation.speed = 0.06f;
+	enemyAnimation32x32.loop = true;
+	enemyAnimation32x32.speed = 0.06f;
+
+	for (int i = 3; i >= 0; i--) {
+
+		enemyAnimation64x32.PushBack({ 230 * i, 115 * 0, 230, 115 });
+
+	}
+	enemyAnimation64x32.loop = true;
+	enemyAnimation64x32.speed = 0.06f;
+
+	for (int i = 3; i >= 0; i--) {
+
+		enemyAnimation32x64.PushBack({ 115 * i, 230 * 0, 115, 230 });
+
+	}
+	enemyAnimation32x64.loop = true;
+	enemyAnimation32x64.speed = 0.06f;
+
+	for (int i = 3; i >= 0; i--) {
+
+		enemyAnimation64x64.PushBack({ 230 * i, 230 * 0, 230, 230 });
+
+	}
+	enemyAnimation64x64.loop = true;
+	enemyAnimation64x64.speed = 0.06f;
 
 	//Cambiar para después de la vertical slice
 	selected_player = 0;
@@ -108,7 +132,7 @@ bool SceneBattle::Start()
 
 	// Enemy texture
 
-	currentAnimationEnemy = &enemyAnimation;
+	currentAnimationEnemy = &enemyAnimation32x32;
 
 	background = app->tex->Load("Assets/Textures/BattleBackground.png");
 
@@ -143,7 +167,26 @@ bool SceneBattle::Update(float dt)
 	SDL_Rect rect = { 0,0, 1280, 720 };
 	app->render->DrawRectangle(rect, 70, 80, 220, 150);
 
+	if (widthEnemyCombat == 32 && heightEnemyCombat == 32) {
 
+		currentAnimationEnemy = &enemyAnimation32x32;
+
+	}
+	else if (widthEnemyCombat == 32 && heightEnemyCombat == 64) {
+
+		currentAnimationEnemy = &enemyAnimation32x64;
+
+	}
+	else if (widthEnemyCombat == 64 && heightEnemyCombat == 32) {
+
+		currentAnimationEnemy = &enemyAnimation64x32;
+
+	}
+	else if (widthEnemyCombat == 64 && heightEnemyCombat == 64) {
+
+		currentAnimationEnemy = &enemyAnimation64x64;
+
+	}
 
 	//Random number generator
 	srand(time(NULL));
@@ -668,7 +711,26 @@ bool SceneBattle::PostUpdate()
 
 	SDL_Rect enemyRect = currentAnimationEnemy->GetCurrentFrame();
 
-	app->render->DrawTexture(enemyInCombat, 880, 226, &enemyRect);
+	if (widthEnemyCombat == 32 && heightEnemyCombat == 32) {
+
+		app->render->DrawTexture(enemyInCombat, 880, 226, &enemyRect);
+
+	}
+	else if (widthEnemyCombat == 32 && heightEnemyCombat == 64) {
+
+		app->render->DrawTexture(enemyInCombat, 880, 194, &enemyRect);
+
+	}
+	else if (widthEnemyCombat == 64 && heightEnemyCombat == 32) {
+
+		app->render->DrawTexture(enemyInCombat, 848, 226, &enemyRect);
+
+	}
+	else if (widthEnemyCombat == 64 && heightEnemyCombat == 64) {
+
+		app->render->DrawTexture(enemyInCombat, 848, 194, &enemyRect);
+
+	}
 
 	// Player 1 HP
 	double p_percentage_life = (m_players[0].HP * 100.0) / m_players[0].max_HP;

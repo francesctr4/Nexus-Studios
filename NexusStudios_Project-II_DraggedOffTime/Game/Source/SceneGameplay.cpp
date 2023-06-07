@@ -18,6 +18,7 @@
 
 #include "SceneGameplay.h"
 #include "Puzzle1.h"
+#include "SceneBattle.h"
 
 #include "SDL_mixer/include/SDL_mixer.h" 
 

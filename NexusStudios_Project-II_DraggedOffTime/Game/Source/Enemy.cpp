@@ -224,6 +224,8 @@ void Enemy::OnCollision(PhysBody* physA, PhysBody* physB) {
 
 		playerInteraction = true;
 		app->sceneBattle->enemyInCombat = textureBattle;
+		app->sceneBattle->widthEnemyCombat = width;
+		app->sceneBattle->heightEnemyCombat = height;
 
 		break;
 

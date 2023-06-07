@@ -110,8 +110,14 @@ public:
 	//Sprite enemy (TODO)
 
 	SDL_Texture* enemyInCombat;
-	Animation enemyAnimation;
+	Animation enemyAnimation32x32;
+	Animation enemyAnimation64x32;
+	Animation enemyAnimation32x64;
+	Animation enemyAnimation64x64;
 	Animation* currentAnimationEnemy;
+
+	int widthEnemyCombat;
+	int heightEnemyCombat;
 
 private:
 
