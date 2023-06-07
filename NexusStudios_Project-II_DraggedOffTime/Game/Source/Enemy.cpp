@@ -110,9 +110,12 @@ bool Enemy::Awake() {
 	enemyMap = parameters.attribute("map").as_int();
 	aparicion = enemyMap;
 
+	width = parameters.attribute("w").as_int();
+	height = parameters.attribute("h").as_int();
+
 	for (int i = 0; i < 4; i++) {
 
-		idle_right.PushBack({ 32 * (0 + i), 32 * 0, 32, 32 });
+		idle_right.PushBack({ width * (0 + i), height * 0, width, height });
 
 	}
 	idle_right.loop = true;
@@ -135,7 +138,7 @@ bool Enemy::Start() {
 	}
 	else {
 
-		pbody = app->physics->CreateRectangle(position.x, position.y, width, height, bodyType::STATIC);
+		pbody = app->physics->CreateRectangle(position.x, position.y, 32, 32, bodyType::STATIC);
 
 		enemySensor = app->physics->CreateCircleSensor(position.x, position.y, 25, bodyType::KINEMATIC, ColliderType::ENEMY_SENSOR);
 
@@ -165,8 +168,8 @@ bool Enemy::Update()
 	}
 	else {
 
-		position.x = METERS_TO_PIXELS(pos.x) - 16;
-		position.y = METERS_TO_PIXELS(pos.y) - 18;
+		position.x = METERS_TO_PIXELS(pos.x) - width/2;
+		position.y = METERS_TO_PIXELS(pos.y) - height/2 + 2;
 
 		currentAnimation->Update();
 

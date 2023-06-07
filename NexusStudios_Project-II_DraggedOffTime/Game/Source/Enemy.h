@@ -69,8 +69,8 @@ public:
 	int atk;
 	int def;
  
-	int width = 32;
-	int height = 32;
+	int width;
+	int height;
 
 	int widthBoss = 52;
 	int heightBoss = 52;
