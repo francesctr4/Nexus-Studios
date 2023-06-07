@@ -90,10 +90,12 @@ bool NPC::Awake() {
 
 	if (SString(parameters.attribute("type").as_string()) == SString("rogue"))
 		ntype = NPC_Types::ROGUE;
-	if (SString(parameters.attribute("type").as_string()) == SString("wizard"))
-		ntype = NPC_Types::WIZARD;
-	if (SString(parameters.attribute("type").as_string()) == SString("orc"))
-		ntype = NPC_Types::ORC;
+	if (SString(parameters.attribute("type").as_string()) == SString("wiwi"))
+		ntype = NPC_Types::WIWI;
+	if (SString(parameters.attribute("type").as_string()) == SString("skippy"))
+		ntype = NPC_Types::SKIPPY;
+	if (SString(parameters.attribute("type").as_string()) == SString("jovani"))
+		ntype = NPC_Types::JOVANI;
 
 	// Assign NPC Position and Texture
 
@@ -135,7 +137,7 @@ bool NPC::Start() {
 
 	}
 
-	if (ntype == NPC_Types::WIZARD) {
+	if (ntype == NPC_Types::WIWI) {
 
 		npcIcon = app->tex->Load("Assets/Textures/WizardIcon.png");
 		npcIcon_Transparent = app->tex->Load("Assets/Textures/WizardIcon_Transparent.png");
@@ -145,13 +147,23 @@ bool NPC::Start() {
 
 	}
 		
-	if (ntype == NPC_Types::ORC) {
+	if (ntype == NPC_Types::SKIPPY) {
 
 		npcIcon = app->tex->Load("Assets/Textures/SkippyIcon.png");
 		npcIcon_Transparent = app->tex->Load("Assets/Textures/SkippyIcon_Transparent.png");
 
 		name_npc = app->tex->Load("Assets/Textures/Names/Skippy_Name.png");
 		name_npc_transparent = app->tex->Load("Assets/Textures/Names/Skippy_Name_Transparent.png");
+
+	}
+
+	if (ntype == NPC_Types::JOVANI) {
+
+		npcIcon = app->tex->Load("Assets/Textures/JovaniIcon.png");
+		npcIcon_Transparent = app->tex->Load("Assets/Textures/JovaniIcon_Transparent.png");
+
+		name_npc = app->tex->Load("Assets/Textures/Names/Jovani_Name.png");
+		name_npc_transparent = app->tex->Load("Assets/Textures/Names/Jovani_Name_Transparent.png");
 
 	}
 
@@ -291,12 +303,14 @@ bool NPC::Update()
 	if (dialogueActivated) {
 
 		if (ntype == NPC_Types::ROGUE) DialogueGenerator(secondConversation);
-		if (ntype == NPC_Types::WIZARD) DialogueGenerator(thirdConversation);
-		if (ntype == NPC_Types::ORC)
+		if (ntype == NPC_Types::WIWI) DialogueGenerator(thirdConversation);
+		if (ntype == NPC_Types::SKIPPY)
 		{
 			app->sceneGameplay->trigger_1 = true;
 			DialogueGenerator(firstConversation);
 		}
+		if (ntype == NPC_Types::JOVANI) DialogueGenerator(firstConversation);
+		
 	}
 	else {
 
@@ -310,6 +324,7 @@ bool NPC::Update()
 
 bool NPC::CleanUp()
 {
+	delete[] thirdDialogue;
 	delete[] secondDialogue;
 	delete[] firstDialogue;
 
@@ -396,15 +411,21 @@ void NPC::DialogueGenerator(Conversation conversation) {
 				app->render->DrawTexture(name_npc_transparent, 714 , 485);
 
 			}
-			if (ntype == NPC_Types::WIZARD) {
+			if (ntype == NPC_Types::WIWI) {
 
 				app->render->DrawTexture(npcIcon_Transparent, 869, 407);
 				app->render->DrawTexture(name_npc_transparent, 748, 485);
 
 			}
-			if (ntype == NPC_Types::ORC) {
+			if (ntype == NPC_Types::SKIPPY) {
 
 				app->render->DrawTexture(npcIcon_Transparent, 864, 397);
+				app->render->DrawTexture(name_npc_transparent, 705, 485);
+
+			}
+			if (ntype == NPC_Types::JOVANI) {
+
+				app->render->DrawTexture(npcIcon_Transparent, 873, 408);
 				app->render->DrawTexture(name_npc_transparent, 705, 485);
 
 			}
@@ -450,15 +471,21 @@ void NPC::DialogueGenerator(Conversation conversation) {
 				app->render->DrawTexture(name_npc_transparent, 714, 485);
 
 			}
-			if (ntype == NPC_Types::WIZARD) {
+			if (ntype == NPC_Types::WIWI) {
 
 				app->render->DrawTexture(npcIcon_Transparent, 869, 407);
 				app->render->DrawTexture(name_npc_transparent, 748, 485);
 
 			}
-			if (ntype == NPC_Types::ORC) {
+			if (ntype == NPC_Types::SKIPPY) {
 
 				app->render->DrawTexture(npcIcon_Transparent, 864, 397);
+				app->render->DrawTexture(name_npc_transparent, 705, 485);
+
+			}
+			if (ntype == NPC_Types::JOVANI) {
+
+				app->render->DrawTexture(npcIcon_Transparent, 873, 408);
 				app->render->DrawTexture(name_npc_transparent, 705, 485);
 
 			}
@@ -497,15 +524,21 @@ void NPC::DialogueGenerator(Conversation conversation) {
 				app->render->DrawTexture(name_npc, 714, 485);
 
 			}
-			if (ntype == NPC_Types::WIZARD) {
+			if (ntype == NPC_Types::WIWI) {
 
 				app->render->DrawTexture(npcIcon, 869, 407);
 				app->render->DrawTexture(name_npc, 748, 485);
 
 			}
-			if (ntype == NPC_Types::ORC) {
+			if (ntype == NPC_Types::SKIPPY) {
 
 				app->render->DrawTexture(npcIcon, 864, 397);
+				app->render->DrawTexture(name_npc, 705, 485);
+
+			}
+			if (ntype == NPC_Types::JOVANI) {
+
+				app->render->DrawTexture(npcIcon, 873, 408);
 				app->render->DrawTexture(name_npc, 705, 485);
 
 			}

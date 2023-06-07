@@ -23,8 +23,9 @@ enum class DialogueType {
 enum class NPC_Types {
 
 	ROGUE,
-	WIZARD,
-	ORC,
+	WIWI,
+	SKIPPY,
+	JOVANI,
 	UNKNOWN
 
 };
