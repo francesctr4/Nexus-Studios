@@ -19,8 +19,7 @@
 SceneLogo::SceneLogo(bool startEnabled) : Module(startEnabled)
 {
 	nexusStudiosLogo = nullptr;
-	nexusSpritesheet1 = nullptr;
-	nexusSpritesheet2 = nullptr;
+	nexusSpritesheet = nullptr;
 	currentAnimation = nullptr;
 
 	logoFX = NULL;
@@ -45,37 +44,24 @@ bool SceneLogo::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool SceneLogo::Start()
 {
-
-	for (int i = 0; i < 17; i++) {
-
-		for (int j = 0; j < 8; j++) {
-
-			nexus1.PushBack({ 1280 * j, 720 * i, 1280, 720 });
-
-		}
-	}
-	nexus1.loop = true;
-	nexus1.speed = 0.5f;
-
 	for (int i = 0; i < 4; i++) {
 
 		for (int j = 0; j < 3; j++) {
 
-			nexus2.PushBack({ 1280 * j, 720 * i, 1280, 720 });
+			nexus.PushBack({ 1280 * j, 720 * i, 1280, 720 });
 
 		}
 	}
-	nexus2.loop = true;
-	nexus2.speed = 0.5f;
+	nexus.loop = true;
+	nexus.speed = 0.5f;
 
-	//nexusSpritesheet1 = app->tex->Load("Assets/Textures/Intro_Animations/NexusAnimation1.png");
-	nexusSpritesheet2 = app->tex->Load("Assets/Textures/Intro_Animations/NexusAnimation2.png");
+	nexusSpritesheet = app->tex->Load("Assets/Textures/Intro_Animations/NexusAnimation.png");
 
 	nexusStudiosLogo = app->tex->Load("Assets/Textures/SceneLogo.png");
 
 	logoFX = app->audio->LoadFx("Assets/Audio/Fx/LogoFX2.wav");
 
-	currentAnimation = &nexus2;
+	currentAnimation = &nexus;
 
 	return true;
 }
@@ -124,7 +110,7 @@ bool SceneLogo::Update(float dt)
 
 	SDL_Rect rect = currentAnimation->GetCurrentFrame();
 
-	app->render->DrawTexture(nexusSpritesheet2, 0, 0, &rect);
+	app->render->DrawTexture(nexusSpritesheet, 0, 0, &rect);
 
 	return true;
 }
@@ -145,7 +131,7 @@ bool SceneLogo::PostUpdate()
 // Called before quitting
 bool SceneLogo::CleanUp()
 {
-	app->tex->UnLoad(nexusSpritesheet2);
+	app->tex->UnLoad(nexusSpritesheet);
 	app->tex->UnLoad(nexusStudiosLogo);
 
 	return true;

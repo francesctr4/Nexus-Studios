@@ -1,7 +1,7 @@
 #pragma once
 
 #include "SDL/include/SDL_rect.h"
-#define MAX_FRAMES 140
+#define MAX_FRAMES 60
 
 class Animation
 {

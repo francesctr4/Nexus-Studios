@@ -40,11 +40,8 @@ private:
 
 	SDL_Texture* nexusStudiosLogo;
 
-	SDL_Texture* nexusSpritesheet1;
-	Animation nexus1;
-
-	SDL_Texture* nexusSpritesheet2;
-	Animation nexus2;
+	SDL_Texture* nexusSpritesheet;
+	Animation nexus;
 
 	Animation* currentAnimation;
 
