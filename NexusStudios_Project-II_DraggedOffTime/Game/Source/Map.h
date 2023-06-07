@@ -182,7 +182,7 @@ public:
 
 public:
 
-	SString mapFileName[16];
+	SString mapFileName[24];
 	int actualmap = 0;
 	SString mapFolder;
     bool mapLoaded;

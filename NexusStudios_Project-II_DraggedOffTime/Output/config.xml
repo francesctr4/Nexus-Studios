@@ -27,12 +27,12 @@
 	  
 	<player x="150 " y="430" texturepath="Assets/Textures/SpriteSheet_Kleos.png" texturepath2="Assets/Textures/Prehistoric_Kleos_SpriteSheet.png" texturepath3="Assets/Textures/Cyberpunk_Kleos_SpriteSheet.png" texturepath4="Assets/Textures/Demon_Kleos_SpriteSheet.png" map="0"/>
 	  
-	<npc type="rogue" x="950" y="410" texturepath="Assets/Textures/Rogue.png" map="0"/>
-	<npc type="wiwi" x="755" y="350" texturepath="Assets/Textures/Wizard.png" map="0"/>
-	<npc type="skippy" x="75" y="420" texturepath="Assets/Textures/Skippy.png" map="0"/>
-	<npc type="jovani" x="305" y="420" texturepath="Assets/Textures/Jovani.png" map="0"/>
+	<npc type="rogue" x="950" y="410" texturepath="Assets/Textures/Rogue.png" map="8"/>
+	<npc type="wiwi" x="755" y="350" texturepath="Assets/Textures/Wizard.png" map="8"/>
+	<npc type="skippy" x="75" y="420" texturepath="Assets/Textures/Skippy.png" map="8"/>
+	<npc type="jovani" x="305" y="420" texturepath="Assets/Textures/Jovani.png" map="8"/>
 
-	<enemy type = "bossMedieval" x="990" y="600" texturepath="Assets/Textures/Bosses/Final_Boss_Medieval.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="0"/>
+	<enemy type = "bossMedieval" x="990" y="600" texturepath="Assets/Textures/Bosses/Final_Boss_Medieval.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="8"/>
 	<enemy type = "bossPrehistoric" x="990" y="510" texturepath="Assets/Textures/Bosses/Final_Boss_Prehistoric.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="2"/>
 	<enemy type = "bossCyberpunk" x="1090" y="510" texturepath="Assets/Textures/Bosses/Final_Boss_Cyberpunk.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="1"/>
 	  
@@ -86,6 +86,8 @@
 	<mapfile_Infernal9 path="Assets/Maps/InfernalMapJovani.tmx"/>
 	<mapfile_Infernal10 path="Assets/Maps/InfernalMapChest.tmx"/>
 	 
+	<!--
+	 
 	<mapfile_1 path="Assets/Maps/mapfinal1280.tmx"/>
 	<mapfile_2 path="Assets/Maps/InfernalMap1.tmx"/>
 	<mapfile_3 path="Assets/Maps/InfernalMap2.tmx"/>
@@ -97,6 +99,8 @@
 	<mapfile_Puzzle_3 path="Assets/Maps/InfernalMapPuzzle3.tmx"/>
 	<mapfile_extra_1 path="Assets/Maps/JovaniJV.tmx"/>
 	<mapfile_extra_2 path="Assets/Maps/InfernalMapJovani.tmx"/>
+	 
+	-->
 	 
   </map>
 

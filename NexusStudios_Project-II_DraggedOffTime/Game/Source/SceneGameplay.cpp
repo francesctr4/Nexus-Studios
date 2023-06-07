@@ -240,7 +240,7 @@ bool SceneGameplay::Update(float dt)
 	
 	// Go to Ending Screen
 
-	if (app->input->GetKey(SDL_SCANCODE_M) == KEY_DOWN) {
+	if (app->input->GetKey(SDL_SCANCODE_N) == KEY_DOWN) {
 
 		app->audio->PlayFx(endingScreenFX);
 		app->fadeToBlack->Fade(this, (Module*)app->sceneEnding);

@@ -60,7 +60,13 @@ public:
 	b2Vec2 posButton4 = { 720,528 };
 
 	bool map_selector = false;
+
+	bool lobby = false;
+	bool prehistoria = false;
+	bool medieval = false;
 	bool infierno = false;
+	Timer selectionTimer;
+	bool timerActivated = false;
 
 	PhysBody* TP_Infierno_0;
 	PhysBody* TP_Infierno_1;
