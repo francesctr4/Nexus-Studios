@@ -34,6 +34,10 @@
 	<npc type="wizard" x="755" y="350" texturepath="Assets/Textures/Wizard.png" map="2"/>
 	<npc type="orc" x="75" y="420" texturepath="Assets/Textures/Skippy.png" map="2"/>
 
+	<enemy type = "bossMedieval" x="990" y="600" texturepath="Assets/Textures/Bosses/Final_Boss_Medieval.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="0"/>
+	<enemy type = "bossPrehistoric" x="990" y="510" texturepath="Assets/Textures/Bosses/Final_Boss_Prehistoric.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="0"/>
+	<enemy type = "bossCyberpunk" x="1090" y="510" texturepath="Assets/Textures/Bosses/Final_Boss_Cyberpunk.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="0"/>
+	  
 	<enemy type = "damage" x="690" y="160" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="1"/>
 	<enemy type = "damage" x="750" y="450" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="1"/>
 	<enemy type = "tank" x="75" y="615" texturepath="Assets/Textures/Tank_New.png" battletexturepath ="Assets/Textures/TankInCombat.png" map="1"/>

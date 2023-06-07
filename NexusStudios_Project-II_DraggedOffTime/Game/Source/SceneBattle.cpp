@@ -752,7 +752,7 @@ bool SceneBattle::PostUpdate()
 		SDL_Rect rect_p4 = { 0, 0, 3 * p4_percentage_life, 20 };
 		app->render->DrawTexture(healthBar, 80, 195, &rect_p4);
 	}
-	app->render->DrawText("Player 2 HP:", 80, 175, 100, 20, { 255, 255, 255, 255 });
+	app->render->DrawText("Player 4 HP:", 80, 175, 100, 20, { 255, 255, 255, 255 });
 	std::string p4_HP_string = std::to_string(m_players[3].HP);
 	app->render->DrawText(p4_HP_string, 80 + 125, 175, 15, 20, { 255, 255, 255, 255 });
 

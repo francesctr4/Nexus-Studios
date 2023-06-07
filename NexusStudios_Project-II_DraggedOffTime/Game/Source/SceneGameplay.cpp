@@ -95,6 +95,8 @@ bool SceneGameplay::Start()
 
 	endingScreenFX = app->audio->LoadFx("Assets/Audio/Fx/EndingScreen.wav");
 
+	LoadMap(0);
+
 	return true;
 }
 

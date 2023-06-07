@@ -22,6 +22,10 @@ enum class EnemyType
 	DAMAGE,
 	SUPPORT,
 	TANK,
+	BOSS_MEDIEVAL,
+	BOSS_PREHISTORIC,
+	BOSS_CYBERPUNK,
+	BOSS_APOCALYPSE,
 	UNKNOWN
 };
 
@@ -67,6 +71,9 @@ public:
  
 	int width = 32;
 	int height = 32;
+
+	int widthBoss = 52;
+	int heightBoss = 52;
 
 	bool playerInteraction;
 

@@ -69,6 +69,38 @@ bool Enemy::Awake() {
 		atk = 5;
 		def = 10;
 	}
+
+	if (SString(parameters.attribute("type").as_string()) == SString("bossMedieval")) {
+
+		etype = EnemyType::BOSS_MEDIEVAL;
+		hp = 5;
+		atk = 5;
+		def = 10;
+	}
+
+	if (SString(parameters.attribute("type").as_string()) == SString("bossPrehistoric")) {
+
+		etype = EnemyType::BOSS_PREHISTORIC;
+		hp = 5;
+		atk = 5;
+		def = 10;
+	}
+
+	if (SString(parameters.attribute("type").as_string()) == SString("bossCyberpunk")) {
+
+		etype = EnemyType::BOSS_CYBERPUNK;
+		hp = 5;
+		atk = 5;
+		def = 10;
+	}
+
+	if (SString(parameters.attribute("type").as_string()) == SString("bossApocalypse")) {
+
+		etype = EnemyType::BOSS_APOCALYPSE;
+		hp = 5;
+		atk = 5;
+		def = 10;
+	}
 		
 	position.x = parameters.attribute("x").as_int();
 	position.y = parameters.attribute("y").as_int();
@@ -93,11 +125,22 @@ bool Enemy::Start() {
 	texture = app->tex->Load(texturePath);
 	textureBattle = app->tex->Load(texturePathBattle);
 
-	pbody = app->physics->CreateRectangle(position.x, position.y, width, height, bodyType::STATIC);
+	if (etype == EnemyType::BOSS_PREHISTORIC || etype == EnemyType::BOSS_MEDIEVAL || etype == EnemyType::BOSS_CYBERPUNK || etype == EnemyType::BOSS_APOCALYPSE) {
 
-	enemySensor = app->physics->CreateCircleSensor(position.x, position.y, 25, bodyType::KINEMATIC, ColliderType::ENEMY_SENSOR);
+		pbody = app->physics->CreateRectangle(position.x, position.y, widthBoss, heightBoss, bodyType::STATIC);
 
-		//pbody->listener = this;
+		enemySensor = app->physics->CreateCircleSensor(position.x, position.y, 40, bodyType::KINEMATIC, ColliderType::ENEMY_SENSOR);
+
+	}
+	else {
+
+		pbody = app->physics->CreateRectangle(position.x, position.y, width, height, bodyType::STATIC);
+
+		enemySensor = app->physics->CreateCircleSensor(position.x, position.y, 25, bodyType::KINEMATIC, ColliderType::ENEMY_SENSOR);
+
+	}
+
+	//pbody->listener = this;
 
 	enemySensor->listener = this;
 
@@ -111,15 +154,27 @@ bool Enemy::Update()
 	b2Transform transform = pbody->body->GetTransform();
 	b2Vec2 pos = transform.p;
 
-	position.x = METERS_TO_PIXELS(pos.x) - 16;
-	position.y = METERS_TO_PIXELS(pos.y) - 18;
+	if (etype == EnemyType::BOSS_PREHISTORIC || etype == EnemyType::BOSS_MEDIEVAL || etype == EnemyType::BOSS_CYBERPUNK || etype == EnemyType::BOSS_APOCALYPSE) {
+	
+		position.x = METERS_TO_PIXELS(pos.x) - 32;
+		position.y = METERS_TO_PIXELS(pos.y) - 30;
 
-	currentAnimation->Update();
+		app->render->DrawTexture(texture, position.x, position.y);
+	
+	}
+	else {
 
-	SDL_Rect playerRect = currentAnimation->GetCurrentFrame();
+		position.x = METERS_TO_PIXELS(pos.x) - 16;
+		position.y = METERS_TO_PIXELS(pos.y) - 18;
 
-	app->render->DrawTexture(texture, position.x, position.y, &playerRect);
-		
+		currentAnimation->Update();
+
+		SDL_Rect enemyRect = currentAnimation->GetCurrentFrame();
+
+		app->render->DrawTexture(texture, position.x, position.y, &enemyRect);
+
+	}
+	
 	if (playerInteraction == true)
 	{
 		//app->fadeToBlack->Fade((Module*)app->sceneGameplay, (Module*)app->sceneBattle);
