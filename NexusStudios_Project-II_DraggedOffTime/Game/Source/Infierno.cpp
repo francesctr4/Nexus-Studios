@@ -31,7 +31,10 @@ void Infierno::Update()
 
 		if (map_selector == true)
 		{
-			app->render->DrawText("2- Mapa Infierno", 245, 170, 160, 45, { 255, 255, 255, 255 });
+			app->render->DrawText("1. Prehistoric Map", 245, 170, 160, 45, { 255, 255, 255, 255 });
+			app->render->DrawText("2. Medieval Map", 245, 200, 160, 45, { 255, 255, 255, 255 });
+			app->render->DrawText("3. Infernal Map", 245, 230, 160, 45, { 255, 255, 255, 255 });
+
 			if (infierno == true)
 			{
 				app->render->DrawText("0- 1st Room", 420, 180, 125, 20, { 255, 255, 255, 255 });
@@ -127,7 +130,7 @@ void Infierno::Update()
 		{
 			map_selector = !map_selector;
 		}
-		if (app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
+		if (app->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
 		{
 			infierno = !infierno;
 		}

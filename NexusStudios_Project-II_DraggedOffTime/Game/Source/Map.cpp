@@ -28,6 +28,8 @@ bool Map::Awake(pugi::xml_node& config)
     LOG("Loading Map Parser");
     bool ret = true;
 
+    mapFolder = config.child("mapfolder").attribute("path").as_string();
+
     mapFileName[0] = config.child("mapfile_1").attribute("path").as_string();
     mapFileName[1] = config.child("mapfile_Prehistoric1").attribute("path").as_string();
     mapFileName[2] = config.child("mapfile_3").attribute("path").as_string();
@@ -39,7 +41,7 @@ bool Map::Awake(pugi::xml_node& config)
     mapFileName[8] = config.child("mapfile_Puzzle_3").attribute("path").as_string();
     mapFileName[9] = config.child("mapfile_extra_1").attribute("path").as_string();
     mapFileName[10] = config.child("mapfile_extra_2").attribute("path").as_string();
-    mapFolder = config.child("mapfolder").attribute("path").as_string();
+    
     this->config = config;
 
     return ret;
@@ -51,8 +53,8 @@ bool Map::Init()
     LOG("Loading Map Parser");
     bool ret = true;
 
-    mapFileName[0] = config.child("mapfile_1").attribute("path").as_string();
-    mapFileName[1] = config.child("mapfile_Prehistoric1").attribute("path").as_string();
+   /*mapFileName[0] = config.child("mapfile_1").attribute("path").as_string();
+    mapFileName[1] = config.child("mapfile_2").attribute("path").as_string();
     mapFileName[2] = config.child("mapfile_3").attribute("path").as_string();
     mapFileName[3] = config.child("mapfile_4").attribute("path").as_string();
     mapFileName[4] = config.child("mapfile_5").attribute("path").as_string();
@@ -63,7 +65,7 @@ bool Map::Init()
     mapFileName[9] = config.child("mapfile_extra_1").attribute("path").as_string();
     mapFileName[10] = config.child("mapfile_extra_2").attribute("path").as_string();
 
-    mapFolder = config.child("mapfolder").attribute("path").as_string();
+    mapFolder = config.child("mapfolder").attribute("path").as_string();*/
 
     return ret;
 }
