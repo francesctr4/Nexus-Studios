@@ -1,6 +1,11 @@
 #pragma once
 
 #include "Animation.h"
+#include "GuiManager.h"
+#include "GuiButton.h"
+#include "GuiSlider.h"
+#include "GuiCheckBox.h"
+#include "Tweening.h"
 
 struct SDL_Texture;
 
@@ -35,12 +40,33 @@ public:
 public:
 
 	bool enableMusic;
+	bool enteredEnding;
 
 private:
+
+	// Ending Screen
 
 	SDL_Texture* endingScreen;
 
 	Animation ending;
 	Animation* currentAnimation;
+
+	// UI
+
+	SDL_Texture* resume;
+	GuiButton* Resume;
+
+	SDL_Texture* backTitle;
+	GuiButton* BackTitle;
+
+	// Tween
+
+	int offset = 808;
+
+	Tween Animation_Resume;
+	float point_Resume;
+
+	Tween Animation_BackTitle;
+	float point_BackTitle;
 
 };

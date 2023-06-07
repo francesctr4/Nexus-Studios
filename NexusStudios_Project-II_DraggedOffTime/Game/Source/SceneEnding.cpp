@@ -25,6 +25,8 @@ SceneEnding::SceneEnding(bool startEnabled) : Module(startEnabled)
 	endingScreen = nullptr;
 	currentAnimation = nullptr;
 
+	enteredEnding = false;
+
 }
 
 // Destructor
@@ -70,6 +72,26 @@ bool SceneEnding::Start()
 
 	currentAnimation = &ending;
 
+	// UI
+
+	resume = app->tex->Load("Assets/UI/Resume.png");
+	Resume = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, resume, "", { 170,481,154,38 }, (Module*)app->sceneGameplay);
+	Resume->state = GuiControlState::DISABLED;
+
+	Animation_Resume.Set();
+	Animation_Resume.smoothness = 4;
+	Animation_Resume.AddTween(100, 50, EXPONENTIAL_OUT);
+
+	backTitle = app->tex->Load("Assets/UI/BackTitle.png");
+	BackTitle = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, backTitle, "", { 872,481,270,38 }, (Module*)app->sceneGameplay);
+	BackTitle->state = GuiControlState::DISABLED;
+
+	Animation_BackTitle.Set();
+	Animation_BackTitle.smoothness = 4;
+	Animation_BackTitle.AddTween(100, 50, EXPONENTIAL_IN);
+	Animation_BackTitle.JumpTo(100, false);
+
+
 	return true;
 }
 
@@ -95,6 +117,61 @@ bool SceneEnding::Update(float dt)
 {
 	OPTICK_EVENT();
 
+	if (!enteredEnding) {
+
+		Resume->state = GuiControlState::NORMAL;
+		BackTitle->state = GuiControlState::NORMAL;
+
+		enteredEnding = true;
+
+	}
+
+	Animation_Resume.Step(1, false);
+	Animation_BackTitle.Step(1, false);
+
+	Animation_Resume.Foward();
+	Animation_BackTitle.Backward();
+
+	point_Resume = Animation_Resume.GetPoint();
+	point_BackTitle = Animation_BackTitle.GetPoint();
+
+	Resume->bounds.x = point_Resume * offset - 615;
+	BackTitle->bounds.x = point_BackTitle * offset + 865;
+
+	if (Resume->state == GuiControlState::PRESSED) {
+
+		app->sceneGameplay->enableMusic = true;
+
+		Resume->state = GuiControlState::DISABLED;
+		BackTitle->state = GuiControlState::DISABLED;
+		enteredEnding = false;
+
+		enableMusic = true;
+
+		Animation_Resume.JumpTo(0, false);
+		Animation_BackTitle.JumpTo(100, false);
+
+		app->fadeToBlack->Fade(this, reinterpret_cast<Module*>(app->sceneGameplay));
+
+	}
+
+	if (BackTitle->state == GuiControlState::PRESSED) {
+
+		app->sceneGameplay->enableMusic = true;
+
+		Resume->state = GuiControlState::DISABLED;
+		BackTitle->state = GuiControlState::DISABLED;
+		enteredEnding = false;
+
+		enableMusic = true;
+
+		Animation_Resume.JumpTo(0, false);
+		Animation_BackTitle.JumpTo(100, false);
+
+		app->fadeToBlack->Fade(this, reinterpret_cast<Module*>(app->sceneTitle));
+
+	}
+
 	if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_START] == KEY_DOWN) {
 
 		enableMusic = true;
@@ -117,6 +194,8 @@ bool SceneEnding::PostUpdate()
 	OPTICK_EVENT();
 
 	bool ret = true;
+
+	app->guiManager->Draw();
 
 	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_BACK] == KEY_DOWN)
 		ret = false;
