@@ -380,8 +380,7 @@ void SceneGameplay::LoadMapEntities(int map)
 	
 	for (pugi::xml_node npcNode = xml_node.child("npc"); npcNode; npcNode = npcNode.next_sibling("npc"))
 	{
-		//int aparicion = npcNode.attribute("map").as_int();
-		int aparicion = 0;
+		int aparicion = npcNode.attribute("map").as_int();
 
 		if (aparicion == map)
 		{
@@ -395,8 +394,7 @@ void SceneGameplay::LoadMapEntities(int map)
 
 	for (pugi::xml_node enemyNode = xml_node.child("enemy"); enemyNode; enemyNode = enemyNode.next_sibling("enemy"))
 	{
-		//int aparicion = enemyNode.attribute("map").as_int();
-		int aparicion = 0;
+		int aparicion = enemyNode.attribute("map").as_int();
 
 		if (aparicion == map)
 		{
@@ -411,8 +409,7 @@ void SceneGameplay::LoadMapEntities(int map)
 
 	for (pugi::xml_node itemNode = xml_node.child("item"); itemNode; itemNode = itemNode.next_sibling("item"))
 	{
-		//int aparicion = itemNode.attribute("map").as_int();
-		int aparicion = 0;
+		int aparicion = itemNode.attribute("map").as_int();
 
 		if (aparicion == map)
 		{
