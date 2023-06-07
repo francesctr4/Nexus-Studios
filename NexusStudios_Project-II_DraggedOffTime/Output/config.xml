@@ -26,9 +26,9 @@
   <sceneGameplay>
 	<player x="150 " y="430" texturepath="Assets/Textures/SpriteSheet_Kleos.png" texturepath2="Assets/Textures/Prehistoric_Kleos_SpriteSheet.png" texturepath3="Assets/Textures/Cyberpunk_Kleos_SpriteSheet.png" texturepath4="Assets/Textures/Demon_Kleos_SpriteSheet.png" map="0"/>
 	  
-	<npc type="rogue" x="950" y="410" texturepath="Assets/Textures/Rogue.png" map="0"/>
-	<npc type="wizard" x="755" y="350" texturepath="Assets/Textures/Wizard.png" map="0"/>
-	<npc type="orc" x="75" y="420" texturepath="Assets/Textures/Skippy.png" map="0"/>
+	<npc type="rogue" x="950" y="410" texturepath="Assets/Textures/Rogue.png" map="2"/>
+	<npc type="wizard" x="755" y="350" texturepath="Assets/Textures/Wizard.png" map="2"/>
+	<npc type="orc" x="75" y="420" texturepath="Assets/Textures/Skippy.png" map="2"/>
 
 	<enemy type = "damage" x="690" y="160" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="1"/>
 	<enemy type = "damage" x="750" y="450" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="1"/>
