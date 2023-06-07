@@ -683,4 +683,23 @@ int Map::FindVertices(std::string string, char c) {
 
 }
 
+bool Map::LoadState(pugi::xml_node& data)
+{
+    // Aqui deberia ponerte en el mapa donde te quedaste.
+
+    return true;
+}
+
+bool Map::SaveState(pugi::xml_node& data)
+{
+    OPTICK_EVENT();
+
+    // Save Map
+
+    pugi::xml_node actualMap = data.append_child("actualMap");
+
+    actualMap.append_attribute("map") = this->actualmap;
+
+    return true;
+}
 

@@ -134,7 +134,6 @@ public:
     // Called before quitting
     bool CleanUp() override;
 
-
     // Load new map
     bool Load();
 
@@ -146,6 +145,9 @@ public:
 
 	// L12: Create walkability map for pathfinding
 	bool CreateWalkabilityMap(int& width, int& height, uchar** buffer) const;
+
+	bool LoadState(pugi::xml_node& data) override;
+	bool SaveState(pugi::xml_node& data) override;
 
 private:
 

@@ -87,4 +87,6 @@ public:
 
 	int enemyMap;
 
+	bool isAlive;
+
 };

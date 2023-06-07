@@ -163,10 +163,14 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 {
 	OPTICK_EVENT();
 
+	// Load Player
+
 	float x = data.child("player").attribute("x").as_int();
 	float y = data.child("player").attribute("y").as_int();
 
 	app->sceneGameplay->player->pbody->body->SetTransform({ PIXEL_TO_METERS(x),PIXEL_TO_METERS(y) }, 0);
+
+	// Load Enemies
 
 	ListItem<Enemy*>* item;
 
@@ -183,19 +187,7 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 
 	}
 
-	ListItem<NPC*>* ite;
-	pugi::xml_node npcNode = data.child("npc");
-
-	for (auto& ite : app->sceneGameplay->npcs)
-	{
-		float x = npcNode.attribute("x").as_int();
-		float y = npcNode.attribute("y").as_int();
-
-		ite->pbody->body->SetTransform({ PIXEL_TO_METERS(x),PIXEL_TO_METERS(y) }, 0);
-
-		npcNode = npcNode.next_sibling("npc");
-
-	}
+	// Load Items
 
 	ListItem<Item*>* it;
 
@@ -265,6 +257,8 @@ bool EntityManager::SaveState(pugi::xml_node& data)
 {
 	OPTICK_EVENT();
 
+	// Save Player
+
 	pugi::xml_node player = data.append_child("player");
 
 	player.append_attribute("x") = app->sceneGameplay->player->position.x + 16;
@@ -272,6 +266,8 @@ bool EntityManager::SaveState(pugi::xml_node& data)
 
 	playerX = app->sceneGameplay->player->position.x;
 	playerY = app->sceneGameplay->player->position.y;
+
+	// Save Enemies
 
 	ListItem<Enemy*>* item;
 
@@ -282,10 +278,57 @@ bool EntityManager::SaveState(pugi::xml_node& data)
 		int x, y;
 		item->pbody->GetPosition(x, y);
 
+		switch (item->etype)
+		{
+		case EnemyType::DAMAGE:
+			enemy.append_attribute("type") = "damage";
+			break;
+		case EnemyType::SUPPORT:
+			enemy.append_attribute("type") = "support";
+			break;
+		case EnemyType::TANK:
+			enemy.append_attribute("type") = "tank";
+			break;
+		case EnemyType::BOSS_MEDIEVAL:
+			enemy.append_attribute("type") = "bossMedieval";
+			break;
+		case EnemyType::BOSS_PREHISTORIC:
+			enemy.append_attribute("type") = "bossPrehistoric";
+			break;
+		case EnemyType::BOSS_CYBERPUNK:
+			enemy.append_attribute("type") = "bossCyberpunk";
+			break;
+		case EnemyType::BOSS_APOCALYPSE:
+			enemy.append_attribute("type") = "bossApocalypse";
+			break;
+		case EnemyType::UNKNOWN:
+			break;
+		default:
+			break;
+		}
+
 		enemy.append_attribute("x") = x + 16;
 		enemy.append_attribute("y") = y + 16;
 
+		enemy.append_attribute("texturepath") = item->texturePath;
+		enemy.append_attribute("battletexturepath") = item->texturePathBattle;
+
+		enemy.append_attribute("map") = item->enemyMap;
+
+		if (item->isAlive) {
+
+			enemy.append_attribute("isAlive") = "True";
+
+		}
+		else {
+
+			enemy.append_attribute("isAlive") = "False";
+
+		}
+
 	}
+
+	// Save Items
 
 	ListItem<Item*>* it;
 
@@ -325,6 +368,8 @@ bool EntityManager::SaveState(pugi::xml_node& data)
 
 		item.append_attribute("texturepath") = it->texturePath;
 		item.append_attribute("iconpath") = it->iconPath;
+
+		item.append_attribute("map") = it->itemMap;
 
 		if (it->isPicked) {
 

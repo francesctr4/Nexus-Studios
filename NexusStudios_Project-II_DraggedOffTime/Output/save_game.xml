@@ -1,30 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0"?>
 <save_state>
 	<input />
 	<window />
 	<textures />
 	<audio />
-	<map />
+	<map>
+		<actualMap map="0" />
+	</map>
+	<empty />
 	<pathfinding />
 	<sceneLogo />
 	<sceneTitle />
+	<sceneLore />
 	<sceneGameplay />
+	<sceneEnding />
 	<sceneEnding />
 	<guiManager />
 	<CombatManager />
 	<entitymanager>
-		<player x="400" y="448" />
-		<enemy x="690" y="160" />
-		<enemy x="1050" y="160" />
-		<enemy x="75" y="615" />
-		<enemy x="1120" y="600" />
-		<item type="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png" isPicked="False" />
-		<item type="Mango" x="600" y="450" texturepath="Assets/Textures/Items/Mangoes/Mango-Sheet.png" iconpath="Assets/Textures/Items/Mangoes/Mango.png" isPicked="False" />
-		<item type="Gem" x="700" y="450" texturepath="Assets/Textures/Items/Gems/BlueGem-Sheet.png" iconpath="Assets/Textures/Items/Gems/BlueGem.png" isPicked="False" />
-		<item type="Battery" x="800" y="450" texturepath="Assets/Textures/Items/Batteries/Battery-Sheet.png" iconpath="Assets/Textures/Items/Batteries/Battery.png" isPicked="False" />
-		<item x="876" y="446" texturepath="" iconpath="" isPicked="False" />
-		<item x="1144" y="361" texturepath="" iconpath="" isPicked="False" />
+		<player x="211" y="430" />
+		<enemy type="bossMedieval" x="980" y="590" texturepath="Assets/Textures/Bosses/Final_Boss_Medieval.png" battletexturepath="Assets/Textures/DamageInCombat.png" map="0" isAlive="True" />
+		<enemy type="bossPrehistoric" x="980" y="500" texturepath="Assets/Textures/Bosses/Final_Boss_Prehistoric.png" battletexturepath="Assets/Textures/DamageInCombat.png" map="0" isAlive="True" />
+		<enemy type="bossCyberpunk" x="1080" y="500" texturepath="Assets/Textures/Bosses/Final_Boss_Cyberpunk.png" battletexturepath="Assets/Textures/DamageInCombat.png" map="0" isAlive="True" />
+		<item type="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png" map="0" isPicked="False" />
 	</entitymanager>
+	<empty />
+	<psystem />
+	<empty />
 	<renderer>
 		<camera x="0" y="0" />
 	</renderer>

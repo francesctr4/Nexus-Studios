@@ -35,6 +35,7 @@ Enemy::Enemy() : Entity(EntityType::ENEMY)
 	enemySensor = nullptr;
 	currentAnimation = nullptr;
 	enemyMap = NULL;
+	isAlive = true;
 
 }
 
@@ -235,6 +236,7 @@ void Enemy::OnCollisionEnd(PhysBody* physA, PhysBody* physB) {
 
 void Enemy::Death() 
 {
+	isAlive = false;
 	active = false;
 	pbody->body->SetActive(false);
 	enemySensor->body->SetActive(false);
