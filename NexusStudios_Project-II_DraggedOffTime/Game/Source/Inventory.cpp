@@ -5,6 +5,7 @@
 #include "Render.h"
 #include "Player.h"
 #include "Item.h"
+#include "SceneGameplay.h"
 
 // Constructor
 Inventory::Inventory() {}
@@ -81,6 +82,10 @@ void Inventory::RemoveCertainItem(int index)
 	if (index < items.size()) {
 
 		items.erase(items.begin() + index);
+
+		// Item Usage
+
+		//app->sceneGameplay->player->AddXP(500, 0);
 
 	}
 	
