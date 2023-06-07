@@ -194,12 +194,71 @@ void FeatureMenu::Load()
 	OpenPause = app->audio->LoadFx("Assets/Audio/Fx/SceneGameplay/OpenPause.wav");
 	ClosePause = app->audio->LoadFx("Assets/Audio/Fx/SceneGameplay/ClosePause.wav");
 
+	// Tweens
+
+	Animation_Stats.Set();
+	Animation_Stats.smoothness = 4;
+	Animation_Stats.AddTween(100, 50, EXPONENTIAL_OUT);
+
+	Animation_Inventory.Set();
+	Animation_Inventory.smoothness = 4;
+	Animation_Inventory.AddTween(100, 60, EXPONENTIAL_OUT);
+
+	Animation_Equipment.Set();
+	Animation_Equipment.smoothness = 4;
+	Animation_Equipment.AddTween(100, 70, EXPONENTIAL_OUT);
+
+	Animation_Skills.Set();
+	Animation_Skills.smoothness = 4;
+	Animation_Skills.AddTween(100, 80, EXPONENTIAL_OUT);
+
+	Animation_Quests.Set();
+	Animation_Quests.smoothness = 4;
+	Animation_Quests.AddTween(100, 90, EXPONENTIAL_OUT);
+
 }
 
 void FeatureMenu::Update()
 {
-	//Menu
 
+	// Tweens logic
+
+	Animation_Stats.Step(1, false);
+	Animation_Inventory.Step(1, false);
+	Animation_Equipment.Step(1, false);
+	Animation_Skills.Step(1, false);
+	Animation_Quests.Step(1, false);
+
+	if (statsEnabled)
+	{
+		Animation_Stats.Foward();
+		Animation_Inventory.Foward();
+		Animation_Equipment.Foward();
+		Animation_Skills.Foward();
+		Animation_Quests.Foward();
+	}
+	else
+	{
+		Animation_Stats.JumpTo(0, false);
+		Animation_Inventory.JumpTo(0, false);
+		Animation_Equipment.JumpTo(0, false);
+		Animation_Skills.JumpTo(0, false);
+		Animation_Quests.JumpTo(0, false);
+	}
+
+	point_Stats = Animation_Stats.GetPoint();
+	point_Inventory = Animation_Inventory.GetPoint();
+	point_Equipment = Animation_Equipment.GetPoint();
+	point_Skills = Animation_Skills.GetPoint();
+	point_Quests = Animation_Quests.GetPoint();
+
+	Stats->bounds.y = point_Stats * offset - 721;
+	Inventory_->bounds.y = point_Inventory * offset - 721;
+	Equipment->bounds.y = point_Equipment * offset - 721;
+	Skills->bounds.y = point_Skills * offset - 721;
+	Quests->bounds.y = point_Quests * offset - 721;
+
+	//Menu
 
 	if (app->input->GetKey(SDL_SCANCODE_I) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_START] == KEY_DOWN) {
 

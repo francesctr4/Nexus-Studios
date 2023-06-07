@@ -6,6 +6,7 @@
 #include "GuiButton.h"
 #include "GuiSlider.h"
 #include "GuiCheckBox.h"
+#include "Tweening.h"
 
 struct SDL_Texture;
 
@@ -47,6 +48,25 @@ public:
 
 	SDL_Texture* quests;
 	GuiButton* Quests;
+
+	// Tweens Upper Buttons
+
+	int offset = 808;
+
+	Tween Animation_Stats;
+	float point_Stats;
+
+	Tween Animation_Inventory;
+	float point_Inventory;
+
+	Tween Animation_Equipment;
+	float point_Equipment;
+
+	Tween Animation_Skills;
+	float point_Skills;
+
+	Tween Animation_Quests;
+	float point_Quests;
 
 	//Characters
 
