@@ -59,12 +59,63 @@ bool GuiButton::Update(float dt)
 				if (app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_DOWN) {
 
 					selectedButton--;
-
 				}
 				
 				if (app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_DOWN) {
 
 					selectedButton++;
+				}
+
+				if (app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_DOWN) {
+
+					selectedCharacterStats--;
+
+					if (app->sceneGameplay->featureMenu.i == 1) {
+
+						selectedInventory--;
+
+					}
+
+					if (app->sceneGameplay->featureMenu.i == 4) {
+
+						selectedQuests--;
+
+					}
+
+				}
+
+				if (app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_LEFTSHOULDER] == KEY_DOWN) {
+
+					selectedWeapon++;
+
+					if (selectedWeapon < 0) {
+
+						selectedWeapon = 2;
+
+					}
+					else if (selectedWeapon > 2) {
+
+						selectedWeapon = 0;
+
+					}
+
+				}
+
+				if (app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_DOWN) {
+
+					selectedCharacterStats++;
+
+					if (app->sceneGameplay->featureMenu.i == 1) {
+
+						selectedInventory++;
+
+					}
+
+					if (app->sceneGameplay->featureMenu.i == 4) {
+
+						selectedQuests++;
+
+					}
 
 				}
 				
@@ -77,6 +128,55 @@ bool GuiButton::Update(float dt)
 				if (selectedButton > maxID) {
 
 					selectedButton = 0;
+
+				}
+
+				if (selectedCharacterStats < 0) {
+
+					selectedCharacterStats = 3;
+
+				}
+
+				if (selectedCharacterStats > 3) {
+
+					selectedCharacterStats = 0;
+
+				}
+
+				if (app->sceneGameplay->featureMenu.i == 4) {
+
+					if (selectedQuests < 0) {
+
+						selectedQuests = 3;
+
+					}
+
+					if (selectedQuests > 3) {
+
+						selectedQuests = 0;
+
+					}
+
+				}
+
+				if (app->sceneGameplay->featureMenu.i == 1) {
+
+					if (selectedInventory < 0) {
+
+						selectedInventory = 17;
+
+					}
+
+					if (selectedInventory > 17) {
+
+						selectedInventory = 0;
+
+					}
+
+				}
+				else {
+
+					selectedInventory = 0;
 
 				}
 
@@ -131,7 +231,7 @@ bool GuiButton::Update(float dt)
 			}
 			else {
 
-				if (id == featureMenuID[selectedButton]) {
+				if (id == featureMenuID[selectedButton] || id == charactersIDStats[selectedCharacterStats] || id == questsID[selectedQuests] || id == weaponsID[selectedWeapon] || id == selectedInventory) {
 
 					state = GuiControlState::FOCUSED;
 
@@ -264,9 +364,6 @@ bool GuiButton::Draw(Render* render)
 
 		break;
 	}
-
-
-
 
 	app->render->DrawText(text.GetString(), bounds.x, bounds.y, bounds.w, bounds.h, { 255,255,255 });
 

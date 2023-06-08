@@ -43,19 +43,19 @@ void FeatureMenu::Load()
 	//Stats Character Selection
 
 	medieval = app->tex->Load("Assets/UI/Stats/Medieval_Selection.png");
-	Medieval = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, medieval, "", { 238,178,90,90 }, (Module*)app->sceneGameplay);
+	Medieval = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 560, medieval, "", { 238,178,90,90 }, (Module*)app->sceneGameplay);
 	Medieval->state = GuiControlState::INVISIBLE;
 
 	prehistorical = app->tex->Load("Assets/UI/Stats/Prehistoric_Selection.png");
-	Prehistorical = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, prehistorical, "", { 238,279,90,90 }, (Module*)app->sceneGameplay);
+	Prehistorical = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 561, prehistorical, "", { 238,279,90,90 }, (Module*)app->sceneGameplay);
 	Prehistorical->state = GuiControlState::INVISIBLE;
 
 	cyberpunk = app->tex->Load("Assets/UI/Stats/Cyberpunk_Selection.png");
-	Cyberpunk = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, cyberpunk, "", { 238,385,90,90 }, (Module*)app->sceneGameplay);
+	Cyberpunk = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 562, cyberpunk, "", { 238,385,90,90 }, (Module*)app->sceneGameplay);
 	Cyberpunk->state = GuiControlState::INVISIBLE;
 
 	apocalypse = app->tex->Load("Assets/UI/Stats/Apocalypse_Selection.png");
-	Apocalypse = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, apocalypse, "", { 238,485,90,90 }, (Module*)app->sceneGameplay);
+	Apocalypse = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 563, apocalypse, "", { 238,485,90,90 }, (Module*)app->sceneGameplay);
 	Apocalypse->state = GuiControlState::INVISIBLE;
 
 	//Inventory
@@ -119,15 +119,15 @@ void FeatureMenu::Load()
 	//Equipment
 
 	melee = app->tex->Load("Assets/UI/Stats/Melee_Slot.png");
-	Melee = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 17, melee, "", { 753,321,60,60 }, (Module*)app->sceneGameplay);
+	Melee = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 700, melee, "", { 753,321,60,60 }, (Module*)app->sceneGameplay);
 	Melee->state = GuiControlState::DISABLED;
 
 	mid = app->tex->Load("Assets/UI/Stats/Mid_Slot.png");
-	Mid = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 17, mid, "", { 753,396,60,60 }, (Module*)app->sceneGameplay);
+	Mid = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 701, mid, "", { 753,396,60,60 }, (Module*)app->sceneGameplay);
 	Mid->state = GuiControlState::DISABLED;
 
 	rangued = app->tex->Load("Assets/UI/Stats/Rangued_Slot.png");
-	Rangued = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 17, rangued, "", { 753,471,60,60 }, (Module*)app->sceneGameplay);
+	Rangued = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 702, rangued, "", { 753,471,60,60 }, (Module*)app->sceneGameplay);
 	Rangued->state = GuiControlState::DISABLED;
 
 	Equipment_visual = app->tex->Load("Assets/UI/Stats/Equipment_Weapon_SpriteSheet.png");
@@ -143,19 +143,19 @@ void FeatureMenu::Load()
 	Quest_Completed = app->tex->Load("Assets/UI/Stats/Check.png");
 
 	mainQuest = app->tex->Load("Assets/UI/Stats/MainQuest_Spritesheet.png");
-	MainQuest = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, mainQuest, "", { 273,260,300,33 }, (Module*)app->sceneGameplay);
+	MainQuest = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 660, mainQuest, "", { 273,260,300,33 }, (Module*)app->sceneGameplay);
 	MainQuest->state = GuiControlState::DISABLED;
 
 	sideQuest_1 = app->tex->Load("Assets/UI/Stats/SideQuest1_Spritesheet.png");
-	SideQuest_1 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, sideQuest_1, "", { 273,398,300,33 }, (Module*)app->sceneGameplay);
+	SideQuest_1 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 661, sideQuest_1, "", { 273,398,300,33 }, (Module*)app->sceneGameplay);
 	SideQuest_1->state = GuiControlState::DISABLED;
 
 	sideQuest_2 = app->tex->Load("Assets/UI/Stats/SideQuest2_Spritesheet.png");
-	SideQuest_2 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, sideQuest_2, "", { 273,445,300,33 }, (Module*)app->sceneGameplay);
+	SideQuest_2 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 662, sideQuest_2, "", { 273,445,300,33 }, (Module*)app->sceneGameplay);
 	SideQuest_2->state = GuiControlState::DISABLED;
 
 	sideQuest_3 = app->tex->Load("Assets/UI/Stats/SideQuest3_Spritesheet.png");
-	SideQuest_3 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, sideQuest_3, "", { 273,492,300,33 }, (Module*)app->sceneGameplay);
+	SideQuest_3 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 663, sideQuest_3, "", { 273,492,300,33 }, (Module*)app->sceneGameplay);
 	SideQuest_3->state = GuiControlState::DISABLED;
 
 	//SFX
