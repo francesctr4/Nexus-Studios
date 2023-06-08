@@ -64,7 +64,7 @@ bool SceneLore::Update(float dt)
 
 	app->render->DrawText("LORE DRAGGED OFF TIME", 200, 300, 900, 90, { 255,255,255 });
 
-	if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_START] == KEY_DOWN) {
+	if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_A] == KEY_DOWN) {
 
 		enableMusic = true;
 		app->fadeToBlack->Fade(this, reinterpret_cast<Module*>(app->sceneGameplay));

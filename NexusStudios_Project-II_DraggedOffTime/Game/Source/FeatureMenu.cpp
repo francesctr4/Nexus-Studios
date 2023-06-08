@@ -16,27 +16,27 @@ void FeatureMenu::Load()
 	ChangeCharacters = false;
 
 	stats = app->tex->Load("Assets/UI/Stats/Stats_Spritesheet.png");
-	Stats = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, stats, "", { 199,84,177,59 }, (Module*)app->sceneGameplay);
+	Stats = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 429, stats, "", { 199,84,177,59 }, (Module*)app->sceneGameplay);
 	Stats->state = GuiControlState::DISABLED;
 
 	Stats_visual = app->tex->Load("Assets/UI/Stats/CharacterStats_Spritesheet.png");
 
 	inventory_ = app->tex->Load("Assets/UI/Stats/Inventory_Spritesheet.png");
-	Inventory_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 40, inventory_, "", { 376,84,177,59 }, (Module*)app->sceneGameplay);
+	Inventory_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 430, inventory_, "", { 376,84,177,59 }, (Module*)app->sceneGameplay);
 	Inventory_->state = GuiControlState::DISABLED;
 
 	Inventory_visual = app->tex->Load("Assets/UI/Stats/Inventory.png");
 
 	equipment = app->tex->Load("Assets/UI/Stats/Equipment_Spritesheet.png");
-	Equipment = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, equipment, "", { 553,83,177,59 }, (Module*)app->sceneGameplay);
+	Equipment = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 431, equipment, "", { 553,83,177,59 }, (Module*)app->sceneGameplay);
 	Equipment->state = GuiControlState::DISABLED;
 
 	skills = app->tex->Load("Assets/UI/Stats/Skills_Spritesheet.png");
-	Skills = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, skills, "", { 730,83,177,59 }, (Module*)app->sceneGameplay);
+	Skills = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 432, skills, "", { 730,83,177,59 }, (Module*)app->sceneGameplay);
 	Skills->state = GuiControlState::DISABLED;
 
 	quests = app->tex->Load("Assets/UI/Stats/Quests_Spritesheet.png");
-	Quests = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, quests, "", { 907,83,177,59 }, (Module*)app->sceneGameplay);
+	Quests = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 433, quests, "", { 907,83,177,59 }, (Module*)app->sceneGameplay);
 	Quests->state = GuiControlState::DISABLED;
 
 

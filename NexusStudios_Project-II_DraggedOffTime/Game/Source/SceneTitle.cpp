@@ -69,22 +69,25 @@ bool SceneTitle::Start()
 
 	newGame = app->tex->Load("Assets/UI/NewGame.png");
 	NewGame = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 0, newGame, "", { 142,295,294,49 }, this);
+	if (app->input->gamepadON) {
+		NewGame->state = GuiControlState::FOCUSED;
+	}
 
 	continue_ = app->tex->Load("Assets/UI/Continue.png");
-	Continue_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 2, continue_, "", { 148,364,277,49 }, this);
+	Continue_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 1, continue_, "", { 148,364,277,49 }, this);
 	Continue_->state = GuiControlState::DISABLED;
 
 	settings = app->tex->Load("Assets/UI/Settings.png");
-	Settings = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, settings, "", { 148,433,277,55 }, this);
+	Settings = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 2, settings, "", { 148,433,277,55 }, this);
 
 	credits = app->tex->Load("Assets/UI/Credits.png");
-	Credits = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 4, credits, "", { 165,502,241,49 }, this);
+	Credits = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, credits, "", { 165,502,241,49 }, this);
 
 	exit = app->tex->Load("Assets/UI/Exit.png");
-	Exit = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 5, exit, "", { 217,571,133,49 }, this);
+	Exit = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 4, exit, "", { 217,571,133,49 }, this);
 
 	back = app->tex->Load("Assets/UI/Back.png");
-	Back = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 6, back, "", { 586,592,102,38 }, this);
+	Back = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 0, back, "", { 586,592,102,38 }, this);
 	Back->state = GuiControlState::DISABLED;
 
 	slider = app->tex->Load("Assets/UI/Slider.png");
@@ -126,7 +129,7 @@ bool SceneTitle::Start()
 
 	checkBoxVsync = app->tex->Load("Assets/UI/Vsync.png");
 
-	BackCredits = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 6, back, "", { 1135,650,102,38 }, this);
+	BackCredits = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 0, back, "", { 1135,650,102,38 }, this);
 	BackCredits->state = GuiControlState::DISABLED;
 
 	showSettings = false;
@@ -311,7 +314,7 @@ bool SceneTitle::Update(float dt)
 
 	// UI
 
-	if (NewGame->state == GuiControlState::PRESSED || app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_START] == KEY_DOWN) {
+	if (NewGame->state == GuiControlState::PRESSED) {
 
 		enableMusic = true;
 		NewGame->state = GuiControlState::DISABLED;

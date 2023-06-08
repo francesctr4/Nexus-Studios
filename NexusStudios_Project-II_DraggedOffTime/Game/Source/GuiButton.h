@@ -32,4 +32,11 @@ public:
 	uint buttonPressed;
 	bool pressedOnce;
 
+	// Gamepad UI
+
+	int selectedButton = 0;
+	int maxID = 4;
+	int featureMenuID[5] = { 429,430,431,432,433 };
+	int charactersIDStats[4] = {560,561,562,563};
+
 };

@@ -88,7 +88,7 @@ bool SceneLogo::Update(float dt)
 {
 	OPTICK_EVENT();
 	
-	if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_START] == KEY_DOWN) {
+	if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_A] == KEY_DOWN) {
 
 		enableMusic = true;
 		//app->fadeToBlack->Fade(this, (Module*)app->sceneTitle);

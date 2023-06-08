@@ -189,7 +189,7 @@ bool Player::Update()
 		!app->sceneGameplay->featureMenu.statsEnabled && 
 		!app->sceneGameplay->IsAnyNpcDialogueActivated()) {
 
-		if (app->input->activeControllers.Count()) {
+		if (app->input->gamepadON) {
 
 			GamepadMovementManagement();
 

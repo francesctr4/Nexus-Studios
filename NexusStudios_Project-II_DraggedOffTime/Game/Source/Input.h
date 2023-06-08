@@ -106,6 +106,8 @@ public:
 		}
 	}
 
+	bool gamepadON = false;
+
 private:
 
 	bool windowEvents[WE_COUNT];

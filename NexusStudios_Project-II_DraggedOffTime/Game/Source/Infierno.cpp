@@ -79,23 +79,6 @@ void Infierno::Update()
 
 			}
 
-			if (app->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN && lobby)
-			{
-				lobby = false;
-			}
-			else if (app->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN && prehistoria)
-			{
-				prehistoria = false;
-			}
-			else if (app->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN && medieval)
-			{
-				medieval = false;
-			}
-			else if (app->input->GetKey(SDL_SCANCODE_BACKSPACE) == KEY_DOWN && infierno)
-			{
-				infierno = false;
-			}
-
 		}
 
 	}

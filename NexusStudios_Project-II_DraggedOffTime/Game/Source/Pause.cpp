@@ -23,7 +23,7 @@ void Pause::Load()
 	Animation_Pause.AddTween(100, 50, EXPONENTIAL_OUT);
 
 	resume = app->tex->Load("Assets/UI/Resume.png");
-	Resume = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, resume, "", { 560,267,154,38 }, (Module*)app->sceneGameplay);
+	Resume = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 0, resume, "", { 560,267,154,38 }, (Module*)app->sceneGameplay);
 	Resume->state = GuiControlState::DISABLED;
 
 	Animation_Resume.Set();
@@ -31,7 +31,7 @@ void Pause::Load()
 	Animation_Resume.AddTween(100, 50, EXPONENTIAL_OUT);
 
 	settings = app->tex->Load("Assets/UI/PauseSettings.png");
-	Settings = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, settings, "", { 544,374,186,42 }, (Module*)app->sceneGameplay);
+	Settings = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 1, settings, "", { 544,374,186,42 }, (Module*)app->sceneGameplay);
 	Settings->state = GuiControlState::DISABLED;
 
 	Animation_Settings.Set();
@@ -39,7 +39,7 @@ void Pause::Load()
 	Animation_Settings.AddTween(100, 50, EXPONENTIAL_IN);
 
 	backTitle = app->tex->Load("Assets/UI/BackTitle.png");
-	BackTitle = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, backTitle, "", { 502,481,270,38 }, (Module*)app->sceneGameplay);
+	BackTitle = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 2, backTitle, "", { 502,481,270,38 }, (Module*)app->sceneGameplay);
 	BackTitle->state = GuiControlState::DISABLED;
 
 	Animation_BackTitle.Set();
@@ -47,7 +47,7 @@ void Pause::Load()
 	Animation_BackTitle.AddTween(100, 50, EXPONENTIAL_OUT);
 
 	exit = app->tex->Load("Assets/UI/PauseExit.png");
-	Exit = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 5, exit, "", { 592,588,90,38 }, (Module*)app->sceneGameplay);
+	Exit = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, exit, "", { 592,588,90,38 }, (Module*)app->sceneGameplay);
 	Exit->state = GuiControlState::DISABLED;
 
 	Animation_Exit.Set();
@@ -100,7 +100,7 @@ void Pause::Load()
 
 
 	back = app->tex->Load("Assets/UI/Back.png");
-	Back = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 6, back, "", { 586,622,102,38 }, (Module*)app->sceneGameplay);
+	Back = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 0, back, "", { 586,622,102,38 }, (Module*)app->sceneGameplay);
 	Back->state = GuiControlState::DISABLED;
 
 	Animation_Back.Set();
@@ -169,7 +169,7 @@ void Pause::Update()
 	Back->bounds.y = point_Back * offset + 594;
 
 	//UI
-	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_START] == KEY_DOWN) {
+	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_BACK] == KEY_DOWN) {
 
 		showPause = true;
 	}

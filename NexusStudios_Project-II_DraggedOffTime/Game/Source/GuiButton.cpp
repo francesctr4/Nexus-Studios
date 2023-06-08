@@ -33,37 +33,164 @@ GuiButton::~GuiButton()
 
 bool GuiButton::Update(float dt)
 {
-	if (state != GuiControlState::DISABLED && state != GuiControlState::INVISIBLE /* && timePressed.ReadMSec() > 100*/)
-	{
-		// Update the state of the GUiButton according to the mouse position
-		app->input->GetMousePosition(mouseX, mouseY);
 
-		GuiControlState previousState = state;
+	if (app->input->gamepadON) {
 
-		// I'm inside the limitis of the button
-		if (mouseX >= bounds.x && mouseX <= bounds.x + bounds.w &&
-			mouseY >= bounds.y && mouseY <= bounds.y + bounds.h) {
+		if (app->sceneGameplay->pause.showPause) {
 
-			state = GuiControlState::FOCUSED;
-			if (previousState != state) {
-				LOG("Change state from %d to %d", previousState, state);
-			}
+			maxID = 3;
 
-			if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_REPEAT) {
-				state = GuiControlState::PRESSED;
-				//timePressed.Start();
-			}
+		}
+		else if (app->sceneTitle->showCredits || app->sceneTitle->showSettings || app->sceneGameplay->pause.showSettings) {
 
-			//
-			if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP) {
-				NotifyObserver();
-				
-			}
+			maxID = 0;
+
 		}
 		else {
-			state = GuiControlState::NORMAL;
+
+			maxID = 4;
+
 		}
+
+		if (state != GuiControlState::DISABLED && state != GuiControlState::INVISIBLE) {
+
+			if (app->sceneGameplay->featureMenu.statsEnabled) {
+
+				if (app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_DOWN) {
+
+					selectedButton--;
+
+				}
+				
+				if (app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_DOWN) {
+
+					selectedButton++;
+
+				}
+				
+				if (selectedButton < 0) {
+
+					selectedButton = maxID;
+
+				}
+
+				if (selectedButton > maxID) {
+
+					selectedButton = 0;
+
+				}
+
+			}
+			else {
+
+				if (app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_DOWN) {
+
+					selectedButton--;
+
+				}
+
+				if (app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN] == KEY_DOWN) {
+
+					selectedButton++;
+
+				}
+
+				if (selectedButton < 0) {
+
+					selectedButton = maxID;
+
+				}
+
+				if (selectedButton > maxID) {
+
+					selectedButton = 0;
+
+				}
+
+			}
+
+			if (!app->sceneGameplay->featureMenu.statsEnabled) {
+
+				if (id == selectedButton) {
+
+					state = GuiControlState::FOCUSED;
+
+					if (app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_A] == KEY_DOWN) {
+
+						state = GuiControlState::PRESSED;
+
+					}
+
+				}
+				else {
+
+					state = GuiControlState::NORMAL;
+
+				}
+
+			}
+			else {
+
+				if (id == featureMenuID[selectedButton]) {
+
+					state = GuiControlState::FOCUSED;
+
+					if (app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_A] == KEY_DOWN) {
+
+						state = GuiControlState::PRESSED;
+
+					}
+
+				}
+				else {
+
+					state = GuiControlState::NORMAL;
+
+				}
+
+			}
+
+		}
+		
 	}
+	else {
+
+		if (state != GuiControlState::DISABLED && state != GuiControlState::INVISIBLE /* && timePressed.ReadMSec() > 100*/)
+		{
+			// Update the state of the GUiButton according to the mouse position
+			app->input->GetMousePosition(mouseX, mouseY);
+
+			GuiControlState previousState = state;
+
+			// I'm inside the limitis of the button
+			if (mouseX >= bounds.x && mouseX <= bounds.x + bounds.w &&
+				mouseY >= bounds.y && mouseY <= bounds.y + bounds.h) {
+
+				state = GuiControlState::FOCUSED;
+				if (previousState != state) {
+					LOG("Change state from %d to %d", previousState, state);
+				}
+
+				if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_REPEAT) {
+					state = GuiControlState::PRESSED;
+					//timePressed.Start();
+				}
+
+				//
+				if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP) {
+					NotifyObserver();
+
+				}
+			}
+			else {
+				state = GuiControlState::NORMAL;
+			}
+
+		}
+
+	}
+
+	
 
 	if (app->input->GetKey(SDL_SCANCODE_F8) == KEY_DOWN) {
 

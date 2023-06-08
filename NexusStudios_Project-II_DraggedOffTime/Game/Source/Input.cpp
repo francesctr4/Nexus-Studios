@@ -175,6 +175,17 @@ bool Input::PreUpdate()
 
 	}
 
+	if (activeControllers.Count()) {
+
+		gamepadON = true;
+
+	}
+	else {
+
+		gamepadON = false;
+
+	}
+
 	return true;
 }
 
