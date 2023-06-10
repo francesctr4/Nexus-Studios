@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "PrehistoricMap1.tmx",
+    "activeFile": "",
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "Todos los archivos (*)",
@@ -63,8 +63,8 @@
             "scale": 0.75,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 552.6666666666666,
-                "y": 481.33333333333326
+                "x": 551.3333333333333,
+                "y": 478.66666666666674
             }
         },
         "PrehistoricMap1.tmx#Prehistoric_Tiles": {
@@ -82,8 +82,8 @@
             "scale": 1,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 601.5,
-                "y": 363
+                "x": 639.5,
+                "y": 360
             }
         },
         "PrehistoricMapBoss.tmx#Prehistoric_Tiles": {
@@ -100,8 +100,8 @@
             "scale": 1,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 649.5,
-                "y": 420
+                "x": 639.5,
+                "y": 360
             }
         },
         "PrehistoricMapJovanni.tmx#Prehistoric_Tiles": {
@@ -120,8 +120,8 @@
             "scale": 0.75,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 732.6666666666667,
-                "y": 338.66666666666674
+                "x": 639.3333333333333,
+                "y": 360
             }
         },
         "PrehistoricMapPuzzle1.tmx#Prehistoric_Tiles": {
@@ -137,8 +137,8 @@
             "scale": 1,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 622.5,
-                "y": 330
+                "x": 639.5,
+                "y": 360
             }
         },
         "PrehistoricMapPuzzle2.tmx#Prehistoric_Tiles": {
@@ -154,8 +154,8 @@
             "scale": 1,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 691.5,
-                "y": 390
+                "x": 639.5,
+                "y": 360
             }
         },
         "PrehistoricMapPuzzle3.tmx#Prehistoric_Tiles": {
@@ -187,12 +187,6 @@
     "map.tileWidth": 16,
     "map.width": 80,
     "openFiles": [
-        "PrehistoricMap1.tmx",
-        "PrehistoricMapPuzzle1.tmx",
-        "PrehistoricMapPuzzle2.tmx",
-        "PrehistoricMapJovanni.tmx",
-        "PrehistoricMapPuzzle3.tmx",
-        "PrehistoricMapBoss.tmx"
     ],
     "project": "PrehistoricMaps.tiled-project",
     "property.type": "bool",
