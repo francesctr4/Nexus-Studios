@@ -222,7 +222,7 @@ bool Player::Update()
 
 	SDL_Rect playerRect = currentAnimation->GetCurrentFrame();
 
-	if (app->input->GetKey(SDL_SCANCODE_C) == KEY_DOWN) {
+	if (app->input->GetKey(SDL_SCANCODE_C) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_B] == KEY_DOWN) {
 
 		app->audio->PlayFx(changeFX);
 
