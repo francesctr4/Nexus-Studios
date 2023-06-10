@@ -51,7 +51,7 @@
 	<item type ="Mango" x="600" y="450" texturepath="Assets/Textures/Items/Mangoes/Mango-Sheet.png" iconpath="Assets/Textures/Items/Mangoes/Mango.png" map="1"/>
 	<item type ="Gem" x="700" y="450" texturepath="Assets/Textures/Items/Gems/BlueGem-Sheet.png" iconpath="Assets/Textures/Items/Gems/BlueGem.png" map="2"/>
 	<item type ="Battery" x="800" y="450" texturepath="Assets/Textures/Items/Batteries/Battery-Sheet.png" iconpath="Assets/Textures/Items/Batteries/Battery.png" map="3"/>
-	  
+ 
   </sceneGameplay>
   
  <map>
@@ -61,7 +61,7 @@
 	<mapfile_Lobby1 path="Assets/Maps/Inicio1.tmx"/>
 	<mapfile_Lobby2 path="Assets/Maps/Lobby.tmx"/>
 
-	<mapfile_Prehistoric1 path="Assets/Maps/PrehistoricMap1.tmx"/>
+	<mapfile_Prehistoric1 path="Assets/Maps/PrehistoricMap1.tmx" sensor=""/>
 	<mapfile_Prehistoric2 path="Assets/Maps/PrehistoricMapPuzzle1.tmx"/>
 	<mapfile_Prehistoric3 path="Assets/Maps/PrehistoricMapPuzzle2.tmx"/>
 	<mapfile_Prehistoric4 path="Assets/Maps/PrehistoricMapJovanni.tmx"/>

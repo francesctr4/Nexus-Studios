@@ -116,6 +116,7 @@ public:
 
 	uint itemCollectedFx;
 
+	bool executeTeleportLobby = false;
 	bool executeTeleportCofre = false;
 	bool executeTeleportJovani= false;
 	bool executeTeleportInfierno = false;

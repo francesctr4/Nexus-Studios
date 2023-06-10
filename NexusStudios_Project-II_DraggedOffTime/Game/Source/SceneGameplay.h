@@ -12,6 +12,7 @@
 #include "Pause.h"
 #include "Tweening.h"
 #include "Timer.h"
+#include "Lobby.h"
 #include "Infierno.h"
 
 #include "Puzzle1.h"
@@ -102,16 +103,16 @@ public:
 	Puzzle3 puzzle3;
 
 	uint endingScreenFX;
-
-	Infierno mapa_Infierno;
 	
 	PhysBody* prova;
 
 	// Particles
-
 	Emitter* eWave_1 = nullptr;
 	Emitter* eWave_2 = nullptr;
 	Emitter* eBurst_1 = nullptr;
 	Emitter* eBurst_2 = nullptr;
 
+	//Maps
+	Lobby lobbies;
+	Infierno mapa_Infierno;
 };

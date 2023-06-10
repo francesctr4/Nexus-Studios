@@ -138,12 +138,19 @@ bool Player::Start() {
 	levelUp = app->audio->LoadFx("Assets/Audio/Fx/SceneGameplay/LevelUp.wav");
 
 	speedValue = SPEED_VALUE;
+	
+	Teleport(930, 340);
 
 	return true;
 }
 
 bool Player::Update()
 {
+	if (executeTeleportLobby)
+	{
+		app->sceneGameplay->lobbies.TeleportLobby();
+		executeTeleportLobby = false;
+	}
 
 	if (executeTeleportCofre) {
 		TeleportCofre();
@@ -213,7 +220,8 @@ bool Player::Update()
 	pbody->body->SetLinearVelocity(vel);
 
 	// Update player position in pixels.
-	
+	position.x = METERS_TO_PIXELS(pbody->body->GetTransform().p.x) - 16;
+	position.y = METERS_TO_PIXELS(pbody->body->GetTransform().p.y) - 16;
 
 	// Draw player texture according to animation and selected player
 
@@ -286,6 +294,8 @@ bool Player::Update()
 	}
 
 	PlayerLevelManagement();
+
+
 
 	return true;
 }
@@ -730,6 +740,9 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::TELEPORT_JOVANI:
 		executeTeleportJovani = true;
 		break;
+
+	case ColliderType::TELEPORT_LOBBY:
+		executeTeleportLobby = true;
 	}
 }
 

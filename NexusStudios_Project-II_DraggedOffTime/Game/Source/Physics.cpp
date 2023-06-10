@@ -488,6 +488,6 @@ void Physics::DestroyBody(PhysBody* body)
 		world->DestroyBody(body->body);
 		body->body = NULL;
 	}
-
+	
 	RELEASE(body);
 }

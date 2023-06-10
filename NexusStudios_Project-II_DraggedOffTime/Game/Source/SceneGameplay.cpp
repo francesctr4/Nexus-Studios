@@ -246,6 +246,8 @@ bool SceneGameplay::Update(float dt)
 		app->fadeToBlack->Fade(this, (Module*)app->sceneEnding);
 
 	}
+
+	lobbies.Update();
 	mapa_Infierno.Update();
 	
 	return true;
@@ -412,7 +414,7 @@ void SceneGameplay::LoadMapEntities(int map)
 			enemies.push_back(enemy);
 		}
 	}
-
+	
 	for (pugi::xml_node itemNode = xml_node.child("item"); itemNode; itemNode = itemNode.next_sibling("item"))
 	{
 		int aparicion = itemNode.attribute("map").as_int();

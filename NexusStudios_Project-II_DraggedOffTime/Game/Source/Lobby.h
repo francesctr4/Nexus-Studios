@@ -9,21 +9,15 @@ struct SDL_Texture;
 class Lobby {
 public:
 
-	Lobby();
-
-	virtual ~Lobby();
-
-	void Start();
-
 	void Update();
-
-	void CleanUp();
 
 	void TeleportLobby();
 
 public:
 
-	bool map_selector = false;
-
+	PhysBody* Tp_Lobby_1;
+	PhysBody* Tp_Lobby_Infierno;
+	PhysBody* Tp_Lobby_Medieval;
+	PhysBody* Tp_Lobby_Prehistoria;
 
 };

@@ -133,6 +133,9 @@
     <ClCompile Include="Source\SceneLore.cpp">
       <Filter>Game Loop\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Lobby.cpp">
+      <Filter>Game Loop\Maps</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -302,6 +305,9 @@
     </ClInclude>
     <ClInclude Include="Source\SceneLore.h">
       <Filter>Game Loop\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Lobby.h">
+      <Filter>Game Loop\Maps</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
