@@ -529,21 +529,7 @@ void Player::PlayerLevelManagement()
 
 		xpAccumulatedRect[i].w = fillWidth[i];
 
-		if (playerStats[i].currentXP == playerStats[i].next) {
-
-			playerStats[i].currentXP = 0;
-
-			playerStats[i].level++;
-			playerStats[i].hp += 3;
-			playerStats[i].atk += 3;
-			playerStats[i].def += 3;
-			playerStats[i].ap += 3;
-			playerStats[i].next += 30;
-
-			//app->audio->PlayFx(levelUp);
-
-		}
-		else if (playerStats[i].currentXP > playerStats[i].next) {
+		if (playerStats[i].currentXP >= playerStats[i].next) {
 
 			int xpExcess = playerStats[i].currentXP - playerStats[i].next;
 
@@ -556,7 +542,7 @@ void Player::PlayerLevelManagement()
 			playerStats[i].ap += 3;
 			playerStats[i].next += 30;
 
-			//app->audio->PlayFx(levelUp);
+			app->audio->PlayFx(levelUp);
 
 		}
 
