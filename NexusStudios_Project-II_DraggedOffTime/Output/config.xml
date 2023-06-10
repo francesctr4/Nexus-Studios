@@ -25,7 +25,7 @@
   
   <sceneGameplay>
 	  
-	<player x="150 " y="430" texturepath="Assets/Textures/SpriteSheet_Kleos.png" texturepath2="Assets/Textures/Prehistoric_Kleos_SpriteSheet.png" texturepath3="Assets/Textures/Cyberpunk_Kleos_SpriteSheet.png" texturepath4="Assets/Textures/Demon_Kleos_SpriteSheet.png" map="0"/>
+	<player x="900 " y="340" texturepath="Assets/Textures/SpriteSheet_Kleos.png" texturepath2="Assets/Textures/Prehistoric_Kleos_SpriteSheet.png" texturepath3="Assets/Textures/Cyberpunk_Kleos_SpriteSheet.png" texturepath4="Assets/Textures/Demon_Kleos_SpriteSheet.png" map="0"/>
 	  
 	<npc type="rogue" x="950" y="410" texturepath="Assets/Textures/Rogue.png" map="8"/>
 	<npc type="wiwi" x="755" y="350" texturepath="Assets/Textures/Wizard.png" map="8"/>
