@@ -29,7 +29,6 @@ SceneBattle::~SceneBattle()
 
 bool SceneBattle::Awake(pugi::xml_node& config)
 {
-
 	return true;
 }
 

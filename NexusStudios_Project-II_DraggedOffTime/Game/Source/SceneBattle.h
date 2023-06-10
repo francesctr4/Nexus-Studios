@@ -5,6 +5,7 @@
 #include "GuiSlider.h"
 #include "GuiCheckBox.h"
 #include "Animation.h"
+#include "Weapon.h"
 
 struct SDL_Texture;
 
@@ -118,6 +119,29 @@ public:
 
 	int widthEnemyCombat;
 	int heightEnemyCombat;
+
+	// Weapon Declaration
+
+	Weapon rusticStoneAxe { WeaponEra::PREHISTORIC, WeaponType::MELEE, 50 };
+	Weapon tribalLance { WeaponEra::PREHISTORIC, WeaponType::MID_RANGE, 50 };
+	Weapon chiefsBow { WeaponEra::PREHISTORIC, WeaponType::LONG_RANGE, 50 };
+
+	Weapon fallenBlade { WeaponEra::MEDIEVAL, WeaponType::MELEE, 50 };
+	Weapon ascendantTwins { WeaponEra::MEDIEVAL, WeaponType::MID_RANGE, 50 };
+	Weapon mrFlail { WeaponEra::MEDIEVAL, WeaponType::LONG_RANGE, 50 };
+
+	Weapon chainsword { WeaponEra::CYBERPUNK, WeaponType::MELEE, 50 };
+	Weapon uraniumshell { WeaponEra::CYBERPUNK, WeaponType::MID_RANGE, 50 };
+	Weapon ionizedRifle { WeaponEra::CYBERPUNK, WeaponType::LONG_RANGE, 50 };
+
+	Weapon graftedClaws { WeaponEra::APOCALYPSE, WeaponType::MELEE, 50 };
+	Weapon agony { WeaponEra::APOCALYPSE, WeaponType::MID_RANGE, 50 };
+	Weapon eyebull { WeaponEra::APOCALYPSE, WeaponType::LONG_RANGE, 50 };
+
+	Weapon* equippedWeaponPrehistoric = &rusticStoneAxe;
+	Weapon* equippedWeaponMedieval = &fallenBlade;
+	Weapon* equippedWeaponCyberpunk = &chainsword;
+	Weapon* equippedWeaponApocalypse = &graftedClaws;
 
 private:
 

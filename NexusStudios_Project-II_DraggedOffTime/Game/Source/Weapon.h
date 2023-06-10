@@ -15,25 +15,37 @@ enum class WeaponType
 	LONG_RANGE
 };
 
+enum class WeaponEra
+{
+	UNKNOWN,
+
+	PREHISTORIC,
+	MEDIEVAL,
+	CYBERPUNK,
+	APOCALYPSE,
+
+	MAX
+
+};
+
 class Weapon 
 {
 public:
 
-	explicit Weapon(int width);
+	Weapon(WeaponEra wEra, WeaponType wType, int damage) {
 
-	virtual ~Weapon();
+		this->wEra = wEra;
+		this->wType = wType;
+		this->damage = damage;
 
-	void Load(const char* path);
+	}
 
-	void Draw(int posX, int posY);
+	virtual ~Weapon() {}
 
-private:	
+public:
 
-	SDL_Texture* texture;
-	int width;
-
+	WeaponEra wEra;
+	WeaponType wType;
 	int damage;
-	Animation* currentAnimation;
-	Animation idle;
 
 };
