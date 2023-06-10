@@ -30,7 +30,7 @@
 	<npc type="rogue" x="950" y="410" texturepath="Assets/Textures/Rogue.png" map="8"/>
 	<npc type="wiwi" x="755" y="350" texturepath="Assets/Textures/Wizard.png" map="8"/>
 	<npc type="skippy" x="75" y="420" texturepath="Assets/Textures/Skippy.png" map="8"/>
-	<npc type="jovani" x="305" y="420" texturepath="Assets/Textures/Jovani.png" map="0"/>
+	<npc type="jovani" x="305" y="420" texturepath="Assets/Textures/Jovani.png" map="8"/>
 
 	<enemy type = "bossMedieval" x="990" y="600" texturepath="Assets/Textures/Bosses/Final_Boss_Medieval.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="8"/>
 	<enemy type = "bossPrehistoric" x="990" y="510" texturepath="Assets/Textures/Bosses/Final_Boss_Prehistoric.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="2"/>
