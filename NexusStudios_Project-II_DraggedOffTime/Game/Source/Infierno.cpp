@@ -125,7 +125,7 @@ void Infierno::Update()
 				app->render->DrawText("1- Puzzle1 Room", 420, 210, 125, 20, { 255, 255, 255, 255 });
 				app->render->DrawText("2- Puzzle2 Room", 420, 240, 125, 20, { 255, 255, 255, 255 });
 				app->render->DrawText("3- Jovani Room", 420, 270, 125, 20, { 255, 255, 255, 255 });
-				app->render->DrawText("4- Chest Room", 420, 300, 125, 20, { 255, 255, 255, 255 });
+				app->render->DrawText("4- Puzzle3 Room", 420, 300, 125, 20, { 255, 255, 255, 255 });
 				app->render->DrawText("5- Boss Room", 420, 330, 125, 20, { 255, 255, 255, 255 });
 			}
 			else if (infierno)

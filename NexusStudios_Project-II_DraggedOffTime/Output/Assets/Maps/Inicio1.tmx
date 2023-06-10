@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="6">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="6">
  <tileset firstgid="1" name="Props" tilewidth="16" tileheight="16" tilecount="625" columns="25">
   <image source="Props.png" width="400" height="400"/>
  </tileset>
@@ -18106,7 +18106,7 @@
    <polygon points="0,0 -31.9091,0.0909091 -31.9091,-10.7273 -0.0909091,-10.7273"/>
   </object>
   <object id="5" x="320" y="144">
-   <polygon points="0,0 224,0 224,16 240,16 240,0 368,0 368,16 400,16 400,0 480,0 480,16 528,16 528,0 640,0 640,32 624,32 624,64 640,64 640,112 624,112 624,144 640,144 640,464 960,464 960,-144 -320,-144 -320,576 640,576 640,448 0,448"/>
+   <polygon points="0,0 224,0 224,16 240,16 240,0 368,0 368,16 400,16 400,0 480,0 480,16 528,16 528,0 640,0 640,32 624,32 624,64 640,64 640,112 624,112 624,144 640,144 640,576 960,576 960,-144 -320,-144 -320,576 640,576 640,448 0,448"/>
   </object>
  </objectgroup>
 </map>

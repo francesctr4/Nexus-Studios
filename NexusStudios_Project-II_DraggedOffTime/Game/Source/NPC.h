@@ -158,4 +158,7 @@ public:
 
 	int npcMap;
 
+	// Jovani Skins
+	int skinIterator;
+
 };

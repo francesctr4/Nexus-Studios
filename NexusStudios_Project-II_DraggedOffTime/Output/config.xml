@@ -58,8 +58,8 @@
 	 
     <mapfolder path="Assets/Maps/"/>
 
-	<mapfile_Lobby1 path=""/>
-	<mapfile_Lobby2 path=""/>
+	<mapfile_Lobby1 path="Assets/Maps/Inicio1.tmx"/>
+	<mapfile_Lobby2 path="Assets/Maps/Lobby.tmx"/>
 
 	<mapfile_Prehistoric1 path="Assets/Maps/PrehistoricMap1.tmx"/>
 	<mapfile_Prehistoric2 path="Assets/Maps/PrehistoricMapPuzzle1.tmx"/>
@@ -68,13 +68,22 @@
 	<mapfile_Prehistoric5 path="Assets/Maps/PrehistoricMapPuzzle3.tmx"/>
 	<mapfile_Prehistoric6 path="Assets/Maps/PrehistoricMapBoss.tmx"/>
 
-	<mapfile_Medieval1 path="Assets/Maps/mapfinal1280.tmx"/>
-	<mapfile_Medieval2 path="Assets/Maps/JovaniJV.tmx"/>
-	<mapfile_Medieval3 path="Assets/Maps/Sala_Cofre.tmx"/>
-	<mapfile_Medieval4 path=""/>
-	<mapfile_Medieval5 path=""/>
-	<mapfile_Medieval6 path=""/>
+	<mapfile_Medieval1 path="Assets/Maps/MedievalMap1.tmx"/>
+	<mapfile_Medieval2 path="Assets/Maps/MedievalMapPuzzle1.tmx"/>
+	<mapfile_Medieval3 path="Assets/Maps/MedievalMapPuzzle2.tmx"/>
+	<mapfile_Medieval4 path="Assets/Maps/MedievalMapJovanni.tmx"/>
+	<mapfile_Medieval5 path="Assets/Maps/MedievalMapPuzzle3.tmx"/>
+	<mapfile_Medieval6 path="Assets/Maps/MedievalMapBoss.tmx"/>
 
+	<!--
+	<mapfile_Cyberpunk1 path=""/>
+	<mapfile_Cyberpunk2 path=""/>
+	<mapfile_Cyberpunk3 path=""/>
+	<mapfile_Cyberpunk4 path=""/>
+	<mapfile_Cyberpunk5 path=""/>
+	<mapfile_Cyberpunk6 path=""/>
+	-->
+	 
 	<mapfile_Infernal1 path="Assets/Maps/InfernalMap1.tmx"/>
 	<mapfile_Infernal2 path="Assets/Maps/InfernalMap2.tmx"/>
 	<mapfile_Infernal3 path="Assets/Maps/InfernalMap3.tmx"/>
@@ -87,7 +96,6 @@
 	<mapfile_Infernal10 path="Assets/Maps/InfernalMapChest.tmx"/>
 	 
 	<!--
-	 
 	<mapfile_1 path="Assets/Maps/mapfinal1280.tmx"/>
 	<mapfile_2 path="Assets/Maps/InfernalMap1.tmx"/>
 	<mapfile_3 path="Assets/Maps/InfernalMap2.tmx"/>
@@ -99,7 +107,6 @@
 	<mapfile_Puzzle_3 path="Assets/Maps/InfernalMapPuzzle3.tmx"/>
 	<mapfile_extra_1 path="Assets/Maps/JovaniJV.tmx"/>
 	<mapfile_extra_2 path="Assets/Maps/InfernalMapJovani.tmx"/>
-	 
 	-->
 	 
   </map>
