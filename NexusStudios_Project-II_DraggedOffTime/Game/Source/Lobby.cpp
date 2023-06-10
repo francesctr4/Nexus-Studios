@@ -14,16 +14,14 @@ void Lobby::Update()
 	{
 		if (Tp_Lobby_1 == NULL)
 		{
-			Tp_Lobby_1 = app->physics->CreateRectangleSensor(752, 308, 128, 120, bodyType::KINEMATIC, ColliderType::TELEPORT_LOBBY);
+			Tp_Lobby_1 = app->physics->CreateRectangleSensor(820, 370, 110, 110, bodyType::KINEMATIC, ColliderType::TELEPORT_LOBBY);
 		}
 	}
-
-	
 }
 
 void Lobby::TeleportLobby()
 {
-	app->sceneGameplay->player->Teleport(500, 300);
+	app->sceneGameplay->player->Teleport(864, 334);
 	app->sceneGameplay->LoadMap(1);
 
 	app->physics->DestroyBody(Tp_Lobby_1);

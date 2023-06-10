@@ -385,7 +385,6 @@ void SceneGameplay::CheckEvent()
 
 void SceneGameplay::LoadMapEntities(int map)
 {
-	
 	for (pugi::xml_node npcNode = xml_node.child("npc"); npcNode; npcNode = npcNode.next_sibling("npc"))
 	{
 		int aparicion = npcNode.attribute("map").as_int();
