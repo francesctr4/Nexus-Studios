@@ -181,6 +181,7 @@ bool NPC::Start() {
 	// NPC Sensor Booleans and Texture
 
 	interactButton = app->tex->Load("Assets/Textures/Dialogue.png");
+	interactButtonGamepad = app->tex->Load("Assets/Textures/DialogueGamepad.png");
 
 	// Dialogue UI
 
@@ -304,8 +305,17 @@ bool NPC::Update()
 
 	if (playerInteraction) {
 
-		app->render->DrawTexture(interactButton, position.x + 8, position.y - 25);
+		if (app->input->gamepadON) {
 
+			app->render->DrawTexture(interactButtonGamepad, position.x + 8, position.y - 25);
+
+		}
+		else {
+
+			app->render->DrawTexture(interactButton, position.x + 8, position.y - 25);
+
+		}
+		
 		if (app->input->GetKey(SDL_SCANCODE_E) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_X] == KEY_DOWN) {
 			
 			dialogueActivated = true;
@@ -384,7 +394,7 @@ void NPC::DialogueGenerator(Conversation conversation) {
 
 	// Skip to next dialogue when pressing Space
 
-	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_A] == KEY_DOWN) {
 
 		if (dialogueIterator < conversation.size - 1) {
 
@@ -460,7 +470,7 @@ void NPC::DialogueGenerator(Conversation conversation) {
 
 			// Change between dialogue options when pressing T
 
-			if (app->input->GetKey(SDL_SCANCODE_T) == KEY_DOWN) {
+			if (app->input->GetKey(SDL_SCANCODE_T) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_Y] == KEY_DOWN) {
 
 				if (selectorIterator < 3) selectorIterator++;
 				else selectorIterator = 0;

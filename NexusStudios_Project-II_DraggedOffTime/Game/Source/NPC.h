@@ -131,6 +131,7 @@ public:
 	bool dialogueActivated;
 
 	SDL_Texture* interactButton;
+	SDL_Texture* interactButtonGamepad;
 
 	// NPC Texture and Type
 

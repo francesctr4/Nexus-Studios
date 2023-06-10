@@ -75,7 +75,7 @@ bool SceneEnding::Start()
 	// UI
 
 	resume = app->tex->Load("Assets/UI/Resume.png");
-	Resume = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, resume, "", { 170,481,154,38 }, (Module*)app->sceneGameplay);
+	Resume = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 0, resume, "", { 170,481,154,38 }, (Module*)app->sceneGameplay);
 	Resume->state = GuiControlState::DISABLED;
 
 	Animation_Resume.Set();
@@ -83,7 +83,7 @@ bool SceneEnding::Start()
 	Animation_Resume.AddTween(100, 50, EXPONENTIAL_OUT);
 
 	backTitle = app->tex->Load("Assets/UI/BackTitle.png");
-	BackTitle = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, backTitle, "", { 872,481,270,38 }, (Module*)app->sceneGameplay);
+	BackTitle = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 1, backTitle, "", { 872,481,270,38 }, (Module*)app->sceneGameplay);
 	BackTitle->state = GuiControlState::DISABLED;
 
 	Animation_BackTitle.Set();

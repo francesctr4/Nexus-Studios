@@ -5,6 +5,7 @@
 #include "Log.h"
 #include "SceneTitle.h"
 #include "SceneGameplay.h"
+#include "SceneEnding.h"
 
 GuiButton::GuiButton(uint32 id, SDL_Rect bounds, SDL_Texture* tex, const char* text) : GuiControl(GuiControlType::BUTTON, id)
 {
@@ -44,6 +45,11 @@ bool GuiButton::Update(float dt)
 		else if (app->sceneTitle->showCredits || app->sceneTitle->showSettings || app->sceneGameplay->pause.showSettings) {
 
 			maxID = 0;
+
+		}
+		else if (app->sceneEnding->enteredEnding) {
+
+			maxID = 1;
 
 		}
 		else {
@@ -177,6 +183,33 @@ bool GuiButton::Update(float dt)
 				else {
 
 					selectedInventory = 0;
+
+				}
+
+			}
+			else if (app->sceneEnding->enteredEnding) {
+
+				if (app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_DOWN) {
+
+					selectedButton--;
+
+				}
+
+				if (app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_DOWN) {
+
+					selectedButton++;
+
+				}
+
+				if (selectedButton < 0) {
+
+					selectedButton = maxID;
+
+				}
+
+				if (selectedButton > maxID) {
+
+					selectedButton = 0;
 
 				}
 
