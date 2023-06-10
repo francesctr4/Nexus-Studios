@@ -631,6 +631,18 @@ bool SceneBattle::Update(float dt)
 		show_battle_info = false;
 	}
 
+	if (m_players[selected_player].HP == 0)
+	{
+		if (selected_player == 3)
+		{
+			selected_player = 0;
+		}
+		else
+		{
+			selected_player++;
+		}
+	}
+
 	
 	//SDL_Rect rect = { 0,0, 1280, 720 };
 	//app->render->DrawRectangle(rect, 0, 0, 255, 150);
@@ -678,28 +690,28 @@ bool SceneBattle::PostUpdate()
 
 		SDL_Rect minionRect = currentAnimationEnemy->GetCurrentFrame();
 
-		app->render->DrawTexture(enemyInCombat, 780, 326, &minionRect);
+		app->render->DrawTexture(enemyInCombat, 780, 426, &minionRect);
 
 		// Minion HP
-		double m_percentage_life = (e_HP * 100.0) / e_max_HP;
+		double m_percentage_life = (m_HP * 100.0) / m_max_HP;
 		if (m_percentage_life < 50 && m_percentage_life >= 20)	//Yellow color
 		{
 			SDL_Rect rect_m = { 0, 20, 3 * m_percentage_life, 20 };
-			app->render->DrawTexture(healthBar, 780, 326, &rect_m);
+			app->render->DrawTexture(healthBar, 720, 400, &rect_m);
 		}
 		if (m_percentage_life < 20) //Red color
 		{
 			SDL_Rect rect_m = { 0, 40, 3 * m_percentage_life, 20 };
-			app->render->DrawTexture(healthBar, 780, 326, &rect_m);
+			app->render->DrawTexture(healthBar, 720, 400, &rect_m);
 		}
 		if (m_percentage_life >= 50) //Green color
 		{
 			SDL_Rect rect_m = { 0, 0, 3 * m_percentage_life, 20 };
-			app->render->DrawTexture(healthBar, 780, 326, &rect_m);
+			app->render->DrawTexture(healthBar, 720, 400, &rect_m);
 		}
-		app->render->DrawText("Minion HP:", 780, 306, 100, 20, { 255, 255, 255, 255 });
-		std::string m_HP_string = std::to_string(e_HP);
-		app->render->DrawText(m_HP_string, 780 + 125, 306, 15, 20, { 255, 255, 255, 255 });
+		app->render->DrawText("Minion HP:", 720, 380, 100, 20, { 255, 255, 255, 255 });
+		std::string m_HP_string = std::to_string(m_HP);
+		app->render->DrawText(m_HP_string, 720 + 125, 380, 15, 20, { 255, 255, 255, 255 });
 	}
 
 	//Enemy sprite
@@ -924,11 +936,11 @@ bool SceneBattle::PostUpdate()
 
 		if (minion)
 		{
-			app->render->DrawText("Minion: ON", 900 + 100, 300, 100, 20, { 255, 255, 255, 255 });
+			app->render->DrawText("Minion: ON", 720, 350, 100, 20, { 255, 255, 255, 255 });
 		}
 		else
 		{
-			app->render->DrawText("Minion: OFF", 900 + 100, 300, 100, 20, { 255, 255, 255, 255 });
+			app->render->DrawText("Minion: OFF", 720, 350, 100, 20, { 255, 255, 255, 255 });
 		}
 	}
 
@@ -941,7 +953,7 @@ bool SceneBattle::PostUpdate()
 	app->render->DrawTexture(lifeFrame, 80, 195);	//Barra Player 4
 	app->render->DrawTexture(lifeFrame, 800, 30);	//Barra Enemy (Provisional)
 	if (minion)
-		app->render->DrawTexture(lifeFrame, 780, 326);	//Barra Minion (Provisional)
+		app->render->DrawTexture(lifeFrame, 720, 400);	//Barra Minion (Provisional)
 
 	//Player selector
 	switch (selected_player)
