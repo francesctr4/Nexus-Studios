@@ -9,6 +9,7 @@
 #include "Physics.h"
 #include "SceneGameplay.h"
 #include "Player.h"
+#include <random>
 
 NPC::NPC() : Entity(EntityType::NPC)
 {
@@ -259,6 +260,15 @@ bool NPC::Start() {
 	dialogueOptions = app->audio->LoadFx("Assets/Audio/Fx/SceneGameplay/DialogueOptions.wav");
 	npcTalking = app->audio->LoadFx("Assets/Audio/Fx/SceneGameplay/NpcTalking.wav");
 
+	// Jovani Skin selector
+
+	std::random_device rd;  // Initialize a random device
+	std::mt19937 gen(rd()); // Seed the random number generator
+
+	std::uniform_int_distribution<> dis(0, 3); // Define the range of random numbers
+
+	skinIterator = dis(gen);
+
 	return true;
 }
 
@@ -278,8 +288,17 @@ bool NPC::Update()
 
 	SDL_Rect npcRect = currentAnimation->GetCurrentFrame();
 
-	app->render->DrawTexture(texture, position.x, position.y, &npcRect);
+	if (ntype == NPC_Types::JOVANI) {
 
+		npcRect.y = 32 * skinIterator;
+		app->render->DrawTexture(texture, position.x, position.y, &npcRect);
+
+	}
+	else {
+
+		app->render->DrawTexture(texture, position.x, position.y, &npcRect);
+
+	}
 
 	// NPC Sensor Logic
 
