@@ -301,9 +301,9 @@ bool SceneBattle::Update(float dt)
 				
 			}
 
-			if (m_players[0].HP == 0 && m_players[1].HP == 0)
+			if (m_players[0].HP == 0 && m_players[1].HP == 0 && m_players[2].HP == 0 && m_players[3].HP == 0)
 			{
-				app->fadeToBlack->Fade((Module*)app->sceneBattle, (Module*)app->sceneGameplay);
+				app->fadeToBlack->Fade((Module*)app->sceneBattle, (Module*)app->sceneEnding);
 				m_players[0].HP = m_players[0].max_HP;
 				m_players[1].HP = m_players[1].max_HP;
 				m_players[2].HP = m_players[2].max_HP;
@@ -642,7 +642,7 @@ bool SceneBattle::Update(float dt)
 			selected_player++;
 		}
 	}
-
+	
 	
 	//SDL_Rect rect = { 0,0, 1280, 720 };
 	//app->render->DrawRectangle(rect, 0, 0, 255, 150);
