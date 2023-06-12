@@ -158,7 +158,9 @@ private:
 
 	SDL_Texture* healthBar = nullptr;
 
-	SDL_Texture* selectionArrow = nullptr;
+	SDL_Texture* LArrow = nullptr;
+
+	SDL_Texture* RArrow = nullptr;
 
 	SDL_Texture* playerSelection = nullptr;
 
@@ -197,6 +199,6 @@ private:
 	bool combat_timmer_started = false;
 	bool show_battle_info = false;
 
-
-
+	SDL_Rect arrow1;
+	SDL_Rect arrow2;
 };
