@@ -86,10 +86,11 @@ bool SceneBattle::Start()
 
 	//Load textures
 	classID = app->tex->Load("Assets/UI/ClassID.png");
-	lifeFrame = app->tex->Load("Assets/UI/LifeFrame.png");
+	lifeFrame = app->tex->Load("Assets/UI/Battle/LifeFrame.png");
 	actionButtons = app->tex->Load("Assets/UI/ActionButtons.png");
-	healthBar = app->tex->Load("Assets/UI/HealthBar.png");
-	selectionArrow = app->tex->Load("Assets/UI/SelectionArrow.png");
+	healthBar = app->tex->Load("Assets/UI/Battle/HealthBar.png");
+	LArrow = app->tex->Load("Assets/UI/Battle/LArrow.png");
+	RArrow = app->tex->Load("Assets/UI/Battle/RArrow.png");
 	playerSelection = app->tex->Load("Assets/UI/PlayerSelector.png");
 	q_sprite = app->tex->Load("Assets/Textures/q.png");
 	dialogue = app->tex->Load("Assets/Textures/dialogue-UI.png");
@@ -134,6 +135,10 @@ bool SceneBattle::Start()
 	currentAnimationEnemy = &enemyAnimation32x32;
 
 	background = app->tex->Load("Assets/Textures/BattleBackground.png");
+
+	arrow1 = { 0, 0, 25, 46 };
+	arrow2 = { 0, 46, 25, 46 };
+
 
 	return true;
 }
@@ -199,6 +204,7 @@ bool SceneBattle::Update(float dt)
 
 	//}
 
+
 	if (app->combatManager->playerTurn)
 	{
 		if (!qte)
@@ -210,6 +216,8 @@ bool SceneBattle::Update(float dt)
 
 			if (app->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN)
 			{
+				
+
 				if (action_selected != 0)
 				{
 					action_selected--;
@@ -226,6 +234,8 @@ bool SceneBattle::Update(float dt)
 
 			if (app->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN)
 			{
+
+				
 
 				if (action_selected != 5)
 				{
@@ -665,18 +675,18 @@ bool SceneBattle::PostUpdate()
 	double e_percentage_life = (e_HP * 100.0) / e_max_HP;
 	if (e_percentage_life < 50 && e_percentage_life >= 20)	//Yellow color
 	{
-		SDL_Rect rect_e = { 0, 20, 3 * e_percentage_life, 20 };
-		app->render->DrawTexture(healthBar, 800, 30, &rect_e);
+		SDL_Rect rect_e = { 0, 18 * 1, 2.85 * e_percentage_life, 18 };
+		app->render->DrawTexture(healthBar, 802, 31, &rect_e);
 	}
 	if (e_percentage_life < 20) //Red color
 	{
-		SDL_Rect rect_p = { 0, 40, 3 * e_percentage_life, 20 };
-		app->render->DrawTexture(healthBar, 800, 30, &rect_p);
+		SDL_Rect rect_p = { 0, 18 * 2, 2.85 * e_percentage_life, 18 };
+		app->render->DrawTexture(healthBar, 802, 31, &rect_p);
 	}
 	if (e_percentage_life >= 50) //Green color
 	{
-		SDL_Rect rect_p = { 0, 0, 3 * e_percentage_life, 20 };
-		app->render->DrawTexture(healthBar, 800, 30, &rect_p);
+		SDL_Rect rect_p = { 0, 18 * 0, 2.85 * e_percentage_life, 18 };
+		app->render->DrawTexture(healthBar, 802, 31, &rect_p);
 	}
 	app->render->DrawText("Enemy HP:", 800, 10, 100, 20, { 255, 255, 255, 255 });
 	std::string e_HP_string = std::to_string(e_HP);
@@ -695,18 +705,18 @@ bool SceneBattle::PostUpdate()
 		double m_percentage_life = (m_HP * 100.0) / m_max_HP;
 		if (m_percentage_life < 50 && m_percentage_life >= 20)	//Yellow color
 		{
-			SDL_Rect rect_m = { 0, 20, 3 * m_percentage_life, 20 };
-			app->render->DrawTexture(healthBar, 720, 400, &rect_m);
+			SDL_Rect rect_m = { 0, 18 * 1, 2.85 * m_percentage_life, 18 };
+			app->render->DrawTexture(healthBar, 722, 403, &rect_m);
 		}
 		if (m_percentage_life < 20) //Red color
 		{
-			SDL_Rect rect_m = { 0, 40, 3 * m_percentage_life, 20 };
-			app->render->DrawTexture(healthBar, 720, 400, &rect_m);
+			SDL_Rect rect_m = { 0, 18 * 2, 2.85 * m_percentage_life, 18 };
+			app->render->DrawTexture(healthBar, 722, 403, &rect_m);
 		}
 		if (m_percentage_life >= 50) //Green color
 		{
-			SDL_Rect rect_m = { 0, 0, 3 * m_percentage_life, 20 };
-			app->render->DrawTexture(healthBar, 720, 400, &rect_m);
+			SDL_Rect rect_m = { 0, 18 * 0, 2.85 * m_percentage_life, 18 };
+			app->render->DrawTexture(healthBar, 722, 403, &rect_m);
 		}
 		app->render->DrawText("Minion HP:", 720, 380, 100, 20, { 255, 255, 255, 255 });
 		std::string m_HP_string = std::to_string(m_HP);
@@ -747,18 +757,18 @@ bool SceneBattle::PostUpdate()
 	double p_percentage_life = (m_players[0].HP * 100.0) / m_players[0].max_HP;
 	if (p_percentage_life < 50 && p_percentage_life >= 20)	//Yellow color
 	{
-		SDL_Rect rect_p = { 0, 20, 3 * p_percentage_life, 20 };
-		app->render->DrawTexture(healthBar, 80, 30, &rect_p);
+		SDL_Rect rect_p = { 0, 18 * 1, 2.85 * p_percentage_life, 18 };
+		app->render->DrawTexture(healthBar, 81, 31, &rect_p);
 	}
 	if (p_percentage_life < 20) //Red color
 	{
-		SDL_Rect rect_p = { 0, 40, 3 * p_percentage_life, 20 };
-		app->render->DrawTexture(healthBar, 80, 30, &rect_p);
+		SDL_Rect rect_p = { 0, 18 * 2, 2.85 * p_percentage_life, 18 };
+		app->render->DrawTexture(healthBar, 81, 31, &rect_p);
 	}
 	if (p_percentage_life >= 50) //Green color
 	{
-		SDL_Rect rect_p = { 0, 0, 3 * p_percentage_life, 20 };
-		app->render->DrawTexture(healthBar, 80, 30, &rect_p);
+		SDL_Rect rect_p = { 0, 18 * 0, 2.85 * p_percentage_life, 18 };
+		app->render->DrawTexture(healthBar, 81, 31, &rect_p);
 	}
 	app->render->DrawText("Player HP:", 80, 10, 100, 20, { 255, 255, 255, 255 });
 	std::string p_HP_string = std::to_string(m_players[0].HP);
@@ -770,18 +780,18 @@ bool SceneBattle::PostUpdate()
 	double p2_percentage_life = (m_players[1].HP * 100.0) / m_players[1].max_HP;
 	if (p2_percentage_life < 50 && p2_percentage_life >= 20)	//Yellow color
 	{
-		SDL_Rect rect_p2 = { 0, 20, 3 * p2_percentage_life, 20 };
-		app->render->DrawTexture(healthBar, 80, 85, &rect_p2);
+		SDL_Rect rect_p2 = { 0, 18 * 1, 2.85 * p2_percentage_life, 18 };
+		app->render->DrawTexture(healthBar, 81, 86, &rect_p2);
 	}
 	if (p2_percentage_life < 20) //Red color
 	{
-		SDL_Rect rect_p2 = { 0, 40, 3 * p2_percentage_life, 20 };
-		app->render->DrawTexture(healthBar, 80, 85, &rect_p2);
+		SDL_Rect rect_p2 = { 0, 18 * 2, 2.85 * p2_percentage_life, 18 };
+		app->render->DrawTexture(healthBar, 81, 86, &rect_p2);
 	}
 	if (p2_percentage_life >= 50) //Green color
 	{
-		SDL_Rect rect_p2 = { 0, 0, 3 * p2_percentage_life, 20 };
-		app->render->DrawTexture(healthBar, 80, 85, &rect_p2);
+		SDL_Rect rect_p2 = { 0, 18 * 0, 2.85 * p2_percentage_life, 18 };
+		app->render->DrawTexture(healthBar, 81, 86, &rect_p2);
 	}
 	app->render->DrawText("Player 2 HP:", 80, 70, 100, 20, { 255, 255, 255, 255 });
 	std::string p2_HP_string = std::to_string(m_players[1].HP);
@@ -791,18 +801,18 @@ bool SceneBattle::PostUpdate()
 	double p3_percentage_life = (m_players[2].HP * 100.0) / m_players[2].max_HP;
 	if (p3_percentage_life < 50 && p3_percentage_life >= 20)	//Yellow color
 	{
-		SDL_Rect rect_p3 = { 0, 20, 3 * p3_percentage_life, 20 };
-		app->render->DrawTexture(healthBar, 80, 140, &rect_p3);
+		SDL_Rect rect_p3 = { 0, 18 * 1, 2.85 * p3_percentage_life, 18 };
+		app->render->DrawTexture(healthBar, 81, 141, &rect_p3);
 	}
 	if (p3_percentage_life < 20) //Red color
 	{
-		SDL_Rect rect_p3 = { 0, 40, 3 * p3_percentage_life, 20 };
-		app->render->DrawTexture(healthBar, 80, 140, &rect_p3);
+		SDL_Rect rect_p3 = { 0, 18 * 2, 2.85 * p3_percentage_life, 18 };
+		app->render->DrawTexture(healthBar, 81, 141, &rect_p3);
 	}
 	if (p3_percentage_life >= 50) //Green color
 	{
-		SDL_Rect rect_p3 = { 0, 0, 3 * p3_percentage_life, 20 };
-		app->render->DrawTexture(healthBar, 80, 140, &rect_p3);
+		SDL_Rect rect_p3 = { 0, 18 * 0, 2.85 * p3_percentage_life, 18 };
+		app->render->DrawTexture(healthBar, 81, 141, &rect_p3);
 	}
 	app->render->DrawText("Player 3 HP:", 80, 120, 100, 20, { 255, 255, 255, 255 });
 	std::string p3_HP_string = std::to_string(m_players[2].HP);
@@ -812,18 +822,18 @@ bool SceneBattle::PostUpdate()
 	double p4_percentage_life = (m_players[3].HP * 100.0) / m_players[3].max_HP;
 	if (p4_percentage_life < 50 && p4_percentage_life >= 20)	//Yellow color
 	{
-		SDL_Rect rect_p4 = { 0, 20, 3 * p4_percentage_life, 20 };
-		app->render->DrawTexture(healthBar, 80, 195, &rect_p4);
+		SDL_Rect rect_p4 = { 0, 18 * 1, 2.85 * p4_percentage_life, 18 };
+		app->render->DrawTexture(healthBar, 81, 197, &rect_p4);
 	}
 	if (p4_percentage_life < 20) //Red color
 	{
-		SDL_Rect rect_p4 = { 0, 40, 3 * p4_percentage_life, 20 };
-		app->render->DrawTexture(healthBar, 80, 195, &rect_p4);
+		SDL_Rect rect_p4 = { 0, 18 * 2, 2.85 * p4_percentage_life, 18 };
+		app->render->DrawTexture(healthBar, 81, 197, &rect_p4);
 	}
 	if (p4_percentage_life >= 50) //Green color
 	{
-		SDL_Rect rect_p4 = { 0, 0, 3 * p4_percentage_life, 20 };
-		app->render->DrawTexture(healthBar, 80, 195, &rect_p4);
+		SDL_Rect rect_p4 = { 0, 18 * 0, 2.85 * p4_percentage_life, 18 };
+		app->render->DrawTexture(healthBar, 81, 197, &rect_p4);
 	}
 	app->render->DrawText("Player 4 HP:", 80, 175, 100, 20, { 255, 255, 255, 255 });
 	std::string p4_HP_string = std::to_string(m_players[3].HP);
@@ -946,11 +956,11 @@ bool SceneBattle::PostUpdate()
 
 	//Combat UI - Visual
 	app->render->DrawTexture(classID, 20, 20);
-	app->render->DrawTexture(lifeFrame, 80, 30);	//Barra Player 1
-	app->render->DrawTexture(lifeFrame, 80, 85);	//Barra Player 2
-	app->render->DrawTexture(lifeFrame, 80, 140);	//Barra Player 3
-	app->render->DrawTexture(lifeFrame, 80, 195);	//Barra Player 4
-	app->render->DrawTexture(lifeFrame, 800, 30);	//Barra Enemy (Provisional)
+	app->render->DrawTexture(lifeFrame, 78, 28);	//Barra Player 1
+	app->render->DrawTexture(lifeFrame, 78, 83);	//Barra Player 2
+	app->render->DrawTexture(lifeFrame, 78, 138);	//Barra Player 3
+	app->render->DrawTexture(lifeFrame, 78, 194);	//Barra Player 4
+	app->render->DrawTexture(lifeFrame, 799, 28);	//Barra Enemy (Provisional)
 	if (minion)
 		app->render->DrawTexture(lifeFrame, 720, 400);	//Barra Minion (Provisional)
 
@@ -974,7 +984,6 @@ bool SceneBattle::PostUpdate()
 
 	//Atcion selector
 
-	app->render->DrawTexture(selectionArrow, 191, 316);
 	SDL_Rect actionSelector_rect = { action_selected * 70, 0, 70, 70};
 	app->render->DrawTexture(actionButtons, 235, 305, &actionSelector_rect);
 
@@ -1035,6 +1044,20 @@ bool SceneBattle::PostUpdate()
 				break;
 			}
 		}
+	}
+
+
+	app->render->DrawTexture(LArrow, 208, 318, &arrow1);
+	app->render->DrawTexture(RArrow, 307, 318, &arrow1);
+
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN)
+	{
+		app->render->DrawTexture(LArrow, 205, 318, &arrow2);
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN)
+	{
+		app->render->DrawTexture(RArrow, 304, 318, &arrow2);
 	}
 
 

@@ -18,15 +18,7 @@
 	<guiManager />
 	<CombatManager />
 	<entitymanager>
-		<player x="171" y="517" />
-		<enemy type="bossMedieval" x="980" y="590" texturepath="Assets/Textures/Bosses/Final_Boss_Medieval.png" battletexturepath="Assets/Textures/DamageInCombat.png" map="0" isAlive="True" />
-		<enemy type="bossPrehistoric" x="980" y="500" texturepath="Assets/Textures/Bosses/Final_Boss_Prehistoric.png" battletexturepath="Assets/Textures/DamageInCombat.png" map="0" isAlive="True" />
-		<enemy type="bossCyberpunk" x="1080" y="500" texturepath="Assets/Textures/Bosses/Final_Boss_Cyberpunk.png" battletexturepath="Assets/Textures/DamageInCombat.png" map="0" isAlive="True" />
-		<enemy type="damage" x="105" y="600" texturepath="Assets/Textures/Demon_Damage-Sheet.png" battletexturepath="Assets/Textures/Demon_Damage-Sheet_InCombat.png" map="0" isAlive="True" />
-		<enemy type="support" x="205" y="550" texturepath="Assets/Textures/Demon_Support-Sheet.png" battletexturepath="Assets/Textures/Demon_Support-Sheet_InCombat.png" map="0" isAlive="False" />
-		<enemy type="tank" x="305" y="500" texturepath="Assets/Textures/Cyberpunk_Tank-Sheet.png" battletexturepath="Assets/Textures/Cyberpunk_Tank-Sheet_InCombat.png" map="0" isAlive="True" />
-		<enemy type="damage" x="405" y="450" texturepath="Assets/Textures/Cyberpunk.png" battletexturepath="Assets/Textures/CyberpunkInCombat.png" map="0" isAlive="True" />
-		<item type="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png" map="0" isPicked="False" />
+		<player x="267" y="430" />
 	</entitymanager>
 	<empty />
 	<psystem />
