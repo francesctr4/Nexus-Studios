@@ -1,24 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Source\Log.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\External\PugiXml\src\pugixml.cpp">
-      <Filter>External\PugiXml</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Enemy.cpp">
-      <Filter>Game Loop\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\EntityManager.cpp">
-      <Filter>Game Loop\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\App.cpp">
-      <Filter>Game Loop</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Audio.cpp">
-      <Filter>Game Loop\Modules</Filter>
-    </ClCompile>
     <ClCompile Include="Source\GuiButton.cpp">
       <Filter>GUI</Filter>
     </ClCompile>
@@ -31,26 +13,14 @@
     <ClCompile Include="Source\GuiSlider.cpp">
       <Filter>GUI</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Input.cpp">
-      <Filter>Game Loop\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Item.cpp">
-      <Filter>Game Loop\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Main.cpp">
+    <ClCompile Include="Source\App.cpp">
       <Filter>Game Loop</Filter>
     </ClCompile>
-    <ClCompile Include="Source\SceneGameplay.cpp">
-      <Filter>Game Loop\Scenes</Filter>
+    <ClCompile Include="Source\External\PugiXml\src\pugixml.cpp">
+      <Filter>External\PugiXml</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Map.cpp">
-      <Filter>Game Loop\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\PathFinding.cpp">
-      <Filter>Game Loop\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Player.cpp">
-      <Filter>Game Loop\Entities</Filter>
+    <ClCompile Include="Source\Log.cpp">
+      <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="Source\PerfTimer.cpp">
       <Filter>Utils\Timers</Filter>
@@ -58,50 +28,53 @@
     <ClCompile Include="Source\Timer.cpp">
       <Filter>Utils\Timers</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Render.cpp">
+    <ClCompile Include="Source\Main.cpp">
+      <Filter>Game Loop</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Audio.cpp">
       <Filter>Game Loop\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Physics.cpp">
+    <ClCompile Include="Source\CombatManager.cpp">
       <Filter>Game Loop\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Textures.cpp">
-      <Filter>Game Loop\Modules</Filter>
+    <ClCompile Include="Source\SceneBattle.cpp">
+      <Filter>Game Loop\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Window.cpp">
-      <Filter>Game Loop\Modules</Filter>
+    <ClCompile Include="Source\SceneEnding.cpp">
+      <Filter>Game Loop\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Source\SceneTitle.cpp">
+    <ClCompile Include="Source\SceneGameplay.cpp">
       <Filter>Game Loop\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Source\SceneLogo.cpp">
       <Filter>Game Loop\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Source\SceneBattle.cpp">
+    <ClCompile Include="Source\SceneLore.cpp">
       <Filter>Game Loop\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Source\CombatManager.cpp">
+    <ClCompile Include="Source\SceneTitle.cpp">
+      <Filter>Game Loop\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Window.cpp">
       <Filter>Game Loop\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="Source\FadeToBlack.cpp">
-      <Filter>Game Loop\Modules</Filter>
+    <ClCompile Include="Source\Enemy.cpp">
+      <Filter>Game Loop\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\EntityManager.cpp">
+      <Filter>Game Loop\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Item.cpp">
+      <Filter>Game Loop\Entities</Filter>
     </ClCompile>
     <ClCompile Include="Source\NPC.cpp">
       <Filter>Game Loop\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Inventory.cpp">
+    <ClCompile Include="Source\Player.cpp">
+      <Filter>Game Loop\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Weapon.cpp">
       <Filter>Game Loop\Features</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\QuestManager.cpp">
-      <Filter>Game Loop\Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\FeatureMenu.cpp">
-      <Filter>Game Loop\Features</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Pause.cpp">
-      <Filter>Game Loop\Features</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Tweening.cpp">
-      <Filter>Game Loop\Modules</Filter>
     </ClCompile>
     <ClCompile Include="Source\Puzzle1.cpp">
       <Filter>Game Loop\Features\Puzzles</Filter>
@@ -112,14 +85,23 @@
     <ClCompile Include="Source\Puzzle3.cpp">
       <Filter>Game Loop\Features\Puzzles</Filter>
     </ClCompile>
-    <ClCompile Include="Source\SceneEnding.cpp">
-      <Filter>Game Loop\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Infierno.cpp">
-      <Filter>Game Loop\Maps</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Emitter.cpp">
       <Filter>Game Loop\Features\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Infierno.cpp">
+      <Filter>Game Loop\Features\Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Lobby.cpp">
+      <Filter>Game Loop\Features\Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Input.cpp">
+      <Filter>Game Loop\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Medieval.cpp">
+      <Filter>Game Loop\Features\Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FeatureMenu.cpp">
+      <Filter>Game Loop\Features</Filter>
     </ClCompile>
     <ClCompile Include="Source\Particle.cpp">
       <Filter>Game Loop\Features\Particles</Filter>
@@ -130,54 +112,43 @@
     <ClCompile Include="Source\ParticleSystem.cpp">
       <Filter>Game Loop\Features\Particles</Filter>
     </ClCompile>
-    <ClCompile Include="Source\SceneLore.cpp">
-      <Filter>Game Loop\Scenes</Filter>
+    <ClCompile Include="Source\QuestManager.cpp">
+      <Filter>Game Loop\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Lobby.cpp">
-      <Filter>Game Loop\Maps</Filter>
+    <ClCompile Include="Source\Render.cpp">
+      <Filter>Game Loop\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Textures.cpp">
+      <Filter>Game Loop\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FadeToBlack.cpp">
+      <Filter>Game Loop\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Map.cpp">
+      <Filter>Game Loop\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PathFinding.cpp">
+      <Filter>Game Loop\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Physics.cpp">
+      <Filter>Game Loop\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Tweening.cpp">
+      <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="Source\Prehistoria.cpp">
-      <Filter>Game Loop\Maps</Filter>
+      <Filter>Game Loop\Features\Maps</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Medieval.cpp">
-      <Filter>Game Loop\Maps</Filter>
-    <ClCompile Include="Source\Weapon.cpp">
+    <ClCompile Include="Source\Pause.cpp">
+      <Filter>Game Loop\Features</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Inventory.cpp">
       <Filter>Game Loop\Features</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Defs.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Log.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Point.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\SString.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\External\PugiXml\src\pugiconfig.hpp">
-      <Filter>External\PugiXml</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\External\PugiXml\src\pugixml.hpp">
-      <Filter>External\PugiXml</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Animation.h">
       <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Enemy.h">
-      <Filter>Game Loop\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\EntityManager.h">
-      <Filter>Game Loop\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\App.h">
-      <Filter>Game Loop</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Audio.h">
-      <Filter>Game Loop\Modules</Filter>
     </ClInclude>
     <ClInclude Include="Source\GuiButton.h">
       <Filter>GUI</Filter>
@@ -194,32 +165,23 @@
     <ClInclude Include="Source\GuiSlider.h">
       <Filter>GUI</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Input.h">
-      <Filter>Game Loop\Modules</Filter>
+    <ClInclude Include="Source\App.h">
+      <Filter>Game Loop</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Item.h">
-      <Filter>Game Loop\Entities</Filter>
+    <ClInclude Include="Source\Defs.h">
+      <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="Source\SceneGameplay.h">
-      <Filter>Game Loop\Scenes</Filter>
+    <ClInclude Include="Source\External\PugiXml\src\pugiconfig.hpp">
+      <Filter>External\PugiXml</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Map.h">
-      <Filter>Game Loop\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\PathFinding.h">
-      <Filter>Game Loop\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Player.h">
-      <Filter>Game Loop\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\PerfTimer.h">
-      <Filter>Utils\Timers</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Timer.h">
-      <Filter>Utils\Timers</Filter>
+    <ClInclude Include="Source\External\PugiXml\src\pugixml.hpp">
+      <Filter>External\PugiXml</Filter>
     </ClInclude>
     <ClInclude Include="Source\DynArray.h">
       <Filter>Utils\Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Log.h">
+      <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="Source\PQueue.h">
       <Filter>Utils\Data Structures</Filter>
@@ -230,62 +192,68 @@
     <ClInclude Include="Source\List.h">
       <Filter>Utils\Data Structures</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Render.h">
-      <Filter>Game Loop\Modules</Filter>
+    <ClInclude Include="Source\PerfTimer.h">
+      <Filter>Utils\Timers</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Physics.h">
-      <Filter>Game Loop\Modules</Filter>
+    <ClInclude Include="Source\Timer.h">
+      <Filter>Utils\Timers</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Textures.h">
-      <Filter>Game Loop\Modules</Filter>
+    <ClInclude Include="Source\SString.h">
+      <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Window.h">
-      <Filter>Game Loop\Modules</Filter>
+    <ClInclude Include="Source\Point.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Entity.h">
+      <Filter>Game Loop</Filter>
     </ClInclude>
     <ClInclude Include="Source\Module.h">
       <Filter>Game Loop</Filter>
     </ClInclude>
-    <ClInclude Include="Source\SceneTitle.h">
+    <ClInclude Include="Source\Audio.h">
+      <Filter>Game Loop\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CombatManager.h">
+      <Filter>Game Loop\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneBattle.h">
+      <Filter>Game Loop\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneEnding.h">
+      <Filter>Game Loop\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneGameplay.h">
       <Filter>Game Loop\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Source\SceneLogo.h">
       <Filter>Game Loop\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Source\SceneBattle.h">
+    <ClInclude Include="Source\SceneLore.h">
       <Filter>Game Loop\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Source\CombatManager.h">
+    <ClInclude Include="Source\SceneTitle.h">
+      <Filter>Game Loop\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Window.h">
       <Filter>Game Loop\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="Source\FadeToBlack.h">
-      <Filter>Game Loop\Modules</Filter>
+    <ClInclude Include="Source\Enemy.h">
+      <Filter>Game Loop\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\EntityManager.h">
+      <Filter>Game Loop\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Item.h">
+      <Filter>Game Loop\Entities</Filter>
     </ClInclude>
     <ClInclude Include="Source\NPC.h">
       <Filter>Game Loop\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Entity.h">
-      <Filter>Game Loop</Filter>
+    <ClInclude Include="Source\Player.h">
+      <Filter>Game Loop\Entities</Filter>
     </ClInclude>
     <ClInclude Include="Source\Weapon.h">
       <Filter>Game Loop\Features</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Inventory.h">
-      <Filter>Game Loop\Features</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\QuestManager.h">
-      <Filter>Game Loop\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\FeatureMenu.h">
-      <Filter>Game Loop\Features</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Pause.h">
-      <Filter>Game Loop\Features</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Tweening.h">
-      <Filter>Game Loop\Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Puzzle3.h">
-      <Filter>Game Loop\Features\Puzzles</Filter>
     </ClInclude>
     <ClInclude Include="Source\Puzzle1.h">
       <Filter>Game Loop\Features\Puzzles</Filter>
@@ -293,14 +261,26 @@
     <ClInclude Include="Source\Puzzle2.h">
       <Filter>Game Loop\Features\Puzzles</Filter>
     </ClInclude>
-    <ClInclude Include="Source\SceneEnding.h">
-      <Filter>Game Loop\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Infierno.h">
-      <Filter>Game Loop\Maps</Filter>
+    <ClInclude Include="Source\Puzzle3.h">
+      <Filter>Game Loop\Features\Puzzles</Filter>
     </ClInclude>
     <ClInclude Include="Source\Emitter.h">
       <Filter>Game Loop\Features\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Infierno.h">
+      <Filter>Game Loop\Features\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Lobby.h">
+      <Filter>Game Loop\Features\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Input.h">
+      <Filter>Game Loop\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Medieval.h">
+      <Filter>Game Loop\Features\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FeatureMenu.h">
+      <Filter>Game Loop\Features</Filter>
     </ClInclude>
     <ClInclude Include="Source\Particle.h">
       <Filter>Game Loop\Features\Particles</Filter>
@@ -311,68 +291,42 @@
     <ClInclude Include="Source\ParticleSystem.h">
       <Filter>Game Loop\Features\Particles</Filter>
     </ClInclude>
-    <ClInclude Include="Source\SceneLore.h">
-      <Filter>Game Loop\Scenes</Filter>
+    <ClInclude Include="Source\Textures.h">
+      <Filter>Game Loop\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Lobby.h">
-      <Filter>Game Loop\Maps</Filter>
+    <ClInclude Include="Source\QuestManager.h">
+      <Filter>Game Loop\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Render.h">
+      <Filter>Game Loop\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FadeToBlack.h">
+      <Filter>Game Loop\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Map.h">
+      <Filter>Game Loop\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PathFinding.h">
+      <Filter>Game Loop\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Physics.h">
+      <Filter>Game Loop\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Tweening.h">
+      <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="Source\Prehistoria.h">
-      <Filter>Game Loop\Maps</Filter>
+      <Filter>Game Loop\Features\Maps</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Medieval.h">
-      <Filter>Game Loop\Maps</Filter>
+    <ClInclude Include="Source\Pause.h">
+      <Filter>Game Loop\Features</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="External">
-      <UniqueIdentifier>{83a966c7-b4bb-4eff-9c2c-3ff3c7b55a60}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Utils">
-      <UniqueIdentifier>{2cad778a-d356-48b0-9fee-587f1bbb187e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="External\PugiXml">
-      <UniqueIdentifier>{2855ff7f-53a1-413d-a75b-18b4ade921dd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Loop">
-      <UniqueIdentifier>{303f7e5f-e590-4326-b3a4-918169e09783}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Utils\Data Structures">
-      <UniqueIdentifier>{a3edfd41-2583-4261-b71e-ca080b3298d1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Utils\Timers">
-      <UniqueIdentifier>{08d6fcf8-2d6c-4c37-8d39-1ca17d83a100}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GUI">
-      <UniqueIdentifier>{c8a41c45-6bb3-43ad-97d5-752b75233635}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Loop\Entities">
-      <UniqueIdentifier>{7a4c5c75-737c-4d8e-b590-53f58b476b6d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Loop\Modules">
-      <UniqueIdentifier>{864dbb70-b33e-4149-a001-d6bafc42ca66}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Loop\Scenes">
-      <UniqueIdentifier>{0acd7ad5-1d30-47f0-8890-399fd74fa1f7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Loop\Features">
-      <UniqueIdentifier>{47084a7b-aec0-4e50-8a67-f33db5b5ae69}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Loop\Features\Puzzles">
-      <UniqueIdentifier>{6e898ac2-29d0-4e77-bfc4-e50597056347}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Loop\Maps">
-      <UniqueIdentifier>{f08b522b-b69e-45e9-b429-0d200963118f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Loop\Features\Particles">
-      <UniqueIdentifier>{58cec054-f3bb-423a-9832-709f43288a13}</UniqueIdentifier>
-    </Filter>
+    <ClInclude Include="Source\Inventory.h">
+      <Filter>Game Loop\Features</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="..\Output\config.xml">
-      <Filter>External</Filter>
-    </Xml>
-    <Xml Include="..\Output\save_game.xml">
       <Filter>External</Filter>
     </Xml>
     <Xml Include="..\Output\quest_data.xml">
@@ -381,5 +335,52 @@
     <Xml Include="..\Output\psystem_config.xml">
       <Filter>External</Filter>
     </Xml>
+    <Xml Include="..\Output\save_game.xml">
+      <Filter>External</Filter>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="External">
+      <UniqueIdentifier>{034ced07-5010-43d5-ba13-908069abc986}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Loop">
+      <UniqueIdentifier>{334e8a6e-4fa4-4303-bff6-774f1b5fc6c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{aee1fb7b-93c5-41c8-ae48-ff3bea6ecd7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{c6974b1a-578e-47af-a851-cd6b254ff8dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\Data Structures">
+      <UniqueIdentifier>{825d6b25-271f-4e04-8928-37dacf142254}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\Timers">
+      <UniqueIdentifier>{cf846548-7be2-4b8e-b78d-cd93d9675ef9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External\PugiXml">
+      <UniqueIdentifier>{0828b99d-ed1a-447b-bee2-bf4a5ba54708}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Loop\Entities">
+      <UniqueIdentifier>{3da73e2b-2e98-4be9-b918-dfaeafe56fcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Loop\Features">
+      <UniqueIdentifier>{b46f1991-9bb1-49e1-a07f-ec6d5c4953ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Loop\Modules">
+      <UniqueIdentifier>{a6f119e3-e82f-4268-8d87-05e2a9eeed46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Loop\Scenes">
+      <UniqueIdentifier>{2c49ca4a-9c63-4193-9784-1c74fc2795a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Loop\Features\Puzzles">
+      <UniqueIdentifier>{5e765552-980d-46b6-92bf-9ada35dc2edb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Loop\Features\Particles">
+      <UniqueIdentifier>{e1034bf6-6398-4700-86e7-89e18e9a663b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Loop\Features\Maps">
+      <UniqueIdentifier>{9e14dddc-93bf-4e60-8c13-9caa9c38d8a7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
