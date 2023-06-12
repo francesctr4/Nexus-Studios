@@ -22,17 +22,17 @@ void Lobby::Update()
 	{
 		if (Tp_Lobby_Prehistoria == NULL)
 		{
-			Tp_Lobby_Prehistoria = app->physics->CreateRectangleSensor(1268, 318, 11, 65, bodyType::KINEMATIC, ColliderType::TELEPORT_LOBBY_PREHISTORIA);
+			Tp_Lobby_Prehistoria = app->physics->CreateRectangleSensor(1295, 360, 5, 65, bodyType::KINEMATIC, ColliderType::TELEPORT_LOBBY_PREHISTORIA);
 			Prehistoria = true;
 		}
 		if (Tp_Lobby_Medieval == NULL)
 		{
-			Tp_Lobby_Medieval = app->physics->CreateRectangleSensor(50, 306, 7, 75, bodyType::KINEMATIC, ColliderType::TELEPORT_LOBBY_MEDIEVAL);
+			Tp_Lobby_Medieval = app->physics->CreateRectangleSensor(-10, 350, 7, 75, bodyType::KINEMATIC, ColliderType::TELEPORT_LOBBY_MEDIEVAL);
 			Medieval = true;
 		}
 		if (Tp_Lobby_Infierno == NULL)
 		{
-			Tp_Lobby_Infierno = app->physics->CreateRectangleSensor(608, 0, 64, 12, bodyType::KINEMATIC, ColliderType::TELEPORT_LOBBY_INFIERNO);
+			Tp_Lobby_Infierno = app->physics->CreateRectangleSensor(640, -5, 64, 12, bodyType::KINEMATIC, ColliderType::TELEPORT_LOBBY_INFIERNO);
 			Infierno = true;
 		}
 	}
@@ -63,7 +63,7 @@ void Lobby::TeleportLobby()
 }
 void Lobby::TeleportPrehistoria()
 {
-	app->sceneGameplay->player->Teleport(6, 269);
+	app->sceneGameplay->player->Teleport(10, 275);
 	app->sceneGameplay->LoadMap(2);
 	Prehistoria = false;
 }
@@ -72,7 +72,7 @@ void Lobby::TeleportMedieval()
 {
 	if (FinalPrehistoria == true)
 	{
-		app->sceneGameplay->player->Teleport(1200, 327);
+		app->sceneGameplay->player->Teleport(1265, 325);
 		app->sceneGameplay->LoadMap(8);
 		Medieval = false;
 	}
@@ -86,4 +86,5 @@ void Lobby::TeleportInfierno()
 		app->sceneGameplay->LoadMap(14);
 		Infierno = false;
 	}
+	
 }

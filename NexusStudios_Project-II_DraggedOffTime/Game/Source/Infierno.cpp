@@ -438,7 +438,7 @@ void Infierno::CleanUp()
 
 void Infierno::TeleportInfierno()
 {
-	if (app->map->actualmap == 18 &&Tp_Boss == true)
+	if (app->map->actualmap == 18 && Tp_Boss == true)
 	{
 		app->sceneGameplay->LoadMap(1);
 		app->physics->DestroyBody(TP_Infierno_5);

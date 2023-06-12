@@ -21,6 +21,10 @@ public:
 
 	void TeleportInfierno();
 
+	void TeleportInfiernoReversa();
+
+	void TeleportInfiernoJovani();
+
 public:
 
 	bool canLoad = true;

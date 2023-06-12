@@ -58,13 +58,6 @@ public:
 	void AddXP(int xp, int playerIndex);
 	void PlayerLevelManagement();
 
-	void TeleportCofre();
-	void TeleportJovani();
-	void TeleportInfierno();
-	void TeleportPrehistoria();
-	void TeleportFuturo();
-	void TeleportMedieval();
-
 	void Death();
 
 	void Teleport(int x, int y);
@@ -120,12 +113,18 @@ public:
 	bool executeTeleportLobby_Infierno = false;
 	bool executeTeleportLobby_Prehistoria = false;
 	bool executeTeleportLobby_Medieval = false;
-	bool executeTeleportCofre = false;
-	bool executeTeleportJovani= false;
+
 	bool executeTeleportInfierno = false;
-	bool executeTeleportFuturo = false;
+	bool executeTeleportInfiernoReversa = false;
+	bool executeTeleportInfiernoJovani = false;
+
 	bool executeTeleportPrehistoria = false;
+	bool executeTeleportPrehistoriaReversa = false;
+	bool executeTeleportPrehistoriaJovani = false;
+
 	bool executeTeleportMedieval = false;
+	bool executeTeleportMedievalReversa = false;
+	bool executeTeleportMedievalJovani = false;
 
 
 };

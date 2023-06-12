@@ -248,7 +248,10 @@ bool SceneGameplay::Update(float dt)
 	}
 
 	lobbies.Update();
+	mapa_Prehistoria.Update();
+	mapa_Medieval.Update();
 	mapa_Infierno.Update();
+	
 	
 	return true;
 }

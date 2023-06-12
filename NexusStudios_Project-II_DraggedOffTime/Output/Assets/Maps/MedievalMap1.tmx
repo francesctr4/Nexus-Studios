@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="4">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="5">
  <tileset firstgid="1" name="Tiles" tilewidth="16" tileheight="16" tilecount="625" columns="25">
   <image source="Tiles.png" width="400" height="400"/>
   <wangsets>
@@ -18093,6 +18093,9 @@
   </data>
  </layer>
  <objectgroup id="6" name="Colliders">
+  <properties>
+   <property name="Platform" type="bool" value="true"/>
+  </properties>
   <object id="2" x="0" y="448">
    <polygon points="0,0 208,0 208,-144 336,-144 256,-144 256,-320 352,-320 352,-304 480,-304 480,-288 496,-288 496,-144 368,-144 496,-144 496,-96 544,-96 544,-160 768,-160 768,-96 816,-96 816,-320 864,-320 864,-304 912,-304 912,-320 944,-320 944,-304 960,-304 960,-320 1008,-320 1008,-304 1024,-304 1024,-320 1056,-320 1056,-304 1104,-304 1104,-320 1152,-320 1152,-176 1280,-176 1280,-448 0,-448"/>
   </object>

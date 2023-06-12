@@ -151,15 +151,6 @@ bool Player::Update()
 		app->sceneGameplay->lobbies.TeleportLobby();
 		executeTeleportLobby = false;
 	}
-
-	if (executeTeleportCofre) {
-		TeleportCofre();
-		executeTeleportCofre = false;
-	}
-	if (executeTeleportInfierno) {
-		app->sceneGameplay->mapa_Infierno.TeleportInfierno();
-		executeTeleportInfierno = false;
-	}
 	if (executeTeleportLobby_Infierno) {
 		app->sceneGameplay->lobbies.TeleportInfierno();
 		executeTeleportLobby_Infierno = false;
@@ -171,6 +162,45 @@ bool Player::Update()
 	if (executeTeleportLobby_Prehistoria) {
 		app->sceneGameplay->lobbies.TeleportPrehistoria();
 		executeTeleportLobby_Prehistoria = false;
+	}
+
+	if (executeTeleportPrehistoria) {
+		app->sceneGameplay->mapa_Prehistoria.TeleportPrehistoria();
+		executeTeleportPrehistoria = false;
+	}
+	if (executeTeleportPrehistoriaReversa) {
+		app->sceneGameplay->mapa_Prehistoria.TeleportPrehistoria_Revers();
+		executeTeleportPrehistoriaReversa = false;
+	}
+	if (executeTeleportPrehistoriaJovani) {
+		app->sceneGameplay->mapa_Prehistoria.TeleportPrehistoriaJovani();
+		executeTeleportPrehistoriaJovani = false;
+	}
+
+	if (executeTeleportMedieval) {
+		app->sceneGameplay->mapa_Medieval.TeleportMedieval();
+		executeTeleportMedieval = false;
+	}
+	if (executeTeleportMedievalReversa) {
+		app->sceneGameplay->mapa_Medieval.TeleportMedievalReversa();
+		executeTeleportMedievalReversa = false;
+	}
+	if (executeTeleportMedievalJovani) {
+		app->sceneGameplay->mapa_Medieval.TeleportMedievalJovani();
+		executeTeleportMedievalJovani = false;
+	}
+
+	if (executeTeleportInfierno) {
+		app->sceneGameplay->mapa_Infierno.TeleportInfierno();
+		executeTeleportInfierno = false;
+	}
+	if (executeTeleportInfiernoReversa) {
+		app->sceneGameplay->mapa_Infierno.TeleportInfiernoReversa();
+		executeTeleportInfiernoReversa = false;
+	}
+	if (executeTeleportInfiernoJovani) {
+		app->sceneGameplay->mapa_Infierno.TeleportInfiernoJovani();
+		executeTeleportInfiernoJovani = false;
 	}
 
 	// God Mode Management
@@ -559,105 +589,71 @@ void Player::PlayerLevelManagement()
 
 }
 
-void Player::TeleportCofre()
-{
-}
 
-void Player::TeleportJovani()
-{
-}
 
 void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	
 	switch (physB->ctype)
 	{
 	case ColliderType::SENSOR_COIN_PUZZLE3:
-
 		app->sceneGameplay->puzzle3.coinPicked = true;
 		app->audio->PlayFx(app->sceneGameplay->puzzle3.coinFX);
-
 		break;
 
 	case ColliderType::SENSOR_TOP_BOX1_PUZZLE2:
-
 		app->sceneGameplay->puzzle2.top_collision1 = true;
-
 		break;
 
 	case ColliderType::SENSOR_BOTTOM_BOX1_PUZZLE2:
-
 		app->sceneGameplay->puzzle2.bottom_collision1 = true;
-
 		break;
 
 	case ColliderType::SENSOR_TOP_BOX2_PUZZLE2:
-
 		app->sceneGameplay->puzzle2.top_collision2 = true;
-
 		break;
 
 	case ColliderType::SENSOR_BOTTOM_BOX2_PUZZLE2:
-
 		app->sceneGameplay->puzzle2.bottom_collision2 = true;
-
 		break;
 
 	case ColliderType::SENSOR_TOP_BOX3_PUZZLE2:
-
 		app->sceneGameplay->puzzle2.top_collision3 = true;
-
 		break;
 
 	case ColliderType::SENSOR_BOTTOM_BOX3_PUZZLE2:
-
 		app->sceneGameplay->puzzle2.bottom_collision3 = true;
-
 		break;
 
 	case ColliderType::SENSOR_TOP_BOX4_PUZZLE2:
-
 		app->sceneGameplay->puzzle2.top_collision4 = true;
-
 		break;
 
 	case ColliderType::SENSOR_BOTTOM_BOX4_PUZZLE2:
-
 		app->sceneGameplay->puzzle2.bottom_collision4 = true;
-
 		break;
 
 	case ColliderType::SENSOR_TOP_BOX5_PUZZLE2:
-
 		app->sceneGameplay->puzzle2.top_collision5 = true;
-
 		break;
 
 	case ColliderType::SENSOR_BOTTOM_BOX5_PUZZLE2:
-
 		app->sceneGameplay->puzzle2.bottom_collision5 = true;
-
 		break;
 
 	case ColliderType::SENSOR_CLOCK_PUZZLE3:
-
 		app->sceneGameplay->puzzle3.clockPicked = true;
-
 		break;
 
 	case ColliderType::SENSOR_BUTTON1_PUZZLE1:
-
 		if (!app->sceneGameplay->puzzle1.sensor1Pressed) {
-
 			app->sceneGameplay->puzzle1.order.push_back(1);
 			app->audio->PlayFx(app->sceneGameplay->puzzle1.buttonPressed);
 			app->sceneGameplay->puzzle1.sensor1Pressed = true;
 
 		}
-		
 		break;
 
 	case ColliderType::SENSOR_BUTTON2_PUZZLE1:
-
 		if (!app->sceneGameplay->puzzle1.sensor2Pressed) {
 
 			app->sceneGameplay->puzzle1.order.push_back(2);
@@ -665,11 +661,9 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 			app->sceneGameplay->puzzle1.sensor2Pressed = true;
 
 		}
-		
 		break;
 
 	case ColliderType::SENSOR_BUTTON3_PUZZLE1:
-
 		if (!app->sceneGameplay->puzzle1.sensor3Pressed) {
 
 			app->sceneGameplay->puzzle1.order.push_back(3);
@@ -677,7 +671,6 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 			app->sceneGameplay->puzzle1.sensor3Pressed = true;
 
 		}
-
 		break;
 
 	case ColliderType::SENSOR_BUTTON4_PUZZLE1:
@@ -689,13 +682,10 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 			app->sceneGameplay->puzzle1.sensor4Pressed = true;
 
 		}
-
 		break;
 
 	case ColliderType::ITEM_POTION:
-
 		app->audio->PlayFx(itemCollectedFx);
-
 		break;
 
 	case ColliderType::ITEM_BATTERY:
@@ -708,30 +698,6 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 
 	case ColliderType::ITEM_MANGO:
 		app->audio->PlayFx(itemCollectedFx);
-		break;
-
-	case ColliderType::TELEPORT_COFRE:
-		executeTeleportCofre = true;
-		break;
-
-	case ColliderType::TELEPORT_FUTURO:
-		executeTeleportFuturo = true;
-
-		break;
-	case ColliderType::TELEPORT_INFIERNO:
-		executeTeleportInfierno = true;
-
-		break;
-	case ColliderType::TELEPORT_MEDIEVAL:
-		executeTeleportMedieval = true;
-		break;
-
-	case ColliderType::TELEPORT_PREHISTORIA:
-		executeTeleportPrehistoria = true;
-		break;
-
-	case ColliderType::TELEPORT_JOVANI:
-		executeTeleportJovani = true;
 		break;
 
 	case ColliderType::TELEPORT_LOBBY:
@@ -749,26 +715,48 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 	case ColliderType::TELEPORT_LOBBY_MEDIEVAL:
 		executeTeleportLobby_Medieval = true;
 		break;
+
+	case ColliderType::TELEPORT_PREHISTORIA:
+		executeTeleportPrehistoria = true;
+		break;
+
+	case ColliderType::TELEPORT_PREHISTORIA_REVERS:
+		executeTeleportPrehistoriaReversa = true;
+		break;
+
+	case ColliderType::TELEPORT_PREHISTORIA_JOVANI:
+		executeTeleportPrehistoriaJovani = true;
+		break;
+
+	case ColliderType::TELEPORT_MEDIEVAL:
+		executeTeleportMedieval = true;
+		break;
+
+	case ColliderType::TELEPORT_MEDIEVAL_REVERS:
+		executeTeleportMedievalReversa = true;
+		break;
+
+	case ColliderType::TELEPORT_MEDIEVAL_JOVANI:
+		executeTeleportMedievalJovani = true;
+		break;
+
+	case ColliderType::TELEPORT_INFIERNO:
+		executeTeleportInfierno = true;
+		break;
+
+	case ColliderType::TELEPORT_INFIERNO_REVERS:
+		executeTeleportInfiernoReversa = true;
+		break;
+
+	case ColliderType::TELEPORT_INFIERNO_JOVANI:
+		executeTeleportInfiernoJovani = true;
+		break;
+
+	
+
 	default:
 		break;
 	}
-}
-
-void Player::TeleportInfierno() 
-{
-	
-}
-
-void Player::TeleportPrehistoria()
-{
-}
-
-void Player::TeleportFuturo()
-{
-}
-
-void Player::TeleportMedieval()
-{
 }
 
 void Player::Death()

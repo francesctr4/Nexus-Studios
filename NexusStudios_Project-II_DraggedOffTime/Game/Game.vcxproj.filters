@@ -136,6 +136,12 @@
     <ClCompile Include="Source\Lobby.cpp">
       <Filter>Game Loop\Maps</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Prehistoria.cpp">
+      <Filter>Game Loop\Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Medieval.cpp">
+      <Filter>Game Loop\Maps</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -307,6 +313,12 @@
       <Filter>Game Loop\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Source\Lobby.h">
+      <Filter>Game Loop\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Prehistoria.h">
+      <Filter>Game Loop\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Medieval.h">
       <Filter>Game Loop\Maps</Filter>
     </ClInclude>
   </ItemGroup>

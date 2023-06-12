@@ -14,6 +14,8 @@
 #include "Timer.h"
 #include "Lobby.h"
 #include "Infierno.h"
+#include "Medieval.h"
+#include "Prehistoria.h"
 
 #include "Puzzle1.h"
 #include "Puzzle2.h"
@@ -115,4 +117,6 @@ public:
 	//Maps
 	Lobby lobbies;
 	Infierno mapa_Infierno;
+	Prehistoria mapa_Prehistoria;
+	Medieval mapa_Medieval;
 };

@@ -114,6 +114,7 @@
     <ClCompile Include="Source\Audio.cpp" />
     <ClCompile Include="Source\Input.cpp" />
     <ClCompile Include="Source\Map.cpp" />
+    <ClCompile Include="Source\Medieval.cpp" />
     <ClCompile Include="Source\NPC.cpp" />
     <ClCompile Include="Source\Particle.cpp" />
     <ClCompile Include="Source\ParticlePool.cpp" />
@@ -123,6 +124,7 @@
     <ClCompile Include="Source\PerfTimer.cpp" />
     <ClCompile Include="Source\Physics.cpp" />
     <ClCompile Include="Source\Player.cpp" />
+    <ClCompile Include="Source\Prehistoria.cpp" />
     <ClCompile Include="Source\Puzzle1.cpp" />
     <ClCompile Include="Source\Puzzle2.cpp" />
     <ClCompile Include="Source\Puzzle3.cpp" />
@@ -156,6 +158,7 @@
     <ClInclude Include="Source\Item.h" />
     <ClInclude Include="Source\Lobby.h" />
     <ClInclude Include="Source\Map.h" />
+    <ClInclude Include="Source\Medieval.h" />
     <ClInclude Include="Source\NPC.h" />
     <ClInclude Include="Source\Particle.h" />
     <ClInclude Include="Source\ParticlePool.h" />
@@ -166,6 +169,7 @@
     <ClInclude Include="Source\Physics.h" />
     <ClInclude Include="Source\Player.h" />
     <ClInclude Include="Source\PQueue.h" />
+    <ClInclude Include="Source\Prehistoria.h" />
     <ClInclude Include="Source\Puzzle1.h" />
     <ClInclude Include="Source\Puzzle2.h" />
     <ClInclude Include="Source\Puzzle3.h" />
