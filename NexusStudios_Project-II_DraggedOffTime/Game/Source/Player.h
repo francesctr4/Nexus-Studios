@@ -117,6 +117,9 @@ public:
 	uint itemCollectedFx;
 
 	bool executeTeleportLobby = false;
+	bool executeTeleportLobby_Infierno = false;
+	bool executeTeleportLobby_Prehistoria = false;
+	bool executeTeleportLobby_Medieval = false;
 	bool executeTeleportCofre = false;
 	bool executeTeleportJovani= false;
 	bool executeTeleportInfierno = false;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="9">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="16">
  <tileset firstgid="1" name="Tiles" tilewidth="16" tileheight="16" tilecount="625" columns="25">
   <image source="Tiles.png" width="400" height="400"/>
   <wangsets>
@@ -14498,6 +14498,12 @@
   </object>
   <object id="6" x="0" y="384">
    <polygon points="0,0 192,0 192,304 608,304 608,336 0,336"/>
+  </object>
+  <object id="14" x="671.5" y="-6.25">
+   <polygon points="0,0 -64.5,-0.75 -63.5,-9.75 0.5,-9.75"/>
+  </object>
+  <object id="15" x="-7" y="305">
+   <polygon points="0,0 0,79 -9,79 -9,-1"/>
   </object>
  </objectgroup>
 </map>

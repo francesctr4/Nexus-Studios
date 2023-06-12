@@ -12,6 +12,13 @@ public:
 	void Update();
 
 	void TeleportLobby();
+	
+	void TeleportPrehistoria();
+	
+	void TeleportMedieval();
+	
+	void TeleportInfierno();
+
 
 public:
 
@@ -19,5 +26,11 @@ public:
 	PhysBody* Tp_Lobby_Infierno;
 	PhysBody* Tp_Lobby_Medieval;
 	PhysBody* Tp_Lobby_Prehistoria;
+	
+	bool Infierno;
+	bool Medieval;
+	bool Prehistoria;
+	bool FinalPrehistoria;
+	bool FinalMedieval;
 
 };

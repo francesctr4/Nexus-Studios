@@ -160,21 +160,20 @@ bool Player::Update()
 		app->sceneGameplay->mapa_Infierno.TeleportInfierno();
 		executeTeleportInfierno = false;
 	}
-	if (executeTeleportMedieval) {
-		TeleportCofre();
-		executeTeleportMedieval = false;
+	if (executeTeleportLobby_Infierno) {
+		app->sceneGameplay->lobbies.TeleportInfierno();
+		executeTeleportLobby_Infierno = false;
 	}
-	if (executeTeleportPrehistoria) {
-		TeleportCofre();
-		executeTeleportPrehistoria = false;
+	if (executeTeleportLobby_Medieval) {
+		app->sceneGameplay->lobbies.TeleportMedieval();
+		executeTeleportLobby_Medieval = false;
 	}
-	if (executeTeleportFuturo) {
-		TeleportCofre();
-		executeTeleportFuturo = false;
+	if (executeTeleportLobby_Prehistoria) {
+		app->sceneGameplay->lobbies.TeleportPrehistoria();
+		executeTeleportLobby_Prehistoria = false;
 	}
-	
-	// God Mode Management
 
+	// God Mode Management
 	if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN) godMode = !godMode;
 
 	if (godMode)
@@ -700,27 +699,21 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		break;
 
 	case ColliderType::ITEM_BATTERY:
-
 		app->audio->PlayFx(itemCollectedFx);
-
 		break;
 
 	case ColliderType::ITEM_GEM:
-
 		app->audio->PlayFx(itemCollectedFx);
-
 		break;
 
 	case ColliderType::ITEM_MANGO:
-
 		app->audio->PlayFx(itemCollectedFx);
-
 		break;
 
 	case ColliderType::TELEPORT_COFRE:
 		executeTeleportCofre = true;
-
 		break;
+
 	case ColliderType::TELEPORT_FUTURO:
 		executeTeleportFuturo = true;
 
@@ -731,8 +724,8 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 		break;
 	case ColliderType::TELEPORT_MEDIEVAL:
 		executeTeleportMedieval = true;
-
 		break;
+
 	case ColliderType::TELEPORT_PREHISTORIA:
 		executeTeleportPrehistoria = true;
 		break;
@@ -743,6 +736,21 @@ void Player::OnCollision(PhysBody* physA, PhysBody* physB) {
 
 	case ColliderType::TELEPORT_LOBBY:
 		executeTeleportLobby = true;
+		break;
+
+	case ColliderType::TELEPORT_LOBBY_PREHISTORIA:
+		executeTeleportLobby_Prehistoria = true;
+		break;
+
+	case ColliderType::TELEPORT_LOBBY_INFIERNO:
+		executeTeleportLobby_Infierno = true;
+		break;
+
+	case ColliderType::TELEPORT_LOBBY_MEDIEVAL:
+		executeTeleportLobby_Medieval = true;
+		break;
+	default:
+		break;
 	}
 }
 

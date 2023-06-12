@@ -91,5 +91,5 @@ public:
 	bool Tp_Puzzle_1 = true;
 	bool Tp_Puzzle_2 = true;
 	bool Tp_Puzzle_3 = true;
-	bool Tp_Boss = true;
+	bool Tp_Boss = false;
 };
