@@ -75,4 +75,24 @@ private:
 	Tween Animation_Vinyeta6;
 	float point_Vinyeta6;
 
+	// FX
+
+	uint FXvinyeta1 = 0;
+	bool FXvinyeta1_active = false;
+
+	uint FXvinyeta2 = 0;
+	bool FXvinyeta2_active = false;
+
+	uint FXvinyeta3 = 0;
+	bool FXvinyeta3_active = false;
+
+	uint FXvinyeta4 = 0;
+	bool FXvinyeta4_active = false;
+
+	uint FXvinyeta5 = 0;
+	bool FXvinyeta5_active = false;
+
+	uint FXvinyeta6 = 0;
+	bool FXvinyeta6_active = false;
+
 };

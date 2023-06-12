@@ -78,6 +78,15 @@ bool SceneLore::Start()
 	Animation_Vinyeta6.AddTween(100, 50, QUADRATIC_IN);
 	Animation_Vinyeta6.JumpTo(100, false);
 
+	// FX
+
+	FXvinyeta1 = app->audio->LoadFx("Assets/Audio/Fx/SceneLore/Vinyeta1.wav");
+	FXvinyeta2 = app->audio->LoadFx("Assets/Audio/Fx/SceneLore/Vinyeta2.wav");
+	FXvinyeta3 = app->audio->LoadFx("Assets/Audio/Fx/SceneLore/Vinyeta3.wav");
+	FXvinyeta4 = app->audio->LoadFx("Assets/Audio/Fx/SceneLore/Vinyeta4.wav");
+	FXvinyeta5 = app->audio->LoadFx("Assets/Audio/Fx/SceneLore/Vinyeta5.wav");
+	FXvinyeta6 = app->audio->LoadFx("Assets/Audio/Fx/SceneLore/Vinyeta6.wav");
+
 	return true;
 }
 
@@ -90,7 +99,7 @@ bool SceneLore::PreUpdate()
 
 	if (enableMusic) {
 
-		app->audio->PlayMusic("Assets/Audio/Music/NoMusic.ogg", 0);
+		app->audio->PlayMusic("Assets/Audio/Music/ComicMusic.ogg", 0);
 		enableMusic = false;
 
 	}
@@ -116,12 +125,26 @@ bool SceneLore::Update(float dt)
 		Animation_Vinyeta1.Step(1, false);
 		Animation_Vinyeta1.Foward();
 
+		if (!FXvinyeta1_active) {
+
+			app->audio->PlayFx(FXvinyeta1);
+			FXvinyeta1_active = true;
+
+		}
+
 	}
 
 	if (comicProgression >= 1) {
 
 		Animation_Vinyeta2.Step(1, false);
 		Animation_Vinyeta2.Foward();
+
+		if (!FXvinyeta2_active) {
+
+			app->audio->PlayFx(FXvinyeta2);
+			FXvinyeta2_active = true;
+
+		}
 
 	}
 
@@ -130,12 +153,26 @@ bool SceneLore::Update(float dt)
 		Animation_Vinyeta3.Step(1, false);
 		Animation_Vinyeta3.Backward();
 
+		if (!FXvinyeta3_active) {
+
+			app->audio->PlayFx(FXvinyeta3);
+			FXvinyeta3_active = true;
+
+		}
+
 	}
 
 	if (comicProgression >= 3) {
 
 		Animation_Vinyeta4.Step(1, false);
 		Animation_Vinyeta4.Foward();
+
+		if (!FXvinyeta4_active) {
+
+			app->audio->PlayFx(FXvinyeta4);
+			FXvinyeta4_active = true;
+
+		}
 
 	}
 
@@ -144,12 +181,26 @@ bool SceneLore::Update(float dt)
 		Animation_Vinyeta5.Step(1, false);
 		Animation_Vinyeta5.Backward();
 
+		if (!FXvinyeta5_active) {
+
+			app->audio->PlayFx(FXvinyeta5);
+			FXvinyeta5_active = true;
+
+		}
+
 	}
 
 	if (comicProgression >= 5) {
 
 		Animation_Vinyeta6.Step(1, false);
 		Animation_Vinyeta6.Backward();
+
+		if (!FXvinyeta6_active) {
+
+			app->audio->PlayFx(FXvinyeta6);
+			FXvinyeta6_active = true;
+
+		}
 
 	}
 
@@ -171,6 +222,13 @@ bool SceneLore::Update(float dt)
 		Animation_Vinyeta4.JumpTo(0, false);
 		Animation_Vinyeta5.JumpTo(100, false);
 		Animation_Vinyeta6.JumpTo(100, false);
+
+		FXvinyeta1_active = false;
+		FXvinyeta2_active = false;
+		FXvinyeta3_active = false;
+		FXvinyeta4_active = false;
+		FXvinyeta5_active = false;
+		FXvinyeta6_active = false;
 
 		app->fadeToBlack->Fade(this, reinterpret_cast<Module*>(app->sceneGameplay));
 	}
