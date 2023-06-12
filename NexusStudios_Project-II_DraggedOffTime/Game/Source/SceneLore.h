@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Animation.h"
+#include "Tweening.h"
 
 struct SDL_Texture;
 
@@ -38,5 +39,40 @@ public:
 
 private:
 
+	// Texture
+
+	SDL_Texture* background;
+	SDL_Texture* fullComic;
+
+	SDL_Texture* vinyeta1;
+	SDL_Texture* vinyeta2;
+	SDL_Texture* vinyeta3;
+	SDL_Texture* vinyeta4;
+	SDL_Texture* vinyeta5;
+	SDL_Texture* vinyeta6;
+
+	int comicProgression;
+
+	// Tweens
+
+	int offset = 808;
+
+	Tween Animation_Vinyeta1;
+	float point_Vinyeta1;
+
+	Tween Animation_Vinyeta2;
+	float point_Vinyeta2;
+
+	Tween Animation_Vinyeta3;
+	float point_Vinyeta3;
+
+	Tween Animation_Vinyeta4;
+	float point_Vinyeta4;
+
+	Tween Animation_Vinyeta5;
+	float point_Vinyeta5;
+
+	Tween Animation_Vinyeta6;
+	float point_Vinyeta6;
 
 };
