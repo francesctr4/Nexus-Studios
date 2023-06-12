@@ -141,6 +141,8 @@
     </ClCompile>
     <ClCompile Include="Source\Medieval.cpp">
       <Filter>Game Loop\Maps</Filter>
+    <ClCompile Include="Source\Weapon.cpp">
+      <Filter>Game Loop\Features</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

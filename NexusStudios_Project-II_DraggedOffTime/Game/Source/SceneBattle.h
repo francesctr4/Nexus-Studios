@@ -70,6 +70,8 @@ public:
 		int DMG;
 		int base_DMG;
 
+		Weapon* equippedWeapon;
+
 		int buf_turns = 0;
 		int counter_turns = 0;
 	};
@@ -138,10 +140,10 @@ public:
 	Weapon agony { WeaponEra::APOCALYPSE, WeaponType::MID_RANGE, 50 };
 	Weapon eyebull { WeaponEra::APOCALYPSE, WeaponType::LONG_RANGE, 50 };
 
-	Weapon* equippedWeaponPrehistoric = &rusticStoneAxe;
+	/*Weapon* equippedWeaponPrehistoric = &rusticStoneAxe;
 	Weapon* equippedWeaponMedieval = &fallenBlade;
 	Weapon* equippedWeaponCyberpunk = &chainsword;
-	Weapon* equippedWeaponApocalypse = &graftedClaws;
+	Weapon* equippedWeaponApocalypse = &graftedClaws;*/
 
 private:
 

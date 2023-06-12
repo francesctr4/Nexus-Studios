@@ -15,6 +15,7 @@
 #include "SceneGameplay.h"
 #include <ctime>
 #include "Timer.h"
+#include "Weapon.h"
 
 #include "SceneBattle.h"
 
@@ -80,7 +81,8 @@ bool SceneBattle::Start()
 	selected_player = 0;
 	turn = 0;
 
-	m_players = new Party_Member[4] { {100, 100, 10, 10, 20, 20}, {150, 150, 10, 10, 30, 30}, {200, 200, 10, 10, 40, 40}, {200, 200, 10, 10, 40, 40} };
+	//TODO
+	m_players = new Party_Member[4] { {100, 100, 10, 10, 20, 20, &rusticStoneAxe}, {150, 150, 10, 10, 30, 30, &fallenBlade}, {200, 200, 10, 10, 40, 40, &chainsword}, {200, 200, 10, 10, 40, 40, &graftedClaws} };
 
 	enableMusic = true;
 
