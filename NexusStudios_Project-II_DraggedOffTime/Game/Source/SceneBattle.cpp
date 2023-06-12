@@ -136,8 +136,8 @@ bool SceneBattle::Start()
 
 	background = app->tex->Load("Assets/Textures/BattleBackground.png");
 
-	arrow1 = { 0, 0, 32, 48};
-	arrow2 = { 0, 48, 32, 48 };
+	arrow1 = { 0, 0, 25, 46 };
+	arrow2 = { 0, 46, 25, 46 };
 
 
 	return true;
@@ -205,9 +205,6 @@ bool SceneBattle::Update(float dt)
 	//}
 
 
-	app->render->DrawTexture(LArrow, 226, 317, &arrow1);
-	app->render->DrawTexture(RArrow, 313, 317, &arrow1);
-
 	if (app->combatManager->playerTurn)
 	{
 		if (!qte)
@@ -219,7 +216,7 @@ bool SceneBattle::Update(float dt)
 
 			if (app->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN)
 			{
-				app->render->DrawTexture(LArrow, 226, 317, &arrow2);
+				
 
 				if (action_selected != 0)
 				{
@@ -238,7 +235,7 @@ bool SceneBattle::Update(float dt)
 			if (app->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN)
 			{
 
-				app->render->DrawTexture(RArrow, 313, 317, &arrow2);
+				
 
 				if (action_selected != 5)
 				{
@@ -1047,6 +1044,20 @@ bool SceneBattle::PostUpdate()
 				break;
 			}
 		}
+	}
+
+
+	app->render->DrawTexture(LArrow, 208, 318, &arrow1);
+	app->render->DrawTexture(RArrow, 307, 318, &arrow1);
+
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN)
+	{
+		app->render->DrawTexture(LArrow, 205, 318, &arrow2);
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN)
+	{
+		app->render->DrawTexture(RArrow, 304, 318, &arrow2);
 	}
 
 
