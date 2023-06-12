@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="27">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="30">
  <tileset firstgid="1" name="Prehistoric_Tiles" tilewidth="16" tileheight="16" tilecount="625" columns="25">
   <image source="Prehistoric_Tiles.png" width="400" height="400"/>
   <wangsets>
@@ -10951,6 +10951,9 @@
   </object>
   <object id="26" x="1264" y="624">
    <polyline points="0,0 16,0 16,-80 0,-64 0,0"/>
+  </object>
+  <object id="29" x="1263.75" y="624.25">
+   <polygon points="0,0 -0.5,-64 16.25,-79.75 15.75,-1.75"/>
   </object>
  </objectgroup>
 </map>

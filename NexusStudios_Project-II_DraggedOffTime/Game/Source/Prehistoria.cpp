@@ -26,7 +26,7 @@ void Prehistoria::Update()
 	if (app->map->actualmap == 4)
 	{
 		if (TP_Prehistoria_Jovani == NULL)
-			TP_Prehistoria_Jovani = app->physics->CreateRectangleSensor(1120, 225, 25, 15, bodyType::KINEMATIC, ColliderType::TELEPORT_PREHISTORIA_JOVANI);
+			TP_Prehistoria_Jovani = app->physics->CreateRectangleSensor(1120, 225, 25, 18, bodyType::KINEMATIC, ColliderType::TELEPORT_PREHISTORIA_JOVANI);
 		TP_Prehistoria_Jovani_bool = true;
 	}
 	if (app->map->actualmap == 4)
@@ -61,6 +61,30 @@ void Prehistoria::Update()
 		if (TP_Prehistoria_2_Reversa == NULL)
 			TP_Prehistoria_2_Reversa = app->physics->CreateRectangleSensor(-15, 295, 10, 279, bodyType::KINEMATIC, ColliderType::TELEPORT_PREHISTORIA_REVERS);
 		TP_Prehistoria_2_bool_Reversa = true;
+	}
+	if (app->map->actualmap == 4)
+	{
+		if (TP_Prehistoria_3_Reversa == NULL)
+			TP_Prehistoria_3_Reversa = app->physics->CreateRectangleSensor(-15, 295, 10, 279, bodyType::KINEMATIC, ColliderType::TELEPORT_PREHISTORIA_REVERS);
+		TP_Prehistoria_3_bool_Reversa = true;
+	}
+	if (app->map->actualmap == 5)
+	{
+		if (TP_Prehistoria_Jovani_bool_Reversa == NULL)
+			TP_Prehistoria_Jovani_Reversa = app->physics->CreateRectangleSensor(317, 730, 25, 15, bodyType::KINEMATIC, ColliderType::TELEPORT_PREHISTORIA_REVERS);
+		TP_Prehistoria_Jovani_bool_Reversa = true;
+	}
+	if (app->map->actualmap == 6)
+	{
+		if (TP_Prehistoria_5_Reversa == NULL)
+			TP_Prehistoria_5_Reversa = app->physics->CreateRectangleSensor(250, -15, 120, 15, bodyType::KINEMATIC, ColliderType::TELEPORT_PREHISTORIA_REVERS);
+		TP_Prehistoria_5_bool_Reversa = true;
+	}
+	if (app->map->actualmap == 7)
+	{
+		if (TP_Prehistoria_Final_Reversa == NULL)
+			TP_Prehistoria_Final_Reversa = app->physics->CreateRectangleSensor(-10, 400, 10, 260, bodyType::KINEMATIC, ColliderType::TELEPORT_PREHISTORIA_REVERS);
+		TP_Prehistoria_Final_bool_Reversa = true;
 	}
 }
 
@@ -120,7 +144,7 @@ void Prehistoria::TeleportPrehistoria()
 		app->sceneGameplay->LoadMap(1);
 		app->physics->DestroyBody(TP_Prehistoria_Final);
 		TP_Prehistoria_Final = NULL;
-		app->sceneGameplay->player->Teleport(625, 700);
+		app->sceneGameplay->player->Teleport(317, 700);
 		TP_Prehistoria_1_bool = false;
 		TP_Prehistoria_2_bool = false;
 		TP_Prehistoria_3_bool = false;
@@ -150,6 +174,11 @@ void Prehistoria::TeleportPrehistoria_Revers()
 		TP_Prehistoria_1_Reversa = NULL;
 		app->sceneGameplay->player->Teleport(1270, 360);
 		TP_Prehistoria_1_bool_Reversa = false;
+		TP_Prehistoria_2_bool_Reversa = false;
+		TP_Prehistoria_3_bool_Reversa = false;
+		TP_Prehistoria_Jovani_bool_Reversa = false;
+		TP_Prehistoria_5_bool_Reversa = false;
+		TP_Prehistoria_Final_bool_Reversa = false;
 	}
 
 	if (app->map->actualmap == 3 && TP_Prehistoria_2_bool_Reversa == true)
@@ -158,6 +187,65 @@ void Prehistoria::TeleportPrehistoria_Revers()
 		app->physics->DestroyBody(TP_Prehistoria_2_Reversa);
 		TP_Prehistoria_2_Reversa = NULL;
 		app->sceneGameplay->player->Teleport(1270, 350);
+		TP_Prehistoria_1_bool_Reversa = false;
 		TP_Prehistoria_2_bool_Reversa = false;
+		TP_Prehistoria_3_bool_Reversa = false;
+		TP_Prehistoria_Jovani_bool_Reversa = false;
+		TP_Prehistoria_5_bool_Reversa = false;
+		TP_Prehistoria_Final_bool_Reversa = false;
+	}
+
+	if (app->map->actualmap == 4 && TP_Prehistoria_3_bool_Reversa == true)
+	{
+		app->sceneGameplay->LoadMap(3);
+		app->physics->DestroyBody(TP_Prehistoria_3_Reversa);
+		TP_Prehistoria_3_Reversa = NULL;
+		app->sceneGameplay->player->Teleport(1265, 265);
+		TP_Prehistoria_1_bool_Reversa = false;
+		TP_Prehistoria_2_bool_Reversa = false;
+		TP_Prehistoria_3_bool_Reversa = false;
+		TP_Prehistoria_Jovani_bool_Reversa = false;
+		TP_Prehistoria_5_bool_Reversa = false;
+		TP_Prehistoria_Final_bool_Reversa = false;
+	}
+	if (app->map->actualmap == 5 && TP_Prehistoria_Jovani_bool_Reversa == true)
+	{
+		app->sceneGameplay->LoadMap(4);
+		app->physics->DestroyBody(TP_Prehistoria_Jovani_Reversa);
+		TP_Prehistoria_Jovani_Reversa = NULL;
+		app->sceneGameplay->player->Teleport(1120, 250);
+		TP_Prehistoria_1_bool_Reversa = false;
+		TP_Prehistoria_2_bool_Reversa = false;
+		TP_Prehistoria_3_bool_Reversa = false;
+		TP_Prehistoria_Jovani_bool_Reversa = false;
+		TP_Prehistoria_5_bool_Reversa = false;
+		TP_Prehistoria_Final_bool_Reversa = false;
+	}
+	if (app->map->actualmap == 6 && TP_Prehistoria_5_bool_Reversa == true)
+	{
+		app->sceneGameplay->LoadMap(4);
+		app->physics->DestroyBody(TP_Prehistoria_5_Reversa);
+		TP_Prehistoria_5_Reversa = NULL;
+		app->sceneGameplay->player->Teleport(650, 690);
+		TP_Prehistoria_1_bool_Reversa = false;
+		TP_Prehistoria_2_bool_Reversa = false;
+		TP_Prehistoria_3_bool_Reversa = false;
+		TP_Prehistoria_Jovani_bool_Reversa = false;
+		TP_Prehistoria_5_bool_Reversa = false;
+		TP_Prehistoria_Final_bool_Reversa = false;
+	}
+
+	if (app->map->actualmap == 7 && TP_Prehistoria_Final_bool_Reversa == true)
+	{
+		app->sceneGameplay->LoadMap(6);
+		app->physics->DestroyBody(TP_Prehistoria_Final_Reversa);
+		TP_Prehistoria_Final_Reversa = NULL;
+		app->sceneGameplay->player->Teleport(1270, 500);
+		TP_Prehistoria_1_bool_Reversa = false;
+		TP_Prehistoria_2_bool_Reversa = false;
+		TP_Prehistoria_3_bool_Reversa = false;
+		TP_Prehistoria_Jovani_bool_Reversa = false;
+		TP_Prehistoria_5_bool_Reversa = false;
+		TP_Prehistoria_Final_bool_Reversa = false;
 	}
 }

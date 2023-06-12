@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="17" nextobjectid="4">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="17" nextobjectid="6">
  <tileset firstgid="1" name="Prehistoric_Tiles" tilewidth="16" tileheight="16" tilecount="625" columns="25">
   <image source="Prehistoric_Tiles.png" width="400" height="400"/>
   <wangsets>
@@ -16148,6 +16148,7 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="270"/>
    <tile/>
    <tile/>
    <tile/>
@@ -16227,6 +16228,7 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="295"/>
    <tile/>
    <tile/>
    <tile/>
@@ -16306,6 +16308,7 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="320"/>
    <tile/>
    <tile/>
    <tile/>
@@ -16385,6 +16388,7 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="345"/>
    <tile/>
    <tile/>
    <tile/>
@@ -16464,11 +16468,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="370"/>
    <tile/>
    <tile/>
    <tile/>
@@ -17268,6 +17268,7 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="320"/>
    <tile/>
    <tile/>
    <tile/>
@@ -17347,6 +17348,7 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="345"/>
    <tile/>
    <tile/>
    <tile/>
@@ -17426,9 +17428,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="370"/>
    <tile/>
    <tile/>
    <tile/>
@@ -18081,5 +18081,11 @@
    <polygon points="0,0 0,16 32,16 32,0"/>
   </object>
   <object id="3" x="624.75" y="16.25" width="30.875" height="4.75"/>
+  <object id="4" x="13.3333" y="337.667">
+   <polygon points="0,0 2.66667,78.3333 -29.3333,78.3333 -13.3333,-1.66667"/>
+  </object>
+  <object id="5" x="-6" y="560.667">
+   <polygon points="0,0 20,0.666667 26.3333,47.3333 1,46.6667"/>
+  </object>
  </objectgroup>
 </map>

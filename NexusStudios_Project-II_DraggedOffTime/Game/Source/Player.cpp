@@ -209,7 +209,7 @@ bool Player::Update()
 	if (godMode)
 	{
 
-		speedValue = SPEED_VALUE * 2;
+		speedValue = SPEED_VALUE * 3;
 
 	}
 	else {
