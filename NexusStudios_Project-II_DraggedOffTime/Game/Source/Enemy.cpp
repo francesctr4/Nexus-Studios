@@ -227,6 +227,16 @@ void Enemy::OnCollision(PhysBody* physA, PhysBody* physB) {
 		app->sceneBattle->widthEnemyCombat = width;
 		app->sceneBattle->heightEnemyCombat = height;
 
+		//Pasar variables
+		app->sceneBattle->e_HP = this->hp;
+		app->sceneBattle->e_max_HP = this->hp;
+
+		app->sceneBattle->e_DMG = this->atk;
+		app->sceneBattle->e_base_DMG = this->atk;
+
+		app->sceneBattle->e_DEF = this->def;
+		app->sceneBattle->e_base_DEF = this->def;
+
 		break;
 
 	}
