@@ -24,8 +24,8 @@
             "scale": 1,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 637.5,
-                "y": 357
+                "x": 636.5,
+                "y": 355
             }
         },
         "Inicio1.tmx#Props": {
@@ -53,11 +53,11 @@
             "expandedObjectLayers": [
                 5
             ],
-            "scale": 0.75,
-            "selectedLayer": 0,
+            "scale": 1.5,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 595.3333333333334,
-                "y": 283.99999999999994
+                "x": 820.3333333333333,
+                "y": 295.33333333333337
             }
         },
         "Lobby.tmx#InfernalTiles": {
@@ -93,8 +93,8 @@
             "scale": 1,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 613.5,
-                "y": 330
+                "x": 611.5,
+                "y": 326
             }
         },
         "MedievalMapBoss.tmx#Props": {
@@ -110,8 +110,8 @@
             "scale": 1,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 754.5,
-                "y": 351
+                "x": 753.5,
+                "y": 350
             }
         },
         "MedievalMapPuzzle1.tmx#Props": {
@@ -128,7 +128,7 @@
             "scale": 3,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 578.8333333333333,
+                "x": 578.1666666666666,
                 "y": 114.66666666666669
             }
         },
@@ -145,8 +145,8 @@
             "scale": 3,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 932.8333333333333,
-                "y": 375.3333333333333
+                "x": 932.5,
+                "y": 375
             }
         },
         "MedievalMapPuzzle3.tmx#Props": {
@@ -175,14 +175,14 @@
     "project": "MedievalMaps.tiled-project",
     "property.type": "bool",
     "recentFiles": [
+        "Lobby.tmx",
         "MedievalMapBoss.tmx",
+        "Inicio1.tmx",
         "MedievalMapPuzzle3.tmx",
         "MedievalMapPuzzle2.tmx",
         "JovaniJV.tmx",
         "MedievalMapPuzzle1.tmx",
-        "MedievalMap1.tmx",
-        "Lobby.tmx",
-        "Inicio1.tmx"
+        "MedievalMap1.tmx"
     ],
     "tileset.embedInMap": true,
     "tileset.tileSize": {
