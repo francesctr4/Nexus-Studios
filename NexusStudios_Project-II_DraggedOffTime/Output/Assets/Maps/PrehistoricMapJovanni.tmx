@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="2">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="7">
  <tileset firstgid="1" name="Prehistoric_Tiles" tilewidth="16" tileheight="16" tilecount="625" columns="25">
   <image source="Prehistoric_Tiles.png" width="400" height="400"/>
  </tileset>
@@ -10399,7 +10399,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="1018"/>
+   <tile gid="2147484642"/>
    <tile gid="1018"/>
    <tile gid="1018"/>
    <tile gid="994"/>
@@ -18056,5 +18056,6 @@
   <object id="1" x="224" y="672">
    <polygon points="0,0 0,-416 0,-432 32,-432 32,-448 96,-448 96,-480 240,-480 240,-320 560,-320 560,-336 272,-336 272,-464 592,-464 592,-320 624,-320 624,-464 784,-464 784,-432 832,-432 832,0 752,0 752,-64 688,-64 688,0 608,0 608,-64 544,-64 544,0 448,0 448,-64 384,-64 384,0 288,0 288,-64 224,-64 224,0 112,0 112,48 1056,48 1056,-672 -224,-672 -224,48 80,48 80,0"/>
   </object>
+  <object id="4" x="1406" y="940"/>
  </objectgroup>
 </map>

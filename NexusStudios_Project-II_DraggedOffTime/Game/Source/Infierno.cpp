@@ -446,3 +446,11 @@ void Infierno::TeleportInfierno()
 		app->sceneGameplay->lobbies.FinalPrehistoria = true;
 	}
 }
+
+void Infierno::TeleportInfiernoReversa()
+{
+}
+
+void Infierno::TeleportInfiernoJovani()
+{
+}

@@ -17,7 +17,7 @@ public:
 	void TeleportPrehistoria_Revers();
 
 public:
-
+	//Avanzar entre mapas
 	PhysBody* TP_Prehistoria_1;
 	PhysBody* TP_Prehistoria_2;
 	PhysBody* TP_Prehistoria_3;
@@ -31,4 +31,19 @@ public:
 	bool TP_Prehistoria_Jovani_bool;
 	bool TP_Prehistoria_5_bool;
 	bool TP_Prehistoria_Final_bool;
+
+	//Volver entre mapas
+	PhysBody* TP_Prehistoria_1_Reversa;
+	PhysBody* TP_Prehistoria_2_Reversa;
+	PhysBody* TP_Prehistoria_3_Reversa;
+	PhysBody* TP_Prehistoria_Jovani_Reversa;
+	PhysBody* TP_Prehistoria_5_Reversa;
+	PhysBody* TP_Prehistoria_Final_Reversa;
+
+	bool TP_Prehistoria_1_bool_Reversa;
+	bool TP_Prehistoria_2_bool_Reversa;
+	bool TP_Prehistoria_3_bool_Reversa;
+	bool TP_Prehistoria_Jovani_bool_Reversa;
+	bool TP_Prehistoria_5_bool_Reversa;
+	bool TP_Prehistoria_Final_bool_Reversa;
 };
