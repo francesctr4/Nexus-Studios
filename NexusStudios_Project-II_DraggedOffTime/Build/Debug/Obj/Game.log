@@ -1,0 +1,675 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: El directorio Output no termina con una barra diagonal final. Esta instancia de compilación agregará la barra diagonal porque es necesaria para que se pueda evaluar correctamente el directorio Output.
+  CombatManager.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(53,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(55,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\CombatManager.cpp(99,31): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\CombatManager.cpp(123,31): warning C4244: '=': conversión de 'double' a 'int'; posible pérdida de datos
+  Emitter.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Emitter.cpp(7,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Emitter.cpp(79,70): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+  Enemy.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(53,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(55,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(60,47): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(175,38): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(184,28): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+  EntityManager.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(53,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(55,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(60,47): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(175,38): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(184,28): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\EntityManager.cpp(168,10): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\EntityManager.cpp(169,10): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\EntityManager.cpp(181,11): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\EntityManager.cpp(182,11): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\EntityManager.cpp(198,12): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\EntityManager.cpp(199,12): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\EntityManager.cpp(211,35): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\EntityManager.cpp(211,32): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\EntityManager.cpp(221,35): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\EntityManager.cpp(221,32): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\EntityManager.cpp(232,35): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\EntityManager.cpp(232,32): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\EntityManager.cpp(242,35): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\EntityManager.cpp(242,32): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\EntityManager.cpp(175,20): warning C4101: 'item': variable local sin referencia
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\EntityManager.cpp(192,19): warning C4101: 'it': variable local sin referencia
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\EntityManager.cpp(272,20): warning C4101: 'item': variable local sin referencia
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\EntityManager.cpp(333,19): warning C4101: 'it': variable local sin referencia
+  FadeToBlack.cpp
+  GuiButton.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(53,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(55,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(60,47): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(175,38): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(184,28): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+  GuiCheckBox.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+  GuiManager.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+  GuiSlider.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\GuiSlider.cpp(61,38): warning C4018: '<=': no coinciden signed/unsigned
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\GuiSlider.cpp(102,24): warning C4018: '>': no coinciden signed/unsigned
+  Infierno.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(53,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(55,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(60,47): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(175,38): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(184,28): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+  Inventory.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(53,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(55,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(60,47): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(175,38): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(184,28): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Inventory.cpp(38,21): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Inventory.cpp(82,12): warning C4018: '<': no coinciden signed/unsigned
+  Item.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(53,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(55,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(60,47): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(175,38): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(184,28): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+  Lobby.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(53,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(55,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(60,47): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(175,38): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(184,28): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+  Main.cpp
+  App.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(53,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(55,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(60,47): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(175,38): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(184,28): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\App.cpp(239,43): warning C4244: '=': conversión de 'uint32' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\App.cpp(274,13): warning C4244: 'argumento': conversión de 'float' a 'Uint32'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\App.cpp(276,8): warning C4244: '=': conversión de 'uint32' a 'float'; posible pérdida de datos
+  Audio.cpp
+  Input.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+  Map.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(53,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(55,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Map.cpp(596,23): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Map.cpp(597,24): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+  NPC.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(53,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(55,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(60,47): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(175,38): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(184,28): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\NPC.cpp(522,113): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\NPC.cpp(522,74): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+  Particle.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Particle.cpp(13,39): warning C4244: '=': conversión de 'double' a 'TYPE'; posible pérdida de datos
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Particle.cpp(14,40): warning C4244: '=': conversión de 'double' a 'TYPE'; posible pérdida de datos
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Particle.cpp(15,35): warning C4244: '=': conversión de 'double' a 'TYPE'; posible pérdida de datos
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Particle.cpp(16,36): warning C4244: '=': conversión de 'double' a 'TYPE'; posible pérdida de datos
+          with
+          [
+              TYPE=float
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Particle.cpp(57,66): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Particle.cpp(116,30): warning C4244: '=': conversión de 'float' a 'Uint8'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Particle.cpp(117,30): warning C4244: '=': conversión de 'float' a 'Uint8'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Particle.cpp(118,30): warning C4244: '=': conversión de 'float' a 'Uint8'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Particle.cpp(119,30): warning C4244: '=': conversión de 'float' a 'Uint8'; posible pérdida de datos
+  Generando código...
+  Compilando...
+  ParticlePool.cpp
+  ParticleSystem.cpp
+  PathFinding.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Point.h(111,24): warning C4244: 'argumento': conversión de 'TYPE' a 'float'; posible pérdida de datos
+          with
+          [
+              TYPE=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Point.h(107): message : al compilar la función del miembro clase plantilla "TYPE Point<TYPE>::DistanceTo(const Point<TYPE> &) const"
+          with
+          [
+              TYPE=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\PathFinding.cpp(170): message : Vea la referencia a la creación de una instancia de la función plantilla "TYPE Point<TYPE>::DistanceTo(const Point<TYPE> &) const" que se está compilando
+          with
+          [
+              TYPE=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\PathFinding.h(75): message : Vea la referencia a la creación de una instancia de clase plantilla "Point<int>" que se está compilando
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Point.h(111,15): warning C4244: 'return': conversión de 'float' a 'TYPE'; posible pérdida de datos
+          with
+          [
+              TYPE=int
+          ]
+  Pause.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(60,47): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(175,38): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(184,28): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(53,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(55,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Pause.cpp(164,43): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Pause.cpp(165,47): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Pause.cpp(166,49): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Pause.cpp(167,39): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Pause.cpp(169,39): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Pause.cpp(239,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Pause.cpp(266,66): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Pause.cpp(302,75): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+  PerfTimer.cpp
+  Physics.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(53,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(55,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Physics.cpp(96,23): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Physics.cpp(97,25): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Physics.cpp(126,25): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Physics.cpp(127,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Physics.cpp(190,25): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Physics.cpp(191,26): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Physics.cpp(211,21): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Physics.cpp(391,13): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Physics.cpp(392,13): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Physics.cpp(398,27): warning C4244: 'return': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Physics.cpp(456,44): warning C4305: '=': truncamiento de 'double' a 'float32'
+  Player.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(53,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(55,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(60,47): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(175,38): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(184,28): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Player.cpp(304,16): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Player.cpp(305,16): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Player.cpp(429,24): warning C4244: 'argumento': conversión de 'int' a 'float32'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Player.cpp(429,16): warning C4244: 'argumento': conversión de 'int' a 'float32'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Player.cpp(521,24): warning C4244: 'argumento': conversión de 'int' a 'float32'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Player.cpp(521,16): warning C4244: 'argumento': conversión de 'int' a 'float32'; posible pérdida de datos
+  Puzzle1.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(20,80): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(20,61): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(22,80): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(22,61): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(24,80): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(24,61): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(26,80): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(26,61): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(38,61): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(38,47): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(41,61): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(41,47): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(45,61): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(45,47): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(48,61): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(48,47): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(52,61): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(52,47): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(55,61): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(55,47): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(59,61): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(59,47): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(62,61): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(62,47): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(88,61): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(88,47): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(89,61): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(89,47): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(90,61): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(90,47): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(91,61): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(91,47): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(116,61): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(116,47): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(117,61): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(117,47): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(118,61): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(118,47): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(119,61): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle1.cpp(119,47): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+  Puzzle2.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(20,86): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(20,67): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(21,92): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(21,70): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(23,85): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(23,63): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(26,86): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(26,67): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(27,92): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(27,70): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(29,86): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(29,64): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(32,86): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(32,67): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(33,92): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(33,70): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(35,86): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(35,64): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(38,86): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(38,67): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(39,92): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(39,70): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(41,86): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(41,64): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(44,86): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(44,67): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(45,92): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(45,70): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(47,86): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(47,64): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(219,66): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(219,49): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(220,66): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(220,49): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(221,66): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(221,49): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(222,66): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(222,49): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(223,66): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle2.cpp(223,49): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+  Puzzle3.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(53,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(55,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle3.cpp(57,86): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle3.cpp(57,65): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle3.cpp(66,71): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle3.cpp(66,54): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle3.cpp(79,113): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle3.cpp(79,92): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle3.cpp(93,101): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle3.cpp(93,71): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle3.cpp(95,101): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle3.cpp(95,71): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle3.cpp(97,101): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle3.cpp(97,71): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle3.cpp(99,101): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Puzzle3.cpp(99,71): warning C4244: 'argumento': conversión de 'float32' a 'int'; posible pérdida de datos
+  QuestManager.cpp
+  Render.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(53,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(55,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(60,47): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(175,38): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(184,28): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+  SceneBattle.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(53,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(55,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(60,47): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(175,38): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(184,28): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(198,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(429,77): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(433,77): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(680,39): warning C4838: la conversión de 'double' en 'int' requiere una conversión de restricción
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(680,39): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(685,39): warning C4838: la conversión de 'double' en 'int' requiere una conversión de restricción
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(685,39): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(690,39): warning C4838: la conversión de 'double' en 'int' requiere una conversión de restricción
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(690,39): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(710,40): warning C4838: la conversión de 'double' en 'int' requiere una conversión de restricción
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(710,40): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(715,40): warning C4838: la conversión de 'double' en 'int' requiere una conversión de restricción
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(715,40): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(720,40): warning C4838: la conversión de 'double' en 'int' requiere una conversión de restricción
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(720,40): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(762,39): warning C4838: la conversión de 'double' en 'int' requiere una conversión de restricción
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(762,39): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(767,39): warning C4838: la conversión de 'double' en 'int' requiere una conversión de restricción
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(767,39): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(772,39): warning C4838: la conversión de 'double' en 'int' requiere una conversión de restricción
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(772,39): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(785,40): warning C4838: la conversión de 'double' en 'int' requiere una conversión de restricción
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(785,40): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(790,40): warning C4838: la conversión de 'double' en 'int' requiere una conversión de restricción
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(790,40): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(795,40): warning C4838: la conversión de 'double' en 'int' requiere una conversión de restricción
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(795,40): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(806,40): warning C4838: la conversión de 'double' en 'int' requiere una conversión de restricción
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(806,40): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(811,40): warning C4838: la conversión de 'double' en 'int' requiere una conversión de restricción
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(811,40): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(816,40): warning C4838: la conversión de 'double' en 'int' requiere una conversión de restricción
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(816,40): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(827,40): warning C4838: la conversión de 'double' en 'int' requiere una conversión de restricción
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(827,40): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(832,40): warning C4838: la conversión de 'double' en 'int' requiere una conversión de restricción
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(832,40): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(837,40): warning C4838: la conversión de 'double' en 'int' requiere una conversión de restricción
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneBattle.cpp(837,40): warning C4244: 'inicializando': conversión de 'double' a 'int'; posible pérdida de datos
+  SceneEnding.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(53,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(55,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(60,47): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(175,38): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(184,28): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneEnding.cpp(138,43): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneEnding.cpp(139,49): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+  SceneGameplay.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(53,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(55,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(60,47): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(175,38): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(184,28): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+  SceneLogo.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(53,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(55,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+  SceneLore.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(53,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(55,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(60,47): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(175,38): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(184,28): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneLore.cpp(253,62): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneLore.cpp(260,67): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneLore.cpp(267,67): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneLore.cpp(281,67): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneLore.cpp(288,62): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+  SceneTitle.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(53,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(55,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(60,47): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(175,38): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(184,28): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneTitle.cpp(305,45): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneTitle.cpp(306,48): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneTitle.cpp(307,47): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneTitle.cpp(308,45): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneTitle.cpp(309,39): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneTitle.cpp(311,39): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneTitle.cpp(313,53): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneTitle.cpp(421,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneTitle.cpp(450,80): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneTitle.cpp(459,71): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneTitle.cpp(462,60): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneTitle.cpp(465,60): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\SceneTitle.cpp(513,75): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+  FeatureMenu.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(53,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Animation.h(55,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Input.h(92,15): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(60,47): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(175,38): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(184,28): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\FeatureMenu.cpp(255,41): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\FeatureMenu.cpp(256,50): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\FeatureMenu.cpp(257,49): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\FeatureMenu.cpp(258,43): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\FeatureMenu.cpp(259,43): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+  Textures.cpp
+  Generando código...
+  Compilando...
+  Timer.cpp
+  Tweening.cpp
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(60,47): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(175,38): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.h(184,28): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+          with
+          [
+              T=int
+          ]
+C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Game\Source\Tweening.cpp(7,20): warning C4305: '=': truncamiento de 'double' a 'float'
+  Window.cpp
+  Log.cpp
+  pugixml.cpp
+  Generando código...
+  Game.vcxproj -> C:\Users\totor\OneDrive\Escritorio\Nexus-Studios\NexusStudios_Project-II_DraggedOffTime\Build\Debug\Game.exe
+          1 archivo(s) copiado(s).
