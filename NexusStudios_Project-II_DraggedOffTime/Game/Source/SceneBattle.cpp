@@ -89,7 +89,8 @@ bool SceneBattle::Start()
 	lifeFrame = app->tex->Load("Assets/UI/Battle/LifeFrame.png");
 	actionButtons = app->tex->Load("Assets/UI/ActionButtons.png");
 	healthBar = app->tex->Load("Assets/UI/Battle/HealthBar.png");
-	selectionArrow = app->tex->Load("Assets/UI/SelectionArrow.png");
+	LArrow = app->tex->Load("Assets/UI/Battle/LArrow.png");
+	RArrow = app->tex->Load("Assets/UI/Battle/RArrow.png");
 	playerSelection = app->tex->Load("Assets/UI/PlayerSelector.png");
 	q_sprite = app->tex->Load("Assets/Textures/q.png");
 	dialogue = app->tex->Load("Assets/Textures/dialogue-UI.png");
@@ -134,6 +135,10 @@ bool SceneBattle::Start()
 	currentAnimationEnemy = &enemyAnimation32x32;
 
 	background = app->tex->Load("Assets/Textures/BattleBackground.png");
+
+	arrow1 = { 0, 0, 25, 46 };
+	arrow2 = { 0, 46, 25, 46 };
+
 
 	return true;
 }
@@ -199,6 +204,7 @@ bool SceneBattle::Update(float dt)
 
 	//}
 
+
 	if (app->combatManager->playerTurn)
 	{
 		if (!qte)
@@ -210,6 +216,8 @@ bool SceneBattle::Update(float dt)
 
 			if (app->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN)
 			{
+				
+
 				if (action_selected != 0)
 				{
 					action_selected--;
@@ -226,6 +234,8 @@ bool SceneBattle::Update(float dt)
 
 			if (app->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN)
 			{
+
+				
 
 				if (action_selected != 5)
 				{
@@ -974,7 +984,6 @@ bool SceneBattle::PostUpdate()
 
 	//Atcion selector
 
-	app->render->DrawTexture(selectionArrow, 191, 316);
 	SDL_Rect actionSelector_rect = { action_selected * 70, 0, 70, 70};
 	app->render->DrawTexture(actionButtons, 235, 305, &actionSelector_rect);
 
@@ -1035,6 +1044,20 @@ bool SceneBattle::PostUpdate()
 				break;
 			}
 		}
+	}
+
+
+	app->render->DrawTexture(LArrow, 208, 318, &arrow1);
+	app->render->DrawTexture(RArrow, 307, 318, &arrow1);
+
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN)
+	{
+		app->render->DrawTexture(LArrow, 205, 318, &arrow2);
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN)
+	{
+		app->render->DrawTexture(RArrow, 304, 318, &arrow2);
 	}
 
 
