@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="9">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="9">
  <tileset firstgid="1" name="InfernalTiles" tilewidth="16" tileheight="16" tilecount="625" columns="25">
   <image source="InfernalTiles.png" width="400" height="400"/>
  </tileset>
@@ -3663,8 +3663,8 @@
    <tile gid="2"/>
    <tile gid="2"/>
    <tile gid="2"/>
-   <tile gid="2"/>
-   <tile gid="2"/>
+   <tile gid="178"/>
+   <tile gid="179"/>
    <tile gid="2"/>
    <tile gid="2"/>
    <tile gid="2"/>
@@ -3743,8 +3743,8 @@
    <tile gid="27"/>
    <tile gid="27"/>
    <tile gid="27"/>
-   <tile gid="27"/>
-   <tile gid="27"/>
+   <tile gid="203"/>
+   <tile gid="204"/>
    <tile gid="27"/>
    <tile gid="27"/>
    <tile gid="27"/>
@@ -3823,8 +3823,8 @@
    <tile gid="52"/>
    <tile gid="52"/>
    <tile gid="52"/>
-   <tile gid="52"/>
-   <tile gid="52"/>
+   <tile gid="228"/>
+   <tile gid="229"/>
    <tile gid="52"/>
    <tile gid="52"/>
    <tile gid="52"/>
@@ -14443,7 +14443,7 @@
    <property name="Platform" type="bool" value="true"/>
   </properties>
   <object id="1" x="608" y="720">
-   <polygon points="0,0 0,-80 -304,-80 -304,-544 -112,-544 -112,-592 -224,-592 -224,-688 288,-688 288,-640 368,-640 368,-592 176,-592 176,-544 368,-544 368,-80 64,-80 64,0 672,0 672,-720 -608,-720 -608,0"/>
+   <polygon points="0,0 0,-80 -304,-80 -304,-544 -112,-544 -112,-592 -224,-592 -224,-688 80,-688 80,-704 112,-704 112,-688 288,-688 288,-640 368,-640 368,-592 176,-592 176,-544 368,-544 368,-80 64,-80 64,0 672,0 672,-720 -608,-720 -608,0"/>
   </object>
   <object id="2" x="464" y="256">
    <polygon points="0,0 0,48 32,48 32,0"/>
