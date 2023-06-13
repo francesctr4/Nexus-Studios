@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="10">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="10">
  <tileset firstgid="1" name="Tiles" tilewidth="16" tileheight="16" tilecount="625" columns="25">
   <image source="Tiles.png" width="400" height="400"/>
  </tileset>
@@ -8370,7 +8370,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="2147484312"/>
+   <tile gid="733"/>
    <tile/>
    <tile/>
    <tile/>
@@ -8450,7 +8450,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="2147484337"/>
+   <tile gid="758"/>
    <tile/>
    <tile/>
    <tile/>
@@ -8530,7 +8530,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="783"/>
    <tile/>
    <tile/>
    <tile/>
@@ -8690,7 +8690,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="2147484312"/>
+   <tile gid="733"/>
    <tile/>
    <tile/>
    <tile/>
@@ -8770,7 +8770,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="2147484337"/>
+   <tile gid="758"/>
    <tile/>
    <tile/>
    <tile/>
@@ -8850,7 +8850,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="783"/>
    <tile/>
    <tile/>
    <tile/>
@@ -12058,7 +12058,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="2147484312"/>
+   <tile/>
    <tile/>
    <tile/>
    <tile/>
@@ -12138,7 +12138,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="2147484337"/>
+   <tile/>
    <tile/>
    <tile/>
    <tile/>
@@ -12378,7 +12378,6 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="2147484312"/>
    <tile/>
    <tile/>
    <tile/>
@@ -12458,7 +12457,8 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="2147484337"/>
+   <tile/>
+   <tile/>
    <tile/>
    <tile/>
    <tile/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="12">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="12">
  <tileset firstgid="1" name="InfernalTiles" tilewidth="16" tileheight="16" tilecount="625" columns="25">
   <image source="InfernalTiles.png" width="400" height="400"/>
   <wangsets>
@@ -14887,8 +14887,6 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="680"/>
-   <tile gid="681"/>
    <tile/>
    <tile/>
    <tile/>
@@ -14967,8 +14965,10 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="705"/>
-   <tile gid="706"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
    <tile/>
    <tile/>
    <tile/>
@@ -15047,8 +15047,8 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="3221226178"/>
-   <tile gid="3221226177"/>
+   <tile/>
+   <tile/>
    <tile/>
    <tile/>
    <tile/>
@@ -15127,8 +15127,8 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="705"/>
-   <tile gid="706"/>
+   <tile/>
+   <tile/>
    <tile/>
    <tile/>
    <tile/>
@@ -15207,8 +15207,8 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="3221226178"/>
-   <tile gid="3221226177"/>
+   <tile/>
+   <tile/>
    <tile/>
    <tile/>
    <tile/>
@@ -15287,8 +15287,8 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="730"/>
-   <tile gid="731"/>
+   <tile/>
+   <tile/>
    <tile/>
    <tile/>
    <tile/>
