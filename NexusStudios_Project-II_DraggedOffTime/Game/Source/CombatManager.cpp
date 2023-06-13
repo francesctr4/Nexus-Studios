@@ -168,7 +168,7 @@ void CombatManager::SkillAttack(int slected_player, int p_DMG, int p_DEF) {
 	case 2:	//Mage - Middle ages steroids (Sube levemente tus estadísticas durante 2 turnos (p_DMG y p_DEF)) p_buf_turns
 		app->sceneBattle->m_players[slected_player].buf_turns = 2;
 		app->sceneBattle->m_players[slected_player].DEF += 5;
-		app->sceneBattle->m_players[slected_player].DMG += 5;
+		app->sceneBattle->m_players[slected_player].DMG += 10;
 		break;
 	case 3:	//Rogue - Ouroboros Sight (Añade "confusión" al enemigo que provoca que se ataque a sí mismo y le inflige algo de daño + p_HP se ve ligeramente reducido)
 		app->sceneBattle->e_confusion_turns = 3;
@@ -319,15 +319,78 @@ void CombatManager::EnemyBuff(bool DMG, bool DEF)
 	if (DEF)
 	{
 		//Subir defensa
-		app->sceneBattle->e_DEF = app->sceneBattle->e_DEF + 10;
+		app->sceneBattle->e_DEF = app->sceneBattle->e_DEF + 5;
 	}
 	
 	if (DMG)
 	{
 		//Subir daño
-		app->sceneBattle->e_DMG = app->sceneBattle->e_DMG + 5;
+		app->sceneBattle->e_DMG = app->sceneBattle->e_DMG + 10;
 	}
 	
 	
+}
+
+void CombatManager::ChangeWeapon(int player_selected, Weapon* arma)
+{
+	switch (arma->wEra)
+	{
+	case WeaponEra::PREHISTORIC:
+		switch (arma->wType)
+		{
+		case WeaponType::MELEE:
+			app->sceneBattle->m_players[player_selected].equippedWeapon = &app->sceneBattle->tribalLance;
+			break;
+		case WeaponType::MID_RANGE:
+			app->sceneBattle->m_players[player_selected].equippedWeapon = &app->sceneBattle->chiefsBow;
+			break;
+		case WeaponType::LONG_RANGE:
+			app->sceneBattle->m_players[player_selected].equippedWeapon = &app->sceneBattle->rusticStoneAxe;
+			break;
+		}
+		break;
+	case WeaponEra::MEDIEVAL:
+		switch (arma->wType)
+		{
+		case WeaponType::MELEE:
+			app->sceneBattle->m_players[player_selected].equippedWeapon = &app->sceneBattle->ascendantTwins;
+			break;
+		case WeaponType::MID_RANGE:
+			app->sceneBattle->m_players[player_selected].equippedWeapon = &app->sceneBattle->mrFlail;
+			break;
+		case WeaponType::LONG_RANGE:
+			app->sceneBattle->m_players[player_selected].equippedWeapon = &app->sceneBattle->fallenBlade;
+			break;
+		}
+		break;
+	case WeaponEra::CYBERPUNK:
+		switch (arma->wType)
+		{
+		case WeaponType::MELEE:
+			app->sceneBattle->m_players[player_selected].equippedWeapon = &app->sceneBattle->uraniumshell;
+			break;
+		case WeaponType::MID_RANGE:
+			app->sceneBattle->m_players[player_selected].equippedWeapon = &app->sceneBattle->ionizedRifle;
+			break;
+		case WeaponType::LONG_RANGE:
+			app->sceneBattle->m_players[player_selected].equippedWeapon = &app->sceneBattle->chainsword;
+			break;
+		}
+		break;
+	case WeaponEra::APOCALYPSE:
+		switch (arma->wType)
+		{
+		case WeaponType::MELEE:
+			app->sceneBattle->m_players[player_selected].equippedWeapon = &app->sceneBattle->agony;
+			break;
+		case WeaponType::MID_RANGE:
+			app->sceneBattle->m_players[player_selected].equippedWeapon = &app->sceneBattle->eyebull;
+			break;
+		case WeaponType::LONG_RANGE:
+			app->sceneBattle->m_players[player_selected].equippedWeapon = &app->sceneBattle->graftedClaws;
+			break;
+		}
+		break;
+	}
 }
 	

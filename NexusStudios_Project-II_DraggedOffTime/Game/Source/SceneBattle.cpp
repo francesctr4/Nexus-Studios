@@ -82,7 +82,10 @@ bool SceneBattle::Start()
 	turn = 0;
 
 	//TODO
-	m_players = new Party_Member[4] { {100, 100, 10, 10, 20, 20, &rusticStoneAxe}, {150, 150, 10, 10, 30, 30, &fallenBlade}, {200, 200, 10, 10, 40, 40, &chainsword}, {200, 200, 10, 10, 40, 40, &graftedClaws} };
+	m_players = new Party_Member[4] { {app->sceneGameplay->player->playerStats[0].hp * 10, app->sceneGameplay->player->playerStats[0].hp * 10, app->sceneGameplay->player->playerStats[0].def * 10, app->sceneGameplay->player->playerStats[0].def * 10, app->sceneGameplay->player->playerStats[0].atk * 10, app->sceneGameplay->player->playerStats[0].atk * 10, &rusticStoneAxe},
+										{app->sceneGameplay->player->playerStats[1].hp * 10, app->sceneGameplay->player->playerStats[1].hp * 10, app->sceneGameplay->player->playerStats[1].def * 10, app->sceneGameplay->player->playerStats[1].def * 10, app->sceneGameplay->player->playerStats[1].atk * 10, app->sceneGameplay->player->playerStats[1].atk * 10, &fallenBlade },
+										{app->sceneGameplay->player->playerStats[2].hp * 10, app->sceneGameplay->player->playerStats[2].hp * 10, app->sceneGameplay->player->playerStats[2].def * 10, app->sceneGameplay->player->playerStats[2].def * 10, app->sceneGameplay->player->playerStats[2].atk * 10, app->sceneGameplay->player->playerStats[2].atk * 10, &chainsword },
+										{app->sceneGameplay->player->playerStats[3].hp * 10, app->sceneGameplay->player->playerStats[3].hp * 10, app->sceneGameplay->player->playerStats[3].def * 10, app->sceneGameplay->player->playerStats[3].def * 10, app->sceneGameplay->player->playerStats[3].atk * 10, app->sceneGameplay->player->playerStats[3].atk * 10, &graftedClaws } };
 
 	enableMusic = true;
 
@@ -233,7 +236,7 @@ bool SceneBattle::Update(float dt)
 				}
 				else if (action_selected == 0)
 				{
-					action_selected = 5;
+					action_selected = 6;
 				}
 
 				app->audio->PlayFx(selectFX);
@@ -245,11 +248,11 @@ bool SceneBattle::Update(float dt)
 
 				
 
-				if (action_selected != 5)
+				if (action_selected != 6)
 				{
 					action_selected++;
 				}
-				else if (action_selected == 5)
+				else if (action_selected == 6)
 				{
 					action_selected = 0;
 				}
@@ -281,17 +284,29 @@ bool SceneBattle::Update(float dt)
 					qte = true;
 					app->audio->PlayFx(clawsFX);
 					break;
-				case 2: //Heal
+				case 2: //Swap Weapons
+					
+					app->combatManager->ChangeWeapon(selected_player, m_players[selected_player].equippedWeapon);
+					app->audio->PlayFx(app->sceneGameplay->player->changeFX);
+					app->combatManager->playerTurn = !app->combatManager->playerTurn;
+					break;
+
+				case 3: //Heal
+
 					m_players[selected_player].HP = app->combatManager->UseItem(m_players[selected_player].HP);
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
 					app->audio->PlayFx(healFX);
 					break;
-				case 3: //Habilidades (TODO)
+
+				case 4: //Habilidades (TODO)
+
 					app->combatManager->SkillAttack(selected_player, m_players[selected_player].DMG, m_players[selected_player].DEF);
 					app->audio->PlayFx(skillFX);
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
 					break;
-				case 4: //Run away
+
+				case 5: //Run away
+
 					if (app->combatManager->Run())
 					{
 						//Transition to Gameplay Screen
@@ -300,7 +315,7 @@ bool SceneBattle::Update(float dt)
 						enableMusic = true;
 						app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
 						app->combatManager->playerTurn = !app->combatManager->playerTurn;
-						
+
 					}
 					else
 					{
@@ -309,10 +324,13 @@ bool SceneBattle::Update(float dt)
 						app->combatManager->playerTurn = !app->combatManager->playerTurn;
 					}
 					break;
-				case 5:
+
+				case 6:
+
 					selected_player = app->combatManager->ChangeParty(selected_player);
 					app->audio->PlayFx(app->sceneGameplay->player->changeFX);
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
+
 					break;
 				}
 				
@@ -996,7 +1014,12 @@ bool SceneBattle::PostUpdate()
 
 	if (e_HP == 0) {
 
+		app->combatManager->playerTurn = true;
 		e_HP = e_max_HP;
+		for (int i = 0; i < 4; i++)
+		{
+			app->sceneGameplay->player->AddXP(100, i);
+		}
 		turn = 0;
 		app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
 

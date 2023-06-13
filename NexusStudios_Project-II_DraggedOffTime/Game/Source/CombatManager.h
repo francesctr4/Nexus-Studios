@@ -4,6 +4,7 @@
 #include "Module.h"
 #include "List.h"
 #include "SString.h"
+#include "Weapon.h"
 
 struct QTE {
 	int startTime; //tiempo objetivo en milisegundos
@@ -71,7 +72,8 @@ public:
 	//11.Enemy buff stats
 	void EnemyBuff(bool DMG, bool DEF);
 
-
+	//12.Change Weapon
+	void ChangeWeapon(int player_selected, Weapon* arma);
 
 public:
 
