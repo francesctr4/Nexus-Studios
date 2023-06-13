@@ -1075,18 +1075,60 @@ bool SceneBattle::Update(float dt)
 
 		if (isAttacking) {
 
-			if (resetAnim) {
+			if (m_players[0].equippedWeapon == &fallenBlade) {
 
-				fallenBlade_attack.Reset();
-				resetAnim = false;
+				if (resetAnim) {
+
+					fallenBlade_attack.Reset();
+					resetAnim = false;
+
+				}
+
+				currentAnimationWeapon = &fallenBlade_attack;
+
+				if (timerWeaponAttack.ReadMSec() > 550) {
+
+					isAttacking = false;
+
+				}
 
 			}
 
-			currentAnimationWeapon = &fallenBlade_attack;
+			if (m_players[0].equippedWeapon == &ascendantTwins) {
 
-			if (timerWeaponAttack.ReadMSec() > 550) {
+				if (resetAnim) {
 
-				isAttacking = false;
+					ascendantTwins_attack.Reset();
+					resetAnim = false;
+
+				}
+
+				currentAnimationWeapon = &ascendantTwins_attack;
+
+				if (timerWeaponAttack.ReadMSec() > 550) {
+
+					isAttacking = false;
+
+				}
+
+			}
+
+			if (m_players[0].equippedWeapon == &mrFlail) {
+
+				if (resetAnim) {
+
+					mrFlail_attack.Reset();
+					resetAnim = false;
+
+				}
+
+				currentAnimationWeapon = &mrFlail_attack;
+
+				if (timerWeaponAttack.ReadMSec() > 550) {
+
+					isAttacking = false;
+
+				}
 
 			}
 
@@ -1117,21 +1159,85 @@ bool SceneBattle::Update(float dt)
 
 	case 1:
 
-		if (m_players[1].equippedWeapon == &rusticStoneAxe) {
+		if (isAttacking) {
 
-			currentAnimationWeapon = &rusticStoneAxe_idle;
+			if (m_players[1].equippedWeapon == &rusticStoneAxe) {
+
+				if (resetAnim) {
+
+					rusticStoneAxe_attack.Reset();
+					resetAnim = false;
+
+				}
+
+				currentAnimationWeapon = &rusticStoneAxe_attack;
+
+				if (timerWeaponAttack.ReadMSec() > 550) {
+
+					isAttacking = false;
+
+				}
+
+			}
+
+			if (m_players[1].equippedWeapon == &tribalLance) {
+
+				if (resetAnim) {
+
+					tribalLance_attack.Reset();
+					resetAnim = false;
+
+				}
+
+				currentAnimationWeapon = &tribalLance_attack;
+
+				if (timerWeaponAttack.ReadMSec() > 550) {
+
+					isAttacking = false;
+
+				}
+
+			}
+
+			if (m_players[1].equippedWeapon == &chiefsBow) {
+
+				if (resetAnim) {
+
+					chiefsBow_attack.Reset();
+					resetAnim = false;
+
+				}
+
+				currentAnimationWeapon = &chiefsBow_attack;
+
+				if (timerWeaponAttack.ReadMSec() > 550) {
+
+					isAttacking = false;
+
+				}
+
+			}
 
 		}
+		else {
 
-		if (m_players[1].equippedWeapon == &tribalLance) {
+			if (m_players[1].equippedWeapon == &rusticStoneAxe) {
 
-			currentAnimationWeapon = &tribalLance_idle;
+				currentAnimationWeapon = &rusticStoneAxe_idle;
 
-		}
+			}
 
-		if (m_players[1].equippedWeapon == &chiefsBow) {
+			if (m_players[1].equippedWeapon == &tribalLance) {
 
-			currentAnimationWeapon = &chiefsBow_idle;
+				currentAnimationWeapon = &tribalLance_idle;
+
+			}
+
+			if (m_players[1].equippedWeapon == &chiefsBow) {
+
+				currentAnimationWeapon = &chiefsBow_idle;
+
+			}
 
 		}
 
@@ -1139,21 +1245,85 @@ bool SceneBattle::Update(float dt)
 
 	case 2:
 
-		if (m_players[2].equippedWeapon == &chainsword) {
+		if (isAttacking) {
 
-			currentAnimationWeapon = &chainsword_idle;
+			if (m_players[2].equippedWeapon == &chainsword) {
+
+				if (resetAnim) {
+
+					chainsword_attack.Reset();
+					resetAnim = false;
+
+				}
+
+				currentAnimationWeapon = &chainsword_attack;
+
+				if (timerWeaponAttack.ReadMSec() > 550) {
+
+					isAttacking = false;
+
+				}
+
+			}
+
+			if (m_players[2].equippedWeapon == &uraniumshell) {
+
+				if (resetAnim) {
+
+					uraniumshell_attack.Reset();
+					resetAnim = false;
+
+				}
+
+				currentAnimationWeapon = &uraniumshell_attack;
+
+				if (timerWeaponAttack.ReadMSec() > 550) {
+
+					isAttacking = false;
+
+				}
+
+			}
+
+			if (m_players[2].equippedWeapon == &ionizedRifle) {
+
+				if (resetAnim) {
+
+					ionizedRifle_attack.Reset();
+					resetAnim = false;
+
+				}
+
+				currentAnimationWeapon = &ionizedRifle_attack;
+
+				if (timerWeaponAttack.ReadMSec() > 550) {
+
+					isAttacking = false;
+
+				}
+
+			}
 
 		}
+		else {
 
-		if (m_players[2].equippedWeapon == &uraniumshell) {
+			if (m_players[2].equippedWeapon == &chainsword) {
 
-			currentAnimationWeapon = &uraniumshell_idle;
+				currentAnimationWeapon = &chainsword_idle;
 
-		}
+			}
 
-		if (m_players[2].equippedWeapon == &ionizedRifle) {
+			if (m_players[2].equippedWeapon == &uraniumshell) {
 
-			currentAnimationWeapon = &ionizedRifle_idle;
+				currentAnimationWeapon = &uraniumshell_idle;
+
+			}
+
+			if (m_players[2].equippedWeapon == &ionizedRifle) {
+
+				currentAnimationWeapon = &ionizedRifle_idle;
+
+			}
 
 		}
 
@@ -1161,21 +1331,85 @@ bool SceneBattle::Update(float dt)
 
 	case 3:
 
-		if (m_players[3].equippedWeapon == &graftedClaws) {
+		if (isAttacking) {
 
-			currentAnimationWeapon = &graftedClaws_idle;
+			if (m_players[3].equippedWeapon == &graftedClaws) {
+
+				if (resetAnim) {
+
+					graftedClaws_attack.Reset();
+					resetAnim = false;
+
+				}
+
+				currentAnimationWeapon = &graftedClaws_attack;
+
+				if (timerWeaponAttack.ReadMSec() > 550) {
+
+					isAttacking = false;
+
+				}
+
+			}
+
+			if (m_players[3].equippedWeapon == &agony) {
+
+				if (resetAnim) {
+
+					agony_attack.Reset();
+					resetAnim = false;
+
+				}
+
+				currentAnimationWeapon = &agony_attack;
+
+				if (timerWeaponAttack.ReadMSec() > 550) {
+
+					isAttacking = false;
+
+				}
+
+			}
+
+			if (m_players[3].equippedWeapon == &eyebull) {
+
+				if (resetAnim) {
+
+					eyebull_attack.Reset();
+					resetAnim = false;
+
+				}
+
+				currentAnimationWeapon = &eyebull_attack;
+
+				if (timerWeaponAttack.ReadMSec() > 550) {
+
+					isAttacking = false;
+
+				}
+
+			}
 
 		}
+		else {
 
-		if (m_players[3].equippedWeapon == &agony) {
+			if (m_players[3].equippedWeapon == &graftedClaws) {
 
-			currentAnimationWeapon = &agony_idle;
+				currentAnimationWeapon = &graftedClaws_idle;
 
-		}
+			}
 
-		if (m_players[3].equippedWeapon == &eyebull) {
+			if (m_players[3].equippedWeapon == &agony) {
 
-			currentAnimationWeapon = &eyebull_idle;
+				currentAnimationWeapon = &agony_idle;
+
+			}
+
+			if (m_players[3].equippedWeapon == &eyebull) {
+
+				currentAnimationWeapon = &eyebull_idle;
+
+			}
 
 		}
 
