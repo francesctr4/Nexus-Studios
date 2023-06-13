@@ -448,6 +448,8 @@ bool SceneBattle::Update(float dt)
 {
 	OPTICK_EVENT();
 
+	currentAnimationWeapon->Update();
+
 	SDL_Rect rect = { 0,0, 1280, 720 };
 	app->render->DrawRectangle(rect, 70, 80, 220, 150);
 
@@ -547,6 +549,9 @@ bool SceneBattle::Update(float dt)
 					app->audio->PlayFx(fx_sword_hit);
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
 					app->audio->PlayFx(fx_sword_hit);
+					
+					isAttacking = true;
+
 					break;
 				case 1:	//Quick time event attack (TODO)
 					qte_timer.Start();
@@ -1058,10 +1063,25 @@ bool SceneBattle::Update(float dt)
 	//SDL_Rect rect = { 0,0, 1280, 720 };
 	//app->render->DrawRectangle(rect, 0, 0, 255, 150);
 
-	switch (selected_player) 
+	switch (selected_player)
 	{
-		case 0:
-			
+	case 0:
+
+		if (isAttacking) {
+
+			if (currentAnimationWeapon->HasFinished()) {
+				
+				isAttacking = false;
+			}
+			else {
+
+				currentAnimationWeapon = &fallenBlade_attack;
+
+			}
+
+		}
+		else {
+
 			if (m_players[0].equippedWeapon == &fallenBlade) {
 
 				currentAnimationWeapon = &fallenBlade_idle;
@@ -1080,73 +1100,75 @@ bool SceneBattle::Update(float dt)
 
 			}
 
-			break;
+		}
 
-		case 1:
+		break;
 
-			if (m_players[1].equippedWeapon == &rusticStoneAxe) {
+	case 1:
 
-				currentAnimationWeapon = &rusticStoneAxe_idle;
+		if (m_players[1].equippedWeapon == &rusticStoneAxe) {
 
-			}
+			currentAnimationWeapon = &rusticStoneAxe_idle;
 
-			if (m_players[1].equippedWeapon == &tribalLance) {
+		}
 
-				currentAnimationWeapon = &tribalLance_idle;
+		if (m_players[1].equippedWeapon == &tribalLance) {
 
-			}
+			currentAnimationWeapon = &tribalLance_idle;
 
-			if (m_players[1].equippedWeapon == &chiefsBow) {
+		}
 
-				currentAnimationWeapon = &chiefsBow_idle;
+		if (m_players[1].equippedWeapon == &chiefsBow) {
 
-			}
+			currentAnimationWeapon = &chiefsBow_idle;
 
-			break;
+		}
 
-		case 2:
+		break;
 
-			if (m_players[2].equippedWeapon == &chainsword) {
+	case 2:
 
-				currentAnimationWeapon = &chainsword_idle;
+		if (m_players[2].equippedWeapon == &chainsword) {
 
-			}
+			currentAnimationWeapon = &chainsword_idle;
 
-			if (m_players[2].equippedWeapon == &uraniumshell) {
+		}
 
-				currentAnimationWeapon = &uraniumshell_idle;
+		if (m_players[2].equippedWeapon == &uraniumshell) {
 
-			}
+			currentAnimationWeapon = &uraniumshell_idle;
 
-			if (m_players[2].equippedWeapon == &ionizedRifle) {
+		}
 
-				currentAnimationWeapon = &ionizedRifle_idle;
+		if (m_players[2].equippedWeapon == &ionizedRifle) {
 
-			}
+			currentAnimationWeapon = &ionizedRifle_idle;
 
-			break;
+		}
 
-		case 3:
+		break;
 
-			if (m_players[3].equippedWeapon == &graftedClaws) {
+	case 3:
 
-				currentAnimationWeapon = &graftedClaws_idle;
+		if (m_players[3].equippedWeapon == &graftedClaws) {
 
-			}
+			currentAnimationWeapon = &graftedClaws_idle;
 
-			if (m_players[3].equippedWeapon == &agony) {
+		}
 
-				currentAnimationWeapon = &agony_idle;
+		if (m_players[3].equippedWeapon == &agony) {
 
-			}
+			currentAnimationWeapon = &agony_idle;
 
-			if (m_players[3].equippedWeapon == &eyebull) {
+		}
 
-				currentAnimationWeapon = &eyebull_idle;
+		if (m_players[3].equippedWeapon == &eyebull) {
 
-			}
+			currentAnimationWeapon = &eyebull_idle;
 
-			break;
+		}
+
+		break;
 
 	}
 
@@ -1345,7 +1367,6 @@ bool SceneBattle::PostUpdate()
 	//SDL_Rect player_sprite_rect = { 200, 420, 140, 160 };
 	//app->render->DrawRectangle(player_sprite_rect, 180, 125, 230, 255);
 
-	currentAnimationWeapon->Update();
 	SDL_Rect weaponRect = currentAnimationWeapon->GetCurrentFrame();
 
 	currentAnimation->Update();
@@ -1358,21 +1379,30 @@ bool SceneBattle::PostUpdate()
 
 		app->sceneGameplay->player->playerChange = 0;
 
-		if (m_players[0].equippedWeapon == &fallenBlade) {
+		if (isAttacking) {
 
-			app->render->DrawTexture(fallenBlade_idle_tex, 174, 390, &weaponRect);
-
-		}
-
-		if (m_players[0].equippedWeapon == &ascendantTwins) {
-
-			app->render->DrawTexture(ascendantTwins_idle_tex, 177, 390, &weaponRect);
+			app->render->DrawTexture(fallenBlade_attack_tex, 90, 300, &weaponRect);
 
 		}
+		else {
 
-		if (m_players[0].equippedWeapon == &mrFlail) {
+			if (m_players[0].equippedWeapon == &fallenBlade) {
 
-			app->render->DrawTexture(mrFlail_idle_tex, 182, 390, &weaponRect);
+				app->render->DrawTexture(fallenBlade_idle_tex, 174, 390, &weaponRect);
+
+			}
+
+			if (m_players[0].equippedWeapon == &ascendantTwins) {
+
+				app->render->DrawTexture(ascendantTwins_idle_tex, 177, 390, &weaponRect);
+
+			}
+
+			if (m_players[0].equippedWeapon == &mrFlail) {
+
+				app->render->DrawTexture(mrFlail_idle_tex, 182, 390, &weaponRect);
+
+			}
 
 		}
 

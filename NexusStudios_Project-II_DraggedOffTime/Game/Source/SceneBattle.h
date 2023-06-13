@@ -279,6 +279,8 @@ public:
 	int eyebull_attack_height = 0;
 	float eyebull_attack_speed = 0.4f;
 
+	bool isAttacking = false;
+
 private:
 
 	// Sprite Background
