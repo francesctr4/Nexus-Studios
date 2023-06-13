@@ -330,4 +330,67 @@ void CombatManager::EnemyBuff(bool DMG, bool DEF)
 	
 	
 }
+
+void CombatManager::ChangeWeapon(int player_selected, Weapon* arma)
+{
+	switch (arma->wEra)
+	{
+	case WeaponEra::PREHISTORIC:
+		switch (arma->wType)
+		{
+		case WeaponType::MELEE:
+			app->sceneBattle->m_players[player_selected].equippedWeapon = &app->sceneBattle->tribalLance;
+			break;
+		case WeaponType::MID_RANGE:
+			app->sceneBattle->m_players[player_selected].equippedWeapon = &app->sceneBattle->chiefsBow;
+			break;
+		case WeaponType::LONG_RANGE:
+			app->sceneBattle->m_players[player_selected].equippedWeapon = &app->sceneBattle->rusticStoneAxe;
+			break;
+		}
+		break;
+	case WeaponEra::MEDIEVAL:
+		switch (arma->wType)
+		{
+		case WeaponType::MELEE:
+			app->sceneBattle->m_players[player_selected].equippedWeapon = &app->sceneBattle->ascendantTwins;
+			break;
+		case WeaponType::MID_RANGE:
+			app->sceneBattle->m_players[player_selected].equippedWeapon = &app->sceneBattle->mrFlail;
+			break;
+		case WeaponType::LONG_RANGE:
+			app->sceneBattle->m_players[player_selected].equippedWeapon = &app->sceneBattle->fallenBlade;
+			break;
+		}
+		break;
+	case WeaponEra::CYBERPUNK:
+		switch (arma->wType)
+		{
+		case WeaponType::MELEE:
+			app->sceneBattle->m_players[player_selected].equippedWeapon = &app->sceneBattle->uraniumshell;
+			break;
+		case WeaponType::MID_RANGE:
+			app->sceneBattle->m_players[player_selected].equippedWeapon = &app->sceneBattle->ionizedRifle;
+			break;
+		case WeaponType::LONG_RANGE:
+			app->sceneBattle->m_players[player_selected].equippedWeapon = &app->sceneBattle->chainsword;
+			break;
+		}
+		break;
+	case WeaponEra::APOCALYPSE:
+		switch (arma->wType)
+		{
+		case WeaponType::MELEE:
+			app->sceneBattle->m_players[player_selected].equippedWeapon = &app->sceneBattle->agony;
+			break;
+		case WeaponType::MID_RANGE:
+			app->sceneBattle->m_players[player_selected].equippedWeapon = &app->sceneBattle->eyebull;
+			break;
+		case WeaponType::LONG_RANGE:
+			app->sceneBattle->m_players[player_selected].equippedWeapon = &app->sceneBattle->graftedClaws;
+			break;
+		}
+		break;
+	}
+}
 	

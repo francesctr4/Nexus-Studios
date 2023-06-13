@@ -286,10 +286,9 @@ bool SceneBattle::Update(float dt)
 					break;
 				case 2: //Swap Weapons
 					
-
-
-
-
+					app->combatManager->ChangeWeapon(selected_player, m_players[selected_player].equippedWeapon);
+					app->audio->PlayFx(app->sceneGameplay->player->changeFX);
+					app->combatManager->playerTurn = !app->combatManager->playerTurn;
 					break;
 
 				case 3: //Heal
