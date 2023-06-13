@@ -77,7 +77,6 @@ periods and reuniting all the temporal parts of the protagonist.
 	Square: Interact with NPCs
 	Triangle: Change between Dialogue Options
       	
-
 ### MOUSE ###
 
 	LEFT CLICK: Interact with the UI
@@ -105,9 +104,8 @@ periods and reuniting all the temporal parts of the protagonist.
 ### DEBUG KEYS (F10) ###
 
 	Gameplay:
-		1 -> 2 -> 0,1,2,3,4,5,6,7,8,9: Change Maps
-		C: Change Between Players
-		M: Go to Ending Screen
+		M: Change Between Maps
+		N: Go to Ending Screen
 		9: Kill all Enemies
 		F5: Save Request
 		F6: Load Request
@@ -125,4 +123,5 @@ periods and reuniting all the temporal parts of the protagonist.
 		7: Enemy attack
 		8: Enemy defense
 		H: Fully Recover enemy
+  		M: Create Minion
 		TAB: Skip turn
