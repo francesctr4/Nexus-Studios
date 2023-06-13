@@ -170,7 +170,15 @@ private:
 
 	SDL_Texture* dialogue = nullptr;
 
-	SDL_Texture* MyTurn = nullptr;
+	SDL_Texture* Turn = nullptr;
+
+	SDL_Texture* MedievalTurn = nullptr;
+
+	SDL_Texture* PrehistoricalTurn = nullptr;
+
+	SDL_Texture* CyberpunkTurn = nullptr;
+
+	SDL_Texture* ApocalypseTurn = nullptr;
 
 	SDL_Texture* EnemyTurn = nullptr;
 

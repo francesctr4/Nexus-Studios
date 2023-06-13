@@ -96,7 +96,11 @@ bool SceneBattle::Start()
 	playerSelection = app->tex->Load("Assets/UI/PlayerSelector.png");
 	q_sprite = app->tex->Load("Assets/Textures/q.png");
 	dialogue = app->tex->Load("Assets/Textures/dialogue-UI.png");
-	MyTurn = app->tex->Load("Assets/UI/Battle/PlayerTurn.png");
+	Turn = app->tex->Load("Assets/UI/Battle/TURN.png");
+	MedievalTurn = app->tex->Load("Assets/UI/Battle/MedievalTurn.png");
+	PrehistoricalTurn = app->tex->Load("Assets/UI/Battle/PrehistoricalTurn.png");
+	CyberpunkTurn = app->tex->Load("Assets/UI/Battle/CyberpunkTurn.png");
+	ApocalypseTurn = app->tex->Load("Assets/UI/Battle/ApocalypseTurn.png");
 	EnemyTurn = app->tex->Load("Assets/UI/Battle/EnemyTurn.png");
 
 	//Load audios
@@ -1063,9 +1067,31 @@ bool SceneBattle::PostUpdate()
 		app->render->DrawTexture(RArrow, 304, 318, &arrow2);
 	}
 
+	app->render->DrawTexture(Turn, 597, 36);
+
 	if (app->combatManager->playerTurn) {
 
-		app->render->DrawTexture(MyTurn, 576, 31);
+		switch (selected_player) {
+		case 0:
+
+			app->render->DrawTexture(MedievalTurn, 576, 68);
+			break;
+
+		case 1:
+
+			app->render->DrawTexture(PrehistoricalTurn, 576, 68);
+			break;
+
+		case 2:
+
+			app->render->DrawTexture(CyberpunkTurn, 576, 68);
+			break;
+		case 3:
+
+			app->render->DrawTexture(ApocalypseTurn, 576, 68);
+			break;
+		}
+		
 	}
 	else {
 
