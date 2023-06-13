@@ -311,10 +311,10 @@ bool SceneBattle::Start()
 	turn = 0;
 
 	//TODO
-	m_players = new Party_Member[4] { {app->sceneGameplay->player->playerStats[0].hp * 10, app->sceneGameplay->player->playerStats[0].hp * 10, app->sceneGameplay->player->playerStats[0].def * 10, app->sceneGameplay->player->playerStats[0].def * 10, app->sceneGameplay->player->playerStats[0].atk * 10, app->sceneGameplay->player->playerStats[0].atk * 10, &rusticStoneAxe},
-										{app->sceneGameplay->player->playerStats[1].hp * 10, app->sceneGameplay->player->playerStats[1].hp * 10, app->sceneGameplay->player->playerStats[1].def * 10, app->sceneGameplay->player->playerStats[1].def * 10, app->sceneGameplay->player->playerStats[1].atk * 10, app->sceneGameplay->player->playerStats[1].atk * 10, &fallenBlade },
-										{app->sceneGameplay->player->playerStats[2].hp * 10, app->sceneGameplay->player->playerStats[2].hp * 10, app->sceneGameplay->player->playerStats[2].def * 10, app->sceneGameplay->player->playerStats[2].def * 10, app->sceneGameplay->player->playerStats[2].atk * 10, app->sceneGameplay->player->playerStats[2].atk * 10, &chainsword },
-										{app->sceneGameplay->player->playerStats[3].hp * 10, app->sceneGameplay->player->playerStats[3].hp * 10, app->sceneGameplay->player->playerStats[3].def * 10, app->sceneGameplay->player->playerStats[3].def * 10, app->sceneGameplay->player->playerStats[3].atk * 10, app->sceneGameplay->player->playerStats[3].atk * 10, &graftedClaws } };
+	m_players = new Party_Member[4]{ {app->sceneGameplay->player->playerStats[0].hp * 10, app->sceneGameplay->player->playerStats[0].hp * 10, app->sceneGameplay->player->playerStats[0].def, app->sceneGameplay->player->playerStats[0].def, app->sceneGameplay->player->playerStats[0].atk * 10, app->sceneGameplay->player->playerStats[0].atk * 10, &fallenBlade},
+										{app->sceneGameplay->player->playerStats[1].hp * 10, app->sceneGameplay->player->playerStats[1].hp * 10, app->sceneGameplay->player->playerStats[1].def, app->sceneGameplay->player->playerStats[1].def, app->sceneGameplay->player->playerStats[1].atk * 10, app->sceneGameplay->player->playerStats[1].atk * 10, &rusticStoneAxe },
+										{app->sceneGameplay->player->playerStats[2].hp * 10, app->sceneGameplay->player->playerStats[2].hp * 10, app->sceneGameplay->player->playerStats[2].def, app->sceneGameplay->player->playerStats[2].def, app->sceneGameplay->player->playerStats[2].atk * 10, app->sceneGameplay->player->playerStats[2].atk * 10, &chainsword },
+										{app->sceneGameplay->player->playerStats[3].hp * 10, app->sceneGameplay->player->playerStats[3].hp * 10, app->sceneGameplay->player->playerStats[3].def, app->sceneGameplay->player->playerStats[3].def, app->sceneGameplay->player->playerStats[3].atk * 10, app->sceneGameplay->player->playerStats[3].atk * 10, &graftedClaws } };
 
 	enableMusic = true;
 
@@ -369,6 +369,46 @@ bool SceneBattle::Start()
 	prehistoricInCombat = app->tex->Load("Assets/Textures/Prehistoric_InCombat.png");
 	cyberpunkInCombat = app->tex->Load("Assets/Textures/Cyberpunk_InCombat.png");
 	apocalypseInCombat = app->tex->Load("Assets/Textures/Apocalypse_InCombat.png");
+
+	// ---------------------------------------
+
+	rusticStoneAxe_idle_tex = app->tex->Load("Assets/Textures/Battle_Animations/Prehistoric/Melee_Idle.png");
+	rusticStoneAxe_attack_tex = app->tex->Load("Assets/Textures/Battle_Animations/Prehistoric/Melee_Attack.png");
+	tribalLance_idle_tex = app->tex->Load("Assets/Textures/Battle_Animations/Prehistoric/MidRange_Idle.png");
+	tribalLance_attack_tex = app->tex->Load("Assets/Textures/Battle_Animations/Prehistoric/MidRange_Attack.png");
+	chiefsBow_idle_tex = app->tex->Load("Assets/Textures/Battle_Animations/Prehistoric/LongRange_Idle.png");
+	chiefsBow_attack_tex = app->tex->Load("Assets/Textures/Battle_Animations/Prehistoric/LongRange_Attack.png");
+
+	// ---------------------------------------
+
+	fallenBlade_idle_tex = app->tex->Load("Assets/Textures/Battle_Animations/Medieval/Melee_Idle.png");
+	fallenBlade_attack_tex = app->tex->Load("Assets/Textures/Battle_Animations/Medieval/Melee_Attack.png");
+	ascendantTwins_idle_tex = app->tex->Load("Assets/Textures/Battle_Animations/Medieval/MidRange_Idle.png");
+	ascendantTwins_attack_tex = app->tex->Load("Assets/Textures/Battle_Animations/Medieval/MidRange_Attack.png");
+	mrFlail_idle_tex = app->tex->Load("Assets/Textures/Battle_Animations/Medieval/LongRange_Idle.png");
+	mrFlail_attack_tex = app->tex->Load("Assets/Textures/Battle_Animations/Medieval/LongRange_Attack.png");
+	
+	// ---------------------------------------
+
+	chainsword_idle_tex = app->tex->Load("Assets/Textures/Battle_Animations/Cyberpunk/Melee_Idle.png");
+	chainsword_attack_tex = app->tex->Load("Assets/Textures/Battle_Animations/Cyberpunk/Melee_Attack.png");
+	uraniumshell_idle_tex = app->tex->Load("Assets/Textures/Battle_Animations/Cyberpunk/MidRange_Idle.png");
+	uraniumshell_attack_tex = app->tex->Load("Assets/Textures/Battle_Animations/Cyberpunk/MidRange_Attack.png");
+	ionizedRifle_idle_tex = app->tex->Load("Assets/Textures/Battle_Animations/Cyberpunk/LongRange_Idle.png");
+	ionizedRifle_attack_tex = app->tex->Load("Assets/Textures/Battle_Animations/Cyberpunk/LongRange_Attack.png");
+
+	// ---------------------------------------
+
+	graftedClaws_idle_tex = app->tex->Load("Assets/Textures/Battle_Animations/Apocalypse/Melee_Idle.png");
+	graftedClaws_attack_tex = app->tex->Load("Assets/Textures/Battle_Animations/Apocalypse/Melee_Attack.png");
+	agony_idle_tex = app->tex->Load("Assets/Textures/Battle_Animations/Apocalypse/MidRange_Idle.png");
+	agony_attack_tex = app->tex->Load("Assets/Textures/Battle_Animations/Apocalypse/MidRange_Attack.png");
+	eyebull_idle_tex = app->tex->Load("Assets/Textures/Battle_Animations/Apocalypse/LongRange_Idle.png");
+	eyebull_attack_tex = app->tex->Load("Assets/Textures/Battle_Animations/Apocalypse/LongRange_Attack.png");
+
+	// ---------------------------------------
+
+	currentAnimationWeapon = &fallenBlade_idle;
 
 	// Enemy texture
 
@@ -1018,6 +1058,98 @@ bool SceneBattle::Update(float dt)
 	//SDL_Rect rect = { 0,0, 1280, 720 };
 	//app->render->DrawRectangle(rect, 0, 0, 255, 150);
 
+	switch (selected_player) 
+	{
+		case 0:
+			
+			if (m_players[0].equippedWeapon == &fallenBlade) {
+
+				currentAnimationWeapon = &fallenBlade_idle;
+
+			}
+
+			if (m_players[0].equippedWeapon == &ascendantTwins) {
+
+				currentAnimationWeapon = &ascendantTwins_idle;
+
+			}
+
+			if (m_players[0].equippedWeapon == &mrFlail) {
+
+				currentAnimationWeapon = &mrFlail_idle;
+
+			}
+
+			break;
+
+		case 1:
+
+			if (m_players[1].equippedWeapon == &rusticStoneAxe) {
+
+				currentAnimationWeapon = &rusticStoneAxe_idle;
+
+			}
+
+			if (m_players[1].equippedWeapon == &tribalLance) {
+
+				currentAnimationWeapon = &tribalLance_idle;
+
+			}
+
+			if (m_players[1].equippedWeapon == &chiefsBow) {
+
+				currentAnimationWeapon = &chiefsBow_idle;
+
+			}
+
+			break;
+
+		case 2:
+
+			if (m_players[2].equippedWeapon == &chainsword) {
+
+				currentAnimationWeapon = &chainsword_idle;
+
+			}
+
+			if (m_players[2].equippedWeapon == &uraniumshell) {
+
+				currentAnimationWeapon = &uraniumshell_idle;
+
+			}
+
+			if (m_players[2].equippedWeapon == &ionizedRifle) {
+
+				currentAnimationWeapon = &ionizedRifle_idle;
+
+			}
+
+			break;
+
+		case 3:
+
+			if (m_players[3].equippedWeapon == &graftedClaws) {
+
+				currentAnimationWeapon = &graftedClaws_idle;
+
+			}
+
+			if (m_players[3].equippedWeapon == &agony) {
+
+				currentAnimationWeapon = &agony_idle;
+
+			}
+
+			if (m_players[3].equippedWeapon == &eyebull) {
+
+				currentAnimationWeapon = &eyebull_idle;
+
+			}
+
+			break;
+
+	}
+
 	return true;
 }
 
@@ -1213,35 +1345,112 @@ bool SceneBattle::PostUpdate()
 	//SDL_Rect player_sprite_rect = { 200, 420, 140, 160 };
 	//app->render->DrawRectangle(player_sprite_rect, 180, 125, 230, 255);
 
+	currentAnimationWeapon->Update();
+	SDL_Rect weaponRect = currentAnimationWeapon->GetCurrentFrame();
+
 	currentAnimation->Update();
 
 	SDL_Rect playerRect = currentAnimation->GetCurrentFrame();
 
-	if (selected_player == 0) {
+	switch (selected_player)
+	{
+	case 0:
 
 		app->sceneGameplay->player->playerChange = 0;
-		app->render->DrawTexture(medievalInCombat, 185, 405, &playerRect);
 
-	}
+		if (m_players[0].equippedWeapon == &fallenBlade) {
 
-	if (selected_player == 1) {
+			app->render->DrawTexture(fallenBlade_idle_tex, 174, 390, &weaponRect);
+
+		}
+
+		if (m_players[0].equippedWeapon == &ascendantTwins) {
+
+			app->render->DrawTexture(ascendantTwins_idle_tex, 177, 390, &weaponRect);
+
+		}
+
+		if (m_players[0].equippedWeapon == &mrFlail) {
+
+			app->render->DrawTexture(mrFlail_idle_tex, 182, 390, &weaponRect);
+
+		}
+
+		break;
+
+	case 1:
 
 		app->sceneGameplay->player->playerChange = 1;
-		app->render->DrawTexture(prehistoricInCombat, 185, 405, &playerRect);
 
-	}
+		if (m_players[1].equippedWeapon == &rusticStoneAxe) {
 
-	if (selected_player == 2) {
+			app->render->DrawTexture(rusticStoneAxe_idle_tex, 173, 390, &weaponRect);
+
+		}
+
+		if (m_players[1].equippedWeapon == &tribalLance) {
+
+			app->render->DrawTexture(tribalLance_idle_tex, 173, 294, &weaponRect);
+
+		}
+
+		if (m_players[1].equippedWeapon == &chiefsBow) {
+
+			app->render->DrawTexture(chiefsBow_idle_tex, 174, 390, &weaponRect);
+
+		}
+
+		break;
+
+	case 2:
 
 		app->sceneGameplay->player->playerChange = 2;
-		app->render->DrawTexture(cyberpunkInCombat, 185, 405, &playerRect);
 
-	}
+		if (m_players[2].equippedWeapon == &chainsword) {
 
-	if (selected_player == 3) {
+			app->render->DrawTexture(chainsword_idle_tex, 40, 390, &weaponRect);
+
+		}
+
+		if (m_players[2].equippedWeapon == &uraniumshell) {
+
+			app->render->DrawTexture(uraniumshell_idle_tex, 185, 390, &weaponRect);
+
+		}
+
+		if (m_players[2].equippedWeapon == &ionizedRifle) {
+
+			app->render->DrawTexture(ionizedRifle_idle_tex, 182, 390, &weaponRect);
+
+		}
+
+		break;
+
+	case 3:
 
 		app->sceneGameplay->player->playerChange = 3;
-		app->render->DrawTexture(apocalypseInCombat, 185, 405, &playerRect);
+
+		if (m_players[3].equippedWeapon == &graftedClaws) {
+
+			app->render->DrawTexture(graftedClaws_idle_tex, 177, 414, &weaponRect);
+
+
+		}
+
+		if (m_players[3].equippedWeapon == &agony) {
+
+			app->render->DrawTexture(agony_idle_tex, 180, 390, &weaponRect);
+
+
+		}
+
+		if (m_players[3].equippedWeapon == &eyebull) {
+
+			app->render->DrawTexture(eyebull_idle_tex, 180, 390, &weaponRect);
+
+		}
+
+		break;
 
 	}
 
@@ -1455,7 +1664,7 @@ bool SceneBattle::PostUpdate()
 	}
 	else {
 
-		app->render->DrawTexture(EnemyTurn, 576, 31);
+		app->render->DrawTexture(EnemyTurn, 576, 68);
 	}
 
 	return true;
