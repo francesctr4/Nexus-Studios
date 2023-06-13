@@ -32,8 +32,8 @@ void Medieval::Update()
 		}
 		if (TP_Medieval_6 == NULL)
 		{
-			/*TP_Medieval_6 = app->physics->CreateRectangleSensor(400, 410, 25, 10, bodyType::KINEMATIC, ColliderType::TELEPORT_MEDIEVAL_JOVANI);
-			TP_Medieval_Jovani_bool = true;*/
+			TP_Medieval_6 = app->physics->CreateRectangleSensor(570, 48, 25, 10, bodyType::KINEMATIC, ColliderType::TELEPORT_MEDIEVAL_JOVANI);
+			TP_Medieval_6_bool = true;
 		}
 	}
 	
@@ -95,6 +95,8 @@ void Medieval::TeleportMedieval()
 	{
 		app->sceneGameplay->LoadMap(12);
 		app->sceneGameplay->player->Teleport(890, 700);
+		app->physics->DestroyBody(TP_Medieval_6);
+		TP_Medieval_6 = NULL;
 		app->physics->DestroyBody(TP_Medieval_3);
 		TP_Medieval_3 = NULL;
 
@@ -148,10 +150,14 @@ void Medieval::TeleportMedievalReversa()
 
 void Medieval::TeleportMedievalJovani()
 {
-	if (app->map->actualmap == 10 && TP_Medieval_Jovani_bool == true)
+	if (app->map->actualmap == 10 && TP_Medieval_6_bool == true)
 	{
 		app->sceneGameplay->LoadMap(11);
 		app->sceneGameplay->player->Teleport(632, 700);
+		app->physics->DestroyBody(TP_Medieval_6);
+		TP_Medieval_6 = NULL;
+		app->physics->DestroyBody(TP_Medieval_3);
+		TP_Medieval_3 = NULL;
 
 		TP_Medieval_1_bool = false;
 		TP_Medieval_2_bool = false;

@@ -38,6 +38,7 @@ public:
 	bool TP_Medieval_3_bool;
 	bool TP_Medieval_Jovani_bool;
 	bool TP_Medieval_5_bool;
+	bool TP_Medieval_6_bool;
 	bool TP_Medieval_Final_bool;
 
 	//Volver entre mapas
