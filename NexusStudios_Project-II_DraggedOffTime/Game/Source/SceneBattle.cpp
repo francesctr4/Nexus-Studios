@@ -236,7 +236,7 @@ bool SceneBattle::Update(float dt)
 				}
 				else if (action_selected == 0)
 				{
-					action_selected = 5;
+					action_selected = 6;
 				}
 
 				app->audio->PlayFx(selectFX);
@@ -248,11 +248,11 @@ bool SceneBattle::Update(float dt)
 
 				
 
-				if (action_selected != 5)
+				if (action_selected != 6)
 				{
 					action_selected++;
 				}
-				else if (action_selected == 5)
+				else if (action_selected == 6)
 				{
 					action_selected = 0;
 				}
@@ -284,17 +284,30 @@ bool SceneBattle::Update(float dt)
 					qte = true;
 					app->audio->PlayFx(clawsFX);
 					break;
-				case 2: //Heal
+				case 2: //Swap Weapons
+					
+
+
+
+
+					break;
+
+				case 3: //Heal
+
 					m_players[selected_player].HP = app->combatManager->UseItem(m_players[selected_player].HP);
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
 					app->audio->PlayFx(healFX);
 					break;
-				case 3: //Habilidades (TODO)
+
+				case 4: //Habilidades (TODO)
+
 					app->combatManager->SkillAttack(selected_player, m_players[selected_player].DMG, m_players[selected_player].DEF);
 					app->audio->PlayFx(skillFX);
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
 					break;
-				case 4: //Run away
+
+				case 5: //Run away
+
 					if (app->combatManager->Run())
 					{
 						//Transition to Gameplay Screen
@@ -303,7 +316,7 @@ bool SceneBattle::Update(float dt)
 						enableMusic = true;
 						app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
 						app->combatManager->playerTurn = !app->combatManager->playerTurn;
-						
+
 					}
 					else
 					{
@@ -312,10 +325,13 @@ bool SceneBattle::Update(float dt)
 						app->combatManager->playerTurn = !app->combatManager->playerTurn;
 					}
 					break;
-				case 5:
+
+				case 6:
+
 					selected_player = app->combatManager->ChangeParty(selected_player);
 					app->audio->PlayFx(app->sceneGameplay->player->changeFX);
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
+
 					break;
 				}
 				
