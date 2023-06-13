@@ -96,7 +96,7 @@ bool SceneBattle::Start()
 	playerSelection = app->tex->Load("Assets/UI/PlayerSelector.png");
 	q_sprite = app->tex->Load("Assets/Textures/q.png");
 	dialogue = app->tex->Load("Assets/Textures/dialogue-UI.png");
-	MyTurn= app->tex->Load("Assets/Textures/Battle/PlayerTurn.png");
+	MyTurn = app->tex->Load("Assets/Textures/Battle/PlayerTurn.png");
 	EnemyTurn = app->tex->Load("Assets/Textures/Battle/EnemyTurn.png");
 
 	//Load audios
