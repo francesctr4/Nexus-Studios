@@ -67,7 +67,7 @@ periods and reuniting all the temporal parts of the protagonist.
 	X: Move between scenes / Move between dialogues or comic / Interact with the UI
  	DPAD: Move in the UI
   	Share: Pause Menu
-       	Options: Open Feature Menu
+   	Options: Open Feature Menu
 	L1: Change weapon
 
   	LEFT JOYSTICK: Move Player
