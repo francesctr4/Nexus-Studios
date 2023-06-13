@@ -12305,6 +12305,8 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="251"/>
+   <tile gid="252"/>
    <tile/>
    <tile/>
    <tile/>
@@ -12383,6 +12385,8 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="276"/>
+   <tile gid="277"/>
    <tile/>
    <tile/>
    <tile/>
@@ -12461,12 +12465,8 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="301"/>
+   <tile gid="302"/>
    <tile/>
    <tile/>
    <tile/>
