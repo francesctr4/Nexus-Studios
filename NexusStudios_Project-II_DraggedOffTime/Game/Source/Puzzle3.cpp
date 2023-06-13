@@ -1,6 +1,7 @@
 #include "Puzzle3.h"
 #include "Textures.h"
 #include "App.h"
+#include "Map.h"
 #include "Render.h"
 #include "Audio.h"
 
@@ -46,7 +47,7 @@ void Puzzle3::Load()
 
 void Puzzle3::Update()
 {
-
+	
 	if (!completed) {
 
 		currentAnimationCoin->Update();

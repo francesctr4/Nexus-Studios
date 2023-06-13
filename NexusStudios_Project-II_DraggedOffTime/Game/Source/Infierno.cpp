@@ -853,6 +853,9 @@ void Infierno::TeleportInfierno()
 		TP_Infierno_3 = NULL;
 		app->physics->DestroyBody(TP_Infierno_4);
 		TP_Infierno_4 = NULL;
+		app->physics->DestroyBody(TP_Infierno_2_Reversa);
+		TP_Infierno_2_Reversa = NULL;
+		
 		app->sceneGameplay->player->Teleport(1255, 106);
 
 		Tp_1 = false;
@@ -1008,6 +1011,7 @@ void Infierno::TeleportInfierno()
 		Tp_Puzzle_3 = false;
 		Tp_3 = false;
 		Tp_4 = false;
+		Tp_5 = false;
 		Tp_Jovani = false;
 	}
 

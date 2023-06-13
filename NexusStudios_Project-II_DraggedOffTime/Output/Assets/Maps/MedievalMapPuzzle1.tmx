@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="5">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="9">
  <tileset firstgid="1" name="Tiles" tilewidth="16" tileheight="16" tilecount="625" columns="25">
   <image source="Tiles.png" width="400" height="400"/>
   <wangsets>
@@ -8891,9 +8891,9 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="755"/>
-   <tile gid="756"/>
-   <tile gid="757"/>
+   <tile gid="8"/>
+   <tile gid="753"/>
+   <tile gid="754"/>
    <tile/>
    <tile/>
    <tile/>
@@ -8971,9 +8971,9 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="780"/>
-   <tile gid="781"/>
-   <tile gid="782"/>
+   <tile gid="33"/>
+   <tile gid="778"/>
+   <tile gid="779"/>
    <tile/>
    <tile/>
    <tile/>
@@ -9045,16 +9045,22 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="180"/>
    <tile/>
    <tile/>
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="180"/>
    <tile/>
    <tile/>
+   <tile gid="180"/>
+   <tile gid="180"/>
+   <tile gid="180"/>
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="180"/>
    <tile/>
    <tile/>
    <tile/>
@@ -9116,32 +9122,26 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="84"/>
+   <tile gid="230"/>
+   <tile gid="84"/>
+   <tile gid="205"/>
+   <tile gid="230"/>
+   <tile gid="255"/>
+   <tile gid="230"/>
+   <tile gid="255"/>
+   <tile gid="230"/>
+   <tile gid="205"/>
+   <tile gid="230"/>
+   <tile gid="230"/>
+   <tile gid="205"/>
+   <tile gid="205"/>
+   <tile gid="205"/>
+   <tile gid="230"/>
+   <tile gid="84"/>
+   <tile gid="84"/>
+   <tile gid="205"/>
+   <tile gid="230"/>
    <tile/>
    <tile/>
    <tile/>
@@ -10860,6 +10860,18 @@
   </properties>
   <object id="1" x="480" y="32">
    <polygon points="0,0 240,0 240,-32 -480,-32 -480,688 800,688 800,-32 304,-32 304,0 432,0 432,16 464,16 480,16 480,64 464,64 464,80 480,80 480,112 464,112 464,160 480,160 480,192 464,192 464,208 480,208 479.998,264.982 415.998,264.982 416,288 320,288 320,560 256,560 256,576 224,576 224,592 192,592 192,608 160,608 160,624 128,624 128,640 64,640 64,656 48,656 48,672 -160,672 -160,448 -128,448 -129,415.333 -96.697,413.03 -96.611,379.208 -58.8485,379.364 -58.7538,413.654 -1,413.667"/>
+  </object>
+  <object id="5" x="733.25" y="383">
+   <polygon points="0,0 0.25,-13.25 -123.75,-13.25 -124.75,-0.25"/>
+  </object>
+  <object id="6" x="769.25" y="368.5">
+   <polygon points="0,0 0,14.5 30.75,14.75 30.25,-2.25"/>
+  </object>
+  <object id="7" x="498" y="368.5">
+   <polygon points="0,0 -0.5,13 12.75,13.25 13.25,-0.75"/>
+  </object>
+  <object id="8" x="528.75" y="367.75">
+   <polygon points="0,0 61.25,0 60.25,15 -0.5,14.25"/>
   </object>
  </objectgroup>
 </map>

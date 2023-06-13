@@ -2,6 +2,7 @@
 #include "Textures.h"
 #include "App.h"
 #include "Render.h"
+#include "Map.h"
 #include "Audio.h"
 
 Puzzle1::Puzzle1()
@@ -70,6 +71,7 @@ void Puzzle1::Update()
 
 			app->audio->PlayFx(correct);
 			completed = true;
+			app->map->actualmap = 24;
 
 		}
 		else {

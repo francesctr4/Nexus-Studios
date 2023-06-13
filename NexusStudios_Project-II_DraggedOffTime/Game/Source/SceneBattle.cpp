@@ -1359,7 +1359,7 @@ bool SceneBattle::PostUpdate()
 		}
 		turn = 0;
 		app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
-
+		
 	}
 
 	//QTE - Mostrar algo cuando es buen momento para volver a pulsar la Q

@@ -89,7 +89,9 @@
 	<mapfile_Infernal3 path="Assets/Maps/InfernalMap3.tmx"/>
 	<mapfile_Infernal4 path="Assets/Maps/InfernalMap4.tmx"/>
 	<mapfile_Infernal5 path="Assets/Maps/MapaInfernalBoss.tmx"/>
+
 	<mapfile_Infernal6 path="Assets/Maps/InfernalMapPuzzle1.tmx"/>
+	<mapfile_Infernal11 path="Assets/Maps/InfernalMapChange_1.tmx"/>
 	<mapfile_Infernal7 path="Assets/Maps/InfernalMapPuzzle2.tmx"/>
 	<mapfile_Infernal8 path="Assets/Maps/InfernalMapPuzzle3.tmx"/>
 	<mapfile_Infernal9 path="Assets/Maps/InfernalMapJovani.tmx"/>

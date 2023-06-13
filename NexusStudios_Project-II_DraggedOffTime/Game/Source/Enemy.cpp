@@ -185,15 +185,10 @@ bool Enemy::Update()
 		app->fadeToBlack->Fade(reinterpret_cast<Module*>(app->sceneGameplay), reinterpret_cast<Module*>(app->sceneBattle));
 		//app->sceneGameplay->player->Teleport(position.x,position.y + 50);
 		playerInteraction = false;
-		Death();
-
-	}
-
-	if (app->input->GetKey(SDL_SCANCODE_9) == KEY_DOWN)
-	{
+		app->sceneGameplay->player->Teleport(position.x + 17, position.y + 45);
 		Death();
 	}
-	
+
 	
 	return true;
 
@@ -255,8 +250,7 @@ void Enemy::OnCollision(PhysBody* physA, PhysBody* physB) {
 
 void Enemy::OnCollisionEnd(PhysBody* physA, PhysBody* physB) {
 
-	playerInteraction = false;
-
+ 	playerInteraction = false;
 }
 
 void Enemy::Death() 

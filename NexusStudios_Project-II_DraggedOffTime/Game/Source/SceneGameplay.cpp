@@ -183,7 +183,7 @@ bool SceneGameplay::Update(float dt)
 	//Ya va
 
 	// Puzzles
-	if (app->map->actualmap == 6) {
+	if (app->map->actualmap == 19) {
 
 		if (puzzle3.canLoad) {
 
@@ -194,14 +194,14 @@ bool SceneGameplay::Update(float dt)
 		puzzle3.Update();
 		puzzle3.canClean = true;
 	}
-	else if (puzzle3.canClean == true && app->map->actualmap != 6) {
+	else if (puzzle3.canClean == true && app->map->actualmap != 19) {
 
 		puzzle3.canClean = false;
 		puzzle3.canLoad = true;
 	}
 
 
-	if (app->map->actualmap == 7) {
+	if (app->map->actualmap == 20) {
 
 		if (puzzle2.canLoad) {
 
@@ -212,7 +212,7 @@ bool SceneGameplay::Update(float dt)
 		puzzle2.Update();
 		puzzle2.canClean = true;
 	} 
-	else if(puzzle2.canClean == true && app->map->actualmap != 7){
+	else if(puzzle2.canClean == true && app->map->actualmap != 20){
 
 		puzzle2.CleanUp();
 		puzzle2.canClean = false;
@@ -220,7 +220,7 @@ bool SceneGameplay::Update(float dt)
 	}
 
 
-	if (app->map->actualmap == 8) {
+	if (app->map->actualmap == 21 ) {
 
 		if (puzzle1.canLoad) {
 
@@ -231,7 +231,7 @@ bool SceneGameplay::Update(float dt)
 		puzzle1.Update();
 		puzzle1.canClean = true;
 	}
-	else if (puzzle1.canClean == true && app->map->actualmap != 8) {
+	else if (puzzle1.canClean == true && app->map->actualmap != 21) {
 
 		puzzle1.CleanUp();
 		puzzle1.canClean = false;
