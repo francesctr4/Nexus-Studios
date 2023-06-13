@@ -280,6 +280,9 @@ public:
 	float eyebull_attack_speed = 0.4f;
 
 	bool isAttacking = false;
+	bool resetAnim = false;
+
+	Timer timerWeaponAttack;
 
 private:
 

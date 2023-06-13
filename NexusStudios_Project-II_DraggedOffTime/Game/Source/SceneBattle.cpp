@@ -549,8 +549,14 @@ bool SceneBattle::Update(float dt)
 					app->audio->PlayFx(fx_sword_hit);
 					app->combatManager->playerTurn = !app->combatManager->playerTurn;
 					app->audio->PlayFx(fx_sword_hit);
-					
+
 					isAttacking = true;
+
+					resetAnim = true;
+
+					timerWeaponAttack.Start();
+
+					//fallenBlade_attack.Reset();
 
 					break;
 				case 1:	//Quick time event attack (TODO)
@@ -1069,13 +1075,18 @@ bool SceneBattle::Update(float dt)
 
 		if (isAttacking) {
 
-			if (currentAnimationWeapon->HasFinished()) {
-				
-				isAttacking = false;
-			}
-			else {
+			if (resetAnim) {
 
-				currentAnimationWeapon = &fallenBlade_attack;
+				fallenBlade_attack.Reset();
+				resetAnim = false;
+
+			}
+
+			currentAnimationWeapon = &fallenBlade_attack;
+
+			if (timerWeaponAttack.ReadMSec() > 550) {
+
+				isAttacking = false;
 
 			}
 
