@@ -160,7 +160,7 @@ public:
 	float rusticStoneAxe_attack_speed = 0.4f;
 
 	Animation tribalLance_idle;
-	int tribalLance_idle_width = 288;
+	int tribalLance_idle_width = 192;
 	int tribalLance_idle_height = 288;
 	Animation tribalLance_attack;
 	int tribalLance_attack_width = 480;
