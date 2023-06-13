@@ -48,26 +48,26 @@ bool Enemy::Awake() {
 	if (SString(parameters.attribute("type").as_string()) == SString("damage")) {
 
 		etype = EnemyType::DAMAGE;
-		hp = 5;
-		atk = 10;
-		def = 5;
+		hp = 80;
+		atk = 20;
+		def = 10;
 
 	}
 
 	if (SString(parameters.attribute("type").as_string()) == SString("support")) {
 
 		etype = EnemyType::SUPPORT;
-		hp = 10;
-		atk = 5;
-		def = 5;
+		hp = 80;
+		atk = 20;
+		def = 10;
 
 	}
 		
 	if (SString(parameters.attribute("type").as_string()) == SString("tank")) {
 
 		etype = EnemyType::TANK;
-		hp = 5;
-		atk = 5;
+		hp = 80;
+		atk = 20;
 		def = 10;
 	}
 

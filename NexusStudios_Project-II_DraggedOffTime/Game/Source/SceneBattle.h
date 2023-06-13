@@ -170,6 +170,10 @@ private:
 
 	SDL_Texture* dialogue = nullptr;
 
+	SDL_Texture* MyTurn = nullptr;
+
+	SDL_Texture* EnemyTurn = nullptr;
+
 	int action_selected = 0; 
 
 	//GUI

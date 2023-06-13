@@ -96,6 +96,8 @@ bool SceneBattle::Start()
 	playerSelection = app->tex->Load("Assets/UI/PlayerSelector.png");
 	q_sprite = app->tex->Load("Assets/Textures/q.png");
 	dialogue = app->tex->Load("Assets/Textures/dialogue-UI.png");
+	MyTurn= app->tex->Load("Assets/Textures/Battle/PlayerTurn.png");
+	EnemyTurn = app->tex->Load("Assets/Textures/Battle/EnemyTurn.png");
 
 	//Load audios
 	fx_sword_hit = app->audio->LoadFx("Assets/Audio/FX/SceneBattle/SwordFX.wav");
@@ -654,7 +656,6 @@ bool SceneBattle::Update(float dt)
 		}
 	}
 	
-	
 	//SDL_Rect rect = { 0,0, 1280, 720 };
 	//app->render->DrawRectangle(rect, 0, 0, 255, 150);
 
@@ -1062,6 +1063,14 @@ bool SceneBattle::PostUpdate()
 		app->render->DrawTexture(RArrow, 304, 318, &arrow2);
 	}
 
+	if (app->combatManager->playerTurn) {
+
+		app->render->DrawTexture(MyTurn, 576, 31);
+	}
+	else {
+
+		app->render->DrawTexture(EnemyTurn, 576, 31);
+	}
 
 	return true;
 }

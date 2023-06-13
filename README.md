@@ -2,7 +2,7 @@
 
 ### Repository Link: [Nexus Studios](https://github.com/francesctr4/Nexus-Studios)
 
-### Current release version: Alpha (v0.8.0)
+### Current release version: Gold (v1.0.0)
 
 ## Team Members
 
@@ -62,11 +62,21 @@ periods and reuniting all the temporal parts of the protagonist.
 
 ## Game controls
 
-### GAMEPAD ###
+### GAMEPAD (PS4) ###
 	
-	[_Work in progress_]
-	
-	The gamepad is supported but all the controls have not been adapted yet.
+	X: Move between scenes / Move between dialogues or comic / Interact with the UI
+ 	DPAD: Move in the UI
+  	Share: Pause Menu
+   	Options: Open Feature Menu
+	L1: Change weapon
+
+  	LEFT JOYSTICK: Move Player
+   	R3 (hold): Run
+    
+     	O: Change Player
+     	Square: Interact with NPCs
+    	Triangle: Change between Dialogue Options
+      	
 
 ### MOUSE ###
 
@@ -75,8 +85,12 @@ periods and reuniting all the temporal parts of the protagonist.
 ### KEYBOARD ###
 	
 	WASD: Move the player around
+ 	SHIFT (hold): Run
+  	C: Change Player
+   
 	E: Talk with the NPCs
 	T: Change between Dialogue Options
+ 
 	SPACE in Gameplay: Skip dialogue
 	I: Open Feature Menu / Close Feature Menu
 	ESC: Open Pause / Close Pause
@@ -85,8 +99,8 @@ periods and reuniting all the temporal parts of the protagonist.
 	Arrows in Battle: Change between actions
 	ENTER in Battle: Exit battle (force)
 	
-	F10: God mode --> Enables Debug Keys
-	ENTER: Next scene
+	ENTER: Next scene (Debug)
+ 	F10: God mode --> Enables Debug Keys
 
 ### DEBUG KEYS (F10) ###
 
