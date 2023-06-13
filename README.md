@@ -71,11 +71,11 @@ periods and reuniting all the temporal parts of the protagonist.
 	L1: Change weapon
 
   	LEFT JOYSTICK: Move Player
-    	R3 (hold): Run
+   	R3 (hold): Run
      
      	O: Change Player
-     	Square: Interact with NPCs
-      	Triangle: Change between Dialogue Options
+      	Square: Interact with NPCs
+       	Triangle: Change between Dialogue Options
       	
 
 ### MOUSE ###
