@@ -14457,9 +14457,5 @@
   <object id="5" x="672" y="0">
    <polygon points="0,0 0,128 80,128 80,144 160,144 160,256 608,256 608,0"/>
   </object>
-  <object id="7" x="607.75" y="0.25" width="64" height="4.75"/>
-  <object id="8" x="608.75" y="720.75">
-   <polygon points="0,0 0,-4 62.5,-5 62.75,-1"/>
-  </object>
  </objectgroup>
 </map>

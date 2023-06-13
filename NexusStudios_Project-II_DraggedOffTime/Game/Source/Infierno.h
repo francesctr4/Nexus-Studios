@@ -84,7 +84,6 @@ public:
 	PhysBody* Tp_Puzzle2;
 	PhysBody* Tp_Puzzle3;
 
-	bool Tp_0 = true;
 	bool Tp_1 = true;
 	bool Tp_2 = true;
 	bool Tp_3 = true;

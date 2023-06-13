@@ -144,7 +144,7 @@ void Prehistoria::TeleportPrehistoria()
 		app->sceneGameplay->LoadMap(1);
 		app->physics->DestroyBody(TP_Prehistoria_Final);
 		TP_Prehistoria_Final = NULL;
-		app->sceneGameplay->player->Teleport(317, 700);
+		app->sceneGameplay->player->Teleport(650, 700);
 		TP_Prehistoria_1_bool = false;
 		TP_Prehistoria_2_bool = false;
 		TP_Prehistoria_3_bool = false;

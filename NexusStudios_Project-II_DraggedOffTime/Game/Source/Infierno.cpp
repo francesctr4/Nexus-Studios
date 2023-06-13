@@ -187,6 +187,7 @@ void Infierno::Update()
 					medieval = false;
 					infierno = false;
 					timerActivated = false;
+					app->sceneGameplay->player->Teleport(640, 360);
 				}
 				else if (app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN) {
 
@@ -197,6 +198,7 @@ void Infierno::Update()
 					medieval = false;
 					infierno = false;
 					timerActivated = false;
+					app->sceneGameplay->player->Teleport(640, 440);
 				}
 				else if (app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN) {
 
@@ -207,6 +209,7 @@ void Infierno::Update()
 					medieval = false;
 					infierno = false;
 					timerActivated = false;
+					app->sceneGameplay->player->Teleport(640, 360);
 				}
 				else if (app->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN) {
 
@@ -217,6 +220,7 @@ void Infierno::Update()
 					medieval = false;
 					infierno = false;
 					timerActivated = false;
+					app->sceneGameplay->player->Teleport(640, 390);
 				}
 				else if (app->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN) {
 
@@ -227,6 +231,7 @@ void Infierno::Update()
 					medieval = false;
 					infierno = false;
 					timerActivated = false;
+					app->sceneGameplay->player->Teleport(500, 300);
 				}
 				else if (app->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN) {
 
@@ -237,6 +242,7 @@ void Infierno::Update()
 					medieval = false;
 					infierno = false;
 					timerActivated = false;
+					app->sceneGameplay->player->Teleport(640, 360);
 				}
 
 			}
@@ -251,7 +257,43 @@ void Infierno::Update()
 					medieval = false;
 					infierno = false;
 					timerActivated = false;
-					app->sceneGameplay->player->Teleport(150, 430);
+					app->sceneGameplay->player->Teleport(640, 360);
+					
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_1);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_1 = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_1_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_1_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_2_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_2_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_2);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_2 = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_Jovani_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_Jovani_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_Jovani);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_Jovani = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_3);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_3 = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_3_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_3_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_5_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_5_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_5);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_5 = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_Final_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_Final_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_Final);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_Final = NULL;
 
 				}
 				else if (app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN) {
@@ -263,6 +305,43 @@ void Infierno::Update()
 					medieval = false;
 					infierno = false;
 					timerActivated = false;
+					app->sceneGameplay->player->Teleport(640, 300);
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_1);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_1 = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_1_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_1_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_2_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_2_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_2);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_2 = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_Jovani_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_Jovani_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_Jovani);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_Jovani = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_3);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_3 = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_3_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_3_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_5_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_5_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_5);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_5 = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_Final_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_Final_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_Final);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_Final = NULL;
 				}
 				else if (app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN) {
 
@@ -273,6 +352,43 @@ void Infierno::Update()
 					medieval = false;
 					infierno = false;
 					timerActivated = false;
+					app->sceneGameplay->player->Teleport(640, 360);
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_1);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_1 = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_1_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_1_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_2_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_2_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_2);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_2 = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_Jovani_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_Jovani_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_Jovani);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_Jovani = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_3);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_3 = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_3_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_3_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_5_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_5_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_5);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_5 = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_Final_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_Final_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_Final);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_Final = NULL;
 				}
 				else if (app->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN) {
 
@@ -283,6 +399,43 @@ void Infierno::Update()
 					medieval = false;
 					infierno = false;
 					timerActivated = false;
+					app->sceneGameplay->player->Teleport(640, 360);
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_1);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_1 = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_1_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_1_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_2_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_2_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_2);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_2 = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_Jovani_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_Jovani_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_Jovani);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_Jovani = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_3);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_3 = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_3_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_3_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_5_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_5_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_5);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_5 = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_Final_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_Final_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_Final);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_Final = NULL;
 				}
 				else if (app->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN) {
 
@@ -293,6 +446,44 @@ void Infierno::Update()
 					medieval = false;
 					infierno = false;
 					timerActivated = false;
+					app->sceneGameplay->player->Teleport(640, 360);
+
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_1);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_1 = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_1_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_1_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_2_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_2_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_2);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_2 = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_Jovani_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_Jovani_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_Jovani);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_Jovani = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_3);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_3 = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_3_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_3_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_5_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_5_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_5);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_5 = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_Final_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_Final_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_Final);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_Final = NULL;
 				}
 				else if (app->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN) {
 
@@ -303,6 +494,43 @@ void Infierno::Update()
 					medieval = false;
 					infierno = false;
 					timerActivated = false;
+					app->sceneGameplay->player->Teleport(640, 360);
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_1);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_1 = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_1_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_1_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_2_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_2_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_2);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_2 = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_Jovani_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_Jovani_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_Jovani);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_Jovani = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_3);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_3 = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_3_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_3_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_5_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_5_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_5);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_5 = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_Final_Reversa);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_Final_Reversa = NULL;
+
+					app->physics->DestroyBody(app->sceneGameplay->mapa_Medieval.TP_Medieval_Final);
+					app->sceneGameplay->mapa_Medieval.TP_Medieval_Final = NULL;
 				}
 
 			}
@@ -316,7 +544,7 @@ void Infierno::Update()
 					prehistoria = false;
 					medieval = false;
 					infierno = false;
-					app->sceneGameplay->player->Teleport(650, 700);
+					app->sceneGameplay->player->Teleport(640, 360);
 					timerActivated = false;
 				}
 				else if (app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN) {
@@ -327,7 +555,7 @@ void Infierno::Update()
 					prehistoria = false;
 					medieval = false;
 					infierno = false;
-					app->sceneGameplay->player->Teleport(1265, 560);
+					app->sceneGameplay->player->Teleport(640, 360);
 					timerActivated = false;
 				}
 				else if (app->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN) {
@@ -338,7 +566,7 @@ void Infierno::Update()
 					prehistoria = false;
 					medieval = false;
 					infierno = false;
-					app->sceneGameplay->player->Teleport(1255, 106);
+					app->sceneGameplay->player->Teleport(640, 320);
 					timerActivated = false;
 				}
 				else if (app->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN) {
@@ -349,7 +577,7 @@ void Infierno::Update()
 					prehistoria = false;
 					medieval = false;
 					infierno = false;
-					app->sceneGameplay->player->Teleport(10, 300);
+					app->sceneGameplay->player->Teleport(640, 360);
 					timerActivated = false;
 				}
 				else if (app->input->GetKey(SDL_SCANCODE_4) == KEY_DOWN) {
@@ -360,7 +588,7 @@ void Infierno::Update()
 					prehistoria = false;
 					medieval = false;
 					infierno = false;
-					app->sceneGameplay->player->Teleport(600, 400);
+					app->sceneGameplay->player->Teleport(640, 360);
 					timerActivated = false;
 				}
 				else if (app->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN) {
@@ -371,7 +599,7 @@ void Infierno::Update()
 					prehistoria = false;
 					medieval = false;
 					infierno = false;
-					app->sceneGameplay->player->Teleport(640, 700);
+					app->sceneGameplay->player->Teleport(640, 340);
 					timerActivated = false;
 				}
 				else if (app->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN) {
@@ -382,7 +610,7 @@ void Infierno::Update()
 					prehistoria = false;
 					medieval = false;
 					infierno = false;
-					app->sceneGameplay->player->Teleport(640, 700);
+					app->sceneGameplay->player->Teleport(600, 360);
 					timerActivated = false;
 				}
 				else if (app->input->GetKey(SDL_SCANCODE_7) == KEY_DOWN) {
@@ -393,7 +621,7 @@ void Infierno::Update()
 					prehistoria = false;
 					medieval = false;
 					infierno = false;
-					app->sceneGameplay->player->Teleport(640, 700);
+					app->sceneGameplay->player->Teleport(640, 360);
 					timerActivated = false;
 				}
 				else if (app->input->GetKey(SDL_SCANCODE_8) == KEY_DOWN) {
@@ -404,7 +632,7 @@ void Infierno::Update()
 					prehistoria = false;
 					medieval = false;
 					infierno = false;
-					app->sceneGameplay->player->Teleport(650, 700);
+					app->sceneGameplay->player->Teleport(640, 320);
 					timerActivated = false;
 				}
 				else if (app->input->GetKey(SDL_SCANCODE_9) == KEY_DOWN) {
@@ -415,7 +643,7 @@ void Infierno::Update()
 					prehistoria = false;
 					medieval = false;
 					infierno = false;
-					app->sceneGameplay->player->Teleport(650, 700);
+					app->sceneGameplay->player->Teleport(640, 360);
 					timerActivated = false;
 				}
 
@@ -423,12 +651,72 @@ void Infierno::Update()
 		}
 	}
 	// Change all the sensors on the different maps
-	if (app->map->actualmap == 18)
+	if (app->map->actualmap == 14)
 	{	
-		if(TP_Infierno_5 == NULL)
-		TP_Infierno_5 = app->physics->CreateRectangleSensor(950, 81, 22, 42, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
-		Tp_Boss = true;
+		if (TP_Infierno_1 == NULL)
+		{
+			TP_Infierno_1 = app->physics->CreateRectangleSensor(-5, 530, 4, 110, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
+			Tp_1 = true;
+		}
 	}
+	if (app->map->actualmap == 15)
+	{
+		if (TP_Infierno_2 == NULL)
+		{
+			TP_Infierno_2 = app->physics->CreateRectangleSensor(-10, 340, 4, 95, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
+			Tp_2 = true;
+		}
+	}
+	if (app->map->actualmap == 16)
+	{
+		if (Tp_Puzzle1 == NULL)
+		{
+			Tp_Puzzle1 = app->physics->CreateRectangleSensor(1300, 585, 6, 108, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
+			Tp_Puzzle_1 = true;
+		}
+	}
+	if (app->map->actualmap == 19)
+	{
+		if (Tp_Puzzle2 == NULL)
+		{
+			Tp_Puzzle2 = app->physics->CreateRectangleSensor(1300, 200, 6, 108, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
+			Tp_Puzzle_2 = true;
+		}
+	}
+	if (app->map->actualmap == 20)
+	{
+		if (Tp_Puzzle3 == NULL)
+		{
+			Tp_Puzzle3 = app->physics->CreateRectangleSensor(630, -10, 60, 5, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
+			Tp_Puzzle_3 = true;
+		}
+	}
+	if (app->map->actualmap == 21)
+	{
+		if (TP_Infierno_3 == NULL)
+		{
+			TP_Infierno_3 = app->physics->CreateRectangleSensor(630, -10, 60, 5, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
+			Tp_3 = true;
+		}
+	}
+	if (app->map->actualmap == 17)
+	{
+		if (TP_Infierno_4 == NULL)
+		{
+			TP_Infierno_4 = app->physics->CreateRectangleSensor(630, -10, 60, 5, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
+			Tp_4 = true;
+		}
+	}
+	if (app->map->actualmap == 17)
+	{
+		if (TP_Infierno_Jovani == NULL)
+		{
+			TP_Infierno_Jovani = app->physics->CreateRectangleSensor(1300, 270, 5, 100, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO_JOVANI);
+			Tp_Jovani = true;
+		}
+	}
+
+	//Reversa
 }
 
 void Infierno::CleanUp()
@@ -438,19 +726,143 @@ void Infierno::CleanUp()
 
 void Infierno::TeleportInfierno()
 {
-	if (app->map->actualmap == 18 && Tp_Boss == true)
+	if (app->map->actualmap == 14 && Tp_1 == true)
 	{
-		app->sceneGameplay->LoadMap(1);
-		app->physics->DestroyBody(TP_Infierno_5);
-		TP_Infierno_5 = NULL;
-		app->sceneGameplay->lobbies.FinalPrehistoria = true;
+		app->sceneGameplay->LoadMap(15);
+		app->physics->DestroyBody(TP_Infierno_1);
+		TP_Infierno_1 = NULL;
+		app->sceneGameplay->player->Teleport(1265, 560);
+
+		Tp_1 = false;
+		Tp_2 = false;
+		Tp_Puzzle_1 = false;
+		Tp_Puzzle_2 = false;
+		Tp_Puzzle_3 = false;
+		Tp_3 = false;
+		Tp_4 = false;
+		Tp_Jovani = false;
 	}
+	if (app->map->actualmap == 15 && Tp_2 == true)
+	{
+		app->sceneGameplay->LoadMap(16);
+		app->physics->DestroyBody(TP_Infierno_2);
+		TP_Infierno_2 = NULL;
+		app->sceneGameplay->player->Teleport(1255, 106);
+
+		Tp_1 = false;
+		Tp_2 = false;
+		Tp_Puzzle_1 = false;
+		Tp_Puzzle_2 = false;
+		Tp_Puzzle_3 = false;
+		Tp_3 = false;
+		Tp_4 = false;
+		Tp_Jovani = false;
+	}
+	if (app->map->actualmap == 16 && Tp_Puzzle_1 == true)
+	{
+		app->sceneGameplay->LoadMap(19);
+		app->physics->DestroyBody(Tp_Puzzle1);
+		Tp_Puzzle1 = NULL;
+		app->sceneGameplay->player->Teleport(20, 280);
+
+		Tp_1 = false;
+		Tp_2 = false;
+		Tp_Puzzle_1 = false;
+		Tp_Puzzle_2 = false;
+		Tp_Puzzle_3 = false;
+		Tp_3 = false;
+		Tp_4 = false;
+		Tp_Jovani = false;
+	}
+	if (app->map->actualmap == 19 && Tp_Puzzle_2 == true)
+	{
+		app->sceneGameplay->LoadMap(20);
+		app->physics->DestroyBody(Tp_Puzzle2);
+		Tp_Puzzle2 = NULL;
+		app->sceneGameplay->player->Teleport(20,575);
+
+		Tp_1 = false;
+		Tp_2 = false;
+		Tp_Puzzle_1 = false;
+		Tp_Puzzle_2 = false;
+		Tp_Puzzle_3 = false;
+		Tp_3 = false;
+		Tp_4 = false;
+		Tp_Jovani = false;
+	}
+	if (app->map->actualmap == 20 && Tp_Puzzle_3 == true)
+	{
+		app->sceneGameplay->LoadMap(21);
+		app->physics->DestroyBody(Tp_Puzzle3);
+		Tp_Puzzle3 = NULL;
+		app->sceneGameplay->player->Teleport(640, 675);
+
+		Tp_1 = false;
+		Tp_2 = false;
+		Tp_Puzzle_1 = false;
+		Tp_Puzzle_2 = false;
+		Tp_Puzzle_3 = false;
+		Tp_3 = false;
+		Tp_4 = false;
+		Tp_Jovani = false;
+	}
+	if (app->map->actualmap == 21 && Tp_3 == true)
+	{
+		app->sceneGameplay->LoadMap(17);
+		app->physics->DestroyBody(TP_Infierno_3);
+		TP_Infierno_3 = NULL;
+		app->sceneGameplay->player->Teleport(640, 675);
+
+		Tp_1 = false;
+		Tp_2 = false;
+		Tp_Puzzle_1 = false;
+		Tp_Puzzle_2 = false;
+		Tp_Puzzle_3 = false;
+		Tp_3 = false;
+		Tp_4 = false;
+		Tp_Jovani = false;
+	}
+	if (app->map->actualmap == 17 && Tp_4 == true)
+	{
+		app->sceneGameplay->LoadMap(18);
+		app->physics->DestroyBody(TP_Infierno_4);
+		TP_Infierno_4 = NULL;
+		app->sceneGameplay->player->Teleport(640, 675);
+
+		Tp_1 = false;
+		Tp_2 = false;
+		Tp_Puzzle_1 = false;
+		Tp_Puzzle_2 = false;
+		Tp_Puzzle_3 = false;
+		Tp_3 = false;
+		Tp_4 = false;
+		Tp_Jovani = false;
+	}
+
+	
 }
 
 void Infierno::TeleportInfiernoReversa()
 {
+	
 }
 
 void Infierno::TeleportInfiernoJovani()
 {
+	if (app->map->actualmap == 17 && Tp_Jovani == true)
+	{
+		app->sceneGameplay->LoadMap(22);
+		app->physics->DestroyBody(TP_Infierno_Jovani);
+		TP_Infierno_Jovani = NULL;
+		app->sceneGameplay->player->Teleport(10, 200);
+
+		Tp_1 = false;
+		Tp_2 = false;
+		Tp_Puzzle_1 = false;
+		Tp_Puzzle_2 = false;
+		Tp_Puzzle_3 = false;
+		Tp_3 = false;
+		Tp_4 = false;
+		Tp_Jovani = false;
+	}
 }

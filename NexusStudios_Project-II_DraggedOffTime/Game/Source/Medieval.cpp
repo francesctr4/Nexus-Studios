@@ -67,7 +67,7 @@ void Medieval::Update()
 	{
 		if (TP_Medieval_2_Reversa == NULL)
 		{
-			TP_Medieval_2_Reversa = app->physics->CreateRectangleSensor(730, 0, 50, 5, bodyType::KINEMATIC, ColliderType::TELEPORT_MEDIEVAL_REVERS);
+			TP_Medieval_2_Reversa = app->physics->CreateRectangleSensor(740, 0, 75, 5, bodyType::KINEMATIC, ColliderType::TELEPORT_MEDIEVAL_REVERS);
 			TP_Medieval_2_bool_Reversa = true;
 		}
 	}
@@ -222,6 +222,7 @@ void Medieval::TeleportMedieval()
 		TP_Medieval_Jovani = false;
 		TP_Medieval_5 = false;
 		TP_Medieval_Final = false;
+		app->sceneGameplay->lobbies.FinalMedieval = true;
 	}
 }
 
