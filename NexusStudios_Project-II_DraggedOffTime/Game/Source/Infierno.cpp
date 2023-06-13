@@ -671,7 +671,7 @@ void Infierno::Update()
 	{
 		if (Tp_Puzzle1 == NULL)
 		{
-			Tp_Puzzle1 = app->physics->CreateRectangleSensor(1300, 585, 6, 108, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
+			Tp_Puzzle1 = app->physics->CreateRectangleSensor(1290, 625, 6, 108, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
 			Tp_Puzzle_1 = true;
 		}
 	}
@@ -716,7 +716,89 @@ void Infierno::Update()
 		}
 	}
 
+	if (app->map->actualmap == 18)
+	{
+		if (TP_Infierno_5 == NULL)
+		{
+			TP_Infierno_5 = app->physics->CreateRectangleSensor(706, 15, 35, 10, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO);
+			Tp_5 = true;
+		}
+	}
+
 	//Reversa
+	if (app->map->actualmap == 14)
+	{
+		if (TP_Infierno_1_Reversa == NULL)
+		{
+			TP_Infierno_1_Reversa = app->physics->CreateRectangleSensor(632, 740, 100, 5, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO_REVERS);
+			Tp_1_Reversa = true;
+		}
+	}
+	if (app->map->actualmap == 15)
+	{
+		if (TP_Infierno_2_Reversa == NULL)
+		{
+			TP_Infierno_2_Reversa = app->physics->CreateRectangleSensor(1280, 565, 5, 100, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO_REVERS);
+			Tp_2_Reversa = true;
+		}
+	}
+	if (app->map->actualmap == 16)
+	{
+		if (TP_Infierno_3_Reversa == NULL)
+		{
+			TP_Infierno_3_Reversa = app->physics->CreateRectangleSensor(1285, 106, 5, 100, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO_REVERS);
+			Tp_3_Reversa = true;
+		}
+	}
+	if (app->map->actualmap == 19)
+	{
+		if (Tp_Puzzle1_Reversa == NULL)
+		{
+			Tp_Puzzle1_Reversa = app->physics->CreateRectangleSensor(-10, 280, 5, 100, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO_REVERS);
+			Tp_Puzzle_1_Reversa = true;
+		}
+	}
+	if (app->map->actualmap == 20)
+	{
+		if (Tp_Puzzle2_Reversa == NULL)
+		{
+			Tp_Puzzle2_Reversa = app->physics->CreateRectangleSensor(-10, 575, 5, 100, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO_REVERS);
+			Tp_Puzzle_2_Reversa = true;
+		}
+	}
+	if (app->map->actualmap == 21)
+	{
+		if (Tp_Puzzle3_Reversa == NULL)
+		{
+			Tp_Puzzle3_Reversa = app->physics->CreateRectangleSensor(640, 725, 100, 5, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO_REVERS);
+			Tp_Puzzle_3_Reversa = true;
+		}
+	}
+	if (app->map->actualmap == 17)
+	{
+		if (TP_Infierno_4_Reversa == NULL)
+		{
+			TP_Infierno_4_Reversa = app->physics->CreateRectangleSensor(640, 725, 100, 5, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO_REVERS);
+			Tp_4_Reversa = true;
+		}
+	}
+	if (app->map->actualmap == 18)
+	{
+		if (TP_Infierno_5_Reversa == NULL)
+		{
+			TP_Infierno_5_Reversa = app->physics->CreateRectangleSensor(640, 725, 100, 5, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO_REVERS);
+			Tp_5_Reversa = true;
+		}
+	}
+	if (app->map->actualmap == 22)
+	{
+		if (TP_Infierno_Jovani_Reversa == NULL)
+		{
+			TP_Infierno_Jovani_Reversa = app->physics->CreateRectangleSensor(0, 200, 5, 100, bodyType::KINEMATIC, ColliderType::TELEPORT_INFIERNO_REVERS);
+			Tp_Jovani_Reversa = true;
+		}
+	}
+	
 }
 
 void Infierno::CleanUp()
@@ -731,6 +813,18 @@ void Infierno::TeleportInfierno()
 		app->sceneGameplay->LoadMap(15);
 		app->physics->DestroyBody(TP_Infierno_1);
 		TP_Infierno_1 = NULL;
+		app->physics->DestroyBody(TP_Infierno_2);
+		TP_Infierno_2 = NULL;
+		app->physics->DestroyBody(Tp_Puzzle1);
+		Tp_Puzzle1 = NULL;
+		app->physics->DestroyBody(Tp_Puzzle2);
+		Tp_Puzzle2 = NULL;
+		app->physics->DestroyBody(Tp_Puzzle3);
+		Tp_Puzzle3 = NULL;
+		app->physics->DestroyBody(TP_Infierno_3);
+		TP_Infierno_3 = NULL;
+		app->physics->DestroyBody(TP_Infierno_4);
+		TP_Infierno_4 = NULL;
 		app->sceneGameplay->player->Teleport(1265, 560);
 
 		Tp_1 = false;
@@ -745,8 +839,20 @@ void Infierno::TeleportInfierno()
 	if (app->map->actualmap == 15 && Tp_2 == true)
 	{
 		app->sceneGameplay->LoadMap(16);
+		app->physics->DestroyBody(TP_Infierno_1);
+		TP_Infierno_1 = NULL;
 		app->physics->DestroyBody(TP_Infierno_2);
 		TP_Infierno_2 = NULL;
+		app->physics->DestroyBody(Tp_Puzzle1);
+		Tp_Puzzle1 = NULL;
+		app->physics->DestroyBody(Tp_Puzzle2);
+		Tp_Puzzle2 = NULL;
+		app->physics->DestroyBody(Tp_Puzzle3);
+		Tp_Puzzle3 = NULL;
+		app->physics->DestroyBody(TP_Infierno_3);
+		TP_Infierno_3 = NULL;
+		app->physics->DestroyBody(TP_Infierno_4);
+		TP_Infierno_4 = NULL;
 		app->sceneGameplay->player->Teleport(1255, 106);
 
 		Tp_1 = false;
@@ -761,9 +867,21 @@ void Infierno::TeleportInfierno()
 	if (app->map->actualmap == 16 && Tp_Puzzle_1 == true)
 	{
 		app->sceneGameplay->LoadMap(19);
+		app->physics->DestroyBody(TP_Infierno_1);
+		TP_Infierno_1 = NULL;
+		app->physics->DestroyBody(TP_Infierno_2);
+		TP_Infierno_2 = NULL;
 		app->physics->DestroyBody(Tp_Puzzle1);
 		Tp_Puzzle1 = NULL;
-		app->sceneGameplay->player->Teleport(20, 280);
+		app->physics->DestroyBody(Tp_Puzzle2);
+		Tp_Puzzle2 = NULL;
+		app->physics->DestroyBody(Tp_Puzzle3);
+		Tp_Puzzle3 = NULL;
+		app->physics->DestroyBody(TP_Infierno_3);
+		TP_Infierno_3 = NULL;
+		app->physics->DestroyBody(TP_Infierno_4);
+		TP_Infierno_4 = NULL;
+		app->sceneGameplay->player->Teleport(20, 295);
 
 		Tp_1 = false;
 		Tp_2 = false;
@@ -777,8 +895,20 @@ void Infierno::TeleportInfierno()
 	if (app->map->actualmap == 19 && Tp_Puzzle_2 == true)
 	{
 		app->sceneGameplay->LoadMap(20);
+		app->physics->DestroyBody(TP_Infierno_1);
+		TP_Infierno_1 = NULL;
+		app->physics->DestroyBody(TP_Infierno_2);
+		TP_Infierno_2 = NULL;
+		app->physics->DestroyBody(Tp_Puzzle1);
+		Tp_Puzzle1 = NULL;
 		app->physics->DestroyBody(Tp_Puzzle2);
 		Tp_Puzzle2 = NULL;
+		app->physics->DestroyBody(Tp_Puzzle3);
+		Tp_Puzzle3 = NULL;
+		app->physics->DestroyBody(TP_Infierno_3);
+		TP_Infierno_3 = NULL;
+		app->physics->DestroyBody(TP_Infierno_4);
+		TP_Infierno_4 = NULL;
 		app->sceneGameplay->player->Teleport(20,575);
 
 		Tp_1 = false;
@@ -793,8 +923,20 @@ void Infierno::TeleportInfierno()
 	if (app->map->actualmap == 20 && Tp_Puzzle_3 == true)
 	{
 		app->sceneGameplay->LoadMap(21);
+		app->physics->DestroyBody(TP_Infierno_1);
+		TP_Infierno_1 = NULL;
+		app->physics->DestroyBody(TP_Infierno_2);
+		TP_Infierno_2 = NULL;
+		app->physics->DestroyBody(Tp_Puzzle1);
+		Tp_Puzzle1 = NULL;
+		app->physics->DestroyBody(Tp_Puzzle2);
+		Tp_Puzzle2 = NULL;
 		app->physics->DestroyBody(Tp_Puzzle3);
 		Tp_Puzzle3 = NULL;
+		app->physics->DestroyBody(TP_Infierno_3);
+		TP_Infierno_3 = NULL;
+		app->physics->DestroyBody(TP_Infierno_4);
+		TP_Infierno_4 = NULL;
 		app->sceneGameplay->player->Teleport(640, 675);
 
 		Tp_1 = false;
@@ -809,22 +951,18 @@ void Infierno::TeleportInfierno()
 	if (app->map->actualmap == 21 && Tp_3 == true)
 	{
 		app->sceneGameplay->LoadMap(17);
+		app->physics->DestroyBody(TP_Infierno_1);
+		TP_Infierno_1 = NULL;
+		app->physics->DestroyBody(TP_Infierno_2);
+		TP_Infierno_2 = NULL;
+		app->physics->DestroyBody(Tp_Puzzle1);
+		Tp_Puzzle1 = NULL;
+		app->physics->DestroyBody(Tp_Puzzle2);
+		Tp_Puzzle2 = NULL;
+		app->physics->DestroyBody(Tp_Puzzle3);
+		Tp_Puzzle3 = NULL;
 		app->physics->DestroyBody(TP_Infierno_3);
 		TP_Infierno_3 = NULL;
-		app->sceneGameplay->player->Teleport(640, 675);
-
-		Tp_1 = false;
-		Tp_2 = false;
-		Tp_Puzzle_1 = false;
-		Tp_Puzzle_2 = false;
-		Tp_Puzzle_3 = false;
-		Tp_3 = false;
-		Tp_4 = false;
-		Tp_Jovani = false;
-	}
-	if (app->map->actualmap == 17 && Tp_4 == true)
-	{
-		app->sceneGameplay->LoadMap(18);
 		app->physics->DestroyBody(TP_Infierno_4);
 		TP_Infierno_4 = NULL;
 		app->sceneGameplay->player->Teleport(640, 675);
@@ -839,12 +977,419 @@ void Infierno::TeleportInfierno()
 		Tp_Jovani = false;
 	}
 
-	
+	if (app->map->actualmap == 17 && Tp_4 == true)
+	{
+		app->sceneGameplay->LoadMap(18);
+		app->physics->DestroyBody(TP_Infierno_1);
+		TP_Infierno_1 = NULL;
+		app->physics->DestroyBody(TP_Infierno_2);
+		TP_Infierno_2 = NULL;
+		app->physics->DestroyBody(Tp_Puzzle1);
+		Tp_Puzzle1 = NULL;
+		app->physics->DestroyBody(Tp_Puzzle2);
+		Tp_Puzzle2 = NULL;
+		app->physics->DestroyBody(Tp_Puzzle3);
+		Tp_Puzzle3 = NULL;
+		app->physics->DestroyBody(TP_Infierno_3);
+		TP_Infierno_3 = NULL;
+		app->physics->DestroyBody(TP_Infierno_4);
+		TP_Infierno_4 = NULL;
+
+
+		app->physics->DestroyBody(TP_Infierno_Jovani);
+		TP_Infierno_Jovani = NULL;
+
+		app->sceneGameplay->player->Teleport(640, 675);
+
+		Tp_1 = false;
+		Tp_2 = false;
+		Tp_Puzzle_1 = false;
+		Tp_Puzzle_2 = false;
+		Tp_Puzzle_3 = false;
+		Tp_3 = false;
+		Tp_4 = false;
+		Tp_Jovani = false;
+	}
+
+	if (app->map->actualmap == 18 && Tp_5 == true)
+	{
+		app->sceneGameplay->LoadMap(1);
+		app->physics->DestroyBody(TP_Infierno_1);
+		TP_Infierno_1 = NULL;
+		app->physics->DestroyBody(TP_Infierno_2);
+		TP_Infierno_2 = NULL;
+		app->physics->DestroyBody(Tp_Puzzle1);
+		Tp_Puzzle1 = NULL;
+		app->physics->DestroyBody(Tp_Puzzle2);
+		Tp_Puzzle2 = NULL;
+		app->physics->DestroyBody(Tp_Puzzle3);
+		Tp_Puzzle3 = NULL;
+		app->physics->DestroyBody(TP_Infierno_3);
+		TP_Infierno_3 = NULL;
+		app->physics->DestroyBody(TP_Infierno_4);
+		TP_Infierno_4 = NULL;
+		app->physics->DestroyBody(TP_Infierno_5);
+		TP_Infierno_5 = NULL;
+
+		app->physics->DestroyBody(TP_Infierno_1_Reversa);
+		TP_Infierno_1_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_2_Reversa);
+		TP_Infierno_2_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_3_Reversa);
+		TP_Infierno_3_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle1_Reversa);
+		Tp_Puzzle1_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle2_Reversa);
+		Tp_Puzzle2_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle3_Reversa);
+		Tp_Puzzle3_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_4_Reversa);
+		TP_Infierno_4_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_5_Reversa);
+		TP_Infierno_5_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_Jovani_Reversa);
+		TP_Infierno_Jovani_Reversa = NULL;
+
+		app->physics->DestroyBody(TP_Infierno_Jovani);
+		TP_Infierno_Jovani = NULL;
+
+		app->sceneGameplay->player->Teleport(650, 700);
+
+		Tp_1 = false;
+		Tp_2 = false;
+		Tp_Puzzle_1 = false;
+		Tp_Puzzle_2 = false;
+		Tp_Puzzle_3 = false;
+		Tp_3 = false;
+		Tp_4 = false;
+		Tp_Jovani = false;
+	}	
 }
 
 void Infierno::TeleportInfiernoReversa()
 {
-	
+	if (app->map->actualmap == 14 && Tp_1_Reversa == true)
+	{
+		app->sceneGameplay->LoadMap(1);
+		app->physics->DestroyBody(TP_Infierno_1_Reversa);
+		TP_Infierno_1_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_2_Reversa);
+		TP_Infierno_2_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_3_Reversa);
+		TP_Infierno_3_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle1_Reversa);
+		Tp_Puzzle1_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle2_Reversa);
+		Tp_Puzzle2_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle3_Reversa);
+		Tp_Puzzle3_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_4_Reversa);
+		TP_Infierno_4_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_5_Reversa);
+		TP_Infierno_5_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_Jovani_Reversa);
+		TP_Infierno_Jovani_Reversa = NULL;
+
+		app->physics->DestroyBody(TP_Infierno_Jovani);
+		TP_Infierno_Jovani = NULL;
+
+
+		app->sceneGameplay->player->Teleport(640, 20);
+
+		Tp_1_Reversa = false;
+		Tp_2_Reversa = false;
+		Tp_Puzzle_1_Reversa = false;
+		Tp_Puzzle_2_Reversa = false;
+		Tp_Puzzle_3_Reversa = false;
+		Tp_3_Reversa = false;
+		Tp_4_Reversa = false;
+		Tp_Jovani_Reversa = false;
+	}
+	if (app->map->actualmap == 15 && Tp_2_Reversa == true)
+	{
+		app->sceneGameplay->LoadMap(14);
+		app->physics->DestroyBody(TP_Infierno_1_Reversa);
+		TP_Infierno_1_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_2_Reversa);
+		TP_Infierno_2_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_3_Reversa);
+		TP_Infierno_3_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle1_Reversa);
+		Tp_Puzzle1_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle2_Reversa);
+		Tp_Puzzle2_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle3_Reversa);
+		Tp_Puzzle3_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_4_Reversa);
+		TP_Infierno_4_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_5_Reversa);
+		TP_Infierno_5_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_Jovani_Reversa);
+		TP_Infierno_Jovani_Reversa = NULL;
+
+		app->physics->DestroyBody(TP_Infierno_Jovani);
+		TP_Infierno_Jovani = NULL;
+		app->sceneGameplay->player->Teleport(15, 530);
+
+		Tp_1_Reversa = false;
+		Tp_2_Reversa = false;
+		Tp_Puzzle_1_Reversa = false;
+		Tp_Puzzle_2_Reversa = false;
+		Tp_Puzzle_3_Reversa = false;
+		Tp_3_Reversa = false;
+		Tp_4_Reversa = false;
+		Tp_Jovani_Reversa = false;
+	}
+	if (app->map->actualmap == 16 && Tp_2_Reversa == true)
+	{
+		app->sceneGameplay->LoadMap(15);
+		app->physics->DestroyBody(TP_Infierno_1_Reversa);
+		TP_Infierno_1_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_2_Reversa);
+		TP_Infierno_2_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_3_Reversa);
+		TP_Infierno_3_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle1_Reversa);
+		Tp_Puzzle1_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle2_Reversa);
+		Tp_Puzzle2_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle3_Reversa);
+		Tp_Puzzle3_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_4_Reversa);
+		TP_Infierno_4_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_5_Reversa);
+		TP_Infierno_5_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_Jovani_Reversa);
+		TP_Infierno_Jovani_Reversa = NULL;
+
+		app->physics->DestroyBody(TP_Infierno_Jovani);
+		TP_Infierno_Jovani = NULL;
+		app->sceneGameplay->player->Teleport(15, 340);
+
+		Tp_1_Reversa = false;
+		Tp_2_Reversa = false;
+		Tp_Puzzle_1_Reversa = false;
+		Tp_Puzzle_2_Reversa = false;
+		Tp_Puzzle_3_Reversa = false;
+		Tp_3_Reversa = false;
+		Tp_4_Reversa = false;
+		Tp_Jovani_Reversa = false;
+	}
+	if (app->map->actualmap == 19 && Tp_Puzzle_1_Reversa == true)
+	{
+		app->sceneGameplay->LoadMap(16);
+		app->physics->DestroyBody(TP_Infierno_1_Reversa);
+		TP_Infierno_1_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_2_Reversa);
+		TP_Infierno_2_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_3_Reversa);
+		TP_Infierno_3_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle1_Reversa);
+		Tp_Puzzle1_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle2_Reversa);
+		Tp_Puzzle2_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle3_Reversa);
+		Tp_Puzzle3_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_4_Reversa);
+		TP_Infierno_4_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_5_Reversa);
+		TP_Infierno_5_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_Jovani_Reversa);
+		TP_Infierno_Jovani_Reversa = NULL;
+
+		app->physics->DestroyBody(TP_Infierno_Jovani);
+		TP_Infierno_Jovani = NULL;
+		app->sceneGameplay->player->Teleport(1270, 585);
+		
+		Tp_1_Reversa = false;
+		Tp_2_Reversa = false;
+		Tp_Puzzle_1_Reversa = false;
+		Tp_Puzzle_2_Reversa = false;
+		Tp_Puzzle_3_Reversa = false;
+		Tp_3_Reversa = false;
+		Tp_4_Reversa = false;
+		Tp_Jovani_Reversa = false;
+	}
+	if (app->map->actualmap == 20 && Tp_Puzzle_2_Reversa == true)
+	{
+		app->sceneGameplay->LoadMap(19);
+		app->physics->DestroyBody(TP_Infierno_1_Reversa);
+		TP_Infierno_1_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_2_Reversa);
+		TP_Infierno_2_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_3_Reversa);
+		TP_Infierno_3_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle1_Reversa);
+		Tp_Puzzle1_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle2_Reversa);
+		Tp_Puzzle2_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle3_Reversa);
+		Tp_Puzzle3_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_4_Reversa);
+		TP_Infierno_4_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_5_Reversa);
+		TP_Infierno_5_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_Jovani_Reversa);
+		TP_Infierno_Jovani_Reversa = NULL;
+
+		app->physics->DestroyBody(TP_Infierno_Jovani);
+		TP_Infierno_Jovani = NULL;
+
+		app->sceneGameplay->player->Teleport(1270, 255);
+
+		Tp_1_Reversa = false;
+		Tp_2_Reversa = false;
+		Tp_Puzzle_1_Reversa = false;
+		Tp_Puzzle_2_Reversa = false;
+		Tp_Puzzle_3_Reversa = false;
+		Tp_3_Reversa = false;
+		Tp_4_Reversa = false;
+		Tp_Jovani_Reversa = false;
+	}
+	if (app->map->actualmap == 21 && Tp_Puzzle_3_Reversa == true)
+	{
+		app->sceneGameplay->LoadMap(20);
+		app->physics->DestroyBody(TP_Infierno_1_Reversa);
+		TP_Infierno_1_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_2_Reversa);
+		TP_Infierno_2_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_3_Reversa);
+		TP_Infierno_3_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle1_Reversa);
+		Tp_Puzzle1_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle2_Reversa);
+		Tp_Puzzle2_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle3_Reversa);
+		Tp_Puzzle3_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_4_Reversa);
+		TP_Infierno_4_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_5_Reversa);
+		TP_Infierno_5_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_Jovani_Reversa);
+		TP_Infierno_Jovani_Reversa = NULL;
+
+		app->physics->DestroyBody(TP_Infierno_Jovani);
+		TP_Infierno_Jovani = NULL;
+
+		app->sceneGameplay->player->Teleport(665, 20);
+
+		Tp_1_Reversa = false;
+		Tp_2_Reversa = false;
+		Tp_Puzzle_1_Reversa = false;
+		Tp_Puzzle_2_Reversa = false;
+		Tp_Puzzle_3_Reversa = false;
+		Tp_3_Reversa = false;
+		Tp_4_Reversa = false;
+		Tp_Jovani_Reversa = false;
+	}
+	if (app->map->actualmap == 17 && Tp_4_Reversa == true)
+	{
+		app->sceneGameplay->LoadMap(21);
+		app->physics->DestroyBody(TP_Infierno_1_Reversa);
+		TP_Infierno_1_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_2_Reversa);
+		TP_Infierno_2_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_3_Reversa);
+		TP_Infierno_3_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle1_Reversa);
+		Tp_Puzzle1_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle2_Reversa);
+		Tp_Puzzle2_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle3_Reversa);
+		Tp_Puzzle3_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_4_Reversa);
+		TP_Infierno_4_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_5_Reversa);
+		TP_Infierno_5_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_Jovani_Reversa);
+		TP_Infierno_Jovani_Reversa = NULL;
+
+		app->physics->DestroyBody(TP_Infierno_Jovani);
+		TP_Infierno_Jovani = NULL;
+
+		app->sceneGameplay->player->Teleport(640, 20);
+
+		Tp_1_Reversa = false;
+		Tp_2_Reversa = false;
+		Tp_Puzzle_1_Reversa = false;
+		Tp_Puzzle_2_Reversa = false;
+		Tp_Puzzle_3_Reversa = false;
+		Tp_3_Reversa = false;
+		Tp_4_Reversa = false;
+		Tp_Jovani_Reversa = false;
+	}
+	if (app->map->actualmap == 18 && Tp_4_Reversa == true)
+	{
+		app->sceneGameplay->LoadMap(17);
+		app->physics->DestroyBody(TP_Infierno_1_Reversa);
+		TP_Infierno_1_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_2_Reversa);
+		TP_Infierno_2_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_3_Reversa);
+		TP_Infierno_3_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle1_Reversa);
+		Tp_Puzzle1_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle2_Reversa);
+		Tp_Puzzle2_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle3_Reversa);
+		Tp_Puzzle3_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_4_Reversa);
+		TP_Infierno_4_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_5_Reversa);
+		TP_Infierno_5_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_Jovani_Reversa);
+		TP_Infierno_Jovani_Reversa = NULL;
+
+		app->physics->DestroyBody(TP_Infierno_Jovani);
+		TP_Infierno_Jovani = NULL;
+
+		app->sceneGameplay->player->Teleport(640, 20);
+
+		Tp_1_Reversa = false;
+		Tp_2_Reversa = false;
+		Tp_Puzzle_1_Reversa = false;
+		Tp_Puzzle_2_Reversa = false;
+		Tp_Puzzle_3_Reversa = false;
+		Tp_3_Reversa = false;
+		Tp_4_Reversa = false;
+		Tp_Jovani_Reversa = false;
+	}
+	if (app->map->actualmap == 22 && Tp_Jovani_Reversa == true)
+	{
+		app->sceneGameplay->LoadMap(17);
+		app->physics->DestroyBody(TP_Infierno_1_Reversa);
+		TP_Infierno_1_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_2_Reversa);
+		TP_Infierno_2_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_3_Reversa);
+		TP_Infierno_3_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle1_Reversa);
+		Tp_Puzzle1_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle2_Reversa);
+		Tp_Puzzle2_Reversa = NULL;
+		app->physics->DestroyBody(Tp_Puzzle3_Reversa);
+		Tp_Puzzle3_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_4_Reversa);
+		TP_Infierno_4_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_5_Reversa);
+		TP_Infierno_5_Reversa = NULL;
+		app->physics->DestroyBody(TP_Infierno_Jovani_Reversa);
+		TP_Infierno_Jovani_Reversa = NULL;
+
+		app->physics->DestroyBody(TP_Infierno_Jovani);
+		TP_Infierno_Jovani = NULL;
+
+		app->sceneGameplay->player->Teleport(1270, 285);
+
+		Tp_1_Reversa = false;
+		Tp_2_Reversa = false;
+		Tp_Puzzle_1_Reversa = false;
+		Tp_Puzzle_2_Reversa = false;
+		Tp_Puzzle_3_Reversa = false;
+		Tp_3_Reversa = false;
+		Tp_4_Reversa = false;
+		Tp_Jovani_Reversa = false;
+	}
 }
 
 void Infierno::TeleportInfiernoJovani()
@@ -854,8 +1399,14 @@ void Infierno::TeleportInfiernoJovani()
 		app->sceneGameplay->LoadMap(22);
 		app->physics->DestroyBody(TP_Infierno_Jovani);
 		TP_Infierno_Jovani = NULL;
-		app->sceneGameplay->player->Teleport(10, 200);
 
+		app->physics->DestroyBody(TP_Infierno_4_Reversa);
+		TP_Infierno_4_Reversa = NULL;
+
+		app->physics->DestroyBody(TP_Infierno_4);
+		TP_Infierno_4 = NULL;
+
+		app->sceneGameplay->player->Teleport(20, 185);
 		Tp_1 = false;
 		Tp_2 = false;
 		Tp_Puzzle_1 = false;
