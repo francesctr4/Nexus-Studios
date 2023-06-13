@@ -82,7 +82,10 @@ bool SceneBattle::Start()
 	turn = 0;
 
 	//TODO
-	m_players = new Party_Member[4] { {100, 100, 10, 10, 20, 20, &rusticStoneAxe}, {150, 150, 10, 10, 30, 30, &fallenBlade}, {200, 200, 10, 10, 40, 40, &chainsword}, {200, 200, 10, 10, 40, 40, &graftedClaws} };
+	m_players = new Party_Member[4] { {app->sceneGameplay->player->playerStats[0].hp * 10, app->sceneGameplay->player->playerStats[0].hp * 10, app->sceneGameplay->player->playerStats[0].def * 10, app->sceneGameplay->player->playerStats[0].def * 10, app->sceneGameplay->player->playerStats[0].atk * 10, app->sceneGameplay->player->playerStats[0].atk * 10, &rusticStoneAxe},
+										{app->sceneGameplay->player->playerStats[1].hp * 10, app->sceneGameplay->player->playerStats[1].hp * 10, app->sceneGameplay->player->playerStats[1].def * 10, app->sceneGameplay->player->playerStats[1].def * 10, app->sceneGameplay->player->playerStats[1].atk * 10, app->sceneGameplay->player->playerStats[1].atk * 10, &fallenBlade },
+										{app->sceneGameplay->player->playerStats[2].hp * 10, app->sceneGameplay->player->playerStats[2].hp * 10, app->sceneGameplay->player->playerStats[2].def * 10, app->sceneGameplay->player->playerStats[2].def * 10, app->sceneGameplay->player->playerStats[2].atk * 10, app->sceneGameplay->player->playerStats[2].atk * 10, &chainsword },
+										{app->sceneGameplay->player->playerStats[3].hp * 10, app->sceneGameplay->player->playerStats[3].hp * 10, app->sceneGameplay->player->playerStats[3].def * 10, app->sceneGameplay->player->playerStats[3].def * 10, app->sceneGameplay->player->playerStats[3].atk * 10, app->sceneGameplay->player->playerStats[3].atk * 10, &graftedClaws } };
 
 	enableMusic = true;
 
@@ -996,7 +999,12 @@ bool SceneBattle::PostUpdate()
 
 	if (e_HP == 0) {
 
+		app->combatManager->playerTurn = true;
 		e_HP = e_max_HP;
+		for (int i = 0; i < 4; i++)
+		{
+			app->sceneGameplay->player->AddXP(100, i);
+		}
 		turn = 0;
 		app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
 

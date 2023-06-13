@@ -74,33 +74,33 @@ bool Enemy::Awake() {
 	if (SString(parameters.attribute("type").as_string()) == SString("bossMedieval")) {
 
 		etype = EnemyType::BOSS_MEDIEVAL;
-		hp = 5;
-		atk = 5;
-		def = 10;
+		hp = 160;
+		atk = 40;
+		def = 20;
 	}
 
 	if (SString(parameters.attribute("type").as_string()) == SString("bossPrehistoric")) {
 
 		etype = EnemyType::BOSS_PREHISTORIC;
-		hp = 5;
-		atk = 5;
-		def = 10;
+		hp = 160;
+		atk = 40;
+		def = 20;
 	}
 
 	if (SString(parameters.attribute("type").as_string()) == SString("bossCyberpunk")) {
 
 		etype = EnemyType::BOSS_CYBERPUNK;
-		hp = 5;
-		atk = 5;
-		def = 10;
+		hp = 160;
+		atk = 40;
+		def = 20;
 	}
 
 	if (SString(parameters.attribute("type").as_string()) == SString("bossApocalypse")) {
 
 		etype = EnemyType::BOSS_APOCALYPSE;
-		hp = 5;
-		atk = 5;
-		def = 10;
+		hp = 160;
+		atk = 40;
+		def = 20;
 	}
 		
 	position.x = parameters.attribute("x").as_int();
