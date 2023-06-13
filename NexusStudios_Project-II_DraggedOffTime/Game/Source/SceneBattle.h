@@ -152,8 +152,8 @@ public:
 	float weaponIdleSpeed = 0.06f;
 
 	Animation rusticStoneAxe_idle;
-	int rusticStoneAxe_idle_width = 0;
-	int rusticStoneAxe_idle_height = 0;
+	int rusticStoneAxe_idle_width = 288;
+	int rusticStoneAxe_idle_height = 192;
 	Animation rusticStoneAxe_attack;
 	int rusticStoneAxe_attack_width = 480;
 	int rusticStoneAxe_attack_height = 288;
@@ -194,8 +194,8 @@ public:
 	float ascendantTwins_attack_speed = 0.4f;
 
 	Animation mrFlail_idle;
-	int mrFlail_idle_width = 0;
-	int mrFlail_idle_height = 0;
+	int mrFlail_idle_width = 192;
+	int mrFlail_idle_height = 192;
 	Animation mrFlail_attack;
 	int mrFlail_attack_width = 0;
 	int mrFlail_attack_height = 0;
@@ -238,8 +238,8 @@ public:
 	float graftedClaws_attack_speed = 0.4f;
 
 	Animation agony_idle;
-	int agony_idle_width = 0;
-	int agony_idle_height = 0;
+	int agony_idle_width = 288;
+	int agony_idle_height = 198;
 	Animation agony_attack;
 	int agony_attack_width = 576;
 	int agony_attack_height = 324;
