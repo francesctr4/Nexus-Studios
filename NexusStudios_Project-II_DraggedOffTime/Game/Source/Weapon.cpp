@@ -14,7 +14,7 @@ void Weapon::WeaponAnimationDeclaration()
 			rusticStoneAxe_idle.loop = true;
 			rusticStoneAxe_idle.speed = weaponIdleSpeed;
 
-			for (int i = 0; i < 6; i++) {
+			for (int i = 0; i < 17; i++) {
 
 				rusticStoneAxe_attack.PushBack({ rusticStoneAxe_attack_width * i, 0, rusticStoneAxe_attack_width, rusticStoneAxe_attack_height });
 
@@ -182,7 +182,7 @@ void Weapon::WeaponAnimationDeclaration()
 			graftedClaws_idle.loop = true;
 			graftedClaws_idle.speed = weaponIdleSpeed;
 
-			for (int i = 0; i < 6; i++) {
+			for (int i = 0; i < 12; i++) {
 
 				graftedClaws_attack.PushBack({ graftedClaws_attack_width * i, 0, graftedClaws_attack_width, graftedClaws_attack_height });
 
