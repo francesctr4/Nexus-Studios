@@ -89,10 +89,31 @@ public:
 	bool Tp_3 = true;
 	bool Tp_4 = true;
 	bool Tp_5 = true;
-	bool Tp_Cofre = true;
 	bool Tp_Jovani = true;
 	bool Tp_Puzzle_1 = true;
 	bool Tp_Puzzle_2 = true;
 	bool Tp_Puzzle_3 = true;
 	bool Tp_Boss = false;
+
+	PhysBody* TP_Infierno_0_Reversa;
+	PhysBody* TP_Infierno_1_Reversa;
+	PhysBody* TP_Infierno_2_Reversa;
+	PhysBody* TP_Infierno_3_Reversa;
+	PhysBody* TP_Infierno_4_Reversa;
+	PhysBody* TP_Infierno_5_Reversa;
+	PhysBody* TP_Infierno_Jovani_Reversa;
+	PhysBody* Tp_Puzzle1_Reversa;
+	PhysBody* Tp_Puzzle2_Reversa;
+	PhysBody* Tp_Puzzle3_Reversa;
+
+	bool Tp_1_Reversa = true;
+	bool Tp_2_Reversa = true;
+	bool Tp_3_Reversa = true;
+	bool Tp_4_Reversa = true;
+	bool Tp_5_Reversa = true;
+	bool Tp_Jovani_Reversa = true;
+	bool Tp_Puzzle_1_Reversa = true;
+	bool Tp_Puzzle_2_Reversa = true;
+	bool Tp_Puzzle_3_Reversa = true;
+	bool Tp_Boss_Reversa = false;
 };
