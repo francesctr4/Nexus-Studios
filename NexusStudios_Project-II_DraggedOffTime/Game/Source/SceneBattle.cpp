@@ -939,6 +939,48 @@ bool SceneBattle::Update(float dt)
 				break;
 			}
 			
+			//LOG("-------------YOUR TURN-------------");
+
+			combat_timmer.Start();
+
+			//Confusion enemy
+			if (e_confusion_turns > 0)
+				e_confusion_turns--;
+
+			//Buff stats enemy
+			if (e_buffed_turns > 0)
+				e_buffed_turns--;
+
+			if (e_buffed_turns == 0)
+			{
+				e_DEF = e_base_DEF;
+				e_DMG = e_base_DMG;
+			}
+
+			//Skill Mage - Middle ages steroids
+			for (int i = 0; i < 3; i++)
+			{
+				if (m_players[i].buf_turns == 0)
+				{
+					m_players[i].DEF = m_players[i].base_DEF;
+					m_players[i].DMG = m_players[i].base_DMG;
+				}
+				if (m_players[i].buf_turns > 0)
+					m_players[i].buf_turns--;
+
+			}
+
+			//Skill Tank - I'm the one who bonks!
+			for (int i = 0; i < 3; i++)
+			{
+				if (m_players[i].counter_turns > 0)
+					m_players[i].counter_turns--;
+			}
+
+
+			app->combatManager->playerTurn = !app->combatManager->playerTurn;
+			turn++;
+			timer_started = false;
 
 		}
 		
