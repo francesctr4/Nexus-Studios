@@ -237,6 +237,16 @@ void Enemy::OnCollision(PhysBody* physA, PhysBody* physB) {
 		app->sceneBattle->e_DEF = this->def;
 		app->sceneBattle->e_base_DEF = this->def;
 
+		if (etype == EnemyType::BOSS_PREHISTORIC || etype == EnemyType::BOSS_MEDIEVAL || etype == EnemyType::BOSS_CYBERPUNK || etype == EnemyType::BOSS_APOCALYPSE)
+		{
+			app->sceneBattle->boss = 1;
+		}
+		else
+		{
+			app->sceneBattle->boss = 0;
+		}
+		
+
 		break;
 
 	}

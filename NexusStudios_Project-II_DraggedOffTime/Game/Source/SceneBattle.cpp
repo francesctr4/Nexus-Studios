@@ -624,26 +624,92 @@ bool SceneBattle::Update(float dt)
 			//Habria que meter un switch o algo que permitiera controlar si te estás enfrentando con el primero, segundo, tercero o Final Boss para decicir las
 			//habilidades y los % de los diferentes ataques y habilidades
 
-			if (boss == 1)		//Primer boss - Summon minions every two turns
+			int random_num = (rand() % 2) + 1;
+			//LOG("Numero aleatorio %d", random_num);
+			switch (random_num)
 			{
-				
+			case 1:
+				if (e_HP > 0)
+				{
+					int random_num = (rand() % 2) + 1;
+					//LOG("Numero aleatorio %d", random_num);
+					switch (random_num)
+					{
+					case 1:
+						if (e_HP > 0)
+						{
+							if (e_confusion_turns == 0 && m_players[selected_player].counter_turns == 0)
+								m_players[selected_player].HP = app->combatManager->EnemyAttack(e_DMG, m_players[selected_player].HP, m_players[selected_player].DEF);
 
-			}
-			else if (boss == 2)	//Segundo boss - Se buffea en un %
-			{
-				
+							//Si el enemigo tiene confusión su turno será como si se atacara a si mismo
+							if (e_confusion_turns > 0)
+								e_HP = app->combatManager->NormalAttack(e_DMG, e_HP, e_DEF);
 
-			}
-			else if (boss == 3)	//Tercer boss - ???
-			{
-				
+							//Si el player tiene counter turns el enemigo sufre daño al atacar al player
+							if (m_players[selected_player].counter_turns > 0)
+							{
+								m_players[selected_player].HP = app->combatManager->EnemyAttack(e_DMG, m_players[selected_player].HP, m_players[selected_player].DEF);
+								e_HP = app->combatManager->NormalAttack(e_DMG, e_HP, e_DEF);
+							}
 
+							LOG("Atack");
+							app->audio->PlayFx(receiveHitFX);
+							//app->audio->PlayFx(fx_sword_hit); //Se buguea un montón porque se sobreponen los sonidos, hay que  añadirle un timer o algo para evitarlo y que sea algo mas lento el combate
+							//Blit red color in screen
+							//app->render->DrawRectangle(rect, 255, 0, 0, 150);
+							enemy_last_action = 0;
+						}
+						break;
+					case 2:
+						if (e_HP > 0)
+						{
+							app->combatManager->EnemyAttackAll(e_DMG);
+						}
+						break;
+					}
+				}
+				break;
+			case 2:
+				if (e_HP > 0)
+				{
+					int random_num = (rand() % 2) + 1;
+					//LOG("Numero aleatorio %d", random_num);
+					switch (random_num)
+					{
+					case 1:
+						if (e_HP > 0)
+						{
+							int random_num = (rand() % 2) + 1;
+							//LOG("Numero aleatorio %d", random_num);
+							switch (random_num)
+							{
+							case 1:
+								if (e_HP > 0)
+								{
+									app->combatManager->EnemyBuff(false, true);
+								}
+								break;
+							case 2:
+								if (e_HP > 0)
+								{
+									app->combatManager->EnemyBuff(true, false);
+								}
+								break;
+							}
+							
+						}
+						break;
+					case 2:
+						if (e_HP > 0)
+						{
+							app->combatManager->AddMinion();
+						}
+						break;
+					}
+				}
+				break;
 			}
-			else if (boss == 4)	//Boss final - Ataca a todos los players + todo lo anterior
-			{
-				
-
-			}
+			
 
 		}
 		
