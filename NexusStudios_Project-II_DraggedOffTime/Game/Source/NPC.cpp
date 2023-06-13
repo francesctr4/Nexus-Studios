@@ -356,6 +356,8 @@ bool NPC::CleanUp()
 	delete[] thirdDialogue;
 	delete[] secondDialogue;
 	delete[] firstDialogue;
+	app->physics->DestroyBody(pbody);
+	app->physics->DestroyBody(npcSensor);
 
 	return true;
 }

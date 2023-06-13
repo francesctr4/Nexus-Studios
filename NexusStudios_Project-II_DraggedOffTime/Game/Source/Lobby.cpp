@@ -72,19 +72,21 @@ void Lobby::TeleportMedieval()
 {
 	if (FinalPrehistoria == true)
 	{
-		app->sceneGameplay->player->Teleport(1265, 325);
-		app->sceneGameplay->LoadMap(8);
-		Medieval = false;
+		
 	}
+	app->sceneGameplay->player->Teleport(1265, 325);
+	app->sceneGameplay->LoadMap(8);
+	Medieval = false;
 }
 
 void Lobby::TeleportInfierno()
 {
 	if (FinalMedieval == true)
 	{
-		app->sceneGameplay->player->Teleport(632, 702);
-		app->sceneGameplay->LoadMap(14);
-		Infierno = false;
+		
 	}
+	app->sceneGameplay->player->Teleport(632, 702);
+	app->sceneGameplay->LoadMap(14);
+	Infierno = false;
 	
 }
