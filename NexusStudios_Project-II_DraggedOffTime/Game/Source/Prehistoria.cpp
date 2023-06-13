@@ -150,6 +150,7 @@ void Prehistoria::TeleportPrehistoria()
 		TP_Prehistoria_3_bool = false;
 		TP_Prehistoria_5_bool = false;
 		TP_Prehistoria_Final_bool = false;
+		app->sceneGameplay->lobbies.FinalPrehistoria = true;
 	}
 }
 
