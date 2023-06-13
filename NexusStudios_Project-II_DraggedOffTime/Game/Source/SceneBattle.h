@@ -151,25 +151,33 @@ public:
 
 	float weaponIdleSpeed = 0.06f;
 
+	Animation* currentAnimationWeapon;
+
+	SDL_Texture* rusticStoneAxe_idle_tex;
 	Animation rusticStoneAxe_idle;
 	int rusticStoneAxe_idle_width = 288;
 	int rusticStoneAxe_idle_height = 192;
+	SDL_Texture* rusticStoneAxe_attack_tex;
 	Animation rusticStoneAxe_attack;
 	int rusticStoneAxe_attack_width = 480;
 	int rusticStoneAxe_attack_height = 288;
 	float rusticStoneAxe_attack_speed = 0.4f;
 
+	SDL_Texture* tribalLance_idle_tex;
 	Animation tribalLance_idle;
 	int tribalLance_idle_width = 192;
 	int tribalLance_idle_height = 288;
+	SDL_Texture* tribalLance_attack_tex;
 	Animation tribalLance_attack;
 	int tribalLance_attack_width = 480;
 	int tribalLance_attack_height = 288;
 	float tribalLance_attack_speed = 0.4f;
 
+	SDL_Texture* chiefsBow_idle_tex;
 	Animation chiefsBow_idle;
 	int chiefsBow_idle_width = 192;
 	int chiefsBow_idle_height = 198;
+	SDL_Texture* chiefsBow_attack_tex;
 	Animation chiefsBow_attack;
 	int chiefsBow_attack_width = 510;
 	int chiefsBow_attack_height = 198;
@@ -177,25 +185,31 @@ public:
 
 	// -------------------------
 
+	SDL_Texture* fallenBlade_idle_tex;
 	Animation fallenBlade_idle;
 	int fallenBlade_idle_width = 192;
 	int fallenBlade_idle_height = 192;
+	SDL_Texture* fallenBlade_attack_tex;
 	Animation fallenBlade_attack;
 	int fallenBlade_attack_width = 474;
 	int fallenBlade_attack_height = 336;
 	float fallenBlade_attack_speed = 0.4f;
 
+	SDL_Texture* ascendantTwins_idle_tex;
 	Animation ascendantTwins_idle;
 	int ascendantTwins_idle_width = 192;
 	int ascendantTwins_idle_height = 192;
+	SDL_Texture* ascendantTwins_attack_tex;
 	Animation ascendantTwins_attack;
 	int ascendantTwins_attack_width = 1002;
 	int ascendantTwins_attack_height = 282;
 	float ascendantTwins_attack_speed = 0.4f;
 
+	SDL_Texture* mrFlail_idle_tex;
 	Animation mrFlail_idle;
 	int mrFlail_idle_width = 192;
 	int mrFlail_idle_height = 192;
+	SDL_Texture* mrFlail_attack_tex;
 	Animation mrFlail_attack;
 	int mrFlail_attack_width = 0;
 	int mrFlail_attack_height = 0;
@@ -203,25 +217,31 @@ public:
 
 	// -------------------------
 
+	SDL_Texture* chainsword_idle_tex;
 	Animation chainsword_idle;
 	int chainsword_idle_width = 288;
 	int chainsword_idle_height = 216;
+	SDL_Texture* chainsword_attack_tex;
 	Animation chainsword_attack;
 	int chainsword_attack_width = 540;
 	int chainsword_attack_height = 390;
 	float chainsword_attack_speed = 0.4f;
 
+	SDL_Texture* uraniumshell_idle_tex;
 	Animation uraniumshell_idle;
 	int uraniumshell_idle_width = 192;
 	int uraniumshell_idle_height = 192;
+	SDL_Texture* uraniumshell_attack_tex;
 	Animation uraniumshell_attack;
 	int uraniumshell_attack_width = 480;
 	int uraniumshell_attack_height = 204;
 	float uraniumshell_attack_speed = 0.4f;
 
+	SDL_Texture* ionizedRifle_idle_tex;
 	Animation ionizedRifle_idle;
 	int ionizedRifle_idle_width = 288;
 	int ionizedRifle_idle_height = 192;
+	SDL_Texture* ionizedRifle_attack_tex;
 	Animation ionizedRifle_attack;
 	int ionizedRifle_attack_width = 480;
 	int ionizedRifle_attack_height = 234;
@@ -229,25 +249,31 @@ public:
 
 	// -------------------------
 
+	SDL_Texture* graftedClaws_idle_tex;
 	Animation graftedClaws_idle;
 	int graftedClaws_idle_width = 192;
 	int graftedClaws_idle_height = 180;
+	SDL_Texture* graftedClaws_attack_tex;
 	Animation graftedClaws_attack;
 	int graftedClaws_attack_width = 768;
 	int graftedClaws_attack_height = 188;
 	float graftedClaws_attack_speed = 0.4f;
 
+	SDL_Texture* agony_idle_tex;
 	Animation agony_idle;
 	int agony_idle_width = 288;
 	int agony_idle_height = 198;
+	SDL_Texture* agony_attack_tex;
 	Animation agony_attack;
 	int agony_attack_width = 576;
 	int agony_attack_height = 324;
 	float agony_attack_speed = 0.4f;
 
+	SDL_Texture* eyebull_idle_tex;
 	Animation eyebull_idle;
-	int eyebull_idle_width = 0;
-	int eyebull_idle_height = 0;
+	int eyebull_idle_width = 288;
+	int eyebull_idle_height = 192;
+	SDL_Texture* eyebull_attack_tex;
 	Animation eyebull_attack;
 	int eyebull_attack_width = 0;
 	int eyebull_attack_height = 0;

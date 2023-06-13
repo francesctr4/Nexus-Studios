@@ -261,7 +261,7 @@ int CombatManager::EnemyAttack(int e_DMG, int p_HP, int p_DEF) {
 
 	if (totalDamage < 0)
 	{
-		return 0;
+		return p_HP;
 	}
 
 	if (totalDamage > p_HP)
