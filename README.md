@@ -125,3 +125,4 @@ periods and reuniting all the temporal parts of the protagonist.
 		H: Fully Recover enemy
   		M: Create Minion
 		TAB: Skip turn
+  
