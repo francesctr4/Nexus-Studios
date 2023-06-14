@@ -27,32 +27,124 @@
 	  
 	<player x="900 " y="340" texturepath="Assets/Textures/SpriteSheet_Kleos.png" texturepath2="Assets/Textures/Prehistoric_Kleos_SpriteSheet.png" texturepath3="Assets/Textures/Cyberpunk_Kleos_SpriteSheet.png" texturepath4="Assets/Textures/Demon_Kleos_SpriteSheet.png" map="0"/>
 	  
-	<npc type="rogue" x="950" y="410" texturepath="Assets/Textures/Rogue.png" map="8"/>
-	<npc type="wiwi" x="755" y="350" texturepath="Assets/Textures/Wizard.png" map="8"/>
-	<npc type="skippy" x="75" y="420" texturepath="Assets/Textures/Skippy.png" map="8"/>
-	<npc type="jovani" x="305" y="420" texturepath="Assets/Textures/Jovani.png" map="8"/>
+	<npc type="rogue" x="273" y="161" texturepath="Assets/Textures/Rogue.png" map="8"/>
+	<npc type="wiwi" x="103" y="496" texturepath="Assets/Textures/Wizard.png" map="15"/>
+	<npc type="skippy" x="631" y="502" texturepath="Assets/Textures/Skippy.png" map="1"/>
+	<npc type="jovani" x="660" y="270" texturepath="Assets/Textures/Jovani.png" map="5"/>
+	<npc type="jovani" x="660" y="270" texturepath="Assets/Textures/Jovani.png" map="11"/>
+	<npc type="jovani" x="660" y="270" texturepath="Assets/Textures/Jovani.png" map="5"/>
 
-	<enemy type = "bossMedieval" x="990" y="600" texturepath="Assets/Textures/Bosses/Final_Boss_Medieval.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="8"/>
-	<enemy type = "bossPrehistoric" x="990" y="510" texturepath="Assets/Textures/Bosses/Final_Boss_Prehistoric.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="2"/>
-	<enemy type = "bossCyberpunk" x="1090" y="510" texturepath="Assets/Textures/Bosses/Final_Boss_Cyberpunk.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="1"/>
-	  
-	<enemy type = "damage" x="690" y="160" w ="32" h ="32" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="1"/>
-	<enemy type = "damage" x="750" y="450" w ="32" h ="32" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="1"/>
-	<enemy type = "tank" x="75" y="615" w ="32" h ="32" texturepath="Assets/Textures/Tank_New.png" battletexturepath ="Assets/Textures/TankInCombat.png" map="1"/>
-	<enemy type = "support" x="1050" y="160" w ="32" h ="32" texturepath="Assets/Textures/Support_New.png" battletexturepath ="Assets/Textures/SupportInCombat.png" map="2"/>
-	<enemy type = "damage" x="1120" y="600" w ="32" h ="32" texturepath="Assets/Textures/Cyberpunk.png" battletexturepath ="Assets/Textures/CyberpunkInCombat.png" map="3"/>
 
-	<enemy type = "damage" x="105" y="600" w ="64" h ="32" texturepath="Assets/Textures/Demon_Damage-Sheet.png" battletexturepath ="Assets/Textures/Demon_Damage-Sheet_InCombat.png" map="1"/>
-	<enemy type = "support" x="205" y="550" w ="32" h ="64" texturepath="Assets/Textures/Demon_Support-Sheet.png" battletexturepath ="Assets/Textures/Demon_Support-Sheet_InCombat.png" map="1"/>
-	<enemy type = "tank" x="305" y="500" w ="64" h ="64" texturepath="Assets/Textures/Cyberpunk_Tank-Sheet.png" battletexturepath ="Assets/Textures/Cyberpunk_Tank-Sheet_InCombat.png" map="1"/>
-	<enemy type = "damage" x="405" y="450" w ="32" h ="32" texturepath="Assets/Textures/Cyberpunk.png" battletexturepath ="Assets/Textures/CyberpunkInCombat.png" map="1"/>
+	<!--
+	Mapa Prehistoria
+	-->
+	<enemy type = "tank" x="352" y="160" w ="32" h ="32" texturepath="Assets/Textures/Tank_New.png" battletexturepath ="Assets/Textures/TankInCombat.png" map="2"/>
+	<enemy type = "tank" x="608" y="500" w ="32" h ="32" texturepath="Assets/Textures/Tank_New.png" battletexturepath ="Assets/Textures/TankInCombat.png" map="2"/>
+	<enemy type = "support" x="280" y="384" w ="32" h ="32" texturepath="Assets/Textures/Support_New.png" battletexturepath ="Assets/Textures/SupportInCombat.png" map="2"/>
+	
+	<enemy type = "damage" x="688" y="500" w ="32" h ="32" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="3"/>
+	<enemy type = "tank" x="1220" y="250" w ="32" h ="32" texturepath="Assets/Textures/Tank_New.png" battletexturepath ="Assets/Textures/TankInCombat.png" map="3"/>
+	<enemy type = "damage" x="320" y="330" w ="32" h ="32" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="3"/>
 	  
-	<item type ="Potion" x="500" y="450" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png" map="1"/>
-	<item type ="Mango" x="600" y="450" texturepath="Assets/Textures/Items/Mangoes/Mango-Sheet.png" iconpath="Assets/Textures/Items/Mangoes/Mango.png" map="1"/>
-	<item type ="Gem" x="700" y="450" texturepath="Assets/Textures/Items/Gems/BlueGem-Sheet.png" iconpath="Assets/Textures/Items/Gems/BlueGem.png" map="2"/>
-	<item type ="Battery" x="800" y="450" texturepath="Assets/Textures/Items/Batteries/Battery-Sheet.png" iconpath="Assets/Textures/Items/Batteries/Battery.png" map="3"/>
+	<enemy type = "tank" x="160" y="304" w ="32" h ="32" texturepath="Assets/Textures/Tank_New.png" battletexturepath ="Assets/Textures/TankInCombat.png" map="4"/>
+	<enemy type = "damage" x="1088" y="400" w ="32" h ="32" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="4"/>
+	<enemy type = "tank" x="640" y="592" w ="32" h ="32" texturepath="Assets/Textures/Tank_New.png" battletexturepath ="Assets/Textures/TankInCombat.png" map="4"/>
+	  
+	<enemy type = "tank" x="496" y="160" w ="32" h ="32" texturepath="Assets/Textures/Tank_New.png" battletexturepath ="Assets/Textures/TankInCombat.png" map="6"/>
+	<enemy type = "damage" x="1184" y="480" w ="32" h ="32" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="6"/>
+	<enemy type = "tank" x="272" y="352" w ="32" h ="32" texturepath="Assets/Textures/Tank_New.png" battletexturepath ="Assets/Textures/TankInCombat.png" map="6"/>
+	  
+	<enemy type = "damage" x="640" y="432" w ="32" h ="32" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="7"/>
+	<enemy type = "tank" x="590" y="90" w ="32" h ="32" texturepath="Assets/Textures/Tank_New.png" battletexturepath ="Assets/Textures/TankInCombat.png" map="7"/>
+	<enemy type = "tank" x="686" y="90" w ="32" h ="32" texturepath="Assets/Textures/Tank_New.png" battletexturepath ="Assets/Textures/TankInCombat.png" map="7"/>
+	
+	<!--
+	Mapa Medieval
+	-->  
+	
+	<enemy type = "damage" x="336" y="224" w ="32" h ="32" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="8"/>
+	<enemy type = "support" x="880" y="432" w ="32" h ="32" texturepath="Assets/Textures/Support_New.png" battletexturepath ="Assets/Textures/SupportInCombat.png" map="8"/>
+	<enemy type = "damage" x="656" y="592" w ="32" h ="32" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="8"/>
+	  
+	<enemy type = "damage" x="400" y="560" w ="32" h ="32" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="9"/>
+	<enemy type = "damage" x="672" y="128" w ="32" h ="32" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="9"/>
+	  
+	<enemy type = "support" x="528" y="224" w ="32" h ="32" texturepath="Assets/Textures/Support_New.png" battletexturepath ="Assets/Textures/SupportInCombat.png" map="10"/>
+	<enemy type = "damage" x="976" y="432" w ="32" h ="32" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="10"/>
+	<enemy type = "support" x="336" y="432" w ="32" h ="32" texturepath="Assets/Textures/Support_New.png" battletexturepath ="Assets/Textures/SupportInCombat.png" map="10"/>
+	  
+	<enemy type = "damage" x="576" y="160" w ="32" h ="32" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="12"/>
+	<enemy type = "support" x="672" y="160" w ="32" h ="32" texturepath="Assets/Textures/Support_New.png" battletexturepath ="Assets/Textures/SupportInCombat.png" map="12"/>
+	<enemy type = "damage" x="608" y="480" w ="32" h ="32" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="12"/>
+	  
+	<enemy type = "support" x="464" y="448" w ="32" h ="32" texturepath="Assets/Textures/Support_New.png" battletexturepath ="Assets/Textures/SupportInCombat.png" map="13"/>
+	<enemy type = "damage" x="784" y="448" w ="32" h ="32" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="13"/>
+	
+	<!--
+	Mapa Infierno
+	--> 
+	<enemy type = "damage" x="368" y="208" w ="32" h ="32" texturepath="Assets/Textures/Demon_Damage-Sheet.png" battletexturepath ="Assets/Textures/Demon_Damage-Sheet_InCombat.png" map="14"/>
+	<enemy type = "support" x="970" y="416" w ="32" h ="32" texturepath="Assets/Textures/Demon_Support-Sheet.png" battletexturepath ="Assets/Textures/Demon_Support-Sheet_InCombat.png" map="14"/>
+	<enemy type = "damage" x="625" y="352" w ="32" h ="32" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="14"/>
+	  
+	<enemy type = "support" x="960" y="240" w ="32" h ="32" texturepath="Assets/Textures/Demon_Support-Sheet.png" battletexturepath ="Assets/Textures/Demon_Support-Sheet_InCombat.png" map="15"/>
+	<enemy type = "damage" x="240" y="256" w ="32" h ="32" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="15"/>
+	  
+	<enemy type = "damage" x="688" y="192" w ="32" h ="32" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="16"/>
+	<enemy type = "support" x="800" y="560" w ="32" h ="32" texturepath="Assets/Textures/Demon_Support-Sheet.png" battletexturepath ="Assets/Textures/Demon_Support-Sheet_InCombat.png" map="16"/>
  
-  </sceneGameplay>
+	<enemy type = "damage" x="288" y="560" w ="32" h ="32" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="19"/>
+	<enemy type = "support" x="768" y="240" w ="32" h ="32" texturepath="Assets/Textures/Demon_Support-Sheet.png" battletexturepath ="Assets/Textures/Demon_Support-Sheet_InCombat.png" map="19"/>
+	<enemy type = "damage" x="1124" y="368" w ="32" h ="32" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="19"/>
+	  
+	<enemy type = "damage" x="896" y="576" w ="32" h ="32" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="20"/>
+	  
+	<enemy type = "damage" x="512" y="96" w ="32" h ="32" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="21"/>
+	  
+	<enemy type = "damage" x="486" y="400" w ="32" h ="32" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="17"/>
+	  
+	<enemy type = "support" x="698" y="160" w ="32" h ="32" texturepath="Assets/Textures/Demon_Support-Sheet.png" battletexturepath ="Assets/Textures/Demon_Support-Sheet_InCombat.png" map="18"/>
+	  
+	<enemy type = "bossMedieval" x="640" y="224" texturepath="Assets/Textures/Bosses/Final_Boss_Medieval.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="13"/>
+	<enemy type = "bossPrehistoric" x="640" y="160" texturepath="Assets/Textures/Bosses/Final_Boss_Prehistoric.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="7"/>
+	<enemy type = "bossCyberpunk" x="640" y="70" texturepath="Assets/Textures/Bosses/Final_Boss_Cyberpunk.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="18"/>
+ 
+	<item type ="Potion" x="497" y="291" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png" map="11"/>
+	<item type ="Potion" x="897" y="115" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png" map="21"/>
+	<item type ="Potion" x="415" y="386" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png" map="8"/>
+	<item type ="Potion" x="638" y="151" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png" map="15"/>
+	<item type ="Potion" x="857" y="250" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png" map="11"/>
+	
+	<item type ="Mango" x="855" y="304" texturepath="Assets/Textures/Items/Mangoes/Mango-Sheet.png" iconpath="Assets/Textures/Items/Mangoes/Mango.png" map="17"/>
+	<item type ="Mango" x="266" y="266" texturepath="Assets/Textures/Items/Mangoes/Mango-Sheet.png" iconpath="Assets/Textures/Items/Mangoes/Mango.png" map="12"/>
+	<item type ="Mango" x="254" y="111" texturepath="Assets/Textures/Items/Mangoes/Mango-Sheet.png" iconpath="Assets/Textures/Items/Mangoes/Mango.png" map="1"/>
+	<item type ="Mango" x="1058" y="202" texturepath="Assets/Textures/Items/Mangoes/Mango-Sheet.png" iconpath="Assets/Textures/Items/Mangoes/Mango.png" map="8"/>
+	<item type ="Mango" x="116" y="232" texturepath="Assets/Textures/Items/Mangoes/Mango-Sheet.png" iconpath="Assets/Textures/Items/Mangoes/Mango.png" map="15"/>
+	
+	<item type ="Gem" x="559" y="582" texturepath="Assets/Textures/Items/Gems/BlueGem-Sheet.png" iconpath="Assets/Textures/Items/Gems/BlueGem.png" map="12"/>
+	<item type ="Gem" x="1048" y="615" texturepath="Assets/Textures/Items/Gems/BlueGem-Sheet.png" iconpath="Assets/Textures/Items/Gems/BlueGem.png" map="16"/>
+	<item type ="Gem" x="1191" y="83" texturepath="Assets/Textures/Items/Gems/BlueGem-Sheet.png" iconpath="Assets/Textures/Items/Gems/BlueGem.png" map="12"/>
+	<item type ="Gem" x="502" y="120" texturepath="Assets/Textures/Items/Gems/BlueGem-Sheet.png" iconpath="Assets/Textures/Items/Gems/BlueGem.png" map="17"/>
+	<item type ="Gem" x="700" y="450" texturepath="Assets/Textures/Items/Gems/BlueGem-Sheet.png" iconpath="Assets/Textures/Items/Gems/BlueGem.png" map="2"/>
+	
+	<item type ="Battery" x="262" y="627" texturepath="Assets/Textures/Items/Batteries/Battery-Sheet.png" iconpath="Assets/Textures/Items/Batteries/Battery.png" map="1"/>
+	<item type ="Battery" x="590" y="564" texturepath="Assets/Textures/Items/Batteries/Battery-Sheet.png" iconpath="Assets/Textures/Items/Batteries/Battery.png" map="3"/>
+	<item type ="Battery" x="558" y="185" texturepath="Assets/Textures/Items/Batteries/Battery-Sheet.png" iconpath="Assets/Textures/Items/Batteries/Battery.png" map="16"/>
+	<item type ="Battery" x="1211" y="699" texturepath="Assets/Textures/Items/Batteries/Battery-Sheet.png" iconpath="Assets/Textures/Items/Batteries/Battery.png" map="12"/>
+	<item type ="Battery" x="974" y="208" texturepath="Assets/Textures/Items/Batteries/Battery-Sheet.png" iconpath="Assets/Textures/Items/Batteries/Battery.png" map="12"/>
+ 
+	  <!--
+	Types:
+	<enemy type = "damage" x="690" y="160" w ="32" h ="32" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="2"/>
+	<enemy type = "damage" x="750" y="450" w ="32" h ="32" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="22"/>
+	<enemy type = "tank" x="75" y="615" w ="32" h ="32" texturepath="Assets/Textures/Tank_New.png" battletexturepath ="Assets/Textures/TankInCombat.png" map="22"/>
+	<enemy type = "damage" x="1120" y="600" w ="32" h ="32" texturepath="Assets/Textures/Cyberpunk.png" battletexturepath ="Assets/Textures/CyberpunkInCombat.png" map="22"/>
+	<enemy type = "damage" x="105" y="600" w ="64" h ="32" texturepath="Assets/Textures/Demon_Damage-Sheet.png" battletexturepath ="Assets/Textures/Demon_Damage-Sheet_InCombat.png" map="22"/>
+	<enemy type = "support" x="205" y="550" w ="32" h ="64" texturepath="Assets/Textures/Demon_Support-Sheet.png" battletexturepath ="Assets/Textures/Demon_Support-Sheet_InCombat.png" map="22"/>
+	<enemy type = "tank" x="305" y="500" w ="64" h ="64" texturepath="Assets/Textures/Cyberpunk_Tank-Sheet.png" battletexturepath ="Assets/Textures/Cyberpunk_Tank-Sheet_InCombat.png" map="22"/>
+	<enemy type = "damage" x="405" y="450" w ="32" h ="32" texturepath="Assets/Textures/Cyberpunk.png" battletexturepath ="Assets/Textures/CyberpunkInCombat.png" map="22"/>
+	--> 
+ </sceneGameplay>
   
  <map>
 	 
@@ -61,7 +153,7 @@
 	<mapfile_Lobby1 path="Assets/Maps/Inicio1.tmx"/>
 	<mapfile_Lobby2 path="Assets/Maps/Lobby.tmx"/>
 
-	<mapfile_Prehistoric1 path="Assets/Maps/PrehistoricMap1.tmx" sensor=""/>
+	<mapfile_Prehistoric1 path="Assets/Maps/PrehistoricMap1.tmx"/>
 	<mapfile_Prehistoric2 path="Assets/Maps/PrehistoricMapPuzzle1.tmx"/>
 	<mapfile_Prehistoric3 path="Assets/Maps/PrehistoricMapPuzzle2.tmx"/>
 	<mapfile_Prehistoric4 path="Assets/Maps/PrehistoricMapJovanni.tmx"/>
@@ -89,9 +181,7 @@
 	<mapfile_Infernal3 path="Assets/Maps/InfernalMap3.tmx"/>
 	<mapfile_Infernal4 path="Assets/Maps/InfernalMap4.tmx"/>
 	<mapfile_Infernal5 path="Assets/Maps/MapaInfernalBoss.tmx"/>
-
 	<mapfile_Infernal6 path="Assets/Maps/InfernalMapPuzzle1.tmx"/>
-	<mapfile_Infernal11 path="Assets/Maps/InfernalMapChange_1.tmx"/>
 	<mapfile_Infernal7 path="Assets/Maps/InfernalMapPuzzle2.tmx"/>
 	<mapfile_Infernal8 path="Assets/Maps/InfernalMapPuzzle3.tmx"/>
 	<mapfile_Infernal9 path="Assets/Maps/InfernalMapJovani.tmx"/>
