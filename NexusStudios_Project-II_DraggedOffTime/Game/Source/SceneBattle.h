@@ -211,8 +211,8 @@ public:
 	int mrFlail_idle_height = 192;
 	SDL_Texture* mrFlail_attack_tex;
 	Animation mrFlail_attack;
-	int mrFlail_attack_width = 0;
-	int mrFlail_attack_height = 0;
+	int mrFlail_attack_width = 384;
+	int mrFlail_attack_height = 288;
 	float mrFlail_attack_speed = 0.4f;
 
 	// -------------------------
@@ -275,8 +275,8 @@ public:
 	int eyebull_idle_height = 192;
 	SDL_Texture* eyebull_attack_tex;
 	Animation eyebull_attack;
-	int eyebull_attack_width = 0;
-	int eyebull_attack_height = 0;
+	int eyebull_attack_width = 384;
+	int eyebull_attack_height = 192;
 	float eyebull_attack_speed = 0.4f;
 
 	bool isAttacking = false;

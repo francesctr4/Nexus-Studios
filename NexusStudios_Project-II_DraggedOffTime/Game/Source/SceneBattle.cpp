@@ -139,7 +139,7 @@ void SceneBattle::WeaponAnimationDeclaration()
 	mrFlail_idle.loop = true;
 	mrFlail_idle.speed = weaponIdleSpeed;
 
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0; i < 22; i++) {
 
 		mrFlail_attack.PushBack({ mrFlail_attack_width * i, 0, mrFlail_attack_width, mrFlail_attack_height });
 
@@ -251,7 +251,7 @@ void SceneBattle::WeaponAnimationDeclaration()
 	eyebull_idle.loop = true;
 	eyebull_idle.speed = weaponIdleSpeed;
 
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0; i < 8; i++) {
 
 		eyebull_attack.PushBack({ eyebull_attack_width * i, 0, eyebull_attack_width, eyebull_attack_height });
 
@@ -1626,7 +1626,23 @@ bool SceneBattle::PostUpdate()
 
 		if (isAttacking) {
 
-			app->render->DrawTexture(fallenBlade_attack_tex, 90, 300, &weaponRect);
+			if (m_players[0].equippedWeapon == &fallenBlade) {
+
+				app->render->DrawTexture(fallenBlade_attack_tex, 90, 300, &weaponRect);
+
+			}
+
+			if (m_players[0].equippedWeapon == &ascendantTwins) {
+
+				app->render->DrawTexture(ascendantTwins_attack_tex, 105, 330, &weaponRect);
+
+			}
+
+			if (m_players[0].equippedWeapon == &mrFlail) {
+
+				app->render->DrawTexture(mrFlail_attack_tex, 182, 294, &weaponRect);
+
+			}
 
 		}
 		else {
@@ -1657,21 +1673,46 @@ bool SceneBattle::PostUpdate()
 
 		app->sceneGameplay->player->playerChange = 1;
 
-		if (m_players[1].equippedWeapon == &rusticStoneAxe) {
+		if (isAttacking) {
 
-			app->render->DrawTexture(rusticStoneAxe_idle_tex, 173, 390, &weaponRect);
+			if (m_players[1].equippedWeapon == &rusticStoneAxe) {
+
+				app->render->DrawTexture(rusticStoneAxe_attack_tex, 77, 294, &weaponRect);
+
+			}
+
+			if (m_players[1].equippedWeapon == &tribalLance) {
+
+				app->render->DrawTexture(tribalLance_attack_tex, 173, 294, &weaponRect);
+
+			}
+
+			if (m_players[1].equippedWeapon == &chiefsBow) {
+
+				app->render->DrawTexture(chiefsBow_attack_tex, 126, 384, &weaponRect);
+
+			}
 
 		}
+		else {
 
-		if (m_players[1].equippedWeapon == &tribalLance) {
+			if (m_players[1].equippedWeapon == &rusticStoneAxe) {
 
-			app->render->DrawTexture(tribalLance_idle_tex, 173, 294, &weaponRect);
+				app->render->DrawTexture(rusticStoneAxe_idle_tex, 173, 390, &weaponRect);
 
-		}
+			}
 
-		if (m_players[1].equippedWeapon == &chiefsBow) {
+			if (m_players[1].equippedWeapon == &tribalLance) {
 
-			app->render->DrawTexture(chiefsBow_idle_tex, 174, 390, &weaponRect);
+				app->render->DrawTexture(tribalLance_idle_tex, 173, 294, &weaponRect);
+
+			}
+
+			if (m_players[1].equippedWeapon == &chiefsBow) {
+
+				app->render->DrawTexture(chiefsBow_idle_tex, 174, 390, &weaponRect);
+
+			}
 
 		}
 
@@ -1681,21 +1722,46 @@ bool SceneBattle::PostUpdate()
 
 		app->sceneGameplay->player->playerChange = 2;
 
-		if (m_players[2].equippedWeapon == &chainsword) {
+		if (isAttacking) {
 
-			app->render->DrawTexture(chainsword_idle_tex, 40, 390, &weaponRect);
+			if (m_players[2].equippedWeapon == &chainsword) {
+
+				app->render->DrawTexture(chainsword_attack_tex, 4, 300, &weaponRect);
+
+			}
+
+			if (m_players[2].equippedWeapon == &uraniumshell) {
+
+				app->render->DrawTexture(uraniumshell_attack_tex, 137, 378, &weaponRect);
+
+			}
+
+			if (m_players[2].equippedWeapon == &ionizedRifle) {
+
+				app->render->DrawTexture(ionizedRifle_attack_tex, 170, 378, &weaponRect);
+
+			}
 
 		}
+		else {
 
-		if (m_players[2].equippedWeapon == &uraniumshell) {
+			if (m_players[2].equippedWeapon == &chainsword) {
 
-			app->render->DrawTexture(uraniumshell_idle_tex, 185, 390, &weaponRect);
+				app->render->DrawTexture(chainsword_idle_tex, 40, 390, &weaponRect);
 
-		}
+			}
 
-		if (m_players[2].equippedWeapon == &ionizedRifle) {
+			if (m_players[2].equippedWeapon == &uraniumshell) {
 
-			app->render->DrawTexture(ionizedRifle_idle_tex, 182, 390, &weaponRect);
+				app->render->DrawTexture(uraniumshell_idle_tex, 185, 390, &weaponRect);
+
+			}
+
+			if (m_players[2].equippedWeapon == &ionizedRifle) {
+
+				app->render->DrawTexture(ionizedRifle_idle_tex, 182, 390, &weaponRect);
+
+			}
 
 		}
 
@@ -1705,23 +1771,50 @@ bool SceneBattle::PostUpdate()
 
 		app->sceneGameplay->player->playerChange = 3;
 
-		if (m_players[3].equippedWeapon == &graftedClaws) {
+		if (isAttacking) {
 
-			app->render->DrawTexture(graftedClaws_idle_tex, 177, 414, &weaponRect);
+			if (m_players[3].equippedWeapon == &graftedClaws) {
 
+				app->render->DrawTexture(graftedClaws_attack_tex, -87, 409, &weaponRect);
+
+
+			}
+
+			if (m_players[3].equippedWeapon == &agony) {
+
+				app->render->DrawTexture(agony_attack_tex, 24, 294, &weaponRect);
+
+
+			}
+
+			if (m_players[3].equippedWeapon == &eyebull) {
+
+				app->render->DrawTexture(eyebull_attack_tex, 192, 390, &weaponRect);
+
+			}
 
 		}
+		else {
 
-		if (m_players[3].equippedWeapon == &agony) {
+			if (m_players[3].equippedWeapon == &graftedClaws) {
 
-			app->render->DrawTexture(agony_idle_tex, 180, 390, &weaponRect);
+				app->render->DrawTexture(graftedClaws_idle_tex, 177, 414, &weaponRect);
 
 
-		}
+			}
 
-		if (m_players[3].equippedWeapon == &eyebull) {
+			if (m_players[3].equippedWeapon == &agony) {
 
-			app->render->DrawTexture(eyebull_idle_tex, 180, 390, &weaponRect);
+				app->render->DrawTexture(agony_idle_tex, 180, 390, &weaponRect);
+
+
+			}
+
+			if (m_players[3].equippedWeapon == &eyebull) {
+
+				app->render->DrawTexture(eyebull_idle_tex, 180, 390, &weaponRect);
+
+			}
 
 		}
 
