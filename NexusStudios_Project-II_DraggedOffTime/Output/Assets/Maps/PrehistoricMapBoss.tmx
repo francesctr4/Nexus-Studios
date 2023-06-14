@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="17" nextobjectid="6">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="80" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="17" nextobjectid="6">
  <tileset firstgid="1" name="Prehistoric_Tiles" tilewidth="16" tileheight="16" tilecount="625" columns="25">
   <image source="Prehistoric_Tiles.png" width="400" height="400"/>
   <wangsets>
@@ -7306,11 +7306,11 @@
    <tile gid="129"/>
    <tile gid="2147483777"/>
    <tile gid="2147483776"/>
-   <tile gid="2147483753"/>
-   <tile/>
-   <tile gid="694"/>
-   <tile gid="695"/>
-   <tile gid="696"/>
+   <tile gid="128"/>
+   <tile gid="128"/>
+   <tile gid="129"/>
+   <tile gid="128"/>
+   <tile gid="129"/>
    <tile/>
    <tile/>
    <tile/>
@@ -7386,12 +7386,12 @@
    <tile gid="154"/>
    <tile gid="2147483802"/>
    <tile gid="2147483801"/>
-   <tile gid="2147483778"/>
-   <tile gid="2147483753"/>
-   <tile gid="709"/>
-   <tile gid="710"/>
-   <tile gid="711"/>
-   <tile/>
+   <tile gid="153"/>
+   <tile gid="153"/>
+   <tile gid="154"/>
+   <tile gid="153"/>
+   <tile gid="154"/>
+   <tile gid="51"/>
    <tile/>
    <tile/>
    <tile gid="649"/>
@@ -7465,13 +7465,13 @@
    <tile gid="178"/>
    <tile gid="179"/>
    <tile gid="2147483827"/>
-   <tile gid="2147483826"/>
-   <tile gid="2147483803"/>
-   <tile gid="2147483778"/>
-   <tile gid="2147483753"/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="178"/>
+   <tile gid="179"/>
+   <tile gid="178"/>
+   <tile gid="179"/>
+   <tile gid="178"/>
+   <tile gid="179"/>
+   <tile gid="76"/>
    <tile/>
    <tile/>
    <tile gid="664"/>
@@ -7546,12 +7546,12 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="2147483804"/>
-   <tile gid="2147483803"/>
-   <tile gid="2147483778"/>
-   <tile gid="2147483753"/>
+   <tile gid="203"/>
+   <tile gid="204"/>
    <tile/>
    <tile/>
+   <tile/>
+   <tile gid="76"/>
    <tile/>
    <tile/>
    <tile gid="679"/>
@@ -7627,11 +7627,11 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="2147483828"/>
-   <tile gid="2147483803"/>
-   <tile gid="2147483778"/>
-   <tile gid="2147483753"/>
    <tile/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile gid="76"/>
    <tile/>
    <tile/>
    <tile gid="694"/>
@@ -7708,10 +7708,10 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="2147483804"/>
-   <tile gid="2147483803"/>
-   <tile gid="2147483778"/>
-   <tile gid="2147483753"/>
+   <tile/>
+   <tile/>
+   <tile/>
+   <tile gid="76"/>
    <tile/>
    <tile/>
    <tile gid="709"/>
@@ -7789,9 +7789,9 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="2147483804"/>
-   <tile gid="2147483803"/>
-   <tile gid="2147483704"/>
+   <tile/>
+   <tile/>
+   <tile gid="76"/>
    <tile/>
    <tile/>
    <tile gid="724"/>
@@ -7870,7 +7870,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile gid="2147483828"/>
+   <tile/>
    <tile gid="2147483729"/>
    <tile/>
    <tile/>
@@ -18075,7 +18075,7 @@
    <property name="Platform" type="bool" value="true"/>
   </properties>
   <object id="1" x="0" y="336">
-   <polygon points="0,0 400,0 432,-32 432,-48 336,-144 336,-224 416,-304 576,-304 576,-272 608,-272 608,-304 624,-304 624,-320 656,-320 656,-304 672,-304 672,-272 704,-272 704,-304 864,-304 944,-224 944,64 736,272 0,272 0,384 1280,384 1280,-336 0,-336"/>
+   <polygon points="0,0 400,0 432,-32 432,-48 336,-144 336,-224 416,-304 576,-304 576,-272 608,-272 608,-304 624,-304 624,-320 656,-320 656,-304 672,-304 672,-272 704,-272 704,-304 944,-304 944,64 736,272 0,272 0,384 1280,384 1280,-336 0,-336"/>
   </object>
   <object id="2" x="880" y="176">
    <polygon points="0,0 0,16 32,16 32,0"/>

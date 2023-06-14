@@ -162,6 +162,7 @@ void Infierno::Update()
 					medieval = false;
 					infierno = false;
 					timerActivated = false;
+					app->sceneGameplay->player->Teleport(475, 340);
 
 				}
 				else if (app->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN) {
@@ -173,6 +174,7 @@ void Infierno::Update()
 					medieval = false;
 					infierno = false;
 					timerActivated = false;
+					app->sceneGameplay->player->Teleport(640, 570);
 				}
 
 			}

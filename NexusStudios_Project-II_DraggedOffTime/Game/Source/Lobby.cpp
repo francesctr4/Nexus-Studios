@@ -58,7 +58,7 @@ void Lobby::Update()
 
 void Lobby::TeleportLobby()
 {	
-	app->sceneGameplay->player->Teleport(864, 334);
+	app->sceneGameplay->player->Teleport(640, 570);
 	app->sceneGameplay->LoadMap(1);
 }
 void Lobby::TeleportPrehistoria()
