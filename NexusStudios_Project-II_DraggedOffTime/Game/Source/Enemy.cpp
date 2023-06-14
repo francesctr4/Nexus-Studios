@@ -48,8 +48,8 @@ bool Enemy::Awake() {
 	if (SString(parameters.attribute("type").as_string()) == SString("damage")) {
 
 		etype = EnemyType::DAMAGE;
-		hp = 80;
-		atk = 20;
+		hp = 100;
+		atk = 10;
 		def = 10;
 
 	}
@@ -57,8 +57,8 @@ bool Enemy::Awake() {
 	if (SString(parameters.attribute("type").as_string()) == SString("support")) {
 
 		etype = EnemyType::SUPPORT;
-		hp = 80;
-		atk = 20;
+		hp = 100;
+		atk = 10;
 		def = 10;
 
 	}
@@ -66,40 +66,40 @@ bool Enemy::Awake() {
 	if (SString(parameters.attribute("type").as_string()) == SString("tank")) {
 
 		etype = EnemyType::TANK;
-		hp = 80;
-		atk = 20;
+		hp = 100;
+		atk = 10;
 		def = 10;
 	}
 
 	if (SString(parameters.attribute("type").as_string()) == SString("bossMedieval")) {
 
 		etype = EnemyType::BOSS_MEDIEVAL;
-		hp = 160;
-		atk = 40;
+		hp = 200;
+		atk = 20;
 		def = 20;
 	}
 
 	if (SString(parameters.attribute("type").as_string()) == SString("bossPrehistoric")) {
 
 		etype = EnemyType::BOSS_PREHISTORIC;
-		hp = 160;
-		atk = 40;
+		hp = 200;
+		atk = 20;
 		def = 20;
 	}
 
 	if (SString(parameters.attribute("type").as_string()) == SString("bossCyberpunk")) {
 
 		etype = EnemyType::BOSS_CYBERPUNK;
-		hp = 160;
-		atk = 40;
+		hp = 200;
+		atk = 20;
 		def = 20;
 	}
 
 	if (SString(parameters.attribute("type").as_string()) == SString("bossApocalypse")) {
 
 		etype = EnemyType::BOSS_APOCALYPSE;
-		hp = 160;
-		atk = 40;
+		hp = 200;
+		atk = 20;
 		def = 20;
 	}
 		
