@@ -1294,7 +1294,7 @@ bool SceneBattle::Update(float dt)
 
 				currentAnimationWeapon = &ionizedRifle_attack;
 
-				if (timerWeaponAttack.ReadMSec() > 800) {
+				if (timerWeaponAttack.ReadMSec() > 700) {
 
 					isAttacking = false;
 
@@ -1342,7 +1342,7 @@ bool SceneBattle::Update(float dt)
 
 				currentAnimationWeapon = &graftedClaws_attack;
 
-				if (timerWeaponAttack.ReadMSec() > 550) {
+				if (timerWeaponAttack.ReadMSec() > 600) {
 
 					isAttacking = false;
 
@@ -1361,7 +1361,7 @@ bool SceneBattle::Update(float dt)
 
 				currentAnimationWeapon = &agony_attack;
 
-				if (timerWeaponAttack.ReadMSec() > 550) {
+				if (timerWeaponAttack.ReadMSec() > 600) {
 
 					isAttacking = false;
 
@@ -1380,7 +1380,7 @@ bool SceneBattle::Update(float dt)
 
 				currentAnimationWeapon = &eyebull_attack;
 
-				if (timerWeaponAttack.ReadMSec() > 550) {
+				if (timerWeaponAttack.ReadMSec() > 600) {
 
 					isAttacking = false;
 
