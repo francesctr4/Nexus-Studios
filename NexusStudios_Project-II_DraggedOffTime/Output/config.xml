@@ -39,7 +39,7 @@
 	Mapa Prehistoria
 	-->
 	<enemy type = "tank" x="352" y="160" w ="32" h ="32" texturepath="Assets/Textures/Tank_New.png" battletexturepath ="Assets/Textures/TankInCombat.png" map="2"/>
-	<enemy type = "tank" x="608" y="500" w ="32" h ="32" texturepath="Assets/Textures/Tank_New.png" battletexturepath ="Assets/Textures/TankInCombat.png" map="2"/>
+	<enemy type = "tank" x="608" y="400" w ="32" h ="32" texturepath="Assets/Textures/Tank_New.png" battletexturepath ="Assets/Textures/TankInCombat.png" map="2"/>
 	<enemy type = "support" x="280" y="384" w ="32" h ="32" texturepath="Assets/Textures/Support_New.png" battletexturepath ="Assets/Textures/SupportInCombat.png" map="2"/>
 	
 	<enemy type = "damage" x="688" y="500" w ="32" h ="32" texturepath="Assets/Textures/Damage_New.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="3"/>
