@@ -6,6 +6,7 @@
 #include "GuiCheckBox.h"
 #include "Animation.h"
 #include "Weapon.h"
+#include "Enemy.h"
 
 struct SDL_Texture;
 
@@ -117,6 +118,8 @@ public:
 	Animation enemyAnimation64x32;
 	Animation enemyAnimation32x64;
 	Animation enemyAnimation64x64;
+	Animation bossAnimation;
+	EnemyType enemyType;
 	Animation* currentAnimationEnemy;
 
 	int widthEnemyCombat;

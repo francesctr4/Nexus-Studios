@@ -120,6 +120,14 @@ bool Enemy::Awake() {
 	}
 	idle_right.loop = true;
 	idle_right.speed = 0.06f;
+
+	for (int i = 0; i < 6; i++) {
+
+		idle_bosses.PushBack({ 64 * i, 0, 64, 64 });
+
+	}
+	idle_bosses.loop = true;
+	idle_bosses.speed = 0.1f;
 	
 	return true;
 }
@@ -135,6 +143,8 @@ bool Enemy::Start() {
 
 		enemySensor = app->physics->CreateCircleSensor(position.x, position.y, 40, bodyType::KINEMATIC, ColliderType::ENEMY_SENSOR);
 
+		currentAnimation = &idle_bosses;
+
 	}
 	else {
 
@@ -142,13 +152,13 @@ bool Enemy::Start() {
 
 		enemySensor = app->physics->CreateCircleSensor(position.x, position.y, 25, bodyType::KINEMATIC, ColliderType::ENEMY_SENSOR);
 
+		currentAnimation = &idle_right;
+
 	}
 
 	//pbody->listener = this;
 
 	enemySensor->listener = this;
-
-	currentAnimation = &idle_right;
 
 	return true;
 }
@@ -163,7 +173,11 @@ bool Enemy::Update()
 		position.x = METERS_TO_PIXELS(pos.x) - 32;
 		position.y = METERS_TO_PIXELS(pos.y) - 30;
 
-		app->render->DrawTexture(texture, position.x, position.y);
+		currentAnimation->Update();
+
+		SDL_Rect enemyRect = currentAnimation->GetCurrentFrame();
+
+		app->render->DrawTexture(texture, position.x, position.y, &enemyRect);
 	
 	}
 	else {
@@ -221,6 +235,7 @@ void Enemy::OnCollision(PhysBody* physA, PhysBody* physB) {
 		app->sceneBattle->enemyInCombat = textureBattle;
 		app->sceneBattle->widthEnemyCombat = width;
 		app->sceneBattle->heightEnemyCombat = height;
+		app->sceneBattle->enemyType = etype;
 
 		//Pasar variables
 		app->sceneBattle->e_HP = this->hp;

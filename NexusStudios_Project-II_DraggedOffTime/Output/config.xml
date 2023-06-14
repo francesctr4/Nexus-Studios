@@ -105,9 +105,9 @@
 	  
 	<enemy type = "support" x="698" y="160" w ="32" h ="32" texturepath="Assets/Textures/Demon_Support-Sheet.png" battletexturepath ="Assets/Textures/Demon_Support-Sheet_InCombat.png" map="18"/>
 	  
-	<enemy type = "bossMedieval" x="640" y="224" texturepath="Assets/Textures/Bosses/Final_Boss_Medieval.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="13"/>
-	<enemy type = "bossPrehistoric" x="640" y="160" texturepath="Assets/Textures/Bosses/Final_Boss_Prehistoric.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="7"/>
-	<enemy type = "bossCyberpunk" x="640" y="70" texturepath="Assets/Textures/Bosses/Final_Boss_Cyberpunk.png" battletexturepath ="Assets/Textures/DamageInCombat.png" map="18"/>
+	<enemy type = "bossMedieval" x="640" y="224" texturepath="Assets/Textures/Bosses/Final_Boss_Medieval-IdleSheet.png" battletexturepath ="Assets/Textures/Bosses/Final_Boss_Medieval-IdleSheet-Battle.png" map="13"/>
+	<enemy type = "bossPrehistoric" x="640" y="160" texturepath="Assets/Textures/Bosses/Final_Boss_Prehistoric-IdleSheet.png" battletexturepath ="Assets/Textures/Bosses/Final_Boss_Prehistoric-IdleSheet-Battle.png" map="7"/>
+	<enemy type = "bossCyberpunk" x="640" y="70" texturepath="Assets/Textures/Bosses/Final_Boss_Cyberpunk_IdleSheet.png" battletexturepath ="Assets/Textures/Bosses/Final_Boss_Cyberpunk_IdleSheet-Battle.png" map="18"/>
  
 	<item type ="Potion" x="497" y="291" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png" map="11"/>
 	<item type ="Potion" x="897" y="115" texturepath="Assets/Textures/Items/Potions/Potion1-Sheet.png" iconpath="Assets/Textures/Items/Potions/Potion1.png" map="21"/>

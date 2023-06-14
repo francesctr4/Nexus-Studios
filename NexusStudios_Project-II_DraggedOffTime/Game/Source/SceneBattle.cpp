@@ -306,6 +306,14 @@ bool SceneBattle::Start()
 	enemyAnimation64x64.loop = true;
 	enemyAnimation64x64.speed = 0.06f;
 
+	for (int i = 0; i < 6; i++) {
+
+		bossAnimation.PushBack({ 320 * i, 0, 320, 320 });
+
+	}
+	bossAnimation.loop = true;
+	bossAnimation.speed = 0.06f;
+
 	//Cambiar para después de la vertical slice
 	selected_player = 0;
 	turn = 0;
@@ -471,6 +479,11 @@ bool SceneBattle::Update(float dt)
 	else if (widthEnemyCombat == 64 && heightEnemyCombat == 64) {
 
 		currentAnimationEnemy = &enemyAnimation64x64;
+
+	}
+	else if (enemyType == EnemyType::BOSS_PREHISTORIC || enemyType == EnemyType::BOSS_MEDIEVAL || enemyType == EnemyType::BOSS_CYBERPUNK || enemyType == EnemyType::BOSS_APOCALYPSE) {
+
+		currentAnimationEnemy = &bossAnimation;
 
 	}
 
@@ -1509,6 +1522,11 @@ bool SceneBattle::PostUpdate()
 	else if (widthEnemyCombat == 64 && heightEnemyCombat == 64) {
 
 		app->render->DrawTexture(enemyInCombat, 848, 194, &enemyRect);
+
+	}
+	else if (enemyType == EnemyType::BOSS_PREHISTORIC || enemyType == EnemyType::BOSS_MEDIEVAL || enemyType == EnemyType::BOSS_CYBERPUNK || enemyType == EnemyType::BOSS_APOCALYPSE) {
+
+		app->render->DrawTexture(enemyInCombat, 783, 52, &enemyRect);
 
 	}
 
