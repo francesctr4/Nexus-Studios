@@ -383,10 +383,10 @@ bool SceneBattle::Start()
 
 	fallenBlade_idle_tex = app->tex->Load("Assets/Textures/Battle_Animations/Medieval/Melee_Idle.png");
 	fallenBlade_attack_tex = app->tex->Load("Assets/Textures/Battle_Animations/Medieval/Melee_Attack.png");
-	ascendantTwins_idle_tex = app->tex->Load("Assets/Textures/Battle_Animations/Medieval/MidRange_Idle.png");
-	ascendantTwins_attack_tex = app->tex->Load("Assets/Textures/Battle_Animations/Medieval/MidRange_Attack.png");
-	mrFlail_idle_tex = app->tex->Load("Assets/Textures/Battle_Animations/Medieval/LongRange_Idle.png");
-	mrFlail_attack_tex = app->tex->Load("Assets/Textures/Battle_Animations/Medieval/LongRange_Attack.png");
+	ascendantTwins_idle_tex = app->tex->Load("Assets/Textures/Battle_Animations/Medieval/LongRange_Idle.png");
+	ascendantTwins_attack_tex = app->tex->Load("Assets/Textures/Battle_Animations/Medieval/LongRange_Attack.png");
+	mrFlail_idle_tex = app->tex->Load("Assets/Textures/Battle_Animations/Medieval/MidRange_Idle.png");
+	mrFlail_attack_tex = app->tex->Load("Assets/Textures/Battle_Animations/Medieval/MidRange_Attack.png");
 	
 	// ---------------------------------------
 
@@ -555,8 +555,6 @@ bool SceneBattle::Update(float dt)
 					resetAnim = true;
 
 					timerWeaponAttack.Start();
-
-					//fallenBlade_attack.Reset();
 
 					break;
 				case 1:	//Quick time event attack (TODO)
@@ -1105,7 +1103,7 @@ bool SceneBattle::Update(float dt)
 
 				currentAnimationWeapon = &ascendantTwins_attack;
 
-				if (timerWeaponAttack.ReadMSec() > 550) {
+				if (timerWeaponAttack.ReadMSec() > 600) {
 
 					isAttacking = false;
 
@@ -1124,7 +1122,7 @@ bool SceneBattle::Update(float dt)
 
 				currentAnimationWeapon = &mrFlail_attack;
 
-				if (timerWeaponAttack.ReadMSec() > 550) {
+				if (timerWeaponAttack.ReadMSec() > 750) {
 
 					isAttacking = false;
 
@@ -1172,7 +1170,7 @@ bool SceneBattle::Update(float dt)
 
 				currentAnimationWeapon = &rusticStoneAxe_attack;
 
-				if (timerWeaponAttack.ReadMSec() > 550) {
+				if (timerWeaponAttack.ReadMSec() > 650) {
 
 					isAttacking = false;
 
@@ -1191,7 +1189,7 @@ bool SceneBattle::Update(float dt)
 
 				currentAnimationWeapon = &tribalLance_attack;
 
-				if (timerWeaponAttack.ReadMSec() > 550) {
+				if (timerWeaponAttack.ReadMSec() > 1100) {
 
 					isAttacking = false;
 
@@ -1210,7 +1208,7 @@ bool SceneBattle::Update(float dt)
 
 				currentAnimationWeapon = &chiefsBow_attack;
 
-				if (timerWeaponAttack.ReadMSec() > 550) {
+				if (timerWeaponAttack.ReadMSec() > 1150) {
 
 					isAttacking = false;
 
@@ -1258,7 +1256,7 @@ bool SceneBattle::Update(float dt)
 
 				currentAnimationWeapon = &chainsword_attack;
 
-				if (timerWeaponAttack.ReadMSec() > 550) {
+				if (timerWeaponAttack.ReadMSec() > 600) {
 
 					isAttacking = false;
 
@@ -1277,7 +1275,7 @@ bool SceneBattle::Update(float dt)
 
 				currentAnimationWeapon = &uraniumshell_attack;
 
-				if (timerWeaponAttack.ReadMSec() > 550) {
+				if (timerWeaponAttack.ReadMSec() > 800) {
 
 					isAttacking = false;
 
@@ -1296,7 +1294,7 @@ bool SceneBattle::Update(float dt)
 
 				currentAnimationWeapon = &ionizedRifle_attack;
 
-				if (timerWeaponAttack.ReadMSec() > 550) {
+				if (timerWeaponAttack.ReadMSec() > 800) {
 
 					isAttacking = false;
 
