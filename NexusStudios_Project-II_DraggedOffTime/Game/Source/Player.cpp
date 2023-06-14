@@ -139,7 +139,7 @@ bool Player::Start() {
 
 	speedValue = SPEED_VALUE;
 	
-	Teleport(930, 340);
+	Teleport(475, 340);
 
 	return true;
 }
