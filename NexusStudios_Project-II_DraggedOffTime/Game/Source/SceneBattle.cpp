@@ -509,7 +509,7 @@ bool SceneBattle::Update(float dt)
 			if (app->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN)
 				app->sceneGameplay->player->godMode = !app->sceneGameplay->player->godMode;
 
-			if (app->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN)
+			if (app->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT] == KEY_DOWN)
 			{
 				
 
@@ -527,7 +527,7 @@ bool SceneBattle::Update(float dt)
 
 			}
 
-			if (app->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN)
+			if (app->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] == KEY_DOWN)
 			{
 
 				
@@ -545,7 +545,7 @@ bool SceneBattle::Update(float dt)
 
 			}
 
-			if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+			if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_A] == KEY_DOWN)
 			{
 				combat_timmer.Start();
 				switch (action_selected)
@@ -756,7 +756,7 @@ bool SceneBattle::Update(float dt)
 			}
 
 
-			if ((app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN))
+			if ((app->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN) || app->input->controllers[0].buttons[SDL_CONTROLLER_BUTTON_A] == KEY_DOWN)
 			{
 				delay = qte_timer.ReadMSec();
 				
@@ -1953,6 +1953,8 @@ bool SceneBattle::PostUpdate()
 		turn = 0;
 		app->fadeToBlack->Fade(this, (Module*)app->sceneGameplay);
 		
+		app->sceneGameplay->enableMusic = true;
+
 	}
 
 	//QTE - Mostrar algo cuando es buen momento para volver a pulsar la Q

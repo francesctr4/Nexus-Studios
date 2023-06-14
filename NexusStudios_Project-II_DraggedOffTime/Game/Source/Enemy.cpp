@@ -201,6 +201,9 @@ bool Enemy::Update()
 		playerInteraction = false;
 		app->sceneGameplay->player->Teleport(position.x + 17, position.y + 45);
 		Death();
+
+		app->sceneBattle->enableMusic = true;
+
 	}
 
 	
