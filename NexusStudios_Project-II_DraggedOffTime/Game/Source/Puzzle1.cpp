@@ -71,8 +71,6 @@ void Puzzle1::Update()
 
 			app->audio->PlayFx(correct);
 			completed = true;
-			app->map->actualmap = 24;
-
 		}
 		else {
 
