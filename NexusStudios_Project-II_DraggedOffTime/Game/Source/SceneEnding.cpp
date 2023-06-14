@@ -168,6 +168,9 @@ bool SceneEnding::Update(float dt)
 		Animation_Resume.JumpTo(0, false);
 		Animation_BackTitle.JumpTo(100, false);
 
+		app->sceneGameplay->LoadMap(1);
+		app->sceneGameplay->player->Teleport(640, 570);
+
 		app->fadeToBlack->Fade(this, reinterpret_cast<Module*>(app->sceneTitle));
 
 	}
